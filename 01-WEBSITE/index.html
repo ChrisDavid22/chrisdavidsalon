@@ -227,6 +227,36 @@
         .sticky-booking { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
         .hero-overlay { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)); }
         
+        /* Remove any floating social icons that might appear over hero */
+        #home .fab.fa-instagram,
+        #home .fab.fa-facebook,
+        #home .fab.fa-facebook-f,
+        #home [class*="instagram"],
+        #home [class*="facebook"] {
+            display: none !important;
+        }
+        
+        /* Remove any absolutely positioned social icons anywhere on page */
+        .fab.fa-instagram:not(.bg-white .fab.fa-instagram):not(.text-purple-600),
+        .fab.fa-facebook:not(.bg-white .fab.fa-facebook):not(.text-purple-600) {
+            position: static !important;
+        }
+        
+        /* Ensure no third-party social widgets appear over content */
+        [style*="position: fixed"][style*="z-index"],
+        [style*="position: absolute"][style*="z-index"] {
+            z-index: 1 !important;
+        }
+        
+        /* Hide any injected social media floating buttons */
+        .social-float,
+        .social-sticky,
+        [class*="social-widget"],
+        [class*="social-icon"][style*="position: fixed"],
+        [class*="social-icon"][style*="position: absolute"] {
+            display: none !important;
+        }
+        
         /* Gallery Grid */
         .gallery-grid {
             display: grid;
@@ -525,16 +555,6 @@
             <div class="hero-overlay absolute inset-0"></div>
         </div>
         <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-            <!-- Social Media Icons - Extra Large and Visible -->
-            <div class="absolute right-8 md:right-20 lg:right-32 top-20 flex flex-col space-y-6 z-20">
-                <a href="https://www.instagram.com/chrisdavidsalon/" target="_blank" rel="noopener" class="text-white hover:text-yellow-400 transition-all transform hover:scale-125 bg-black bg-opacity-40 p-4 rounded-full backdrop-blur-sm">
-                    <i class="fab fa-instagram" style="font-size: 3rem;"></i>
-                </a>
-                <a href="https://www.facebook.com/ChrisDavidSalon/" target="_blank" rel="noopener" class="text-white hover:text-yellow-400 transition-all transform hover:scale-125 bg-black bg-opacity-40 p-4 rounded-full backdrop-blur-sm">
-                    <i class="fab fa-facebook" style="font-size: 3rem;"></i>
-                </a>
-            </div>
-            
             <h1 class="text-6xl md:text-8xl mb-6 animate-fade-in font-script">
                 Chris David Salon
             </h1>
@@ -942,6 +962,34 @@
                     <i class="fab fa-google mr-2"></i>
                     Read More Reviews on Google
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Banner -->
+    <section class="py-12 bg-gradient-to-r from-purple-600 to-pink-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                    Follow Us on Social Media
+                </h3>
+                <p class="text-white opacity-90 mb-6">
+                    Stay updated with the latest hair trends and transformations
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.instagram.com/chrisdavidsalon/" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="bg-white rounded-full p-4 hover:scale-110 transition-transform">
+                        <i class="fab fa-instagram text-3xl text-purple-600"></i>
+                    </a>
+                    <a href="https://www.facebook.com/ChrisDavidSalon/" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="bg-white rounded-full p-4 hover:scale-110 transition-transform">
+                        <i class="fab fa-facebook text-3xl text-purple-600"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

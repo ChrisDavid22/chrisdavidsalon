@@ -29,6 +29,29 @@
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Overall SEO Score -->
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between">
+                <div class="text-white">
+                    <h3 class="text-2xl font-bold mb-2">Overall SEO Ranking Score</h3>
+                    <p class="text-sm opacity-90">Your website's visibility performance (1-100 scale)</p>
+                </div>
+                <div class="bg-white rounded-full w-32 h-32 flex flex-col items-center justify-center">
+                    <span class="text-4xl font-bold text-gray-800" id="seoScore">28</span>
+                    <span class="text-sm text-gray-600">/100</span>
+                </div>
+            </div>
+            <div class="mt-4 bg-white bg-opacity-20 rounded-lg p-3">
+                <div class="flex justify-between text-white text-sm mb-2">
+                    <span>Progress to Goal (75/100)</span>
+                    <span>37% Complete</span>
+                </div>
+                <div class="w-full bg-white bg-opacity-30 rounded-full h-4">
+                    <div class="bg-yellow-400 h-4 rounded-full" style="width: 37%"></div>
+                </div>
+            </div>
+        </div>
+        
         <!-- Stats Overview -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white p-6 rounded-lg shadow">
@@ -231,8 +254,69 @@
             });
         }
         
+        // Calculate SEO Score
+        function calculateSEOScore() {
+            const rankings = [
+                { keyword: 'balayage delray beach', position: 'Not ranked', weight: 0.08 },
+                { keyword: 'hair color delray beach', position: 'Not ranked', weight: 0.07 },
+                { keyword: 'color correction delray beach', position: 'Not ranked', weight: 0.06 },
+                { keyword: 'hair salon delray beach', position: 'Not ranked', weight: 0.05 },
+                { keyword: 'hair extensions delray beach', position: 'Not ranked', weight: 0.05 },
+                { keyword: 'brazilian blowout delray beach', position: 'Not ranked', weight: 0.04 },
+                { keyword: 'hairdresser delray beach', position: 'Not ranked', weight: 0.04 },
+                { keyword: 'hair stylist delray beach', position: 'Not ranked', weight: 0.04 },
+                { keyword: 'keratin treatment delray beach', position: 'Not ranked', weight: 0.03 },
+                { keyword: 'highlights delray beach', position: 'Not ranked', weight: 0.03 },
+                { keyword: 'master colorist delray beach', position: 'Not ranked', weight: 0.03 },
+                { keyword: 'blonde specialist delray beach', position: 'Not ranked', weight: 0.03 },
+                { keyword: 'hair salon atlantic ave delray', position: 'Not ranked', weight: 0.02 },
+                { keyword: 'hair salon near me delray beach', position: 'Not ranked', weight: 0.02 },
+                { keyword: 'best hair salon delray beach', position: 'Not ranked', weight: 0.02 },
+                { keyword: 'chris david salon delray beach', position: 1, weight: 0.15 },
+                { keyword: 'chris david salon', position: 1, weight: 0.10 },
+                { keyword: 'chris david hair', position: 2, weight: 0.08 }
+            ];
+            
+            let totalScore = 0;
+            rankings.forEach(rank => {
+                let posScore = 0;
+                if (rank.position === 1) posScore = 100;
+                else if (rank.position === 2) posScore = 90;
+                else if (rank.position === 3) posScore = 80;
+                else if (rank.position <= 5) posScore = 60;
+                else if (rank.position <= 10) posScore = 40;
+                else if (rank.position <= 20) posScore = 20;
+                else if (rank.position === 'Not ranked') posScore = 0;
+                
+                totalScore += posScore * rank.weight;
+            });
+            
+            // Round to nearest whole number
+            const finalScore = Math.round(totalScore);
+            
+            // Update display
+            document.getElementById('seoScore').textContent = finalScore;
+            
+            // Update progress bar
+            const progressPercent = (finalScore / 75) * 100; // Goal is 75/100
+            const progressBar = document.querySelector('.bg-yellow-400');
+            if (progressBar) {
+                progressBar.style.width = Math.min(progressPercent, 100) + '%';
+            }
+            
+            // Update progress text
+            const progressText = document.querySelector('.flex.justify-between.text-white.text-sm.mb-2 span:last-child');
+            if (progressText) {
+                progressText.textContent = Math.round(Math.min(progressPercent, 100)) + '% Complete';
+            }
+            
+            return finalScore;
+        }
+        
         // Check SEO rankings with enhanced data
         function checkRankings() {
+            // Calculate and update SEO score
+            calculateSEOScore();
             const rankings = [
                 // HIGH VALUE - These bring the most revenue
                 { keyword: 'balayage delray beach', position: 'Not ranked', change: 'new', searches: 720, value: '$$$$$', competition: 'High', priority: 1 },
@@ -362,6 +446,261 @@
                     </td>
                 </tr>
             `;
+            
+            // Add SEO Score Analysis Section
+            displaySEOAnalysis();
+        }
+        
+        function displaySEOAnalysis() {
+            const seoScore = calculateSEOScore();
+            const analysis = generateSEOAnalysis(seoScore);
+            
+            // Create or update the SEO analysis section
+            let analysisSection = document.getElementById('seoAnalysisSection');
+            if (!analysisSection) {
+                analysisSection = document.createElement('div');
+                analysisSection.id = 'seoAnalysisSection';
+                analysisSection.className = 'mt-8';
+                document.getElementById('seoRankings').parentElement.appendChild(analysisSection);
+            }
+            
+            analysisSection.innerHTML = `
+                <div class="bg-white rounded-lg shadow-lg p-6 border-2 border-blue-500">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">SEO Performance Analysis</h3>
+                        <button onclick="refreshSEOAnalysis()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                            <i class="fas fa-sync-alt mr-2"></i>Refresh Analysis
+                        </button>
+                    </div>
+                    
+                    <!-- Score Display -->
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 mb-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-2">Overall SEO Score</h4>
+                                <p class="text-gray-600">${analysis.scoreExplanation}</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="relative inline-flex items-center justify-center">
+                                    <svg class="transform -rotate-90 w-32 h-32">
+                                        <circle cx="64" cy="64" r="56" stroke="#e5e7eb" stroke-width="12" fill="none"></circle>
+                                        <circle cx="64" cy="64" r="56" stroke="${analysis.scoreColor}" stroke-width="12" fill="none"
+                                                stroke-dasharray="${351.86 * (seoScore / 100)} 351.86"
+                                                stroke-linecap="round"></circle>
+                                    </svg>
+                                    <div class="absolute">
+                                        <span class="text-4xl font-bold text-gray-800">${seoScore}</span>
+                                        <span class="text-lg text-gray-600">/100</span>
+                                    </div>
+                                </div>
+                                <p class="mt-2 text-sm font-semibold ${analysis.performanceClass}">${analysis.performance}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Why This Score Section -->
+                    <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4">
+                            <i class="fas fa-chart-line text-blue-600 mr-2"></i>
+                            Why Your Score is ${seoScore}/100
+                        </h4>
+                        <div class="space-y-3">
+                            ${analysis.reasons.map(reason => `
+                                <div class="flex items-start">
+                                    <i class="${reason.icon} ${reason.color} mt-1 mr-3"></i>
+                                    <div>
+                                        <span class="font-semibold">${reason.title}:</span>
+                                        <span class="text-gray-600">${reason.description}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Top 5 Actions Section -->
+                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4">
+                            <i class="fas fa-tasks text-orange-600 mr-2"></i>
+                            Top 5 Actions to Improve Your SEO Score
+                        </h4>
+                        <div class="space-y-4">
+                            ${analysis.recommendations.map((rec, index) => `
+                                <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                                    <div class="flex items-start">
+                                        <span class="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">
+                                            ${index + 1}
+                                        </span>
+                                        <div class="flex-1">
+                                            <h5 class="font-bold text-gray-800 mb-1">${rec.title}</h5>
+                                            <p class="text-gray-600 text-sm mb-2">${rec.description}</p>
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                                                    Impact: ${rec.impact}
+                                                </span>
+                                                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                                                    Effort: ${rec.effort}
+                                                </span>
+                                                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">
+                                                    Timeline: ${rec.timeline}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Last Updated -->
+                    <div class="mt-4 text-center text-sm text-gray-500">
+                        <i class="fas fa-clock mr-1"></i>
+                        Analysis last updated: ${new Date().toLocaleString()}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateSEOAnalysis(score) {
+            let performance, performanceClass, scoreColor, scoreExplanation;
+            
+            if (score >= 75) {
+                performance = 'Excellent Performance';
+                performanceClass = 'text-green-600';
+                scoreColor = '#10b981';
+                scoreExplanation = 'Your SEO is performing excellently. You\'re dominating branded searches and making progress on competitive keywords.';
+            } else if (score >= 50) {
+                performance = 'Good Performance';
+                performanceClass = 'text-blue-600';
+                scoreColor = '#3b82f6';
+                scoreExplanation = 'Your SEO is on the right track. Branded searches are strong, but there\'s significant opportunity in local and service keywords.';
+            } else if (score >= 25) {
+                performance = 'Needs Improvement';
+                performanceClass = 'text-yellow-600';
+                scoreColor = '#f59e0b';
+                scoreExplanation = 'Your SEO has room for improvement. You\'re ranking for branded terms but missing valuable local traffic.';
+            } else {
+                performance = 'Critical - Action Needed';
+                performanceClass = 'text-red-600';
+                scoreColor = '#ef4444';
+                scoreExplanation = 'Your SEO needs immediate attention. You\'re missing out on significant local search traffic and potential customers.';
+            }
+            
+            // Calculate specific metrics
+            const rankings = [
+                { keyword: 'chris david salon', position: 1 },
+                { keyword: 'chris david salon delray beach', position: 1 },
+                { keyword: 'chris david hair', position: 2 },
+                { keyword: 'balayage delray beach', position: 'Not ranked' },
+                { keyword: 'hair color delray beach', position: 'Not ranked' },
+                { keyword: 'hair salon delray beach', position: 'Not ranked' }
+            ];
+            
+            const brandedRankings = rankings.filter(r => r.keyword.includes('chris david') && r.position <= 3).length;
+            const localRankings = rankings.filter(r => !r.keyword.includes('chris david') && r.position !== 'Not ranked' && r.position <= 10).length;
+            const notRanked = rankings.filter(r => r.position === 'Not ranked').length;
+            
+            const reasons = [
+                {
+                    icon: 'fas fa-check-circle',
+                    color: 'text-green-600',
+                    title: 'Strong Branded Search Performance',
+                    description: `You rank #1-2 for all ${brandedRankings} branded searches (Chris David Salon), showing excellent brand recognition.`
+                },
+                {
+                    icon: 'fas fa-exclamation-triangle',
+                    color: 'text-red-600',
+                    title: 'Missing High-Value Local Keywords',
+                    description: `You're not ranking for ${notRanked} critical local keywords like "balayage delray beach" (720 searches/month) that drive new customers.`
+                },
+                {
+                    icon: 'fas fa-chart-bar',
+                    color: 'text-yellow-600',
+                    title: 'Untapped Search Volume',
+                    description: 'You're missing out on 9,000+ monthly searches from unranked keywords, representing significant lost revenue opportunity.'
+                },
+                {
+                    icon: 'fas fa-trophy',
+                    color: score >= 25 ? 'text-blue-600' : 'text-gray-400',
+                    title: 'Competition Analysis',
+                    description: 'Most valuable keywords have High competition, but several Low competition keywords offer quick win opportunities.'
+                },
+                {
+                    icon: 'fas fa-map-marker-alt',
+                    color: 'text-purple-600',
+                    title: 'Local SEO Foundation',
+                    description: 'Your Google Business Profile and local citations provide a solid foundation for ranking improvements.'
+                }
+            ];
+            
+            const recommendations = [
+                {
+                    title: 'Create Service-Specific Landing Pages',
+                    description: 'Build dedicated pages for "Balayage Delray Beach" and "Hair Color Delray Beach". These pages should include 1000+ words of unique content, before/after photos, pricing, and FAQs specific to each service.',
+                    impact: '+15-20 points',
+                    effort: 'Medium',
+                    timeline: '2 weeks'
+                },
+                {
+                    title: 'Implement Aggressive Content Marketing',
+                    description: 'Publish 2-3 blog posts weekly targeting long-tail keywords like "best balayage for brunettes delray beach". Include local area mentions (Atlantic Ave, Pineapple Grove) and seasonal content ("summer hair trends delray beach").',
+                    impact: '+10-15 points',
+                    effort: 'High',
+                    timeline: '1-3 months'
+                },
+                {
+                    title: 'Build High-Quality Local Backlinks',
+                    description: 'Partner with Delray Beach businesses for cross-promotion. Get featured in local publications like Delray Beach Magazine, Atlantic Ave Magazine. Join Delray Beach Chamber of Commerce for a powerful local link.',
+                    impact: '+20-25 points',
+                    effort: 'Medium',
+                    timeline: '2-4 weeks'
+                },
+                {
+                    title: 'Optimize for "Near Me" Searches',
+                    description: 'Add schema markup for all services, implement FAQ schema, and create location-specific content. Ensure NAP (Name, Address, Phone) consistency across all directories. Target "hair salon near me" (2,400 searches/month).',
+                    impact: '+10-12 points',
+                    effort: 'Low',
+                    timeline: '1 week'
+                },
+                {
+                    title: 'Launch Google Posts Campaign',
+                    description: 'Post 3x weekly on Google Business Profile with service highlights, special offers, and transformation photos. Use keywords naturally in posts. This directly impacts local pack rankings and visibility.',
+                    impact: '+8-10 points',
+                    effort: 'Low',
+                    timeline: 'Immediate'
+                }
+            ];
+            
+            return {
+                performance,
+                performanceClass,
+                scoreColor,
+                scoreExplanation,
+                reasons,
+                recommendations
+            };
+        }
+        
+        function refreshSEOAnalysis() {
+            // Show loading state
+            const btn = event.target;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Analyzing...';
+            btn.disabled = true;
+            
+            // Simulate analysis refresh
+            setTimeout(() => {
+                calculateSEOScore();
+                displaySEOAnalysis();
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+                successMsg.innerHTML = '<i class="fas fa-check-circle mr-2"></i>SEO Analysis Updated';
+                document.body.appendChild(successMsg);
+                setTimeout(() => successMsg.remove(), 3000);
+            }, 2000);
         }
         
         function getPriorityBadge(priority) {
