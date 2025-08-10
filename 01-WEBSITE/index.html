@@ -1311,11 +1311,11 @@
             </div>
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm relative">
-                <p>&copy; 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC</p>
+                <p>&copy; 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC | <span id="siteVersion">v2.5.0</span></p>
                 <div class="absolute bottom-0 right-4 text-sm">
                     <a href="admin/login.html" class="text-gray-400 hover:text-white flex items-center bg-gray-800 px-3 py-1 rounded transition-colors">
                         <i class="fas fa-lock mr-1"></i>
-                        Admin • v2.0.2
+                        Admin • <span id="adminVersion">v2.5.0</span>
                     </a>
                 </div>
             </div>
@@ -1492,6 +1492,24 @@
                 button.innerHTML = '<i class="fas fa-exchange-alt mr-2"></i>Switch to Map View';
             }
         }
+    </script>
+    <script>
+        // Load version dynamically from JSON
+        (function loadVersion() {
+            fetch('data/version.json?t=' + Date.now())
+                .then(response => response.json())
+                .then(data => {
+                    const version = data.version || '2.5.0';
+                    // Update both version displays
+                    const siteVersionEl = document.getElementById('siteVersion');
+                    const adminVersionEl = document.getElementById('adminVersion');
+                    if (siteVersionEl) siteVersionEl.textContent = 'v' + version;
+                    if (adminVersionEl) adminVersionEl.textContent = 'v' + version;
+                })
+                .catch(err => {
+                    console.log('Could not load version:', err);
+                });
+        })();
     </script>
 </body>
 </html>

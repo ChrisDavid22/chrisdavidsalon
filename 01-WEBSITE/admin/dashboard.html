@@ -250,19 +250,58 @@
     </div>
 
     <script>
-        // Version and update tracking
+        // Version and update tracking - dynamically load from JSON
         async function loadVersionInfo() {
             try {
-                // Load version data
-                const versionData = {
-                    version: "2.1.0",
-                    lastUpdated: new Date().toISOString()
-                };
-                
-                document.getElementById('versionNumber').textContent = versionData.version;
-                document.getElementById('lastUpdated').textContent = new Date(versionData.lastUpdated).toLocaleString();
+                // Fetch the version.json file
+                const response = await fetch('../data/version.json?t=' + Date.now()); // Cache bust
+                if (response.ok) {
+                    const versionData = await response.json();
+                    
+                    // Display version number
+                    document.getElementById('versionNumber').textContent = versionData.version || '2.5.0';
+                    
+                    // Format and display last updated date/time
+                    const lastUpdated = new Date(versionData.lastUpdated);
+                    const formattedDate = lastUpdated.toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                    });
+                    const formattedTime = lastUpdated.toLocaleTimeString('en-US', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    
+                    document.getElementById('lastUpdated').textContent = `${formattedDate} at ${formattedTime}`;
+                    
+                    // Calculate time since last update
+                    const now = new Date();
+                    const diffMs = now - lastUpdated;
+                    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+                    const diffDays = Math.floor(diffHours / 24);
+                    
+                    let timeAgo = '';
+                    if (diffDays > 0) {
+                        timeAgo = ` (${diffDays} day${diffDays > 1 ? 's' : ''} ago)`;
+                    } else if (diffHours > 0) {
+                        timeAgo = ` (${diffHours} hour${diffHours > 1 ? 's' : ''} ago)`;
+                    } else {
+                        timeAgo = ' (just now)';
+                    }
+                    
+                    // Add time ago indicator
+                    const lastUpdatedEl = document.getElementById('lastUpdated');
+                    lastUpdatedEl.innerHTML += `<span class="text-xs text-gray-500">${timeAgo}</span>`;
+                    
+                } else {
+                    throw new Error('Could not load version.json');
+                }
             } catch (error) {
                 console.error('Error loading version info:', error);
+                // Fallback values
+                document.getElementById('versionNumber').textContent = '2.5.0';
+                document.getElementById('lastUpdated').textContent = 'Unknown';
             }
         }
         
