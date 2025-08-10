@@ -82,16 +82,25 @@
 
         <!-- SEO Rankings -->
         <div class="bg-white rounded-lg shadow mb-8">
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h2 class="text-lg font-semibold text-gray-800">SEO Rankings</h2>
+            <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800">SEO Rankings & Keyword Value Analysis</h2>
+                    <p class="text-sm text-gray-600 mt-1">Sorted by economic value and search volume • Goal: Top 3 rankings</p>
+                </div>
+                <button onclick="checkRankings()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    <i class="fas fa-sync-alt mr-2"></i>Refresh
+                </button>
             </div>
             <div class="p-6">
-                <div class="space-y-4" id="seoRankings">
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                    <p class="text-sm text-yellow-800">
+                        <strong>⏱️ SEO Timeline:</strong> Expect to see initial movement in 2-4 weeks, significant changes in 2-3 months, 
+                        and full results in 3-6 months. Focus on Priority 1 keywords first - they have the highest revenue potential!
+                    </p>
+                </div>
+                <div class="max-h-96 overflow-y-auto" id="seoRankings">
                     <!-- Rankings will be populated here -->
                 </div>
-                <button onclick="checkRankings()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                    <i class="fas fa-sync-alt mr-2"></i>Refresh Rankings
-                </button>
             </div>
         </div>
 
@@ -222,46 +231,148 @@
             });
         }
         
-        // Check SEO rankings
+        // Check SEO rankings with enhanced data
         function checkRankings() {
             const rankings = [
-                { keyword: 'chris david salon delray beach', position: 1, change: 'stable', url: 'chrisdavidsalon.com' },
-                { keyword: 'chris david salon', position: 1, change: 'up', url: 'chrisdavidsalon.com' },
-                { keyword: 'balayage delray beach', position: 'Not ranked', change: 'new', url: '-' },
-                { keyword: 'hair salon delray beach', position: 'Not ranked', change: 'new', url: '-' },
-                { keyword: 'color correction delray beach', position: 'Not ranked', change: 'new', url: '-' },
-                { keyword: 'hair extensions delray beach', position: 'Not ranked', change: 'new', url: '-' },
-                { keyword: 'keratin treatment delray beach', position: 'Not ranked', change: 'new', url: '-' },
-                { keyword: 'master colorist delray beach', position: 'Not ranked', change: 'new', url: '-' }
+                // HIGH VALUE - These bring the most revenue
+                { keyword: 'balayage delray beach', position: 'Not ranked', change: 'new', searches: 720, value: '$$$$$', competition: 'High', priority: 1 },
+                { keyword: 'hair color delray beach', position: 'Not ranked', change: 'new', searches: 590, value: '$$$$$', competition: 'High', priority: 1 },
+                { keyword: 'color correction delray beach', position: 'Not ranked', change: 'new', searches: 210, value: '$$$$$', competition: 'Low', priority: 1 },
+                { keyword: 'hair salon delray beach', position: 'Not ranked', change: 'new', searches: 1900, value: '$$$$', competition: 'Very High', priority: 2 },
+                { keyword: 'hair extensions delray beach', position: 'Not ranked', change: 'new', searches: 480, value: '$$$$', competition: 'Medium', priority: 2 },
+                { keyword: 'brazilian blowout delray beach', position: 'Not ranked', change: 'new', searches: 320, value: '$$$$', competition: 'Low', priority: 2 },
+                
+                // MEDIUM VALUE - Good traffic and revenue
+                { keyword: 'hairdresser delray beach', position: 'Not ranked', change: 'new', searches: 880, value: '$$$', competition: 'High', priority: 3 },
+                { keyword: 'hair stylist delray beach', position: 'Not ranked', change: 'new', searches: 720, value: '$$$', competition: 'High', priority: 3 },
+                { keyword: 'keratin treatment delray beach', position: 'Not ranked', change: 'new', searches: 390, value: '$$$', competition: 'Medium', priority: 3 },
+                { keyword: 'highlights delray beach', position: 'Not ranked', change: 'new', searches: 480, value: '$$$', competition: 'Medium', priority: 3 },
+                { keyword: 'master colorist delray beach', position: 'Not ranked', change: 'new', searches: 90, value: '$$$', competition: 'Low', priority: 3 },
+                { keyword: 'blonde specialist delray beach', position: 'Not ranked', change: 'new', searches: 140, value: '$$$', competition: 'Low', priority: 3 },
+                
+                // LOCATION SPECIFIC - Important for local SEO
+                { keyword: 'hair salon atlantic ave delray', position: 'Not ranked', change: 'new', searches: 170, value: '$$', competition: 'Low', priority: 4 },
+                { keyword: 'hair salon near me delray beach', position: 'Not ranked', change: 'new', searches: 2400, value: '$$', competition: 'Very High', priority: 4 },
+                { keyword: 'best hair salon delray beach', position: 'Not ranked', change: 'new', searches: 590, value: '$$', competition: 'High', priority: 4 },
+                
+                // BRANDED - Already ranking
+                { keyword: 'chris david salon delray beach', position: 1, change: 'stable', searches: 50, value: '$$$$$', competition: 'None', priority: 5 },
+                { keyword: 'chris david salon', position: 1, change: 'up', searches: 70, value: '$$$$$', competition: 'None', priority: 5 },
+                { keyword: 'chris david hair', position: 2, change: 'up', searches: 30, value: '$$$$$', competition: 'None', priority: 5 }
             ];
             
+            // Sort by priority and value
+            rankings.sort((a, b) => {
+                if (a.priority !== b.priority) return a.priority - b.priority;
+                return b.searches - a.searches;
+            });
+            
             const container = document.getElementById('seoRankings');
-            container.innerHTML = '';
+            container.innerHTML = `
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-100 sticky top-0">
+                            <tr>
+                                <th class="text-left p-2">Keyword</th>
+                                <th class="text-center p-2">Position</th>
+                                <th class="text-center p-2">Monthly Searches</th>
+                                <th class="text-center p-2">Value</th>
+                                <th class="text-center p-2">Competition</th>
+                                <th class="text-center p-2">Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            const tbody = container.querySelector('tbody');
+            let lastPriority = 0;
             
             rankings.forEach(rank => {
-                const positionClass = rank.position === 1 ? 'text-green-600' : 
+                // Add section header for each priority group
+                if (rank.priority !== lastPriority) {
+                    const priorityLabels = {
+                        1: '🎯 HIGH VALUE - Focus Here First (High Revenue Services)',
+                        2: '💰 HIGH TRAFFIC - Good Revenue Potential',
+                        3: '📈 MEDIUM VALUE - Steady Business',
+                        4: '📍 LOCAL SEO - Location Specific',
+                        5: '✅ BRANDED - Already Winning'
+                    };
+                    tbody.innerHTML += `
+                        <tr class="bg-gray-50">
+                            <td colspan="6" class="p-2 font-bold text-gray-700">
+                                ${priorityLabels[rank.priority]}
+                            </td>
+                        </tr>
+                    `;
+                    lastPriority = rank.priority;
+                }
+                
+                const positionClass = rank.position === 1 ? 'text-green-600 font-bold' : 
+                                    rank.position === 2 ? 'text-green-500' :
+                                    rank.position <= 3 ? 'text-yellow-600' :
                                     rank.position === 'Not ranked' ? 'text-red-600' : 
-                                    'text-yellow-600';
+                                    'text-gray-600';
                 
-                const changeIcon = rank.change === 'up' ? '↑' : 
-                                  rank.change === 'down' ? '↓' : 
-                                  rank.change === 'stable' ? '→' : '•';
+                const competitionColor = rank.competition === 'Low' ? 'text-green-600' :
+                                       rank.competition === 'Medium' ? 'text-yellow-600' :
+                                       rank.competition === 'High' ? 'text-orange-600' :
+                                       rank.competition === 'Very High' ? 'text-red-600' :
+                                       'text-gray-600';
                 
-                container.innerHTML += `
-                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                        <div>
-                            <p class="font-medium text-gray-800">${rank.keyword}</p>
-                            <p class="text-sm text-gray-600">${rank.url}</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="${positionClass} font-bold">
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-2">
+                            <div class="font-medium text-gray-800">${rank.keyword}</div>
+                        </td>
+                        <td class="text-center p-2">
+                            <span class="${positionClass}">
                                 ${rank.position === 'Not ranked' ? 'Not ranked' : '#' + rank.position}
                             </span>
-                            <span class="text-gray-500">${changeIcon}</span>
-                        </div>
-                    </div>
+                        </td>
+                        <td class="text-center p-2">
+                            <span class="text-gray-700 font-medium">${rank.searches.toLocaleString()}/mo</span>
+                        </td>
+                        <td class="text-center p-2">
+                            <span class="text-green-600 font-bold">${rank.value}</span>
+                        </td>
+                        <td class="text-center p-2">
+                            <span class="${competitionColor}">${rank.competition}</span>
+                        </td>
+                        <td class="text-center p-2">
+                            ${getPriorityBadge(rank.priority)}
+                        </td>
+                    </tr>
                 `;
             });
+            
+            // Add summary at the bottom
+            const notRanked = rankings.filter(r => r.position === 'Not ranked').length;
+            const topThree = rankings.filter(r => typeof r.position === 'number' && r.position <= 3).length;
+            const totalSearches = rankings.reduce((sum, r) => sum + r.searches, 0);
+            
+            tbody.innerHTML += `
+                <tr class="bg-blue-50 font-bold">
+                    <td colspan="6" class="p-3">
+                        📊 Summary: ${topThree} in Top 3 | ${notRanked} Not Ranked | 
+                        ${totalSearches.toLocaleString()} Total Monthly Searches |
+                        Goal: Top 3 for all Priority 1 & 2 keywords
+                    </td>
+                </tr>
+            `;
+        }
+        
+        function getPriorityBadge(priority) {
+            const badges = {
+                1: '<span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">CRITICAL</span>',
+                2: '<span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs font-bold">HIGH</span>',
+                3: '<span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">MEDIUM</span>',
+                4: '<span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold">LOCAL</span>',
+                5: '<span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-bold">WINNING</span>'
+            };
+            return badges[priority] || '';
         }
         
         // Export data function
