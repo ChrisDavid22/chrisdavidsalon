@@ -1,0 +1,27 @@
+{
+  "public": true,
+  "github": {
+    "enabled": false
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/enhanced_website.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
+}

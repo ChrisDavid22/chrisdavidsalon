@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris David Salon - SEO Automation Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .copy-button { cursor: pointer; transition: all 0.3s; }
+        .copy-button:hover { transform: scale(1.1); }
+        .copied { color: #10b981; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-7xl mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center mb-2">Chris David Salon SEO Automation Hub</h1>
+        <p class="text-center text-gray-600 mb-8">One-click tools to dominate Delray Beach hair searches</p>
+
+        <!-- Quick Stats Dashboard -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">🎯 Target Keywords Dashboard</h2>
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-red-700">Color Correction</h3>
+                    <p class="text-2xl font-bold">320</p>
+                    <p class="text-sm">searches/month</p>
+                    <p class="text-xs mt-2 text-green-600">✅ Easy Win (30 days)</p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-yellow-700">Balayage</h3>
+                    <p class="text-2xl font-bold">480</p>
+                    <p class="text-sm">searches/month</p>
+                    <p class="text-xs mt-2 text-green-600">✅ Medium (60 days)</p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-blue-700">Hair Extensions</h3>
+                    <p class="text-2xl font-bold">390</p>
+                    <p class="text-sm">searches/month</p>
+                    <p class="text-xs mt-2 text-yellow-600">⚠️ Medium (90 days)</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-purple-700">Hair Color</h3>
+                    <p class="text-2xl font-bold">280</p>
+                    <p class="text-sm">searches/month</p>
+                    <p class="text-xs mt-2 text-green-600">✅ Easy Win (30 days)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google My Business Post Generator -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">📱 Google My Business Post Generator</h2>
+            <p class="text-gray-600 mb-4">Click to generate and copy posts optimized for each keyword. Post 3x weekly.</p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Color Correction Posts -->
+                <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-3 text-red-600">Color Correction Posts</h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">🎨 <strong>Monday Post:</strong></p>
+                            <p class="text-sm mb-2" id="cc-post-1">Color correction specialist in Delray Beach! Fixed a botched box dye today - swipe to see the transformation! Master Colorist Chris David specializes in fixing color disasters. Book your color correction consultation: (561) 299-0950 #ColorCorrectionDelrayBeach</p>
+                            <button onclick="copyText('cc-post-1')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">🌟 <strong>Wednesday Post:</strong></p>
+                            <p class="text-sm mb-2" id="cc-post-2">From orange to gorgeous! Another successful color correction at Chris David Salon. As Delray Beach's only Master Colorist, we fix what others can't. Free consultation for color corrections. Call (561) 299-0950 📍 Andre Design District</p>
+                            <button onclick="copyText('cc-post-2')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">💫 <strong>Friday Post:</strong></p>
+                            <p class="text-sm mb-2" id="cc-post-3">Weekend Special: 20% off color correction services! Don't live with hair color you hate. Expert color correction in Delray Beach. Book now: (561) 299-0950 or visit ChrisDavidSalon.com #DelrayBeachHair #ColorCorrection</p>
+                            <button onclick="copyText('cc-post-3')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Balayage Posts -->
+                <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-3 text-yellow-600">Balayage Posts</h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">☀️ <strong>Monday Post:</strong></p>
+                            <p class="text-sm mb-2" id="bal-post-1">Beach-ready balayage! ☀️ Get that sun-kissed look without the damage. Chris David Salon specializes in custom balayage for Delray Beach beauties. Book your balayage appointment: (561) 299-0950 #BalayageDelrayBeach #BeachHair</p>
+                            <button onclick="copyText('bal-post-1')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">✨ <strong>Wednesday Post:</strong></p>
+                            <p class="text-sm mb-2" id="bal-post-2">Balayage transformation Tuesday! Natural, lived-in color that grows out beautifully. Delray Beach's balayage expert using exclusive Davines color. Schedule your consultation: (561) 299-0950 #BalayageExpert #DelrayBeachSalon</p>
+                            <button onclick="copyText('bal-post-2')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">🌊 <strong>Friday Post:</strong></p>
+                            <p class="text-sm mb-2" id="bal-post-3">Friday balayage special! Mention this post for a complimentary Davines treatment with your balayage service. Perfect for Delray Beach's beach lifestyle! Call (561) 299-0950 📍 Near Atlantic Ave</p>
+                            <button onclick="copyText('bal-post-3')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hair Extensions Posts -->
+                <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-3 text-blue-600">Hair Extensions Posts</h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">💇‍♀️ <strong>Monday Post:</strong></p>
+                            <p class="text-sm mb-2" id="ext-post-1">Transform your hair instantly! Premium Bellami hair extensions now at Chris David Salon. Add length, volume, or both! Hair extensions specialist in Delray Beach. Book consultation: (561) 299-0950 #HairExtensionsDelrayBeach</p>
+                            <button onclick="copyText('ext-post-1')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">🌟 <strong>Wednesday Post:</strong></p>
+                            <p class="text-sm mb-2" id="ext-post-2">Before & After: Stunning hair extension transformation! Certified Bellami extensions expert in Delray Beach. Natural-looking, damage-free extensions. Free consultation: (561) 299-0950 #BellamiExtensions #DelrayBeach</p>
+                            <button onclick="copyText('ext-post-2')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">✨ <strong>Friday Post:</strong></p>
+                            <p class="text-sm mb-2" id="ext-post-3">Weekend ready with gorgeous extensions! Tape-in, beaded weft, and fusion methods available. Delray Beach's premium hair extension salon. Book now: (561) 299-0950 📍 Andre Design District</p>
+                            <button onclick="copyText('ext-post-3')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hair Color Posts -->
+                <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-3 text-purple-600">Hair Color Posts</h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">🎨 <strong>Monday Post:</strong></p>
+                            <p class="text-sm mb-2" id="color-post-1">Master Colorist Monday! Expert hair color services in Delray Beach using eco-luxury Davines color. From subtle to dramatic transformations. Book your color appointment: (561) 299-0950 #HairColorDelrayBeach</p>
+                            <button onclick="copyText('color-post-1')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">🌈 <strong>Wednesday Post:</strong></p>
+                            <p class="text-sm mb-2" id="color-post-2">Vibrant color that lasts! Delray Beach's premier hair color salon. Specializing in natural-looking color, grey coverage, and creative colors. Call (561) 299-0950 #DelrayBeachHairColor #MasterColorist</p>
+                            <button onclick="copyText('color-post-2')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-sm mb-2">💫 <strong>Friday Post:</strong></p>
+                            <p class="text-sm mb-2" id="color-post-3">Fall in love with your hair color! Certified Master Colorist in Delray Beach. Davines eco-friendly color for healthier, shinier hair. Book today: (561) 299-0950 📍 Near Atlantic Ave</p>
+                            <button onclick="copyText('color-post-3')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Request Templates -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">⭐ Review Request Text Templates</h2>
+            <p class="text-gray-600 mb-4">Send these to recent clients. Customize with their name and service.</p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-3">Color Correction Request</h3>
+                    <div class="bg-gray-50 p-3 rounded">
+                        <p class="text-sm mb-2" id="review-cc">Hi [Name]! Thank you for trusting me with your color correction last week. I'm so happy with how your hair turned out! 🎨 Would you mind sharing your experience in a quick Google review? It really helps other people in Delray Beach find us for color corrections. Here's the direct link: [Google Review Link] Just mention "color correction" in your review. Thank you! - Chris David</p>
+                        <button onclick="copyText('review-cc')" class="copy-button text-blue-600 text-xs">
+                            <i class="fas fa-copy"></i> Copy Template
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-3">Balayage Request</h3>
+                    <div class="bg-gray-50 p-3 rounded">
+                        <p class="text-sm mb-2" id="review-bal">Hi [Name]! Your balayage looks absolutely stunning! ☀️ I loved creating that sun-kissed look for you. Would you help others find Delray Beach's best balayage by leaving a quick review? Here's the link: [Google Review Link] If you could mention "balayage" that would be amazing! Thank you! - Chris</p>
+                        <button onclick="copyText('review-bal')" class="copy-button text-blue-600 text-xs">
+                            <i class="fas fa-copy"></i> Copy Template
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instagram Caption Generator -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">📸 Instagram Caption Generator</h2>
+            <p class="text-gray-600 mb-4">Use these hashtag sets and captions for maximum local reach.</p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-3">Hashtag Sets (Rotate Daily)</h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-xs font-bold mb-1">Set A (Monday/Thursday):</p>
+                            <p class="text-xs" id="hashtags-a">#DelrayBeachHair #BalayageDelrayBeach #HairColorDelrayBeach #DelrayBeachSalon #AtlanticAveHair #ColorCorrectionDelrayBeach #DelrayBeachHairstylist #PineappleGrove #DelrayBeachFL #SouthFloridaHair</p>
+                            <button onclick="copyText('hashtags-a')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-xs font-bold mb-1">Set B (Tuesday/Friday):</p>
+                            <p class="text-xs" id="hashtags-b">#HairExtensionsDelrayBeach #MasterColoristDelray #DelrayBeachBeauty #BellamiExtensions #DavinesSalon #DelrayHairSalon #BocaRatonHair #PalmBeachHair #FloridaHairStylist #DelrayDowntown</p>
+                            <button onclick="copyText('hashtags-b')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-xs font-bold mb-1">Set C (Wednesday/Saturday):</p>
+                            <p class="text-xs" id="hashtags-c">#ChrisDavidSalon #DelrayBeachColorist #HairTransformation #BeachHairDelray #DelrayBeachStyle #LuxuryHairDelray #FloridaBalayage #DelrayBeachLife #AndreDesignDistrict #561Hair</p>
+                            <button onclick="copyText('hashtags-c')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border rounded-lg p-4">
+                    <h3 class="font-bold mb-3">Caption Templates</h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-xs font-bold mb-1">Transformation Post:</p>
+                            <p class="text-xs" id="caption-1">TRANSFORMATION TUESDAY ✨ From [problem] to [result] in just [time]! This is why I love being Delray Beach's Master Colorist. Swipe to see the before! 📍 Andre Design District, Delray Beach 📞 (561) 299-0950 to book your transformation</p>
+                            <button onclick="copyText('caption-1')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-xs font-bold mb-1">Service Highlight:</p>
+                            <p class="text-xs" id="caption-2">BALAYAGE PERFECTION 🌟 Hand-painted highlights that grow out naturally - perfect for Delray Beach's beach lifestyle! Using @davineshair eco-luxury color for healthier, shinier results. Book your balayage: Link in bio!</p>
+                            <button onclick="copyText('caption-2')" class="copy-button text-blue-600 text-xs">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Local Citation Builder -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4">🗺️ Local Citation Quick Links</h2>
+            <p class="text-gray-600 mb-4">Click each link to add Chris David Salon. Use consistent NAP info below.</p>
+            
+            <div class="bg-yellow-50 p-4 rounded-lg mb-4">
+                <h3 class="font-bold mb-2">Consistent NAP Information (Copy Exactly):</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div>
+                        <p class="text-xs font-bold">Name:</p>
+                        <p class="text-sm" id="nap-name">Chris David Salon</p>
+                        <button onclick="copyText('nap-name')" class="copy-button text-blue-600 text-xs">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold">Address:</p>
+                        <p class="text-sm" id="nap-address">1878C Dr. Andres Way, Delray Beach, FL 33445</p>
+                        <button onclick="copyText('nap-address')" class="copy-button text-blue-600 text-xs">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold">Phone:</p>
+                        <p class="text-sm" id="nap-phone">(561) 299-0950</p>
+                        <button onclick="copyText('nap-phone')" class="copy-button text-blue-600 text-xs">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="https://www.yellowpages.com/advertise" target="_blank" class="bg-yellow-100 p-3 rounded-lg hover:bg-yellow-200 transition text-center">
+                    <i class="fas fa-book text-yellow-600 text-2xl mb-2"></i>
+                    <p class="font-bold">YellowPages</p>
+                    <p class="text-xs">Add Free Listing</p>
+                </a>
+                <a href="https://www.bingplaces.com" target="_blank" class="bg-blue-100 p-3 rounded-lg hover:bg-blue-200 transition text-center">
+                    <i class="fab fa-microsoft text-blue-600 text-2xl mb-2"></i>
+                    <p class="font-bold">Bing Places</p>
+                    <p class="text-xs">Claim Business</p>
+                </a>
+                <a href="https://mapsconnect.apple.com" target="_blank" class="bg-gray-100 p-3 rounded-lg hover:bg-gray-200 transition text-center">
+                    <i class="fab fa-apple text-gray-600 text-2xl mb-2"></i>
+                    <p class="font-bold">Apple Maps</p>
+                    <p class="text-xs">Register Business</p>
+                </a>
+                <a href="https://business.nextdoor.com" target="_blank" class="bg-green-100 p-3 rounded-lg hover:bg-green-200 transition text-center">
+                    <i class="fas fa-home text-green-600 text-2xl mb-2"></i>
+                    <p class="font-bold">Nextdoor</p>
+                    <p class="text-xs">Claim Business</p>
+                </a>
+                <a href="https://www.tripadvisor.com/GetListedNew" target="_blank" class="bg-green-100 p-3 rounded-lg hover:bg-green-200 transition text-center">
+                    <i class="fas fa-owl text-green-600 text-2xl mb-2"></i>
+                    <p class="font-bold">TripAdvisor</p>
+                    <p class="text-xs">Add Business</p>
+                </a>
+                <a href="https://foursquare.com/venue/claim" target="_blank" class="bg-pink-100 p-3 rounded-lg hover:bg-pink-200 transition text-center">
+                    <i class="fas fa-check-square text-pink-600 text-2xl mb-2"></i>
+                    <p class="font-bold">Foursquare</p>
+                    <p class="text-xs">Claim Venue</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Weekly Action Checklist -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold mb-4">📅 Weekly SEO Checklist</h2>
+            <p class="text-gray-600 mb-4">Complete these actions weekly for maximum impact.</p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-bold mb-3">Monday/Wednesday/Friday</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="form-checkbox">
+                            <span>Post to Google My Business (use templates above)</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="form-checkbox">
+                            <span>Post transformation to Instagram with hashtags</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="form-checkbox">
+                            <span>Send review request to 2 recent clients</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-3">Weekly Tasks</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="form-checkbox">
+                            <span>Add 1 new citation from list</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="form-checkbox">
+                            <span>Upload 5+ photos to Google Business</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="form-checkbox">
+                            <span>Check ranking progress (use tracker)</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" class="form-checkbox">
+                            <span>Respond to all Google reviews</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const button = event.target.closest('button');
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Auto-generate weekly schedule
+        function generateWeeklySchedule() {
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            
+            // Highlight today's tasks
+            if (dayOfWeek >= 1 && dayOfWeek <= 6) {
+                console.log(`Today is ${days[dayOfWeek - 1]} - Remember to post!`);
+            }
+        }
+        
+        generateWeeklySchedule();
+    </script>
+</body>
+</html>

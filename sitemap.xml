@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://chrisdavidsalon.com/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/744b1af5-5703-4fe0-96ad-024cbdefbddc/ESCAPE+By+Chris+David+-+The+Feeling.jpg</image:loc>
+      <image:title>Chris David Salon Interior</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Premium Brands Page -->
+  <url>
+    <loc>https://chrisdavidsalon.com/premiumbrands.html</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Services (anchored sections on main page) -->
+  <url>
+    <loc>https://chrisdavidsalon.com/#services</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- About Section -->
+  <url>
+    <loc>https://chrisdavidsalon.com/#about</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Gallery Section -->
+  <url>
+    <loc>https://chrisdavidsalon.com/#gallery</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Careers Section -->
+  <url>
+    <loc>https://chrisdavidsalon.com/#careers</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Contact Section -->
+  <url>
+    <loc>https://chrisdavidsalon.com/#contact</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+</urlset>
