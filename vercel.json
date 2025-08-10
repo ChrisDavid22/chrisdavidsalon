@@ -1,14 +1,9 @@
 {
+  "outputDirectory": "01-WEBSITE",
   "public": true,
   "github": {
     "enabled": false
   },
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/enhanced_website.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
