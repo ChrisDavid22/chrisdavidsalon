@@ -10,4 +10,10 @@ jobs:
     steps:
       - name: Trigger Vercel Deployment
         run: |
-          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
+          response=$(curl -X POST -w "\n%{http_code}" ${{ secrets.VERCEL_DEPLOY_HOOK }})
+          echo "Response: $response"
+          if [[ "${response: -3}" != "201" && "${response: -3}" != "200" ]]; then
+            echo "Deployment trigger failed"
+            exit 1
+          fi
+          echo "Deployment triggered successfully"
