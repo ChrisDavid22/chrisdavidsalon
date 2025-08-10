@@ -1230,8 +1230,11 @@
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm relative">
                 <p>&copy; 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC</p>
+                <div class="absolute bottom-0 right-4 text-xs text-gray-500">
+                    <a href="admin/login.html" class="hover:text-gray-400">v2.0.1</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -1320,5 +1323,73 @@
        class="mobile-phone-cta md:hidden">
         <i class="fas fa-phone text-2xl"></i>
     </a>
+    
+    <!-- Analytics Tracking Script -->
+    <script>
+        // Initialize analytics
+        (function() {
+            // Get or create analytics object
+            let analytics = JSON.parse(localStorage.getItem('salonAnalytics') || '{}');
+            
+            // Initialize if empty
+            if (!analytics.visitors) {
+                analytics = {
+                    visitors: 0,
+                    todayVisitors: 0,
+                    bookingClicks: 0,
+                    phoneClicks: 0,
+                    dailyVisitors: {},
+                    lastVisitDate: new Date().toDateString()
+                };
+            }
+            
+            // Check if new day
+            const today = new Date().toDateString();
+            if (analytics.lastVisitDate !== today) {
+                analytics.todayVisitors = 0;
+                analytics.lastVisitDate = today;
+            }
+            
+            // Check if new visitor (session-based)
+            if (!sessionStorage.getItem('visitorCounted')) {
+                analytics.visitors++;
+                analytics.todayVisitors++;
+                
+                // Update daily visitors
+                if (!analytics.dailyVisitors[today]) {
+                    analytics.dailyVisitors[today] = 0;
+                }
+                analytics.dailyVisitors[today]++;
+                
+                sessionStorage.setItem('visitorCounted', 'true');
+                localStorage.setItem('salonAnalytics', JSON.stringify(analytics));
+            }
+            
+            // Track booking button clicks
+            function trackBookingClick() {
+                const analytics = JSON.parse(localStorage.getItem('salonAnalytics') || '{}');
+                analytics.bookingClicks = (analytics.bookingClicks || 0) + 1;
+                localStorage.setItem('salonAnalytics', JSON.stringify(analytics));
+            }
+            
+            // Track phone clicks
+            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    const analytics = JSON.parse(localStorage.getItem('salonAnalytics') || '{}');
+                    analytics.phoneClicks = (analytics.phoneClicks || 0) + 1;
+                    localStorage.setItem('salonAnalytics', JSON.stringify(analytics));
+                });
+            });
+            
+            // Override the booking modal function to track clicks
+            const originalOpenBooking = window.openBookingModal;
+            window.openBookingModal = function() {
+                trackBookingClick();
+                if (originalOpenBooking) {
+                    originalOpenBooking();
+                }
+            };
+        })();
+    </script>
 </body>
 </html>

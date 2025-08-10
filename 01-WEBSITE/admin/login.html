@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Chris David Salon</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Chris David Salon</h1>
+            <p class="text-gray-600 mt-2">Admin Dashboard</p>
+        </div>
+        
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                    Admin Password
+                </label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    placeholder="Enter admin password"
+                    required
+                >
+            </div>
+            
+            <div id="errorMessage" class="hidden bg-red-100 text-red-700 p-3 rounded-lg text-sm">
+                Incorrect password. Please try again.
+            </div>
+            
+            <button 
+                type="submit"
+                class="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors font-semibold"
+            >
+                Login to Dashboard
+            </button>
+        </form>
+        
+        <div class="mt-6 text-center">
+            <a href="../index.html" class="text-sm text-purple-600 hover:text-purple-700">
+                <i class="fas fa-arrow-left mr-1"></i> Back to Website
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('errorMessage');
+            
+            // Check password (CDK2025)
+            if (password === 'CDK2025') {
+                // Set session
+                localStorage.setItem('adminAuth', 'true');
+                localStorage.setItem('loginTime', Date.now());
+                
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                // Show error
+                errorDiv.classList.remove('hidden');
+                document.getElementById('password').value = '';
+                
+                // Hide error after 3 seconds
+                setTimeout(() => {
+                    errorDiv.classList.add('hidden');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
