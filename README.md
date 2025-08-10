@@ -5,8 +5,9 @@ Professional hair salon website optimized for local SEO in Delray Beach, Florida
 ## 🚀 Quick Start
 
 ### View the Website
-- **Live Site**: https://chris-david-salon.vercel.app
-- **Target Domain**: chrisdavidsalon.com (needs custom domain setup)
+- **Live Site**: https://chrisdavidsalon.com
+- **Backup URL**: https://chris-david-salon.vercel.app
+- **Target Domain**: chrisdavidsalon.com (custom domain configured)
 
 ### Check SEO Progress
 ```bash
@@ -41,21 +42,23 @@ open 02-SEO-TOOLS/automation-hub.html
 - **hair salon delray beach**: Not ranking yet
 
 ### Critical Tasks
-1. ⚠️ **Add custom domain** (chrisdavidsalon.com) to Vercel
+1. ⚠️ **Custom domain connected** ✅ chrisdavidsalon.com is live
 2. 📸 **Add real salon photos** to 04-IMAGES/services/
 3. 📝 **Post to Google My Business** 3x weekly
 4. ⭐ **Get client reviews** weekly
 
 ## 🛠️ Deployment
 
-### Deploy to Vercel
+### Automatic Deployment via GitHub Actions
+- Push to main branch → Automatic deployment to Vercel
+- Deploy hook configured for cross-account updates
+- No manual intervention needed
+
+### Manual Deploy to Vercel
 ```bash
 cd 01-WEBSITE
 npx vercel --prod
 ```
-
-### Custom Domain Setup (CRITICAL!)
-See `DOMAIN-SEO-STRATEGY.md` for instructions on connecting chrisdavidsalon.com
 
 ## 📊 Expected Results
 
@@ -82,12 +85,19 @@ python3 ~/chris-david-automation/check-status.py
 
 ## 📋 Files Overview
 
-- `01-WEBSITE/enhanced_website.html` - Main website
+- `01-WEBSITE/index.html` - Main website (with fixed images and buttons)
 - `02-SEO-TOOLS/seo-ranking-tracker.html` - SEO dashboard
 - `02-SEO-TOOLS/automation-hub.html` - Posting templates
 - `DOMAIN-SEO-STRATEGY.md` - Domain setup guide
 - `QUICK-START-GUIDE.md` - Daily workflow guide
 
+## 🔄 Recent Updates
+- Fixed duplicate phone numbers in header
+- Fixed sticky Book Now button to use Boulevard (not appointy)
+- Fixed all image paths to display correctly
+- Connected custom domain for proper SEO
+- Configured automatic deployments via GitHub Actions
+
 ---
 
-*SEO optimization in progress. Currently losing ~$49,000/year in potential revenue due to missing custom domain setup.*
+*Last updated: December 2024 - Automatic deployment system active*
