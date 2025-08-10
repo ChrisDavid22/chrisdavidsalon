@@ -1,8 +1,8 @@
 {
-  "outputDirectory": "01-WEBSITE",
+  "rootDirectory": "01-WEBSITE",
   "public": true,
   "github": {
-    "enabled": false
+    "enabled": true
   },
   "headers": [
     {
