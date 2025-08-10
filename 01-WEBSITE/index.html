@@ -465,22 +465,12 @@
                     <a href="#contact" class="text-gray-700 hover:text-gray-900 transition-colors">Contact</a>
                 </nav>
                 
-                <div class="flex items-center space-x-4">
-                    <!-- Phone Number CTA -->
+                <div class="flex items-center space-x-6">
+                    <!-- Phone Number CTA (moved more to the right) -->
                     <a href="tel:5612990950" class="hidden sm:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors">
                         <i class="fas fa-phone mr-2"></i>
                         <span class="text-lg">(561) 299-0950</span>
                     </a>
-                    
-                    <!-- Social Media Icons -->
-                    <div class="hidden lg:flex items-center space-x-3">
-                        <a href="https://www.instagram.com/chrisdavidsalon/" target="_blank" rel="noopener" class="text-gray-600 hover:text-gray-900">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.facebook.com/ChrisDavidSalon/" target="_blank" rel="noopener" class="text-gray-600 hover:text-gray-900">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </div>
                     
                     <button type="button" onclick="openBookingModal()" class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors" title="Book an appointment">
                         Book Now
@@ -535,6 +525,16 @@
             <div class="hero-overlay absolute inset-0"></div>
         </div>
         <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+            <!-- Social Media Icons - Large and Positioned -->
+            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col space-y-4 mr-8">
+                <a href="https://www.instagram.com/chrisdavidsalon/" target="_blank" rel="noopener" class="text-white hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-instagram text-3xl"></i>
+                </a>
+                <a href="https://www.facebook.com/ChrisDavidSalon/" target="_blank" rel="noopener" class="text-white hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-facebook text-3xl"></i>
+                </a>
+            </div>
+            
             <h1 class="text-6xl md:text-8xl mb-6 animate-fade-in font-script">
                 Chris David Salon
             </h1>
