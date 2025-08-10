@@ -1,0 +1,21 @@
+{
+  "version": "2.1.0",
+  "lastUpdated": "2025-08-10T18:45:00Z",
+  "deployHistory": [
+    {
+      "version": "2.1.0",
+      "date": "2025-08-10T18:45:00Z",
+      "changes": "Fixed SEO scoring, added version tracking, improved analytics"
+    },
+    {
+      "version": "2.0.1",
+      "date": "2025-08-09T22:00:00Z",
+      "changes": "Added admin dashboard with SEO monitoring"
+    },
+    {
+      "version": "2.0.0",
+      "date": "2025-08-09T20:00:00Z",
+      "changes": "Complete website redesign with SEO optimization"
+    }
+  ]
+}

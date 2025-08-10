@@ -227,6 +227,18 @@
         .sticky-booking { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
         .hero-overlay { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)); }
         
+        /* Mobile adjustments for hero section */
+        @media (max-width: 640px) {
+            #home {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+            }
+            #home .relative.z-10 {
+                margin-top: 60px; /* Account for header height */
+            }
+        }
+        
         /* Remove any floating social icons that might appear over hero */
         #home .fab.fa-instagram,
         #home .fab.fa-facebook,
@@ -554,14 +566,14 @@
             <img src="https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/744b1af5-5703-4fe0-96ad-024cbdefbddc/ESCAPE+By+Chris+David+-+The+Feeling.jpg" alt="Chris David Salon Interior" class="w-full h-full object-cover">
             <div class="hero-overlay absolute inset-0"></div>
         </div>
-        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-            <h1 class="text-6xl md:text-8xl mb-6 animate-fade-in font-script">
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 pt-20 sm:pt-0">
+            <h1 class="text-5xl sm:text-6xl md:text-8xl mb-4 sm:mb-6 animate-fade-in font-script">
                 Chris David Salon
             </h1>
-            <p class="text-xl md:text-2xl mb-4 font-light">
+            <p class="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 font-light">
                 Master Colorist • Hair Artist • Luxury Experience
             </p>
-            <p class="text-lg md:text-xl mb-8 font-light opacity-90">
+            <p class="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 font-light opacity-90">
                 Delray Beach's Premier Hair Salon • 5 Minutes from Atlantic Avenue • Established 2017
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -787,20 +799,34 @@
             <div class="bg-white rounded-lg shadow-lg p-8">
                 <div class="text-center mb-8">
                     <h3 class="text-2xl font-playfair font-semibold mb-4">View Our Work</h3>
-                    <p class="text-gray-600 mb-6">Click below to see our complete portfolio of transformations</p>
-                    
-                    <!-- Direct Link to Google Photos -->
-                    <a href="https://www.google.com/maps/uv?hl=en&pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!15sCgIgAQ" 
-                       target="_blank" rel="noopener" 
-                       rel="noopener"
-                       class="inline-flex items-center bg-gradient-to-r from-yellow-600 to-yellow-700 text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all text-lg transform hover:scale-105">
-                        <i class="fas fa-images mr-3"></i>
-                        View Full Gallery on Google
-                    </a>
+                    <p class="text-gray-600 mb-6">Browse through our portfolio of transformations</p>
                 </div>
 
-                <!-- Embedded Map as Fallback -->
-                <div class="mt-8">
+                <!-- Embedded Google Photos Gallery -->
+                <div class="mb-8">
+                    <div class="bg-gray-100 rounded-lg p-4">
+                        <iframe 
+                            id="googlePhotosFrame"
+                            src="https://www.google.com/maps/uv?pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!15sCgIgAQ"
+                            width="100%" 
+                            height="600" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            title="Chris David Salon Gallery">
+                        </iframe>
+                    </div>
+                    
+                    <!-- Alternative View Button -->
+                    <div class="text-center mt-4">
+                        <button onclick="toggleGalleryView()" class="text-yellow-600 hover:text-yellow-700 font-semibold">
+                            <i class="fas fa-exchange-alt mr-2"></i>Switch to Map View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Map View (Initially Hidden) -->
+                <div id="mapView" class="hidden">
                     <h4 class="text-lg font-semibold mb-4 text-center">Our Location</h4>
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.4716904785594!2d-80.09415198496873!3d26.456902483331647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!2sChris%20David%20Salon!5e0!3m2!1sen!2sus!4v1704900000000!5m2!1sen!2sus"
@@ -1442,6 +1468,25 @@
                 }
             };
         })();
+        
+        // Toggle between gallery and map view
+        function toggleGalleryView() {
+            const galleryFrame = document.getElementById('googlePhotosFrame').parentElement.parentElement;
+            const mapView = document.getElementById('mapView');
+            const button = event.target.closest('button');
+            
+            if (mapView.classList.contains('hidden')) {
+                // Switch to map view
+                galleryFrame.classList.add('hidden');
+                mapView.classList.remove('hidden');
+                button.innerHTML = '<i class="fas fa-images mr-2"></i>Switch to Gallery View';
+            } else {
+                // Switch to gallery view
+                galleryFrame.classList.remove('hidden');
+                mapView.classList.add('hidden');
+                button.innerHTML = '<i class="fas fa-exchange-alt mr-2"></i>Switch to Map View';
+            }
+        }
     </script>
 </body>
 </html>
