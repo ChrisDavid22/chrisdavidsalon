@@ -1,21 +1,5 @@
 {
-  "public": true,
-  "github": {
-    "enabled": true
-  },
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
-    }
-  ]
+  "buildCommand": "cd 01-WEBSITE && echo 'Using 01-WEBSITE directory'",
+  "outputDirectory": "01-WEBSITE",
+  "public": true
 }
