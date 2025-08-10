@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Policies | Chris David Salon Delray Beach</title>
+    <meta name="description" content="Chris David Salon policies including cancellation, booking, payment, and service guidelines. Located in Delray Beach near Atlantic Avenue.">
+    <meta name="keywords" content="salon policies, cancellation policy, booking policy, Chris David Salon, Delray Beach salon policies">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-script { font-family: 'Dancing Script', cursive; }
+        body { font-family: 'Inter', sans-serif; }
+        .policy-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .policy-card:hover {
+            border-left-color: #d4af37;
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="flex items-center">
+                        <h1 class="text-2xl font-script text-gray-800">Chris David Salon</h1>
+                    </a>
+                    
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="text-gray-700 hover:text-yellow-600 transition-colors">Home</a>
+                        <a href="index.html#services" class="text-gray-700 hover:text-yellow-600 transition-colors">Services</a>
+                        <a href="index.html#gallery" class="text-gray-700 hover:text-yellow-600 transition-colors">Gallery</a>
+                        <a href="policies.html" class="text-yellow-600 font-semibold">Policies</a>
+                        <a href="careers.html" class="text-gray-700 hover:text-yellow-600 transition-colors">Careers</a>
+                        <a href="index.html#contact" class="text-gray-700 hover:text-yellow-600 transition-colors">Contact</a>
+                    </nav>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="tel:5612990950" class="hidden sm:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span>(561) 299-0950</span>
+                    </a>
+                    
+                    <button onclick="window.location.href='https://www.vagaro.com/chrisdavidsalon/book-now'" class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-playfair font-bold mb-4">Salon Policies</h1>
+            <p class="text-xl opacity-90">Your comfort and satisfaction are our top priorities</p>
+        </div>
+    </section>
+
+    <!-- Policies Content -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Introduction -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    At Chris David Salon, we strive to provide an exceptional experience for every client. 
+                    To ensure the highest level of service and maintain a harmonious environment for all, 
+                    we have established the following policies. We appreciate your understanding and cooperation.
+                </p>
+            </div>
+
+            <!-- Booking & Appointments -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-calendar-check text-yellow-600 mr-3"></i>
+                    Booking & Appointments
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <p><strong>Online Booking:</strong> Book 24/7 through our online booking system at Vagaro.com/chrisdavidsalon or call us at (561) 299-0950.</p>
+                    <p><strong>Consultation:</strong> We offer complimentary consultations for all new clients and major services. This ensures we understand your vision and can deliver exceptional results.</p>
+                    <p><strong>Appointment Confirmation:</strong> You will receive an automated confirmation via text or email 48 hours before your appointment. Please confirm to secure your time slot.</p>
+                    <p><strong>First-Time Clients:</strong> Please arrive 15 minutes early to complete our consultation form and discuss your service goals with Chris.</p>
+                </div>
+            </div>
+
+            <!-- Cancellation Policy -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-clock text-yellow-600 mr-3"></i>
+                    Cancellation & Rescheduling Policy
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <p class="font-semibold text-yellow-800">48-Hour Cancellation Policy</p>
+                        <p class="text-yellow-700 mt-2">We require at least 48 hours notice for all cancellations or rescheduling requests.</p>
+                    </div>
+                    <p><strong>Late Cancellations (24-48 hours):</strong> Will incur a 50% service charge.</p>
+                    <p><strong>Same-Day Cancellations or No-Shows:</strong> Will be charged 100% of the scheduled service price.</p>
+                    <p><strong>Emergencies:</strong> We understand emergencies happen. Please contact us as soon as possible, and we will work with you on a case-by-case basis.</p>
+                    <p><strong>Habitual Cancellations:</strong> Clients with multiple cancellations may be required to pre-pay for future appointments.</p>
+                </div>
+            </div>
+
+            <!-- Late Arrival Policy -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-hourglass-half text-yellow-600 mr-3"></i>
+                    Late Arrival Policy
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <p><strong>15 Minutes Late:</strong> We will do our best to complete your full service, but may need to modify it to avoid delays for other clients.</p>
+                    <p><strong>20+ Minutes Late:</strong> Your appointment may need to be rescheduled, and late cancellation fees may apply.</p>
+                    <p><strong>Communication:</strong> Please call or text us if you're running late. We'll do everything possible to accommodate you.</p>
+                </div>
+            </div>
+
+            <!-- Payment Policy -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-credit-card text-yellow-600 mr-3"></i>
+                    Payment & Gratuity
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <p><strong>Accepted Payment Methods:</strong> Cash, all major credit cards, Venmo, and Zelle.</p>
+                    <p><strong>Pricing:</strong> All prices are starting prices and may vary based on hair length, thickness, and service complexity. Final pricing will be discussed during consultation.</p>
+                    <p><strong>Deposits:</strong> Services over $300 require a 50% deposit to secure your appointment. Deposits are non-refundable but transferable with 48-hour notice.</p>
+                    <p><strong>Gratuity:</strong> While not required, gratuities are greatly appreciated for exceptional service. Industry standard is 20-25%.</p>
+                    <p><strong>Package Deals:</strong> Package services must be used within 6 months of purchase. No refunds on unused services.</p>
+                </div>
+            </div>
+
+            <!-- Service Policies -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-cut text-yellow-600 mr-3"></i>
+                    Service Policies
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <p><strong>Chemical Services:</strong> A patch test is required 48 hours before your first chemical service to ensure no allergic reactions.</p>
+                    <p><strong>Color Corrections:</strong> These are multi-session processes. We cannot guarantee exact results in one visit. Pricing is per session.</p>
+                    <p><strong>Hair Extensions:</strong> Require a consultation and deposit. Maintenance appointments are required every 6-8 weeks.</p>
+                    <p><strong>Minors:</strong> Clients under 18 must be accompanied by a parent or guardian for all services.</p>
+                    <p><strong>Service Guarantee:</strong> If you're not completely satisfied, please contact us within 7 days for a complimentary adjustment.</p>
+                </div>
+            </div>
+
+            <!-- Health & Safety -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-heart text-yellow-600 mr-3"></i>
+                    Health & Safety
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <p><strong>Sanitation:</strong> All tools are sanitized between clients according to Florida State Board regulations.</p>
+                    <p><strong>Allergies:</strong> Please inform us of any allergies or sensitivities during booking.</p>
+                    <p><strong>Medical Conditions:</strong> Certain medical conditions or medications may affect chemical services. Please disclose relevant information for your safety.</p>
+                    <p><strong>Pregnancy:</strong> Some services may not be recommended during pregnancy. Please consult with your doctor and inform us.</p>
+                    <p><strong>Illness:</strong> Please reschedule if you're experiencing any contagious illness. No cancellation fee will apply with doctor's note.</p>
+                </div>
+            </div>
+
+            <!-- Salon Etiquette -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-users text-yellow-600 mr-3"></i>
+                    Salon Etiquette
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <p><strong>Phone Calls:</strong> Please keep phone conversations to a minimum and use a considerate volume.</p>
+                    <p><strong>Children:</strong> While we love children, we are not equipped for childcare. Please arrange care for young children during your appointment.</p>
+                    <p><strong>Personal Items:</strong> We are not responsible for lost or damaged personal belongings.</p>
+                    <p><strong>Photography:</strong> Feel free to take photos of your new look! Please ask permission before photographing other clients.</p>
+                    <p><strong>Refreshments:</strong> Complimentary beverages are provided. Feel free to bring your own if you have specific preferences.</p>
+                </div>
+            </div>
+
+            <!-- Gift Certificates & Promotions -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-gift text-yellow-600 mr-3"></i>
+                    Gift Certificates & Promotions
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <p><strong>Gift Certificates:</strong> Valid for one year from purchase date. Non-refundable and cannot be redeemed for cash.</p>
+                    <p><strong>Promotions:</strong> Cannot be combined with other offers unless specified. Valid only during promotional period.</p>
+                    <p><strong>Referral Program:</strong> Refer a new client and receive 20% off your next service when they book.</p>
+                    <p><strong>Birthday Special:</strong> Enjoy 15% off any service during your birthday month with valid ID.</p>
+                </div>
+            </div>
+
+            <!-- Privacy Policy -->
+            <div class="policy-card bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-playfair font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-lock text-yellow-600 mr-3"></i>
+                    Privacy & Confidentiality
+                </h2>
+                <div class="space-y-4 text-gray-700">
+                    <p><strong>Client Information:</strong> All personal information is kept strictly confidential and never shared with third parties.</p>
+                    <p><strong>Photos:</strong> We love showcasing our work! We will always ask permission before sharing photos on social media.</p>
+                    <p><strong>Contact:</strong> By providing your contact information, you agree to receive appointment reminders and occasional promotional offers. You may opt out at any time.</p>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg shadow-lg p-8 text-white text-center">
+                <h2 class="text-3xl font-playfair font-bold mb-4">Questions About Our Policies?</h2>
+                <p class="text-lg mb-6">We're here to help! Contact us for any clarification.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="tel:5612990950" class="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-phone mr-2"></i>Call (561) 299-0950
+                    </a>
+                    <a href="mailto:chrisdavidsalon@gmail.com" class="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i>Email Us
+                    </a>
+                </div>
+            </div>
+
+            <!-- Last Updated -->
+            <div class="text-center mt-8 text-gray-600">
+                <p class="text-sm">Policies last updated: December 2024</p>
+                <p class="text-sm">Chris David Salon reserves the right to update policies at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center">
+                <h3 class="text-2xl font-script mb-4">Chris David Salon</h3>
+                <p class="mb-2">1878C Dr. Andres Way, Delray Beach, FL 33445</p>
+                <p class="mb-4">(561) 299-0950</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://instagram.com/chrisdavidsalon" class="hover:text-yellow-400 transition-colors">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://facebook.com/ChrisDavidSalon" class="hover:text-yellow-400 transition-colors">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                </div>
+                <p class="mt-8 text-sm text-gray-400">© 2024 Chris David Salon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

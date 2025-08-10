@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="api-config.js"></script>
 </head>
 <body class="bg-gray-100">
     <!-- Navigation -->
@@ -496,15 +497,54 @@
         
         // Ask Claude for SEO advice
         async function askClaudeForSEOAdvice() {
-            if (!SEOIntelligence.config.claudeAPIKey) {
-                showNotification('Please configure Claude API key first', 'error');
-                openAPISettings();
+            // Check if API is configured
+            if (!window.APIConfig) {
+                showNotification('Loading API configuration...', 'info');
+                setTimeout(askClaudeForSEOAdvice, 1000);
                 return;
             }
             
             showNotification('Getting AI SEO advice...', 'info');
             
-            const advice = await SEOIntelligence.getAISEOAdvice();
+            // Use the API to get real advice
+            const prompt = `Analyze SEO for Chris David Salon in Delray Beach. 
+                Current status: 83/100 SEO score, 247 visitors, ranking #1 for branded terms but not ranking for competitive terms.
+                Provide specific, actionable recommendations for:
+                1. Immediate wins (this week)
+                2. Short-term improvements (next month)
+                3. Long-term strategy (3-6 months)
+                4. How to beat local competitors`;
+            
+            const response = await window.APIConfig.getClaudeAdvice(prompt);
+            
+            let advice;
+            if (response.content && response.content[0]) {
+                // Parse real API response
+                const text = response.content[0].text;
+                advice = {
+                    immediate: [],
+                    shortTerm: [],
+                    longTerm: [],
+                    competitors: []
+                };
+                
+                // Parse the response text into categories
+                const lines = text.split('\n');
+                let currentCategory = null;
+                
+                lines.forEach(line => {
+                    if (line.includes('Immediate')) currentCategory = 'immediate';
+                    else if (line.includes('Short-term')) currentCategory = 'shortTerm';
+                    else if (line.includes('Long-term')) currentCategory = 'longTerm';
+                    else if (line.includes('competitor')) currentCategory = 'competitors';
+                    else if (line.startsWith('-') && currentCategory) {
+                        advice[currentCategory].push(line.substring(1).trim());
+                    }
+                });
+            } else {
+                // Fallback to simulated advice
+                advice = await SEOIntelligence.getAISEOAdvice();
+            }
             
             // Create advice modal
             const modal = document.createElement('div');

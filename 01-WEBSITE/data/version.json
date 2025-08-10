@@ -1,7 +1,27 @@
 {
-  "version": "2.1.0",
-  "lastUpdated": "2025-08-10T18:45:00Z",
+  "version": "2.5.0",
+  "lastUpdated": "2025-08-10T21:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.5.0",
+      "date": "2025-08-10T21:30:00Z",
+      "changes": "Added policies page, API integration, fixed analytics, updated pricing"
+    },
+    {
+      "version": "2.4.0",
+      "date": "2025-08-10T20:45:00Z",
+      "changes": "Fixed visitor analytics showing zeros, corrected SEO score to 83"
+    },
+    {
+      "version": "2.3.0",
+      "date": "2025-08-10T20:00:00Z",
+      "changes": "Added SEO Intelligence System with Claude API integration"
+    },
+    {
+      "version": "2.2.0",
+      "date": "2025-08-10T19:30:00Z",
+      "changes": "Fixed mobile hero text overlap, added competitor analysis"
+    },
     {
       "version": "2.1.0",
       "date": "2025-08-10T18:45:00Z",
