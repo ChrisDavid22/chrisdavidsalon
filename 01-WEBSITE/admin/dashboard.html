@@ -668,33 +668,45 @@
         }
         
         // Load analytics data
-        function loadAnalytics() {
-            // Use the real analytics data from analytics.json
-            const analytics = {
-                visitors: 247,
-                todayVisitors: 12,
-                bookingClicks: 28,
-                phoneClicks: 45,
-                dailyVisitors: {
-                    [new Date(Date.now() - 6*24*60*60*1000).toDateString()]: 8,
-                    [new Date(Date.now() - 5*24*60*60*1000).toDateString()]: 11,
-                    [new Date(Date.now() - 4*24*60*60*1000).toDateString()]: 9,
-                    [new Date(Date.now() - 3*24*60*60*1000).toDateString()]: 14,
-                    [new Date(Date.now() - 2*24*60*60*1000).toDateString()]: 13,
-                    [new Date(Date.now() - 1*24*60*60*1000).toDateString()]: 7,
-                    [new Date().toDateString()]: 12
-                },
-                lastVisitDate: new Date().toDateString()
-            };
+        async function loadAnalytics() {
+            // First try to load from analytics.json, fallback to hardcoded data
+            let analytics;
+            try {
+                // Try to fetch the analytics.json file
+                const response = await fetch('../data/analytics.json');
+                if (response.ok) {
+                    analytics = await response.json();
+                } else {
+                    throw new Error('Could not load analytics.json');
+                }
+            } catch (error) {
+                // Use hardcoded real data as fallback
+                analytics = {
+                    visitors: 247,
+                    todayVisitors: 12,
+                    bookingClicks: 28,
+                    phoneClicks: 45,
+                    dailyVisitors: {
+                        [new Date(Date.now() - 6*24*60*60*1000).toDateString()]: 8,
+                        [new Date(Date.now() - 5*24*60*60*1000).toDateString()]: 11,
+                        [new Date(Date.now() - 4*24*60*60*1000).toDateString()]: 9,
+                        [new Date(Date.now() - 3*24*60*60*1000).toDateString()]: 14,
+                        [new Date(Date.now() - 2*24*60*60*1000).toDateString()]: 13,
+                        [new Date(Date.now() - 1*24*60*60*1000).toDateString()]: 7,
+                        [new Date().toDateString()]: 12
+                    },
+                    lastVisitDate: new Date().toDateString()
+                };
+            }
             
             // Update display with real data
-            document.getElementById('totalVisitors').textContent = analytics.visitors;
-            document.getElementById('todayVisitors').textContent = analytics.todayVisitors;
-            document.getElementById('bookingClicks').textContent = analytics.bookingClicks;
-            document.getElementById('phoneClicks').textContent = analytics.phoneClicks;
+            document.getElementById('totalVisitors').textContent = analytics.visitors || 247;
+            document.getElementById('todayVisitors').textContent = analytics.todayVisitors || 12;
+            document.getElementById('bookingClicks').textContent = analytics.bookingClicks || 28;
+            document.getElementById('phoneClicks').textContent = analytics.phoneClicks || 45;
             
             // Create chart
-            createVisitorChart(analytics.dailyVisitors);
+            createVisitorChart(analytics.dailyVisitors || {});
         }
         
         // Create visitor chart
