@@ -1,0 +1,22 @@
+# NEVER commit API keys!
+.env
+.env.local
+.env.production
+
+# Dependencies
+node_modules/
+
+# Production
+build/
+dist/
+
+# Misc
+.DS_Store
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# IMPORTANT: Your API keys are compromised!
+# Please revoke them immediately!
