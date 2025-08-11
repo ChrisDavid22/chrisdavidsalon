@@ -60,37 +60,37 @@
                 </div>
             </div>
             
-            <!-- Key Metrics Grid -->
+            <!-- Key Metrics Grid - REAL DATA FROM analytics.json -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                 <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-4 text-white">
-                    <div class="text-sm opacity-90">Total Visitors</div>
-                    <div class="text-3xl font-bold" id="totalVisitors">2,847</div>
+                    <div class="text-sm opacity-90">Total Visitors (Aug)</div>
+                    <div class="text-3xl font-bold" id="totalVisitors">247</div>
                     <div class="text-sm mt-2">
-                        <i class="fas fa-arrow-up"></i> +23% from last period
+                        <i class="fas fa-info-circle"></i> Real data from analytics.json
                     </div>
                 </div>
                 
                 <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-4 text-white">
-                    <div class="text-sm opacity-90">Page Views</div>
-                    <div class="text-3xl font-bold" id="pageViews">8,432</div>
+                    <div class="text-sm opacity-90">Booking Clicks</div>
+                    <div class="text-3xl font-bold" id="bookingClicks">28</div>
                     <div class="text-sm mt-2">
-                        <i class="fas fa-arrow-up"></i> +18% from last period
+                        <i class="fas fa-calendar-check"></i> Actual booking attempts
                     </div>
                 </div>
                 
                 <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg p-4 text-white">
                     <div class="text-sm opacity-90">Avg. Session Duration</div>
-                    <div class="text-3xl font-bold" id="avgDuration">3:24</div>
+                    <div class="text-3xl font-bold" id="avgDuration">2:25</div>
                     <div class="text-sm mt-2">
-                        <i class="fas fa-arrow-up"></i> +5% from last period
+                        <i class="fas fa-info-circle"></i> 145 seconds actual
                     </div>
                 </div>
                 
                 <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-4 text-white">
-                    <div class="text-sm opacity-90">Bounce Rate</div>
-                    <div class="text-3xl font-bold" id="bounceRate">42%</div>
+                    <div class="text-sm opacity-90">Mobile Traffic</div>
+                    <div class="text-3xl font-bold" id="mobilePercent">68%</div>
                     <div class="text-sm mt-2">
-                        <i class="fas fa-arrow-down text-green-300"></i> -8% (improved)
+                        <i class="fas fa-mobile-alt"></i> 168 of 247 visitors
                     </div>
                 </div>
             </div>
@@ -324,8 +324,8 @@
             
             // Daily Visitors Chart
             const dailyCtx = document.getElementById('dailyVisitorsChart').getContext('2d');
-            const days = Array.from({length: 30}, (_, i) => i + 1);
-            const visitors = days.map(() => Math.floor(Math.random() * 50) + 70);
+            const days = Array.from({length: 7}, (_, i) => i + 1);
+            const visitors = [8, 11, 9, 14, 13, 7, 12]; // Real data from analytics.json
             
             new Chart(dailyCtx, {
                 type: 'line',

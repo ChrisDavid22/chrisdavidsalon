@@ -32,28 +32,41 @@
     </nav>
 
     <div class="max-w-7xl mx-auto p-6">
-        <!-- Today's Performance -->
-        <div class="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg shadow-lg p-6 mb-6">
-            <div class="grid grid-cols-4 gap-6">
-                <div>
-                    <div class="text-4xl font-bold">$2,847</div>
-                    <div class="text-green-100">Today's Revenue</div>
-                    <div class="text-sm text-green-200 mt-1">↑ 23% vs last Tuesday</div>
+        <!-- Revenue Data - PENDING BOULEVARD API INTEGRATION -->
+        <div class="bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="text-center py-8">
+                <i class="fas fa-chart-line text-6xl mb-4 opacity-50"></i>
+                <h2 class="text-2xl font-bold mb-2">Revenue Tracking Coming Soon</h2>
+                <p class="text-gray-200 mb-4">Awaiting Boulevard API integration for real revenue data</p>
+                <div class="bg-yellow-500 text-black px-4 py-2 rounded inline-block">
+                    <i class="fas fa-clock mr-2"></i>Boulevard API request sent - awaiting approval
                 </div>
-                <div>
-                    <div class="text-4xl font-bold">12</div>
-                    <div class="text-green-100">Bookings Today</div>
-                    <div class="text-sm text-green-200 mt-1">3 from website</div>
+            </div>
+        </div>
+        
+        <!-- What Will Be Available -->
+        <div class="bg-blue-50 rounded-lg p-6 mb-6">
+            <h3 class="text-lg font-bold mb-3 text-blue-800">📊 Once Boulevard API is integrated, you'll see:</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                <div class="text-center">
+                    <i class="fas fa-dollar-sign text-2xl text-blue-600 mb-2"></i>
+                    <div class="font-semibold">Daily Revenue</div>
+                    <div class="text-gray-600">Real-time tracking</div>
                 </div>
-                <div>
-                    <div class="text-4xl font-bold">$237</div>
-                    <div class="text-green-100">Avg Ticket</div>
-                    <div class="text-sm text-green-200 mt-1">↑ $45 from average</div>
+                <div class="text-center">
+                    <i class="fas fa-calendar-check text-2xl text-blue-600 mb-2"></i>
+                    <div class="font-semibold">Bookings</div>
+                    <div class="text-gray-600">Source attribution</div>
                 </div>
-                <div>
-                    <div class="text-4xl font-bold">18.3%</div>
-                    <div class="text-green-100">Web → Booking Rate</div>
-                    <div class="text-sm text-green-200 mt-1">Industry avg: 12%</div>
+                <div class="text-center">
+                    <i class="fas fa-chart-pie text-2xl text-blue-600 mb-2"></i>
+                    <div class="font-semibold">Service Breakdown</div>
+                    <div class="text-gray-600">Revenue by service</div>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-trending-up text-2xl text-blue-600 mb-2"></i>
+                    <div class="font-semibold">Growth Trends</div>
+                    <div class="text-gray-600">Month over month</div>
                 </div>
             </div>
         </div>
@@ -68,52 +81,52 @@
                         <canvas id="revenue-pie" height="200"></canvas>
                     </div>
                     <div class="space-y-3">
-                        <div class="flex justify-between items-center p-3 bg-blue-50 rounded">
+                        <div class="flex justify-between items-center p-3 bg-gray-100 rounded opacity-50">
                             <div>
-                                <div class="font-semibold">Google Search</div>
-                                <div class="text-sm text-gray-600">127 bookings</div>
+                                <div class="font-semibold text-gray-500">Google Search</div>
+                                <div class="text-sm text-gray-400">Awaiting Boulevard API</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-xl font-bold">$31,450</div>
-                                <div class="text-sm text-green-600">↑ 18%</div>
+                                <div class="text-xl font-bold text-gray-400">$--,---</div>
+                                <div class="text-sm text-gray-400">Pending</div>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center p-3 bg-purple-50 rounded">
+                        <div class="flex justify-between items-center p-3 bg-gray-100 rounded opacity-50">
                             <div>
-                                <div class="font-semibold">Instagram</div>
-                                <div class="text-sm text-gray-600">89 bookings</div>
+                                <div class="font-semibold text-gray-500">Instagram</div>
+                                <div class="text-sm text-gray-400">Awaiting Boulevard API</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-xl font-bold">$19,780</div>
-                                <div class="text-sm text-green-600">↑ 34%</div>
+                                <div class="text-xl font-bold text-gray-400">$--,---</div>
+                                <div class="text-sm text-gray-400">Pending</div>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center p-3 bg-green-50 rounded">
+                        <div class="flex justify-between items-center p-3 bg-gray-100 rounded opacity-50">
                             <div>
-                                <div class="font-semibold">Direct/Repeat</div>
-                                <div class="text-sm text-gray-600">203 bookings</div>
+                                <div class="font-semibold text-gray-500">Direct/Repeat</div>
+                                <div class="text-sm text-gray-400">Awaiting Boulevard API</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-xl font-bold">$48,720</div>
-                                <div class="text-sm text-green-600">↑ 12%</div>
+                                <div class="text-xl font-bold text-gray-400">$--,---</div>
+                                <div class="text-sm text-gray-400">Pending</div>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center p-3 bg-yellow-50 rounded">
+                        <div class="flex justify-between items-center p-3 bg-gray-100 rounded opacity-50">
                             <div>
-                                <div class="font-semibold">Microsites</div>
-                                <div class="text-sm text-gray-600">31 bookings</div>
+                                <div class="font-semibold text-gray-500">Microsites</div>
+                                <div class="text-sm text-gray-400">Awaiting Boulevard API</div>
                             </div>
                             <div class="text-right">
-                                <div class="text-xl font-bold">$7,340</div>
-                                <div class="text-sm text-green-600">↑ 67%</div>
+                                <div class="text-xl font-bold text-gray-400">$--,---</div>
+                                <div class="text-sm text-gray-400">Pending</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="border-t pt-4">
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-600">Total Revenue (30 days)</span>
-                        <span class="text-2xl font-bold">$107,290</span>
+                        <span class="text-gray-500">Total Revenue (30 days)</span>
+                        <span class="text-2xl font-bold text-gray-400">Awaiting API Integration</span>
                     </div>
                 </div>
             </div>
