@@ -1,3 +1,0 @@
-DEPLOYMENT TEST - December 11, 2024 @ 10:50 PM PST
-Testing if private repo still deploys to Vercel
-If you can read this on the live site, the private repo is working correctly.
