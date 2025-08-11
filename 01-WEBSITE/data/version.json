@@ -1,7 +1,12 @@
 {
-  "version": "2.5.15",
-  "lastUpdated": "2025-08-11T20:37:23Z",
+  "version": "2.5.16",
+  "lastUpdated": "2025-08-11T20:42:16Z",
   "deployHistory": [
+    {
+      "version": "2.5.16",
+      "date": "2025-08-11T20:42:16Z",
+      "changes": "FIX: JSON syntax error in version.json that was breaking version display on production"
+    },
     {
       "version": "2.5.15",
       "date": "2025-08-11T20:37:23Z",
@@ -41,11 +46,6 @@
       "version": "2.5.7",
       "date": "2025-08-11T05:02:15Z",
       "changes": "Add sitemap.xml for Google Search Console - CRITICAL for indexing"
-    },
-    {
-      "version": "2.5.1",
-      "date": "2025-08-10T23:39:27Z",
-      "changes": "Added dynamic version loading from JSON, created auto-deploy script, integrated policies page"
     },
   ]
 }
