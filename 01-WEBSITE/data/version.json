@@ -13,6 +13,11 @@
       "changes": "Fixed image paths, added admin/version links, cleaned duplicates"
     },
     {
+      "version": "2.5.8",
+      "date": "2025-08-11T12:00:00Z",
+      "changes": "Fixed image paths, added admin/version links to footer, cleaned up duplicate files"
+    },
+    {
       "version": "2.5.7",
       "date": "2025-08-11T05:02:15Z",
       "changes": "Add sitemap.xml for Google Search Console - CRITICAL for indexing"
@@ -21,12 +26,6 @@
       "version": "2.5.1",
       "date": "2025-08-10T23:39:27Z",
       "changes": "Added dynamic version loading from JSON, created auto-deploy script, integrated policies page"
-    },
-  ]
-}
-  ]
-}
-  ]
-}
+    }
   ]
 }

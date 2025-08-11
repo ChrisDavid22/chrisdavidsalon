@@ -11,7 +11,7 @@ export default function handler(req, res) {
   // These are set in Vercel dashboard, not in code
   const keys = {
     claude: process.env.CLAUDE_API_KEY || '',
-    google: process.env.GOOGLE_API_KEY || ''
+    google: process.env.GOOGLE_PLACES_API_KEY || ''
   };
 
   // Check if keys exist
