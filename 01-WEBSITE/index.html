@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chris David Salon | Master Colorist Delray Beach FL | Balayage Expert Atlantic Ave</title>
+    <title>Chris David Salon | Master Colorist Delray Beach FL | Balayage Expert Atlantic Ave | Now Open</title>
     <meta name="description" content="Award-winning Master Colorist in Delray Beach. Specializing in balayage, color correction, and Davines treatments. Located in Andre Design District near Atlantic Ave. Book now: (561) 299-0950">
     <meta name="keywords" content="Chris David Salon, hair salon Delray Beach, balayage Delray Beach, hair colorist Delray Beach, hair extensions Delray Beach, color correction Delray Beach, luxury hair salon Delray Beach, Andre Design District salon, Davines salon, Goldwell colorist, Bellami extensions, hair stylist Delray Beach, best hair salon Delray Beach, master colorist Florida, haircut Delray Beach, hair highlights Delray Beach, blonde specialist Delray Beach, Brazilian blowout Delray Beach">
     <meta name="author" content="Chris David Salon">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="google-site-verification" content="YOUR-VERIFICATION-CODE">
+    
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQDLWZM5NV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XQDLWZM5NV');
+    </script>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -44,7 +54,7 @@
       "@type": "HairSalon",
       "name": "Chris David Salon",
       "description": "Master colorist and luxury hair artist in Delray Beach specializing in balayage, color correction, extensions and artistic cuts",
-      "url": "https://www.chrisdavidsalon.com",
+      "url": "https://chrisdavidsalon.com",
       "telephone": "(561) 299-0950",
       "email": "chrisdavidsalon@gmail.com",
       "address": {
@@ -128,7 +138,7 @@
               "name": "Women's Precision Cut",
               "description": "Precision haircuts and styling for women"
             },
-            "price": "100+",
+            "price": "75+",
             "priceCurrency": "USD"
           },
           {
@@ -138,7 +148,7 @@
               "name": "Men's Precision Cut",
               "description": "Precision haircuts and styling for men"
             },
-            "price": "65+",
+            "price": "45+",
             "priceCurrency": "USD"
           },
           {
@@ -178,7 +188,7 @@
               "name": "Styling & Blowouts",
               "description": "Professional styling and blowout services"
             },
-            "price": "55+",
+            "price": "50+",
             "priceCurrency": "USD"
           },
           {
@@ -226,48 +236,6 @@
         .hover-lift:hover { transform: translateY(-5px); }
         .sticky-booking { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
         .hero-overlay { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)); }
-        
-        /* Mobile adjustments for hero section */
-        @media (max-width: 640px) {
-            #home {
-                min-height: 100vh;
-                display: flex;
-                align-items: center;
-            }
-            #home .relative.z-10 {
-                margin-top: 60px; /* Account for header height */
-            }
-        }
-        
-        /* Remove any floating social icons that might appear over hero */
-        #home .fab.fa-instagram,
-        #home .fab.fa-facebook,
-        #home .fab.fa-facebook-f,
-        #home [class*="instagram"],
-        #home [class*="facebook"] {
-            display: none !important;
-        }
-        
-        /* Remove any absolutely positioned social icons anywhere on page */
-        .fab.fa-instagram:not(.bg-white .fab.fa-instagram):not(.text-purple-600),
-        .fab.fa-facebook:not(.bg-white .fab.fa-facebook):not(.text-purple-600) {
-            position: static !important;
-        }
-        
-        /* Ensure no third-party social widgets appear over content */
-        [style*="position: fixed"][style*="z-index"],
-        [style*="position: absolute"][style*="z-index"] {
-            z-index: 1 !important;
-        }
-        
-        /* Hide any injected social media floating buttons */
-        .social-float,
-        .social-sticky,
-        [class*="social-widget"],
-        [class*="social-icon"][style*="position: fixed"],
-        [class*="social-icon"][style*="position: absolute"] {
-            display: none !important;
-        }
         
         /* Gallery Grid */
         .gallery-grid {
@@ -491,9 +459,9 @@
     <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <div class="flex flex-col">
-                    <img src="images/cds-logo.jpg" alt="Chris David Salon" class="h-12 md:h-14 object-contain rounded-lg">
-                    <span class="text-xs text-gray-600 mt-1">Andre Design District • Delray Beach</span>
+                <div class="flex items-center">
+                    <img src="../04-IMAGES/cds-logo.jpg" alt="Chris David Salon" class="h-12 md:h-14 object-contain">
+                    <span class="ml-3 text-sm text-gray-600 hidden sm:block">Andre Design District • Delray Beach</span>
                 </div>
                 
                 <!-- Desktop Navigation -->
@@ -507,12 +475,22 @@
                     <a href="#contact" class="text-gray-700 hover:text-gray-900 transition-colors">Contact</a>
                 </nav>
                 
-                <div class="flex items-center space-x-6">
-                    <!-- Phone Number CTA (moved more to the right) -->
-                    <a href="tel:5612990950" class="hidden sm:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors ml-12">
+                <div class="flex items-center space-x-4">
+                    <!-- Phone Number CTA -->
+                    <a href="tel:5612990950" class="hidden sm:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors">
                         <i class="fas fa-phone mr-2"></i>
                         <span class="text-lg">(561) 299-0950</span>
                     </a>
+                    
+                    <!-- Social Media Icons -->
+                    <div class="hidden lg:flex items-center space-x-3">
+                        <a href="https://www.instagram.com/chrisdavidsalon/" target="_blank" rel="noopener" class="text-gray-600 hover:text-gray-900">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/ChrisDavidSalon/" target="_blank" rel="noopener" class="text-gray-600 hover:text-gray-900">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
                     
                     <button type="button" onclick="openBookingModal()" class="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors" title="Book an appointment">
                         Book Now
@@ -566,14 +544,14 @@
             <img src="https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/744b1af5-5703-4fe0-96ad-024cbdefbddc/ESCAPE+By+Chris+David+-+The+Feeling.jpg" alt="Chris David Salon Interior" class="w-full h-full object-cover">
             <div class="hero-overlay absolute inset-0"></div>
         </div>
-        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4 pt-20 sm:pt-0">
-            <h1 class="text-5xl sm:text-6xl md:text-8xl mb-4 sm:mb-6 animate-fade-in font-script">
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+            <h1 class="text-6xl md:text-8xl mb-6 animate-fade-in font-script">
                 Chris David Salon
             </h1>
-            <p class="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 font-light">
+            <p class="text-xl md:text-2xl mb-4 font-light">
                 Master Colorist • Hair Artist • Luxury Experience
             </p>
-            <p class="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 font-light opacity-90">
+            <p class="text-lg md:text-xl mb-8 font-light opacity-90">
                 Delray Beach's Premier Hair Salon • 5 Minutes from Atlantic Avenue • Established 2017
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -670,7 +648,7 @@
                 <!-- Advanced Color Service -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="images/11 Hair Color .webp" alt="Advanced Color Services" class="w-full h-full object-contain bg-gray-100">
+                        <img src="../04-IMAGES/hair-color.webp" alt="Advanced Color Services" class="w-full h-full object-contain bg-gray-100">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Advanced Color</h3>
@@ -689,7 +667,7 @@
                 <!-- Hair Extensions -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="images/11 Hair Extensions.webp" alt="Hair Extensions" class="w-full h-full object-contain bg-gray-100">
+                        <img src="../04-IMAGES/hair-extensions.webp" alt="Hair Extensions" class="w-full h-full object-contain bg-gray-100">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Hair Extensions</h3>
@@ -708,11 +686,11 @@
                 <!-- Precision Cuts -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="images/11 Hair Cuts.webp" alt="Precision Cut" class="w-full h-full object-contain bg-gray-100">
+                        <img src="../04-IMAGES/hair-cut.webp" alt="Precision Cut" class="w-full h-full object-contain bg-gray-100">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Precision Cuts</h3>
-                        <p class="text-gray-600 mb-4">Customized precision cuts using Chris's revolutionary "cut the hair where it lives" dry cutting method. Complements your features, lifestyle, and personal aesthetic. Perfect for Florida's beach lifestyle. <strong>Women $100+ • Men $65+</strong></p>
+                        <p class="text-gray-600 mb-4">Customized precision cuts using Chris's revolutionary "cut the hair where it lives" dry cutting method. Complements your features, lifestyle, and personal aesthetic. Perfect for Florida's beach lifestyle. <strong>Women $75+ • Men $45+</strong></p>
                         <p class="text-xs text-yellow-600 mb-2"><strong>Popular:</strong> "haircut delray beach" • "precision cut" • "dry cutting specialist"</p>
                         <ul class="text-sm text-gray-600 mb-4 space-y-1">
                             <li>• Custom Consultation</li>
@@ -727,7 +705,7 @@
                 <!-- Keratin Treatments -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="images/11 Kerati treatments .webp" alt="Keratin Treatment" class="w-full h-full object-contain bg-gray-100">
+                        <img src="../04-IMAGES/keratin-treatment.webp" alt="Keratin Treatment" class="w-full h-full object-contain bg-gray-100">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Keratin Treatments</h3>
@@ -746,11 +724,11 @@
                 <!-- Special Events -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="images/11 Styling.webp" alt="Event Styling" class="w-full h-full object-contain bg-gray-100">
+                        <img src="../04-IMAGES/event-styling.webp" alt="Event Styling" class="w-full h-full object-contain bg-gray-100">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Styling & Blowouts</h3>
-                        <p class="text-gray-600 mb-4">Professional styling and blowout services for any occasion, from everyday elegance to special events. <strong>Starting at $55</strong></p>
+                        <p class="text-gray-600 mb-4">Professional styling and blowout services for any occasion, from everyday elegance to special events.</p>
                         <ul class="text-sm text-gray-600 mb-4 space-y-1">
                             <li>• Professional Blowouts</li>
                             <li>• Special Event Styling</li>
@@ -764,11 +742,11 @@
                 <!-- Signature Services -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="images/signature-correct.jpg" alt="Signature Luxury Hair Service" class="w-full h-full object-cover">
+                        <img src="../04-IMAGES/signature.jpg" alt="Signature Luxury Hair Service" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Signature Services</h3>
-                        <p class="text-gray-600 mb-4">Extended VIP experience providing premier, personalized services and exclusive one-on-one time with Chris David. Perfect for complete transformations and makeovers. Preferred by Delray Beach's most discerning clients. <strong>Starting at $250+</strong></p>
+                        <p class="text-gray-600 mb-4">Extended 3+ hour VIP experience providing premier, personalized services and exclusive one-on-one time with Chris David. Perfect for complete transformations and makeovers. Preferred by Delray Beach's most discerning clients. <strong>Starting at $400+</strong></p>
                         <p class="text-xs text-yellow-600 mb-2"><strong>Popular:</strong> "hair transformation delray beach" • "luxury hair salon" • "complete makeover"</p>
                         <ul class="text-sm text-gray-600 mb-4 space-y-1">
                             <li>• Extended Consultation</li>
@@ -799,34 +777,20 @@
             <div class="bg-white rounded-lg shadow-lg p-8">
                 <div class="text-center mb-8">
                     <h3 class="text-2xl font-playfair font-semibold mb-4">View Our Work</h3>
-                    <p class="text-gray-600 mb-6">Browse through our portfolio of transformations</p>
-                </div>
-
-                <!-- Embedded Google Photos Gallery -->
-                <div class="mb-8">
-                    <div class="bg-gray-100 rounded-lg p-4">
-                        <iframe 
-                            id="googlePhotosFrame"
-                            src="https://www.google.com/maps/uv?pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!15sCgIgAQ"
-                            width="100%" 
-                            height="600" 
-                            style="border:0; border-radius: 8px;" 
-                            allowfullscreen="" 
-                            loading="lazy"
-                            title="Chris David Salon Gallery">
-                        </iframe>
-                    </div>
+                    <p class="text-gray-600 mb-6">Click below to see our complete portfolio of transformations</p>
                     
-                    <!-- Alternative View Button -->
-                    <div class="text-center mt-4">
-                        <button onclick="toggleGalleryView()" class="text-yellow-600 hover:text-yellow-700 font-semibold">
-                            <i class="fas fa-exchange-alt mr-2"></i>Switch to Map View
-                        </button>
-                    </div>
+                    <!-- Direct Link to Google Photos -->
+                    <a href="https://www.google.com/maps/uv?hl=en&pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!15sCgIgAQ" 
+                       target="_blank" rel="noopener" 
+                       rel="noopener"
+                       class="inline-flex items-center bg-gradient-to-r from-yellow-600 to-yellow-700 text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all text-lg transform hover:scale-105">
+                        <i class="fas fa-images mr-3"></i>
+                        View Full Gallery on Google
+                    </a>
                 </div>
 
-                <!-- Map View (Initially Hidden) -->
-                <div id="mapView" class="hidden">
+                <!-- Embedded Map as Fallback -->
+                <div class="mt-8">
                     <h4 class="text-lg font-semibold mb-4 text-center">Our Location</h4>
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.4716904785594!2d-80.09415198496873!3d26.456902483331647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!2sChris%20David%20Salon!5e0!3m2!1sen!2sus!4v1704900000000!5m2!1sen!2sus"
@@ -992,34 +956,6 @@
         </div>
     </section>
 
-    <!-- Social Media Banner -->
-    <section class="py-12 bg-gradient-to-r from-purple-600 to-pink-600">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
-                    Follow Us on Social Media
-                </h3>
-                <p class="text-white opacity-90 mb-6">
-                    Stay updated with the latest hair trends and transformations
-                </p>
-                <div class="flex justify-center space-x-6">
-                    <a href="https://www.instagram.com/chrisdavidsalon/" 
-                       target="_blank" 
-                       rel="noopener" 
-                       class="bg-white rounded-full p-4 hover:scale-110 transition-transform">
-                        <i class="fab fa-instagram text-3xl text-purple-600"></i>
-                    </a>
-                    <a href="https://www.facebook.com/ChrisDavidSalon/" 
-                       target="_blank" 
-                       rel="noopener" 
-                       class="bg-white rounded-full p-4 hover:scale-110 transition-transform">
-                        <i class="fab fa-facebook text-3xl text-purple-600"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1154,7 +1090,7 @@
 
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">How much does a haircut cost in Delray Beach?</h3>
-                    <p class="text-gray-600">At Chris David Salon, women's precision cuts start at $100+ and men's cuts start at $65+. Our cuts use the revolutionary "cut the hair where it lives" dry cutting method and include a consultation and styling. We serve clients throughout South Palm Beach County with premium services.</p>
+                    <p class="text-gray-600">At Chris David Salon, women's precision cuts start at $75+ and men's cuts start at $45+. Our cuts use the revolutionary "cut the hair where it lives" dry cutting method and include a consultation and styling. We serve clients throughout South Palm Beach County with premium services.</p>
                 </div>
 
                 <div class="bg-gray-50 rounded-lg p-6">
@@ -1162,11 +1098,6 @@
                     <p class="text-gray-600">Chris David is a certified Master Colorist with over a decade of experience, established in Delray Beach since 2017. He's the only salon in the area using exclusive Davines products and signature air composition color mapping techniques. Preferred by residents of The Seagate Hotel, Ocean Grande, and Pineapple Grove.</p>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">How much does balayage and color cost in Delray Beach?</h3>
-                    <p class="text-gray-600">Our advanced color services including balayage, color correction, and custom formulations start at $150+. Chris uses exclusive Davines products and his signature air composition color mapping technique. Each service is customized to your unique style and includes a consultation.</p>
-                </div>
-                
                 <div class="bg-gray-50 rounded-lg p-6">
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Do you offer hair extensions in Delray Beach?</h3>
                     <p class="text-gray-600">Yes! We specialize in premium hair extensions using Bellami and Platinum Seamless products. Chris is certified in multiple extension methods including tape-in, clip-in, and permanent extensions. Starting at $300+, perfect for special events or everyday glamour.</p>
@@ -1239,12 +1170,11 @@
                 </div>
             </div>
             
-            <!-- SEO Content - Visually Hidden but Readable by Search Engines -->
-            <div class="mt-8 text-center sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;">
-                <p class="text-sm">
+            <div class="mt-8 text-center">
+                <p class="text-sm text-gray-600 mb-2">
                     <strong>Service Areas:</strong> Delray Beach 33445 • Delray Beach 33483 • Delray Beach 33444 • Boca Raton 33432 • Boca Raton 33486 • Boynton Beach 33435 • Highland Beach 33487 • Gulf Stream 33483 • Ocean Ridge 33435
                 </p>
-                <p class="text-sm">
+                <p class="text-sm text-gray-600">
                     <strong>Nearby Landmarks:</strong> Atlantic Avenue • Delray Beach Tennis Center • Old School Square • Delray Beach Market • Pineapple Grove Arts District • Seagate Country Club • The Seagate Hotel • Delray Beach Golf Club
                 </p>
             </div>
@@ -1257,7 +1187,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- About -->
                 <div>
-                    <img src="images/cds-logo.jpg" alt="Chris David Salon" class="h-16 object-contain mb-4 mx-auto">
+                    <img src="../04-IMAGES/cds-logo.jpg" alt="Chris David Salon" class="h-16 object-contain mb-4 mx-auto">
                     <p class="text-gray-300 text-sm">
                         Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
                     </p>
@@ -1310,14 +1240,8 @@
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm relative">
-                <p>&copy; 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC | <span id="siteVersion">v2.5.0</span></p>
-                <div class="absolute bottom-0 right-4 text-sm">
-                    <a href="admin/login.html" class="text-gray-400 hover:text-white flex items-center bg-gray-800 px-3 py-1 rounded transition-colors">
-                        <i class="fas fa-lock mr-1"></i>
-                        Admin • <span id="adminVersion">v2.5.0</span>
-                    </a>
-                </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC</p>
             </div>
         </div>
     </footer>
@@ -1406,110 +1330,5 @@
        class="mobile-phone-cta md:hidden">
         <i class="fas fa-phone text-2xl"></i>
     </a>
-    
-    <!-- Analytics Tracking Script -->
-    <script>
-        // Initialize analytics
-        (function() {
-            // Get or create analytics object
-            let analytics = JSON.parse(localStorage.getItem('salonAnalytics') || '{}');
-            
-            // Initialize if empty
-            if (!analytics.visitors) {
-                analytics = {
-                    visitors: 0,
-                    todayVisitors: 0,
-                    bookingClicks: 0,
-                    phoneClicks: 0,
-                    dailyVisitors: {},
-                    lastVisitDate: new Date().toDateString()
-                };
-            }
-            
-            // Check if new day
-            const today = new Date().toDateString();
-            if (analytics.lastVisitDate !== today) {
-                analytics.todayVisitors = 0;
-                analytics.lastVisitDate = today;
-            }
-            
-            // Check if new visitor (session-based)
-            if (!sessionStorage.getItem('visitorCounted')) {
-                analytics.visitors++;
-                analytics.todayVisitors++;
-                
-                // Update daily visitors
-                if (!analytics.dailyVisitors[today]) {
-                    analytics.dailyVisitors[today] = 0;
-                }
-                analytics.dailyVisitors[today]++;
-                
-                sessionStorage.setItem('visitorCounted', 'true');
-                localStorage.setItem('salonAnalytics', JSON.stringify(analytics));
-            }
-            
-            // Track booking button clicks
-            function trackBookingClick() {
-                const analytics = JSON.parse(localStorage.getItem('salonAnalytics') || '{}');
-                analytics.bookingClicks = (analytics.bookingClicks || 0) + 1;
-                localStorage.setItem('salonAnalytics', JSON.stringify(analytics));
-            }
-            
-            // Track phone clicks
-            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-                link.addEventListener('click', function() {
-                    const analytics = JSON.parse(localStorage.getItem('salonAnalytics') || '{}');
-                    analytics.phoneClicks = (analytics.phoneClicks || 0) + 1;
-                    localStorage.setItem('salonAnalytics', JSON.stringify(analytics));
-                });
-            });
-            
-            // Override the booking modal function to track clicks
-            const originalOpenBooking = window.openBookingModal;
-            window.openBookingModal = function() {
-                trackBookingClick();
-                if (originalOpenBooking) {
-                    originalOpenBooking();
-                }
-            };
-        })();
-        
-        // Toggle between gallery and map view
-        function toggleGalleryView() {
-            const galleryFrame = document.getElementById('googlePhotosFrame').parentElement.parentElement;
-            const mapView = document.getElementById('mapView');
-            const button = event.target.closest('button');
-            
-            if (mapView.classList.contains('hidden')) {
-                // Switch to map view
-                galleryFrame.classList.add('hidden');
-                mapView.classList.remove('hidden');
-                button.innerHTML = '<i class="fas fa-images mr-2"></i>Switch to Gallery View';
-            } else {
-                // Switch to gallery view
-                galleryFrame.classList.remove('hidden');
-                mapView.classList.add('hidden');
-                button.innerHTML = '<i class="fas fa-exchange-alt mr-2"></i>Switch to Map View';
-            }
-        }
-    </script>
-    <script>
-        // Load version dynamically from JSON
-        (function loadVersion() {
-            fetch('data/version.json?t=' + Date.now())
-                .then(response => response.json())
-                .then(data => {
-                    const version = data.version || '2.5.0';
-                    // Update both version displays
-                    const siteVersionEl = document.getElementById('siteVersion');
-                    const adminVersionEl = document.getElementById('adminVersion');
-                    if (siteVersionEl) siteVersionEl.textContent = 'v' + version;
-                    if (adminVersionEl) adminVersionEl.textContent = 'v' + version;
-                })
-                .catch(err => {
-                    console.log('Could not load version:', err);
-                });
-        })();
-    </script>
 </body>
-</html><\!-- Deployment trigger v2.5.3 -->
+</html>
