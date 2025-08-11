@@ -1,0 +1,35 @@
+{
+  "version": "2.6.0",
+  "lastUpdated": "2025-08-11T14:50:00-05:00",
+  "environment": "production",
+  "changes": [
+    {
+      "version": "2.6.0",
+      "date": "2025-08-11",
+      "description": "MAJOR: Complete Admin System with 14 dashboards, Backlink Campaign Tools, Master Trainer Credentials"
+    },
+    {
+      "version": "2.5.13",
+      "date": "2025-08-11",
+      "description": "Added embedded photo gallery carousel, Puppeteer testing suite"
+    },
+    {
+      "version": "2.5.12",
+      "date": "2025-08-11",
+      "description": "Navigation improvements, Blog added to main menu"
+    },
+    {
+      "version": "2.5.11",
+      "date": "2025-08-11",
+      "description": "Complete site inventory, navigation corrections"
+    }
+  ],
+  "features": {
+    "admin": true,
+    "pwa": true,
+    "backlinks": true,
+    "analytics": true,
+    "microsites": 3,
+    "boulevardApi": "pending"
+  }
+}

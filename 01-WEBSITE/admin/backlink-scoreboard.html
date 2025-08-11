@@ -9,24 +9,51 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-900 text-white">
-    <!-- Header with Live Status -->
-    <header class="bg-gradient-to-r from-purple-900 to-pink-900 p-6 shadow-2xl">
+    <!-- Unified Admin Navigation -->
+    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
         <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h1 class="text-4xl font-bold">🎯 Backlink Campaign Scoreboard</h1>
-                    <p class="text-purple-200 mt-2">Real-Time Campaign Performance</p>
+                    <h1 class="text-2xl font-bold">Chris David Salon Admin v2.6.0</h1>
+                    <p class="text-sm text-purple-200">Backlink Campaign Scoreboard</p>
                 </div>
                 <div class="text-right">
-                    <div class="text-3xl font-bold text-yellow-300" id="totalScore">0</div>
-                    <div class="text-sm text-purple-200">Total Backlink Score</div>
-                    <div class="text-xs text-green-400 mt-1">
-                        <span id="liveStatus">🟢 LIVE</span> - Auto-refresh every 30s
-                    </div>
+                    <div class="text-2xl font-bold text-yellow-300" id="totalScore">0</div>
+                    <div class="text-xs text-purple-200">Total Score</div>
+                    <a href="../index.html" class="text-yellow-300 hover:text-yellow-100 text-sm">← Back to Website</a>
                 </div>
             </div>
+            
+            <!-- Main Navigation Bar -->
+            <div class="flex flex-wrap gap-2 text-sm">
+                <!-- Core -->
+                <a href="index.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏠 Admin Home</a>
+                <a href="dashboard-new.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📊 Main Dashboard</a>
+                
+                <!-- Backlinks -->
+                <span class="text-purple-300">|</span>
+                <a href="backlink-scoreboard.html" class="bg-green-600 px-3 py-1 rounded font-bold">🎯 Backlink Scoreboard</a>
+                <a href="backlink-campaign.html" class="bg-green-700 hover:bg-green-600 px-3 py-1 rounded">🚀 Campaign Manager</a>
+                <a href="backlink-tracker.html" class="bg-green-700 hover:bg-green-600 px-3 py-1 rounded">📍 Backlink Tracker</a>
+                
+                <!-- Analytics -->
+                <span class="text-purple-300">|</span>
+                <a href="analytics-dashboard.html" class="bg-blue-700 hover:bg-blue-600 px-3 py-1 rounded">📈 Analytics</a>
+                <a href="revenue-tracker.html" class="bg-blue-700 hover:bg-blue-600 px-3 py-1 rounded">💰 Revenue</a>
+                <a href="microsite-roi.html" class="bg-blue-700 hover:bg-blue-600 px-3 py-1 rounded">🌐 Microsites</a>
+                
+                <!-- Market Intel -->
+                <span class="text-purple-300">|</span>
+                <a href="market-position.html" class="bg-yellow-700 hover:bg-yellow-600 px-3 py-1 rounded">🏆 Market Position</a>
+                <a href="competition-monitor.html" class="bg-yellow-700 hover:bg-yellow-600 px-3 py-1 rounded">👁️ Competitors</a>
+                
+                <!-- SEO -->
+                <span class="text-purple-300">|</span>
+                <a href="seo-command-center.html" class="bg-orange-700 hover:bg-orange-600 px-3 py-1 rounded">🔍 SEO Command</a>
+                <a href="seo-audit.html" class="bg-orange-700 hover:bg-orange-600 px-3 py-1 rounded">🔎 SEO Audit</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <div class="max-w-7xl mx-auto p-6">
         <!-- Main Score Cards -->
