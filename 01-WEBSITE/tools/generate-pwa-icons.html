@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Icon Generator - Chris David Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h1 class="text-2xl font-bold mb-6">PWA Icon Generator for Chris David Salon</h1>
+            
+            <div class="bg-blue-50 p-4 rounded mb-6">
+                <p class="text-sm text-blue-800">
+                    <strong>Instructions:</strong> Upload the CDS logo and this tool will generate all required PWA icons.
+                </p>
+            </div>
+
+            <div class="mb-6">
+                <input type="file" id="logoInput" accept="image/*" class="mb-4">
+                <button onclick="generateIcons()" class="bg-purple-900 text-white px-6 py-3 rounded-lg hover:bg-purple-800">
+                    Generate All Icons
+                </button>
+            </div>
+
+            <div id="output" class="grid grid-cols-3 md:grid-cols-4 gap-4"></div>
+
+            <canvas id="canvas" style="display: none;"></canvas>
+
+            <div class="mt-8 p-4 bg-gray-50 rounded">
+                <h3 class="font-bold mb-2">Required Icon Sizes for PWA:</h3>
+                <ul class="text-sm space-y-1">
+                    <li>✓ 72x72 - Android home screen</li>
+                    <li>✓ 96x96 - Android Chrome</li>
+                    <li>✓ 128x128 - Chrome Web Store</li>
+                    <li>✓ 144x144 - Microsoft Store</li>
+                    <li>✓ 152x152 - iPad</li>
+                    <li>✓ 192x192 - Android Chrome (required)</li>
+                    <li>✓ 384x384 - Android splash screen</li>
+                    <li>✓ 512x512 - Android Chrome (required)</li>
+                    <li>✓ favicon.ico - Browser tab</li>
+                    <li>✓ apple-touch-icon.png - iOS home screen</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function generateIcons() {
+            const input = document.getElementById('logoInput');
+            const file = input.files[0];
+            
+            if (!file) {
+                alert('Please select the CDS logo image first');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const output = document.getElementById('output');
+                    output.innerHTML = '';
+
+                    // Generate each size
+                    sizes.forEach(size => {
+                        canvas.width = size;
+                        canvas.height = size;
+                        
+                        // Add purple background for better visibility
+                        ctx.fillStyle = '#6B46C1';
+                        ctx.fillRect(0, 0, size, size);
+                        
+                        // Draw logo centered with padding
+                        const padding = size * 0.1;
+                        const logoSize = size - (padding * 2);
+                        ctx.drawImage(img, padding, padding, logoSize, logoSize);
+                        
+                        // Create download link
+                        canvas.toBlob(function(blob) {
+                            const url = URL.createObjectURL(blob);
+                            const div = document.createElement('div');
+                            div.className = 'text-center';
+                            div.innerHTML = `
+                                <img src="${url}" alt="${size}x${size}" class="w-full border rounded">
+                                <a href="${url}" download="icon-${size}.png" 
+                                   class="text-sm text-blue-600 hover:underline">
+                                    ${size}x${size}
+                                </a>
+                            `;
+                            output.appendChild(div);
+                        });
+                    });
+
+                    // Generate apple-touch-icon (180x180)
+                    canvas.width = 180;
+                    canvas.height = 180;
+                    ctx.fillStyle = '#6B46C1';
+                    ctx.fillRect(0, 0, 180, 180);
+                    ctx.drawImage(img, 18, 18, 144, 144);
+                    
+                    canvas.toBlob(function(blob) {
+                        const url = URL.createObjectURL(blob);
+                        const div = document.createElement('div');
+                        div.className = 'text-center';
+                        div.innerHTML = `
+                            <img src="${url}" alt="Apple Touch Icon" class="w-full border rounded">
+                            <a href="${url}" download="apple-touch-icon.png" 
+                               class="text-sm text-blue-600 hover:underline">
+                                Apple Touch
+                            </a>
+                        `;
+                        output.appendChild(div);
+                    });
+
+                    // Generate favicon (32x32)
+                    canvas.width = 32;
+                    canvas.height = 32;
+                    ctx.fillStyle = '#6B46C1';
+                    ctx.fillRect(0, 0, 32, 32);
+                    ctx.drawImage(img, 3, 3, 26, 26);
+                    
+                    canvas.toBlob(function(blob) {
+                        const url = URL.createObjectURL(blob);
+                        const div = document.createElement('div');
+                        div.className = 'text-center';
+                        div.innerHTML = `
+                            <img src="${url}" alt="Favicon" class="w-full border rounded">
+                            <a href="${url}" download="favicon.png" 
+                               class="text-sm text-blue-600 hover:underline">
+                                Favicon
+                            </a>
+                        `;
+                        output.appendChild(div);
+                    });
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>

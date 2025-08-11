@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Correction Specialist - Chris David Salon | Delray Beach</title>
+    <meta name="description" content="Expert color correction services in Delray Beach. Fix brassy tones, uneven color, and hair disasters. Before & after gallery. Book your consultation today.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .before-after-container {
+            position: relative;
+            overflow: hidden;
+            cursor: col-resize;
+        }
+        .before-after-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: white;
+            cursor: col-resize;
+            z-index: 2;
+        }
+        .before-after-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../images/CDS_Logo.jpg" alt="Chris David Salon" class="h-12 w-auto">
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-gray-700 hover:text-yellow-600">Home</a>
+                    <a href="../index.html#services" class="text-gray-700 hover:text-yellow-600">Services</a>
+                    <a href="color-correction.html" class="text-yellow-600 font-semibold">Color Correction</a>
+                    <a href="balayage.html" class="text-gray-700 hover:text-yellow-600">Balayage</a>
+                    <a href="keratin.html" class="text-gray-700 hover:text-yellow-600">Keratin</a>
+                    <a href="../index.html#contact" class="text-gray-700 hover:text-yellow-600">Contact</a>
+                </div>
+                <a href="https://www.chrisdavidsalonbooking.com" class="bg-yellow-600 text-white px-6 py-3 rounded-full hover:bg-yellow-700">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] overflow-hidden">
+        <img src="../images/hair-color.jpg" alt="Color Correction" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">Color Correction Experts</h1>
+                <p class="text-xl text-white/90 max-w-2xl">Transform your hair disaster into a masterpiece. Our color correction specialists fix what others can't.</p>
+                <div class="mt-8 flex space-x-4">
+                    <a href="https://www.chrisdavidsalonbooking.com" class="bg-yellow-600 text-white px-8 py-4 rounded-full hover:bg-yellow-700 font-semibold">
+                        Book Consultation
+                    </a>
+                    <a href="#before-after" class="bg-white/20 backdrop-blur text-white px-8 py-4 rounded-full hover:bg-white/30 font-semibold border border-white/50">
+                        View Results
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Fix -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Common Color Problems We Fix</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="text-4xl mb-4">🟠</div>
+                    <h3 class="text-xl font-bold mb-2">Brassy & Orange Tones</h3>
+                    <p class="text-gray-600">Neutralize unwanted warm tones and achieve the cool blonde you wanted.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-bold mb-2">Uneven Color</h3>
+                    <p class="text-gray-600">Fix patchy, striped, or banded color for seamless, beautiful results.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="text-4xl mb-4">⚫</div>
+                    <h3 class="text-xl font-bold mb-2">Box Dye Disasters</h3>
+                    <p class="text-gray-600">Correct at-home color attempts and restore your hair's health.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="text-4xl mb-4">💚</div>
+                    <h3 class="text-xl font-bold mb-2">Green Pool Hair</h3>
+                    <p class="text-gray-600">Remove green tints from chlorine and restore natural tones.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="text-4xl mb-4">🔴</div>
+                    <h3 class="text-xl font-bold mb-2">Over-Processed Damage</h3>
+                    <p class="text-gray-600">Repair and restore hair damaged by excessive bleaching or coloring.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Failed Highlights</h3>
+                    <p class="text-gray-600">Transform chunky or striped highlights into beautiful dimension.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Gallery -->
+    <section id="before-after" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-4">Real Transformations</h2>
+            <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+                Slide to reveal the magic. Every correction tells a story of restored confidence.
+            </p>
+            
+            <!-- Before/After Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Transformation 1 -->
+                <div class="before-after-container h-96 rounded-lg overflow-hidden shadow-lg" data-before="../images/11 Hair Color .webp" data-after="../images/hair-color.webp">
+                    <img src="../images/11 Hair Color .webp" alt="Before" class="w-full h-full object-cover">
+                    <div class="image-overlay" style="clip-path: inset(0 50% 0 0);">
+                        <img src="../images/hair-color.webp" alt="After" class="w-full h-full object-cover">
+                    </div>
+                    <div class="before-after-slider">
+                        <div class="before-after-handle">
+                            <i class="fas fa-arrows-alt-h text-gray-600"></i>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded">BEFORE</div>
+                    <div class="absolute top-4 right-4 bg-yellow-600 text-white px-3 py-1 rounded">AFTER</div>
+                </div>
+
+                <!-- Transformation 2 -->
+                <div class="before-after-container h-96 rounded-lg overflow-hidden shadow-lg">
+                    <img src="../images/hair-color.jpg" alt="Before" class="w-full h-full object-cover">
+                    <div class="image-overlay" style="clip-path: inset(0 50% 0 0);">
+                        <img src="../images/signature-service.jpg" alt="After" class="w-full h-full object-cover">
+                    </div>
+                    <div class="before-after-slider">
+                        <div class="before-after-handle">
+                            <i class="fas fa-arrows-alt-h text-gray-600"></i>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded">BEFORE</div>
+                    <div class="absolute top-4 right-4 bg-yellow-600 text-white px-3 py-1 rounded">AFTER</div>
+                </div>
+
+                <!-- More transformations would go here -->
+            </div>
+
+            <!-- Client Testimonials -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Chris fixed my orange disaster in one session! I went from embarrassed to confident."</p>
+                    <p class="font-semibold">- Sarah M.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">"After 3 salons couldn't fix my color, Chris David Salon saved my hair!"</p>
+                    <p class="font-semibold">- Jennifer R.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <i class="fas fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The only salon in Delray I trust with color correction. True artists!"</p>
+                    <p class="font-semibold">- Monica T.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Our Color Correction Process</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="font-bold mb-2">Consultation</h3>
+                    <p class="text-gray-600 text-sm">Free analysis of your hair's current state and correction plan</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="font-bold mb-2">Color Removal</h3>
+                    <p class="text-gray-600 text-sm">Gentle removal of unwanted pigments without damage</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="font-bold mb-2">Tone Correction</h3>
+                    <p class="text-gray-600 text-sm">Precise application of corrective tones for perfect results</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+                    <h3 class="font-bold mb-2">Restoration</h3>
+                    <p class="text-gray-600 text-sm">Deep conditioning treatments to restore health and shine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Investment in Your Confidence</h2>
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Color Correction Services</h3>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between">
+                                <span>Basic Correction (Toner/Gloss)</span>
+                                <span class="font-bold">$185+</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Moderate Correction (Single Process)</span>
+                                <span class="font-bold">$285+</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Major Correction (Multi-Process)</span>
+                                <span class="font-bold">$485+</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Extreme Makeover (Full Day)</span>
+                                <span class="font-bold">$685+</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">What's Included</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                                <span>Free consultation & strand test</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                                <span>Olaplex bond protection treatment</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                                <span>Deep conditioning restoration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                                <span>Take-home care instructions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                                <span>30-day color guarantee</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-gray-600 mb-4">*Final pricing determined during consultation based on hair length, density, and correction complexity</p>
+                    <a href="https://www.chrisdavidsalonbooking.com" class="bg-yellow-600 text-white px-8 py-4 rounded-full hover:bg-yellow-700 font-semibold inline-block">
+                        Book Your Free Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">Color Correction FAQ</h2>
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="font-bold mb-2">How long does color correction take?</h3>
+                    <p class="text-gray-600">Depending on the severity, corrections can take 3-8 hours. Complex cases may require multiple sessions.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="font-bold mb-2">Will color correction damage my hair?</h3>
+                    <p class="text-gray-600">We use gentle, professional products including Olaplex to protect your hair throughout the process.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="font-bold mb-2">Can you fix box dye?</h3>
+                    <p class="text-gray-600">Yes! Box dye correction is one of our specialties, though it may require multiple sessions.</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="font-bold mb-2">How much does it cost?</h3>
+                    <p class="text-gray-600">Corrections start at $185 and can go up to $685+ for extensive work. We provide exact quotes during consultation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-purple-900 to-indigo-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-4">Ready to Love Your Hair Again?</h2>
+            <p class="text-xl text-white/90 mb-8">Don't live with hair you're not proud of. Our color correction experts are here to help.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://www.chrisdavidsalonbooking.com" class="bg-yellow-600 text-white px-8 py-4 rounded-full hover:bg-yellow-700 font-semibold">
+                    Book Color Correction
+                </a>
+                <a href="tel:561-865-5215" class="bg-white/20 backdrop-blur text-white px-8 py-4 rounded-full hover:bg-white/30 font-semibold border border-white/50">
+                    <i class="fas fa-phone mr-2"></i> Call (561) 865-5215
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 Chris David Salon. All rights reserved.</p>
+            <p class="mt-2">223 NE 2nd Ave, Delray Beach, FL 33444</p>
+        </div>
+    </footer>
+
+    <script>
+        // Before/After Slider functionality
+        document.querySelectorAll('.before-after-container').forEach(container => {
+            const slider = container.querySelector('.before-after-slider');
+            const overlay = container.querySelector('.image-overlay');
+            let isDown = false;
+
+            function updateSlider(x) {
+                const rect = container.getBoundingClientRect();
+                const percent = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
+                slider.style.left = percent + '%';
+                overlay.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+            }
+
+            container.addEventListener('mousedown', () => isDown = true);
+            container.addEventListener('mouseup', () => isDown = false);
+            container.addEventListener('mouseleave', () => isDown = false);
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                updateSlider(e.clientX);
+            });
+
+            // Touch support
+            container.addEventListener('touchstart', () => isDown = true);
+            container.addEventListener('touchend', () => isDown = false);
+            container.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                updateSlider(e.touches[0].clientX);
+            });
+        });
+    </script>
+</body>
+</html>

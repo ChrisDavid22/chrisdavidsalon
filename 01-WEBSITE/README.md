@@ -1,5 +1,8 @@
 # Chris David Salon Website
 
+## ⚠️ CRITICAL: CHECK PROJECT-TODO.md FIRST!
+**Before doing ANY work, read [PROJECT-TODO.md](./PROJECT-TODO.md) for active tasks and context**
+
 ## Repository Information
 - **GitHub Repository**: https://github.com/ChrisDavid22/chrisdavidsalon.git
 - **Live Site**: https://chrisdavidsalon.com

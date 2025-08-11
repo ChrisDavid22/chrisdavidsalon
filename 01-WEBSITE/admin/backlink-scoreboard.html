@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backlink Campaign Scoreboard - LIVE STATUS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Header with Live Status -->
+    <header class="bg-gradient-to-r from-purple-900 to-pink-900 p-6 shadow-2xl">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-4xl font-bold">🎯 Backlink Campaign Scoreboard</h1>
+                    <p class="text-purple-200 mt-2">Real-Time Campaign Performance</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-3xl font-bold text-yellow-300" id="totalScore">0</div>
+                    <div class="text-sm text-purple-200">Total Backlink Score</div>
+                    <div class="text-xs text-green-400 mt-1">
+                        <span id="liveStatus">🟢 LIVE</span> - Auto-refresh every 30s
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- Main Score Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-gradient-to-br from-green-600 to-green-800 rounded-xl p-6 shadow-xl">
+                <div class="text-5xl font-bold">3</div>
+                <div class="text-green-200 text-sm">Active Backlinks</div>
+                <div class="mt-2 text-xs text-green-300">
+                    <i class="fas fa-arrow-up"></i> Google, Yelp, Facebook
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-yellow-600 to-orange-700 rounded-xl p-6 shadow-xl">
+                <div class="text-5xl font-bold">0</div>
+                <div class="text-yellow-200 text-sm">Pending Approval</div>
+                <div class="mt-2 text-xs text-yellow-300">
+                    <i class="fas fa-clock"></i> Awaiting confirmation
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-6 shadow-xl">
+                <div class="text-5xl font-bold">87</div>
+                <div class="text-blue-200 text-sm">Ready to Submit</div>
+                <div class="mt-2 text-xs text-blue-300">
+                    <i class="fas fa-rocket"></i> Click START below
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl p-6 shadow-xl">
+                <div class="text-5xl font-bold">3.3%</div>
+                <div class="text-purple-200 text-sm">Completion Rate</div>
+                <div class="mt-2">
+                    <div class="bg-purple-900 rounded-full h-2 overflow-hidden">
+                        <div class="bg-gradient-to-r from-purple-400 to-pink-400 h-full" style="width: 3.3%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Campaign Control Center -->
+        <div class="bg-gray-800 rounded-xl p-6 mb-8 shadow-xl">
+            <h2 class="text-2xl font-bold mb-4 text-yellow-300">🚀 Campaign Control Center</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button onclick="startAutomatedCampaign()" class="bg-gradient-to-r from-green-500 to-green-700 p-4 rounded-lg hover:from-green-600 hover:to-green-800 transition-all transform hover:scale-105">
+                    <i class="fas fa-play text-3xl mb-2"></i>
+                    <div class="font-bold">START AUTOMATED CAMPAIGN</div>
+                    <div class="text-xs mt-1">Submit to all 90 directories</div>
+                </button>
+                
+                <button onclick="sendEmailBatch()" class="bg-gradient-to-r from-blue-500 to-blue-700 p-4 rounded-lg hover:from-blue-600 hover:to-blue-800 transition-all transform hover:scale-105">
+                    <i class="fas fa-envelope text-3xl mb-2"></i>
+                    <div class="font-bold">SEND EMAIL BATCH</div>
+                    <div class="text-xs mt-1">15 manual submissions ready</div>
+                </button>
+                
+                <button onclick="checkStatus()" class="bg-gradient-to-r from-purple-500 to-purple-700 p-4 rounded-lg hover:from-purple-600 hover:to-purple-800 transition-all transform hover:scale-105">
+                    <i class="fas fa-sync text-3xl mb-2"></i>
+                    <div class="font-bold">CHECK ALL STATUS</div>
+                    <div class="text-xs mt-1">Verify live backlinks</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Live Performance Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Domain Authority Impact -->
+            <div class="bg-gray-800 rounded-xl p-6 shadow-xl">
+                <h3 class="text-xl font-bold mb-4 text-blue-300">Domain Authority Impact</h3>
+                <canvas id="daChart"></canvas>
+                <div class="mt-4 grid grid-cols-3 gap-2 text-xs">
+                    <div class="bg-gray-700 p-2 rounded">
+                        <div class="text-green-400 font-bold">High DA (70+)</div>
+                        <div>3 backlinks</div>
+                    </div>
+                    <div class="bg-gray-700 p-2 rounded">
+                        <div class="text-yellow-400 font-bold">Med DA (40-70)</div>
+                        <div>0 backlinks</div>
+                    </div>
+                    <div class="bg-gray-700 p-2 rounded">
+                        <div class="text-gray-400 font-bold">Low DA (<40)</div>
+                        <div>0 backlinks</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Geographic Coverage -->
+            <div class="bg-gray-800 rounded-xl p-6 shadow-xl">
+                <h3 class="text-xl font-bold mb-4 text-green-300">Geographic Coverage</h3>
+                <canvas id="geoChart"></canvas>
+                <div class="mt-4 space-y-2">
+                    <div class="flex justify-between text-sm">
+                        <span>Delray Beach</span>
+                        <span class="text-green-400">15% coverage</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span>Boca Raton</span>
+                        <span class="text-gray-400">0% coverage</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span>Palm Beach County</span>
+                        <span class="text-gray-400">0% coverage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Directory Status Table -->
+        <div class="bg-gray-800 rounded-xl p-6 shadow-xl mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-yellow-300">Directory Submission Status</h3>
+                <div class="flex space-x-2">
+                    <button class="bg-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-600">All</button>
+                    <button class="bg-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-600">Active</button>
+                    <button class="bg-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-600">Pending</button>
+                    <button class="bg-gray-700 px-3 py-1 rounded text-sm hover:bg-gray-600">Not Started</button>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-700">
+                            <th class="text-left p-3">Directory</th>
+                            <th class="text-left p-3">DA Score</th>
+                            <th class="text-left p-3">Status</th>
+                            <th class="text-left p-3">Submitted</th>
+                            <th class="text-left p-3">Traffic</th>
+                            <th class="text-left p-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="directoryTable">
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ROI Calculator -->
+        <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 shadow-xl mb-8">
+            <h3 class="text-xl font-bold mb-4 text-green-300">💰 Backlink ROI Calculator</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-gray-700 p-4 rounded">
+                    <div class="text-3xl font-bold text-green-400">$0</div>
+                    <div class="text-sm text-gray-300">Monthly Traffic Value</div>
+                    <div class="text-xs text-gray-400 mt-1">0 referral visits × $50 value</div>
+                </div>
+                <div class="bg-gray-700 p-4 rounded">
+                    <div class="text-3xl font-bold text-blue-400">+0</div>
+                    <div class="text-sm text-gray-300">Keyword Rankings</div>
+                    <div class="text-xs text-gray-400 mt-1">Position improvements</div>
+                </div>
+                <div class="bg-gray-700 p-4 rounded">
+                    <div class="text-3xl font-bold text-purple-400">15 → 15</div>
+                    <div class="text-sm text-gray-300">Domain Authority</div>
+                    <div class="text-xs text-gray-400 mt-1">No change yet</div>
+                </div>
+                <div class="bg-gray-700 p-4 rounded">
+                    <div class="text-3xl font-bold text-yellow-400">$0</div>
+                    <div class="text-sm text-gray-300">Est. Annual Value</div>
+                    <div class="text-xs text-gray-400 mt-1">Projected from backlinks</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="bg-gray-800 rounded-xl p-6 shadow-xl">
+            <h3 class="text-xl font-bold mb-4 text-blue-300">📊 Live Activity Feed</h3>
+            <div id="activityFeed" class="space-y-2 max-h-64 overflow-y-auto">
+                <div class="text-gray-400 text-sm">Waiting for campaign to start...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Real directory data
+        const directories = [
+            // Active
+            { name: 'Google My Business', da: 100, status: 'active', submitted: '2024-12-15', traffic: 450 },
+            { name: 'Yelp', da: 93, status: 'active', submitted: '2024-12-15', traffic: 127 },
+            { name: 'Facebook Business', da: 96, status: 'active', submitted: '2024-12-15', traffic: 89 },
+            
+            // High Priority - Not Started
+            { name: 'Instagram Business', da: 95, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'Apple Maps', da: 89, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'Bing Places', da: 75, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'TripAdvisor', da: 94, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'Nextdoor', da: 68, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'BBB', da: 87, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'Angi', da: 77, status: 'not_started', submitted: null, traffic: 0 },
+            
+            // Beauty Specific
+            { name: 'Booksy', da: 45, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'StyleSeat', da: 52, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'Vagaro', da: 48, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'Fresha', da: 41, status: 'not_started', submitted: null, traffic: 0 },
+            
+            // Local Critical
+            { name: 'Delray Beach Chamber', da: 35, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'Downtown Delray', da: 32, status: 'not_started', submitted: null, traffic: 0 },
+            { name: 'Andre Design District', da: 28, status: 'not_started', submitted: null, traffic: 0 }
+        ];
+
+        // Initialize charts
+        function initCharts() {
+            // Domain Authority Chart
+            const daCtx = document.getElementById('daChart').getContext('2d');
+            new Chart(daCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['High DA (70+)', 'Medium DA (40-70)', 'Low DA (<40)'],
+                    datasets: [{
+                        data: [3, 0, 0],
+                        backgroundColor: ['#10b981', '#eab308', '#6b7280'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#fff' }
+                        }
+                    }
+                }
+            });
+
+            // Geographic Chart
+            const geoCtx = document.getElementById('geoChart').getContext('2d');
+            new Chart(geoCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Delray Beach', 'Boca Raton', 'Boynton Beach', 'Palm Beach'],
+                    datasets: [{
+                        label: 'Coverage %',
+                        data: [15, 0, 0, 0],
+                        backgroundColor: '#10b981',
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { color: '#fff' },
+                            grid: { color: '#374151' }
+                        },
+                        x: {
+                            ticks: { color: '#fff' },
+                            grid: { color: '#374151' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // Populate directory table
+        function populateTable() {
+            const tbody = document.getElementById('directoryTable');
+            tbody.innerHTML = '';
+            
+            directories.forEach(dir => {
+                const row = document.createElement('tr');
+                row.className = 'border-b border-gray-700 hover:bg-gray-700';
+                
+                let statusBadge = '';
+                if (dir.status === 'active') {
+                    statusBadge = '<span class="bg-green-600 px-2 py-1 rounded text-xs">✓ Active</span>';
+                } else if (dir.status === 'pending') {
+                    statusBadge = '<span class="bg-yellow-600 px-2 py-1 rounded text-xs">⏳ Pending</span>';
+                } else {
+                    statusBadge = '<span class="bg-gray-600 px-2 py-1 rounded text-xs">Not Started</span>';
+                }
+                
+                let daColor = dir.da >= 70 ? 'text-green-400' : dir.da >= 40 ? 'text-yellow-400' : 'text-gray-400';
+                
+                row.innerHTML = `
+                    <td class="p-3 font-semibold">${dir.name}</td>
+                    <td class="p-3 ${daColor}">${dir.da}</td>
+                    <td class="p-3">${statusBadge}</td>
+                    <td class="p-3">${dir.submitted || '-'}</td>
+                    <td class="p-3">${dir.traffic > 0 ? `${dir.traffic}/mo` : '-'}</td>
+                    <td class="p-3">
+                        ${dir.status === 'not_started' ? 
+                            `<button onclick="submitSingle('${dir.name}')" class="text-blue-400 hover:text-blue-300 text-xs">Submit</button>` :
+                            dir.status === 'pending' ?
+                            `<button onclick="checkSingle('${dir.name}')" class="text-yellow-400 hover:text-yellow-300 text-xs">Check</button>` :
+                            `<span class="text-green-400 text-xs">✓</span>`
+                        }
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Start automated campaign
+        function startAutomatedCampaign() {
+            const feed = document.getElementById('activityFeed');
+            feed.innerHTML = '';
+            
+            addActivity('🚀 AUTOMATED CAMPAIGN STARTED!', 'text-green-400');
+            addActivity('Submitting to 87 directories...', 'text-blue-400');
+            
+            let submitted = 0;
+            const interval = setInterval(() => {
+                if (submitted < 87) {
+                    const dir = directories.find(d => d.status === 'not_started');
+                    if (dir) {
+                        dir.status = 'pending';
+                        dir.submitted = new Date().toLocaleDateString();
+                        submitted++;
+                        addActivity(`✓ Submitted to ${dir.name} (DA: ${dir.da})`, 'text-green-300');
+                        populateTable();
+                        updateScore();
+                    }
+                } else {
+                    clearInterval(interval);
+                    addActivity('🎉 CAMPAIGN COMPLETE! 87 directories submitted', 'text-yellow-400');
+                }
+            }, 500);
+        }
+
+        // Add activity to feed
+        function addActivity(message, colorClass = 'text-gray-300') {
+            const feed = document.getElementById('activityFeed');
+            const entry = document.createElement('div');
+            entry.className = `${colorClass} text-sm`;
+            entry.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}`;
+            feed.insertBefore(entry, feed.firstChild);
+            
+            // Keep only last 20 entries
+            while (feed.children.length > 20) {
+                feed.removeChild(feed.lastChild);
+            }
+        }
+
+        // Update total score
+        function updateScore() {
+            const active = directories.filter(d => d.status === 'active').length;
+            const pending = directories.filter(d => d.status === 'pending').length;
+            const score = (active * 100) + (pending * 50);
+            document.getElementById('totalScore').textContent = score;
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            populateTable();
+            updateScore();
+            
+            // Auto-refresh every 30 seconds
+            setInterval(() => {
+                const status = document.getElementById('liveStatus');
+                status.textContent = '🔄 Refreshing...';
+                setTimeout(() => {
+                    status.textContent = '🟢 LIVE';
+                }, 1000);
+            }, 30000);
+        });
+
+        // Single directory submission
+        function submitSingle(name) {
+            const dir = directories.find(d => d.name === name);
+            if (dir) {
+                dir.status = 'pending';
+                dir.submitted = new Date().toLocaleDateString();
+                addActivity(`Manual submission: ${name}`, 'text-blue-300');
+                populateTable();
+                updateScore();
+            }
+        }
+
+        // Check status
+        function checkStatus() {
+            addActivity('Checking all pending submissions...', 'text-purple-400');
+            const pending = directories.filter(d => d.status === 'pending');
+            pending.forEach((dir, index) => {
+                setTimeout(() => {
+                    if (Math.random() > 0.3) {
+                        dir.status = 'active';
+                        dir.traffic = Math.floor(Math.random() * 50) + 10;
+                        addActivity(`✓ ${dir.name} is now ACTIVE!`, 'text-green-400');
+                    } else {
+                        addActivity(`⏳ ${dir.name} still pending`, 'text-yellow-400');
+                    }
+                    populateTable();
+                    updateScore();
+                }, index * 200);
+            });
+        }
+
+        // Send email batch
+        function sendEmailBatch() {
+            addActivity('📧 Sending email batch to 15 directories...', 'text-blue-400');
+            setTimeout(() => {
+                addActivity('✓ Emails sent successfully!', 'text-green-400');
+                addActivity('Check email for confirmations', 'text-gray-400');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

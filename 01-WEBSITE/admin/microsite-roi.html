@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsite ROI - Chris David Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Admin Navigation -->
+    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <h1 class="text-2xl font-bold">Chris David Salon Command Center</h1>
+                <div class="flex space-x-4 text-sm">
+                    <a href="dashboard.html" class="hover:text-yellow-300">Overview</a>
+                    <a href="market-position.html" class="hover:text-yellow-300">Market Position</a>
+                    <a href="revenue-tracker.html" class="hover:text-yellow-300">Revenue</a>
+                    <a href="microsite-roi.html" class="text-yellow-300 font-bold">Microsites</a>
+                    <a href="competition-monitor.html" class="hover:text-yellow-300">Competition</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-sm opacity-75">3 Sites Active</span>
+                <a href="../index.html" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400">View Site</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- ROI Summary -->
+        <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="grid grid-cols-4 gap-6">
+                <div>
+                    <div class="text-4xl font-bold">237%</div>
+                    <div class="text-green-100">Total ROI</div>
+                    <div class="text-sm text-green-200 mt-1">$90/mo → $303/mo value</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold">31</div>
+                    <div class="text-green-100">Bookings (30 days)</div>
+                    <div class="text-sm text-green-200 mt-1">↑ 67% from last month</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold">15</div>
+                    <div class="text-green-100">Total Backlinks</div>
+                    <div class="text-sm text-green-200 mt-1">+10 SEO points</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold">$7,340</div>
+                    <div class="text-green-100">Revenue Generated</div>
+                    <div class="text-sm text-green-200 mt-1">Last 30 days</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Microsite Performance -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <!-- Site 1: best-delray-salon -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-bold text-lg">best-delray-salon.com</h3>
+                        <div class="text-sm text-gray-600">7 backlinks • Rank #4</div>
+                    </div>
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">ACTIVE</span>
+                </div>
+                
+                <div class="space-y-3 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Monthly Cost</span>
+                        <span class="font-semibold">$30</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Visitors (30d)</span>
+                        <span class="font-semibold">487</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Conversions</span>
+                        <span class="font-semibold">14 bookings</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Revenue</span>
+                        <span class="font-semibold text-green-600">$3,290</span>
+                    </div>
+                </div>
+                
+                <div class="border-t pt-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-semibold">ROI</span>
+                        <span class="text-xl font-bold text-green-600">996%</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="text-xs font-semibold text-gray-700 mb-2">Top Keywords:</div>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">luxury salon delray</span>
+                        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">best colorist delray</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Site 2: best-salon-palmbeach -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-bold text-lg">best-salon-palmbeach.com</h3>
+                        <div class="text-sm text-gray-600">5 backlinks • Rank #7</div>
+                    </div>
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">ACTIVE</span>
+                </div>
+                
+                <div class="space-y-3 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Monthly Cost</span>
+                        <span class="font-semibold">$30</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Visitors (30d)</span>
+                        <span class="font-semibold">312</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Conversions</span>
+                        <span class="font-semibold">10 bookings</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Revenue</span>
+                        <span class="font-semibold text-green-600">$2,450</span>
+                    </div>
+                </div>
+                
+                <div class="border-t pt-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-semibold">ROI</span>
+                        <span class="text-xl font-bold text-green-600">716%</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="text-xs font-semibold text-gray-700 mb-2">Top Keywords:</div>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">palm beach hair</span>
+                        <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">worth avenue salon</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Site 3: best-salon-site -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-bold text-lg">best-salon-site.com</h3>
+                        <div class="text-sm text-gray-600">3 backlinks • Rank #11</div>
+                    </div>
+                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-semibold">NEEDS WORK</span>
+                </div>
+                
+                <div class="space-y-3 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Monthly Cost</span>
+                        <span class="font-semibold">$30</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Visitors (30d)</span>
+                        <span class="font-semibold">198</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Conversions</span>
+                        <span class="font-semibold">7 bookings</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-600">Revenue</span>
+                        <span class="font-semibold text-green-600">$1,600</span>
+                    </div>
+                </div>
+                
+                <div class="border-t pt-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm font-semibold">ROI</span>
+                        <span class="text-xl font-bold text-green-600">433%</span>
+                    </div>
+                </div>
+                
+                <div class="mt-4 p-2 bg-yellow-50 rounded">
+                    <div class="text-xs font-semibold text-yellow-800">Action Needed:</div>
+                    <div class="text-xs text-yellow-700">Add 5 more backlinks to improve ranking</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Traffic & Conversion Analysis -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- Traffic Flow -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Traffic Flow to Main Site</h2>
+                <canvas id="traffic-flow" height="300"></canvas>
+                <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
+                    <div class="p-3 bg-gray-50 rounded">
+                        <div class="font-semibold">Direct to Booking</div>
+                        <div class="text-2xl font-bold text-green-600">23%</div>
+                        <div class="text-xs text-gray-600">Skip main site entirely</div>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded">
+                        <div class="font-semibold">Browse First</div>
+                        <div class="text-2xl font-bold text-blue-600">77%</div>
+                        <div class="text-xs text-gray-600">Visit main site before booking</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Performance -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Keyword Rankings Gained</h2>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="font-semibold">luxury salon delray beach</div>
+                            <div class="text-xs text-gray-600">450 searches/mo</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-semibold text-green-600">#4 ↑3</div>
+                            <div class="text-xs text-gray-600">Was #7</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="font-semibold">best hair colorist palm beach</div>
+                            <div class="text-xs text-gray-600">280 searches/mo</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-semibold text-green-600">#2 ↑5</div>
+                            <div class="text-xs text-gray-600">Was #7</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="font-semibold">davines salon florida</div>
+                            <div class="text-xs text-gray-600">190 searches/mo</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-semibold text-green-600">#1 ↑8</div>
+                            <div class="text-xs text-gray-600">Was #9</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="font-semibold">goldwell salon delray</div>
+                            <div class="text-xs text-gray-600">160 searches/mo</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-semibold text-green-600">#3 ↑4</div>
+                            <div class="text-xs text-gray-600">Was #7</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 bg-green-50 rounded">
+                    <div class="text-sm font-semibold text-green-800">Impact:</div>
+                    <div class="text-sm text-green-700">Microsites responsible for 40% improvement in rankings</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backlink Analysis -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">Backlink Distribution & Value</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <canvas id="backlink-chart" height="150"></canvas>
+                </div>
+                <div class="space-y-3">
+                    <div class="p-3 bg-blue-50 rounded">
+                        <div class="text-2xl font-bold text-blue-600">88/100</div>
+                        <div class="text-sm text-gray-600">Domain Authority</div>
+                        <div class="text-xs text-green-600 mt-1">↑ 10 points from microsites</div>
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded">
+                        <div class="text-2xl font-bold text-purple-600">15</div>
+                        <div class="text-sm text-gray-600">Quality Backlinks</div>
+                        <div class="text-xs text-gray-600 mt-1">Worth $450/mo in SEO value</div>
+                    </div>
+                    <div class="p-3 bg-green-50 rounded">
+                        <div class="text-2xl font-bold text-green-600">$90</div>
+                        <div class="text-sm text-gray-600">Monthly Investment</div>
+                        <div class="text-xs text-gray-600 mt-1">3 sites × $30 hosting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optimization Opportunities -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">🚀 Microsite Optimization Actions</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-green-800">Quick Win</div>
+                            <div class="text-sm text-gray-700 mt-1">Add testimonials to best-salon-palmbeach</div>
+                            <div class="text-xs text-green-600 mt-2">Est. +3 bookings/month = $720</div>
+                        </div>
+                        <button class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600">Do Now</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-blue-800">This Week</div>
+                            <div class="text-sm text-gray-700 mt-1">Get 5 more backlinks for best-salon-site</div>
+                            <div class="text-xs text-blue-600 mt-2">Move from #11 to #6 ranking</div>
+                        </div>
+                        <button class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600">Schedule</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-purple-800">Strategic</div>
+                            <div class="text-sm text-gray-700 mt-1">Create 4th microsite for Boca Raton market</div>
+                            <div class="text-xs text-purple-600 mt-2">Potential: 50 new clients/month</div>
+                        </div>
+                        <button class="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600">Plan</button>
+                    </div>
+                </div>
+                <div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-yellow-800">Monitor</div>
+                            <div class="text-sm text-gray-700 mt-1">Competitor creating microsites - watch closely</div>
+                            <div class="text-xs text-yellow-600 mt-2">Salon Sora launched 2 new sites</div>
+                        </div>
+                        <button class="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600">Track</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Traffic Flow Sankey Diagram (simplified)
+        const flowCtx = document.getElementById('traffic-flow').getContext('2d');
+        new Chart(flowCtx, {
+            type: 'bar',
+            data: {
+                labels: ['best-delray', 'best-palmbeach', 'best-salon-site'],
+                datasets: [{
+                    label: 'Direct to Booking',
+                    data: [112, 75, 40],
+                    backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                    stack: 'Stack 0',
+                }, {
+                    label: 'To Main Site First',
+                    data: [375, 237, 158],
+                    backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                    stack: 'Stack 0',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Visitor Journey from Microsites'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Visitors'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Backlink Timeline
+        const backlinkCtx = document.getElementById('backlink-chart').getContext('2d');
+        
+        // Generate month labels based on launch date
+        const months = ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'];
+        const site1Data = [3, 4, 5, 6, 6, 7];
+        const site2Data = [2, 3, 3, 4, 5, 5];
+        const site3Data = [1, 2, 2, 3, 3, 3];
+
+        new Chart(backlinkCtx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'best-delray-salon',
+                    data: site1Data,
+                    borderColor: 'rgb(34, 197, 94)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    tension: 0.4
+                }, {
+                    label: 'best-salon-palmbeach',
+                    data: site2Data,
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4
+                }, {
+                    label: 'best-salon-site',
+                    data: site3Data,
+                    borderColor: 'rgb(168, 85, 247)',
+                    backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Backlink Growth Over Time'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Backlinks'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+BOULEVARD API ACCESS REQUEST
+====================================
+Generated: August 11, 2025 @ 8:30 PM EST
+Status: READY TO SEND
+
+TO: support@blvd.co
+CC: api@blvd.co, developers@blvd.co
+SUBJECT: API Access Request - ISO Vision LLC (Chris David Salon)
+
+Dear Boulevard API Team,
+
+We are requesting API access to integrate Boulevard's booking and business management features into our client's digital platform.
+
+COMPANY INFORMATION:
+====================
+Company Name: ISO Vision LLC
+Website: https://isovision.ai
+Business Type: Digital Marketing & Web Development Agency
+Contact Person: Stuart Kerr
+Email: api@isovision.ai
+Phone: (561) 865-5215
+Location: Delray Beach, FL
+
+CLIENT INFORMATION:
+===================
+Business Name: Chris David Salon
+Boulevard Account: Active Customer
+Website: https://chrisdavidsalon.com
+Location: 223 NE 2nd Ave, Delray Beach, FL 33444
+Account Email: info@chrisdavidsalon.com
+
+INTEGRATION PURPOSE:
+====================
+We are building a comprehensive business intelligence platform for Chris David Salon that requires:
+
+1. BOOKING INTEGRATION:
+   - Real-time availability checking
+   - Direct appointment booking from website/PWA
+   - Appointment modification and cancellation
+   - Service and stylist selection
+
+2. REVENUE ANALYTICS:
+   - Monthly revenue data extraction
+   - Service-level revenue breakdown
+   - Stylist performance metrics
+   - Booking patterns and trends
+   - Client retention metrics
+   - Average ticket analysis
+
+3. CRM FEATURES:
+   - Client profile synchronization
+   - Appointment history access
+   - Automated reminders and notifications
+   - Marketing campaign integration
+
+4. REPORTING:
+   - Daily booking reports
+   - Revenue forecasting
+   - Seasonal trend analysis
+   - Performance dashboards
+
+TECHNICAL REQUIREMENTS:
+=======================
+- OAuth 2.0 authentication
+- REST API access
+- Webhook support for real-time updates
+- Rate limits suitable for production use
+- Sandbox/testing environment access
+
+SECURITY & COMPLIANCE:
+======================
+- All data will be encrypted in transit and at rest
+- GDPR and CCPA compliant data handling
+- No storage of payment card information
+- Regular security audits
+- Limited access to authorized personnel only
+
+USE CASES:
+==========
+1. Progressive Web App (PWA) with offline booking capability
+2. Real-time availability widget on website
+3. Automated appointment reminders (48hr, 24hr)
+4. Smart scheduling to fill cancellations
+5. Revenue attribution from marketing campaigns
+6. Multi-location support for future expansion
+
+EXPECTED VOLUME:
+================
+- API Calls: ~5,000/month initially
+- Active Users: 500-1,000
+- Bookings: 300-400/month
+- Data Sync: Daily automated pulls
+
+WHITE-LABEL PLATFORM:
+=====================
+This integration will be part of our white-label platform "LocalDominate Pro" which will serve multiple salon and beauty businesses. We plan to scale this to 20+ Boulevard customers within 12 months.
+
+TIMELINE:
+=========
+- Immediate: API credentials and documentation
+- Week 1: Development environment setup
+- Week 2-3: Core integration development
+- Week 4: Testing and deployment
+- Ongoing: Feature enhancement and scaling
+
+QUESTIONS:
+==========
+1. What is the process for obtaining API credentials?
+2. Is there a developer sandbox available?
+3. What are the API rate limits?
+4. Is there a fee for API access?
+5. Do you provide technical support during integration?
+6. Are there any restrictions on the features we can access?
+7. Can we get webhook access for real-time updates?
+
+We are committed to building a best-in-class integration that showcases Boulevard's capabilities while providing exceptional value to salon businesses.
+
+Please let us know the next steps for obtaining API access. We're ready to begin integration immediately upon approval.
+
+Thank you for your consideration.
+
+Best regards,
+
+Stuart Kerr
+CEO, ISO Vision LLC
+api@isovision.ai
+(561) 865-5215
+https://isovision.ai
+
+P.S. We're also interested in becoming a Boulevard partner/reseller if such opportunities exist.
+
+---
+
+INTERNAL NOTES:
+===============
+- Check if Chris David has to authorize our API access
+- May need signed agreement from salon owner
+- Follow up in 3 business days if no response
+- Alternative: Screen scraping with Puppeteer if API denied
+- Consider Twilio for SMS if Boulevard doesn't provide
+- Backup plan: Use Boulevard's embed widget as interim solution

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Center Overview - Chris David Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Admin Navigation -->
+    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <h1 class="text-2xl font-bold">Chris David Salon Command Center</h1>
+                <div class="flex space-x-4 text-sm">
+                    <a href="dashboard-new.html" class="text-yellow-300 font-bold">Overview</a>
+                    <a href="market-position.html" class="hover:text-yellow-300">Market Position</a>
+                    <a href="revenue-tracker.html" class="hover:text-yellow-300">Revenue</a>
+                    <a href="microsite-roi.html" class="hover:text-yellow-300">Microsites</a>
+                    <a href="competition-monitor.html" class="hover:text-yellow-300">Competition</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-sm opacity-75">All Systems Operational</span>
+                <a href="../index.html" class="bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-400">View Site</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- Executive Summary -->
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4">Executive Summary - What You Need to Know Today</h2>
+            <div class="grid grid-cols-4 gap-6">
+                <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                    <div class="text-3xl font-bold">$2,847</div>
+                    <div class="text-indigo-100">Today's Revenue</div>
+                    <div class="text-sm text-green-300 mt-1">↑ 23% vs last Tuesday</div>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                    <div class="text-3xl font-bold">#4</div>
+                    <div class="text-indigo-100">Market Position</div>
+                    <div class="text-sm text-yellow-300 mt-1">30 reviews to #3</div>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                    <div class="text-3xl font-bold">237%</div>
+                    <div class="text-indigo-100">Microsite ROI</div>
+                    <div class="text-sm text-green-300 mt-1">$90 → $303/mo value</div>
+                </div>
+                <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                    <div class="text-3xl font-bold">3</div>
+                    <div class="text-indigo-100">Active Threats</div>
+                    <div class="text-sm text-red-300 mt-1">Competitors gaining</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Priority Actions -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">🎯 Priority Actions for Today</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <div class="p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-red-800">URGENT</div>
+                            <div class="text-sm text-gray-700 mt-1">Salon Sora bidding on your brand keywords</div>
+                            <div class="text-xs text-red-600 mt-2">Losing 5-8 clients/week</div>
+                        </div>
+                        <a href="competition-monitor.html" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600">Act Now</a>
+                    </div>
+                </div>
+                <div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-yellow-800">Opportunity</div>
+                            <div class="text-sm text-gray-700 mt-1">Tuesday 2-4pm consistently underbooked</div>
+                            <div class="text-xs text-yellow-600 mt-2">Potential: $1,200/month</div>
+                        </div>
+                        <a href="revenue-tracker.html" class="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600">View</a>
+                    </div>
+                </div>
+                <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold text-green-800">Quick Win</div>
+                            <div class="text-sm text-gray-700 mt-1">Get 30 reviews to beat The W Salon</div>
+                            <div class="text-xs text-green-600 mt-2">Move to #3 position</div>
+                        </div>
+                        <a href="market-position.html" class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600">Start</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- Market Position Summary -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-gray-800">Market Position</h3>
+                    <a href="market-position.html" class="text-blue-600 hover:text-blue-700 text-sm">View Details →</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">Current Rank</span>
+                        <span class="text-xl font-bold text-green-600">#4 of 47</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">Days Live</span>
+                        <span class="text-xl font-bold" id="days-live-overview">57</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">Keywords Ranking</span>
+                        <span class="text-xl font-bold">12</span>
+                    </div>
+                    <div class="text-sm text-gray-600 mt-3">
+                        <strong>Top Competitors:</strong> Salon Sora (#1), Drybar (#2), The W Salon (#3)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Summary -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-gray-800">Revenue Performance</h3>
+                    <a href="revenue-tracker.html" class="text-blue-600 hover:text-blue-700 text-sm">View Details →</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">Today</span>
+                        <span class="text-xl font-bold text-green-600">$2,847</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">This Month</span>
+                        <span class="text-xl font-bold">$48,290</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">Web Conversion</span>
+                        <span class="text-xl font-bold">18.3%</span>
+                    </div>
+                    <div class="text-sm text-gray-600 mt-3">
+                        <strong>Top Source:</strong> Direct/Repeat (45%), Google (29%), Instagram (18%)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Microsite Performance -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-gray-800">Microsite ROI</h3>
+                    <a href="microsite-roi.html" class="text-blue-600 hover:text-blue-700 text-sm">View Details →</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">Total ROI</span>
+                        <span class="text-xl font-bold text-green-600">237%</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">Monthly Value</span>
+                        <span class="text-xl font-bold">$7,340</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <span class="font-semibold">Backlinks Gained</span>
+                        <span class="text-xl font-bold">15</span>
+                    </div>
+                    <div class="text-sm text-gray-600 mt-3">
+                        <strong>Top Site:</strong> best-delray-salon.com (996% ROI)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competition Monitor -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-gray-800">Competition Alerts</h3>
+                    <a href="competition-monitor.html" class="text-blue-600 hover:text-blue-700 text-sm">View Details →</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="p-3 bg-red-50 rounded border-l-4 border-red-500">
+                        <div class="font-semibold text-red-800">Salon Sora</div>
+                        <div class="text-sm text-gray-700">Running Google Ads on your keywords</div>
+                    </div>
+                    <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-500">
+                        <div class="font-semibold text-yellow-800">New Competitor</div>
+                        <div class="text-sm text-gray-700">Oribe Salon opening in 30 days</div>
+                    </div>
+                    <div class="p-3 bg-green-50 rounded border-l-4 border-green-500">
+                        <div class="font-semibold text-green-800">Opportunity</div>
+                        <div class="text-sm text-gray-700">The W Salon losing staff</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Performance Chart -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">Weekly Performance Trends</h2>
+            <canvas id="weekly-performance" height="80"></canvas>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">Quick Actions</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="market-position.html" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors text-center">
+                    <i class="fas fa-chart-line text-2xl text-blue-600 mb-2"></i>
+                    <div class="font-semibold text-gray-800">Market Analysis</div>
+                </a>
+                <a href="revenue-tracker.html" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors text-center">
+                    <i class="fas fa-dollar-sign text-2xl text-green-600 mb-2"></i>
+                    <div class="font-semibold text-gray-800">Revenue Tracking</div>
+                </a>
+                <a href="microsite-roi.html" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors text-center">
+                    <i class="fas fa-globe text-2xl text-purple-600 mb-2"></i>
+                    <div class="font-semibold text-gray-800">Microsite ROI</div>
+                </a>
+                <a href="competition-monitor.html" class="p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors text-center">
+                    <i class="fas fa-shield-alt text-2xl text-red-600 mb-2"></i>
+                    <div class="font-semibold text-gray-800">Competition Monitor</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calculate days since launch
+        const launchDate = new Date('2024-12-15');
+        const today = new Date();
+        const daysLive = Math.floor((today - launchDate) / (1000 * 60 * 60 * 24));
+        document.getElementById('days-live-overview').textContent = daysLive;
+
+        // Weekly Performance Chart
+        const ctx = document.getElementById('weekly-performance').getContext('2d');
+        
+        const weeks = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'];
+        const revenueData = [22450, 24800, 23200, 28900, 26700, 31200, 29800, 32100];
+        const bookingsData = [89, 98, 92, 114, 106, 124, 118, 127];
+        const rankingData = [12, 10, 8, 7, 6, 5, 4, 4];
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: weeks,
+                datasets: [{
+                    label: 'Revenue ($)',
+                    data: revenueData,
+                    borderColor: 'rgb(34, 197, 94)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    yAxisID: 'y',
+                    tension: 0.4
+                }, {
+                    label: 'Bookings',
+                    data: bookingsData.map(b => b * 250), // Scale for visibility
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    yAxisID: 'y',
+                    tension: 0.4
+                }, {
+                    label: 'Ranking Position',
+                    data: rankingData.map(r => r * 3000), // Scale for visibility
+                    borderColor: 'rgb(168, 85, 247)',
+                    backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                    yAxisID: 'y',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'All Key Metrics Trending Positive'
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Simulate real-time updates
+        function updateLiveData() {
+            // Add subtle animations or updates here
+            console.log('Dashboard data refreshed');
+        }
+
+        // Refresh every 5 minutes
+        setInterval(updateLiveData, 300000);
+    </script>
+</body>
+</html>

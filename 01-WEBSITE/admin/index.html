@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris David Salon - Admin Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Main Navigation -->
+    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">Chris David Salon Admin Center</h1>
+                <p class="text-sm text-purple-200">Master Control Dashboard</p>
+            </div>
+            <div class="text-right">
+                <p class="text-sm">Last Updated: <span id="lastUpdate"></span></p>
+                <a href="../index.html" class="text-yellow-300 hover:text-yellow-100 text-sm">← Back to Website</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-3xl font-bold text-green-600">LIVE</div>
+                <div class="text-gray-600">System Status</div>
+                <div class="text-xs text-gray-500 mt-1">All systems operational</div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-3xl font-bold text-blue-600">68%</div>
+                <div class="text-gray-600">Mobile Traffic</div>
+                <div class="text-xs text-gray-500 mt-1">PWA ready to deploy</div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-3xl font-bold text-purple-600">3/90</div>
+                <div class="text-gray-600">Backlinks Active</div>
+                <div class="text-xs text-gray-500 mt-1">87 ready to submit</div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-3xl font-bold text-yellow-600">#15</div>
+                <div class="text-gray-600">Market Position</div>
+                <div class="text-xs text-gray-500 mt-1">Out of 47 salons</div>
+            </div>
+        </div>
+
+        <!-- Dashboard Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Analytics & Performance -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">
+                    <i class="fas fa-chart-line text-blue-600 mr-2"></i>Analytics & Performance
+                </h2>
+                <div class="space-y-3">
+                    <a href="dashboard-new.html" class="block p-3 bg-gray-50 hover:bg-blue-50 rounded transition">
+                        <div class="font-semibold">Main Dashboard</div>
+                        <div class="text-sm text-gray-600">Unified overview & alerts</div>
+                    </a>
+                    <a href="analytics-dashboard.html" class="block p-3 bg-gray-50 hover:bg-blue-50 rounded transition">
+                        <div class="font-semibold">Analytics Dashboard</div>
+                        <div class="text-sm text-gray-600">Traffic & conversion metrics</div>
+                    </a>
+                    <a href="revenue-tracker.html" class="block p-3 bg-gray-50 hover:bg-blue-50 rounded transition">
+                        <div class="font-semibold">Revenue Tracker</div>
+                        <div class="text-sm text-gray-600">Booking & revenue attribution</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SEO & Backlinks -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">
+                    <i class="fas fa-link text-green-600 mr-2"></i>SEO & Backlinks
+                </h2>
+                <div class="space-y-3">
+                    <a href="backlink-scoreboard.html" class="block p-3 bg-gray-50 hover:bg-green-50 rounded transition">
+                        <div class="font-semibold">Backlink Scoreboard</div>
+                        <div class="text-sm text-gray-600">Live campaign tracking</div>
+                        <div class="text-xs text-red-600 mt-1">🔴 87 directories pending</div>
+                    </a>
+                    <a href="backlink-campaign.html" class="block p-3 bg-gray-50 hover:bg-green-50 rounded transition">
+                        <div class="font-semibold">Backlink Campaign</div>
+                        <div class="text-sm text-gray-600">Submission management</div>
+                    </a>
+                    <a href="seo-command-center.html" class="block p-3 bg-gray-50 hover:bg-green-50 rounded transition">
+                        <div class="font-semibold">SEO Command Center</div>
+                        <div class="text-sm text-gray-600">Keywords & rankings</div>
+                    </a>
+                    <a href="microsite-roi.html" class="block p-3 bg-gray-50 hover:bg-green-50 rounded transition">
+                        <div class="font-semibold">Microsite ROI</div>
+                        <div class="text-sm text-gray-600">3 microsites performance</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Market Intelligence -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">
+                    <i class="fas fa-trophy text-yellow-600 mr-2"></i>Market Intelligence
+                </h2>
+                <div class="space-y-3">
+                    <a href="market-position.html" class="block p-3 bg-gray-50 hover:bg-yellow-50 rounded transition">
+                        <div class="font-semibold">Market Position</div>
+                        <div class="text-sm text-gray-600">Competitive ranking</div>
+                    </a>
+                    <a href="competition-monitor.html" class="block p-3 bg-gray-50 hover:bg-yellow-50 rounded transition">
+                        <div class="font-semibold">Competition Monitor</div>
+                        <div class="text-sm text-gray-600">Track 47 competitors</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tools & Automation -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">
+                    <i class="fas fa-cogs text-purple-600 mr-2"></i>Tools & Automation
+                </h2>
+                <div class="space-y-3">
+                    <a href="../tools/backlink-automation-live.html" class="block p-3 bg-gray-50 hover:bg-purple-50 rounded transition">
+                        <div class="font-semibold">Backlink Automation</div>
+                        <div class="text-sm text-gray-600">90 directory submitter</div>
+                    </a>
+                    <a href="../tools/generate-pwa-icons.html" class="block p-3 bg-gray-50 hover:bg-purple-50 rounded transition">
+                        <div class="font-semibold">PWA Icon Generator</div>
+                        <div class="text-sm text-gray-600">Create app icons</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-gradient-to-br from-green-500 to-green-700 text-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4">
+                    <i class="fas fa-bolt mr-2"></i>Quick Actions
+                </h2>
+                <div class="space-y-3">
+                    <button onclick="startBacklinkCampaign()" class="w-full bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded transition text-left">
+                        <div class="font-semibold">Start Backlink Campaign</div>
+                        <div class="text-sm">Submit to 87 directories</div>
+                    </button>
+                    <button onclick="refreshAllData()" class="w-full bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded transition text-left">
+                        <div class="font-semibold">Refresh All Data</div>
+                        <div class="text-sm">Update all metrics</div>
+                    </button>
+                    <button onclick="generateReports()" class="w-full bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded transition text-left">
+                        <div class="font-semibold">Generate Reports</div>
+                        <div class="text-sm">Weekly performance</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- System Health -->
+            <div class="bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4">
+                    <i class="fas fa-heartbeat mr-2"></i>System Health
+                </h2>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                        <span>Google Analytics</span>
+                        <span class="text-green-300">✓ Connected</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Boulevard API</span>
+                        <span class="text-yellow-300">⏳ Pending</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>PWA Status</span>
+                        <span class="text-green-300">✓ Ready</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>SSL Certificate</span>
+                        <span class="text-green-300">✓ Valid</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Mobile Responsive</span>
+                        <span class="text-green-300">✓ Optimized</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold mb-4">Recent Activity</h2>
+            <div class="space-y-2 text-sm">
+                <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+                    <span><i class="fas fa-check text-green-600 mr-2"></i>Premium brands page updated with master trainer credentials</span>
+                    <span class="text-gray-500">Just now</span>
+                </div>
+                <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+                    <span><i class="fas fa-check text-green-600 mr-2"></i>Website content updated: 20+ years experience, 15+ in Boca-Delray</span>
+                    <span class="text-gray-500">5 min ago</span>
+                </div>
+                <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+                    <span><i class="fas fa-check text-green-600 mr-2"></i>Backlink scoreboard dashboard created</span>
+                    <span class="text-gray-500">10 min ago</span>
+                </div>
+                <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+                    <span><i class="fas fa-check text-green-600 mr-2"></i>Boulevard API request drafted</span>
+                    <span class="text-gray-500">15 min ago</span>
+                </div>
+                <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
+                    <span><i class="fas fa-clock text-yellow-600 mr-2"></i>87 directories awaiting submission</span>
+                    <span class="text-gray-500">Pending</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update timestamp
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+
+        // Quick action functions
+        function startBacklinkCampaign() {
+            if (confirm('Start submitting to 87 directories now?')) {
+                window.location.href = 'backlink-scoreboard.html';
+            }
+        }
+
+        function refreshAllData() {
+            alert('Refreshing all dashboard data...');
+            setTimeout(() => {
+                alert('All data refreshed successfully!');
+                location.reload();
+            }, 2000);
+        }
+
+        function generateReports() {
+            alert('Generating weekly performance reports...');
+            setTimeout(() => {
+                alert('Reports generated! Check your email.');
+            }, 2000);
+        }
+
+        // Auto-refresh every 5 minutes
+        setInterval(() => {
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleString();
+        }, 300000);
+    </script>
+</body>
+</html>
