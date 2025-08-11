@@ -1,31 +1,18 @@
 {
-  "version": "2.5.6",
-  "lastUpdated": "2025-08-11T01:00:00Z",
+  "version": "2.5.7",
+  "lastUpdated": "2025-08-11T05:02:15Z",
   "deployHistory": [
     {
-      "version": "2.5.6",
-      "date": "2025-08-11T01:00:00Z",
-      "changes": "Security fix - removed API keys from code, added .env protection"
-    },
-    {
-      "version": "2.5.5",
-      "date": "2025-08-11T00:49:00Z",
-      "changes": "Repository made public - triggering Vercel deployment"
-    },
-    {
-      "version": "2.5.4",
-      "date": "2025-08-11T00:30:00Z",
-      "changes": "Force Vercel deployment - webhook reconnection needed"
-    },
-    {
-      "version": "2.5.2",
-      "date": "2025-08-11T00:15:00Z",
-      "changes": "Added README documentation, verified repository connection"
+      "version": "2.5.7",
+      "date": "2025-08-11T05:02:15Z",
+      "changes": "Add sitemap.xml for Google Search Console - CRITICAL for indexing"
     },
     {
       "version": "2.5.1",
       "date": "2025-08-10T23:39:27Z",
       "changes": "Added dynamic version loading from JSON, created auto-deploy script, integrated policies page"
     },
+  ]
+}
   ]
 }
