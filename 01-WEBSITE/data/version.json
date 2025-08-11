@@ -1,7 +1,12 @@
 {
-  "version": "2.5.4",
-  "lastUpdated": "2025-08-11T00:30:00Z",
+  "version": "2.5.5",
+  "lastUpdated": "2025-08-11T00:49:00Z",
   "deployHistory": [
+    {
+      "version": "2.5.5",
+      "date": "2025-08-11T00:49:00Z",
+      "changes": "Repository made public - triggering Vercel deployment"
+    },
     {
       "version": "2.5.4",
       "date": "2025-08-11T00:30:00Z",
