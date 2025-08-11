@@ -7,6 +7,29 @@ echo "🚀 Starting deployment process..."
 # Navigate to project directory
 cd "/Users/stuartkerr/Library/CloudStorage/OneDrive-Personal/ISO Vision LLC/Chris David Salon/New web site July 25/01-WEBSITE"
 
+# Run pre-deployment tests (skip with --skip-tests flag)
+if [ "$2" != "--skip-tests" ]; then
+    echo ""
+    echo "🧪 Running pre-deployment tests..."
+    echo "=================================="
+    
+    if [ -f "tests/pre-deploy-check.sh" ]; then
+        if bash tests/pre-deploy-check.sh --local; then
+            echo "✅ All tests passed - proceeding with deployment"
+            echo ""
+        else
+            echo "❌ Tests failed - deployment cancelled!"
+            echo "Fix the issues above and try again."
+            echo "To skip tests (NOT RECOMMENDED), use: ./deploy.sh 'message' --skip-tests"
+            exit 1
+        fi
+    else
+        echo "⚠️  Test suite not found - proceeding without tests"
+        echo "Run 'npm install' in the tests directory to enable testing"
+        echo ""
+    fi
+fi
+
 # Read current version
 if [ -f "data/version.json" ]; then
     CURRENT_VERSION=$(grep -o '"version": "[^"]*' data/version.json | grep -o '[^"]*$')

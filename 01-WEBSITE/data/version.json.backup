@@ -1,7 +1,12 @@
 {
-  "version": "2.5.12",
-  "lastUpdated": "2025-08-11T16:39:51Z",
+  "version": "2.5.13",
+  "lastUpdated": "2025-08-11T17:14:00Z",
   "deployHistory": [
+    {
+      "version": "2.5.13",
+      "date": "2025-08-11T17:14:00Z",
+      "changes": "MAJOR UPDATE: Added embedded photo gallery carousel with categories, comprehensive Puppeteer testing suite for desktop/mobile/links/visual regression, automated pre-deployment testing"
+    },
     {
       "version": "2.5.12",
       "date": "2025-08-11T16:39:51Z",
