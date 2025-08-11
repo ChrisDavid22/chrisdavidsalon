@@ -12,12 +12,13 @@ const APIConfig = {
             groq: localStorage.getItem('groqAPIKey') || ''
         };
         
-        // Your API keys (stored securely in Claude Code environment)
+        // NEVER store API keys in code! Use environment variables instead
+        // These should be set in Vercel environment variables
         const defaultKeys = {
-            claude: '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',
-            openai: 'sk-proj-9uRW55dylHeFhH1KXrLaRKADCRP54NUlrIkNBmcI7AnB-SZuQO2gpvW5L_197f0hIbSa1Xh2lyT3BlbkFJdTUt5A__ErN0ZNCDjxEKCvQRRG8mzHGc7KPp5hcPFWw',
-            google: 'AIzaSyDCQAaVgiaUdYMXF32V4BflzsAA2mbVokg',
-            groq: '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'
+            claude: '', // Set in Vercel: CLAUDE_API_KEY
+            openai: '', // Set in Vercel: OPENAI_API_KEY
+            google: '', // Set in Vercel: GOOGLE_API_KEY
+            groq: ''    // Set in Vercel: GROQ_API_KEY
         };
         
         // If no keys in localStorage, use the defaults
