@@ -3,29 +3,35 @@
 
 const APIConfig = {
     // Initialize with stored keys or empty strings
-    init() {
-        // Check if keys are stored in localStorage
+    async init() {
+        // First try to load from Vercel environment variables via API
+        try {
+            const response = await fetch('/api/get-keys');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.fullKeys) {
+                    this.keys = {
+                        claude: data.fullKeys.claude,
+                        openai: '', // Not used
+                        google: data.fullKeys.google,
+                        groq: ''    // Not used
+                    };
+                    // Save to localStorage for offline use
+                    this.saveKeys();
+                    return this.keys;
+                }
+            }
+        } catch (error) {
+            console.log('Could not load keys from server, using localStorage');
+        }
+        
+        // Fallback to localStorage if server keys not available
         this.keys = {
             claude: localStorage.getItem('claudeAPIKey') || '',
             openai: localStorage.getItem('openaiAPIKey') || '',
             google: localStorage.getItem('googleAPIKey') || '',
             groq: localStorage.getItem('groqAPIKey') || ''
         };
-        
-        // NEVER store API keys in code! Use environment variables instead
-        // These should be set in Vercel environment variables
-        const defaultKeys = {
-            claude: '', // Set in Vercel: CLAUDE_API_KEY
-            openai: '', // Set in Vercel: OPENAI_API_KEY
-            google: '', // Set in Vercel: GOOGLE_API_KEY
-            groq: ''    // Set in Vercel: GROQ_API_KEY
-        };
-        
-        // If no keys in localStorage, use the defaults
-        if (!this.keys.claude) {
-            this.keys = defaultKeys;
-            this.saveKeys();
-        }
         
         return this.keys;
     },

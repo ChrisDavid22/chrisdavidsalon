@@ -1,4 +1,10 @@
-# CRITICAL LESSONS LEARNED - CHRIS DAVID SALON PROJECT
+Great, so now that you've got that done, the last piece I have is this. I already logged in as Chris in the admin and put in the API keys, but they didn't persist. Why the fuck not? It's not like I want to put them in every single time I go there.
+
+So I put them in, and they worked, and now he just went back to the website an hour later and went to the admin, and the API keys aren't there. What the hell? How do you fix it? What do you need to do? Because I only want to load those things in once, and then I want them there forever.
+
+So whatever you need to do to make that happen, do it now. And don't do it in a way where you're going to leave them there in some sort of free text, because remember, this is a public repo, and I don't want it to be a public repo, but last time I made it private, you screwed everything up and you couldn't access it, and I'm really tired of you being sloppy and giving me half-assed answers.
+
+So unless you can tell me with 100% certainty I can make it private, and you can still make it work, I have a problem. And so now you need to give me an answer for how we're going to resolve this. I need the security of knowing I can put the API keys in once, and they're going to be persisted, but I also need to know that they're not going to get persisted in open text in a public profile, because immediately what's going to happen is GitHub's going to send me emergency notes that says my API key is going to be a public profile. were left available and they're all going to be negated. # CRITICAL LESSONS LEARNED - CHRIS DAVID SALON PROJECT
 **Date: December 11, 2024**
 **Time Wasted Due to My Errors: 4+ Hours**
 
