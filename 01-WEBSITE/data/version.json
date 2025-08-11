@@ -1,7 +1,12 @@
 {
-  "version": "2.5.2",
-  "lastUpdated": "2025-08-11T00:15:00Z",
+  "version": "2.5.4",
+  "lastUpdated": "2025-08-11T00:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.5.4",
+      "date": "2025-08-11T00:30:00Z",
+      "changes": "Force Vercel deployment - webhook reconnection needed"
+    },
     {
       "version": "2.5.2",
       "date": "2025-08-11T00:15:00Z",
