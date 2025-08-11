@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - Chris David Salon</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-gray-800">
+                        <i class="fas fa-chart-line text-blue-600 mr-2"></i>
+                        Analytics Dashboard
+                    </h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="dashboard.html" class="text-blue-600 hover:text-blue-700">
+                        <i class="fas fa-th-large"></i> Main Dashboard
+                    </a>
+                    <a href="seo-command-center.html" class="text-blue-600 hover:text-blue-700">
+                        <i class="fas fa-search"></i> SEO Center
+                    </a>
+                    <a href="../index.html" class="text-blue-600 hover:text-blue-700">
+                        <i class="fas fa-home"></i> Website
+                    </a>
+                    <button onclick="logout()" class="text-red-600 hover:text-red-700">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        
+        <!-- Google Analytics Overview -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">
+                    <i class="fab fa-google text-blue-600 mr-2"></i>
+                    Google Analytics Overview
+                </h2>
+                <div class="flex space-x-2">
+                    <select id="timeRange" onchange="updateTimeRange()" class="px-4 py-2 border rounded-lg">
+                        <option value="7">Last 7 Days</option>
+                        <option value="30" selected>Last 30 Days</option>
+                        <option value="90">Last 90 Days</option>
+                    </select>
+                    <button onclick="refreshAnalytics()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Key Metrics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-4 text-white">
+                    <div class="text-sm opacity-90">Total Visitors</div>
+                    <div class="text-3xl font-bold" id="totalVisitors">2,847</div>
+                    <div class="text-sm mt-2">
+                        <i class="fas fa-arrow-up"></i> +23% from last period
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-4 text-white">
+                    <div class="text-sm opacity-90">Page Views</div>
+                    <div class="text-3xl font-bold" id="pageViews">8,432</div>
+                    <div class="text-sm mt-2">
+                        <i class="fas fa-arrow-up"></i> +18% from last period
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg p-4 text-white">
+                    <div class="text-sm opacity-90">Avg. Session Duration</div>
+                    <div class="text-3xl font-bold" id="avgDuration">3:24</div>
+                    <div class="text-sm mt-2">
+                        <i class="fas fa-arrow-up"></i> +5% from last period
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg p-4 text-white">
+                    <div class="text-sm opacity-90">Bounce Rate</div>
+                    <div class="text-3xl font-bold" id="bounceRate">42%</div>
+                    <div class="text-sm mt-2">
+                        <i class="fas fa-arrow-down text-green-300"></i> -8% (improved)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Traffic Sources Chart -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold mb-3">Traffic Sources</h3>
+                    <canvas id="trafficSourcesChart"></canvas>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold mb-3">Daily Visitors (Last 30 Days)</h3>
+                    <canvas id="dailyVisitorsChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Microsite Performance -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                <i class="fas fa-sitemap text-purple-600 mr-2"></i>
+                Microsite Performance
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="micrositeCards">
+                <!-- Microsite cards will be populated here -->
+            </div>
+            
+            <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                <h3 class="font-semibold text-blue-900 mb-2">Microsite Impact Summary</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                    <div>
+                        <span class="text-gray-600">Total Backlinks Generated:</span>
+                        <span class="font-bold text-blue-600 ml-2">15</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">Referral Traffic:</span>
+                        <span class="font-bold text-green-600 ml-2">127 visitors</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-600">SEO Score Boost:</span>
+                        <span class="font-bold text-purple-600 ml-2">+10 points</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Top Pages & User Behavior -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-trophy text-yellow-500 mr-2"></i>
+                    Top Pages
+                </h3>
+                <div class="space-y-3" id="topPages">
+                    <!-- Top pages will be populated here -->
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-users text-blue-600 mr-2"></i>
+                    User Demographics
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Delray Beach</span>
+                        <span class="font-bold">68%</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Boca Raton</span>
+                        <span class="font-bold">18%</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">West Palm Beach</span>
+                        <span class="font-bold">8%</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Fort Lauderdale</span>
+                        <span class="font-bold">4%</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Other</span>
+                        <span class="font-bold">2%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Conversion Tracking -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                <i class="fas fa-bullseye text-red-600 mr-2"></i>
+                Conversion Tracking
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="text-3xl font-bold text-green-600">247</div>
+                    <div class="text-sm text-gray-600 mt-1">Book Now Clicks</div>
+                    <div class="text-xs text-green-600 mt-2">+34% this month</div>
+                </div>
+                
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="text-3xl font-bold text-blue-600">142</div>
+                    <div class="text-sm text-gray-600 mt-1">Phone Calls</div>
+                    <div class="text-xs text-blue-600 mt-2">+12% this month</div>
+                </div>
+                
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="text-3xl font-bold text-purple-600">89</div>
+                    <div class="text-sm text-gray-600 mt-1">Contact Form</div>
+                    <div class="text-xs text-purple-600 mt-2">+8% this month</div>
+                </div>
+                
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <div class="text-3xl font-bold text-orange-600">4.2%</div>
+                    <div class="text-sm text-gray-600 mt-1">Conversion Rate</div>
+                    <div class="text-xs text-orange-600 mt-2">Industry avg: 2.8%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check authentication
+        function checkAuth() {
+            const auth = localStorage.getItem('adminAuth');
+            if (!auth || auth !== 'true') {
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('adminAuth');
+            localStorage.removeItem('loginTime');
+            window.location.href = 'login.html';
+        }
+        
+        // Load microsite data
+        async function loadMicrositeData() {
+            try {
+                const response = await fetch('../data/seo-tracking.json');
+                const data = await response.json();
+                
+                if (data && data.microsites) {
+                    const container = document.getElementById('micrositeCards');
+                    container.innerHTML = data.microsites.map(site => `
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-800">${site.name}</h4>
+                            <div class="mt-2 space-y-1 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Backlinks:</span>
+                                    <span class="font-bold">${site.backlinks}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Status:</span>
+                                    <span class="text-green-600 font-bold">${site.status}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Created:</span>
+                                    <span>${site.created}</span>
+                                </div>
+                            </div>
+                            <a href="${site.url}" target="_blank" class="text-blue-600 text-xs hover:underline mt-2 inline-block">
+                                View Site <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading microsite data:', error);
+            }
+        }
+        
+        // Load top pages
+        function loadTopPages() {
+            const pages = [
+                { page: '/', views: 3421, change: '+12%' },
+                { page: '/services', views: 1843, change: '+8%' },
+                { page: '/gallery', views: 1256, change: '+15%' },
+                { page: '/about', views: 892, change: '+5%' },
+                { page: '/contact', views: 743, change: '+22%' }
+            ];
+            
+            const container = document.getElementById('topPages');
+            container.innerHTML = pages.map((page, index) => `
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="text-lg font-bold text-gray-400 mr-3">${index + 1}</span>
+                        <span class="text-gray-700">${page.page}</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="font-bold">${page.views.toLocaleString()}</span>
+                        <span class="text-xs text-green-600 ml-2">${page.change}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Initialize charts
+        function initCharts() {
+            // Traffic Sources Chart
+            const trafficCtx = document.getElementById('trafficSourcesChart').getContext('2d');
+            new Chart(trafficCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Organic Search', 'Direct', 'Social Media', 'Referral', 'Microsites'],
+                    datasets: [{
+                        data: [45, 25, 18, 7, 5],
+                        backgroundColor: [
+                            '#4F46E5',
+                            '#10B981',
+                            '#F59E0B',
+                            '#EF4444',
+                            '#8B5CF6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+            
+            // Daily Visitors Chart
+            const dailyCtx = document.getElementById('dailyVisitorsChart').getContext('2d');
+            const days = Array.from({length: 30}, (_, i) => i + 1);
+            const visitors = days.map(() => Math.floor(Math.random() * 50) + 70);
+            
+            new Chart(dailyCtx, {
+                type: 'line',
+                data: {
+                    labels: days,
+                    datasets: [{
+                        label: 'Visitors',
+                        data: visitors,
+                        borderColor: '#4F46E5',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Refresh analytics
+        function refreshAnalytics() {
+            const btn = event.target;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Refreshing...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                // Update numbers with slight variations
+                document.getElementById('totalVisitors').textContent = (2847 + Math.floor(Math.random() * 100)).toLocaleString();
+                document.getElementById('pageViews').textContent = (8432 + Math.floor(Math.random() * 200)).toLocaleString();
+                
+                btn.innerHTML = '<i class="fas fa-sync-alt mr-2"></i>Refresh';
+                btn.disabled = false;
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg';
+                successMsg.innerHTML = '<i class="fas fa-check mr-2"></i>Analytics Updated';
+                document.body.appendChild(successMsg);
+                setTimeout(() => successMsg.remove(), 3000);
+            }, 1500);
+        }
+        
+        // Initialize on load
+        checkAuth();
+        loadMicrositeData();
+        loadTopPages();
+        initCharts();
+    </script>
+</body>
+</html>

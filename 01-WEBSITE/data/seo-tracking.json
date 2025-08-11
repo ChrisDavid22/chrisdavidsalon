@@ -1,0 +1,59 @@
+{
+  "microsites": [
+    {
+      "name": "Best Delray Salon",
+      "url": "https://best-delray-salon.vercel.app",
+      "path": "/seo-sites/best-delray-salon/",
+      "backlinks": 5,
+      "created": "2025-08-10",
+      "status": "active",
+      "pages": ["index.html"],
+      "targetKeywords": ["best salon delray beach", "luxury hair salon delray"]
+    },
+    {
+      "name": "Best Salon Palm Beach",
+      "url": "https://best-salon-palmbeach.vercel.app",
+      "path": "/seo-sites/best-salon-palmbeach/",
+      "backlinks": 5,
+      "created": "2025-08-10",
+      "status": "active",
+      "pages": ["index.html"],
+      "targetKeywords": ["best salon palm beach", "hair salon palm beach county"]
+    },
+    {
+      "name": "Best Salon Site",
+      "url": "https://best-salon-site.vercel.app",
+      "path": "/seo-sites/best-salon-site/",
+      "backlinks": 5,
+      "created": "2025-08-10",
+      "status": "active",
+      "pages": ["index.html"],
+      "targetKeywords": ["best hair salon florida", "award winning colorist"]
+    }
+  ],
+  "totalBacklinks": 15,
+  "seoScore": {
+    "base": 68,
+    "backlinkBonus": 10,
+    "micrositeBonus": 5,
+    "technicalSEO": 28,
+    "contentQuality": 28,
+    "total": 78,
+    "lastCalculated": "2025-08-11T16:30:00Z"
+  },
+  "improvements": {
+    "completed": [
+      "SSL certificate active",
+      "Meta robots configured",
+      "XML sitemap created",
+      "Schema markup implemented",
+      "3 microsites deployed with backlinks"
+    ],
+    "pending": [
+      "Image compression optimization",
+      "Add more content pages to microsites",
+      "Build local directory backlinks",
+      "Create blog content strategy"
+    ]
+  }
+}
