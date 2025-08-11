@@ -19,6 +19,20 @@ Chris David Salon website with comprehensive admin dashboard for business intell
 
 # Skip tests if needed (not recommended)
 ./deploy.sh "Description" --skip-tests
+
+# The script now VERIFIES deployment - wait for confirmation!
+# It will show either:
+#   ✅ VERIFIED: Version X.X.X is LIVE
+#   ⚠️  WARNING: Version mismatch!
+```
+
+### CRITICAL: Verify Deployment Before Claiming Success
+```bash
+# NEVER say "deployed" until you verify:
+curl -s https://www.chrisdavidsalon.com/data/version.json | grep version
+
+# If version.json has errors, the site shows "Loading..." or falls back to "2.6.0"
+# Always check the actual JSON is valid and matches expected version
 ```
 
 ### Run Tests

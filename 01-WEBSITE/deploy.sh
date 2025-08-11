@@ -94,6 +94,20 @@ git commit -m "$COMMIT_MSG"
 echo "📤 Pushing to GitHub..."
 git push origin main
 
-echo "✅ Deployment complete!"
-echo "🌐 Version $NEW_VERSION will be live at chrisdavidsalon.com in ~60 seconds"
-echo "📅 Updated at: $CURRENT_DATETIME"
+echo "✅ Changes pushed to GitHub!"
+echo "⏳ Waiting 60 seconds for Vercel deployment..."
+sleep 60
+
+# Verify deployment
+echo "🔍 Verifying deployment..."
+LIVE_VERSION=$(curl -s https://www.chrisdavidsalon.com/data/version.json | grep -o '"version": "[^"]*' | grep -o '[^"]*$')
+
+if [ "$LIVE_VERSION" = "$NEW_VERSION" ]; then
+    echo "✅ VERIFIED: Version $NEW_VERSION is LIVE at chrisdavidsalon.com"
+    echo "📅 Deployment confirmed at: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+else
+    echo "⚠️  WARNING: Version mismatch!"
+    echo "   Expected: $NEW_VERSION"
+    echo "   Found: $LIVE_VERSION"
+    echo "   Check https://vercel.com/dashboard for deployment status"
+fi
