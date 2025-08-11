@@ -1,7 +1,12 @@
 {
-  "version": "2.5.5",
-  "lastUpdated": "2025-08-11T00:49:00Z",
+  "version": "2.5.6",
+  "lastUpdated": "2025-08-11T01:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.5.6",
+      "date": "2025-08-11T01:00:00Z",
+      "changes": "Security fix - removed API keys from code, added .env protection"
+    },
     {
       "version": "2.5.5",
       "date": "2025-08-11T00:49:00Z",
