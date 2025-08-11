@@ -1,7 +1,12 @@
 {
-  "version": "2.5.14",
-  "lastUpdated": "2025-08-11T20:33:39Z",
+  "version": "2.5.15",
+  "lastUpdated": "2025-08-11T20:37:23Z",
   "deployHistory": [
+    {
+      "version": "2.5.15",
+      "date": "2025-08-11T20:37:23Z",
+      "changes": "Update CLAUDE.md with comprehensive project documentation for future Claude Code sessions"
+    },
     {
       "version": "2.5.14",
       "date": "2025-08-11T20:33:39Z",
@@ -42,10 +47,5 @@
       "date": "2025-08-10T23:39:27Z",
       "changes": "Added dynamic version loading from JSON, created auto-deploy script, integrated policies page"
     },
-  ]
-}
-  ]
-}
-  ]
   ]
 }
