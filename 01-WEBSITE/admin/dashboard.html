@@ -1391,11 +1391,11 @@
             `;
             
             // Add SEO Score Analysis Section
-            displaySEOAnalysis();
+            displaySEOAnalysis().catch(console.error);
         }
         
-        function displaySEOAnalysis() {
-            const seoScore = calculateSEOScore();
+        async function displaySEOAnalysis() {
+            const seoScore = await calculateSEOScore();
             const analysis = generateSEOAnalysis(seoScore);
             
             // Create or update the SEO analysis section
@@ -1428,11 +1428,11 @@
                                     <svg class="transform -rotate-90 w-32 h-32">
                                         <circle cx="64" cy="64" r="56" stroke="#e5e7eb" stroke-width="12" fill="none"></circle>
                                         <circle cx="64" cy="64" r="56" stroke="${analysis.scoreColor}" stroke-width="12" fill="none"
-                                                stroke-dasharray="${351.86 * (seoScore / 100)} 351.86"
+                                                stroke-dasharray="${351.86 * (seoScore / 100)} 351.86" id="scoreCircle"
                                                 stroke-linecap="round"></circle>
                                     </svg>
                                     <div class="absolute">
-                                        <span class="text-4xl font-bold text-gray-800">${seoScore}</span>
+                                        <span class="text-4xl font-bold text-gray-800" id="dynamicSEOScore">${seoScore}</span>
                                         <span class="text-lg text-gray-600">/100</span>
                                     </div>
                                 </div>
@@ -1631,9 +1631,9 @@
             btn.disabled = true;
             
             // Simulate analysis refresh
-            setTimeout(() => {
-                calculateSEOScore();
-                displaySEOAnalysis();
+            setTimeout(async () => {
+                await calculateSEOScore();
+                await displaySEOAnalysis();
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
                 
