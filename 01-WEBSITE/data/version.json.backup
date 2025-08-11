@@ -1,7 +1,12 @@
 {
-  "version": "2.5.10",
-  "lastUpdated": "2025-08-11T16:06:21Z",
+  "version": "2.5.11",
+  "lastUpdated": "2025-08-11T16:23:59Z",
   "deployHistory": [
+    {
+      "version": "2.5.11",
+      "date": "2025-08-11T16:23:59Z",
+      "changes": "FINAL FIX: Complete site inventory, all navigation corrected, blog page included"
+    },
     {
       "version": "2.5.10",
       "date": "2025-08-11T16:06:21Z",
@@ -22,6 +27,8 @@
       "date": "2025-08-10T23:39:27Z",
       "changes": "Added dynamic version loading from JSON, created auto-deploy script, integrated policies page"
     },
+  ]
+}
   ]
 }
   ]
