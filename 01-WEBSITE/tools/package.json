@@ -1,0 +1,27 @@
+{
+  "name": "directory-submission-automation",
+  "version": "1.0.0",
+  "description": "Automated directory submission system for Chris David Salon",
+  "main": "directory-submission-automation.js",
+  "scripts": {
+    "install-deps": "npm install playwright",
+    "run-submissions": "node directory-submission-automation.js",
+    "setup": "npm install && npx playwright install chromium",
+    "test": "node -e \"console.log('Testing automation system...'); require('./directory-submission-automation.js');\""
+  },
+  "keywords": [
+    "automation",
+    "directory-submission",
+    "business-listings",
+    "playwright",
+    "seo"
+  ],
+  "author": "Claude Code for Chris David Salon",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.54.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

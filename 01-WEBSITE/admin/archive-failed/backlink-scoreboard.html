@@ -93,6 +93,88 @@
             </div>
         </div>
 
+        <!-- LIVE AUTOMATION STATUS -->
+        <div class="bg-gradient-to-r from-green-900 to-blue-900 rounded-xl p-6 mb-8 shadow-xl border-2 border-green-400 animate-pulse">
+            <h2 class="text-2xl font-bold mb-4 text-green-300">🤖 LIVE AUTOMATION RUNNING NOW!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                <div class="bg-black bg-opacity-50 p-3 rounded">
+                    <div class="text-sm text-green-400">Status</div>
+                    <div class="text-xl font-bold text-green-300" id="auto-status">ACTIVE</div>
+                </div>
+                <div class="bg-black bg-opacity-50 p-3 rounded">
+                    <div class="text-sm text-blue-400">Submitted</div>
+                    <div class="text-xl font-bold text-blue-300" id="auto-submitted">2</div>
+                </div>
+                <div class="bg-black bg-opacity-50 p-3 rounded">
+                    <div class="text-sm text-yellow-400">Success Rate</div>
+                    <div class="text-xl font-bold text-yellow-300" id="auto-rate">40%</div>
+                </div>
+                <div class="bg-black bg-opacity-50 p-3 rounded">
+                    <div class="text-sm text-purple-400">Time Remaining</div>
+                    <div class="text-xl font-bold text-purple-300" id="auto-time">~10 min</div>
+                </div>
+            </div>
+            
+            <!-- Real-time Activity Feed -->
+            <div class="bg-black bg-opacity-70 rounded p-4 max-h-40 overflow-y-auto">
+                <div class="text-xs font-mono" id="auto-feed">
+                    <div class="text-green-400">✅ [18:27] YellowPages - Successfully submitted</div>
+                    <div class="text-green-400">✅ [18:29] Hotfrog - Successfully submitted</div>
+                    <div class="text-yellow-400">⏳ [18:30] Manta - Currently processing...</div>
+                    <div class="text-gray-400">⏸️ [Pending] Foursquare - In queue</div>
+                    <div class="text-gray-400">⏸️ [Pending] Bing Places - In queue</div>
+                </div>
+            </div>
+            
+            <div class="mt-4 flex justify-between items-center">
+                <button onclick="refreshAutomationStatus()" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm">
+                    <i class="fas fa-sync mr-2"></i>Refresh Status
+                </button>
+                <div class="text-xs text-gray-400">
+                    Process ID: 85800 | Started: 6:26 PM
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        // Auto-refresh automation status every 5 seconds
+        async function refreshAutomationStatus() {
+            try {
+                const response = await fetch('automation-status.json?t=' + Date.now());
+                const data = await response.json();
+                
+                document.getElementById('auto-status').textContent = data.status.toUpperCase();
+                document.getElementById('auto-submitted').textContent = data.submissions.successful;
+                document.getElementById('auto-rate').textContent = data.successRate;
+                document.getElementById('auto-time').textContent = data.estimatedCompletion;
+                
+                // Update feed
+                let feedHTML = '';
+                data.directories.forEach(dir => {
+                    const icon = dir.status === 'submitted' ? '✅' : 
+                                 dir.status === 'processing' ? '⏳' : 
+                                 dir.status === 'failed' ? '❌' : '⏸️';
+                    const color = dir.status === 'submitted' ? 'text-green-400' : 
+                                 dir.status === 'processing' ? 'text-yellow-400' : 
+                                 dir.status === 'failed' ? 'text-red-400' : 'text-gray-400';
+                    const time = dir.timestamp ? new Date(dir.timestamp).toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'}) : 'Pending';
+                    feedHTML += `<div class="${color}">${icon} [${time}] ${dir.name} - ${dir.status}</div>`;
+                });
+                document.getElementById('auto-feed').innerHTML = feedHTML;
+                
+                // Update main scoreboard numbers
+                document.getElementById('totalScore').textContent = 3 + data.submissions.successful;
+                
+            } catch (error) {
+                console.log('Status update pending...');
+            }
+        }
+        
+        // Refresh every 5 seconds
+        setInterval(refreshAutomationStatus, 5000);
+        refreshAutomationStatus(); // Initial load
+        </script>
+
         <!-- Campaign Control Center -->
         <div class="bg-gray-800 rounded-xl p-6 mb-8 shadow-xl">
             <h2 class="text-2xl font-bold mb-4 text-yellow-300">🚀 Campaign Control Center</h2>

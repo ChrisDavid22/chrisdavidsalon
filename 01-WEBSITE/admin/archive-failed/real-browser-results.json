@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-08-11T19:00:08.806977",
+  "results": [
+    {
+      "directory": "YellowPages",
+      "status": "requires_login",
+      "real": true
+    },
+    {
+      "directory": "Manta",
+      "status": "form_found",
+      "inputs": 1,
+      "real": true
+    },
+    {
+      "directory": "Brownbook",
+      "status": "page_loaded",
+      "forms": 2,
+      "inputs": 3,
+      "real": true
+    }
+  ],
+  "summary": {
+    "tested": 3,
+    "forms_found": 1,
+    "errors": 0,
+    "requires_login": 1
+  },
+  "note": "These are REAL browser attempts, not fake curl requests"
+}

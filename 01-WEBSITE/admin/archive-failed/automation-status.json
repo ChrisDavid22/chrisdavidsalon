@@ -1,0 +1,13 @@
+{
+  "status": "running",
+  "currentDirectory": "Hotfrog",
+  "submissions": {
+    "attempted": 2,
+    "successful": 0,
+    "pending": 1,
+    "failed": 1
+  },
+  "successRate": "0.0%",
+  "verifiedBacklinks": 0,
+  "lastUpdate": "2025-08-11T18:44:51.848337"
+}

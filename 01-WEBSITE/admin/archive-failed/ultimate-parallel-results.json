@@ -1,0 +1,49 @@
+{
+  "timestamp": "2025-08-11T18:54:51.859272",
+  "execution_time": 2.433134,
+  "stats": {
+    "started": "2025-08-11T18:54:49.303209",
+    "attempted": 5,
+    "successful": 1,
+    "failed": 0
+  },
+  "results": [
+    {
+      "directory": "Manta",
+      "status": "attempted",
+      "timestamp": "2025-08-11T18:54:50.776325"
+    },
+    {
+      "directory": "YellowPages",
+      "status": "attempted",
+      "timestamp": "2025-08-11T18:54:50.776705"
+    },
+    {
+      "directory": "Brownbook",
+      "status": "attempted",
+      "timestamp": "2025-08-11T18:54:50.892943"
+    },
+    {
+      "directory": "Hotfrog",
+      "status": "submitted",
+      "timestamp": "2025-08-11T18:54:51.350168"
+    },
+    {
+      "directory": "ShowMeLocal",
+      "status": "attempted",
+      "timestamp": "2025-08-11T18:54:51.858889"
+    }
+  ],
+  "business": {
+    "name": "Chris David Salon",
+    "phone": "5618655215",
+    "address": "223 NE 2nd Ave",
+    "city": "Delray Beach",
+    "state": "FL",
+    "zip": "33444",
+    "website": "https://chrisdavidsalon.com",
+    "email": "sikerr@gmail.com",
+    "marketing_partner": "ISO Vision LLC",
+    "partner_phone": "3129539668"
+  }
+}

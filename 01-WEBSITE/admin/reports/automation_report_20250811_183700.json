@@ -1,0 +1,122 @@
+{
+  "summary": {
+    "total_attempts": 10,
+    "successful": 0,
+    "success_rate": "0.0%",
+    "timestamp": "2025-08-11T18:37:00.557767"
+  },
+  "business": {
+    "name": "Chris David Salon",
+    "address": "223 NE 2nd Ave",
+    "city": "Delray Beach",
+    "state": "FL",
+    "zip": "33444",
+    "phone": "(561) 865-5215",
+    "email": "sikerr@gmail.com",
+    "alternate_email": "stuart@isovision.ai",
+    "website": "https://chrisdavidsalon.com",
+    "description": "Premier luxury hair salon specializing in color correction, balayage, and keratin treatments. Chris David is a master colorist with 20+ years experience.",
+    "category": "Hair Salon",
+    "services": [
+      "Hair Coloring",
+      "Balayage",
+      "Color Correction",
+      "Hair Extensions",
+      "Keratin Treatments"
+    ],
+    "hours": "Mon-Fri 9AM-6PM, Sat 9AM-4PM, Sun Closed",
+    "year_established": "2020"
+  },
+  "results": [
+    {
+      "directory": "YellowPages",
+      "url": "https://www.yellowpages.com/add-business",
+      "priority": 1,
+      "success": false,
+      "message": "No form fields found",
+      "duration": 18.41,
+      "timestamp": "2025-08-11T18:28:01.916711"
+    },
+    {
+      "directory": "Bing Places",
+      "url": "https://www.bingplaces.com/",
+      "priority": 1,
+      "success": false,
+      "message": "No form fields found",
+      "duration": 40.67,
+      "timestamp": "2025-08-11T18:28:48.419492"
+    },
+    {
+      "directory": "Hotfrog",
+      "url": "https://www.hotfrog.com/companies/add-free-listing",
+      "priority": 2,
+      "success": false,
+      "message": "No form fields found",
+      "duration": 18.23,
+      "timestamp": "2025-08-11T18:29:12.260394"
+    },
+    {
+      "directory": "Manta",
+      "url": "https://www.manta.com/add-business",
+      "priority": 2,
+      "success": false,
+      "message": "Exception: HTTPConnectionPool(host='localhost', port=60735): Read timed out. (read timeout=120)",
+      "duration": 120.0,
+      "timestamp": "2025-08-11T18:31:15.543463"
+    },
+    {
+      "directory": "Brownbook",
+      "url": "https://www.brownbook.net/add-business/",
+      "priority": 2,
+      "success": false,
+      "message": "Error indicators found in page",
+      "duration": 144.84,
+      "timestamp": "2025-08-11T18:33:45.849981"
+    },
+    {
+      "directory": "Superpages",
+      "url": "https://www.superpages.com/add-business",
+      "priority": 2,
+      "success": false,
+      "message": "No form fields found",
+      "duration": 27.82,
+      "timestamp": "2025-08-11T18:34:16.685668"
+    },
+    {
+      "directory": "Foursquare Business",
+      "url": "https://business.foursquare.com/",
+      "priority": 2,
+      "success": false,
+      "message": "Could not submit form",
+      "duration": 104.67,
+      "timestamp": "2025-08-11T18:36:07.277319"
+    },
+    {
+      "directory": "CitySquares",
+      "url": "https://citysquares.com/add-business",
+      "priority": 3,
+      "success": false,
+      "message": "Exception: Message: move target out of bounds\n  (Session info: chrome=139.0.7258.66)\nStacktrace:\n0   chromedriver                        0x0000000101087274 cxxbridge1$str$ptr + 2741972\n1   chromedriver                        0x000000010107f1e4 cxxbridge1$str$ptr + 2709060\n2   chromedriver                        0x0000000100bc9370 cxxbridge1$string$len + 90124\n3   chromedriver                        0x0000000100c59438 cxxbridge1$string$len + 680148\n4   chromedriver                        0x0000000100c51db8 cxxbridge1$string$len + 649812\n5   chromedriver                        0x0000000100c04d30 cxxbridge1$string$len + 334284\n6   chromedriver                        0x000000010104a674 cxxbridge1$str$ptr + 2493140\n7   chromedriver                        0x000000010104d8a8 cxxbridge1$str$ptr + 2505992\n8   chromedriver                        0x000000010102b4ac cxxbridge1$str$ptr + 2365708\n9   chromedriver                        0x000000010104e164 cxxbridge1$str$ptr + 2508228\n10  chromedriver                        0x000000010101c5a4 cxxbridge1$str$ptr + 2304516\n11  chromedriver                        0x000000010106dc80 cxxbridge1$str$ptr + 2638048\n12  chromedriver                        0x000000010106de0c cxxbridge1$str$ptr + 2638444\n13  chromedriver                        0x000000010107ee30 cxxbridge1$str$ptr + 2708112\n14  libsystem_pthread.dylib             0x000000019172bc0c _pthread_start + 136\n15  libsystem_pthread.dylib             0x0000000191726b80 thread_start + 8\n",
+      "duration": 6.03,
+      "timestamp": "2025-08-11T18:36:18.179537"
+    },
+    {
+      "directory": "ShowMeLocal",
+      "url": "https://www.showmelocal.com/add-business",
+      "priority": 3,
+      "success": false,
+      "message": "Exception: Message: move target out of bounds\n  (Session info: chrome=139.0.7258.66)\nStacktrace:\n0   chromedriver                        0x0000000101087274 cxxbridge1$str$ptr + 2741972\n1   chromedriver                        0x000000010107f1e4 cxxbridge1$str$ptr + 2709060\n2   chromedriver                        0x0000000100bc9370 cxxbridge1$string$len + 90124\n3   chromedriver                        0x0000000100c59438 cxxbridge1$string$len + 680148\n4   chromedriver                        0x0000000100c51db8 cxxbridge1$string$len + 649812\n5   chromedriver                        0x0000000100c04d30 cxxbridge1$string$len + 334284\n6   chromedriver                        0x000000010104a674 cxxbridge1$str$ptr + 2493140\n7   chromedriver                        0x000000010104d8a8 cxxbridge1$str$ptr + 2505992\n8   chromedriver                        0x000000010102b4ac cxxbridge1$str$ptr + 2365708\n9   chromedriver                        0x000000010104e164 cxxbridge1$str$ptr + 2508228\n10  chromedriver                        0x000000010101c5a4 cxxbridge1$str$ptr + 2304516\n11  chromedriver                        0x000000010106dc80 cxxbridge1$str$ptr + 2638048\n12  chromedriver                        0x000000010106de0c cxxbridge1$str$ptr + 2638444\n13  chromedriver                        0x000000010107ee30 cxxbridge1$str$ptr + 2708112\n14  libsystem_pthread.dylib             0x000000019172bc0c _pthread_start + 136\n15  libsystem_pthread.dylib             0x0000000191726b80 thread_start + 8\n",
+      "duration": 16.19,
+      "timestamp": "2025-08-11T18:36:38.675892"
+    },
+    {
+      "directory": "Local.com",
+      "url": "https://www.local.com/business/add",
+      "priority": 3,
+      "success": false,
+      "message": "Exception: Message: move target out of bounds\n  (Session info: chrome=139.0.7258.66)\nStacktrace:\n0   chromedriver                        0x0000000101087274 cxxbridge1$str$ptr + 2741972\n1   chromedriver                        0x000000010107f1e4 cxxbridge1$str$ptr + 2709060\n2   chromedriver                        0x0000000100bc9370 cxxbridge1$string$len + 90124\n3   chromedriver                        0x0000000100c59438 cxxbridge1$string$len + 680148\n4   chromedriver                        0x0000000100c51db8 cxxbridge1$string$len + 649812\n5   chromedriver                        0x0000000100c04d30 cxxbridge1$string$len + 334284\n6   chromedriver                        0x000000010104a674 cxxbridge1$str$ptr + 2493140\n7   chromedriver                        0x000000010104d8a8 cxxbridge1$str$ptr + 2505992\n8   chromedriver                        0x000000010102b4ac cxxbridge1$str$ptr + 2365708\n9   chromedriver                        0x000000010104e164 cxxbridge1$str$ptr + 2508228\n10  chromedriver                        0x000000010101c5a4 cxxbridge1$str$ptr + 2304516\n11  chromedriver                        0x000000010106dc80 cxxbridge1$str$ptr + 2638048\n12  chromedriver                        0x000000010106de0c cxxbridge1$str$ptr + 2638444\n13  chromedriver                        0x000000010107ee30 cxxbridge1$str$ptr + 2708112\n14  libsystem_pthread.dylib             0x000000019172bc0c _pthread_start + 136\n15  libsystem_pthread.dylib             0x0000000191726b80 thread_start + 8\n",
+      "duration": 14.14,
+      "timestamp": "2025-08-11T18:36:57.243375"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-08-11T18:44:51.847950",
+  "tracking": {
+    "started": "2025-08-11T18:44:00.504782",
+    "attempted": 2,
+    "successful": 0,
+    "pending_verification": 1,
+    "failed": 1,
+    "verified_backlinks": 0
+  },
+  "results": [
+    {
+      "directory": "YellowPages",
+      "status": "pending_verification"
+    },
+    {
+      "directory": "Hotfrog",
+      "status": "form_not_found"
+    }
+  ],
+  "verified_backlinks": [],
+  "success_rate": "0.0%"
+}
