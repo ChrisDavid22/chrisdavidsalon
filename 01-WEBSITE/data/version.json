@@ -1,7 +1,12 @@
 {
-  "version": "2.5.17",
-  "lastUpdated": "2025-08-11T20:47:51Z",
+  "version": "2.5.18",
+  "lastUpdated": "2025-08-12T14:12:29Z",
   "deployHistory": [
+    {
+      "version": "2.5.18",
+      "date": "2025-08-12T14:12:29Z",
+      "changes": "Archive failed automation attempts"
+    },
     {
       "version": "2.5.17",
       "date": "2025-08-11T20:47:51Z",
@@ -41,11 +46,6 @@
       "version": "2.5.10",
       "date": "2025-08-11T16:06:21Z",
       "changes": "Fixed API integration, added analytics dashboard, persistent SEO score with microsite tracking"
-    },
-    {
-      "version": "2.5.9",
-      "date": "2025-08-11T15:56:54Z",
-      "changes": "Fixed image paths, added admin/version links, cleaned duplicates"
     },
   ]
 }
