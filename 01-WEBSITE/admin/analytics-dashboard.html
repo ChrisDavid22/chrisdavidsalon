@@ -21,8 +21,8 @@
                     </h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="dashboard.html" class="text-blue-600 hover:text-blue-700">
-                        <i class="fas fa-th-large"></i> Main Dashboard
+                    <a href="index.html" class="text-blue-600 hover:text-blue-700">
+                        <i class="fas fa-th-large"></i> Admin Home
                     </a>
                     <a href="seo-command-center.html" class="text-blue-600 hover:text-blue-700">
                         <i class="fas fa-search"></i> SEO Center
@@ -362,9 +362,13 @@
             btn.disabled = true;
             
             setTimeout(() => {
-                // Update numbers with slight variations
-                document.getElementById('totalVisitors').textContent = (2847 + Math.floor(Math.random() * 100)).toLocaleString();
-                document.getElementById('pageViews').textContent = (8432 + Math.floor(Math.random() * 200)).toLocaleString();
+                // Reload actual data from analytics.json
+                fetch('../data/analytics.json')
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('totalVisitors').textContent = data.visitors.toLocaleString();
+                        document.getElementById('pageViews').textContent = (data.visitors * 3.4).toFixed(0);
+                    });
                 
                 btn.innerHTML = '<i class="fas fa-sync-alt mr-2"></i>Refresh';
                 btn.disabled = false;

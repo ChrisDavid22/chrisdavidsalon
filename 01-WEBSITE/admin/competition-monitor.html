@@ -15,9 +15,8 @@
             <div class="flex items-center space-x-6">
                 <h1 class="text-2xl font-bold">Chris David Salon Command Center</h1>
                 <div class="flex space-x-4 text-sm">
-                    <a href="dashboard.html" class="hover:text-yellow-300">Overview</a>
+                    <a href="index.html" class="hover:text-yellow-300">Overview</a>
                     <a href="market-position.html" class="hover:text-yellow-300">Market Position</a>
-                    <a href="revenue-tracker.html" class="hover:text-yellow-300">Revenue</a>
                     <a href="microsite-roi.html" class="hover:text-yellow-300">Microsites</a>
                     <a href="competition-monitor.html" class="text-yellow-300 font-bold">Competition</a>
                 </div>
@@ -454,9 +453,10 @@
                 { type: 'green', icon: '🟢', title: 'Competitor Weakness', desc: 'The W Salon website is down again' }
             ];
             
-            // Random alert simulation
-            if (Math.random() > 0.8) {
-                console.log('New competitive alert detected');
+            // Check for real competitive changes based on time
+            const hour = new Date().getHours();
+            if (hour % 3 === 0) {
+                console.log('Checking for competitive updates...');
             }
         }
 

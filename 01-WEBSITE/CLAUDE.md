@@ -14,8 +14,11 @@ Chris David Salon website with comprehensive admin dashboard for business intell
 
 ### Deploy Changes
 ```bash
-# ALWAYS use the deploy script - it auto-increments version and tracks history
+# FROM ROOT DIRECTORY (UPDATED 2025-08-12):
 ./deploy.sh "Description of changes"
+
+# OR FROM 01-WEBSITE DIRECTORY:
+cd 01-WEBSITE && ./deploy.sh "Description of changes"
 
 # Skip tests if needed (not recommended)
 ./deploy.sh "Description" --skip-tests
@@ -168,6 +171,12 @@ cat data/analytics.json
 - **Password**: CDK2025
 - **Vercel Dashboard**: Check deployment status
 - **GitHub Repo**: ChrisDavid22/chrisdavidsalon
+
+## Project Status Documentation (Added 2025-08-12)
+
+- **PROJECT-STATUS-ASSESSMENT.md**: Comprehensive reality check and findings
+- **CRITICAL-ACTION-ITEMS.md**: Immediate tasks with step-by-step instructions
+- Both files in root directory - READ THESE FIRST in next session
 
 ## Development Guidelines
 

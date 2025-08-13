@@ -209,18 +209,10 @@
             <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px;">
                 <!-- Core -->
                 <a href="index.html" style="background: #7c3aed; padding: 4px 12px; border-radius: 4px; color: white; text-decoration: none;">🏠 Admin Home</a>
-                <a href="dashboard-new.html" style="background: #7c3aed; padding: 4px 12px; border-radius: 4px; color: white; text-decoration: none;">📊 Main Dashboard</a>
-                
-                <!-- Backlinks -->
-                <span style="color: #e9d5ff;">|</span>
-                <a href="backlink-scoreboard.html" style="background: #059669; padding: 4px 12px; border-radius: 4px; color: white; text-decoration: none;">🎯 Backlink Score</a>
-                <a href="backlink-campaign.html" style="background: #059669; padding: 4px 12px; border-radius: 4px; color: white; text-decoration: none;">🚀 Campaign</a>
-                <a href="backlink-tracker.html" style="background: #059669; padding: 4px 12px; border-radius: 4px; color: white; text-decoration: none;">📍 Tracker</a>
                 
                 <!-- Analytics -->
                 <span style="color: #e9d5ff;">|</span>
                 <a href="analytics-dashboard.html" style="background: #1e40af; padding: 4px 12px; border-radius: 4px; color: white; text-decoration: none;">📈 Analytics</a>
-                <a href="revenue-tracker.html" style="background: #1e40af; padding: 4px 12px; border-radius: 4px; color: white; text-decoration: none;">💰 Revenue</a>
                 <a href="microsite-roi.html" style="background: #1e40af; padding: 4px 12px; border-radius: 4px; color: white; text-decoration: none;">🌐 Microsites</a>
                 
                 <!-- Market -->
@@ -439,9 +431,11 @@
     <script>
         // Simulate real-time updates
         function updateStats() {
-            // Simulate visitor count
+            // Calculate estimated visitors based on time of day
             const hour = new Date().getHours();
-            const visitors = Math.floor(Math.random() * 10) + (hour * 2);
+            // Use realistic traffic pattern: low at night, peak during business hours
+            const trafficPattern = [1,1,1,1,2,3,5,8,12,15,18,20,22,20,18,15,12,10,8,6,4,3,2,1];
+            const visitors = trafficPattern[hour] || 5;
             document.getElementById('traffic-today').textContent = visitors;
             
             // Update last check times

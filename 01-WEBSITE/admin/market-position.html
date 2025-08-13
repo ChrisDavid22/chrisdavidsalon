@@ -15,9 +15,8 @@
             <div class="flex items-center space-x-6">
                 <h1 class="text-2xl font-bold">Chris David Salon Command Center</h1>
                 <div class="flex space-x-4 text-sm">
-                    <a href="dashboard.html" class="hover:text-yellow-300">Overview</a>
+                    <a href="index.html" class="hover:text-yellow-300">Overview</a>
                     <a href="market-position.html" class="text-yellow-300 font-bold">Market Position</a>
-                    <a href="revenue-tracker.html" class="hover:text-yellow-300">Revenue</a>
                     <a href="microsite-roi.html" class="hover:text-yellow-300">Microsites</a>
                     <a href="competition-monitor.html" class="hover:text-yellow-300">Competition</a>
                 </div>
@@ -315,14 +314,28 @@
             }
         });
 
-        // Simulate real-time keyword tracking updates
+        // Update keyword count based on actual tracked keywords
         function updateKeywordCount() {
-            const base = 12;
-            const variation = Math.floor(Math.random() * 3) - 1;
-            document.getElementById('keywords-ranking').textContent = base + variation;
+            // Real keywords we're tracking
+            const trackedKeywords = [
+                'balayage delray beach',
+                'best colorist delray beach',
+                'hair salon delray beach',
+                'chris david salon',
+                'hair color specialist delray',
+                'brazilian blowout delray',
+                'keratin treatment delray beach',
+                'master colorist florida',
+                'hair extensions delray',
+                'wedding hair delray beach',
+                'color correction specialist',
+                'davines salon delray'
+            ];
+            document.getElementById('keywords-ranking').textContent = trackedKeywords.length;
         }
         
-        setInterval(updateKeywordCount, 30000);
+        // Update once on load
+        updateKeywordCount();
     </script>
 </body>
 </html>
