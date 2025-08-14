@@ -811,35 +811,162 @@
             </div>
 
 
-            <!-- Gallery with Google Business Photos -->
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button onclick="filterGallery('all')" class="gallery-tab active px-6 py-2 rounded-full bg-yellow-600 text-white font-semibold transition-all">All Work</button>
+                <button onclick="filterGallery('transformations')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Transformations</button>
+                <button onclick="filterGallery('balayage')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Balayage</button>
+                <button onclick="filterGallery('color')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Color</button>
+                <button onclick="filterGallery('cuts')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Cuts & Styling</button>
+                <button onclick="filterGallery('salon')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Salon</button>
+            </div>
+            
+            <!-- Photo Gallery Grid -->
             <div class="bg-white rounded-lg shadow-lg p-4 md:p-8">
-                <!-- Embedded Google Photos Gallery -->
-                <div class="mb-8">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!4v1704900000000!6m8!1m7!1sCAoSLEFGMVFpcE5VT2I5YXJKRjhLb2lCQ2JhaFRRNHdfN2tqQVFQZ0Z6bnpQQnlQ!2m2!1d26.456902483331647!2d-80.09415198496873!3f0!4f0!5f0.7820865974627469"
-                        width="100%" 
-                        height="500" 
-                        style="border:0; border-radius: 8px;" 
-                        allowfullscreen="" 
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Chris David Salon Gallery">
-                    </iframe>
+                <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    
+                    <!-- Transformation Photos -->
+                    <div class="gallery-item" data-category="transformations balayage">
+                        <img src="https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/1638325723812-L5KC142ZC0LFE9CMIH0Z/Chris%252BDavid%252BAction%252BFinish%252BReflection-M.jpg" 
+                             alt="Balayage Transformation" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="transformations color">
+                        <img src="https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/744b1af5-5703-4fe0-96ad-024cbdefbddc/ESCAPE+By+Chris+David+-+The+Feeling.jpg" 
+                             alt="Color Transformation" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <!-- Salon Interior -->
+                    <div class="gallery-item" data-category="salon">
+                        <picture>
+                            <source srcset="./images/salon-hero.webp" type="image/webp">
+                            <img src="./images/salon-hero.jpg" 
+                                 alt="Salon Interior" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Signature Services -->
+                    <div class="gallery-item" data-category="transformations balayage">
+                        <picture>
+                            <source srcset="./images/signature.webp" type="image/webp">
+                            <img src="./images/signature.jpg" 
+                                 alt="Signature Balayage" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Hair Color Work -->
+                    <div class="gallery-item" data-category="color">
+                        <picture>
+                            <source srcset="./images/hair-color.webp" type="image/webp">
+                            <img src="./images/hair-color.jpg" 
+                                 alt="Hair Color" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Precision Cuts -->
+                    <div class="gallery-item" data-category="cuts">
+                        <picture>
+                            <source srcset="./images/hair-cut.webp" type="image/webp">
+                            <img src="./images/hair-cut.jpg" 
+                                 alt="Precision Cut" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Hair Extensions -->
+                    <div class="gallery-item" data-category="transformations">
+                        <picture>
+                            <source srcset="./images/hair-extensions.webp" type="image/webp">
+                            <img src="./images/hair-extensions.jpg" 
+                                 alt="Hair Extensions" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Keratin Treatment -->
+                    <div class="gallery-item" data-category="transformations">
+                        <picture>
+                            <source srcset="./images/keratin-treatment.webp" type="image/webp">
+                            <img src="./images/keratin-treatment.jpg" 
+                                 alt="Keratin Treatment" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Event Styling -->
+                    <div class="gallery-item" data-category="cuts">
+                        <picture>
+                            <source srcset="./images/event-styling.webp" type="image/webp">
+                            <img src="./images/event-styling.jpg" 
+                                 alt="Event Styling" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Color Correction -->
+                    <div class="gallery-item" data-category="color transformations">
+                        <picture>
+                            <source srcset="./images/signature-correct.webp" type="image/webp">
+                            <img src="./images/signature-correct.jpg" 
+                                 alt="Color Correction" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Signature Service -->
+                    <div class="gallery-item" data-category="balayage color">
+                        <picture>
+                            <source srcset="./images/signature-service.webp" type="image/webp">
+                            <img src="./images/signature-service.jpg" 
+                                 alt="Signature Service" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
+                    
+                    <!-- Background Salon -->
+                    <div class="gallery-item" data-category="salon">
+                        <picture>
+                            <source srcset="./images/Backgroundimage.webp" type="image/webp">
+                            <img src="./images/Backgroundimage.jpg" 
+                                 alt="Salon Atmosphere" 
+                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                                 onclick="openLightbox(this.src)">
+                        </picture>
+                    </div>
                 </div>
                 
-                <!-- Direct Link to Full Gallery -->
-                <div class="text-center">
-                    <h3 class="text-2xl font-playfair font-semibold mb-4">View Our Complete Portfolio</h3>
-                    <p class="text-gray-600 mb-6">See all our transformations, salon photos, and client results</p>
-                    
-                    <a href="https://www.google.com/maps/uv?hl=en&pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!4sChris%20David%20Salon!5sSearch%20Google%20for%20photos!15sCgIgAQ" 
+                <!-- View More Link -->
+                <div class="text-center mt-8">
+                    <a href="https://www.google.com/maps/uv?hl=en&pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!15sCgIgAQ" 
                        target="_blank" 
                        rel="noopener" 
-                       class="inline-flex items-center bg-gradient-to-r from-yellow-600 to-yellow-700 text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all text-lg transform hover:scale-105">
-                        <i class="fas fa-images mr-3"></i>
-                        View All Photos on Google (133+ Reviews)
+                       class="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        View More Photos on Google Business Profile
                     </a>
                 </div>
+            </div>
+            
+            <!-- Lightbox Modal -->
+            <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4" onclick="closeLightbox()">
+                <img id="lightboxImage" src="" alt="" class="max-w-full max-h-full object-contain">
+                <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-4xl">&times;</button>
             </div>
             
             <!-- Instagram Integration -->
@@ -1347,7 +1474,45 @@
             }
         });
 
-        // Gallery functionality removed - using Google Business photos iframe instead
+        // Gallery Filter Functionality
+        function filterGallery(category) {
+            const tabs = document.querySelectorAll('.gallery-tab');
+            const items = document.querySelectorAll('.gallery-item');
+            
+            // Update active tab
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-yellow-600', 'text-white');
+                tab.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-yellow-600', 'text-white');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category.includes(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        // Lightbox functionality
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            lightboxImage.src = src;
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
 
         // Load version dynamically from version.json
         fetch('./data/version.json')
