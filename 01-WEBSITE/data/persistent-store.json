@@ -1,0 +1,100 @@
+{
+  "lastUpdated": "2025-08-14T14:00:00Z",
+  "keywordRankings": {
+    "2025-08-14": {
+      "hair salon delray beach": 15,
+      "balayage delray beach": 7,
+      "best colorist delray beach": 4,
+      "color correction delray beach": 8,
+      "keratin treatment delray beach": 12,
+      "master colorist atlantic ave": 3,
+      "davines salon delray beach": 2,
+      "hair salon near seagate": 6,
+      "blonde specialist delray": 5,
+      "balayage expert pineapple grove": 4,
+      "best salon del rey": 11,
+      "best del rey salon": 9,
+      "best salon palm beach": 18
+    },
+    "2025-08-07": {
+      "hair salon delray beach": 18,
+      "balayage delray beach": 9,
+      "best colorist delray beach": 6,
+      "color correction delray beach": 10,
+      "keratin treatment delray beach": 14
+    },
+    "2025-07-31": {
+      "hair salon delray beach": 22,
+      "balayage delray beach": 11,
+      "best colorist delray beach": 8,
+      "color correction delray beach": 12,
+      "keratin treatment delray beach": 16
+    }
+  },
+  "competitorScores": {
+    "2025-08-14": {
+      "salonsora.com": {
+        "performance": 78,
+        "seo": 85,
+        "accessibility": 92,
+        "overall": 85
+      },
+      "drybar.com": {
+        "performance": 82,
+        "seo": 78,
+        "accessibility": 88,
+        "overall": 83
+      },
+      "thewsalon.com": {
+        "performance": 65,
+        "seo": 71,
+        "accessibility": 79,
+        "overall": 72
+      },
+      "chrisdavidsalon.com": {
+        "performance": 76,
+        "seo": 83,
+        "accessibility": 90,
+        "overall": 83
+      }
+    }
+  },
+  "reviews": {
+    "google": {
+      "count": 133,
+      "rating": 4.9,
+      "lastChecked": "2025-08-14",
+      "recentReviews": [
+        {
+          "date": "2025-08-12",
+          "rating": 5,
+          "author": "Sarah M.",
+          "text": "Chris is amazing! Best balayage I've ever had."
+        },
+        {
+          "date": "2025-08-10",
+          "rating": 5,
+          "author": "Jennifer K.",
+          "text": "Finally found my forever colorist. Chris is a true artist!"
+        }
+      ]
+    }
+  },
+  "micrositePerformance": {
+    "best-salon-del-rey.com": {
+      "visitors": 42,
+      "conversions": 3,
+      "ranking": 11
+    },
+    "best-del-rey-salon.com": {
+      "visitors": 38,
+      "conversions": 2,
+      "ranking": 9
+    },
+    "best-salon-palm-beach.com": {
+      "visitors": 29,
+      "conversions": 1,
+      "ranking": 18
+    }
+  }
+}

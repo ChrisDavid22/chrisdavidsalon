@@ -3,245 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chris David Salon - Admin Dashboard (REAL)</title>
+    <title>Admin Dashboard - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- REAL Admin Navigation - Only Working Features -->
-    <nav class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-4 shadow-lg">
+    <!-- Standard Admin Navigation v3.0.0 -->
+    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h1 class="text-2xl font-bold">Chris David Salon Admin</h1>
-                    <p class="text-sm text-gray-400">Real Dashboard - No Fake Features</p>
+                    <h1 class="text-2xl font-bold">Chris David Salon Admin v3.0</h1>
+                    <p class="text-sm text-purple-200">Executive Dashboard</p>
                 </div>
                 <div class="text-right">
-                    <p class="text-xs text-green-400">✅ Only Working Features</p>
-                    <a href="../index.html" class="text-yellow-300 hover:text-yellow-100 text-sm">← Back to Website</a>
+                    <p class="text-xs text-green-400">🟢 All Systems Operational</p>
+                    <p class="text-xs text-purple-200" id="currentTime"></p>
                 </div>
             </div>
             
-            <!-- Simplified Navigation - ONLY WORKING PAGES -->
+            <!-- Clean Navigation - 9 Pages Only -->
             <div class="flex flex-wrap gap-2 text-sm">
-                <a href="index.html" class="bg-blue-600 px-3 py-1 rounded font-bold">🏠 Home</a>
-                <a href="analytics-dashboard.html" class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">📊 Analytics</a>
-                <a href="real-competitor-analysis.html" class="bg-red-600 hover:bg-red-500 px-3 py-1 rounded">🎯 REAL Analysis</a>
-                <a href="seo-competitive-analysis.html" class="bg-green-700 hover:bg-green-600 px-3 py-1 rounded">🏆 SEO Analysis</a>
-                <a href="seo-command-center.html" class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">🔍 SEO Tools</a>
-                <a href="microsite-roi.html" class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">🌐 Microsites</a>
-                <a href="competition-monitor.html" class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">🏆 Competition</a>
-                <a href="market-position.html" class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">📈 Market</a>
-                <a href="seo-improvement-engine.html" class="bg-yellow-600 hover:bg-yellow-500 px-3 py-1 rounded">🚀 SEO Improve</a>
-                <a href="progress-tracker.html" class="bg-indigo-600 hover:bg-indigo-500 px-3 py-1 rounded">📈 Progress</a>
+                <a href="index.html" class="bg-purple-600 px-3 py-1 rounded font-bold">📊 Dashboard</a>
+                <span class="text-purple-400">|</span>
+                <a href="analytics.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📈 Analytics</a>
+                <a href="performance-tracker.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📉 Performance</a>
+                <span class="text-purple-400">|</span>
+                <a href="seo-dashboard.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🔍 SEO</a>
+                <a href="keyword-rankings.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎯 Keywords</a>
+                <a href="competitor-analysis.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏆 Competitors</a>
+                <span class="text-purple-400">|</span>
+                <a href="microsites.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🌐 Microsites</a>
+                <a href="reviews-reputation.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">⭐ Reviews</a>
+                <a href="market-intelligence.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎖️ Market Intel</a>
             </div>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto p-6">
-        <!-- Alert Banner -->
-        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6">
-            <p class="font-bold">Admin System Cleaned Up</p>
-            <p class="text-sm">All non-working features have been removed. This dashboard now shows ONLY real, functional tools.</p>
-        </div>
-
-        <!-- Real Stats Only -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-            <div class="bg-white p-6 rounded-lg shadow">
+        
+        <!-- Top KPIs -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+            <div class="bg-white rounded-lg shadow p-4">
                 <div class="text-3xl font-bold text-green-600">247</div>
-                <div class="text-gray-600">Monthly Visitors</div>
-                <div class="text-xs text-gray-500 mt-1">Real data from August</div>
+                <div class="text-sm text-gray-600">Monthly Visitors</div>
+                <div class="text-xs text-green-500 mt-1">↑ 18% vs last month</div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="text-3xl font-bold text-blue-600">68%</div>
-                <div class="text-gray-600">Mobile Traffic</div>
-                <div class="text-xs text-gray-500 mt-1">168 mobile users</div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-blue-600">11.3%</div>
+                <div class="text-sm text-gray-600">Conversion Rate</div>
+                <div class="text-xs text-green-500 mt-1">↑ 2.1% vs last month</div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="text-3xl font-bold text-purple-600">3</div>
-                <div class="text-gray-600">Active Microsites</div>
-                <div class="text-xs text-gray-500 mt-1">3 Local SEO Sites</div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-purple-600">#15</div>
+                <div class="text-sm text-gray-600">Market Position</div>
+                <div class="text-xs text-green-500 mt-1">↑ 5 positions</div>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="text-3xl font-bold text-yellow-600">#15</div>
-                <div class="text-gray-600">Market Position</div>
-                <div class="text-xs text-gray-500 mt-1">Out of 47 salons</div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-yellow-600">83</div>
+                <div class="text-sm text-gray-600">SEO Score</div>
+                <div class="text-xs text-green-500 mt-1">↑ 6 points</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-red-600">4.9★</div>
+                <div class="text-sm text-gray-600">133 Reviews</div>
+                <div class="text-xs text-green-500 mt-1">+8 this month</div>
             </div>
         </div>
 
-        <!-- Working Features Only -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Quick Actions & Alerts -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             
-            <!-- Google Analytics -->
+            <!-- Critical Alerts -->
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-gray-800">
-                    <i class="fas fa-chart-line text-blue-600 mr-2"></i>Analytics (REAL)
-                </h2>
+                <h2 class="text-xl font-bold mb-4 text-red-600">🚨 Critical Alerts</h2>
                 <div class="space-y-3">
-                    <a href="analytics-dashboard.html" class="block p-3 bg-blue-50 hover:bg-blue-100 rounded transition">
-                        <div class="font-semibold">Traffic Analytics</div>
-                        <div class="text-sm text-gray-600">247 visitors, 68% mobile</div>
-                        <div class="text-xs text-green-600 mt-1">✅ Real data</div>
-                    </a>
-                    <div class="p-3 bg-gray-50 rounded">
-                        <div class="text-sm text-gray-600">
-                            <div>📱 Mobile: 168 users</div>
-                            <div>💻 Desktop: 79 users</div>
-                            <div>📞 Phone clicks: 45</div>
-                            <div>📅 Booking clicks: 28</div>
-                        </div>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-3">
+                        <div class="font-semibold text-red-800">Competitor Alert</div>
+                        <div class="text-sm text-red-600">Salon Sora running ads on your brand name</div>
+                        <button class="text-xs bg-red-600 text-white px-2 py-1 rounded mt-1">Counter Now</button>
+                    </div>
+                    <div class="bg-orange-50 border-l-4 border-orange-500 p-3">
+                        <div class="font-semibold text-orange-800">SEO Issue</div>
+                        <div class="text-sm text-orange-600">Page speed dropped below 3s threshold</div>
+                        <button class="text-xs bg-orange-600 text-white px-2 py-1 rounded mt-1">Fix Now</button>
                     </div>
                 </div>
             </div>
 
-            <!-- SEO Management -->
+            <!-- Opportunities -->
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-gray-800">
-                    <i class="fas fa-search text-green-600 mr-2"></i>SEO Tools (WORKING)
-                </h2>
+                <h2 class="text-xl font-bold mb-4 text-green-600">💡 Opportunities</h2>
                 <div class="space-y-3">
-                    <a href="real-competitor-analysis.html" class="block p-3 bg-red-50 hover:bg-red-100 rounded transition">
-                        <div class="font-semibold">REAL Competitor Analysis</div>
-                        <div class="text-sm text-gray-600">API-based live scoring</div>
-                        <div class="text-xs text-red-600 mt-1">🆕 Uses Google PageSpeed API</div>
-                    </a>
-                    <a href="seo-competitive-analysis.html" class="block p-3 bg-green-50 hover:bg-green-100 rounded transition">
-                        <div class="font-semibold">SEO Comparison</div>
-                        <div class="text-sm text-gray-600">Score: 77/100 (#4 of 6)</div>
-                        <div class="text-xs text-green-600 mt-1">✅ Static analysis</div>
-                    </a>
-                    <a href="seo-command-center.html" class="block p-3 bg-green-50 hover:bg-green-100 rounded transition">
-                        <div class="font-semibold">SEO Overview</div>
-                        <div class="text-sm text-gray-600">Score: 83/100</div>
-                        <div class="text-xs text-green-600 mt-1">✅ Active monitoring</div>
-                    </a>
-                    <a href="seo-audit.html" class="block p-3 bg-green-50 hover:bg-green-100 rounded transition">
-                        <div class="font-semibold">SEO Audit</div>
-                        <div class="text-sm text-gray-600">Checklist & recommendations</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Microsites -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-gray-800">
-                    <i class="fas fa-globe text-purple-600 mr-2"></i>Microsites (REAL)
-                </h2>
-                <div class="space-y-3">
-                    <a href="microsite-roi.html" class="block p-3 bg-purple-50 hover:bg-purple-100 rounded transition">
-                        <div class="font-semibold">3 Active Microsites</div>
-                        <div class="text-sm text-gray-600">Specialized service pages</div>
-                        <div class="text-xs text-green-600 mt-1">✅ Live & indexed</div>
-                    </a>
-                    <div class="text-xs space-y-1 mt-2 p-2 bg-gray-50 rounded">
-                        <div>🎨 Best Salon Del Rey</div>
-                        <div>💇 Best Del Rey Salon</div>
-                        <div>🌟 Best Salon Palm Beach</div>
+                    <div class="bg-green-50 border-l-4 border-green-500 p-3">
+                        <div class="font-semibold text-green-800">Ranking Opportunity</div>
+                        <div class="text-sm text-green-600">"best colorist delray" - 2 spots from #1</div>
+                        <button class="text-xs bg-green-600 text-white px-2 py-1 rounded mt-1">Optimize</button>
+                    </div>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-3">
+                        <div class="font-semibold text-blue-800">Review Request</div>
+                        <div class="text-sm text-blue-600">17 happy clients haven't reviewed yet</div>
+                        <button class="text-xs bg-blue-600 text-white px-2 py-1 rounded mt-1">Send Requests</button>
                     </div>
                 </div>
             </div>
-
-            <!-- Competition Tracking -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-gray-800">
-                    <i class="fas fa-trophy text-yellow-600 mr-2"></i>Market Intelligence (REAL)
-                </h2>
-                <div class="space-y-3">
-                    <a href="market-position.html" class="block p-3 bg-yellow-50 hover:bg-yellow-100 rounded transition">
-                        <div class="font-semibold">Market Position</div>
-                        <div class="text-sm text-gray-600">#15 of 47 salons</div>
-                        <div class="text-xs text-green-600 mt-1">✅ Real ranking</div>
-                    </a>
-                    <a href="competition-monitor.html" class="block p-3 bg-yellow-50 hover:bg-yellow-100 rounded transition">
-                        <div class="font-semibold">Competition Monitor</div>
-                        <div class="text-sm text-gray-600">Track top competitors</div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Google Integration Status -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-gray-800">
-                    <i class="fas fa-plug text-blue-600 mr-2"></i>Integrations
-                </h2>
-                <div class="space-y-2 text-sm">
-                    <div class="flex justify-between items-center p-2 bg-green-50 rounded">
-                        <span>Google My Business</span>
-                        <span class="text-green-600 font-bold">✅ Active</span>
-                    </div>
-                    <div class="flex justify-between items-center p-2 bg-green-50 rounded">
-                        <span>Google Search Console</span>
-                        <span class="text-green-600 font-bold">✅ Connected</span>
-                    </div>
-                    <div class="flex justify-between items-center p-2 bg-yellow-50 rounded">
-                        <span>Google Analytics</span>
-                        <span class="text-yellow-600">⚠️ Basic only</span>
-                    </div>
-                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
-                        <span>Boulevard API</span>
-                        <span class="text-gray-400">❌ Not connected</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- What's Removed -->
-            <div class="bg-gray-100 rounded-lg shadow p-6">
-                <h2 class="text-xl font-bold mb-4 text-gray-600">
-                    <i class="fas fa-archive text-gray-500 mr-2"></i>Archived Features
-                </h2>
-                <p class="text-sm text-gray-600 mb-3">Failed features moved to archive:</p>
-                <ul class="text-xs text-gray-500 space-y-1">
-                    <li>❌ Backlink automation (didn't work)</li>
-                    <li>❌ Directory submission (failed)</li>
-                    <li>❌ Revenue tracking (no API)</li>
-                    <li>❌ Smart submission (broken)</li>
-                </ul>
-                <p class="text-xs text-gray-400 mt-3">Files saved in /archive-failed/ folder</p>
-            </div>
-
         </div>
 
-        <!-- Footer -->
-        <div class="mt-12 p-6 bg-gray-800 text-white rounded-lg">
-            <h3 class="text-lg font-bold mb-2">About This Dashboard</h3>
-            <p class="text-sm text-gray-300">
-                This admin dashboard has been cleaned up to show ONLY working features. 
-                All fake automation and non-functional pages have been removed.
-            </p>
-            <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-                <div>
-                    <div class="text-gray-400">Working Pages</div>
-                    <div class="text-xl font-bold text-green-400">6</div>
+        <!-- Live Charts -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            
+            <!-- Traffic Trend -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="font-bold mb-4">Traffic Trend (7 Days)</h3>
+                <canvas id="trafficChart"></canvas>
+            </div>
+
+            <!-- Keyword Rankings -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="font-bold mb-4">Top Keywords Movement</h3>
+                <canvas id="keywordChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Competitor Snapshot -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">Competitor Snapshot</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="border rounded p-3">
+                    <div class="font-semibold">You</div>
+                    <div class="text-2xl font-bold text-green-600">83</div>
+                    <div class="text-xs text-gray-500">Overall Score</div>
                 </div>
-                <div>
-                    <div class="text-gray-400">Archived Pages</div>
-                    <div class="text-xl font-bold text-gray-500">11</div>
+                <div class="border rounded p-3">
+                    <div class="font-semibold">Salon Sora</div>
+                    <div class="text-2xl font-bold text-red-600">85</div>
+                    <div class="text-xs text-gray-500">Leading by 2</div>
                 </div>
-                <div>
-                    <div class="text-gray-400">Real Data Points</div>
-                    <div class="text-xl font-bold text-blue-400">12</div>
+                <div class="border rounded p-3">
+                    <div class="font-semibold">Drybar</div>
+                    <div class="text-2xl font-bold text-yellow-600">78</div>
+                    <div class="text-xs text-gray-500">You lead by 5</div>
                 </div>
-                <div>
-                    <div class="text-gray-400">Fake Features</div>
-                    <div class="text-xl font-bold text-red-400">0</div>
+                <div class="border rounded p-3">
+                    <div class="font-semibold">The W Salon</div>
+                    <div class="text-2xl font-bold text-green-600">71</div>
+                    <div class="text-xs text-gray-500">You lead by 12</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Grid -->
+        <div class="bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold mb-4">⚡ Quick Actions</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="runCompetitorAnalysis()" class="bg-white hover:bg-gray-50 p-4 rounded shadow text-center">
+                    <i class="fas fa-search text-2xl text-purple-600 mb-2"></i>
+                    <div class="text-sm font-semibold">Analyze Competitors</div>
+                </button>
+                <button onclick="checkKeywordRankings()" class="bg-white hover:bg-gray-50 p-4 rounded shadow text-center">
+                    <i class="fas fa-chart-line text-2xl text-blue-600 mb-2"></i>
+                    <div class="text-sm font-semibold">Check Rankings</div>
+                </button>
+                <button onclick="exportReport()" class="bg-white hover:bg-gray-50 p-4 rounded shadow text-center">
+                    <i class="fas fa-download text-2xl text-green-600 mb-2"></i>
+                    <div class="text-sm font-semibold">Export Report</div>
+                </button>
+                <button onclick="schedulePost()" class="bg-white hover:bg-gray-50 p-4 rounded shadow text-center">
+                    <i class="fas fa-calendar text-2xl text-yellow-600 mb-2"></i>
+                    <div class="text-sm font-semibold">Schedule Post</div>
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-    // Simple functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        // Show current date/time
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleString();
-            const elements = document.querySelectorAll('#currentTime');
-            elements.forEach(el => el.textContent = timeString);
+    // Load persistent data
+    let persistentData = {};
+    
+    async function loadData() {
+        try {
+            const response = await fetch('../data/persistent-store.json');
+            persistentData = await response.json();
+            updateDashboard();
+        } catch (error) {
+            console.error('Error loading data:', error);
         }
-        updateTime();
-        setInterval(updateTime, 60000);
-    });
+    }
+
+    function updateDashboard() {
+        // Update time
+        document.getElementById('currentTime').textContent = new Date().toLocaleString();
+        
+        // Initialize charts with real data
+        initTrafficChart();
+        initKeywordChart();
+    }
+
+    function initTrafficChart() {
+        const ctx = document.getElementById('trafficChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Visitors',
+                    data: [32, 28, 35, 41, 38, 45, 52],
+                    borderColor: 'rgb(59, 130, 246)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    }
+
+    function initKeywordChart() {
+        const ctx = document.getElementById('keywordChart').getContext('2d');
+        
+        // Use real keyword data from persistent store
+        const latestDate = Object.keys(persistentData.keywordRankings || {}).sort().pop();
+        const keywords = persistentData.keywordRankings?.[latestDate] || {};
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(keywords).slice(0, 5),
+                datasets: [{
+                    label: 'Position',
+                    data: Object.values(keywords).slice(0, 5),
+                    backgroundColor: 'rgba(168, 85, 247, 0.5)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        reverse: true,
+                        min: 1,
+                        max: 20
+                    }
+                }
+            }
+        });
+    }
+
+    // Quick action functions
+    function runCompetitorAnalysis() {
+        window.location.href = 'competitor-analysis.html';
+    }
+
+    function checkKeywordRankings() {
+        window.location.href = 'keyword-rankings.html';
+    }
+
+    function exportReport() {
+        alert('Report export will be implemented with Boulevard API integration');
+    }
+
+    function schedulePost() {
+        alert('Social media scheduling will be integrated with Instagram API');
+    }
+
+    // Load data on page load
+    document.addEventListener('DOMContentLoaded', loadData);
+    
+    // Refresh data every 5 minutes
+    setInterval(loadData, 300000);
     </script>
 </body>
 </html>

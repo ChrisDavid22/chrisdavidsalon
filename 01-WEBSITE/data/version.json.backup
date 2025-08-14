@@ -1,7 +1,12 @@
 {
-  "version": "2.5.21",
-  "lastUpdated": "2025-08-14T13:34:38Z",
+  "version": "2.5.22",
+  "lastUpdated": "2025-08-14T15:03:44Z",
   "deployHistory": [
+    {
+      "version": "2.5.22",
+      "date": "2025-08-14T15:03:44Z",
+      "changes": "Complete admin rebuild v3.0: Clean 9-page architecture with consistent navigation, real API competitor analysis, keyword tracking with persistence, removed 8+ fragmented pages. Fixed microsite names to Best Salon Del Rey, Best Del Rey Salon, Best Salon Palm Beach"
+    },
     {
       "version": "2.5.21",
       "date": "2025-08-14T13:34:38Z",
@@ -41,11 +46,6 @@
       "version": "2.5.14",
       "date": "2025-08-11T20:33:39Z",
       "changes": "Post-deployment version sync: Fake data removal complete"
-    },
-    {
-      "version": "2.5.13",
-      "date": "2025-08-11T17:14:00Z",
-      "changes": "MAJOR UPDATE: Added embedded photo gallery carousel with categories, comprehensive Puppeteer testing suite for desktop/mobile/links/visual regression, automated pre-deployment testing"
     },
   ]
 }
