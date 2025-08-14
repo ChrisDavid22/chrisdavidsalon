@@ -1,7 +1,12 @@
 {
-  "version": "2.5.28",
-  "lastUpdated": "2025-08-14T21:23:20Z",
+  "version": "2.5.29",
+  "lastUpdated": "2025-08-14T22:04:51Z",
   "deployHistory": [
+    {
+      "version": "2.5.29",
+      "date": "2025-08-14T22:04:51Z",
+      "changes": "CRITICAL FIX: Restored correct service images - replaced wrong images with proper '11 Hair' series images for all services"
+    },
     {
       "version": "2.5.28",
       "date": "2025-08-14T21:23:20Z",
@@ -41,11 +46,6 @@
       "version": "2.5.19",
       "date": "2025-08-13T20:30:03Z",
       "changes": "Complete admin backend overhaul: removed all fake data pages, added SEO competitive analysis, SEO improvement engine, and progress tracker - 100% real data only"
-    },
-    {
-      "version": "2.5.18",
-      "date": "2025-08-12T14:12:29Z",
-      "changes": "Archive failed automation attempts"
     },
   ]
 }
