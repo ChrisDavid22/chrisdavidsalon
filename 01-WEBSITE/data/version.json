@@ -1,7 +1,12 @@
 {
-  "version": "2.5.29",
-  "lastUpdated": "2025-08-14T22:04:51Z",
+  "version": "2.5.30",
+  "lastUpdated": "2025-08-14T22:09:49Z",
   "deployHistory": [
+    {
+      "version": "2.5.30",
+      "date": "2025-08-14T22:09:49Z",
+      "changes": "CRITICAL: Gallery now ONLY uses Google Business photos. Removed ALL local image references. Archived wrong images. Created permanent rules document."
+    },
     {
       "version": "2.5.29",
       "date": "2025-08-14T22:04:51Z",
@@ -41,11 +46,6 @@
       "version": "2.5.20",
       "date": "2025-08-13T20:32:22Z",
       "changes": "Fix JSON syntax error in version.json"
-    },
-    {
-      "version": "2.5.19",
-      "date": "2025-08-13T20:30:03Z",
-      "changes": "Complete admin backend overhaul: removed all fake data pages, added SEO competitive analysis, SEO improvement engine, and progress tracker - 100% real data only"
     },
   ]
 }

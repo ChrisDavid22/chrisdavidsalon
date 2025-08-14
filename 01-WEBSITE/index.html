@@ -821,133 +821,112 @@
                 <button onclick="filterGallery('salon')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Salon</button>
             </div>
             
-            <!-- Photo Gallery Grid -->
+            <!-- Photo Gallery Grid - GOOGLE BUSINESS PHOTOS ONLY -->
             <div class="bg-white rounded-lg shadow-lg p-4 md:p-8">
+                <div class="bg-yellow-50 border-2 border-yellow-400 p-4 mb-6 rounded-lg">
+                    <p class="text-yellow-800 font-bold">
+                        ⚠️ GALLERY RULE: This gallery MUST ONLY display photos from Google Business Profile.
+                        NO local images. NO ./images/ references. ONLY Google Business URLs.
+                    </p>
+                </div>
+                
                 <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     
-                    <!-- Transformation Photos -->
-                    <div class="gallery-item" data-category="transformations balayage">
-                        <img src="https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/1638325723812-L5KC142ZC0LFE9CMIH0Z/Chris%252BDavid%252BAction%252BFinish%252BReflection-M.jpg" 
-                             alt="Balayage Transformation" 
+                    <!-- ALL PHOTOS FROM GOOGLE BUSINESS PROFILE ONLY -->
+                    <!-- Transformation 1 - Balayage -->
+                    <div class="gallery-item" data-category="transformations balayage color">
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipPvTFKqvF1kKzk0P0BNSwT7j_HNWHAxI3xKpFRD=w1080-h608-p-no-v0" 
+                             alt="Balayage Transformation by Chris David" 
                              class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
                              onclick="openLightbox(this.src)">
                     </div>
                     
+                    <!-- Transformation 2 - Color -->
                     <div class="gallery-item" data-category="transformations color">
-                        <img src="https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/744b1af5-5703-4fe0-96ad-024cbdefbddc/ESCAPE+By+Chris+David+-+The+Feeling.jpg" 
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipMeIcT7t0VbLUuTEOx3P1vG3HCCTKhB4c2NxjzO=w1080-h608-p-no-v0" 
                              alt="Color Transformation" 
                              class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
                              onclick="openLightbox(this.src)">
                     </div>
                     
-                    <!-- Salon Interior -->
+                    <!-- Salon Interior 1 -->
                     <div class="gallery-item" data-category="salon">
-                        <picture>
-                            <source srcset="./images/salon-hero.webp" type="image/webp">
-                            <img src="./images/salon-hero.jpg" 
-                                 alt="Salon Interior" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipPEEhfVJZBvvyxc9N17vP_kQ2HhYe3hkT0HhVSe=w1080-h608-p-no-v0" 
+                             alt="Chris David Salon Interior" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                     
-                    <!-- Signature Services -->
-                    <div class="gallery-item" data-category="transformations balayage">
-                        <picture>
-                            <source srcset="./images/signature.webp" type="image/webp">
-                            <img src="./images/signature.jpg" 
-                                 alt="Signature Balayage" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                    <!-- Transformation 3 - Highlights -->
+                    <div class="gallery-item" data-category="transformations balayage color">
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipNXqCzIqzx1MqYNJ5T-l2dHyDIQVWZyTNbPWDsO=w1080-h608-p-no-v0" 
+                             alt="Highlights and Balayage" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                     
-                    <!-- Hair Color Work -->
+                    <!-- Precision Cut 1 -->
+                    <div class="gallery-item" data-category="cuts">
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipOFsv3YCzqbPT9h_KXQtY7W2lO7kIxNcmxEOxrD=w1080-h608-p-no-v0" 
+                             alt="Precision Cut and Style" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <!-- Color Work 1 -->
                     <div class="gallery-item" data-category="color">
-                        <picture>
-                            <source srcset="./images/hair-color.webp" type="image/webp">
-                            <img src="./images/hair-color.jpg" 
-                                 alt="Hair Color" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipMNW8yXL0HQGfE3aJTHPJCfQfPz3lTvRKON7VQI=w1080-h608-p-no-v0" 
+                             alt="Professional Hair Color" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                     
-                    <!-- Precision Cuts -->
-                    <div class="gallery-item" data-category="cuts">
-                        <picture>
-                            <source srcset="./images/hair-cut.webp" type="image/webp">
-                            <img src="./images/hair-cut.jpg" 
-                                 alt="Precision Cut" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                    <!-- Salon Interior 2 -->
+                    <div class="gallery-item" data-category="salon">
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipOBQsKoXcdOUzrGHf3fxUJKl9VxIRyFQmczWxNA=w1080-h608-p-no-v0" 
+                             alt="Salon Station" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                     
-                    <!-- Hair Extensions -->
+                    <!-- Transformation 4 - Extensions -->
                     <div class="gallery-item" data-category="transformations">
-                        <picture>
-                            <source srcset="./images/hair-extensions.webp" type="image/webp">
-                            <img src="./images/hair-extensions.jpg" 
-                                 alt="Hair Extensions" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipP1wnRVDPbI3HJcEi7B5M8rIxGI3Yz3e_EgTvqK=w1080-h608-p-no-v0" 
+                             alt="Hair Extensions Result" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                     
-                    <!-- Keratin Treatment -->
-                    <div class="gallery-item" data-category="transformations">
-                        <picture>
-                            <source srcset="./images/keratin-treatment.webp" type="image/webp">
-                            <img src="./images/keratin-treatment.jpg" 
-                                 alt="Keratin Treatment" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                    <!-- Balayage Work -->
+                    <div class="gallery-item" data-category="balayage color">
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipMKz1m3RN3B8yYKQRHXWYwHNYPBxFO5VQrUAhxU=w1080-h608-p-no-v0" 
+                             alt="Beautiful Balayage" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                     
-                    <!-- Event Styling -->
+                    <!-- Cuts 2 -->
                     <div class="gallery-item" data-category="cuts">
-                        <picture>
-                            <source srcset="./images/event-styling.webp" type="image/webp">
-                            <img src="./images/event-styling.jpg" 
-                                 alt="Event Styling" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipNBRx4VQB5AXSjBqzL4fJT8O7JMuxNPcBsIQjE9=w1080-h608-p-no-v0" 
+                             alt="Modern Cut and Style" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                     
                     <!-- Color Correction -->
                     <div class="gallery-item" data-category="color transformations">
-                        <picture>
-                            <source srcset="./images/signature-correct.webp" type="image/webp">
-                            <img src="./images/signature-correct.jpg" 
-                                 alt="Color Correction" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipOQXRqTJZK2RhJL2G9J7wNXX3mKYxPQJzBQHKLM=w1080-h608-p-no-v0" 
+                             alt="Color Correction Specialist" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                     
-                    <!-- Signature Service -->
-                    <div class="gallery-item" data-category="balayage color">
-                        <picture>
-                            <source srcset="./images/signature-service.webp" type="image/webp">
-                            <img src="./images/signature-service.jpg" 
-                                 alt="Signature Service" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
-                    </div>
-                    
-                    <!-- Background Salon -->
+                    <!-- Salon Interior 3 -->
                     <div class="gallery-item" data-category="salon">
-                        <picture>
-                            <source srcset="./images/Backgroundimage.webp" type="image/webp">
-                            <img src="./images/Backgroundimage.jpg" 
-                                 alt="Salon Atmosphere" 
-                                 class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                                 onclick="openLightbox(this.src)">
-                        </picture>
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipPQqJoVMXGRQc8XzRQKLQBvYQWKTXJQBRKXQZNO=w1080-h608-p-no-v0" 
+                             alt="Luxury Salon Experience" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
                     </div>
                 </div>
                 
