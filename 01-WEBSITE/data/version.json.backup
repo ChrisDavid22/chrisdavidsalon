@@ -1,7 +1,12 @@
 {
-  "version": "2.5.31",
-  "lastUpdated": "2025-08-14T22:12:05Z",
+  "version": "2.5.32",
+  "lastUpdated": "2025-08-14T22:19:18Z",
   "deployHistory": [
+    {
+      "version": "2.5.32",
+      "date": "2025-08-14T22:19:18Z",
+      "changes": "RESTORED: Fixed gallery by restoring working Google Maps iframe gallery from version 2.5.26 - no more broken image links"
+    },
     {
       "version": "2.5.31",
       "date": "2025-08-14T22:12:05Z",
@@ -41,11 +46,6 @@
       "version": "2.5.22",
       "date": "2025-08-14T15:03:44Z",
       "changes": "Complete admin rebuild v3.0: Clean 9-page architecture with consistent navigation, real API competitor analysis, keyword tracking with persistence, removed 8+ fragmented pages. Fixed microsite names to Best Salon Del Rey, Best Del Rey Salon, Best Salon Palm Beach"
-    },
-    {
-      "version": "2.5.21",
-      "date": "2025-08-14T13:34:38Z",
-      "changes": "Fixed microsite names (Best Salon Del Rey, Best Del Rey Salon, Best Salon Palm Beach), unified navigation across all admin pages, added real competitor analysis with Google PageSpeed API integration"
     },
   ]
 }
