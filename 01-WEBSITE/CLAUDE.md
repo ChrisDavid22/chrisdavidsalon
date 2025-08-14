@@ -80,12 +80,21 @@ cat data/analytics.json
 
 ### Admin System Architecture
 
-**16 Interconnected Pages** accessible from `/admin/index.html`:
-- **Core Hub**: Unified navigation bar on ALL pages
-- **Backlink System**: 90 directories ready, 87 pending submission
-- **Analytics**: Real data from analytics.json (247 visitors)
-- **Revenue**: Awaiting Boulevard API integration
-- **Competition**: Tracking 47 local competitors
+**9 Functional Admin Pages** accessible from `/admin/index.html`:
+1. **Dashboard** (index.html) - Central hub with overview
+2. **Analytics** (analytics.html) - Traffic and visitor data
+3. **Performance Tracker** (performance-tracker.html) - Historical metrics
+4. **SEO Dashboard** (seo-dashboard.html) - SEO health monitoring
+5. **Keyword Rankings** (keyword-rankings.html) - Search position tracking
+6. **Competitor Analysis** (competitor-analysis.html) - Market competition with API
+7. **Microsites** (microsites.html) - Microsite performance
+8. **Reviews & Reputation** (reviews-reputation.html) - Review management
+9. **Market Intelligence** (market-intelligence.html) - Market position
+
+**Missing/Not Created Yet**:
+- Backlink campaign pages (referenced but don't exist)
+- Revenue tracker (needs Boulevard API)
+- Other pages mentioned in old documentation
 
 **Navigation Pattern**: Every admin page has identical nav bar with color-coded sections:
 - Purple: Core pages
@@ -155,7 +164,9 @@ cat data/analytics.json
 
 ## Version Management
 
-**Current**: 2.5.14 (auto-increments with deploy.sh)
+**Production**: 2.5.24 (Last successful deployment)
+**Local**: 2.5.27 (Recent changes not deploying)
+**Issue**: Vercel deployments failing for versions 2.5.25-27
 
 **Version History**: Tracked in `data/version.json` with:
 - Version number

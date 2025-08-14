@@ -501,7 +501,7 @@
                 
                 <div class="flex items-center space-x-4">
                     <!-- Phone Number CTA -->
-                    <a href="tel:5612990950" class="hidden sm:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors">
+                    <a href="tel:5612990950" onclick="if(typeof gtag !== 'undefined') gtag('event', 'click', {'event_category': 'Contact', 'event_label': 'Phone Call', 'value': 1});" class="hidden sm:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors">
                         <i class="fas fa-phone mr-2"></i>
                         <span class="text-lg">(561) 299-0950</span>
                     </a>
@@ -1424,6 +1424,15 @@
     <script>
         // Booking Modal Functions - Using Boulevard
         function openBookingModal() {
+            // Track booking button click in Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': 'Booking',
+                    'event_label': 'Book Now Button',
+                    'value': 1
+                });
+            }
+            
             // Boulevard widget - use the documented method from Boulevard support
             if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
                 // This is the correct method according to Boulevard documentation

@@ -9,17 +9,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- Standard Admin Navigation v3.0.0 -->
+    <!-- Standard Admin Navigation v3.1 with Back to Main Site -->
     <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h1 class="text-2xl font-bold">Chris David Salon Admin v3.0</h1>
-                    <p class="text-sm text-purple-200">Executive Dashboard</p>
+                    <h1 class="text-2xl font-bold">Chris David Salon Admin</h1>
+                    <p class="text-sm text-purple-200">Dashboard - Real Data Only</p>
                 </div>
-                <div class="text-right">
-                    <p class="text-xs text-green-400">🟢 All Systems Operational</p>
-                    <p class="text-xs text-purple-200" id="currentTime"></p>
+                <div class="flex flex-col items-end gap-2">
+                    <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold transition-colors">
+                        ← Back to Main Site
+                    </a>
+                    <div class="text-right">
+                        <p class="text-xs text-purple-200" id="currentTime"></p>
+                    </div>
                 </div>
             </div>
             
@@ -43,68 +47,77 @@
 
     <div class="max-w-7xl mx-auto p-6">
         
-        <!-- Top KPIs -->
+        <!-- Real Data Only -->
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
             <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-green-600">247</div>
+                <div class="text-3xl font-bold text-green-600" id="visitorCount">247</div>
                 <div class="text-sm text-gray-600">Monthly Visitors</div>
-                <div class="text-xs text-green-500 mt-1">↑ 18% vs last month</div>
+                <div class="text-xs text-gray-500 mt-1">From analytics.json</div>
             </div>
             <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-blue-600">11.3%</div>
-                <div class="text-sm text-gray-600">Conversion Rate</div>
-                <div class="text-xs text-green-500 mt-1">↑ 2.1% vs last month</div>
+                <div class="text-3xl font-bold text-blue-600" id="bookingClicks">28</div>
+                <div class="text-sm text-gray-600">Booking Clicks</div>
+                <div class="text-xs text-gray-500 mt-1">From analytics.json</div>
             </div>
-            <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-purple-600">#15</div>
-                <div class="text-sm text-gray-600">Market Position</div>
-                <div class="text-xs text-green-500 mt-1">↑ 5 positions</div>
+            <div class="bg-gray-100 rounded-lg shadow p-4">
+                <div class="text-2xl font-bold text-gray-400">--</div>
+                <div class="text-sm text-gray-500">Market Position</div>
+                <div class="text-xs text-gray-400 mt-1">No data source</div>
             </div>
-            <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-yellow-600">83</div>
-                <div class="text-sm text-gray-600">SEO Score</div>
-                <div class="text-xs text-green-500 mt-1">↑ 6 points</div>
+            <div class="bg-gray-100 rounded-lg shadow p-4">
+                <div class="text-2xl font-bold text-gray-400">--</div>
+                <div class="text-sm text-gray-500">SEO Score</div>
+                <div class="text-xs text-gray-400 mt-1">Needs API setup</div>
             </div>
             <div class="bg-white rounded-lg shadow p-4">
                 <div class="text-3xl font-bold text-red-600">4.9★</div>
                 <div class="text-sm text-gray-600">133 Reviews</div>
-                <div class="text-xs text-green-500 mt-1">+8 this month</div>
+                <div class="text-xs text-gray-500 mt-1">Google My Business</div>
             </div>
         </div>
 
-        <!-- Quick Actions & Alerts -->
+        <!-- Real-Time Data Queries -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             
-            <!-- Critical Alerts -->
+            <!-- Performance Monitoring -->
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-red-600">🚨 Critical Alerts</h2>
-                <div class="space-y-3">
-                    <div class="bg-red-50 border-l-4 border-red-500 p-3">
-                        <div class="font-semibold text-red-800">Competitor Alert</div>
-                        <div class="text-sm text-red-600">Salon Sora running ads on your brand name</div>
-                        <button class="text-xs bg-red-600 text-white px-2 py-1 rounded mt-1">Counter Now</button>
+                <h2 class="text-xl font-bold mb-4 text-blue-600">📊 Performance Check</h2>
+                <div id="performanceStatus" class="space-y-3">
+                    <div class="bg-gray-50 border-l-4 border-gray-400 p-3">
+                        <div class="font-semibold text-gray-800">Page Speed Status</div>
+                        <div class="text-sm text-gray-600">Click to run Google PageSpeed test</div>
+                        <button onclick="checkPageSpeed()" class="text-xs bg-blue-600 text-white px-3 py-1 rounded mt-1 hover:bg-blue-700">
+                            Run Speed Test
+                        </button>
                     </div>
-                    <div class="bg-orange-50 border-l-4 border-orange-500 p-3">
-                        <div class="font-semibold text-orange-800">SEO Issue</div>
-                        <div class="text-sm text-orange-600">Page speed dropped below 3s threshold</div>
-                        <button class="text-xs bg-orange-600 text-white px-2 py-1 rounded mt-1">Fix Now</button>
+                    <div class="bg-gray-50 border-l-4 border-gray-400 p-3">
+                        <div class="font-semibold text-gray-800">Competitor Ad Check</div>
+                        <div class="text-sm text-gray-600">Search Google for competitor ads</div>
+                        <button onclick="checkCompetitorAds()" class="text-xs bg-blue-600 text-white px-3 py-1 rounded mt-1 hover:bg-blue-700">
+                            Check Now
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Opportunities -->
+            <!-- Live Data Refresh -->
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-green-600">💡 Opportunities</h2>
+                <h2 class="text-xl font-bold mb-4 text-green-600">🔄 Data Refresh</h2>
                 <div class="space-y-3">
-                    <div class="bg-green-50 border-l-4 border-green-500 p-3">
-                        <div class="font-semibold text-green-800">Ranking Opportunity</div>
-                        <div class="text-sm text-green-600">"best colorist delray" - 2 spots from #1</div>
-                        <button class="text-xs bg-green-600 text-white px-2 py-1 rounded mt-1">Optimize</button>
+                    <div class="bg-gray-50 border-l-4 border-gray-400 p-3">
+                        <div class="font-semibold text-gray-800">Analytics Data</div>
+                        <div class="text-sm text-gray-600" id="lastAnalyticsUpdate">Last updated: Loading...</div>
+                        <button onclick="refreshAnalytics()" class="text-xs bg-green-600 text-white px-3 py-1 rounded mt-1 hover:bg-green-700">
+                            Refresh Analytics
+                        </button>
                     </div>
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-3">
-                        <div class="font-semibold text-blue-800">Review Request</div>
-                        <div class="text-sm text-blue-600">17 happy clients haven't reviewed yet</div>
-                        <button class="text-xs bg-blue-600 text-white px-2 py-1 rounded mt-1">Send Requests</button>
+                    <div class="bg-gray-50 border-l-4 border-gray-400 p-3">
+                        <div class="font-semibold text-gray-800">Keyword Rankings</div>
+                        <div class="text-sm text-gray-600">Manual check via Google Search Console</div>
+                        <a href="https://search.google.com/search-console" target="_blank" 
+                           class="inline-block text-xs bg-green-600 text-white px-3 py-1 rounded mt-1 hover:bg-green-700">
+                            Open Search Console
+                        </a>
                     </div>
                 </div>
             </div>
@@ -115,44 +128,57 @@
             
             <!-- Traffic Trend -->
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="font-bold mb-4">Traffic Trend (7 Days)</h3>
-                <div class="h-64">
-                    <canvas id="trafficChart"></canvas>
+                <h3 class="font-bold mb-4">Traffic Data</h3>
+                <p class="text-sm text-gray-500 mb-2">Monthly total: 247 visitors (no daily breakdown available)</p>
+                <div class="h-64 flex items-center justify-center bg-gray-50">
+                    <div class="text-center">
+                        <p class="text-gray-400">Daily traffic data requires Google Analytics API</p>
+                        <a href="https://analytics.google.com" target="_blank" 
+                           class="text-blue-600 text-sm hover:underline mt-2 inline-block">
+                            Open Google Analytics →
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <!-- Keyword Rankings -->
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="font-bold mb-4">Top Keywords Movement</h3>
-                <div class="h-64">
-                    <canvas id="keywordChart"></canvas>
+                <h3 class="font-bold mb-4">Keyword Rankings</h3>
+                <p class="text-sm text-gray-500 mb-2">No automated ranking data available</p>
+                <div class="h-64 flex items-center justify-center bg-gray-50">
+                    <div class="text-center">
+                        <p class="text-gray-400">Keyword tracking requires Search Console API</p>
+                        <a href="https://search.google.com/search-console" target="_blank" 
+                           class="text-blue-600 text-sm hover:underline mt-2 inline-block">
+                            Open Search Console →
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Competitor Snapshot -->
+        <!-- Competitor Monitoring -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h2 class="text-xl font-bold mb-4">Competitor Snapshot</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="border rounded p-3">
-                    <div class="font-semibold">You</div>
-                    <div class="text-2xl font-bold text-green-600">83</div>
-                    <div class="text-xs text-gray-500">Overall Score</div>
-                </div>
-                <div class="border rounded p-3">
-                    <div class="font-semibold">Salon Sora</div>
-                    <div class="text-2xl font-bold text-red-600">85</div>
-                    <div class="text-xs text-gray-500">Leading by 2</div>
-                </div>
-                <div class="border rounded p-3">
-                    <div class="font-semibold">Drybar</div>
-                    <div class="text-2xl font-bold text-yellow-600">78</div>
-                    <div class="text-xs text-gray-500">You lead by 5</div>
-                </div>
-                <div class="border rounded p-3">
-                    <div class="font-semibold">The W Salon</div>
-                    <div class="text-2xl font-bold text-green-600">71</div>
-                    <div class="text-xs text-gray-500">You lead by 12</div>
+            <h2 class="text-xl font-bold mb-4">Competitor Check</h2>
+            <div class="bg-gray-50 border-l-4 border-gray-400 p-4">
+                <p class="text-gray-600 mb-3">Check real competitor data manually:</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    <a href="https://www.google.com/search?q=Salon+Sora+Delray+Beach" target="_blank"
+                       class="bg-blue-600 text-white px-3 py-2 rounded text-xs text-center hover:bg-blue-700">
+                        Search Salon Sora
+                    </a>
+                    <a href="https://www.google.com/search?q=Drybar+Delray+Beach" target="_blank"
+                       class="bg-blue-600 text-white px-3 py-2 rounded text-xs text-center hover:bg-blue-700">
+                        Search Drybar
+                    </a>
+                    <a href="https://www.google.com/search?q=The+W+Salon+Delray+Beach" target="_blank"
+                       class="bg-blue-600 text-white px-3 py-2 rounded text-xs text-center hover:bg-blue-700">
+                        Search The W Salon
+                    </a>
+                    <a href="competitor-analysis.html"
+                       class="bg-green-600 text-white px-3 py-2 rounded text-xs text-center hover:bg-green-700">
+                        Full Analysis →
+                    </a>
                 </div>
             </div>
         </div>
@@ -199,72 +225,76 @@
         // Update time
         document.getElementById('currentTime').textContent = new Date().toLocaleString();
         
-        // Initialize charts with real data
-        initTrafficChart();
-        initKeywordChart();
+        // Update analytics data timestamp
+        document.getElementById('lastAnalyticsUpdate').textContent = 
+            `Last updated: ${new Date().toLocaleString()} - 247 visitors`;
     }
 
-    function initTrafficChart() {
-        const ctx = document.getElementById('trafficChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                datasets: [{
-                    label: 'Visitors',
-                    data: [32, 28, 35, 41, 38, 45, 52],
-                    borderColor: 'rgb(59, 130, 246)',
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-    }
-
-    function initKeywordChart() {
-        const ctx = document.getElementById('keywordChart').getContext('2d');
+    // Real Data Query Functions
+    async function checkPageSpeed() {
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = 'Testing...';
+        btn.disabled = true;
         
-        // Use real keyword data from persistent store
-        const latestDate = Object.keys(persistentData.keywordRankings || {}).sort().pop();
-        const keywords = persistentData.keywordRankings?.[latestDate] || {};
-        
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: Object.keys(keywords).slice(0, 5),
-                datasets: [{
-                    label: 'Position',
-                    data: Object.values(keywords).slice(0, 5),
-                    backgroundColor: 'rgba(168, 85, 247, 0.5)'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        reverse: true,
-                        min: 1,
-                        max: 20
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
+        try {
+            // This would call Google PageSpeed API
+            // For now, show how to get the API key
+            const result = document.getElementById('performanceStatus');
+            result.innerHTML = `
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-3">
+                    <div class="font-semibold text-yellow-800">PageSpeed API Setup Required</div>
+                    <div class="text-sm text-yellow-600 mt-2">
+                        To enable automated speed testing:<br>
+                        1. Get API key from Google Cloud Console<br>
+                        2. Add to environment variables<br>
+                        3. API endpoint: https://www.googleapis.com/pagespeedonline/v5/runPagespeed
+                    </div>
+                    <a href="https://developers.google.com/speed/docs/insights/v5/get-started" target="_blank"
+                       class="inline-block text-xs bg-yellow-600 text-white px-3 py-1 rounded mt-2">
+                        Get API Key
+                    </a>
+                </div>
+            `;
+        } finally {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
     }
-
+    
+    function checkCompetitorAds() {
+        // Opens Google search with your brand name to check for competitor ads
+        const searchQuery = encodeURIComponent('"Chris David Salon" Delray Beach');
+        window.open(`https://www.google.com/search?q=${searchQuery}`, '_blank');
+    }
+    
+    async function refreshAnalytics() {
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = 'Refreshing...';
+        btn.disabled = true;
+        
+        try {
+            // Load current analytics data
+            const response = await fetch('../data/analytics.json');
+            const data = await response.json();
+            
+            // Update display
+            document.getElementById('lastAnalyticsUpdate').textContent = 
+                `Last updated: ${new Date().toLocaleString()} - ${data.visitors} visitors`;
+            
+            // Update the KPI cards with fresh data
+            document.querySelector('.text-3xl.text-green-600').textContent = data.visitors;
+            
+        } catch (error) {
+            document.getElementById('lastAnalyticsUpdate').textContent = 
+                'Error loading analytics: ' + error.message;
+        } finally {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+    }
+    
     // Quick action functions
     function runCompetitorAnalysis() {
         window.location.href = 'competitor-analysis.html';
@@ -275,11 +305,27 @@
     }
 
     function exportReport() {
-        alert('Report export will be implemented with Boulevard API integration');
+        // Show real export options
+        const data = {
+            visitors: 247,
+            bookingClicks: 28,
+            avgDuration: 145,
+            mobileTraffic: 0.68,
+            timestamp: new Date().toISOString()
+        };
+        
+        const json = JSON.stringify(data, null, 2);
+        const blob = new Blob([json], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `analytics-export-${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
     }
 
     function schedulePost() {
-        alert('Social media scheduling will be integrated with Instagram API');
+        // Direct link to Instagram Creator Studio for scheduling
+        window.open('https://business.facebook.com/creatorstudio', '_blank');
     }
 
     // Load data on page load

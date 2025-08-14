@@ -6,20 +6,23 @@
     <title>SEO Dashboard - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- Standard Admin Navigation v3.0.0 -->
+    <!-- Standard Admin Navigation v3.1 with Back to Main Site -->
     <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h1 class="text-2xl font-bold">Chris David Salon Admin v3.0</h1>
-                    <p class="text-sm text-purple-200">SEO Dashboard</p>
+                    <h1 class="text-2xl font-bold">Chris David Salon Admin</h1>
+                    <p class="text-sm text-purple-200">SEO Dashboard - Live Data</p>
                 </div>
-                <div class="text-right">
-                    <p class="text-xs text-green-400">🟢 All Systems Operational</p>
-                    <p class="text-xs text-purple-200" id="currentTime"></p>
+                <div class="flex flex-col items-end gap-2">
+                    <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold transition-colors">
+                        ← Back to Main Site
+                    </a>
+                    <div class="text-right">
+                        <p class="text-xs text-purple-200" id="currentTime"></p>
+                    </div>
                 </div>
             </div>
             
@@ -43,131 +46,106 @@
 
     <div class="max-w-7xl mx-auto p-6">
         
-        <!-- SEO Score Overview -->
-        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-lg p-6 mb-6">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h2 class="text-3xl font-bold">Overall SEO Score</h2>
-                    <p class="text-blue-100 mt-1">Based on technical analysis and best practices</p>
-                </div>
-                <div class="text-center">
-                    <div class="text-6xl font-bold">83</div>
-                    <div class="text-blue-100">/100</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SEO Categories -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="font-bold text-lg mb-4">Technical SEO</h3>
-                <div class="text-3xl font-bold text-green-600 mb-2">27/30</div>
-                <ul class="text-sm space-y-1">
-                    <li class="text-green-600">✅ SSL Certificate</li>
-                    <li class="text-green-600">✅ Mobile Responsive</li>
-                    <li class="text-green-600">✅ XML Sitemap</li>
-                    <li class="text-yellow-600">⚠️ Page Speed (7/10)</li>
-                </ul>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="font-bold text-lg mb-4">Content Quality</h3>
-                <div class="text-3xl font-bold text-green-600 mb-2">23/25</div>
-                <ul class="text-sm space-y-1">
-                    <li class="text-green-600">✅ Unique Content</li>
-                    <li class="text-green-600">✅ Heading Structure</li>
-                    <li class="text-yellow-600">⚠️ Keyword Density</li>
-                    <li class="text-green-600">✅ Meta Descriptions</li>
-                </ul>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="font-bold text-lg mb-4">Local SEO</h3>
-                <div class="text-3xl font-bold text-green-600 mb-2">15/15</div>
-                <ul class="text-sm space-y-1">
-                    <li class="text-green-600">✅ Google My Business</li>
-                    <li class="text-green-600">✅ NAP Consistency</li>
-                    <li class="text-green-600">✅ Local Citations</li>
-                    <li class="text-green-600">✅ Schema Markup</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- SEO Issues & Opportunities -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-red-50 rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-bold text-red-800 mb-4">🚨 Critical Issues</h3>
-                <div class="space-y-3">
-                    <div class="bg-white p-3 rounded border-l-4 border-red-500">
-                        <div class="font-semibold">Page Speed</div>
-                        <div class="text-sm text-gray-600">Mobile load time 5.2s (target: <3s)</div>
-                        <button class="text-xs bg-red-600 text-white px-2 py-1 rounded mt-1">Fix Now</button>
-                    </div>
-                    <div class="bg-white p-3 rounded border-l-4 border-red-500">
-                        <div class="font-semibold">Missing Alt Text</div>
-                        <div class="text-sm text-gray-600">12 images without alt attributes</div>
-                        <button class="text-xs bg-red-600 text-white px-2 py-1 rounded mt-1">Fix Now</button>
-                    </div>
+        <!-- Live PageSpeed Test -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4">🚀 Live PageSpeed Test</h2>
+            <div class="mb-4">
+                <p class="text-gray-600 mb-3">Test your website performance with Google PageSpeed Insights:</p>
+                <div class="flex gap-3">
+                    <button onclick="runPageSpeedTest('mobile')" 
+                            class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 font-semibold">
+                        <i class="fas fa-mobile-alt mr-2"></i>Test Mobile Speed
+                    </button>
+                    <button onclick="runPageSpeedTest('desktop')" 
+                            class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 font-semibold">
+                        <i class="fas fa-desktop mr-2"></i>Test Desktop Speed
+                    </button>
                 </div>
             </div>
-            
-            <div class="bg-green-50 rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-bold text-green-800 mb-4">💡 Opportunities</h3>
-                <div class="space-y-3">
-                    <div class="bg-white p-3 rounded border-l-4 border-green-500">
-                        <div class="font-semibold">Backlink Building</div>
-                        <div class="text-sm text-gray-600">87 directories ready for submission</div>
-                        <button class="text-xs bg-green-600 text-white px-2 py-1 rounded mt-1">Start Campaign</button>
-                    </div>
-                    <div class="bg-white p-3 rounded border-l-4 border-green-500">
-                        <div class="font-semibold">Content Expansion</div>
-                        <div class="text-sm text-gray-600">Add service-specific landing pages</div>
-                        <button class="text-xs bg-green-600 text-white px-2 py-1 rounded mt-1">Create Pages</button>
-                    </div>
+            <div id="pageSpeedResults" class="hidden">
+                <div class="border-t pt-4">
+                    <h3 class="font-bold mb-3">Test Results:</h3>
+                    <div id="resultsContent"></div>
                 </div>
             </div>
         </div>
 
-        <!-- SEO Checklist -->
-        <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-xl font-bold mb-4">📋 Weekly SEO Checklist</h3>
+        <!-- Google Search Console -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4">📊 Search Console Data</h2>
+            <div class="bg-gray-50 p-4 rounded">
+                <p class="text-gray-600 mb-3">Access your search performance data:</p>
+                <a href="https://search.google.com/search-console/performance/search-analytics?resource_id=https%3A%2F%2Fwww.chrisdavidsalon.com%2F" 
+                   target="_blank"
+                   class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 font-semibold">
+                    <i class="fab fa-google mr-2"></i>Open Search Console
+                </a>
+                <div class="mt-4 text-sm text-gray-500">
+                    <p>Check for:</p>
+                    <ul class="list-disc list-inside mt-1">
+                        <li>Search impressions and clicks</li>
+                        <li>Average position for keywords</li>
+                        <li>Click-through rates</li>
+                        <li>Mobile usability issues</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Site Check -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold mb-4">🔍 Live Site Checks</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="space-y-2">
-                    <label class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>Check keyword rankings</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>Monitor competitor changes</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>Update meta descriptions</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>Add new content</span>
-                    </label>
+                <div class="bg-gray-50 p-4 rounded">
+                    <h3 class="font-semibold mb-2">Check Mobile Friendliness</h3>
+                    <button onclick="checkMobileFriendly()" 
+                            class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 text-sm">
+                        Run Mobile Test
+                    </button>
                 </div>
-                <div class="space-y-2">
-                    <label class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>Check for broken links</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>Optimize images</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>Review Google Search Console</span>
-                    </label>
-                    <label class="flex items-center">
-                        <input type="checkbox" class="mr-2">
-                        <span>Submit new sitemap if needed</span>
-                    </label>
+                <div class="bg-gray-50 p-4 rounded">
+                    <h3 class="font-semibold mb-2">Check Site Indexing</h3>
+                    <button onclick="checkIndexing()" 
+                            class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 text-sm">
+                        Check Google Index
+                    </button>
                 </div>
+                <div class="bg-gray-50 p-4 rounded">
+                    <h3 class="font-semibold mb-2">Check Rich Results</h3>
+                    <button onclick="checkRichResults()" 
+                            class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 text-sm">
+                        Test Rich Results
+                    </button>
+                </div>
+                <div class="bg-gray-50 p-4 rounded">
+                    <h3 class="font-semibold mb-2">Check Security</h3>
+                    <button onclick="checkSecurity()" 
+                            class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 text-sm">
+                        Security Check
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manual SEO Tools -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold mb-4">🛠️ SEO Tools & Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="https://www.google.com/business/" target="_blank"
+                   class="bg-blue-50 p-4 rounded hover:bg-blue-100 transition">
+                    <h3 class="font-semibold text-blue-800">Google My Business</h3>
+                    <p class="text-sm text-gray-600 mt-1">Manage your business listing</p>
+                </a>
+                <a href="https://analytics.google.com/" target="_blank"
+                   class="bg-green-50 p-4 rounded hover:bg-green-100 transition">
+                    <h3 class="font-semibold text-green-800">Google Analytics</h3>
+                    <p class="text-sm text-gray-600 mt-1">Track visitor behavior</p>
+                </a>
+                <a href="https://ads.google.com/intl/en_us/home/tools/keyword-planner/" target="_blank"
+                   class="bg-purple-50 p-4 rounded hover:bg-purple-100 transition">
+                    <h3 class="font-semibold text-purple-800">Keyword Planner</h3>
+                    <p class="text-sm text-gray-600 mt-1">Research search volume</p>
+                </a>
             </div>
         </div>
     </div>
@@ -175,6 +153,85 @@
     <script>
     // Update time
     document.getElementById('currentTime').textContent = new Date().toLocaleString();
+
+    // PageSpeed Test with public API (no key required for basic test)
+    async function runPageSpeedTest(strategy) {
+        const resultsDiv = document.getElementById('pageSpeedResults');
+        const resultsContent = document.getElementById('resultsContent');
+        
+        resultsDiv.classList.remove('hidden');
+        resultsContent.innerHTML = '<p class="text-gray-600"><i class="fas fa-spinner fa-spin mr-2"></i>Running PageSpeed test...</p>';
+        
+        try {
+            // Using public PageSpeed API endpoint
+            const url = `https://pagespeedonline.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://www.chrisdavidsalon.com&strategy=${strategy}`;
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (data.lighthouseResult) {
+                const score = Math.round(data.lighthouseResult.categories.performance.score * 100);
+                const fcp = data.lighthouseResult.audits['first-contentful-paint'].displayValue;
+                const lcp = data.lighthouseResult.audits['largest-contentful-paint'].displayValue;
+                const cls = data.lighthouseResult.audits['cumulative-layout-shift'].displayValue;
+                
+                resultsContent.innerHTML = `
+                    <div class="bg-${score >= 90 ? 'green' : score >= 50 ? 'yellow' : 'red'}-50 p-4 rounded mb-3">
+                        <div class="text-2xl font-bold text-${score >= 90 ? 'green' : score >= 50 ? 'yellow' : 'red'}-800">
+                            Performance Score: ${score}/100
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-600">First Contentful Paint</p>
+                            <p class="font-semibold">${fcp}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Largest Contentful Paint</p>
+                            <p class="font-semibold">${lcp}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Layout Shift</p>
+                            <p class="font-semibold">${cls}</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-3">Last tested: ${new Date().toLocaleString()}</p>
+                `;
+            } else {
+                throw new Error('Invalid response from PageSpeed API');
+            }
+        } catch (error) {
+            resultsContent.innerHTML = `
+                <div class="bg-yellow-50 p-4 rounded">
+                    <p class="text-yellow-800">Could not complete test. Try the manual link:</p>
+                    <a href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fwww.chrisdavidsalon.com" 
+                       target="_blank" class="text-blue-600 hover:underline mt-2 inline-block">
+                        Open PageSpeed Insights →
+                    </a>
+                </div>
+            `;
+        }
+    }
+
+    // Mobile Friendly Test
+    function checkMobileFriendly() {
+        window.open('https://search.google.com/test/mobile-friendly?url=https://www.chrisdavidsalon.com', '_blank');
+    }
+
+    // Check Indexing
+    function checkIndexing() {
+        window.open('https://www.google.com/search?q=site:chrisdavidsalon.com', '_blank');
+    }
+
+    // Rich Results Test
+    function checkRichResults() {
+        window.open('https://search.google.com/test/rich-results?url=https://www.chrisdavidsalon.com', '_blank');
+    }
+
+    // Security Check
+    function checkSecurity() {
+        window.open('https://transparencyreport.google.com/safe-browsing/search?url=chrisdavidsalon.com', '_blank');
+    }
     </script>
 </body>
 </html>

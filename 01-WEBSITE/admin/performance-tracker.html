@@ -9,17 +9,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- Standard Admin Navigation v3.0.0 -->
+    <!-- Standard Admin Navigation v3.1 with Back to Main Site -->
     <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h1 class="text-2xl font-bold">Chris David Salon Admin v3.0</h1>
-                    <p class="text-sm text-purple-200">Performance Tracker</p>
+                    <h1 class="text-2xl font-bold">Chris David Salon Admin</h1>
+                    <p class="text-sm text-purple-200">Performance Tracker - Real Data Only</p>
                 </div>
-                <div class="text-right">
-                    <p class="text-xs text-green-400">🟢 All Systems Operational</p>
-                    <p class="text-xs text-purple-200" id="currentTime"></p>
+                <div class="flex flex-col items-end gap-2">
+                    <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold transition-colors">
+                        ← Back to Main Site
+                    </a>
+                    <div class="text-right">
+                        <p class="text-xs text-purple-200" id="currentTime"></p>
+                    </div>
                 </div>
             </div>
             
@@ -43,77 +47,79 @@
 
     <div class="max-w-7xl mx-auto p-6">
         
-        <!-- Performance Overview -->
+        <!-- Real Data Only -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
             <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-green-600">58%</div>
-                <div class="text-sm text-gray-600">Traffic Growth</div>
-                <div class="text-xs text-gray-500">3 months</div>
+                <div class="text-3xl font-bold text-green-600">247</div>
+                <div class="text-sm text-gray-600">August Visitors</div>
+                <div class="text-xs text-gray-500">From analytics.json</div>
             </div>
             <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-blue-600">+29</div>
-                <div class="text-sm text-gray-600">New Reviews</div>
-                <div class="text-xs text-gray-500">3 months</div>
+                <div class="text-3xl font-bold text-blue-600">133</div>
+                <div class="text-sm text-gray-600">Total Reviews</div>
+                <div class="text-xs text-gray-500">Google My Business</div>
             </div>
-            <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-purple-600">+5</div>
-                <div class="text-sm text-gray-600">Position Gain</div>
-                <div class="text-xs text-gray-500">#20 → #15</div>
+            <div class="bg-gray-100 rounded-lg shadow p-4">
+                <div class="text-2xl font-bold text-gray-400">--</div>
+                <div class="text-sm text-gray-500">Market Position</div>
+                <div class="text-xs text-gray-400">No data source</div>
             </div>
-            <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-yellow-600">+18</div>
-                <div class="text-sm text-gray-600">SEO Score</div>
-                <div class="text-xs text-gray-500">65 → 83</div>
+            <div class="bg-gray-100 rounded-lg shadow p-4">
+                <div class="text-2xl font-bold text-gray-400">--</div>
+                <div class="text-sm text-gray-500">SEO Score</div>
+                <div class="text-xs text-gray-400">Needs API</div>
             </div>
         </div>
 
-        <!-- Historical Performance Chart -->
+        <!-- Performance Data -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h2 class="text-xl font-bold mb-4">📈 3-Month Performance Trend</h2>
-            <div class="h-80">
-                <canvas id="performanceChart"></canvas>
+            <h2 class="text-xl font-bold mb-4">📈 Performance Data</h2>
+            <div class="bg-gray-50 p-6 rounded">
+                <p class="text-gray-600 mb-3">Historical performance tracking requires:</p>
+                <ul class="list-disc list-inside text-gray-500 space-y-2">
+                    <li>Google Analytics API for traffic trends</li>
+                    <li>Google My Business API for review tracking</li>
+                    <li>Search Console API for SEO metrics</li>
+                    <li>Boulevard API for revenue data</li>
+                </ul>
+                <div class="mt-4 flex gap-3">
+                    <button onclick="window.open('https://analytics.google.com', '_blank')" 
+                            class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700">
+                        Open Google Analytics
+                    </button>
+                    <button onclick="refreshData()" 
+                            class="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700">
+                        Refresh Current Data
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Goal Tracking -->
+        <!-- Goal Setting -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h2 class="text-xl font-bold mb-4">🎯 Goal Progress</h2>
-            <div class="space-y-4">
-                <div>
-                    <div class="flex justify-between mb-1">
-                        <span class="text-sm font-medium">Monthly Visitors</span>
-                        <span class="text-sm">247/400</span>
+            <h2 class="text-xl font-bold mb-4">🎯 Goal Setting</h2>
+            <div class="bg-gray-50 p-4 rounded">
+                <p class="text-gray-600 mb-3">Set and track business goals:</p>
+                <form id="goalForm" class="space-y-3">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Monthly Visitor Goal</label>
+                        <input type="number" placeholder="e.g., 400" class="mt-1 block w-full rounded border-gray-300 shadow-sm">
                     </div>
-                    <div class="w-full bg-gray-200 rounded-full h-3">
-                        <div class="bg-blue-600 h-3 rounded-full" style="width: 62%"></div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Review Goal</label>
+                        <input type="number" placeholder="e.g., 150" class="mt-1 block w-full rounded border-gray-300 shadow-sm">
                     </div>
-                </div>
-                <div>
-                    <div class="flex justify-between mb-1">
-                        <span class="text-sm font-medium">Google Reviews</span>
-                        <span class="text-sm">133/150</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-3">
-                        <div class="bg-green-600 h-3 rounded-full" style="width: 89%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between mb-1">
-                        <span class="text-sm font-medium">Market Position</span>
-                        <span class="text-sm">#15/#10</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-3">
-                        <div class="bg-purple-600 h-3 rounded-full" style="width: 50%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between mb-1">
-                        <span class="text-sm font-medium">SEO Score</span>
-                        <span class="text-sm">83/90</span>
-                    </div>
-                    <div class="w-full bg-gray-200 rounded-full h-3">
-                        <div class="bg-yellow-600 h-3 rounded-full" style="width: 92%"></div>
-                    </div>
+                    <button type="button" onclick="alert('Goal tracking requires database setup')" 
+                            class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700">
+                        Save Goals
+                    </button>
+                </form>
+                <div class="mt-4 p-3 bg-blue-50 rounded">
+                    <p class="text-sm text-blue-800">Current Status:</p>
+                    <ul class="text-sm text-blue-700 mt-1">
+                        <li>• Visitors: 247 (August actual)</li>
+                        <li>• Reviews: 133 (Google My Business)</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -130,55 +136,23 @@
     // Update time
     document.getElementById('currentTime').textContent = new Date().toLocaleString();
 
-    // Performance chart
-    const ctx = document.getElementById('performanceChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['June', 'July', 'August'],
-            datasets: [
-                {
-                    label: 'Visitors',
-                    data: [156, 209, 247],
-                    borderColor: 'rgb(59, 130, 246)',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    yAxisID: 'y',
-                    tension: 0.4
-                },
-                {
-                    label: 'Conversions',
-                    data: [12, 18, 28],
-                    borderColor: 'rgb(34, 197, 94)',
-                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
-                    yAxisID: 'y1',
-                    tension: 0.4
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-                mode: 'index',
-                intersect: false,
-            },
-            scales: {
-                y: {
-                    type: 'linear',
-                    display: true,
-                    position: 'left',
-                },
-                y1: {
-                    type: 'linear',
-                    display: true,
-                    position: 'right',
-                    grid: {
-                        drawOnChartArea: false,
-                    },
-                },
-            },
-        },
-    });
+    // Refresh data function
+    async function refreshData() {
+        const btn = event.target;
+        btn.textContent = 'Refreshing...';
+        btn.disabled = true;
+        
+        try {
+            const response = await fetch('../data/analytics.json');
+            const data = await response.json();
+            alert(`Current data: ${data.visitors} visitors, ${data.bookingClicks} booking clicks`);
+        } catch (error) {
+            alert('Error loading data: ' + error.message);
+        } finally {
+            btn.textContent = 'Refresh Current Data';
+            btn.disabled = false;
+        }
+    }
     </script>
 </body>
 </html>
