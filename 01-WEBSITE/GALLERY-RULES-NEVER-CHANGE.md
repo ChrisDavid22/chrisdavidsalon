@@ -13,16 +13,14 @@
 - **ONLY** use URLs that start with: https://lh3.googleusercontent.com/
 - **ONLY** use actual photos from Chris David Salon's Google Business listing
 
-## ARCHIVED WRONG IMAGES (DO NOT USE)
+## DELETED WRONG IMAGES (PERMANENTLY REMOVED)
 
-The following images have been ARCHIVED and must NEVER be used:
-- signature.jpg / signature.webp
+The following generic images have been PERMANENTLY DELETED and can never be used again:
 - signature-correct.jpg / signature-correct.webp  
-- signature-service.jpg / signature-service.webp
 - salon-hero.jpg / salon-hero.webp
 - Backgroundimage.jpg / Backgroundimage.webp
 
-These files are in: `/images/ARCHIVED-DO-NOT-USE/`
+These files have been completely removed from the server.
 
 ## CORRECT SERVICE IMAGES
 

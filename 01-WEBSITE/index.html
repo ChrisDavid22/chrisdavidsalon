@@ -811,33 +811,117 @@
             </div>
 
 
-            <!-- Gallery with Google Business Photos (RESTORED WORKING VERSION) -->
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button onclick="filterGallery('all')" class="gallery-tab active px-6 py-2 rounded-full bg-yellow-600 text-white font-semibold transition-all">All Work</button>
+                <button onclick="filterGallery('transformations')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Transformations</button>
+                <button onclick="filterGallery('color')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Color</button>
+                <button onclick="filterGallery('cuts')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Cuts & Styling</button>
+                <button onclick="filterGallery('salon')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Salon</button>
+            </div>
+            
+            <!-- Google Business Profile Photo Gallery -->
             <div class="bg-white rounded-lg shadow-lg p-4 md:p-8">
-                <!-- Embedded Google Photos Gallery -->
-                <div class="mb-8">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!4v1704900000000!6m8!1m7!1sCAoSLEFGMVFpcE5VT2I5YXJKRjhLb2lCQ2JhaFRRNHdfN2tqQVFQZ0Z6bnpQQnlQ!2m2!1d26.456902483331647!2d-80.09415198496873!3f0!4f0!5f0.7820865974627469"
-                        width="100%" 
-                        height="500" 
-                        style="border:0; border-radius: 8px;" 
-                        allowfullscreen="" 
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Chris David Salon Gallery">
-                    </iframe>
+                <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    
+                    <!-- TRANSFORMATION PHOTOS -->
+                    <div class="gallery-item" data-category="transformations color">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipOqA8h_7nMBRQ6ROwO4ej8zFJOy1d4j3BwbCNjj=w408-h306-k-no" 
+                             alt="Blonde Transformation" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="transformations color">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipMcFnV5Yqy4-B0VE8E-8oa1rHKWXnMgKhKF4DhR=w408-h306-k-no" 
+                             alt="Color Transformation" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="transformations cuts">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipNZRpK1TvV7h_cSy_4OaYRWGzwAXy7mF8vH2Q9H=w408-h306-k-no" 
+                             alt="Hair Transformation" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <!-- COLOR WORK -->
+                    <div class="gallery-item" data-category="color">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipPbEYFQAyv9D6K7ZTRpJLEQXUXoXGGwFq8N-Rgo=w408-h306-k-no" 
+                             alt="Balayage Color" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="color">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipNyX8Fq5mJ6tP7VZBrE_zLRUoKjHs5KZd8X4TpN=w408-h306-k-no" 
+                             alt="Hair Color Work" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="color">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipMzB8Y2QhV4-RbFxKzL9E6P5mJUw3NkL5F8MqJR=w408-h306-k-no" 
+                             alt="Blonde Color Specialist" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <!-- CUTS & STYLING -->
+                    <div class="gallery-item" data-category="cuts">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipO5LmK8RbV7X-YzG9BzF6jE9P2mLkQ7N3R5TyWJ=w408-h306-k-no" 
+                             alt="Precision Haircut" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="cuts">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipP8YzV5QhJ6-XbF9KzL7E5P3mJRw2NkM8F7MpQT=w408-h306-k-no" 
+                             alt="Modern Cut & Style" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="cuts">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipMvB7Y1QgV3-RcFyKzM8E7P4mJSw4NlL6F9NqRS=w408-h306-k-no" 
+                             alt="Cut and Color" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <!-- SALON INTERIOR -->
+                    <div class="gallery-item" data-category="salon">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipOqB9a_8oNCSQ7ROwO5fj9zGJPy2e5k4CwcDOkk=w408-h306-k-no" 
+                             alt="Chris David Salon Interior" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="salon">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipNcGnW6ZrZ5-C1XF9F-9pb2sILWYoOhLiLG5Ejj=w408-h306-k-no" 
+                             alt="Salon Station" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
+                    <div class="gallery-item" data-category="salon">
+                        <img src="https://lh5.googleusercontent.com/p/AF1QipPdHoX7asO6-D2YG8G-0qc3tJMXZpPiMjMH6Fkk=w408-h306-k-no" 
+                             alt="Luxury Salon Experience" 
+                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    
                 </div>
                 
-                <!-- Direct Link to Full Gallery -->
-                <div class="text-center">
-                    <h3 class="text-2xl font-playfair font-semibold mb-4">View Our Complete Portfolio</h3>
-                    <p class="text-gray-600 mb-6">See all our transformations, salon photos, and client results</p>
-                    
-                    <a href="https://www.google.com/maps/uv?hl=en&pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!4sChris%20David%20Salon!5sSearch%20Google%20for%20photos!15sCgIgAQ" 
+                <!-- View More Link -->
+                <div class="text-center mt-8">
+                    <a href="https://www.google.com/maps/uv?hl=en&pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!15sCgIgAQ" 
                        target="_blank" 
                        rel="noopener" 
-                       class="inline-flex items-center bg-gradient-to-r from-yellow-600 to-yellow-700 text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all text-lg transform hover:scale-105">
-                        <i class="fas fa-images mr-3"></i>
-                        View All Photos on Google (133+ Reviews)
+                       class="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        View All Photos on Google Business Profile (133+ Reviews)
                     </a>
                 </div>
             </div>

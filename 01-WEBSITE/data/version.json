@@ -1,7 +1,12 @@
 {
-  "version": "2.5.32",
-  "lastUpdated": "2025-08-14T22:19:18Z",
+  "version": "2.5.33",
+  "lastUpdated": "2025-08-14T22:23:55Z",
   "deployHistory": [
+    {
+      "version": "2.5.33",
+      "date": "2025-08-14T22:23:55Z",
+      "changes": "FIXED GALLERY: Now displays actual Google Business Profile photos with category filtering. PERMANENTLY DELETED all generic wrong images so they can never be used again."
+    },
     {
       "version": "2.5.32",
       "date": "2025-08-14T22:19:18Z",
@@ -41,11 +46,6 @@
       "version": "2.5.23",
       "date": "2025-08-14T18:16:23Z",
       "changes": "Fix chart sizing issues: Added proper height containers (h-64, h-80) to all charts to prevent elongated display"
-    },
-    {
-      "version": "2.5.22",
-      "date": "2025-08-14T15:03:44Z",
-      "changes": "Complete admin rebuild v3.0: Clean 9-page architecture with consistent navigation, real API competitor analysis, keyword tracking with persistence, removed 8+ fragmented pages. Fixed microsite names to Best Salon Del Rey, Best Del Rey Salon, Best Salon Palm Beach"
     },
   ]
 }
