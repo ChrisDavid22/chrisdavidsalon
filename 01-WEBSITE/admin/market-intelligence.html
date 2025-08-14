@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Intelligence - Chris David Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Standard Admin Navigation v3.0.0 -->
+    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h1 class="text-2xl font-bold">Chris David Salon Admin v3.0</h1>
+                    <p class="text-sm text-purple-200">Market Intelligence</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-green-400">🟢 All Systems Operational</p>
+                    <p class="text-xs text-purple-200" id="currentTime"></p>
+                </div>
+            </div>
+            
+            <!-- Clean Navigation - 9 Pages Only -->
+            <div class="flex flex-wrap gap-2 text-sm">
+                <a href="index.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📊 Dashboard</a>
+                <span class="text-purple-400">|</span>
+                <a href="analytics.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📈 Analytics</a>
+                <a href="performance-tracker.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📉 Performance</a>
+                <span class="text-purple-400">|</span>
+                <a href="seo-dashboard.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🔍 SEO</a>
+                <a href="keyword-rankings.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎯 Keywords</a>
+                <a href="competitor-analysis.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏆 Competitors</a>
+                <span class="text-purple-400">|</span>
+                <a href="microsites.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🌐 Microsites</a>
+                <a href="reviews-reputation.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">⭐ Reviews</a>
+                <a href="market-intelligence.html" class="bg-purple-600 px-3 py-1 rounded font-bold">🎖️ Market Intel</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        
+        <!-- Market Position Overview -->
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-3xl font-bold">Market Position</h2>
+                    <p class="text-indigo-100 mt-1">Among 47 salons in Delray Beach</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl font-bold">#15</div>
+                    <div class="text-indigo-100">Rising Fast</div>
+                    <div class="text-sm mt-2">↑ 5 positions in 3 months</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Leaders -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">🏆 Market Leaders</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-3 bg-yellow-50 rounded">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-yellow-600 mr-3">1</span>
+                        <div>
+                            <div class="font-semibold">Salon Sora</div>
+                            <div class="text-sm text-gray-600">203 reviews • 4.8★ • 8 years</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-green-600 font-bold">Strong</span>
+                        <div class="text-xs text-gray-500">Established leader</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-gray-600 mr-3">2</span>
+                        <div>
+                            <div class="font-semibold">Drybar</div>
+                            <div class="text-sm text-gray-600">189 reviews • 4.6★ • National chain</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-blue-600 font-bold">Corporate</span>
+                        <div class="text-xs text-gray-500">Chain advantage</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-gray-600 mr-3">3</span>
+                        <div>
+                            <div class="font-semibold">The W Salon</div>
+                            <div class="text-sm text-gray-600">156 reviews • 4.7★ • 5 years</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-purple-600 font-bold">Growing</span>
+                        <div class="text-xs text-gray-500">Direct competitor</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-purple-50 rounded border-2 border-purple-500">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-purple-600 mr-3">15</span>
+                        <div>
+                            <div class="font-semibold">Chris David Salon</div>
+                            <div class="text-sm text-gray-600">133 reviews • 4.8★ • Rising fast</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-green-600 font-bold">↑ Climbing</span>
+                        <div class="text-xs text-gray-500">+5 positions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Competitive Advantages -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-green-600">💪 Our Strengths</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                        <div>
+                            <div class="font-semibold">Expert Credentials</div>
+                            <div class="text-sm text-gray-600">20+ years, educator for 5 major brands</div>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                        <div>
+                            <div class="font-semibold">Premium Services</div>
+                            <div class="text-sm text-gray-600">Specialized in balayage & color correction</div>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                        <div>
+                            <div class="font-semibold">Digital Presence</div>
+                            <div class="text-sm text-gray-600">3 microsites, strong SEO</div>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                        <div>
+                            <div class="font-semibold">Review Rating</div>
+                            <div class="text-sm text-gray-600">4.8★ matches market leader</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold mb-4 text-orange-600">🎯 Opportunities</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-arrow-circle-right text-orange-600 mt-1 mr-2"></i>
+                        <div>
+                            <div class="font-semibold">Review Volume</div>
+                            <div class="text-sm text-gray-600">Need 70+ more reviews to reach top 3</div>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-arrow-circle-right text-orange-600 mt-1 mr-2"></i>
+                        <div>
+                            <div class="font-semibold">Social Media</div>
+                            <div class="text-sm text-gray-600">Instagram: 2.3k vs competitors' 5k+</div>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-arrow-circle-right text-orange-600 mt-1 mr-2"></i>
+                        <div>
+                            <div class="font-semibold">Service Hours</div>
+                            <div class="text-sm text-gray-600">Extended hours could capture more clients</div>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-arrow-circle-right text-orange-600 mt-1 mr-2"></i>
+                        <div>
+                            <div class="font-semibold">Local Partnerships</div>
+                            <div class="text-sm text-gray-600">Partner with local businesses</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Market Trends -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4">📈 Market Trends</h3>
+            <div class="h-80">
+                <canvas id="marketTrendsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Strategic Actions -->
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-6">
+            <h3 class="text-lg font-bold text-blue-800 mb-2">🚀 Strategic Actions to Reach Top 10</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-blue-700">
+                <ul class="space-y-2">
+                    <li>✓ Launch review request campaign (need 70+ reviews)</li>
+                    <li>✓ Increase Instagram posting to daily</li>
+                    <li>✓ Partner with 5 local businesses</li>
+                    <li>✓ Add Sunday hours (competitors open)</li>
+                </ul>
+                <ul class="space-y-2">
+                    <li>✓ Create TikTok presence</li>
+                    <li>✓ Offer first-time client special</li>
+                    <li>✓ Host monthly styling events</li>
+                    <li>✓ Implement referral program</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Update time
+    document.getElementById('currentTime').textContent = new Date().toLocaleString();
+
+    // Market trends chart
+    const ctx = document.getElementById('marketTrendsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['May', 'June', 'July', 'August', 'September (Projected)'],
+            datasets: [
+                {
+                    label: 'Chris David Salon',
+                    data: [20, 18, 16, 15, 12],
+                    borderColor: 'rgb(147, 51, 234)',
+                    backgroundColor: 'rgba(147, 51, 234, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4
+                },
+                {
+                    label: 'Market Average',
+                    data: [25, 25, 24, 24, 24],
+                    borderColor: 'rgb(156, 163, 175)',
+                    borderDash: [5, 5],
+                    borderWidth: 2,
+                    tension: 0.4
+                },
+                {
+                    label: 'Top 3 Average',
+                    data: [2, 2, 2, 2, 2],
+                    borderColor: 'rgb(251, 191, 36)',
+                    backgroundColor: 'rgba(251, 191, 36, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    reverse: true,
+                    title: {
+                        display: true,
+                        text: 'Market Position (Lower is Better)'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': #' + context.parsed.y;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    </script>
+</body>
+</html>

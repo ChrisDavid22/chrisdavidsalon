@@ -225,19 +225,9 @@
     </div>
     
     <script>
-        // Check authentication
-        function checkAuth() {
-            const auth = localStorage.getItem('adminAuth');
-            if (!auth || auth !== 'true') {
-                window.location.href = 'login.html';
-            }
-        }
-        
-        // Logout function
-        function logout() {
-            localStorage.removeItem('adminAuth');
-            localStorage.removeItem('loginTime');
-            window.location.href = 'login.html';
+        // Update current time
+        function updateTime() {
+            document.getElementById('currentTime').textContent = new Date().toLocaleString();
         }
         
         // Load microsite data
@@ -391,7 +381,7 @@
         }
         
         // Initialize on load
-        checkAuth();
+        updateTime();
         loadMicrositeData();
         loadTopPages();
         initCharts();

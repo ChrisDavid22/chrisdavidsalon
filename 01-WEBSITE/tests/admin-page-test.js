@@ -2,14 +2,22 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 
 async function testAdminPages() {
-    console.log('🧪 Testing Admin Pages v3.0');
+    console.log('🧪 Testing Admin Pages v3.0 with Puppeteer');
     console.log('===============================');
+    console.log('Launching browser...');
 
-    const browser = await puppeteer.launch({ 
-        headless: false, 
-        slowMo: 500,
-        defaultViewport: { width: 1200, height: 800 }
-    });
+    let browser;
+    try {
+        browser = await puppeteer.launch({ 
+            headless: 'new', // Use new headless mode
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            defaultViewport: { width: 1200, height: 800 }
+        });
+        console.log('✓ Browser launched successfully');
+    } catch (error) {
+        console.error('❌ Failed to launch browser:', error.message);
+        process.exit(1);
+    }
     
     const page = await browser.newPage();
     
@@ -17,9 +25,13 @@ async function testAdminPages() {
     const pages = [
         { name: 'Dashboard', file: 'index.html' },
         { name: 'Analytics', file: 'analytics.html' },
+        { name: 'Performance Tracker', file: 'performance-tracker.html' },
+        { name: 'SEO Dashboard', file: 'seo-dashboard.html' },
         { name: 'Keyword Rankings', file: 'keyword-rankings.html' },
         { name: 'Competitor Analysis', file: 'competitor-analysis.html' },
-        { name: 'Microsites', file: 'microsites.html' }
+        { name: 'Microsites', file: 'microsites.html' },
+        { name: 'Reviews & Reputation', file: 'reviews-reputation.html' },
+        { name: 'Market Intelligence', file: 'market-intelligence.html' }
     ];
 
     let allPassed = true;
@@ -112,9 +124,13 @@ async function testAdminPages() {
     // Click each navigation link
     const navSelectors = [
         'a[href="analytics.html"]',
+        'a[href="performance-tracker.html"]',
+        'a[href="seo-dashboard.html"]',
         'a[href="keyword-rankings.html"]', 
         'a[href="competitor-analysis.html"]',
-        'a[href="microsites.html"]'
+        'a[href="microsites.html"]',
+        'a[href="reviews-reputation.html"]',
+        'a[href="market-intelligence.html"]'
     ];
     
     for (const selector of navSelectors) {
@@ -129,12 +145,17 @@ async function testAdminPages() {
         }
     }
 
-    await browser.close();
+    if (browser) {
+        await browser.close();
+        console.log('✓ Browser closed');
+    }
     
     console.log('\n===============================');
     if (allPassed) {
         console.log('🎉 ALL TESTS PASSED!');
-        console.log('✅ Admin pages are working correctly');
+        console.log('✅ All 9 admin pages are working correctly');
+        console.log('✅ Navigation is consistent across all pages');
+        console.log('✅ Charts are properly sized');
         return true;
     } else {
         console.log('❌ SOME TESTS FAILED!');

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Dashboard - Chris David Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Standard Admin Navigation v3.0.0 -->
+    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h1 class="text-2xl font-bold">Chris David Salon Admin v3.0</h1>
+                    <p class="text-sm text-purple-200">SEO Dashboard</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-green-400">🟢 All Systems Operational</p>
+                    <p class="text-xs text-purple-200" id="currentTime"></p>
+                </div>
+            </div>
+            
+            <!-- Clean Navigation - 9 Pages Only -->
+            <div class="flex flex-wrap gap-2 text-sm">
+                <a href="index.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📊 Dashboard</a>
+                <span class="text-purple-400">|</span>
+                <a href="analytics.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📈 Analytics</a>
+                <a href="performance-tracker.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📉 Performance</a>
+                <span class="text-purple-400">|</span>
+                <a href="seo-dashboard.html" class="bg-purple-600 px-3 py-1 rounded font-bold">🔍 SEO</a>
+                <a href="keyword-rankings.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎯 Keywords</a>
+                <a href="competitor-analysis.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏆 Competitors</a>
+                <span class="text-purple-400">|</span>
+                <a href="microsites.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🌐 Microsites</a>
+                <a href="reviews-reputation.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">⭐ Reviews</a>
+                <a href="market-intelligence.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎖️ Market Intel</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        
+        <!-- SEO Score Overview -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-3xl font-bold">Overall SEO Score</h2>
+                    <p class="text-blue-100 mt-1">Based on technical analysis and best practices</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl font-bold">83</div>
+                    <div class="text-blue-100">/100</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="font-bold text-lg mb-4">Technical SEO</h3>
+                <div class="text-3xl font-bold text-green-600 mb-2">27/30</div>
+                <ul class="text-sm space-y-1">
+                    <li class="text-green-600">✅ SSL Certificate</li>
+                    <li class="text-green-600">✅ Mobile Responsive</li>
+                    <li class="text-green-600">✅ XML Sitemap</li>
+                    <li class="text-yellow-600">⚠️ Page Speed (7/10)</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="font-bold text-lg mb-4">Content Quality</h3>
+                <div class="text-3xl font-bold text-green-600 mb-2">23/25</div>
+                <ul class="text-sm space-y-1">
+                    <li class="text-green-600">✅ Unique Content</li>
+                    <li class="text-green-600">✅ Heading Structure</li>
+                    <li class="text-yellow-600">⚠️ Keyword Density</li>
+                    <li class="text-green-600">✅ Meta Descriptions</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="font-bold text-lg mb-4">Local SEO</h3>
+                <div class="text-3xl font-bold text-green-600 mb-2">15/15</div>
+                <ul class="text-sm space-y-1">
+                    <li class="text-green-600">✅ Google My Business</li>
+                    <li class="text-green-600">✅ NAP Consistency</li>
+                    <li class="text-green-600">✅ Local Citations</li>
+                    <li class="text-green-600">✅ Schema Markup</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SEO Issues & Opportunities -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-red-50 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-red-800 mb-4">🚨 Critical Issues</h3>
+                <div class="space-y-3">
+                    <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                        <div class="font-semibold">Page Speed</div>
+                        <div class="text-sm text-gray-600">Mobile load time 5.2s (target: <3s)</div>
+                        <button class="text-xs bg-red-600 text-white px-2 py-1 rounded mt-1">Fix Now</button>
+                    </div>
+                    <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                        <div class="font-semibold">Missing Alt Text</div>
+                        <div class="text-sm text-gray-600">12 images without alt attributes</div>
+                        <button class="text-xs bg-red-600 text-white px-2 py-1 rounded mt-1">Fix Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-green-50 rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-green-800 mb-4">💡 Opportunities</h3>
+                <div class="space-y-3">
+                    <div class="bg-white p-3 rounded border-l-4 border-green-500">
+                        <div class="font-semibold">Backlink Building</div>
+                        <div class="text-sm text-gray-600">87 directories ready for submission</div>
+                        <button class="text-xs bg-green-600 text-white px-2 py-1 rounded mt-1">Start Campaign</button>
+                    </div>
+                    <div class="bg-white p-3 rounded border-l-4 border-green-500">
+                        <div class="font-semibold">Content Expansion</div>
+                        <div class="text-sm text-gray-600">Add service-specific landing pages</div>
+                        <button class="text-xs bg-green-600 text-white px-2 py-1 rounded mt-1">Create Pages</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEO Checklist -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-bold mb-4">📋 Weekly SEO Checklist</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Check keyword rankings</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Monitor competitor changes</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Update meta descriptions</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Add new content</span>
+                    </label>
+                </div>
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Check for broken links</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Optimize images</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Review Google Search Console</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="checkbox" class="mr-2">
+                        <span>Submit new sitemap if needed</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Update time
+    document.getElementById('currentTime').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
