@@ -1,7 +1,12 @@
 {
-  "version": "2.5.25",
-  "lastUpdated": "2025-08-14T20:49:58Z",
+  "version": "2.5.28",
+  "lastUpdated": "2025-08-14T21:23:20Z",
   "deployHistory": [
+    {
+      "version": "2.5.28",
+      "date": "2025-08-14T21:23:20Z",
+      "changes": "Version 2.5.27: Added comprehensive SEO Intelligence Engine with 0-100 scoring system, fixed version consistency across all admin pages, updated README with accurate admin documentation"
+    },
     {
       "version": "2.5.25",
       "date": "2025-08-14T20:49:58Z",
@@ -41,11 +46,6 @@
       "version": "2.5.18",
       "date": "2025-08-12T14:12:29Z",
       "changes": "Archive failed automation attempts"
-    },
-    {
-      "version": "2.5.17",
-      "date": "2025-08-11T20:47:51Z",
-      "changes": "Add deployment verification to prevent false success claims and improve production safety"
     },
   ]
 }

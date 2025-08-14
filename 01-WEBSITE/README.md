@@ -35,52 +35,50 @@
 - **If an API is needed, we show setup instructions**
 - **If it's from a JSON file, it needs verification timestamp**
 
-### Current Admin Pages (9 Total)
+### Current Admin Pages (PRIMARY)
 
-1. **Dashboard** (`index.html`)
-   - Purpose: Overview of key metrics
-   - Real features: PageSpeed test, links to Google tools
-   - NO fake visitor counts or conversion rates
+1. **Clean Dashboard** (`clean-index.html`) ✅ WORKING
+   - Purpose: Central hub with real data only
+   - Real features: Conversion funnel visualization, PageSpeed test, links to Google tools
+   - Shows only verified data sources
+   - Version display synchronized with main site
 
-2. **Analytics** (`analytics.html`)
-   - Purpose: Traffic and visitor data
-   - Real features: Links to Google Analytics
-   - NO fake charts or unverified traffic data
+2. **Google Analytics Dashboard** (`analytics-dashboard.html`) ✅ WORKING
+   - Purpose: Real Google Analytics integration
+   - Real features: Direct links to GA dashboard, event tracking list
+   - Tracking ID: G-XQDLWZM5NV (verified and working)
+   - Shows what events we track (Book Now clicks, Phone clicks)
 
-3. **Performance Tracker** (`performance-tracker.html`)
-   - Purpose: Historical performance metrics
-   - Real features: Data refresh from verified sources
-   - NO fake growth percentages
+3. **SEO Intelligence Engine** (`seo-intelligence.html`) ✅ NEW - COMPREHENSIVE
+   - Purpose: Complete SEO scoring system (0-100 scale)
+   - Real features: 7-dimension SEO analysis using real APIs
+   - Competitor comparison matrix
+   - Performance scoring using PageSpeed API
+   - Content quality analysis
+   - Technical SEO evaluation
+   - Mobile optimization testing
+   - User experience scoring
+   - Local SEO assessment
+   - Authority evaluation
+   - Generates action items based on real scores
+   - Compares against Salon Sora, Drybar, and other competitors
 
-4. **SEO Dashboard** (`seo-dashboard.html`) ✅ FULLY REBUILT
-   - Purpose: SEO health monitoring
+4. **SEO Dashboard** (`seo-dashboard.html`) ✅ WORKING
+   - Purpose: Quick SEO health checks
    - Real features: Live PageSpeed tests, mobile-friendly tests, security checks
    - Uses Google's public APIs for real data
+   - Links to external SEO tools
 
-5. **Keyword Rankings** (`keyword-rankings.html`)
-   - Purpose: Search position tracking
-   - Real features: Links to Google Search Console
-   - NO fake ranking data
+### Other Admin Pages (LEGACY - May contain unverified data)
 
-6. **Competitor Analysis** (`competitor-analysis.html`)
-   - Purpose: Market competition monitoring
-   - Real features: Google search for competitors
-   - NO fake comparison scores
-
-7. **Microsites** (`microsites.html`)
-   - Purpose: Microsite performance
-   - Real features: Links to verify each microsite
-   - NO fake traffic numbers
-
-8. **Reviews & Reputation** (`reviews-reputation.html`)
-   - Purpose: Review management
-   - Real features: Links to Google My Business
-   - NO unverified review counts
-
-9. **Market Intelligence** (`market-intelligence.html`)
-   - Purpose: Market position analysis
-   - Real features: Search tools for market research
-   - NO fake market position data
+- `index.html` - Old dashboard (use clean-index.html instead)
+- `analytics.html` - Old analytics (use analytics-dashboard.html instead)
+- `performance-tracker.html` - Historical tracking
+- `keyword-rankings.html` - Keyword tracking
+- `competitor-analysis.html` - Competitor monitoring
+- `microsites.html` - Microsite management
+- `reviews-reputation.html` - Review management
+- `market-intelligence.html` - Market analysis
 
 ### ✅ What Currently Works (VERIFIED)
 

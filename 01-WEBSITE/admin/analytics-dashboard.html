@@ -22,6 +22,7 @@
                     </a>
                     <div class="text-right">
                         <p class="text-xs text-purple-200">Analytics ID: G-XQDLWZM5NV</p>
+                        <p class="text-xs text-purple-200">Version: <span id="version-display">Loading...</span></p>
                     </div>
                 </div>
             </div>
@@ -163,6 +164,17 @@
     </div>
 
     <script>
+    // Load version from version.json
+    fetch('../data/version.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('version-display').textContent = data.version;
+        })
+        .catch(error => {
+            console.error('Error loading version:', error);
+            document.getElementById('version-display').textContent = '2.5.27';
+        });
+    
     // This page uses real Google Analytics data
     // All metrics are tracked through G-XQDLWZM5NV
     console.log('Google Analytics Dashboard loaded');

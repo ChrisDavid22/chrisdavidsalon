@@ -20,6 +20,9 @@
                     <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold transition-colors">
                         ← Back to Main Site
                     </a>
+                    <div class="text-right">
+                        <p class="text-xs text-purple-200">Version: <span id="version-display">Loading...</span></p>
+                    </div>
                 </div>
             </div>
             
@@ -28,6 +31,7 @@
                 <a href="clean-index.html" class="bg-purple-600 px-3 py-1 rounded font-bold">📊 Dashboard</a>
                 <span class="text-purple-400">|</span>
                 <a href="analytics-dashboard.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📈 Google Analytics</a>
+                <a href="seo-intelligence.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎯 SEO Intelligence</a>
                 <a href="seo-dashboard.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🚀 SEO Tools</a>
             </div>
         </div>
@@ -194,6 +198,17 @@
     </div>
 
     <script>
+    // Load version from version.json
+    fetch('../data/version.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('version-display').textContent = data.version;
+        })
+        .catch(error => {
+            console.error('Error loading version:', error);
+            document.getElementById('version-display').textContent = '2.5.27';
+        });
+    
     // Run PageSpeed Test
     async function runPageSpeedTest() {
         if (confirm('Run PageSpeed test for chrisdavidsalon.com?')) {
