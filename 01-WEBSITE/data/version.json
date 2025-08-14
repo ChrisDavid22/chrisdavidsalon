@@ -1,7 +1,12 @@
 {
-  "version": "2.5.33",
-  "lastUpdated": "2025-08-14T22:23:55Z",
+  "version": "2.5.34",
+  "lastUpdated": "2025-08-14T22:26:51Z",
   "deployHistory": [
+    {
+      "version": "2.5.34",
+      "date": "2025-08-14T22:26:51Z",
+      "changes": "FIXED: Replaced broken Google image URLs with working Squarespace CDN images that load correctly"
+    },
     {
       "version": "2.5.33",
       "date": "2025-08-14T22:23:55Z",
@@ -41,11 +46,6 @@
       "version": "2.5.24",
       "date": "2025-08-14T18:49:09Z",
       "changes": "Deploy all 9 admin pages - performance, seo, reviews, market intel added with real data"
-    },
-    {
-      "version": "2.5.23",
-      "date": "2025-08-14T18:16:23Z",
-      "changes": "Fix chart sizing issues: Added proper height containers (h-64, h-80) to all charts to prevent elongated display"
     },
   ]
 }
