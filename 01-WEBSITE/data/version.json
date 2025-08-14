@@ -1,7 +1,12 @@
 {
-  "version": "2.5.20",
-  "lastUpdated": "2025-08-13T20:32:22Z",
+  "version": "2.5.21",
+  "lastUpdated": "2025-08-14T13:34:38Z",
   "deployHistory": [
+    {
+      "version": "2.5.21",
+      "date": "2025-08-14T13:34:38Z",
+      "changes": "Fixed microsite names (Best Salon Del Rey, Best Del Rey Salon, Best Salon Palm Beach), unified navigation across all admin pages, added real competitor analysis with Google PageSpeed API integration"
+    },
     {
       "version": "2.5.20",
       "date": "2025-08-13T20:32:22Z",
@@ -42,10 +47,5 @@
       "date": "2025-08-11T17:14:00Z",
       "changes": "MAJOR UPDATE: Added embedded photo gallery carousel with categories, comprehensive Puppeteer testing suite for desktop/mobile/links/visual regression, automated pre-deployment testing"
     },
-    {
-      "version": "2.5.12",
-      "date": "2025-08-11T16:39:51Z",
-      "changes": "Navigation improvements: Added Blog to main menu, fixed header layout, Gallery now links to Google Business Profile photos"
-    }
   ]
 }
