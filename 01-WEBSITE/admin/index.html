@@ -116,13 +116,17 @@
             <!-- Traffic Trend -->
             <div class="bg-white rounded-lg shadow-lg p-6">
                 <h3 class="font-bold mb-4">Traffic Trend (7 Days)</h3>
-                <canvas id="trafficChart"></canvas>
+                <div class="h-64">
+                    <canvas id="trafficChart"></canvas>
+                </div>
             </div>
 
             <!-- Keyword Rankings -->
             <div class="bg-white rounded-lg shadow-lg p-6">
                 <h3 class="font-bold mb-4">Top Keywords Movement</h3>
-                <canvas id="keywordChart"></canvas>
+                <div class="h-64">
+                    <canvas id="keywordChart"></canvas>
+                </div>
             </div>
         </div>
 
@@ -215,7 +219,12 @@
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
             }
         });
     }
@@ -245,6 +254,11 @@
                         reverse: true,
                         min: 1,
                         max: 20
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
                     }
                 }
             }
