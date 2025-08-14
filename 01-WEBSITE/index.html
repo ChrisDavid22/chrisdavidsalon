@@ -40,12 +40,31 @@
     <link rel="canonical" href="https://www.chrisdavidsalon.com/">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <!-- Critical CSS inline for faster loading -->
+    <style>
+        body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+        .hero { min-height: 100vh; }
+        [x-cloak] { display: none !important; }
+    </style>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Load fonts with display swap for better performance -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Defer non-critical CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Fallback for browsers without JS -->
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    </noscript>
     
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -461,7 +480,10 @@
             <div class="flex justify-between items-center py-4">
                 <div class="flex flex-col">
                     <!-- NOTE: All images are located in ./images/ directory relative to this index.html -->
-                    <img src="./images/cds-logo.jpg" alt="Chris David Salon" class="h-12 md:h-14 object-contain">
+                    <picture>
+                        <source srcset="./images/cds-logo.webp" type="image/webp">
+                        <img src="./images/cds-logo.jpg" alt="Chris David Salon" class="h-12 md:h-14 object-contain" loading="eager">
+                    </picture>
                     <span class="text-xs text-gray-600 mt-1">Andre Design District • Delray Beach</span>
                 </div>
                 
@@ -754,7 +776,10 @@
                 <!-- Signature Services -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="./images/signature.jpg" alt="Signature Luxury Hair Service" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="./images/signature.webp" type="image/webp">
+                            <img src="./images/signature.jpg" alt="Signature Luxury Hair Service" class="w-full h-full object-cover" loading="lazy">
+                        </picture>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Signature Services</h3>
@@ -803,7 +828,10 @@
                         <div id="gallerySlider" class="flex transition-transform duration-500 ease-in-out">
                             <!-- Interior Photos -->
                             <div class="gallery-item min-w-full" data-category="interior">
-                                <img src="./images/salon-hero.jpg" alt="Salon Interior - Modern Design" class="w-full h-[400px] md:h-[600px] object-cover">
+                                <picture>
+                                    <source srcset="./images/salon-hero.webp" type="image/webp">
+                                    <img src="./images/salon-hero.jpg" alt="Salon Interior - Modern Design" class="w-full h-[400px] md:h-[600px] object-cover" loading="lazy">
+                                </picture>
                                 <div class="text-center mt-4">
                                     <h3 class="text-lg font-semibold">Modern Salon Interior</h3>
                                     <p class="text-gray-600">Luxurious and comfortable environment</p>
@@ -1256,7 +1284,10 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- About -->
                 <div>
-                    <img src="./images/cds-logo.jpg" alt="Chris David Salon" class="h-16 object-contain mb-4 mx-auto">
+                    <picture>
+                        <source srcset="./images/cds-logo.webp" type="image/webp">
+                        <img src="./images/cds-logo.jpg" alt="Chris David Salon" class="h-16 object-contain mb-4 mx-auto" loading="lazy">
+                    </picture>
                     <p class="text-gray-300 text-sm">
                         Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
                     </p>
