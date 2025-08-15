@@ -811,87 +811,41 @@
             </div>
 
 
-            <!-- Category Filter Tabs -->
-            <div class="flex flex-wrap justify-center gap-2 mb-8">
-                <button onclick="filterGallery('all')" class="gallery-tab active px-6 py-2 rounded-full bg-yellow-600 text-white font-semibold transition-all">All Work</button>
-                <button onclick="filterGallery('transformations')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Transformations</button>
-                <button onclick="filterGallery('color')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Color</button>
-                <button onclick="filterGallery('cuts')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Cuts & Styling</button>
-                <button onclick="filterGallery('salon')" class="gallery-tab px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 transition-all">Salon</button>
-            </div>
-            
-            <!-- Google Business Profile Photo Gallery -->
-            <div class="bg-white rounded-lg shadow-lg p-4 md:p-8">
-                <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    
-                    <!-- ONLY Google Business Profile Photos - Real Work by Chris David -->
-                    <div class="gallery-item" data-category="transformations color">
-                        <img src="https://lh3.googleusercontent.com/p/AF1QipPcZ6FYkM4Dmw1eR0syveT5c820mOU_H0YJsgGA=w400-h400-k-no" 
-                             alt="Chris David Hair Transformation" 
-                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                             onclick="openLightbox(this.src)">
-                    </div>
-                    
-                    <div class="gallery-item" data-category="cuts salon">
-                        <img src="./images/signature.jpg" 
-                             alt="Signature Service - Woman with Beautiful Red Hair" 
-                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                             onclick="openLightbox(this.src)">
-                    </div>
-                    
-                    <div class="gallery-item" data-category="salon">
-                        <img src="./images/11 Hair Salon .jpg" 
-                             alt="Chris David Salon Interior" 
-                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                             onclick="openLightbox(this.src)">
-                    </div>
-                    
-                    <div class="gallery-item" data-category="color">
-                        <img src="./images/hair-color.jpg" 
-                             alt="Professional Hair Color Services" 
-                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                             onclick="openLightbox(this.src)">
-                    </div>
-                    
-                    <div class="gallery-item" data-category="cuts">
-                        <img src="./images/hair-cut.jpg" 
-                             alt="Expert Hair Cutting" 
-                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                             onclick="openLightbox(this.src)">
-                    </div>
-                    
-                    <div class="gallery-item" data-category="transformations">
-                        <img src="./images/hair-extensions.jpg" 
-                             alt="Hair Extensions and Length" 
-                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                             onclick="openLightbox(this.src)">
-                    </div>
-                    
-                    <div class="gallery-item" data-category="color transformations">
-                        <img src="./images/keratin-treatment.jpg" 
-                             alt="Keratin Treatment Results" 
-                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                             onclick="openLightbox(this.src)">
-                    </div>
-                    
-                    <div class="gallery-item" data-category="cuts transformations">
-                        <img src="./images/event-styling.jpg" 
-                             alt="Special Event Hair Styling" 
-                             class="w-full h-64 object-cover rounded-lg cursor-pointer hover:opacity-90 transition"
-                             onclick="openLightbox(this.src)">
-                    </div>
-                    
+            <!-- Direct Link to Google Business Profile Photos -->
+            <div class="bg-white rounded-lg shadow-lg p-12 text-center">
+                <div class="mb-8">
+                    <i class="fab fa-google text-7xl text-yellow-600 mb-6"></i>
+                    <h3 class="text-3xl font-bold mb-4">View Our Complete Portfolio</h3>
+                    <p class="text-lg text-gray-600 mb-2">
+                        Our entire gallery of 211+ photos is hosted on Google Business Profile
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        This ensures you see verified, authentic work from Chris David Salon
+                    </p>
                 </div>
                 
-                <!-- View More Link -->
-                <div class="text-center mt-8">
-                    <a href="https://www.google.com/maps/uv?hl=en&pb=!1s0x88d8dfdd217c36c5%3A0x2829d1fc5f3173d9!3m1!7e115!15sCgIgAQ" 
-                       target="_blank" 
-                       rel="noopener" 
-                       class="inline-flex items-center text-yellow-600 font-semibold hover:text-yellow-700">
-                        <i class="fas fa-external-link-alt mr-2"></i>
-                        View All Photos on Google Business Profile (133+ Reviews)
-                    </a>
+                <a href="https://www.google.com/maps/place/Chris+David+Salon/@26.4614726,-80.0743227,17z/data=!3m1!4b1!4m6!3m5!1s0x88d8dfdd217c36c5:0x2829d1fc5f3173d9!8m2!3d26.4614726!4d-80.0721478!16s%2Fg%2F11c0w5wkdp?entry=ttu" 
+                   target="_blank" 
+                   rel="noopener"
+                   class="inline-block bg-yellow-600 text-white px-10 py-5 rounded-lg text-xl font-bold hover:bg-yellow-700 transition-all transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-images mr-3"></i>
+                    View Gallery on Google Business Profile
+                    <span class="block text-sm font-normal mt-1">211+ Photos of Actual Work</span>
+                </a>
+                
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        Verified by Google
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        133+ Five-Star Reviews
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-camera text-blue-500 mr-2"></i>
+                        Real Client Transformations
+                    </div>
                 </div>
             </div>
             
@@ -1415,28 +1369,7 @@
             }
         });
 
-        // Gallery Filter Functionality
-        function filterGallery(category) {
-            const tabs = document.querySelectorAll('.gallery-tab');
-            const items = document.querySelectorAll('.gallery-item');
-            
-            // Update active tab
-            tabs.forEach(tab => {
-                tab.classList.remove('bg-yellow-600', 'text-white');
-                tab.classList.add('bg-gray-200', 'text-gray-700');
-            });
-            event.target.classList.remove('bg-gray-200', 'text-gray-700');
-            event.target.classList.add('bg-yellow-600', 'text-white');
-            
-            // Filter items
-            items.forEach(item => {
-                if (category === 'all' || item.dataset.category.includes(category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
+        // Gallery now links directly to Google Business Profile
         
         // Lightbox functionality
         function openLightbox(src) {

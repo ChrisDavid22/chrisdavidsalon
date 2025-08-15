@@ -1,7 +1,12 @@
 {
-  "version": "2.5.36",
-  "lastUpdated": "2025-08-15T03:55:23Z",
+  "version": "2.5.38",
+  "lastUpdated": "2025-08-15T04:04:13Z",
   "deployHistory": [
+    {
+      "version": "2.5.38",
+      "date": "2025-08-15T04:04:13Z",
+      "changes": "GALLERY SIMPLIFIED: Removed all embedded images. Gallery now directly links to Google Business Profile where all 211+ actual photos are hosted. Clean, simple solution as requested."
+    },
     {
       "version": "2.5.36",
       "date": "2025-08-15T03:55:23Z",
@@ -41,11 +46,6 @@
       "version": "2.5.28",
       "date": "2025-08-14T21:23:20Z",
       "changes": "Version 2.5.27: Added comprehensive SEO Intelligence Engine with 0-100 scoring system, fixed version consistency across all admin pages, updated README with accurate admin documentation"
-    },
-    {
-      "version": "2.5.25",
-      "date": "2025-08-14T20:49:58Z",
-      "changes": "CRITICAL: Removed all fake data, added Google Analytics tracking, clean admin with only real features"
     },
   ]
 }
