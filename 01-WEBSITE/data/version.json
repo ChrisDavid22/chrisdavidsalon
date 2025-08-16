@@ -1,7 +1,12 @@
 {
-  "version": "2.5.39",
-  "lastUpdated": "2025-08-16T04:47:47Z",
+  "version": "2.5.40",
+  "lastUpdated": "2025-08-16T04:55:05Z",
   "deployHistory": [
+    {
+      "version": "2.5.40",
+      "date": "2025-08-16T04:55:05Z",
+      "changes": "ADMIN AUDIT COMPLETE: Security fix for API keys, verified all pages, added microsite transformation strategy"
+    },
     {
       "version": "2.5.39",
       "date": "2025-08-16T04:47:47Z",
@@ -41,11 +46,6 @@
       "version": "2.5.30",
       "date": "2025-08-14T22:09:49Z",
       "changes": "CRITICAL: Gallery now ONLY uses Google Business photos. Removed ALL local image references. Archived wrong images. Created permanent rules document."
-    },
-    {
-      "version": "2.5.29",
-      "date": "2025-08-14T22:04:51Z",
-      "changes": "CRITICAL FIX: Restored correct service images - replaced wrong images with proper '11 Hair' series images for all services"
     },
   ]
 }
