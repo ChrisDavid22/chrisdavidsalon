@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Task Management - Chris David Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="ai-config.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h1 class="text-2xl font-bold">Chris David Salon - SEO Task Management</h1>
+                    <p class="text-sm text-purple-200">Auto-Generated Tasks from AI Analysis</p>
+                </div>
+                <div class="flex gap-2">
+                    <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold">
+                        ← Back to Main Site
+                    </a>
+                    <a href="login.html" onclick="localStorage.clear(); return true;" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm font-semibold">
+                        Logout
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <div class="flex flex-wrap gap-2 text-sm">
+                <a href="index.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎯 SEO Command</a>
+                <a href="competitors.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏆 Competitors</a>
+                <a href="performance.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">⚡ Performance</a>
+                <a href="rankings.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📊 Rankings</a>
+                <a href="microsites.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🌐 Microsites</a>
+                <a href="seo-tasks.html" class="bg-purple-600 px-3 py-1 rounded font-bold">📋 Tasks</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6">
+        
+        <!-- Task Overview -->
+        <div class="bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-lg shadow-xl p-6 mb-6">
+            <h2 class="text-3xl font-bold mb-4">📋 SEO Task Dashboard</h2>
+            <p class="text-blue-100 mb-6">
+                Tasks are automatically generated from AI analysis. Complete them to improve your SEO score.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Pending</h3>
+                    <div class="text-3xl font-bold" id="pendingCount">0</div>
+                    <p class="text-sm">to complete</p>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">In Progress</h3>
+                    <div class="text-3xl font-bold" id="inProgressCount">0</div>
+                    <p class="text-sm">being worked on</p>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Completed</h3>
+                    <div class="text-3xl font-bold" id="completedCount">0</div>
+                    <p class="text-sm">this month</p>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Impact</h3>
+                    <div class="text-3xl font-bold" id="impactScore">+0</div>
+                    <p class="text-sm">SEO points gained</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex gap-4">
+                <button onclick="refreshTasks()" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 font-bold">
+                    <i class="fas fa-sync mr-2"></i>Refresh Tasks
+                </button>
+                <button onclick="runFullAnalysis()" class="bg-yellow-400 text-black px-6 py-3 rounded-lg hover:bg-yellow-300 font-bold">
+                    <i class="fas fa-brain mr-2"></i>Run AI Analysis
+                </button>
+            </div>
+        </div>
+
+        <!-- Task Filters -->
+        <div class="bg-white rounded-lg shadow-lg p-4 mb-6">
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterTasks('all')" class="filter-btn px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
+                    All Tasks
+                </button>
+                <button onclick="filterTasks('high')" class="filter-btn px-4 py-2 rounded bg-red-100 hover:bg-red-200 text-red-800">
+                    High Priority
+                </button>
+                <button onclick="filterTasks('pending')" class="filter-btn px-4 py-2 rounded bg-yellow-100 hover:bg-yellow-200 text-yellow-800">
+                    Pending
+                </button>
+                <button onclick="filterTasks('completed')" class="filter-btn px-4 py-2 rounded bg-green-100 hover:bg-green-200 text-green-800">
+                    Completed
+                </button>
+                <button onclick="filterTasks('auto')" class="filter-btn px-4 py-2 rounded bg-blue-100 hover:bg-blue-200 text-blue-800">
+                    Auto-Generated
+                </button>
+            </div>
+        </div>
+
+        <!-- Task List -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-2xl font-bold mb-6">Active SEO Tasks</h3>
+            
+            <div id="loadingTasks" class="hidden text-center py-12">
+                <i class="fas fa-spinner fa-spin text-5xl text-blue-600 mb-4"></i>
+                <p class="text-xl text-gray-600">Loading tasks...</p>
+            </div>
+            
+            <div id="taskList" class="space-y-4">
+                <!-- Tasks will be loaded here dynamically -->
+            </div>
+            
+            <div id="noTasks" class="hidden text-center py-12 text-gray-500">
+                <i class="fas fa-clipboard-check text-6xl mb-4"></i>
+                <p class="text-xl">No tasks found. Run an analysis to generate tasks.</p>
+            </div>
+        </div>
+
+        <!-- Add Manual Task -->
+        <div class="bg-gradient-to-r from-gray-50 to-blue-50 rounded-lg shadow-lg p-6 mt-6">
+            <h3 class="text-xl font-bold mb-4">Add Manual Task</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" id="taskTitle" placeholder="Task title..." 
+                       class="px-4 py-2 border rounded-lg">
+                <select id="taskCategory" class="px-4 py-2 border rounded-lg">
+                    <option value="performance">Performance</option>
+                    <option value="content">Content</option>
+                    <option value="technical">Technical SEO</option>
+                    <option value="local">Local SEO</option>
+                    <option value="authority">Authority Building</option>
+                </select>
+            </div>
+            
+            <textarea id="taskDescription" placeholder="Task description..." 
+                      class="w-full mt-4 px-4 py-2 border rounded-lg" rows="3"></textarea>
+            
+            <button onclick="addManualTask()" class="mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-bold">
+                <i class="fas fa-plus mr-2"></i>Add Task
+            </button>
+        </div>
+    </div>
+
+    <script>
+    // Initialize
+    let allTasks = [];
+    let currentFilter = 'all';
+
+    // Load tasks on page load
+    window.addEventListener('load', async () => {
+        await loadTasks();
+    });
+
+    // Load tasks from server
+    async function loadTasks() {
+        document.getElementById('loadingTasks').classList.remove('hidden');
+        document.getElementById('taskList').classList.add('hidden');
+        document.getElementById('noTasks').classList.add('hidden');
+        
+        try {
+            const taskData = await window.AIConfig.getSEOTasks();
+            allTasks = taskData.tasks || [];
+            
+            displayTasks();
+            updateCounts();
+            
+        } catch (error) {
+            console.error('Failed to load tasks:', error);
+            // Use fallback tasks
+            allTasks = getFallbackTasks();
+            displayTasks();
+            updateCounts();
+        } finally {
+            document.getElementById('loadingTasks').classList.add('hidden');
+        }
+    }
+
+    // Display tasks based on filter
+    function displayTasks() {
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = '';
+        
+        let filteredTasks = allTasks;
+        
+        // Apply filter
+        if (currentFilter === 'high') {
+            filteredTasks = allTasks.filter(t => t.priority === 'high');
+        } else if (currentFilter === 'pending') {
+            filteredTasks = allTasks.filter(t => t.status === 'pending');
+        } else if (currentFilter === 'completed') {
+            filteredTasks = allTasks.filter(t => t.status === 'completed');
+        } else if (currentFilter === 'auto') {
+            filteredTasks = allTasks.filter(t => t.source === 'auto-generated');
+        }
+        
+        if (filteredTasks.length === 0) {
+            document.getElementById('noTasks').classList.remove('hidden');
+            taskList.classList.add('hidden');
+            return;
+        }
+        
+        document.getElementById('noTasks').classList.add('hidden');
+        taskList.classList.remove('hidden');
+        
+        // Display each task
+        filteredTasks.forEach(task => {
+            const taskCard = createTaskCard(task);
+            taskList.appendChild(taskCard);
+        });
+    }
+
+    // Create task card HTML
+    function createTaskCard(task) {
+        const div = document.createElement('div');
+        div.className = `task-card border-l-4 ${getTaskBorderColor(task)} bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow`;
+        
+        div.innerHTML = `
+            <div class="flex justify-between items-start">
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                        ${getTaskIcon(task.category)}
+                        <h4 class="font-bold text-lg">${task.action || task.title}</h4>
+                        ${getPriorityBadge(task.priority)}
+                        ${getSourceBadge(task.source)}
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">${task.description || getTaskDescription(task)}</p>
+                    <div class="flex items-center gap-4 text-sm text-gray-500">
+                        <span><i class="fas fa-folder mr-1"></i>${task.category}</span>
+                        <span><i class="fas fa-chart-line mr-1"></i>${task.estimatedImpact || '+5 points'}</span>
+                        <span><i class="fas fa-clock mr-1"></i>${getTaskAge(task.createdAt)}</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2">
+                    ${getTaskActions(task)}
+                </div>
+            </div>
+            ${task.status === 'in-progress' ? getProgressBar(task) : ''}
+        `;
+        
+        return div;
+    }
+
+    // Get task border color based on status
+    function getTaskBorderColor(task) {
+        if (task.status === 'completed') return 'border-green-500';
+        if (task.status === 'in-progress') return 'border-blue-500';
+        if (task.priority === 'high') return 'border-red-500';
+        return 'border-gray-300';
+    }
+
+    // Get task category icon
+    function getTaskIcon(category) {
+        const icons = {
+            performance: '<i class="fas fa-tachometer-alt text-blue-600"></i>',
+            content: '<i class="fas fa-pen text-green-600"></i>',
+            technical: '<i class="fas fa-cog text-purple-600"></i>',
+            local: '<i class="fas fa-map-marker-alt text-red-600"></i>',
+            authority: '<i class="fas fa-link text-orange-600"></i>'
+        };
+        return icons[category] || '<i class="fas fa-tasks text-gray-600"></i>';
+    }
+
+    // Get priority badge
+    function getPriorityBadge(priority) {
+        if (priority === 'high') {
+            return '<span class="px-2 py-1 bg-red-100 text-red-800 rounded text-xs font-bold">HIGH</span>';
+        }
+        if (priority === 'medium') {
+            return '<span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-xs font-bold">MEDIUM</span>';
+        }
+        return '<span class="px-2 py-1 bg-gray-100 text-gray-800 rounded text-xs font-bold">LOW</span>';
+    }
+
+    // Get source badge
+    function getSourceBadge(source) {
+        if (source === 'auto-generated') {
+            return '<span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs">🤖 AUTO</span>';
+        }
+        return '';
+    }
+
+    // Get task description
+    function getTaskDescription(task) {
+        if (task.type === 'images') return 'Optimize images for faster loading';
+        if (task.type === 'meta') return 'Update meta descriptions for better CTR';
+        if (task.type === 'schema') return 'Add structured data markup';
+        return 'Complete this SEO task to improve rankings';
+    }
+
+    // Get task age
+    function getTaskAge(createdAt) {
+        const created = new Date(createdAt);
+        const now = new Date();
+        const days = Math.floor((now - created) / (1000 * 60 * 60 * 24));
+        
+        if (days === 0) return 'Today';
+        if (days === 1) return 'Yesterday';
+        return `${days} days ago`;
+    }
+
+    // Get task action buttons
+    function getTaskActions(task) {
+        if (task.status === 'completed') {
+            return `
+                <button class="px-3 py-1 bg-green-100 text-green-800 rounded text-sm">
+                    <i class="fas fa-check mr-1"></i>Done
+                </button>
+            `;
+        }
+        
+        if (task.status === 'in-progress') {
+            return `
+                <button onclick="completeTask(${task.id})" class="px-3 py-1 bg-blue-600 text-white rounded text-sm hover:bg-blue-700">
+                    <i class="fas fa-check mr-1"></i>Complete
+                </button>
+            `;
+        }
+        
+        return `
+            <button onclick="startTask(${task.id})" class="px-3 py-1 bg-gray-600 text-white rounded text-sm hover:bg-gray-700">
+                <i class="fas fa-play mr-1"></i>Start
+            </button>
+            ${task.type ? `
+            <button onclick="autoFix(${task.id}, '${task.type}')" class="px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700">
+                <i class="fas fa-magic mr-1"></i>Auto-Fix
+            </button>
+            ` : ''}
+        `;
+    }
+
+    // Get progress bar for in-progress tasks
+    function getProgressBar(task) {
+        return `
+            <div class="mt-4">
+                <div class="flex justify-between text-sm text-gray-600 mb-1">
+                    <span>Progress</span>
+                    <span>50%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 50%"></div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Update task counts
+    function updateCounts() {
+        const pending = allTasks.filter(t => t.status === 'pending').length;
+        const inProgress = allTasks.filter(t => t.status === 'in-progress').length;
+        const completed = allTasks.filter(t => t.status === 'completed').length;
+        
+        document.getElementById('pendingCount').textContent = pending;
+        document.getElementById('inProgressCount').textContent = inProgress;
+        document.getElementById('completedCount').textContent = completed;
+        
+        // Calculate impact score
+        const impact = allTasks
+            .filter(t => t.status === 'completed')
+            .reduce((sum, t) => {
+                const points = parseInt(t.estimatedImpact?.match(/\d+/)?.[0] || 0);
+                return sum + points;
+            }, 0);
+        
+        document.getElementById('impactScore').textContent = `+${impact}`;
+    }
+
+    // Filter tasks
+    function filterTasks(filter) {
+        currentFilter = filter;
+        
+        // Update button styles
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('bg-blue-600', 'text-white');
+        });
+        event.target.classList.add('bg-blue-600', 'text-white');
+        
+        displayTasks();
+    }
+
+    // Start a task
+    async function startTask(id) {
+        const result = await window.AIConfig.updateSEOTask(id, 'in-progress', 'Started working on this task');
+        if (result) {
+            await loadTasks();
+        }
+    }
+
+    // Complete a task
+    async function completeTask(id) {
+        const notes = prompt('Add completion notes (optional):');
+        const result = await window.AIConfig.updateSEOTask(id, 'completed', notes || 'Task completed');
+        if (result) {
+            await loadTasks();
+        }
+    }
+
+    // Auto-fix a task
+    async function autoFix(id, type) {
+        if (!confirm('This will automatically apply the fix. Continue?')) return;
+        
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fixing...';
+        button.disabled = true;
+        
+        try {
+            const result = await window.AIConfig.applyFix('performance', type);
+            
+            if (result.success) {
+                // Mark task as completed
+                await window.AIConfig.updateSEOTask(id, 'completed', 'Auto-fixed: ' + result.message);
+                await loadTasks();
+                
+                alert(`✅ Fix Applied!\\n\\n${result.message}`);
+            } else {
+                throw new Error(result.message);
+            }
+        } catch (error) {
+            alert(`❌ Fix Failed\\n\\n${error.message}`);
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }
+    }
+
+    // Refresh tasks
+    async function refreshTasks() {
+        await loadTasks();
+    }
+
+    // Run full analysis
+    async function runFullAnalysis() {
+        if (!confirm('This will run a complete SEO analysis and generate new tasks. Continue?')) return;
+        
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+        button.disabled = true;
+        
+        try {
+            const analysis = await window.AIConfig.analyzeSEO('https://www.chrisdavidsalon.com');
+            
+            // Tasks are auto-generated by the server
+            await loadTasks();
+            
+            alert(`✅ Analysis Complete!\\n\\nSEO Score: ${analysis.totalScore}/100\\nNew tasks generated based on issues found.`);
+            
+        } catch (error) {
+            alert(`❌ Analysis Failed\\n\\n${error.message}`);
+        } finally {
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }
+    }
+
+    // Add manual task
+    async function addManualTask() {
+        const title = document.getElementById('taskTitle').value;
+        const category = document.getElementById('taskCategory').value;
+        const description = document.getElementById('taskDescription').value;
+        
+        if (!title) {
+            alert('Please enter a task title');
+            return;
+        }
+        
+        const task = {
+            title,
+            action: title,
+            category,
+            description,
+            priority: 'medium',
+            source: 'manual',
+            estimatedImpact: '+5 points'
+        };
+        
+        const result = await window.AIConfig.addSEOTask(task);
+        
+        if (result) {
+            // Clear form
+            document.getElementById('taskTitle').value = '';
+            document.getElementById('taskDescription').value = '';
+            
+            // Reload tasks
+            await loadTasks();
+            
+            alert('✅ Task added successfully!');
+        }
+    }
+
+    // Get fallback tasks if server is down
+    function getFallbackTasks() {
+        return [
+            {
+                id: 1,
+                category: 'technical',
+                action: 'Add schema markup to all pages',
+                type: 'schema',
+                priority: 'high',
+                estimatedImpact: '+8 points',
+                status: 'pending',
+                createdAt: new Date().toISOString(),
+                source: 'auto-generated'
+            },
+            {
+                id: 2,
+                category: 'performance',
+                action: 'Optimize and compress all images',
+                type: 'images',
+                priority: 'high',
+                estimatedImpact: '+12 points',
+                status: 'pending',
+                createdAt: new Date().toISOString(),
+                source: 'auto-generated'
+            },
+            {
+                id: 3,
+                category: 'content',
+                action: 'Add meta descriptions to 7 pages',
+                type: 'meta',
+                priority: 'medium',
+                estimatedImpact: '+5 points',
+                status: 'pending',
+                createdAt: new Date().toISOString(),
+                source: 'auto-generated'
+            }
+        ];
+    }
+    </script>
+</body>
+</html>

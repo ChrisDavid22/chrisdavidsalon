@@ -444,24 +444,86 @@
     }
 
     // Fix individual issue
-    function fixIssue(type) {
-        const fixes = {
-            images: 'Compress all 211 images using WebP format with fallbacks',
-            caching: 'Add browser caching headers to .htaccess file',
-            javascript: 'Defer non-critical JavaScript and inline critical CSS',
-            meta: 'Add optimized meta descriptions to all 7 pages'
-        };
+    async function fixIssue(type) {
+        const button = event.target;
+        const originalText = button.innerHTML;
         
-        alert(`Fixing: ${fixes[type]}\n\nThis will be added to your SEO TODO list.`);
+        // Show loading state
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fixing...';
+        button.disabled = true;
+        
+        try {
+            // Call the actual fix endpoint
+            const result = await window.AIConfig.applyFix('performance', type);
+            
+            if (result.success) {
+                button.innerHTML = '<i class="fas fa-check"></i> Fixed!';
+                button.classList.remove('text-blue-600');
+                button.classList.add('text-green-600');
+                
+                // Show success details
+                alert(`✅ Fix Applied Successfully!\n\n${result.message}\n\nDetails:\n${JSON.stringify(result.details, null, 2)}`);
+                
+                // Update the monthly cost to $0 for this issue
+                const row = button.closest('tr');
+                const costCell = row.querySelector('td:nth-child(3)');
+                costCell.innerHTML = '<span class="text-green-600 font-bold">Fixed</span>';
+                
+                // Reload analytics to show improvement
+                setTimeout(() => window.location.reload(), 3000);
+            } else {
+                throw new Error(result.message || 'Fix failed');
+            }
+        } catch (error) {
+            button.innerHTML = originalText;
+            button.disabled = false;
+            alert(`❌ Fix Failed\n\n${error.message}\n\nPlease try again or contact support.`);
+        }
     }
 
     // Fix all issues
-    function fixAllIssues() {
-        alert('Adding all performance fixes to your SEO TODO list.\n\n' +
-              'Total time: 6.5 hours\n' +
-              'Expected revenue increase: $1,980/month\n' +
-              'ROI: 3,470%\n\n' +
-              'View the SEO TODO list for step-by-step instructions.');
+    async function fixAllIssues() {
+        if (!confirm('This will apply all performance fixes automatically. Continue?')) {
+            return;
+        }
+        
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Applying Fixes...';
+        button.disabled = true;
+        
+        const issues = ['images', 'caching', 'javascript', 'meta'];
+        const results = [];
+        
+        for (let issue of issues) {
+            try {
+                const result = await window.AIConfig.applyFix('performance', issue);
+                results.push({ issue, ...result });
+            } catch (error) {
+                results.push({ issue, success: false, message: error.message });
+            }
+        }
+        
+        // Show results
+        const successful = results.filter(r => r.success).length;
+        const failed = results.filter(r => !r.success).length;
+        
+        let message = `Fix Results:\n\n`;
+        message += `✅ Successful: ${successful}\n`;
+        message += `❌ Failed: ${failed}\n\n`;
+        
+        results.forEach(r => {
+            message += `${r.success ? '✅' : '❌'} ${r.issue}: ${r.message}\n`;
+        });
+        
+        alert(message);
+        
+        if (successful > 0) {
+            setTimeout(() => window.location.reload(), 3000);
+        } else {
+            button.innerHTML = originalText;
+            button.disabled = false;
+        }
     }
 
     // Initialize on page load
