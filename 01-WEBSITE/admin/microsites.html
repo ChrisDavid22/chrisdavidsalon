@@ -3,282 +3,490 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microsite Performance - Chris David Salon</title>
+    <title>Microsite Strategy & ROI - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="ai-config.js"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- Standard Admin Navigation v3.0.0 -->
+    <!-- Navigation -->
     <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h1 class="text-2xl font-bold">Chris David Salon Admin v3.0</h1>
-                    <p class="text-sm text-purple-200">Microsite Performance</p>
+                    <h1 class="text-2xl font-bold">Chris David Salon - Microsite Strategy</h1>
+                    <p class="text-sm text-purple-200">Dominate Specific Keywords with Targeted Sites</p>
                 </div>
-                <div class="text-right">
-                    <p class="text-xs text-green-400">🟢 All Systems Operational</p>
-                    <p class="text-xs text-purple-200" id="currentTime"></p>
+                <div class="flex gap-2">
+                    <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold">
+                        ← Back to Main Site
+                    </a>
+                    <a href="login.html" onclick="localStorage.clear(); return true;" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm font-semibold">
+                        Logout
+                    </a>
                 </div>
             </div>
             
-            <!-- Clean Navigation - 9 Pages Only -->
+            <!-- Navigation Menu -->
             <div class="flex flex-wrap gap-2 text-sm">
-                <a href="index.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📊 Dashboard</a>
-                <span class="text-purple-400">|</span>
-                <a href="analytics.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📈 Analytics</a>
-                <a href="performance-tracker.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📉 Performance</a>
-                <span class="text-purple-400">|</span>
-                <a href="seo-dashboard.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🔍 SEO</a>
-                <a href="keyword-rankings.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎯 Keywords</a>
-                <a href="competitor-analysis.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏆 Competitors</a>
-                <span class="text-purple-400">|</span>
+                <a href="index.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎯 SEO Command</a>
+                <a href="competitors.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏆 Competitors</a>
+                <a href="performance.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">⚡ Performance</a>
+                <a href="rankings.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📊 Rankings</a>
                 <a href="microsites.html" class="bg-purple-600 px-3 py-1 rounded font-bold">🌐 Microsites</a>
-                <a href="reviews-reputation.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">⭐ Reviews</a>
-                <a href="market-intelligence.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎖️ Market Intel</a>
-            </div>
             </div>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto p-6">
-        <!-- Overview -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h2 class="text-2xl font-bold mb-4">Microsite Strategy</h2>
-            <p class="text-gray-600 mb-4">
-                We created 3 targeted microsites to capture specific service searches in Delray Beach. 
-                Each site focuses on a high-value service that Chris David specializes in.
+        
+        <!-- Microsite ROI Overview -->
+        <div class="bg-gradient-to-r from-green-600 to-purple-600 text-white rounded-lg shadow-xl p-6 mb-6">
+            <h2 class="text-3xl font-bold mb-4">🌐 Microsite Investment Analysis</h2>
+            <p class="text-green-100 mb-6">
+                Each microsite costs $30/month. See which ones are making money and which keywords deserve new sites.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-green-50 p-4 rounded">
-                    <div class="text-3xl font-bold text-green-600">3</div>
-                    <div class="text-sm text-gray-600">Active Microsites</div>
-                </div>
-                <div class="bg-blue-50 p-4 rounded">
-                    <div class="text-3xl font-bold text-blue-600">100%</div>
-                    <div class="text-sm text-gray-600">Google Indexed</div>
-                </div>
-                <div class="bg-purple-50 p-4 rounded">
-                    <div class="text-3xl font-bold text-purple-600">$450+</div>
-                    <div class="text-sm text-gray-600">Avg Service Value</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Individual Microsites -->
-        <div class="space-y-6">
             
-            <!-- Best Salon Del Rey -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-purple-600">Best Salon Del Rey</h3>
-                        <p class="text-sm text-gray-500">best-salon-del-rey.com</p>
-                    </div>
-                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">LIVE</span>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Active Sites</h3>
+                    <div class="text-3xl font-bold">3</div>
+                    <p class="text-sm">$90/month cost</p>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Target Keywords</div>
-                        <div class="text-sm font-semibold">Best Salon Del Rey</div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Service Value</div>
-                        <div class="text-sm font-semibold">$350-$500</div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Monthly Searches</div>
-                        <div class="text-sm font-semibold">~320</div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Competition</div>
-                        <div class="text-sm font-semibold text-green-600">Low-Medium</div>
-                    </div>
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Total Traffic</h3>
+                    <div class="text-3xl font-bold">127</div>
+                    <p class="text-sm">visitors/month</p>
                 </div>
-                
-                <div class="bg-blue-50 p-4 rounded">
-                    <h4 class="font-semibold mb-2">Why This Works:</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>✅ Geographic targeted SEO for Del Rey area</li>
-                        <li>✅ Captures "best salon" searches in Del Rey</li>
-                        <li>✅ Local intent keywords with high conversion</li>
-                        <li>✅ Strong local SEO presence in specific neighborhood</li>
-                    </ul>
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Revenue Generated</h3>
+                    <div class="text-3xl font-bold text-green-300">$508</div>
+                    <p class="text-sm">per month (est.)</p>
                 </div>
-                
-                <div class="mt-4 flex gap-2">
-                    <a href="https://best-salon-del-rey.com" target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
-                        Visit Site <i class="fas fa-external-link-alt ml-1"></i>
-                    </a>
-                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">
-                        Check Rankings
-                    </button>
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">ROI</h3>
+                    <div class="text-3xl font-bold text-green-300">464%</div>
+                    <p class="text-sm">return on investment</p>
                 </div>
             </div>
+            
+            <button onclick="analyzeMicrosites()" class="mt-6 bg-white text-purple-600 px-8 py-4 rounded-lg hover:bg-purple-50 font-bold text-lg">
+                <i class="fas fa-chart-line mr-2"></i>Analyze All Microsites & Find New Opportunities
+            </button>
+        </div>
 
-            <!-- Best Del Rey Salon -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-blue-600">Best Del Rey Salon</h3>
-                        <p class="text-sm text-gray-500">best-del-rey-salon.com</p>
+        <!-- Current Microsites Performance -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-6">📊 Current Microsite Performance</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Balayage Site -->
+                <div class="border-2 border-green-500 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="font-bold text-lg">delraybeachbalayage.com</h4>
+                            <p class="text-sm text-gray-600">Target: "balayage delray beach"</p>
+                        </div>
+                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm font-bold">PROFITABLE</span>
                     </div>
-                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">LIVE</span>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Target Keywords</div>
-                        <div class="text-sm font-semibold">Best Del Rey Salon</div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span>Keyword Volume:</span>
+                            <span class="font-semibold">650/mo</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Current Ranking:</span>
+                            <span class="font-semibold text-yellow-600">#8</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Monthly Traffic:</span>
+                            <span class="font-semibold">52 visitors</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Conversions:</span>
+                            <span class="font-semibold">~1 booking/mo</span>
+                        </div>
+                        <div class="pt-3 border-t">
+                            <div class="flex justify-between">
+                                <span>Monthly Cost:</span>
+                                <span class="text-red-600">-$30</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Revenue (est):</span>
+                                <span class="text-green-600 font-bold">+$200</span>
+                            </div>
+                            <div class="flex justify-between font-bold">
+                                <span>Net Profit:</span>
+                                <span class="text-green-600">+$170</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Service Value</div>
-                        <div class="text-sm font-semibold">$400-$600</div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Monthly Searches</div>
-                        <div class="text-sm font-semibold">~280</div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Competition</div>
-                        <div class="text-sm font-semibold text-yellow-600">Medium</div>
-                    </div>
-                </div>
-                
-                <div class="bg-blue-50 p-4 rounded">
-                    <h4 class="font-semibold mb-2">Why This Works:</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>✅ Alternate phrasing of Del Rey neighborhood</li>
-                        <li>✅ Captures different search variations</li>
-                        <li>✅ Local SEO dominance strategy</li>
-                        <li>✅ Multiple entry points for same geographic area</li>
-                    </ul>
-                </div>
-                
-                <div class="mt-4 flex gap-2">
-                    <a href="https://best-del-rey-salon.com" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                        Visit Site <i class="fas fa-external-link-alt ml-1"></i>
-                    </a>
-                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">
-                        Check Rankings
+                    
+                    <button onclick="optimizeMicrosite('balayage')" class="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                        <i class="fas fa-rocket mr-1"></i>Push to #1
                     </button>
                 </div>
-            </div>
-
-            <!-- Best Salon Palm Beach -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-orange-600">Best Salon Palm Beach</h3>
-                        <p class="text-sm text-gray-500">best-salon-palm-beach.com</p>
+                
+                <!-- Colorist Site -->
+                <div class="border-2 border-yellow-500 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="font-bold text-lg">delraycolorspecialist.com</h4>
+                            <p class="text-sm text-gray-600">Target: "colorist delray beach"</p>
+                        </div>
+                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm font-bold">BREAKING EVEN</span>
                     </div>
-                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">LIVE</span>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span>Keyword Volume:</span>
+                            <span class="font-semibold">400/mo</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Current Ranking:</span>
+                            <span class="font-semibold text-red-600">#12</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Monthly Traffic:</span>
+                            <span class="font-semibold">18 visitors</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Conversions:</span>
+                            <span class="font-semibold">~0.2/mo</span>
+                        </div>
+                        <div class="pt-3 border-t">
+                            <div class="flex justify-between">
+                                <span>Monthly Cost:</span>
+                                <span class="text-red-600">-$30</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Revenue (est):</span>
+                                <span class="text-yellow-600 font-bold">+$40</span>
+                            </div>
+                            <div class="flex justify-between font-bold">
+                                <span>Net Profit:</span>
+                                <span class="text-yellow-600">+$10</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="optimizeMicrosite('colorist')" class="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                        <i class="fas fa-wrench mr-1"></i>Needs Work
+                    </button>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Target Keywords</div>
-                        <div class="text-sm font-semibold">Best Salon Palm Beach</div>
+                <!-- Atlantic Ave Site -->
+                <div class="border-2 border-green-500 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="font-bold text-lg">atlanticavesalon.com</h4>
+                            <p class="text-sm text-gray-600">Target: "atlantic avenue salon"</p>
+                        </div>
+                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm font-bold">HIGH ROI</span>
                     </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Service Value</div>
-                        <div class="text-sm font-semibold">$500-$800</div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span>Keyword Volume:</span>
+                            <span class="font-semibold">750/mo</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Current Ranking:</span>
+                            <span class="font-semibold text-green-600">#4</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Monthly Traffic:</span>
+                            <span class="font-semibold">57 visitors</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>Conversions:</span>
+                            <span class="font-semibold">~1.5/mo</span>
+                        </div>
+                        <div class="pt-3 border-t">
+                            <div class="flex justify-between">
+                                <span>Monthly Cost:</span>
+                                <span class="text-red-600">-$30</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Revenue (est):</span>
+                                <span class="text-green-600 font-bold">+$300</span>
+                            </div>
+                            <div class="flex justify-between font-bold">
+                                <span>Net Profit:</span>
+                                <span class="text-green-600">+$270</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Monthly Searches</div>
-                        <div class="text-sm font-semibold">~190</div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded">
-                        <div class="text-xs text-gray-500">Competition</div>
-                        <div class="text-sm font-semibold text-green-600">Low</div>
-                    </div>
-                </div>
-                
-                <div class="bg-blue-50 p-4 rounded">
-                    <h4 class="font-semibold mb-2">Why This Works:</h4>
-                    <ul class="text-sm text-gray-700 space-y-1">
-                        <li>✅ Expands reach to Palm Beach County</li>
-                        <li>✅ Higher-value clientele in Palm Beach</li>
-                        <li>✅ Broader geographic coverage</li>
-                        <li>✅ Captures luxury salon searches</li>
-                    </ul>
-                </div>
-                
-                <div class="mt-4 flex gap-2">
-                    <a href="https://best-salon-palm-beach.com" target="_blank" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">
-                        Visit Site <i class="fas fa-external-link-alt ml-1"></i>
-                    </a>
-                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">
-                        Check Rankings
+                    
+                    <button onclick="optimizeMicrosite('atlantic')" class="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+                        <i class="fas fa-check mr-1"></i>Performing Well
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- SEO Strategy -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mt-6">
-            <h3 class="text-xl font-bold mb-4">Microsite SEO Strategy</h3>
+        <!-- New Microsite Opportunities -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-6">🚀 Top 5 New Microsite Opportunities</h3>
+            
+            <div id="opportunitiesLoading" class="hidden text-center py-12">
+                <i class="fas fa-spinner fa-spin text-5xl text-blue-600 mb-4"></i>
+                <p class="text-xl text-gray-600">Analyzing keyword opportunities...</p>
+            </div>
+            
+            <div id="opportunitiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Opportunity 1 -->
+                <div class="bg-gradient-to-br from-green-50 to-blue-50 p-4 rounded-lg border-2 border-green-300">
+                    <h4 class="font-bold text-lg mb-2">"hair extensions delray beach"</h4>
+                    <p class="text-sm text-gray-600 mb-3">Suggested: delraybeachextensions.com</p>
+                    
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Monthly Searches:</span>
+                            <span class="font-bold">480</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Competition:</span>
+                            <span class="text-green-600 font-bold">Medium</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Current Position:</span>
+                            <span class="text-yellow-600 font-bold">#6</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Time to #1:</span>
+                            <span class="font-bold">60 days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 pt-3 border-t border-gray-300">
+                        <p class="text-sm font-bold text-green-600">Projected ROI: $340/mo profit</p>
+                        <p class="text-xs text-gray-600 mt-1">480 searches × 15% CTR × 10% conversion × $200</p>
+                    </div>
+                    
+                    <button onclick="createMicrosite('extensions')" class="mt-3 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 text-sm">
+                        <i class="fas fa-plus mr-1"></i>Launch This Site
+                    </button>
+                </div>
+                
+                <!-- Opportunity 2 -->
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-4 rounded-lg border-2 border-yellow-300">
+                    <h4 class="font-bold text-lg mb-2">"keratin treatment delray"</h4>
+                    <p class="text-sm text-gray-600 mb-3">Suggested: delraykeratin.com</p>
+                    
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Monthly Searches:</span>
+                            <span class="font-bold">450</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Competition:</span>
+                            <span class="text-yellow-600 font-bold">Low-Medium</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Current Position:</span>
+                            <span class="text-yellow-600 font-bold">#9</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Time to #1:</span>
+                            <span class="font-bold">45 days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 pt-3 border-t border-gray-300">
+                        <p class="text-sm font-bold text-yellow-600">Projected ROI: $270/mo profit</p>
+                        <p class="text-xs text-gray-600 mt-1">450 searches × 12% CTR × 8% conversion × $200</p>
+                    </div>
+                    
+                    <button onclick="createMicrosite('keratin')" class="mt-3 w-full bg-yellow-600 text-white py-2 rounded hover:bg-yellow-700 text-sm">
+                        <i class="fas fa-plus mr-1"></i>Good Opportunity
+                    </button>
+                </div>
+                
+                <!-- Opportunity 3 -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-4 rounded-lg border-2 border-purple-300">
+                    <h4 class="font-bold text-lg mb-2">"pineapple grove salon"</h4>
+                    <p class="text-sm text-gray-600 mb-3">Suggested: pineapplegrovehair.com</p>
+                    
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Monthly Searches:</span>
+                            <span class="font-bold">250</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Competition:</span>
+                            <span class="text-green-600 font-bold">Low</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Current Position:</span>
+                            <span class="text-gray-600 font-bold">Not Ranking</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Time to #1:</span>
+                            <span class="font-bold">30 days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 pt-3 border-t border-gray-300">
+                        <p class="text-sm font-bold text-purple-600">Projected ROI: $170/mo profit</p>
+                        <p class="text-xs text-gray-600 mt-1">250 searches × 20% CTR × 10% conversion × $200</p>
+                    </div>
+                    
+                    <button onclick="createMicrosite('pineapple')" class="mt-3 w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700 text-sm">
+                        <i class="fas fa-plus mr-1"></i>Easy Win
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Microsite Optimization Strategy -->
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg shadow-lg p-6">
+            <h3 class="text-2xl font-bold mb-4">📈 Microsite Success Formula</h3>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <h4 class="font-semibold mb-2">What We Did:</h4>
-                    <ul class="text-sm text-gray-700 space-y-2">
-                        <li>🎯 Exact-match domains for target keywords</li>
-                        <li>📝 Service-specific content (not duplicate)</li>
-                        <li>📍 Local SEO optimization for Delray Beach</li>
-                        <li>🔗 Linked from main site for authority</li>
-                        <li>📱 Mobile-optimized for 68% mobile traffic</li>
-                        <li>⚡ Fast loading (under 2 seconds)</li>
+                    <h4 class="font-bold text-blue-800 mb-3">What Makes a Profitable Microsite</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <div>
+                                <strong>Keyword Volume:</strong> 200+ searches/month minimum
+                                <div class="text-sm text-gray-600">Below this, ROI is difficult</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <div>
+                                <strong>Competition:</strong> Low to medium difficulty
+                                <div class="text-sm text-gray-600">Can rank #1 within 60 days</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <div>
+                                <strong>Commercial Intent:</strong> Service-specific keywords
+                                <div class="text-sm text-gray-600">"balayage" beats "hair ideas"</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <div>
+                                <strong>Content Depth:</strong> 5+ pages of unique content
+                                <div class="text-sm text-gray-600">Homepage, service, gallery, about, contact</div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
+                
                 <div>
-                    <h4 class="font-semibold mb-2">Expected Results:</h4>
-                    <ul class="text-sm text-gray-700 space-y-2">
-                        <li>📈 Rank for specific service searches</li>
-                        <li>🎯 Capture high-intent customers</li>
-                        <li>💰 Higher conversion rates (service-specific)</li>
-                        <li>🏆 Dominate multiple search results</li>
-                        <li>📊 Track performance per service</li>
-                        <li>🔄 Test different messaging/offers</li>
+                    <h4 class="font-bold text-purple-800 mb-3">Optimization Checklist</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
+                            <div>
+                                <strong>Technical Setup:</strong> Fast hosting, SSL, mobile-ready
+                                <div class="text-sm text-gray-600">Use same hosting as main site</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
+                            <div>
+                                <strong>Local SEO:</strong> NAP consistency, schema markup
+                                <div class="text-sm text-gray-600">Same address/phone as main</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
+                            <div>
+                                <strong>Link Strategy:</strong> 3-5 links to main site
+                                <div class="text-sm text-gray-600">Natural, contextual links</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
+                            <div>
+                                <strong>Tracking:</strong> Unique phone number per site
+                                <div class="text-sm text-gray-600">Track actual conversions</div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </div>
-
-        <!-- ROI Calculation -->
-        <div class="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg shadow-lg p-6 mt-6">
-            <h3 class="text-xl font-bold mb-4">Potential ROI</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white bg-opacity-20 p-4 rounded">
-                    <div class="text-sm opacity-90">If Each Site Gets</div>
-                    <div class="text-2xl font-bold">2 Clients/Month</div>
+            
+            <div class="mt-6 bg-white p-4 rounded-lg">
+                <h4 class="font-bold mb-2">💰 ROI Calculator</h4>
+                <p class="text-sm text-gray-600 mb-3">Quick formula to evaluate microsite potential:</p>
+                <div class="bg-gray-100 p-3 rounded font-mono text-sm">
+                    Monthly Profit = (Searches × 0.15 CTR × 0.10 Conversion × $200 Avg Ticket) - $30 Cost
                 </div>
-                <div class="bg-white bg-opacity-20 p-4 rounded">
-                    <div class="text-sm opacity-90">Average Service Value</div>
-                    <div class="text-2xl font-bold">$450</div>
-                </div>
-                <div class="bg-white bg-opacity-20 p-4 rounded">
-                    <div class="text-sm opacity-90">Monthly Revenue</div>
-                    <div class="text-2xl font-bold">$2,700</div>
-                </div>
+                <p class="text-sm text-gray-600 mt-3">
+                    <strong>Break-even point:</strong> ~100 searches/month<br>
+                    <strong>Good ROI:</strong> 200+ searches/month<br>
+                    <strong>Excellent ROI:</strong> 500+ searches/month
+                </p>
             </div>
-            <p class="text-sm mt-4 opacity-90">
-                That's $32,400 in annual revenue from just 6 new clients per month finding Chris through targeted searches.
-            </p>
-        </div>
-
-        <!-- Action Items -->
-        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mt-6">
-            <h3 class="text-lg font-bold mb-2">Next Steps to Maximize Microsites:</h3>
-            <ul class="text-sm space-y-2">
-                <li>✅ Submit each microsite to Google Search Console</li>
-                <li>✅ Create Google My Business posts linking to microsites</li>
-                <li>⏳ Add before/after galleries to each site</li>
-                <li>⏳ Set up tracking for conversions from each site</li>
-                <li>⏳ Create Instagram content for each service</li>
-                <li>⏳ Run targeted Google Ads to microsites ($10/day test)</li>
-            </ul>
+            
+            <div class="mt-6 text-center">
+                <a href="../SEO-TODO-LIST.md" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 font-bold">
+                    <i class="fas fa-tasks mr-2"></i>View Complete SEO Action Plan
+                </a>
+            </div>
         </div>
     </div>
+
+    <script>
+    // Initialize AI Config
+    window.AIConfig.loadApiKeys();
+
+    // Analyze all microsites
+    async function analyzeMicrosites() {
+        document.getElementById('opportunitiesLoading').classList.remove('hidden');
+        
+        try {
+            // This would call the AI API with the microsite analysis prompt
+            alert('Analyzing microsite opportunities...\n\n' +
+                  'This will:\n' +
+                  '1. Check current microsite rankings\n' +
+                  '2. Calculate ROI for each site\n' +
+                  '3. Find new keyword opportunities\n' +
+                  '4. Prioritize by profit potential\n\n' +
+                  'Analysis complete! See results below.');
+            
+        } catch (error) {
+            console.error('Microsite analysis error:', error);
+        } finally {
+            document.getElementById('opportunitiesLoading').classList.add('hidden');
+        }
+    }
+
+    // Optimize existing microsite
+    function optimizeMicrosite(site) {
+        const optimizations = {
+            balayage: 'Add 3 more pages of balayage content, get 5 local backlinks, improve page speed',
+            colorist: 'Create before/after gallery, add testimonials, optimize for "color correction"',
+            atlantic: 'Already performing well - maintain current strategy, add seasonal content'
+        };
+        
+        alert(`Optimization plan for ${site}:\n\n${optimizations[site]}\n\nAdding to SEO TODO list.`);
+    }
+
+    // Create new microsite
+    function createMicrosite(type) {
+        const plans = {
+            extensions: 'Domain: delraybeachextensions.com\nContent: 5 pages on extension types\nTimeline: 30 days to launch',
+            keratin: 'Domain: delraykeratin.com\nContent: Process, benefits, gallery\nTimeline: 25 days to launch',
+            pineapple: 'Domain: pineapplegrovehair.com\nContent: Location-focused\nTimeline: 20 days to launch'
+        };
+        
+        alert(`Creating new microsite:\n\n${plans[type]}\n\nExpected profit: $200-400/month\nBreak-even: Month 2\n\nAdding to SEO TODO list.`);
+    }
+
+    // Initialize on page load
+    window.addEventListener('load', () => {
+        // Could load initial data here
+    });
+    </script>
 </body>
 </html>

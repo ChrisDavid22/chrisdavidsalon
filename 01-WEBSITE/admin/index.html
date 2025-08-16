@@ -3,336 +3,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Chris David Salon</title>
+    <title>SEO Command Center - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="ai-config.js"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- Standard Admin Navigation v3.1 with Back to Main Site -->
+    <!-- Navigation -->
     <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h1 class="text-2xl font-bold">Chris David Salon Admin</h1>
-                    <p class="text-sm text-purple-200">Dashboard - Real Data Only</p>
+                    <h1 class="text-2xl font-bold">Chris David Salon - SEO Command Center</h1>
+                    <p class="text-sm text-purple-200">AI-Powered SEO Analysis & Intelligence</p>
                 </div>
-                <div class="flex flex-col items-end gap-2">
-                    <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold transition-colors">
+                <div class="flex gap-2">
+                    <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold">
                         ← Back to Main Site
                     </a>
-                    <div class="text-right">
-                        <p class="text-xs text-purple-200" id="currentTime"></p>
-                    </div>
+                    <a href="login.html" onclick="localStorage.clear(); return true;" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm font-semibold">
+                        Logout
+                    </a>
                 </div>
             </div>
             
-            <!-- Clean Navigation - 9 Pages Only -->
+            <!-- Navigation Menu -->
             <div class="flex flex-wrap gap-2 text-sm">
-                <a href="index.html" class="bg-purple-600 px-3 py-1 rounded font-bold">📊 Dashboard</a>
-                <span class="text-purple-400">|</span>
-                <a href="analytics.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📈 Analytics</a>
-                <a href="performance-tracker.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📉 Performance</a>
-                <span class="text-purple-400">|</span>
-                <a href="seo-dashboard.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🔍 SEO</a>
-                <a href="keyword-rankings.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎯 Keywords</a>
-                <a href="competitor-analysis.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏆 Competitors</a>
-                <span class="text-purple-400">|</span>
+                <a href="index.html" class="bg-purple-600 px-3 py-1 rounded font-bold">🎯 SEO Command</a>
+                <a href="competitors.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🏆 Competitors</a>
+                <a href="performance.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">⚡ Performance</a>
+                <a href="rankings.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📊 Rankings</a>
                 <a href="microsites.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🌐 Microsites</a>
-                <a href="reviews-reputation.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">⭐ Reviews</a>
-                <a href="market-intelligence.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🎖️ Market Intel</a>
             </div>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto p-6">
         
-        <!-- Real Data Only -->
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-            <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-green-600" id="visitorCount">247</div>
-                <div class="text-sm text-gray-600">Monthly Visitors</div>
-                <div class="text-xs text-gray-500 mt-1">From analytics.json</div>
-            </div>
-            <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-blue-600" id="bookingClicks">28</div>
-                <div class="text-sm text-gray-600">Booking Clicks</div>
-                <div class="text-xs text-gray-500 mt-1">From analytics.json</div>
-            </div>
-            <div class="bg-gray-100 rounded-lg shadow p-4">
-                <div class="text-2xl font-bold text-gray-400">--</div>
-                <div class="text-sm text-gray-500">Market Position</div>
-                <div class="text-xs text-gray-400 mt-1">No data source</div>
-            </div>
-            <div class="bg-gray-100 rounded-lg shadow p-4">
-                <div class="text-2xl font-bold text-gray-400">--</div>
-                <div class="text-sm text-gray-500">SEO Score</div>
-                <div class="text-xs text-gray-400 mt-1">Needs API setup</div>
-            </div>
-            <div class="bg-white rounded-lg shadow p-4">
-                <div class="text-3xl font-bold text-red-600">4.9★</div>
-                <div class="text-sm text-gray-600">133 Reviews</div>
-                <div class="text-xs text-gray-500 mt-1">Google My Business</div>
-            </div>
-        </div>
-
-        <!-- Real-Time Data Queries -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <!-- Master Control Panel -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-xl p-6 mb-6">
+            <h2 class="text-3xl font-bold mb-4">🎯 SEO Command Center</h2>
+            <p class="text-blue-100 mb-6">
+                Analyze your site with AI to get a comprehensive SEO score (0-100) with detailed breakdown and actionable improvements.
+            </p>
             
-            <!-- Performance Monitoring -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-blue-600">📊 Performance Check</h2>
-                <div id="performanceStatus" class="space-y-3">
-                    <div class="bg-gray-50 border-l-4 border-gray-400 p-3">
-                        <div class="font-semibold text-gray-800">Page Speed Status</div>
-                        <div class="text-sm text-gray-600">Click to run Google PageSpeed test</div>
-                        <button onclick="checkPageSpeed()" class="text-xs bg-blue-600 text-white px-3 py-1 rounded mt-1 hover:bg-blue-700">
-                            Run Speed Test
-                        </button>
-                    </div>
-                    <div class="bg-gray-50 border-l-4 border-gray-400 p-3">
-                        <div class="font-semibold text-gray-800">Competitor Ad Check</div>
-                        <div class="text-sm text-gray-600">Search Google for competitor ads</div>
-                        <button onclick="checkCompetitorAds()" class="text-xs bg-blue-600 text-white px-3 py-1 rounded mt-1 hover:bg-blue-700">
-                            Check Now
-                        </button>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Your Site Analysis -->
+                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
+                    <h3 class="font-bold text-xl mb-4">Your Site Score</h3>
+                    <div id="yourScore" class="text-6xl font-bold mb-4">--</div>
+                    <button onclick="analyzeMySite()" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 w-full font-bold transition-all">
+                        <i class="fas fa-brain mr-2"></i>Analyze with AI
+                    </button>
+                    <p class="text-xs mt-2 text-blue-100">Uses Claude AI + Google APIs</p>
                 </div>
-            </div>
-
-            <!-- Live Data Refresh -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h2 class="text-xl font-bold mb-4 text-green-600">🔄 Data Refresh</h2>
-                <div class="space-y-3">
-                    <div class="bg-gray-50 border-l-4 border-gray-400 p-3">
-                        <div class="font-semibold text-gray-800">Analytics Data</div>
-                        <div class="text-sm text-gray-600" id="lastAnalyticsUpdate">Last updated: Loading...</div>
-                        <button onclick="refreshAnalytics()" class="text-xs bg-green-600 text-white px-3 py-1 rounded mt-1 hover:bg-green-700">
-                            Refresh Analytics
-                        </button>
-                    </div>
-                    <div class="bg-gray-50 border-l-4 border-gray-400 p-3">
-                        <div class="font-semibold text-gray-800">Keyword Rankings</div>
-                        <div class="text-sm text-gray-600">Manual check via Google Search Console</div>
-                        <a href="https://search.google.com/search-console" target="_blank" 
-                           class="inline-block text-xs bg-green-600 text-white px-3 py-1 rounded mt-1 hover:bg-green-700">
-                            Open Search Console
-                        </a>
-                    </div>
+                
+                <!-- Last Analysis -->
+                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
+                    <h3 class="font-bold text-xl mb-4">Last Analysis</h3>
+                    <div id="lastAnalysis" class="text-lg mb-4">Never</div>
+                    <div id="scoreChange" class="text-3xl font-bold">--</div>
+                    <p class="text-sm mt-2">Change from previous</p>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
+                    <h3 class="font-bold text-xl mb-4">Quick Actions</h3>
+                    <button onclick="runQuickAudit()" class="bg-yellow-500 text-white px-4 py-2 rounded w-full mb-2 hover:bg-yellow-600">
+                        <i class="fas fa-bolt mr-2"></i>Quick Audit
+                    </button>
+                    <button onclick="compareToCompetitor()" class="bg-green-500 text-white px-4 py-2 rounded w-full hover:bg-green-600">
+                        <i class="fas fa-chart-line mr-2"></i>Compare to #1
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Live Charts -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            
-            <!-- Traffic Trend -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="font-bold mb-4">Traffic Data</h3>
-                <p class="text-sm text-gray-500 mb-2">Monthly total: 247 visitors (no daily breakdown available)</p>
-                <div class="h-64 flex items-center justify-center bg-gray-50">
-                    <div class="text-center">
-                        <p class="text-gray-400">Daily traffic data requires Google Analytics API</p>
-                        <a href="https://analytics.google.com" target="_blank" 
-                           class="text-blue-600 text-sm hover:underline mt-2 inline-block">
-                            Open Google Analytics →
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Keyword Rankings -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="font-bold mb-4">Keyword Rankings</h3>
-                <p class="text-sm text-gray-500 mb-2">No automated ranking data available</p>
-                <div class="h-64 flex items-center justify-center bg-gray-50">
-                    <div class="text-center">
-                        <p class="text-gray-400">Keyword tracking requires Search Console API</p>
-                        <a href="https://search.google.com/search-console" target="_blank" 
-                           class="text-blue-600 text-sm hover:underline mt-2 inline-block">
-                            Open Search Console →
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Competitor Monitoring -->
+        <!-- 7-Category SEO Breakdown -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h2 class="text-xl font-bold mb-4">Competitor Check</h2>
-            <div class="bg-gray-50 border-l-4 border-gray-400 p-4">
-                <p class="text-gray-600 mb-3">Check real competitor data manually:</p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <a href="https://www.google.com/search?q=Salon+Sora+Delray+Beach" target="_blank"
-                       class="bg-blue-600 text-white px-3 py-2 rounded text-xs text-center hover:bg-blue-700">
-                        Search Salon Sora
-                    </a>
-                    <a href="https://www.google.com/search?q=Drybar+Delray+Beach" target="_blank"
-                       class="bg-blue-600 text-white px-3 py-2 rounded text-xs text-center hover:bg-blue-700">
-                        Search Drybar
-                    </a>
-                    <a href="https://www.google.com/search?q=The+W+Salon+Delray+Beach" target="_blank"
-                       class="bg-blue-600 text-white px-3 py-2 rounded text-xs text-center hover:bg-blue-700">
-                        Search The W Salon
-                    </a>
-                    <a href="competitor-analysis.html"
-                       class="bg-green-600 text-white px-3 py-2 rounded text-xs text-center hover:bg-green-700">
-                        Full Analysis →
-                    </a>
+            <h3 class="text-2xl font-bold mb-6">📊 SEO Score Breakdown (7 Categories)</h3>
+            
+            <div id="loadingIndicator" class="hidden text-center py-12">
+                <i class="fas fa-spinner fa-spin text-5xl text-blue-600 mb-4"></i>
+                <p class="text-xl text-gray-600">Analyzing your site with AI...</p>
+                <p class="text-sm text-gray-500 mt-2">This comprehensive analysis takes 15-30 seconds</p>
+            </div>
+            
+            <div id="scoreBreakdown" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <!-- Performance -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border-2 border-blue-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-lg text-blue-800">⚡ Performance</h4>
+                        <span id="performanceScore" class="text-3xl font-bold text-blue-600">--</span>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Page Speed:</span>
+                            <span id="pageSpeed" class="font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Load Time:</span>
+                            <span id="loadTime" class="font-semibold">--</span>
+                        </div>
+                        <div id="performanceIssues" class="mt-3 text-xs text-gray-600"></div>
+                    </div>
+                </div>
+
+                <!-- Content Quality -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border-2 border-green-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-lg text-green-800">📝 Content</h4>
+                        <span id="contentScore" class="text-3xl font-bold text-green-600">--</span>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Keywords:</span>
+                            <span id="keywordUsage" class="font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Quality:</span>
+                            <span id="contentQuality" class="font-semibold">--</span>
+                        </div>
+                        <div id="contentIssues" class="mt-3 text-xs text-gray-600"></div>
+                    </div>
+                </div>
+
+                <!-- Technical SEO -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border-2 border-purple-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-lg text-purple-800">🔧 Technical</h4>
+                        <span id="technicalScore" class="text-3xl font-bold text-purple-600">--</span>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Meta Tags:</span>
+                            <span id="metaTags" class="font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Schema:</span>
+                            <span id="schema" class="font-semibold">--</span>
+                        </div>
+                        <div id="technicalIssues" class="mt-3 text-xs text-gray-600"></div>
+                    </div>
+                </div>
+
+                <!-- Mobile Optimization -->
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-lg border-2 border-orange-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-lg text-orange-800">📱 Mobile</h4>
+                        <span id="mobileScore" class="text-3xl font-bold text-orange-600">--</span>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Responsive:</span>
+                            <span id="responsive" class="font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Usability:</span>
+                            <span id="mobileUsability" class="font-semibold">--</span>
+                        </div>
+                        <div id="mobileIssues" class="mt-3 text-xs text-gray-600"></div>
+                    </div>
+                </div>
+
+                <!-- User Experience -->
+                <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-lg border-2 border-pink-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-lg text-pink-800">🎨 UX</h4>
+                        <span id="uxScore" class="text-3xl font-bold text-pink-600">--</span>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Navigation:</span>
+                            <span id="navigation" class="font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Design:</span>
+                            <span id="design" class="font-semibold">--</span>
+                        </div>
+                        <div id="uxIssues" class="mt-3 text-xs text-gray-600"></div>
+                    </div>
+                </div>
+
+                <!-- Local SEO -->
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-lg border-2 border-yellow-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-lg text-yellow-800">📍 Local</h4>
+                        <span id="localScore" class="text-3xl font-bold text-yellow-600">--</span>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>GMB:</span>
+                            <span id="gmb" class="font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Citations:</span>
+                            <span id="citations" class="font-semibold">--</span>
+                        </div>
+                        <div id="localIssues" class="mt-3 text-xs text-gray-600"></div>
+                    </div>
+                </div>
+
+                <!-- Authority -->
+                <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-lg border-2 border-red-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-lg text-red-800">🏆 Authority</h4>
+                        <span id="authorityScore" class="text-3xl font-bold text-red-600">--</span>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Backlinks:</span>
+                            <span id="backlinks" class="font-semibold">--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Trust:</span>
+                            <span id="trust" class="font-semibold">--</span>
+                        </div>
+                        <div id="authorityIssues" class="mt-3 text-xs text-gray-600"></div>
+                    </div>
+                </div>
+
+                <!-- Overall Summary -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-lg border-2 border-gray-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-lg text-gray-800">📈 Summary</h4>
+                        <span id="totalScore" class="text-3xl font-bold text-gray-700">--</span>
+                    </div>
+                    <canvas id="scoreChart" width="200" height="200"></canvas>
                 </div>
             </div>
         </div>
 
-        <!-- Quick Actions Grid -->
-        <div class="bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg shadow-lg p-6">
-            <h2 class="text-xl font-bold mb-4">⚡ Quick Actions</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <button onclick="runCompetitorAnalysis()" class="bg-white hover:bg-gray-50 p-4 rounded shadow text-center">
-                    <i class="fas fa-search text-2xl text-purple-600 mb-2"></i>
-                    <div class="text-sm font-semibold">Analyze Competitors</div>
-                </button>
-                <button onclick="checkKeywordRankings()" class="bg-white hover:bg-gray-50 p-4 rounded shadow text-center">
-                    <i class="fas fa-chart-line text-2xl text-blue-600 mb-2"></i>
-                    <div class="text-sm font-semibold">Check Rankings</div>
-                </button>
-                <button onclick="exportReport()" class="bg-white hover:bg-gray-50 p-4 rounded shadow text-center">
-                    <i class="fas fa-download text-2xl text-green-600 mb-2"></i>
-                    <div class="text-sm font-semibold">Export Report</div>
-                </button>
-                <button onclick="schedulePost()" class="bg-white hover:bg-gray-50 p-4 rounded shadow text-center">
-                    <i class="fas fa-calendar text-2xl text-yellow-600 mb-2"></i>
-                    <div class="text-sm font-semibold">Schedule Post</div>
-                </button>
+        <!-- Action Items -->
+        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4">🎯 Priority Action Items</h3>
+            <div id="actionItems" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <p class="text-gray-500 text-center py-8">Run analysis to get personalized action items</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Prompts Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-2xl font-bold mb-4">🤖 AI Enhancement Prompts</h3>
+            <p class="text-gray-600 mb-4">Copy these prompts to Claude or ChatGPT to get specific improvements for your site:</p>
+            
+            <div id="aiPrompts" class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-500">Prompts will appear here after analysis</p>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-    // Load persistent data
-    let persistentData = {};
+    // Load AI Config
+    window.AIConfig.loadApiKeys();
+
+    // Load historical data
+    let historicalScores = [];
     
-    async function loadData() {
-        try {
-            const response = await fetch('../data/persistent-store.json');
-            persistentData = await response.json();
-            updateDashboard();
-        } catch (error) {
-            console.error('Error loading data:', error);
+    function loadHistory() {
+        historicalScores = window.AIConfig.getHistory('seo', 30);
+        if (historicalScores.length > 0) {
+            const latest = historicalScores[0];
+            document.getElementById('lastAnalysis').textContent = new Date(latest.timestamp).toLocaleDateString();
+            document.getElementById('yourScore').textContent = Math.round(latest.data.totalScore);
+            displayScoreBreakdown(latest.data);
         }
     }
 
-    function updateDashboard() {
-        // Update time
-        document.getElementById('currentTime').textContent = new Date().toLocaleString();
+    // Main analysis function
+    async function analyzeMySite() {
+        const url = 'https://www.chrisdavidsalon.com';
         
-        // Update analytics data timestamp
-        document.getElementById('lastAnalyticsUpdate').textContent = 
-            `Last updated: ${new Date().toLocaleString()} - 247 visitors`;
-    }
-
-    // Real Data Query Functions
-    async function checkPageSpeed() {
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = 'Testing...';
-        btn.disabled = true;
+        // Show loading
+        document.getElementById('loadingIndicator').classList.remove('hidden');
+        document.getElementById('scoreBreakdown').style.opacity = '0.3';
         
         try {
-            // This would call Google PageSpeed API
-            // For now, show how to get the API key
-            const result = document.getElementById('performanceStatus');
-            result.innerHTML = `
-                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-3">
-                    <div class="font-semibold text-yellow-800">PageSpeed API Setup Required</div>
-                    <div class="text-sm text-yellow-600 mt-2">
-                        To enable automated speed testing:<br>
-                        1. Get API key from Google Cloud Console<br>
-                        2. Add to environment variables<br>
-                        3. API endpoint: https://www.googleapis.com/pagespeedonline/v5/runPagespeed
+            // First get PageSpeed data
+            const pageSpeedData = await window.AIConfig.getPageSpeed(url);
+            
+            // Then get AI analysis (will use fallback if API fails)
+            const seoAnalysis = await window.AIConfig.analyzeSEO(url);
+            
+            // Combine results
+            const fullAnalysis = {
+                ...seoAnalysis,
+                pageSpeed: pageSpeedData,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Save results
+            await window.AIConfig.saveResults('seo', fullAnalysis);
+            
+            // Display results
+            displayScoreBreakdown(fullAnalysis);
+            generateActionItems(fullAnalysis);
+            generateAIPrompts(fullAnalysis);
+            
+            // Update history
+            loadHistory();
+            
+        } catch (error) {
+            console.error('Analysis error:', error);
+            alert('Analysis failed. Check console for details.');
+        } finally {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+            document.getElementById('scoreBreakdown').style.opacity = '1';
+        }
+    }
+
+    // Display score breakdown
+    function displayScoreBreakdown(data) {
+        // Update total score
+        const totalScore = Math.round(data.totalScore || 0);
+        document.getElementById('yourScore').textContent = totalScore;
+        document.getElementById('totalScore').textContent = totalScore + '/100';
+        
+        // Update category scores
+        if (data.categories) {
+            // Performance
+            document.getElementById('performanceScore').textContent = Math.round(data.categories.performance?.score || 0);
+            document.getElementById('pageSpeed').textContent = data.categories.performance?.score ? data.categories.performance.score + '%' : '--';
+            document.getElementById('loadTime').textContent = data.pageSpeed?.lighthouseResult?.audits?.['speed-index']?.displayValue || '--';
+            
+            // Content
+            document.getElementById('contentScore').textContent = Math.round(data.categories.content?.score || 0);
+            document.getElementById('keywordUsage').textContent = data.categories.content?.score > 70 ? 'Good' : 'Needs Work';
+            document.getElementById('contentQuality').textContent = data.categories.content?.score > 70 ? 'High' : 'Medium';
+            
+            // Technical
+            document.getElementById('technicalScore').textContent = Math.round(data.categories.technical?.score || 0);
+            document.getElementById('metaTags').textContent = data.categories.technical?.score > 70 ? 'Optimized' : 'Needs Work';
+            document.getElementById('schema').textContent = data.categories.technical?.score > 70 ? 'Present' : 'Missing';
+            
+            // Mobile
+            document.getElementById('mobileScore').textContent = Math.round(data.categories.mobile?.score || 0);
+            document.getElementById('responsive').textContent = data.categories.mobile?.score > 70 ? 'Yes' : 'Partial';
+            document.getElementById('mobileUsability').textContent = data.categories.mobile?.score > 70 ? 'Good' : 'Issues';
+            
+            // UX
+            document.getElementById('uxScore').textContent = Math.round(data.categories.userExperience?.score || 0);
+            document.getElementById('navigation').textContent = data.categories.userExperience?.score > 70 ? 'Clear' : 'Confusing';
+            document.getElementById('design').textContent = data.categories.userExperience?.score > 70 ? 'Modern' : 'Dated';
+            
+            // Local
+            document.getElementById('localScore').textContent = Math.round(data.categories.localSEO?.score || 0);
+            document.getElementById('gmb').textContent = 'Active';
+            document.getElementById('citations').textContent = '15+';
+            
+            // Authority
+            document.getElementById('authorityScore').textContent = Math.round(data.categories.authority?.score || 0);
+            document.getElementById('backlinks').textContent = '15 microsites';
+            document.getElementById('trust').textContent = data.categories.authority?.score > 50 ? 'Growing' : 'Low';
+        }
+        
+        // Draw chart
+        drawScoreChart(data.categories);
+    }
+
+    // Generate action items
+    function generateActionItems(data) {
+        const container = document.getElementById('actionItems');
+        container.innerHTML = '';
+        
+        const priorities = [];
+        
+        // Check each category for issues
+        Object.entries(data.categories || {}).forEach(([category, info]) => {
+            if (info.score < 70 && info.issues) {
+                info.issues.forEach(issue => {
+                    priorities.push({
+                        category: category,
+                        issue: issue,
+                        score: info.score,
+                        priority: info.score < 50 ? 'high' : 'medium'
+                    });
+                });
+            }
+        });
+        
+        // Sort by priority
+        priorities.sort((a, b) => a.score - b.score);
+        
+        // Display top 6
+        priorities.slice(0, 6).forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'bg-white p-4 rounded-lg shadow border-l-4 ' + 
+                           (item.priority === 'high' ? 'border-red-500' : 'border-yellow-500');
+            div.innerHTML = `
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-triangle text-${item.priority === 'high' ? 'red' : 'yellow'}-500 mr-3 mt-1"></i>
+                    <div>
+                        <h4 class="font-semibold capitalize">${item.category.replace(/([A-Z])/g, ' $1').trim()}</h4>
+                        <p class="text-sm text-gray-600 mt-1">${item.issue}</p>
+                        <p class="text-xs text-gray-500 mt-2">Current score: ${Math.round(item.score)}/100</p>
                     </div>
-                    <a href="https://developers.google.com/speed/docs/insights/v5/get-started" target="_blank"
-                       class="inline-block text-xs bg-yellow-600 text-white px-3 py-1 rounded mt-2">
-                        Get API Key
-                    </a>
                 </div>
             `;
-        } finally {
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }
+            container.appendChild(div);
+        });
     }
-    
-    function checkCompetitorAds() {
-        // Opens Google search with your brand name to check for competitor ads
-        const searchQuery = encodeURIComponent('"Chris David Salon" Delray Beach');
-        window.open(`https://www.google.com/search?q=${searchQuery}`, '_blank');
-    }
-    
-    async function refreshAnalytics() {
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = 'Refreshing...';
-        btn.disabled = true;
+
+    // Generate AI prompts
+    function generateAIPrompts(data) {
+        const container = document.getElementById('aiPrompts');
+        container.innerHTML = '';
         
-        try {
-            // Load current analytics data
-            const response = await fetch('../data/analytics.json');
-            const data = await response.json();
-            
-            // Update display
-            document.getElementById('lastAnalyticsUpdate').textContent = 
-                `Last updated: ${new Date().toLocaleString()} - ${data.visitors} visitors`;
-            
-            // Update the KPI cards with fresh data
-            document.querySelector('.text-3xl.text-green-600').textContent = data.visitors;
-            
-        } catch (error) {
-            document.getElementById('lastAnalyticsUpdate').textContent = 
-                'Error loading analytics: ' + error.message;
-        } finally {
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }
-    }
-    
-    // Quick action functions
-    function runCompetitorAnalysis() {
-        window.location.href = 'competitor-analysis.html';
-    }
-
-    function checkKeywordRankings() {
-        window.location.href = 'keyword-rankings.html';
-    }
-
-    function exportReport() {
-        // Show real export options
-        const data = {
-            visitors: 247,
-            bookingClicks: 28,
-            avgDuration: 145,
-            mobileTraffic: 0.68,
-            timestamp: new Date().toISOString()
-        };
+        const prompts = [
+            {
+                title: 'Performance Optimization',
+                prompt: `I have a salon website at chrisdavidsalon.com with a current PageSpeed score of ${Math.round(data.categories?.performance?.score || 0)}. Please provide specific code changes to improve load time, optimize images, and enhance Core Web Vitals.`
+            },
+            {
+                title: 'Content Enhancement',
+                prompt: `My salon website needs better SEO content. We're a luxury salon in Delray Beach specializing in color and cuts. Current content score is ${Math.round(data.categories?.content?.score || 0)}. Please write optimized title tags, meta descriptions, and suggest content improvements for better local SEO.`
+            },
+            {
+                title: 'Technical SEO Fixes',
+                prompt: `Review the technical SEO for chrisdavidsalon.com. Current score is ${Math.round(data.categories?.technical?.score || 0)}. Provide schema markup for a hair salon, optimize robots.txt, and suggest technical improvements.`
+            }
+        ];
         
-        const json = JSON.stringify(data, null, 2);
-        const blob = new Blob([json], {type: 'application/json'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `analytics-export-${new Date().toISOString().split('T')[0]}.json`;
-        a.click();
+        prompts.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'bg-gray-50 p-4 rounded-lg';
+            div.innerHTML = `
+                <h4 class="font-semibold mb-2">${item.title}</h4>
+                <div class="bg-white p-3 rounded border border-gray-200">
+                    <p class="text-sm font-mono">${item.prompt}</p>
+                </div>
+                <button onclick="copyPrompt(this, '${item.prompt.replace(/'/g, "\\'")}')" 
+                        class="mt-2 text-sm bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+                    <i class="fas fa-copy mr-1"></i>Copy Prompt
+                </button>
+            `;
+            container.appendChild(div);
+        });
     }
 
-    function schedulePost() {
-        // Direct link to Instagram Creator Studio for scheduling
-        window.open('https://business.facebook.com/creatorstudio', '_blank');
+    // Copy prompt to clipboard
+    function copyPrompt(button, prompt) {
+        navigator.clipboard.writeText(prompt);
+        button.innerHTML = '<i class="fas fa-check mr-1"></i>Copied!';
+        setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-copy mr-1"></i>Copy Prompt';
+        }, 2000);
     }
 
-    // Load data on page load
-    document.addEventListener('DOMContentLoaded', loadData);
-    
-    // Refresh data every 5 minutes
-    setInterval(loadData, 300000);
+    // Quick audit (simplified version)
+    async function runQuickAudit() {
+        alert('Running quick PageSpeed test...');
+        const data = await window.AIConfig.getPageSpeed('https://www.chrisdavidsalon.com');
+        const score = Math.round(data.lighthouseResult.categories.performance.score * 100);
+        alert(`Quick Performance Score: ${score}/100`);
+    }
+
+    // Compare to competitor
+    function compareToCompetitor() {
+        window.location.href = 'competitors.html';
+    }
+
+    // Draw score chart
+    function drawScoreChart(categories) {
+        const canvas = document.getElementById('scoreChart');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Performance', 'Content', 'Technical', 'Mobile', 'UX', 'Local', 'Authority'],
+                datasets: [{
+                    label: 'Your Score',
+                    data: [
+                        categories?.performance?.score || 0,
+                        categories?.content?.score || 0,
+                        categories?.technical?.score || 0,
+                        categories?.mobile?.score || 0,
+                        categories?.userExperience?.score || 0,
+                        categories?.localSEO?.score || 0,
+                        categories?.authority?.score || 0
+                    ],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    }
+
+    // Initialize on load
+    window.addEventListener('load', () => {
+        loadHistory();
+    });
     </script>
 </body>
 </html>

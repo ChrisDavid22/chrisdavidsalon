@@ -1,7 +1,12 @@
 {
-  "version": "2.5.38",
-  "lastUpdated": "2025-08-15T04:04:13Z",
+  "version": "2.5.39",
+  "lastUpdated": "2025-08-16T04:47:47Z",
   "deployHistory": [
+    {
+      "version": "2.5.39",
+      "date": "2025-08-16T04:47:47Z",
+      "changes": "Admin system complete rewrite with intelligent AI prompts for business insights"
+    },
     {
       "version": "2.5.38",
       "date": "2025-08-15T04:04:13Z",
@@ -41,11 +46,6 @@
       "version": "2.5.29",
       "date": "2025-08-14T22:04:51Z",
       "changes": "CRITICAL FIX: Restored correct service images - replaced wrong images with proper '11 Hair' series images for all services"
-    },
-    {
-      "version": "2.5.28",
-      "date": "2025-08-14T21:23:20Z",
-      "changes": "Version 2.5.27: Added comprehensive SEO Intelligence Engine with 0-100 scoring system, fixed version consistency across all admin pages, updated README with accurate admin documentation"
     },
   ]
 }
