@@ -1,7 +1,12 @@
 {
-  "version": "2.5.40",
-  "lastUpdated": "2025-08-16T04:55:05Z",
+  "version": "2.5.41",
+  "lastUpdated": "2025-08-16T06:16:45Z",
   "deployHistory": [
+    {
+      "version": "2.5.41",
+      "date": "2025-08-16T06:16:45Z",
+      "changes": "Fix admin microsites with real domain URLs + complete system test"
+    },
     {
       "version": "2.5.40",
       "date": "2025-08-16T04:55:05Z",
@@ -41,11 +46,6 @@
       "version": "2.5.31",
       "date": "2025-08-14T22:12:05Z",
       "changes": "Restored correct Signature Service image (woman with red hair in chair) for service card display"
-    },
-    {
-      "version": "2.5.30",
-      "date": "2025-08-14T22:09:49Z",
-      "changes": "CRITICAL: Gallery now ONLY uses Google Business photos. Removed ALL local image references. Archived wrong images. Created permanent rules document."
     },
   ]
 }
