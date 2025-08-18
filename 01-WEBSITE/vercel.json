@@ -3,8 +3,5 @@
     "api/*.js": {
       "maxDuration": 30
     }
-  },
-  "env": {
-    "GOOGLE_API_KEY": "@google-api-key"
   }
 }

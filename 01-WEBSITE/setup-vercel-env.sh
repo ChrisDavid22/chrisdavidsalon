@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo "======================================="
+echo "VERCEL ENVIRONMENT VARIABLE SETUP"
+echo "======================================="
+echo ""
+echo "Since we can't set Vercel env vars via CLI without auth,"
+echo "here's the quickest way to do it manually:"
+echo ""
+echo "1. Click this link to open Vercel dashboard:"
+echo "   https://vercel.com/chrisdavid22/chrisdavidsalon/settings/environment-variables"
+echo ""
+echo "2. Click 'Add Variable'"
+echo ""
+echo "3. Copy and paste these values:"
+echo "   Key:   GOOGLE_API_KEY"
+echo "   Value: AIzaSyDCQAaVgiaUdYMXF32V4BflzsAA2mbVokg"
+echo ""
+echo "4. Select: Production, Preview, Development"
+echo ""
+echo "5. Click 'Save'"
+echo ""
+echo "That's it! The admin panel will work immediately."
+echo ""
+echo "Press Enter to open Vercel dashboard in your browser..."
+read
+
+open "https://vercel.com/chrisdavid22/chrisdavidsalon/settings/environment-variables"
+
+echo ""
+echo "After adding the variable, test here:"
+echo "https://chrisdavidsalon.com/admin/test-serverless.html"
