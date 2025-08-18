@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Serverless APIs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold mb-6">Serverless API Test</h1>
+        
+        <div class="bg-white rounded-lg shadow p-6 mb-4">
+            <h2 class="text-xl font-bold mb-4">Test PageSpeed API</h2>
+            <button onclick="testPageSpeed()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Test PageSpeed
+            </button>
+            <div id="pagespeed-result" class="mt-4"></div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold mb-4">Test Gemini API</h2>
+            <button onclick="testGemini()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                Test Gemini
+            </button>
+            <div id="gemini-result" class="mt-4"></div>
+        </div>
+    </div>
+    
+    <script>
+    async function testPageSpeed() {
+        const resultDiv = document.getElementById('pagespeed-result');
+        resultDiv.innerHTML = 'Testing...';
+        
+        try {
+            const response = await fetch('/api/pagespeed?url=https://www.chrisdavidsalon.com');
+            const data = await response.json();
+            
+            if (data.lighthouseResult) {
+                const score = Math.round(data.lighthouseResult.categories.performance.score * 100);
+                resultDiv.innerHTML = `✅ Success! PageSpeed Score: ${score}/100`;
+            } else {
+                resultDiv.innerHTML = '❌ Error: ' + JSON.stringify(data);
+            }
+        } catch (error) {
+            resultDiv.innerHTML = '❌ Error: ' + error.message;
+        }
+    }
+    
+    async function testGemini() {
+        const resultDiv = document.getElementById('gemini-result');
+        resultDiv.innerHTML = 'Testing...';
+        
+        try {
+            const response = await fetch('/api/gemini', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    prompt: 'Say "API is working" if you can read this'
+                })
+            });
+            const data = await response.json();
+            
+            if (data.candidates) {
+                resultDiv.innerHTML = '✅ Success! Gemini responded: ' + data.candidates[0].content.parts[0].text;
+            } else if (data.fallback) {
+                resultDiv.innerHTML = '⚠️ Using fallback mode (API key may be missing)';
+            } else {
+                resultDiv.innerHTML = '❌ Error: ' + JSON.stringify(data);
+            }
+        } catch (error) {
+            resultDiv.innerHTML = '❌ Error: ' + error.message;
+        }
+    }
+    </script>
+</body>
+</html>

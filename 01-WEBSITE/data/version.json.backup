@@ -1,7 +1,12 @@
 {
-  "version": "2.5.42",
-  "lastUpdated": "2025-08-18T20:42:39Z",
+  "version": "2.5.43",
+  "lastUpdated": "2025-08-18T23:27:38Z",
   "deployHistory": [
+    {
+      "version": "2.5.43",
+      "date": "2025-08-18T23:27:38Z",
+      "changes": "Proper architecture: Serverless API functions - no more client-side API key issues"
+    },
     {
       "version": "2.5.42",
       "date": "2025-08-18T20:42:39Z",
@@ -41,11 +46,6 @@
       "version": "2.5.33",
       "date": "2025-08-14T22:23:55Z",
       "changes": "FIXED GALLERY: Now displays actual Google Business Profile photos with category filtering. PERMANENTLY DELETED all generic wrong images so they can never be used again."
-    },
-    {
-      "version": "2.5.32",
-      "date": "2025-08-14T22:19:18Z",
-      "changes": "RESTORED: Fixed gallery by restoring working Google Maps iframe gallery from version 2.5.26 - no more broken image links"
     },
   ]
 }

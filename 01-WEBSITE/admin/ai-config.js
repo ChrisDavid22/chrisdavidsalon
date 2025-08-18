@@ -251,7 +251,7 @@ class AIConfig {
     }
 
     /**
-     * Analyze website SEO using Google Gemini or fallback
+     * Analyze website SEO using serverless API proxy
      */
     async analyzeSEOWithGemini(url) {
         const cacheKey = `seo_gemini_${url}`;
@@ -261,26 +261,30 @@ class AIConfig {
         }
 
         try {
-            const response = await fetch(`${this.apis.gemini.endpoint}/${this.apis.gemini.model}:generateContent?key=${this.apis.gemini.key}`, {
+            // Use serverless function instead of direct API call
+            const response = await fetch('/api/gemini', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: this.prompts.seoAnalysis.replace('{url}', url)
-                        }]
-                    }]
+                    prompt: this.prompts.seoAnalysis.replace('{url}', url),
+                    url: url
                 })
             });
 
             if (!response.ok) {
-                throw new Error(`Gemini API error: ${response.status}`);
+                throw new Error(`API error: ${response.status}`);
             }
 
             const data = await response.json();
-            const resultText = data.candidates[0].content.parts[0].text;
+            
+            // Handle fallback response
+            if (data.fallback) {
+                return this.fallbackSEOAnalysis(url);
+            }
+            
+            const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
             
             // Parse the JSON response from Gemini
             let result;
@@ -331,9 +335,22 @@ class AIConfig {
     }
 
     /**
-     * Analyze website SEO using proxy server (legacy)
+     * Analyze website SEO - main entry point
      */
     async analyzeSEO(url) {
+        // Try serverless Gemini first
+        try {
+            return await this.analyzeSEOWithGemini(url);
+        } catch (error) {
+            console.log('Gemini unavailable, using fallback');
+            return this.fallbackSEOAnalysis(url);
+        }
+    }
+
+    /**
+     * Legacy proxy server method (deprecated)
+     */
+    async analyzeSEOViaLocalProxy(url) {
         // Check cache first
         const cacheKey = `seo_${url}`;
         if (this.cache.results[cacheKey] && 
@@ -342,7 +359,7 @@ class AIConfig {
         }
 
         try {
-            // Use proxy server instead of direct API call
+            // Legacy local proxy (requires local server)
             const response = await fetch('http://localhost:3001/api/analyze-seo', {
                 method: 'POST',
                 headers: {
@@ -372,7 +389,7 @@ class AIConfig {
     }
 
     /**
-     * Get real competitors using Gemini AI
+     * Get real competitors using serverless Gemini proxy
      */
     async getCompetitorsWithGemini() {
         const cacheKey = 'competitors_gemini_delray';
@@ -382,17 +399,13 @@ class AIConfig {
         }
 
         try {
-            const response = await fetch(`${this.apis.gemini.endpoint}/${this.apis.gemini.model}:generateContent?key=${this.apis.gemini.key}`, {
+            const response = await fetch('/api/gemini', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: this.prompts.discoverCompetitors
-                        }]
-                    }]
+                    prompt: this.prompts.discoverCompetitors
                 })
             });
 
@@ -689,17 +702,23 @@ class AIConfig {
     }
 
     /**
-     * Get PageSpeed insights
+     * Get PageSpeed insights using serverless proxy
      */
     async getPageSpeed(url) {
-        const apiUrl = `${this.apis.google.pageSpeed.endpoint}?url=${encodeURIComponent(url)}&key=${this.apis.google.pageSpeed.key}&category=performance&category=accessibility&category=seo&category=best-practices`;
-        
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error(`PageSpeed API error: ${response.status}`);
+        try {
+            // Use serverless function for PageSpeed
+            const response = await fetch(`/api/pagespeed?url=${encodeURIComponent(url)}`);
+            if (!response.ok) {
+                throw new Error(`PageSpeed API error: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('PageSpeed error:', error);
+            // Fallback to direct API call (public API)
+            const fallbackUrl = `https://pagespeedonline.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&category=performance`;
+            const fallbackResponse = await fetch(fallbackUrl);
+            return await fallbackResponse.json();
         }
-        
-        return await response.json();
     }
 
     /**
