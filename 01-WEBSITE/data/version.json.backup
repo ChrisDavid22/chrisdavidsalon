@@ -1,7 +1,12 @@
 {
-  "version": "2.5.41",
-  "lastUpdated": "2025-08-16T06:16:45Z",
+  "version": "2.5.42",
+  "lastUpdated": "2025-08-18T20:42:39Z",
   "deployHistory": [
+    {
+      "version": "2.5.42",
+      "date": "2025-08-18T20:42:39Z",
+      "changes": "Admin API integration with Google Gemini - secure implementation using environment variables only"
+    },
     {
       "version": "2.5.41",
       "date": "2025-08-16T06:16:45Z",
@@ -41,11 +46,6 @@
       "version": "2.5.32",
       "date": "2025-08-14T22:19:18Z",
       "changes": "RESTORED: Fixed gallery by restoring working Google Maps iframe gallery from version 2.5.26 - no more broken image links"
-    },
-    {
-      "version": "2.5.31",
-      "date": "2025-08-14T22:12:05Z",
-      "changes": "Restored correct Signature Service image (woman with red hair in chair) for service card display"
     },
   ]
 }
