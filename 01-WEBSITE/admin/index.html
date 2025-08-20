@@ -284,18 +284,21 @@
         document.getElementById('scoreBreakdown').style.opacity = '0.3';
         
         try {
-            // First get PageSpeed data
-            const pageSpeedData = await window.AIConfig.getPageSpeed(url);
+            // Fetch data from our admin API
+            const response = await fetch('/api/admin-data?type=seo-analysis');
             
-            // Then get AI analysis (will use fallback if API fails)
-            const seoAnalysis = await window.AIConfig.analyzeSEO(url);
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status}`);
+            }
             
-            // Combine results
-            const fullAnalysis = {
-                ...seoAnalysis,
-                pageSpeed: pageSpeedData,
-                timestamp: new Date().toISOString()
-            };
+            const result = await response.json();
+            
+            if (!result.success) {
+                throw new Error('Analysis failed');
+            }
+            
+            const fullAnalysis = result.data;
+            fullAnalysis.timestamp = new Date().toISOString();
             
             // Save results
             await window.AIConfig.saveResults('seo', fullAnalysis);
@@ -310,7 +313,16 @@
             
         } catch (error) {
             console.error('Analysis error:', error);
-            alert('Analysis failed. Check console for details.');
+            // Try fallback analysis
+            try {
+                const fallbackAnalysis = await window.AIConfig.fallbackSEOAnalysis(url);
+                displayScoreBreakdown(fallbackAnalysis);
+                generateActionItems(fallbackAnalysis);
+                generateAIPrompts(fallbackAnalysis);
+            } catch (fallbackError) {
+                console.error('Fallback also failed:', fallbackError);
+                alert('Analysis temporarily unavailable. Please try again later.');
+            }
         } finally {
             document.getElementById('loadingIndicator').classList.add('hidden');
             document.getElementById('scoreBreakdown').style.opacity = '1';
@@ -506,9 +518,53 @@
         });
     }
 
+    // Load dashboard data on page load
+    async function loadDashboardData() {
+        try {
+            const response = await fetch('/api/admin-data?type=dashboard');
+            if (response.ok) {
+                const result = await response.json();
+                if (result.success && result.data) {
+                    // Display some basic metrics
+                    const data = result.data;
+                    
+                    // Update score display if no history
+                    if (!document.getElementById('yourScore').textContent || document.getElementById('yourScore').textContent === '--') {
+                        document.getElementById('yourScore').textContent = data.seoScore;
+                        document.getElementById('totalScore').textContent = data.seoScore + '/100';
+                    }
+                    
+                    // Display some competitor info in action items if empty
+                    const actionContainer = document.getElementById('actionItems');
+                    if (actionContainer.children.length <= 1) {
+                        actionContainer.innerHTML = '';
+                        data.actionItems.forEach(item => {
+                            const div = document.createElement('div');
+                            div.className = 'bg-white p-4 rounded-lg shadow border-l-4 ' + 
+                                           (item.priority === 'high' ? 'border-red-500' : 'border-yellow-500');
+                            div.innerHTML = `
+                                <div class="flex items-start">
+                                    <i class="fas fa-exclamation-triangle text-${item.priority === 'high' ? 'red' : 'yellow'}-500 mr-3 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold">${item.task}</h4>
+                                        <p class="text-sm text-gray-600 mt-1">Impact: ${item.impact}</p>
+                                    </div>
+                                </div>
+                            `;
+                            actionContainer.appendChild(div);
+                        });
+                    }
+                }
+            }
+        } catch (error) {
+            console.error('Failed to load dashboard data:', error);
+        }
+    }
+    
     // Initialize on load
     window.addEventListener('load', () => {
         loadHistory();
+        loadDashboardData();
     });
     </script>
 </body>

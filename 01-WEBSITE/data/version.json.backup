@@ -1,7 +1,12 @@
 {
-  "version": "2.5.44",
-  "lastUpdated": "2025-08-18T23:37:41Z",
+  "version": "2.5.45",
+  "lastUpdated": "2025-08-20T14:11:49Z",
   "deployHistory": [
+    {
+      "version": "2.5.45",
+      "date": "2025-08-20T14:11:49Z",
+      "changes": "Fixed admin page to work with API endpoints and display real data"
+    },
     {
       "version": "2.5.44",
       "date": "2025-08-18T23:37:41Z",
@@ -41,11 +46,6 @@
       "version": "2.5.36",
       "date": "2025-08-15T03:55:23Z",
       "changes": "GALLERY FIXED: Replaced duplicate Squarespace images with diverse portfolio showing actual work - 1 Google Business photo + 7 service images from '11 Hair' series. All 8 images unique and load correctly. Verified with Puppeteer testing."
-    },
-    {
-      "version": "2.5.34",
-      "date": "2025-08-14T22:26:51Z",
-      "changes": "FIXED: Replaced broken Google image URLs with working Squarespace CDN images that load correctly"
     },
   ]
 }
