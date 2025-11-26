@@ -1,5 +1,16 @@
 {
-  "buildCommand": "cd 01-WEBSITE && echo 'Using 01-WEBSITE directory'",
+  "buildCommand": "echo 'Building Chris David Salon'",
   "outputDirectory": "01-WEBSITE",
+  "functions": {
+    "01-WEBSITE/api/*.js": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/01-WEBSITE/api/:path*"
+    }
+  ],
   "public": true
 }

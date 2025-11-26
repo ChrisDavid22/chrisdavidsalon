@@ -13,8 +13,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // API key stored in Vercel environment variables
-  const API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyDCQAaVgiaUdYMXF32V4BflzsAA2mbVokg';
+  // API key from Vercel environment variables only (never hardcoded)
+  const API_KEY = process.env.GOOGLE_API_KEY || '';
   
   try {
     const { prompt, url } = req.body;

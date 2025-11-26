@@ -12,8 +12,8 @@ export default async function handler(req, res) {
   const { url = 'https://www.chrisdavidsalon.com' } = req.query;
   
   try {
-    // PageSpeed API is public but we can add our key for higher limits
-    const API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyDCQAaVgiaUdYMXF32V4BflzsAA2mbVokg';
+    // PageSpeed API - use env key for higher limits, or empty for public access
+    const API_KEY = process.env.GOOGLE_API_KEY || '';
     const apiUrl = `https://pagespeedonline.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&strategy=mobile&category=performance&category=accessibility&category=seo&category=best-practices&key=${API_KEY}`;
     
     const response = await fetch(apiUrl);

@@ -11,9 +11,9 @@ export default async function handler(req, res) {
 
   const { type = 'dashboard' } = req.query || req.body || {};
   
-  // All our API keys (from .env file values)
-  const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || 'AIzaSyDCQAaVgiaUdYMXF32V4BflzsAA2mbVokg';
-  const CLAUDE_API_KEY = process.env.CLAUDE_API_KEY || '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';
+  // API keys from Vercel environment variables only (never hardcoded)
+  const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || '';
+  const CLAUDE_API_KEY = process.env.CLAUDE_API_KEY || '';
   
   try {
     switch(type) {

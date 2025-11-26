@@ -1,7 +1,12 @@
 {
-  "version": "2.5.46",
-  "lastUpdated": "2025-11-26T04:15:00Z",
+  "version": "2.5.47",
+  "lastUpdated": "2025-11-26T04:20:00Z",
   "deployHistory": [
+    {
+      "version": "2.5.47",
+      "date": "2025-11-26T04:20:00Z",
+      "changes": "Fixed API routing in vercel.json, removed hardcoded API keys for security"
+    },
     {
       "version": "2.5.46",
       "date": "2025-11-26T04:15:00Z",
