@@ -371,10 +371,11 @@
             document.getElementById('pageSpeed').textContent = data.categories.performance?.score ? data.categories.performance.score + '%' : '--';
             document.getElementById('loadTime').textContent = data.pageSpeed?.lighthouseResult?.audits?.['speed-index']?.displayValue || '--';
             
-            // Content
-            document.getElementById('contentScore').textContent = Math.round(data.categories.content?.score || 0);
-            document.getElementById('keywordUsage').textContent = data.categories.content?.score > 70 ? 'Good' : 'Needs Work';
-            document.getElementById('contentQuality').textContent = data.categories.content?.score > 70 ? 'High' : 'Medium';
+            // Content (requires content analysis API - not available)
+            const contentScore = data.categories.content?.score;
+            document.getElementById('contentScore').textContent = contentScore != null ? Math.round(contentScore) : '--';
+            document.getElementById('keywordUsage').textContent = contentScore != null ? (contentScore > 70 ? 'Good' : 'Needs Work') : '--';
+            document.getElementById('contentQuality').textContent = contentScore != null ? (contentScore > 70 ? 'High' : 'Medium') : '--';
             
             // Technical
             document.getElementById('technicalScore').textContent = Math.round(data.categories.technical?.score || 0);
@@ -391,13 +392,15 @@
             document.getElementById('navigation').textContent = data.categories.userExperience?.score > 70 ? 'Clear' : 'Confusing';
             document.getElementById('design').textContent = data.categories.userExperience?.score > 70 ? 'Modern' : 'Dated';
             
-            // Local
-            document.getElementById('localScore').textContent = Math.round(data.categories.localSEO?.score || 0);
+            // Local (requires Google My Business API - not connected)
+            const localScore = data.categories.localSEO?.score;
+            document.getElementById('localScore').textContent = localScore != null ? Math.round(localScore) : '--';
             document.getElementById('gmb').textContent = '--';  // Requires GMB API
             document.getElementById('citations').textContent = '--';  // Requires citation API
 
-            // Authority
-            document.getElementById('authorityScore').textContent = Math.round(data.categories.authority?.score || 0);
+            // Authority (requires Moz/Ahrefs API - not connected)
+            const authorityScore = data.categories.authority?.score;
+            document.getElementById('authorityScore').textContent = authorityScore != null ? Math.round(authorityScore) : '--';
             document.getElementById('backlinks').textContent = '--';  // Requires backlink API
             document.getElementById('trust').textContent = '--';  // Requires authority API
         }
