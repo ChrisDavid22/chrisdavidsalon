@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-26T18:29:45.754Z",
+  "timestamp": "2025-11-26T18:33:06.865Z",
   "baseUrl": "https://www.chrisdavidsalon.com",
   "pages": [
     {
@@ -10,17 +10,17 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.1"
+          "value": "v2.9.2"
         },
         {
           "name": "Performance Score",
           "passed": true,
-          "value": "55"
+          "value": "42"
         },
         {
           "name": "Content Score",
-          "passed": false,
-          "value": "--"
+          "passed": true,
+          "value": "65"
         },
         {
           "name": "Technical Score",
@@ -39,8 +39,8 @@
         },
         {
           "name": "Local SEO Score",
-          "passed": false,
-          "value": "--"
+          "passed": true,
+          "value": "76"
         },
         {
           "name": "Authority Score",
@@ -49,13 +49,13 @@
         },
         {
           "name": "GMB Rating",
-          "passed": false,
-          "value": "--"
+          "passed": true,
+          "value": "4.9 ★"
         },
         {
           "name": "Review Count",
-          "passed": false,
-          "value": "--"
+          "passed": true,
+          "value": "140 reviews"
         },
         {
           "name": "Button: Analyze with AI",
@@ -69,13 +69,8 @@
           "value": "Visible"
         }
       ],
-      "passed": false,
-      "errors": [
-        "Content Score: --",
-        "Local SEO Score: --",
-        "GMB Rating: --",
-        "Review Count: --"
-      ],
+      "passed": true,
+      "errors": [],
       "warnings": []
     },
     {
@@ -86,7 +81,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.1"
+          "value": "v2.9.2"
         },
         {
           "name": "Competitor Table",
@@ -118,7 +113,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.1"
+          "value": "v2.9.2"
         },
         {
           "name": "PageRank Display",
@@ -143,7 +138,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.1"
+          "value": "v2.9.2"
         },
         {
           "name": "Microsite 1 (bestsalondelray)",
@@ -173,7 +168,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.1"
+          "value": "v2.9.2"
         },
         {
           "name": "GA4 Data Display",
@@ -193,7 +188,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.1"
+          "value": "v2.9.2"
         },
         {
           "name": "Keyword Rankings",
@@ -213,7 +208,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.1"
+          "value": "v2.9.2"
         },
         {
           "name": "Log Display",
@@ -228,8 +223,8 @@
   ],
   "summary": {
     "totalPages": 7,
-    "passed": 5,
-    "failed": 2,
+    "passed": 6,
+    "failed": 1,
     "warnings": 0
   },
   "consoleLogs": [

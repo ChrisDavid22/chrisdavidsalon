@@ -1,7 +1,12 @@
 {
-  "version": "2.9.2",
-  "lastUpdated": "2025-11-26T18:45:00Z",
+  "version": "2.9.3",
+  "lastUpdated": "2025-11-26T19:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.9.3",
+      "date": "2025-11-26T19:30:00Z",
+      "changes": "FIX: Competitors page SEO scores now calculated from Google Places data. Added calculateSEOScore() function using formula: (rating*10) + min(log10(reviews)*15, 40) + presence bonus. Fixed 0/100, NaN, and -- errors. All competitors now show real scores."
+    },
     {
       "version": "2.9.2",
       "date": "2025-11-26T18:45:00Z",

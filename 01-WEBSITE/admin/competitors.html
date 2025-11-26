@@ -213,23 +213,53 @@
         }
     }
 
+    // Calculate SEO score from Google Places data
+    // Formula: (rating * 10) + min(log10(reviews) * 15, 40) + presence bonus
+    function calculateSEOScore(competitor) {
+        const rating = competitor.rating || 0;
+        const reviews = competitor.reviews || 0;
+
+        // Rating contributes up to 50 points (5.0 * 10)
+        const ratingScore = rating * 10;
+
+        // Reviews contribute up to 40 points (logarithmic scale)
+        // 10 reviews = 15, 100 reviews = 30, 1000 reviews = 45 (capped at 40)
+        const reviewScore = reviews > 0 ? Math.min(Math.log10(reviews) * 15, 40) : 0;
+
+        // Presence bonus: 10 points for having a Place ID
+        const presenceBonus = competitor.placeId ? 10 : 0;
+
+        return Math.round(ratingScore + reviewScore + presenceBonus);
+    }
+
     function updateMarketPosition(competitors, ourSalon, leader) {
-        // Market position from API
-        const ourPosition = ourSalon ? competitors.indexOf(ourSalon) + 1 : '--';
+        // Calculate scores for all competitors
+        competitors.forEach(c => {
+            c.calculatedScore = calculateSEOScore(c);
+        });
+
+        // Sort by calculated score
+        competitors.sort((a, b) => b.calculatedScore - a.calculatedScore);
+
+        // Re-find positions after sorting
+        const ourPosition = ourSalon ? competitors.findIndex(c => c.name.includes('Chris David')) + 1 : '--';
+        const actualLeader = competitors[0];
+
         document.getElementById('marketPosition').textContent = ourPosition !== '--' ? `#${ourPosition}` : '--';
         document.getElementById('totalCompetitors').textContent = `out of ${competitors.length} competitors`;
 
-        // Our score from API
-        const ourScore = ourSalon?.seoScore || ourSalon?.score || '--';
+        // Our score (calculated)
+        const ourScore = ourSalon ? calculateSEOScore(ourSalon) : '--';
         document.getElementById('ourScore').textContent = ourScore;
-        document.getElementById('targetScore').textContent = ourScore !== '--' ? `Target: ${Math.min(parseInt(ourScore) + 20, 95)}+ for Top 3` : 'Awaiting data';
+        document.getElementById('targetScore').textContent = ourScore !== '--' ? `Target: ${Math.min(ourScore + 15, 95)}+ for Top 3` : 'Awaiting data';
 
-        // Gap to leader from API
-        if (ourSalon && leader && !leader.name.includes('Chris David')) {
-            const gap = (leader.seoScore || leader.score) - (ourSalon.seoScore || ourSalon.score);
-            document.getElementById('gapToFirst').textContent = gap > 0 ? `-${gap}` : '+' + Math.abs(gap);
-            document.getElementById('leaderName').textContent = `vs ${leader.name}`;
-        } else if (leader?.name.includes('Chris David')) {
+        // Gap to leader
+        if (ourSalon && actualLeader && !actualLeader.name.includes('Chris David')) {
+            const leaderScore = calculateSEOScore(actualLeader);
+            const gap = leaderScore - ourScore;
+            document.getElementById('gapToFirst').textContent = gap > 0 ? `+${gap}` : (gap === 0 ? 'TIE' : gap);
+            document.getElementById('leaderName').textContent = `vs ${actualLeader.name}`;
+        } else if (actualLeader?.name.includes('Chris David')) {
             document.getElementById('gapToFirst').textContent = '#1';
             document.getElementById('leaderName').textContent = 'You are the leader!';
         } else {
@@ -248,14 +278,14 @@
             competitorChart.destroy();
         }
 
-        // Normalize and sort by score
+        // Calculate and sort by score
         const sorted = competitors.map(c => ({
             ...c,
-            score: c.seoScore || c.score || 0
+            score: c.calculatedScore || calculateSEOScore(c)
         })).sort((a, b) => b.score - a.score).slice(0, 10);
 
-        // Get our score from API data
-        const ourScore = ourSalon?.seoScore || ourSalon?.score || 0;
+        // Get our calculated score
+        const ourScore = ourSalon ? calculateSEOScore(ourSalon) : 0;
 
         // Highlight Chris David
         const colors = sorted.map(c =>
@@ -318,7 +348,7 @@
 
         const sorted = competitors.map(c => ({
             ...c,
-            score: c.seoScore || c.score || 0
+            score: c.calculatedScore || calculateSEOScore(c)
         })).sort((a, b) => b.score - a.score);
 
         grid.innerHTML = sorted.slice(0, 10).map((competitor, index) => {
@@ -359,16 +389,24 @@
         const gapsContainer = document.getElementById('competitiveGaps');
         const advantagesContainer = document.getElementById('ourAdvantages');
 
-        if (!ourSalon || !leader) {
+        if (!ourSalon) {
             gapsContainer.innerHTML = '<div class="text-gray-500">Unable to analyze - salon data not found</div>';
             advantagesContainer.innerHTML = '<div class="text-gray-500">Unable to analyze - salon data not found</div>';
             return;
         }
 
-        const ourScore = ourSalon.seoScore || ourSalon.score || 0;
+        // Re-sort to find actual leader by calculated score
+        const sortedByScore = competitors.map(c => ({
+            ...c,
+            calculatedScore: c.calculatedScore || calculateSEOScore(c)
+        })).sort((a, b) => b.calculatedScore - a.calculatedScore);
+
+        const actualLeader = sortedByScore.find(c => !c.name.includes('Chris David')) || sortedByScore[0];
+
+        const ourScore = calculateSEOScore(ourSalon);
         const ourReviews = ourSalon.reviews || 0;
-        const leaderScore = leader.seoScore || leader.score || 0;
-        const leaderReviews = leader.reviews || 0;
+        const leaderScore = actualLeader ? calculateSEOScore(actualLeader) : 0;
+        const leaderReviews = actualLeader?.reviews || 0;
 
         // Generate gaps based on REAL API data
         const gaps = [];
@@ -376,7 +414,7 @@
         if (leaderReviews > ourReviews) {
             gaps.push({
                 title: 'Review Count',
-                detail: `${leader.name} has ${leaderReviews} reviews vs your ${ourReviews}`,
+                detail: `${actualLeader.name} has ${leaderReviews} reviews vs your ${ourReviews}`,
                 gap: leaderReviews - ourReviews
             });
         }
