@@ -1,0 +1,281 @@
+{
+  "timestamp": "2025-11-26T18:29:45.754Z",
+  "baseUrl": "https://www.chrisdavidsalon.com",
+  "pages": [
+    {
+      "name": "SEO Command Center",
+      "url": "/admin/index.html",
+      "screenshot": "./screenshots/seo-command-center-initial.png",
+      "tests": [
+        {
+          "name": "Version Badge",
+          "passed": true,
+          "value": "v2.9.1"
+        },
+        {
+          "name": "Performance Score",
+          "passed": true,
+          "value": "55"
+        },
+        {
+          "name": "Content Score",
+          "passed": false,
+          "value": "--"
+        },
+        {
+          "name": "Technical Score",
+          "passed": true,
+          "value": "100"
+        },
+        {
+          "name": "Mobile Score",
+          "passed": true,
+          "value": "81"
+        },
+        {
+          "name": "UX Score",
+          "passed": true,
+          "value": "81"
+        },
+        {
+          "name": "Local SEO Score",
+          "passed": false,
+          "value": "--"
+        },
+        {
+          "name": "Authority Score",
+          "passed": true,
+          "value": "29"
+        },
+        {
+          "name": "GMB Rating",
+          "passed": false,
+          "value": "--"
+        },
+        {
+          "name": "Review Count",
+          "passed": false,
+          "value": "--"
+        },
+        {
+          "name": "Button: Analyze with AI",
+          "passed": true,
+          "value": "Clicked successfully",
+          "screenshot": "./screenshots/seo-command-center-analyze-with-ai.png"
+        },
+        {
+          "name": "Button: Quick Audit",
+          "passed": true,
+          "value": "Visible"
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "Content Score: --",
+        "Local SEO Score: --",
+        "GMB Rating: --",
+        "Review Count: --"
+      ],
+      "warnings": []
+    },
+    {
+      "name": "Competitors",
+      "url": "/admin/competitors.html",
+      "screenshot": "./screenshots/competitors-initial.png",
+      "tests": [
+        {
+          "name": "Version Badge",
+          "passed": true,
+          "value": "v2.9.1"
+        },
+        {
+          "name": "Competitor Table",
+          "passed": false,
+          "value": "0 competitors found"
+        },
+        {
+          "name": "Chris David Listed",
+          "passed": true,
+          "value": "Found"
+        },
+        {
+          "name": "Rating Data",
+          "passed": true,
+          "value": "Ratings visible"
+        }
+      ],
+      "passed": false,
+      "errors": [
+        "Competitor Table: 0 competitors found"
+      ],
+      "warnings": []
+    },
+    {
+      "name": "Authority",
+      "url": "/admin/authority.html",
+      "screenshot": "./screenshots/authority-initial.png",
+      "tests": [
+        {
+          "name": "Version Badge",
+          "passed": true,
+          "value": "v2.9.1"
+        },
+        {
+          "name": "PageRank Display",
+          "passed": true,
+          "value": "PageRank data visible"
+        },
+        {
+          "name": "Competitor Comparison",
+          "passed": true,
+          "value": "8 competitors in table"
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "name": "Microsites",
+      "url": "/admin/microsites.html",
+      "screenshot": "./screenshots/microsites-initial.png",
+      "tests": [
+        {
+          "name": "Version Badge",
+          "passed": true,
+          "value": "v2.9.1"
+        },
+        {
+          "name": "Microsite 1 (bestsalondelray)",
+          "passed": true,
+          "value": "Listed"
+        },
+        {
+          "name": "Microsite 2 (bestdelraysalon)",
+          "passed": true,
+          "value": "Listed"
+        },
+        {
+          "name": "Microsite 3 (bestsalonpalmbeach)",
+          "passed": true,
+          "value": "Listed"
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "name": "Traffic",
+      "url": "/admin/traffic.html",
+      "screenshot": "./screenshots/traffic-initial.png",
+      "tests": [
+        {
+          "name": "Version Badge",
+          "passed": true,
+          "value": "v2.9.1"
+        },
+        {
+          "name": "GA4 Data Display",
+          "passed": true,
+          "value": "Traffic data visible"
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "name": "Rankings",
+      "url": "/admin/rankings.html",
+      "screenshot": "./screenshots/rankings-initial.png",
+      "tests": [
+        {
+          "name": "Version Badge",
+          "passed": true,
+          "value": "v2.9.1"
+        },
+        {
+          "name": "Keyword Rankings",
+          "passed": true,
+          "value": "Keywords listed"
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "name": "Agent Log",
+      "url": "/admin/agent-log.html",
+      "screenshot": "./screenshots/agent-log-initial.png",
+      "tests": [
+        {
+          "name": "Version Badge",
+          "passed": true,
+          "value": "v2.9.1"
+        },
+        {
+          "name": "Log Display",
+          "passed": true,
+          "value": "Page loaded"
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "totalPages": 7,
+    "passed": 5,
+    "failed": 2,
+    "warnings": 0
+  },
+  "consoleLogs": [
+    {
+      "type": "log",
+      "text": "fetchLocalSEOScore: Starting..."
+    },
+    {
+      "type": "log",
+      "text": "fetchContentScore: Starting..."
+    },
+    {
+      "type": "log",
+      "text": "fetchLocalSEOScore: Got response true true"
+    },
+    {
+      "type": "log",
+      "text": "fetchLocalSEOScore: Found Chris David: {name: Chris David Salon, rating: 4.9, reviews: 140, address: 1878C Dr. Andres Way, Delray Beach, FL 33445, United States, placeId: ChIJxTZ8Id3f2IgR2XMxX_zRKSg}"
+    },
+    {
+      "type": "log",
+      "text": "fetchLocalSEOScore: Calculated score: 76"
+    },
+    {
+      "type": "log",
+      "text": "fetchLocalSEOScore: Updated DOM successfully"
+    },
+    {
+      "type": "log",
+      "text": "fetchContentScore: Got response true true"
+    },
+    {
+      "type": "log",
+      "text": "fetchContentScore: High priority count: 2"
+    },
+    {
+      "type": "log",
+      "text": "fetchContentScore: Calculated score: 65"
+    },
+    {
+      "type": "log",
+      "text": "fetchContentScore: Updated DOM successfully"
+    },
+    {
+      "type": "error",
+      "text": "Analysis error: TypeError: Failed to fetch\n    at analyzeMySite (https://www.chrisdavidsalon.com/admin/index.html:297:17)\n    at HTMLButtonElement.onclick (https://www.chrisdavidsalon.com/admin/index.html:63:156)"
+    }
+  ]
+}

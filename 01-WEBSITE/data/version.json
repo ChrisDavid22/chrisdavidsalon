@@ -1,7 +1,12 @@
 {
-  "version": "2.9.1",
-  "lastUpdated": "2025-11-26T18:30:00Z",
+  "version": "2.9.2",
+  "lastUpdated": "2025-11-26T18:45:00Z",
   "deployHistory": [
+    {
+      "version": "2.9.2",
+      "date": "2025-11-26T18:45:00Z",
+      "changes": "FIX: Race condition causing Content/Local/Authority scores to show '--'. displayScoreBreakdown() was overwriting values set by fetch functions. Now: (1) displayScoreBreakdown only updates if data exists, (2) fetch functions run AFTER loadDashboardData completes."
+    },
     {
       "version": "2.9.1",
       "date": "2025-11-26T18:30:00Z",

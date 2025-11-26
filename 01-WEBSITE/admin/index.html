@@ -371,11 +371,14 @@
             document.getElementById('pageSpeed').textContent = data.categories.performance?.score ? data.categories.performance.score + '%' : '--';
             document.getElementById('loadTime').textContent = data.pageSpeed?.lighthouseResult?.audits?.['speed-index']?.displayValue || '--';
             
-            // Content (requires content analysis API - not available)
+            // Content - only update if we have data (otherwise let fetchContentScore handle it)
             const contentScore = data.categories.content?.score;
-            document.getElementById('contentScore').textContent = contentScore != null ? Math.round(contentScore) : '--';
-            document.getElementById('keywordUsage').textContent = contentScore != null ? (contentScore > 70 ? 'Good' : 'Needs Work') : '--';
-            document.getElementById('contentQuality').textContent = contentScore != null ? (contentScore > 70 ? 'High' : 'Medium') : '--';
+            if (contentScore != null) {
+                document.getElementById('contentScore').textContent = Math.round(contentScore);
+                document.getElementById('keywordUsage').textContent = contentScore > 70 ? 'Good' : 'Needs Work';
+                document.getElementById('contentQuality').textContent = contentScore > 70 ? 'High' : 'Medium';
+            }
+            // If no content score in data, fetchContentScore() will populate it
             
             // Technical
             document.getElementById('technicalScore').textContent = Math.round(data.categories.technical?.score || 0);
@@ -392,22 +395,19 @@
             document.getElementById('navigation').textContent = data.categories.userExperience?.score > 70 ? 'Clear' : 'Confusing';
             document.getElementById('design').textContent = data.categories.userExperience?.score > 70 ? 'Modern' : 'Dated';
             
-            // Local (requires Google My Business API - not connected)
+            // Local SEO - only update if we have data (otherwise let fetchLocalSEOScore handle it)
             const localScore = data.categories.localSEO?.score;
-            document.getElementById('localScore').textContent = localScore != null ? Math.round(localScore) : '--';
-            document.getElementById('gmb').textContent = '--';  // Requires GMB API
-            document.getElementById('citations').textContent = '--';  // Requires citation API
-
-            // Authority - fetch from OpenPageRank API
-            const authorityScore = data.categories.authority?.score;
-            document.getElementById('authorityScore').textContent = authorityScore != null ? Math.round(authorityScore) : '--';
-            document.getElementById('backlinks').textContent = '--';
-            document.getElementById('trust').textContent = '--';
-
-            // If authority not in main data, fetch from dedicated endpoint
-            if (authorityScore == null) {
-                fetchAuthorityScore();
+            if (localScore != null) {
+                document.getElementById('localScore').textContent = Math.round(localScore);
             }
+            // GMB and citations are populated by fetchLocalSEOScore()
+
+            // Authority - only update if we have data (otherwise let fetchAuthorityScore handle it)
+            const authorityScore = data.categories.authority?.score;
+            if (authorityScore != null) {
+                document.getElementById('authorityScore').textContent = Math.round(authorityScore);
+            }
+            // Backlinks and trust are populated by fetchAuthorityScore()
         }
         
         // Draw chart
@@ -733,19 +733,23 @@
     }
 
     // Initialize on load
-    window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', async () => {
         console.log('DOM loaded, initializing dashboard...');
         loadVersion();
         loadHistory();
-        loadDashboardData();
 
-        // Fetch additional scores in parallel with slight delay to ensure DOM is ready
-        setTimeout(() => {
-            console.log('Fetching additional scores...');
-            fetchAuthorityScore();
-            fetchLocalSEOScore();
-            fetchContentScore();
-        }, 100);
+        // Load main dashboard data first
+        await loadDashboardData();
+
+        // Then fetch additional scores that aren't in the main API response
+        console.log('Fetching additional scores (Content, Local, Authority)...');
+        // Run these in parallel since they're independent
+        await Promise.all([
+            fetchAuthorityScore(),
+            fetchLocalSEOScore(),
+            fetchContentScore()
+        ]);
+        console.log('All scores loaded.');
     });
     </script>
 </body>
