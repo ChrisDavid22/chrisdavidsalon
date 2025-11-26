@@ -1,7 +1,12 @@
 {
-  "version": "2.6.4",
-  "lastUpdated": "2025-11-26T05:35:00Z",
+  "version": "2.6.5",
+  "lastUpdated": "2025-11-26T06:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.5",
+      "date": "2025-11-26T06:00:00Z",
+      "changes": "PageSpeed API now uses FREE tier - no API key required, live SEO analysis works"
+    },
     {
       "version": "2.6.4",
       "date": "2025-11-26T05:35:00Z",
