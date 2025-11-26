@@ -1,0 +1,55 @@
+{
+  "fetched_date": "2025-11-26",
+  "source": "OpenPageRank API",
+  "total_domains": 26,
+  "results": [
+    {"domain": "chrisdavidsalon.com", "pagerank_rounded": "3/10", "pagerank_value": 2.88, "is_target": true},
+    {"domain": "bestsalondelray.com", "pagerank_rounded": "1/10", "pagerank_value": 1.18, "is_microsite": true},
+    {"domain": "bestdelraysalon.com", "pagerank_rounded": null, "pagerank_value": null, "is_microsite": true, "note": "Not indexed"},
+    {"domain": "bestsalonpalmbeach.com", "pagerank_rounded": "1/10", "pagerank_value": 1.18, "is_microsite": true},
+    {"domain": "rovesalon.com", "pagerank_rounded": "3/10", "pagerank_value": 2.55, "threat_level": "HIGH"},
+    {"domain": "studio34delray.com", "pagerank_rounded": "1/10", "pagerank_value": 0.53, "threat_level": "LOW"},
+    {"domain": "bondstreetsalon.com", "pagerank_rounded": "3/10", "pagerank_value": 3.02, "threat_level": "HIGH"},
+    {"domain": "kaanhairdesign.com", "pagerank_rounded": "2/10", "pagerank_value": 1.63, "threat_level": "MEDIUM"},
+    {"domain": "onesalondelray.com", "pagerank_rounded": null, "pagerank_value": null, "threat_level": "LOW", "note": "Not indexed"},
+    {"domain": "tylerpresleysalon.com", "pagerank_rounded": "1/10", "pagerank_value": 0.53, "threat_level": "LOW"},
+    {"domain": "slshair.com", "pagerank_rounded": "1/10", "pagerank_value": 0.53, "threat_level": "LOW"},
+    {"domain": "imbuesalon.com", "pagerank_rounded": "2/10", "pagerank_value": 1.85, "threat_level": "MEDIUM"},
+    {"domain": "amandamajor.com", "pagerank_rounded": "3/10", "pagerank_value": 2.84, "threat_level": "HIGH"},
+    {"domain": "salonsouthflow.com", "pagerank_rounded": "2/10", "pagerank_value": 2.19, "threat_level": "MEDIUM"},
+    {"domain": "contesalon.com", "pagerank_rounded": "1/10", "pagerank_value": 0.95, "threat_level": "LOW"},
+    {"domain": "salonhotheads.com", "pagerank_rounded": null, "pagerank_value": 0.14, "threat_level": "LOW"},
+    {"domain": "pyuresalon.com", "pagerank_rounded": "2/10", "pagerank_value": 2.44, "threat_level": "MEDIUM"},
+    {"domain": "salonsora.com", "pagerank_rounded": "3/10", "pagerank_value": 2.54, "threat_level": "MEDIUM"},
+    {"domain": "studio10bocaraton.com", "pagerank_rounded": "3/10", "pagerank_value": 3.15, "threat_level": "HIGH"},
+    {"domain": "dapperanddivinestudio.com", "pagerank_rounded": "3/10", "pagerank_value": 2.52, "threat_level": "MEDIUM"},
+    {"domain": "hairmesssalon.com", "pagerank_rounded": "3/10", "pagerank_value": 2.84, "threat_level": "HIGH"},
+    {"domain": "bocaratonsalon.com", "pagerank_rounded": null, "pagerank_value": null, "threat_level": "LOW", "note": "Not indexed"},
+    {"domain": "salontrace.com", "pagerank_rounded": "1/10", "pagerank_value": 0.84, "threat_level": "LOW"},
+    {"domain": "cloud10usa.com", "pagerank_rounded": "3/10", "pagerank_value": 2.65, "threat_level": "MEDIUM"},
+    {"domain": "ariellesettel.com", "pagerank_rounded": "2/10", "pagerank_value": 2.37, "threat_level": "MEDIUM"},
+    {"domain": "christopherstoosalon.com", "pagerank_rounded": "2/10", "pagerank_value": 1.91, "threat_level": "LOW"}
+  ],
+  "rankings": {
+    "by_pagerank_value": [
+      {"rank": 1, "domain": "studio10bocaraton.com", "value": 3.15},
+      {"rank": 2, "domain": "bondstreetsalon.com", "value": 3.02},
+      {"rank": 3, "domain": "chrisdavidsalon.com", "value": 2.88},
+      {"rank": 4, "domain": "amandamajor.com", "value": 2.84},
+      {"rank": 5, "domain": "hairmesssalon.com", "value": 2.84},
+      {"rank": 6, "domain": "cloud10usa.com", "value": 2.65},
+      {"rank": 7, "domain": "rovesalon.com", "value": 2.55},
+      {"rank": 8, "domain": "salonsora.com", "value": 2.54},
+      {"rank": 9, "domain": "dapperanddivinestudio.com", "value": 2.52},
+      {"rank": 10, "domain": "pyuresalon.com", "value": 2.44}
+    ],
+    "chris_david_position": 3,
+    "chris_david_percentile": "Top 12%"
+  },
+  "analysis": {
+    "chris_david_status": "COMPETITIVE - Same tier (3/10) as top competitors",
+    "microsites_status": "NEED IMPROVEMENT - Only 1/10, bestdelraysalon.com not indexed",
+    "top_threats": ["studio10bocaraton.com", "bondstreetsalon.com", "amandamajor.com", "hairmesssalon.com"],
+    "recommendation": "Focus on building backlinks to microsites to improve their authority"
+  }
+}

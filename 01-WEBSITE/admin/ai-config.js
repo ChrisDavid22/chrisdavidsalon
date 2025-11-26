@@ -688,8 +688,8 @@ class AIConfig {
             const response = await fetch(apiUrl);
             
             if (!response.ok) {
-                console.warn('Search API error, using fallback data');
-                return realCompetitors;
+                console.warn('Search API error, returning empty array');
+                return [];  // NO FALLBACK DATA - return empty on error
             }
             
             const data = await response.json();

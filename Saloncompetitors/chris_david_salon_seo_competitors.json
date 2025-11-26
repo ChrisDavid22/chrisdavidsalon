@@ -1,0 +1,326 @@
+{
+  "target_business": {
+    "name": "Chris David Salon",
+    "address": "1878C Dr. Andres Way, Delray Beach, FL 33445",
+    "phone": "(561) 299-0950",
+    "website": "https://www.chrisdavidsalon.com",
+    "google_cid": "2894075117421294553",
+    "google_place_id_lookup": "Use Google Places API: https://maps.googleapis.com/maps/api/place/details/json?cid=2894075117421294553&key=YOUR_API_KEY",
+    "yelp_business_id": "chris-david-salon-delray-beach-3",
+    "yelp_url": "https://www.yelp.com/biz/chris-david-salon-delray-beach-3",
+    "google_reviews_count": "133+",
+    "google_rating": "5.0",
+    "yelp_reviews_count": "22+",
+    "primary_services": ["balayage", "color correction", "hair extensions", "keratin treatments", "precision cuts"],
+    "differentiators": ["Goldwell Academy Graduate", "5x Certified Educator", "Davines exclusive", "20 years experience", "Dry cutting method"]
+  },
+  "competitors": [
+    {
+      "rank": 1,
+      "name": "Rové Hair Salon",
+      "address": "200 NE 2nd Ave #112, Delray Beach, FL 33444",
+      "website": "https://www.rovesalon.com",
+      "google_place_id": "ChIJLdWE0fzf2IgRfAoMP87bQxI",
+      "google_cid_from_url": "Extract from maps URL",
+      "yelp_business_id": "rove-hair-salon-delray-beach",
+      "yelp_url": "https://www.yelp.com/biz/rove-hair-salon-delray-beach",
+      "positioning": "Luxury independent stylists salon",
+      "threat_level": "HIGH",
+      "services": ["balayage", "color", "curly hair", "keratin"],
+      "notes": "Strong digital presence, owns delraybeachhairsalons.com domain"
+    },
+    {
+      "rank": 2,
+      "name": "Bond Street Salon",
+      "address": "25 NE 2nd Ave Ste 112, Delray Beach, FL 33444",
+      "website": "https://bondstreetsalon.com",
+      "google_place_id": "0x88d8dfc34d9cb5ab:0xf0bfcf9983ee306a",
+      "google_maps_url": "https://www.google.com/maps/place/Bond+Street+Salon/@26.4622148,-80.0734949",
+      "yelp_business_id": "bond-street-salon-delray-beach",
+      "yelp_url": "https://www.yelp.com/biz/bond-street-salon-delray-beach",
+      "positioning": "Luxury downtown salon, Oribe products",
+      "threat_level": "HIGH",
+      "services": ["extensions", "color", "keratin", "cuts"],
+      "notes": "Pineapple Grove location, strong walk-in traffic"
+    },
+    {
+      "rank": 3,
+      "name": "Salon Trace",
+      "address": "885 SE 6th Ave Ste G, Delray Beach, FL 33483",
+      "phone": "(561) 272-2328",
+      "website": "https://salontrace.com",
+      "yelp_business_id": "salon-trace-delray-beach",
+      "yelp_url": "https://www.yelp.com/biz/salon-trace-delray-beach",
+      "yelp_reviews": "83+",
+      "positioning": "Color correction specialists, Goldwell salon",
+      "threat_level": "HIGH",
+      "services": ["color correction", "highlights", "cuts", "makeup"],
+      "notes": "Direct competitor for Goldwell products"
+    },
+    {
+      "rank": 4,
+      "name": "Kaan Hair Design (Hair by Kaan)",
+      "address": "4801 Linton Blvd #3A, Delray Beach, FL 33445",
+      "website": "https://www.instagram.com/hairbykaan",
+      "fresha_url": "https://www.fresha.com/lvp/hair-by-kaan-delray-beach",
+      "fresha_reviews": "618+",
+      "google_feature_id": "0x0:0xba93c7b096ca2b04",
+      "positioning": "Balayage specialist, multi-location (Miami & Delray)",
+      "threat_level": "HIGH",
+      "services": ["balayage", "ombre", "color", "blowouts"],
+      "notes": "Strong Instagram presence, expansion from Miami"
+    },
+    {
+      "rank": 5,
+      "name": "Cloud 10 Blow Dry Bar & Beauty Salon",
+      "address": "32 SE 2nd Ave, Delray Beach, FL 33444",
+      "phone": "(561) 303-3000",
+      "website": "https://cloud10usa.com",
+      "yelp_business_id": "cloud-10-blow-dry-bar-and-beauty-salon-delray-beach",
+      "yelp_url": "https://www.yelp.com/biz/cloud-10-blow-dry-bar-and-beauty-salon-delray-beach",
+      "yelp_reviews": "128+",
+      "bbb_accredited": true,
+      "positioning": "Blow dry bar + full service, downtown location",
+      "threat_level": "MEDIUM",
+      "services": ["blowouts", "color", "cuts", "extensions", "keratin"],
+      "notes": "Also has Boca location, membership packages"
+    },
+    {
+      "rank": 6,
+      "name": "One Aveda Salon",
+      "address": "1020 S Federal Hwy Ste 103, Delray Beach, FL 33483",
+      "phone": "(561) 272-1147",
+      "website": "https://onesalondelray.com",
+      "yelp_business_id": "one-aveda-salon-delray-beach-2",
+      "yelp_url": "https://www.yelp.com/biz/one-aveda-salon-delray-beach-2",
+      "fresha_url": "https://www.fresha.com/lvp/one-aveda-salon-south-federal-highway-delray-beach-QvVBER",
+      "google_rating": "4.8",
+      "google_reviews": "245+",
+      "positioning": "Exclusive Aveda salon, natural products",
+      "threat_level": "MEDIUM",
+      "services": ["color", "cuts", "extensions", "keratin", "perms"],
+      "notes": "Aveda product exclusivity differentiator"
+    },
+    {
+      "rank": 7,
+      "name": "Riot Hair Lounge",
+      "address": "600 N Congress Ave Ste 240, Delray Beach, FL 33445",
+      "phone": "(561) 808-8305",
+      "website": "https://www.vagaro.com/riothairlounge",
+      "instagram": "@riothairlounge",
+      "yelp_business_id": "riot-hair-lounge-delray-beach",
+      "yelp_url": "https://www.yelp.com/biz/riot-hair-lounge-delray-beach",
+      "yelp_reviews": "71+",
+      "positioning": "Edgy, independent stylists, piercing services",
+      "threat_level": "MEDIUM",
+      "services": ["color", "cuts", "DevaCurl certified", "piercings"],
+      "notes": "Booth rental model, DevaCurl certified for curly hair"
+    },
+    {
+      "rank": 8,
+      "name": "Imbue Salon",
+      "address": "Delray Beach, FL",
+      "yelp_url": "https://www.yelp.com/search?cflt=hair&find_loc=Delray+Beach,+FL",
+      "positioning": "Listed in Yelp top 10",
+      "threat_level": "MEDIUM",
+      "notes": "Requires further research for full details"
+    },
+    {
+      "rank": 9,
+      "name": "Studio 34 Hair Salon",
+      "address": "14422 South Military Trail, Delray Beach, FL 33484",
+      "phone": "(561) 381-5277",
+      "yelp_business_id": "studio-34-hair-salon-delray-beach-2",
+      "yelp_url": "https://www.yelp.com/biz/studio-34-hair-salon-delray-beach-2",
+      "yelp_photos": "615+",
+      "fresha_url": "https://www.fresha.com",
+      "positioning": "Brazilian Blowout certified, 20+ years experience",
+      "threat_level": "MEDIUM",
+      "services": ["color correction", "balayage", "ombre", "highlights", "keratin"],
+      "notes": "Strong Yelp presence with many photos"
+    },
+    {
+      "rank": 10,
+      "name": "Toni & Co Hair Salon & Spa",
+      "address": "Delray Beach, FL",
+      "yelp_url": "https://www.yelp.com/search?find_desc=Hair+Salons&find_loc=Delray+Beach,+FL",
+      "positioning": "Full service salon and spa",
+      "threat_level": "MEDIUM",
+      "notes": "Listed in Yelp top 10"
+    },
+    {
+      "rank": 11,
+      "name": "ShearLuck Salon",
+      "address": "530 NE 2nd St, Delray Beach, FL 33483",
+      "website": "https://slshair.com",
+      "google_cid": "16242574995581704311",
+      "google_maps_url": "https://www.google.com/maps?cid=16242574995581704311",
+      "positioning": "Led by Jeff Attebury and Carol Cook, extensions specialist",
+      "threat_level": "MEDIUM",
+      "services": ["extensions", "color", "balayage", "cuts"],
+      "notes": "Bel Bonita extensions specialist"
+    },
+    {
+      "rank": 12,
+      "name": "Socila Beauty Lounge",
+      "address": "Dumar Plaza, 2885 South Federal Highway A1, Delray Beach, FL 33483",
+      "fresha_reviews": "268+",
+      "fresha_rating": "5.0",
+      "positioning": "High-rated on Fresha",
+      "threat_level": "MEDIUM",
+      "notes": "Strong booking platform presence"
+    },
+    {
+      "rank": 13,
+      "name": "In the Grove Hair Studio (Arielle Settel)",
+      "address": "NE 1st St and NE 2nd Ave, Delray Beach, FL",
+      "phone": "(561) 376-2125",
+      "website": "https://www.ariellesettel.com",
+      "positioning": "Toni & Guy / Vidal Sassoon trained, 19 years experience",
+      "threat_level": "LOW-MEDIUM",
+      "services": ["cuts", "color", "deep conditioning"],
+      "notes": "Boutique single-stylist operation"
+    },
+    {
+      "rank": 14,
+      "name": "Hair Cuttery",
+      "address": "1100 Linton Blvd Ste C6, Delray Beach, FL 33444",
+      "yelp_business_id": "hair-cuttery-delray-beach",
+      "yelp_url": "https://www.yelp.com/biz/hair-cuttery-delray-beach",
+      "yelp_reviews": "87+",
+      "positioning": "Value-priced chain salon",
+      "threat_level": "LOW",
+      "services": ["cuts", "color", "blowouts"],
+      "notes": "Different market segment - budget conscious"
+    },
+    {
+      "rank": 15,
+      "name": "Christopher's Too Salon",
+      "address": "5850 W Atlantic Ave #108, Delray Beach, FL 33484",
+      "website": "https://christopherstoosalon.com",
+      "google_rating": "5.0",
+      "google_reviews": "28+",
+      "positioning": "West Delray location",
+      "threat_level": "LOW-MEDIUM",
+      "notes": "Different geographic area (West Atlantic)"
+    },
+    {
+      "rank": 16,
+      "name": "Odeon Salon - Delray Beach",
+      "address": "Delray Beach, FL",
+      "positioning": "Formerly Bumble & Bumble, upscale",
+      "threat_level": "MEDIUM",
+      "notes": "High-end positioning"
+    },
+    {
+      "rank": 17,
+      "name": "Renee & Co. Salon",
+      "address": "Delray Beach, FL",
+      "fresha_reviews": "2,312+ across 4 venues",
+      "positioning": "Multi-location operation",
+      "threat_level": "MEDIUM",
+      "notes": "Strong booking platform presence"
+    },
+    {
+      "rank": 18,
+      "name": "Joseph John Salon",
+      "address": "Atlantic Avenue, Delray Beach, FL",
+      "positioning": "Atlantic Avenue location, upscale",
+      "threat_level": "MEDIUM",
+      "services": ["color", "cuts", "styling"],
+      "notes": "Prime Atlantic Ave location"
+    },
+    {
+      "rank": 19,
+      "name": "Marco & Anthony Salon",
+      "address": "Delray Beach, FL",
+      "positioning": "Professional team approach",
+      "threat_level": "LOW-MEDIUM",
+      "notes": "Listed in Yellow Pages"
+    },
+    {
+      "rank": 20,
+      "name": "Gloss Salon Boca Raton",
+      "address": "Boca Raton, FL (serves Delray)",
+      "yelp_url": "https://www.yelp.com/search?cflt=hair&find_loc=Delray+Beach,+FL",
+      "positioning": "Boca location pulling Delray clients",
+      "threat_level": "LOW-MEDIUM",
+      "notes": "Adjacent market competitor"
+    }
+  ],
+  "api_lookup_methods": {
+    "google_places_api": {
+      "endpoint": "https://maps.googleapis.com/maps/api/place/textsearch/json",
+      "parameters": {
+        "query": "hair salon Delray Beach FL",
+        "key": "YOUR_GOOGLE_API_KEY"
+      },
+      "response_fields": ["place_id", "name", "formatted_address", "rating", "user_ratings_total", "geometry"],
+      "cost": "$17 per 1000 requests (with free tier)",
+      "documentation": "https://developers.google.com/maps/documentation/places/web-service/search-text"
+    },
+    "google_place_details_api": {
+      "endpoint": "https://maps.googleapis.com/maps/api/place/details/json",
+      "parameters": {
+        "place_id": "PLACE_ID_HERE",
+        "fields": "name,rating,reviews,formatted_phone_number,website,opening_hours",
+        "key": "YOUR_GOOGLE_API_KEY"
+      },
+      "cid_to_place_id": "https://maps.googleapis.com/maps/api/place/details/json?cid=YOUR_CID&key=YOUR_API_KEY",
+      "documentation": "https://developers.google.com/maps/documentation/places/web-service/details"
+    },
+    "yelp_fusion_api": {
+      "business_search_endpoint": "https://api.yelp.com/v3/businesses/search",
+      "business_details_endpoint": "https://api.yelp.com/v3/businesses/{id}",
+      "reviews_endpoint": "https://api.yelp.com/v3/businesses/{id}/reviews",
+      "parameters": {
+        "term": "hair salon",
+        "location": "Delray Beach, FL",
+        "limit": 50,
+        "sort_by": "rating"
+      },
+      "authentication": "Bearer token in header",
+      "documentation": "https://docs.developer.yelp.com/reference/v3_business_search"
+    },
+    "data_for_seo_api": {
+      "description": "Third-party API for Google Business data",
+      "google_reviews_endpoint": "https://api.dataforseo.com/v3/business_data/google/reviews/task_post",
+      "google_my_business_endpoint": "https://api.dataforseo.com/v3/business_data/google/my_business_info/task_post",
+      "keyword_param_options": ["cid:YOUR_CID", "place_id:YOUR_PLACE_ID", "business name"],
+      "documentation": "https://dataforseo.com/help-center/what-is-cid-place-id-feature-id"
+    }
+  },
+  "keyword_tracking_targets": {
+    "primary_keywords": [
+      "hair salon delray beach",
+      "best hair salon delray beach",
+      "hair colorist delray beach",
+      "balayage delray beach",
+      "color correction delray beach",
+      "hair extensions delray beach",
+      "keratin treatment delray beach",
+      "master colorist delray beach"
+    ],
+    "secondary_keywords": [
+      "hair salon near me delray beach",
+      "luxury hair salon delray beach",
+      "brazilian blowout delray beach",
+      "davines salon delray beach",
+      "dry cutting delray beach",
+      "hair transformation delray beach"
+    ],
+    "long_tail_keywords": [
+      "best balayage colorist in delray beach fl",
+      "hair color correction specialist delray beach",
+      "bellami extensions delray beach",
+      "goldwell hair color delray beach",
+      "organic hair color delray beach"
+    ],
+    "local_seo_keywords": [
+      "hair salon atlantic avenue delray beach",
+      "hair salon pineapple grove delray beach",
+      "hair salon andre design district delray beach",
+      "hair salon near seagate hotel delray beach"
+    ]
+  }
+}
