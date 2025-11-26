@@ -208,11 +208,22 @@
                 document.getElementById('versionBadge').textContent = `v${versionData.version}`;
 
                 // Load ALL data in parallel from APIs
-                const [dashData, ga4Data, implementationsData] = await Promise.all([
-                    fetch('/api/admin-data?type=dashboard').then(r => r.json()).catch(() => null),
+                const [competitorData, ga4Data, implementationsData] = await Promise.all([
+                    fetch('/api/admin-data?type=competitors').then(r => r.json()).catch(() => null),
                     fetch('/api/ga4-analytics?type=overview&startDate=30daysAgo&endDate=today').then(r => r.json()).catch(() => null),
                     fetch('/data/agent-implementations.json').then(r => r.json()).catch(() => null)
                 ]);
+
+                // Transform competitor data to match expected format
+                const dashData = competitorData?.success ? {
+                    success: true,
+                    data: {
+                        topCompetitors: competitorData.data.competitors,
+                        reviews: competitorData.data.competitors.find(c => c.name.includes('Chris David'))?.reviews || null,
+                        marketPosition: competitorData.data.competitors.findIndex(c => c.name.includes('Chris David')) + 1 || null,
+                        seoScore: null // SEO score requires PageSpeed API
+                    }
+                } : { success: false, data: {} };
 
                 // Update data source banner
                 updateDataSourceBanner(dashData, ga4Data);
