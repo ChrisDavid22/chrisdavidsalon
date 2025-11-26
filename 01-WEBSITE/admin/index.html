@@ -732,13 +732,100 @@
         }
     }
 
+    // Recalculate total score from all 7 category scores AND redraw chart
+    // Weighted average: Performance/Technical/Mobile weighted higher (user experience)
+    let summaryChart = null; // Track chart instance
+
+    function recalculateTotalScore() {
+        const getScore = (id) => {
+            const el = document.getElementById(id);
+            const val = parseInt(el?.textContent || '0');
+            return isNaN(val) ? 0 : val;
+        };
+
+        const performance = getScore('performanceScore');
+        const content = getScore('contentScore');
+        const technical = getScore('technicalScore');
+        const mobile = getScore('mobileScore');
+        const ux = getScore('uxScore');
+        const local = getScore('localScore');
+        const authority = getScore('authorityScore');
+
+        // Weighted scoring:
+        // Performance: 20%, Technical: 15%, Mobile: 15%, Content: 15%, UX: 10%, Local: 15%, Authority: 10%
+        const weights = {
+            performance: 0.20,
+            content: 0.15,
+            technical: 0.15,
+            mobile: 0.15,
+            ux: 0.10,
+            local: 0.15,
+            authority: 0.10
+        };
+
+        const totalScore = Math.round(
+            performance * weights.performance +
+            content * weights.content +
+            technical * weights.technical +
+            mobile * weights.mobile +
+            ux * weights.ux +
+            local * weights.local +
+            authority * weights.authority
+        );
+
+        console.log('Recalculated total score:', totalScore, {
+            performance, content, technical, mobile, ux, local, authority
+        });
+
+        // Update both displays
+        const yourScoreEl = document.getElementById('yourScore');
+        const totalScoreEl = document.getElementById('totalScore');
+        if (yourScoreEl) yourScoreEl.textContent = totalScore;
+        if (totalScoreEl) totalScoreEl.textContent = totalScore + '/100';
+
+        // Redraw the radar chart with actual scores
+        const canvas = document.getElementById('scoreChart');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+
+            // Destroy old chart if exists
+            if (summaryChart) {
+                summaryChart.destroy();
+            }
+
+            summaryChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Performance', 'Content', 'Technical', 'Mobile', 'UX', 'Local', 'Authority'],
+                    datasets: [{
+                        label: 'Your Score',
+                        data: [performance, content, technical, mobile, ux, local, authority],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        return totalScore;
+    }
+
     // Initialize on load
     window.addEventListener('DOMContentLoaded', async () => {
         console.log('DOM loaded, initializing dashboard...');
         loadVersion();
         loadHistory();
 
-        // Load main dashboard data first
+        // Load main dashboard data first (gets Performance, Technical, Mobile, UX from PageSpeed)
         await loadDashboardData();
 
         // Then fetch additional scores that aren't in the main API response
@@ -750,6 +837,11 @@
             fetchContentScore()
         ]);
         console.log('All scores loaded.');
+
+        // Recalculate total from all 7 category scores with proper weighting
+        setTimeout(() => {
+            recalculateTotalScore();
+        }, 500); // Small delay to ensure all DOM updates complete
     });
     </script>
 </body>

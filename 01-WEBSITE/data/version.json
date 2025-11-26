@@ -1,7 +1,12 @@
 {
-  "version": "2.9.3",
-  "lastUpdated": "2025-11-26T19:30:00Z",
+  "version": "2.9.4",
+  "lastUpdated": "2025-11-26T20:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.9.4",
+      "date": "2025-11-26T20:00:00Z",
+      "changes": "FIX: Dashboard total score and radar chart now properly calculated AFTER all 7 category scores load. Total uses weighted average: Performance 20%, Technical 15%, Mobile 15%, Content 15%, Local 15%, UX 10%, Authority 10%. Chart redraws with actual values instead of zeros."
+    },
     {
       "version": "2.9.3",
       "date": "2025-11-26T19:30:00Z",
