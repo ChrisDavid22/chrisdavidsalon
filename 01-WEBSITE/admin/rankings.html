@@ -18,7 +18,8 @@
                     <h1 class="text-2xl font-bold">Chris David Salon - Keyword Rankings</h1>
                     <p class="text-sm text-purple-200">Track Rankings & Identify Opportunities</p>
                 </div>
-                <div class="flex gap-2">
+                <div class="flex items-center gap-4">
+                    <span id="versionBadge" class="bg-green-600 px-3 py-1 rounded text-sm font-bold">Loading...</span>
                     <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold">
                         ← Back to Main Site
                     </a>
@@ -416,8 +417,24 @@
         alert(`Improving ranking for: "${keyword}"\n\nCurrent analysis:\n- Add more content depth\n- Increase keyword density\n- Get more internal links\n- Build topic authority`);
     }
 
+    // Load version
+    async function loadVersion() {
+        try {
+            const response = await fetch('/data/version.json');
+            const data = await response.json();
+            const versionBadge = document.getElementById('versionBadge');
+            if (versionBadge && data.version) {
+                versionBadge.textContent = `v${data.version}`;
+            }
+        } catch (e) {
+            const versionBadge = document.getElementById('versionBadge');
+            if (versionBadge) versionBadge.textContent = 'v?.?.?';
+        }
+    }
+
     // Initialize on page load - fetch from API
     window.addEventListener('load', () => {
+        loadVersion();
         loadKeywords();
     });
     </script>

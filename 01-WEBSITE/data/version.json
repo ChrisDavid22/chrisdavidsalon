@@ -1,7 +1,12 @@
 {
-  "version": "2.6.7",
-  "lastUpdated": "2025-11-26T06:30:00Z",
+  "version": "2.6.8",
+  "lastUpdated": "2025-11-26T06:45:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.8",
+      "date": "2025-11-26T06:45:00Z",
+      "changes": "Version badge added to ALL admin page headers - always shows current version"
+    },
     {
       "version": "2.6.7",
       "date": "2025-11-26T06:30:00Z",
