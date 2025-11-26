@@ -77,7 +77,9 @@
                     <p>Traffic data will appear here once GA4 is connected</p>
                 </div>
             </div>
-            <canvas id="trafficOverTimeChart" class="hidden" style="height: 250px !important;"></canvas>
+            <div id="trafficChartWrapper" class="hidden" style="height: 250px;">
+                <canvas id="trafficOverTimeChart"></canvas>
+            </div>
         </div>
 
         <!-- Key Metrics Grid -->
@@ -134,7 +136,9 @@
                         <p>Source data requires GA4 connection</p>
                     </div>
                 </div>
-                <canvas id="trafficSourcesChart" class="hidden" style="height: 200px !important;"></canvas>
+                <div id="trafficSourcesWrapper" class="hidden" style="height: 200px;">
+                    <canvas id="trafficSourcesChart"></canvas>
+                </div>
                 <div id="trafficSourcesList" class="mt-4 space-y-2 hidden"></div>
             </div>
 
@@ -147,7 +151,9 @@
                         <p>Device data requires GA4 connection</p>
                     </div>
                 </div>
-                <canvas id="deviceChart" class="hidden" style="height: 200px !important;"></canvas>
+                <div id="deviceChartWrapper" class="hidden" style="height: 200px;">
+                    <canvas id="deviceChart"></canvas>
+                </div>
                 <div id="deviceStats" class="mt-4 grid grid-cols-3 gap-4 text-center hidden">
                     <div>
                         <div class="text-2xl font-bold" id="mobilePercent">--%</div>
@@ -289,8 +295,8 @@
 
                 if (result.success && result.data.length > 0) {
                     document.getElementById('trafficChartContainer').classList.add('hidden');
+                    document.getElementById('trafficChartWrapper').classList.remove('hidden');
                     const canvas = document.getElementById('trafficOverTimeChart');
-                    canvas.classList.remove('hidden');
 
                     const labels = result.data.map(d => {
                         const date = d.date;
@@ -335,9 +341,9 @@
 
                 if (result.success && result.data.length > 0) {
                     document.getElementById('trafficSourcesContainer').classList.add('hidden');
-                    const canvas = document.getElementById('trafficSourcesChart');
-                    canvas.classList.remove('hidden');
+                    document.getElementById('trafficSourcesWrapper').classList.remove('hidden');
                     document.getElementById('trafficSourcesList').classList.remove('hidden');
+                    const canvas = document.getElementById('trafficSourcesChart');
 
                     const topSources = result.data.slice(0, 5);
                     const labels = topSources.map(s => s.source + ' / ' + s.medium);
@@ -384,9 +390,9 @@
 
                 if (result.success && result.data.length > 0) {
                     document.getElementById('deviceContainer').classList.add('hidden');
-                    const canvas = document.getElementById('deviceChart');
-                    canvas.classList.remove('hidden');
+                    document.getElementById('deviceChartWrapper').classList.remove('hidden');
                     document.getElementById('deviceStats').classList.remove('hidden');
+                    const canvas = document.getElementById('deviceChart');
 
                     const labels = result.data.map(d => d.device);
                     const data = result.data.map(d => d.users);

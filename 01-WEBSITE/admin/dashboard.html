@@ -339,9 +339,14 @@
             document.getElementById('scoreTrend').innerHTML = `<span class="${trendClass}">${trendIcon}</span>`;
             document.getElementById('scoreTrendText').textContent = trend.message;
 
-            // Review gap
-            const reviewGap = 203 - data.currentMetrics.reviews;
-            document.getElementById('reviewGap').textContent = `${reviewGap} behind #1`;
+            // Review gap - handle non-numeric values
+            const reviews = parseInt(data.currentMetrics.reviews);
+            if (!isNaN(reviews)) {
+                const reviewGap = 203 - reviews;
+                document.getElementById('reviewGap').textContent = reviewGap > 0 ? `${reviewGap} behind #1` : 'Leading!';
+            } else {
+                document.getElementById('reviewGap').textContent = 'Loading...';
+            }
 
             // Next run
             const nextRun = new Date(data.agent?.nextRun || getNextSunday());
