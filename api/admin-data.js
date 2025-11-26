@@ -269,7 +269,7 @@ export default async function handler(req, res) {
                 'anthropic-version': '2023-06-01'
               },
               body: JSON.stringify({
-                model: 'claude-3-haiku-20240307',
+                model: 'claude-3-5-haiku-20241022',
                 max_tokens: 500,
                 messages: [{ role: 'user', content: prompt }]
               })
@@ -291,7 +291,7 @@ export default async function handler(req, res) {
               return res.status(200).json({
                 success: true,
                 live: true,
-                model: 'claude-3-haiku',
+                model: 'claude-3-5-haiku',
                 timestamp: new Date().toISOString(),
                 data: { recommendations }
               });

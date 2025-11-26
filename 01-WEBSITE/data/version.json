@@ -1,7 +1,12 @@
 {
-  "version": "2.6.9",
-  "lastUpdated": "2025-11-26T07:00:00Z",
+  "version": "2.6.10",
+  "lastUpdated": "2025-11-26T07:15:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.10",
+      "date": "2025-11-26T07:15:00Z",
+      "changes": "Fixed version badge showing on all admin pages, updated Claude model to claude-3-5-haiku"
+    },
     {
       "version": "2.6.9",
       "date": "2025-11-26T07:00:00Z",
