@@ -1,7 +1,12 @@
 {
-  "version": "2.6.8",
-  "lastUpdated": "2025-11-26T06:45:00Z",
+  "version": "2.6.9",
+  "lastUpdated": "2025-11-26T07:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.9",
+      "date": "2025-11-26T07:00:00Z",
+      "changes": "Removed redundant GitHub Actions workflow - Vercel auto-deploys natively, no more failure emails"
+    },
     {
       "version": "2.6.8",
       "date": "2025-11-26T06:45:00Z",
