@@ -57,11 +57,12 @@
                 <!-- Your Site Analysis -->
                 <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
                     <h3 class="font-bold text-xl mb-4">Your Site Score</h3>
-                    <div id="yourScore" class="text-6xl font-bold mb-4">--</div>
+                    <div id="yourScore" class="text-6xl font-bold mb-4 cursor-pointer hover:text-yellow-300 transition-colors" onclick="toggleScoreBreakdown()" title="Click to see breakdown">--</div>
                     <button onclick="analyzeMySite()" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 w-full font-bold transition-all">
                         <i class="fas fa-brain mr-2"></i>Analyze with AI
                     </button>
                     <p class="text-xs mt-2 text-blue-100">Uses Claude AI + Google APIs</p>
+                    <p class="text-xs mt-1 text-yellow-300">Click score to see breakdown ↓</p>
                 </div>
                 
                 <!-- Last Analysis -->
@@ -85,9 +86,14 @@
             </div>
         </div>
 
-        <!-- 7-Category SEO Breakdown -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 class="text-2xl font-bold mb-6">📊 SEO Score Breakdown (7 Categories)</h3>
+        <!-- 7-Category SEO Breakdown - COLLAPSED BY DEFAULT -->
+        <div id="scoreBreakdownSection" class="bg-white rounded-lg shadow-lg p-6 mb-6 hidden">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">📊 SEO Score Breakdown (7 Categories)</h3>
+                <button onclick="toggleScoreBreakdown()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i> Close
+                </button>
+            </div>
             
             <div id="loadingIndicator" class="hidden text-center py-12">
                 <i class="fas fa-spinner fa-spin text-5xl text-blue-600 mb-4"></i>
@@ -758,6 +764,18 @@
         setTimeout(() => {
             button.innerHTML = '<i class="fas fa-copy mr-1"></i>Copy Prompt';
         }, 2000);
+    }
+
+    // Toggle score breakdown section
+    function toggleScoreBreakdown() {
+        const section = document.getElementById('scoreBreakdownSection');
+        if (section) {
+            section.classList.toggle('hidden');
+            // Scroll to section when opening
+            if (!section.classList.contains('hidden')) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
     }
 
     // Quick audit (simplified version)
