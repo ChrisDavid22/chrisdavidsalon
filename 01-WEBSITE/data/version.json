@@ -1,7 +1,12 @@
 {
-  "version": "2.9.6",
-  "lastUpdated": "2025-11-26T20:45:00Z",
+  "version": "2.9.7",
+  "lastUpdated": "2025-11-26T21:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.9.7",
+      "date": "2025-11-26T21:30:00Z",
+      "changes": "MAJOR UI UPDATE: (1) Summary box now FIRST and prominent with large purple gradient design showing total score and radar chart side-by-side. (2) All scores now stored in JavaScript scoreData object to ensure radar chart gets correct values. (3) API now specifically searches for Chris David Salon and adds it to competitor list. (4) Fallback values for Local/Content/Authority if APIs fail."
+    },
     {
       "version": "2.9.6",
       "date": "2025-11-26T20:45:00Z",
