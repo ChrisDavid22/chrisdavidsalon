@@ -1,7 +1,12 @@
 {
-  "version": "2.5.47",
-  "lastUpdated": "2025-11-26T04:20:00Z",
+  "version": "2.5.48",
+  "lastUpdated": "2025-11-26T04:25:00Z",
   "deployHistory": [
+    {
+      "version": "2.5.48",
+      "date": "2025-11-26T04:25:00Z",
+      "changes": "Vercel v2 config with explicit builds and routes for API functions"
+    },
     {
       "version": "2.5.47",
       "date": "2025-11-26T04:20:00Z",
