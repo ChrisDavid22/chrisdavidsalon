@@ -1281,7 +1281,7 @@
 
             // Build table - ONLY REAL DATA (no estimates)
             const tbody = document.getElementById('competitorTableBody');
-            tbody.innerHTML = competitors.slice(0, 10).map((c, i) => {
+            tbody.innerHTML = competitors.slice(0, 20).map((c, i) => {
                 const rowClass = c.isUs ? 'bg-blue-50 font-semibold' : '';
                 const marker = c.isUs ? ' ← YOU' : '';
                 const pageRankDisplay = c.pageRank ? c.pageRank.toFixed(2) : '--';
