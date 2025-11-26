@@ -1,7 +1,12 @@
 {
-  "version": "2.5.48",
-  "lastUpdated": "2025-11-26T04:25:00Z",
+  "version": "2.5.49",
+  "lastUpdated": "2025-11-26T04:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.5.49",
+      "date": "2025-11-26T04:30:00Z",
+      "changes": "Moved API functions to root /api folder for Vercel serverless support"
+    },
     {
       "version": "2.5.48",
       "date": "2025-11-26T04:25:00Z",

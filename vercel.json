@@ -1,23 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "01-WEBSITE/api/*.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "01-WEBSITE/**",
-      "use": "@vercel/static"
+  "buildCommand": "echo 'Build complete'",
+  "outputDirectory": "01-WEBSITE",
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 30
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/01-WEBSITE/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/01-WEBSITE/$1"
-    }
-  ]
+  }
 }
