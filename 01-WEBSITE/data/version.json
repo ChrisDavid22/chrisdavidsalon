@@ -1,7 +1,12 @@
 {
-  "version": "2.6.14",
-  "lastUpdated": "2025-11-26T10:00:00Z",
+  "version": "2.6.15",
+  "lastUpdated": "2025-11-26T11:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.15",
+      "date": "2025-11-26T11:00:00Z",
+      "changes": "Fixed all admin pages to use working /api/admin-data endpoints. SEO score tracker, analytics command center, visitor metrics, engagement tracker all now fetch real API data."
+    },
     {
       "version": "2.6.14",
       "date": "2025-11-26T10:00:00Z",

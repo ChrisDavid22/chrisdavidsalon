@@ -3,230 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO Action Plan - Living SEO Engine</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>SEO Action Plan - Chris David Salon Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
+        .data-live { background-color: #dcfce7; color: #166534; }
+        .data-error { background-color: #fee2e2; color: #991b1b; }
         .task-card { transition: all 0.2s; }
         .task-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(59,130,246,0.5); }
-            50% { box-shadow: 0 0 20px rgba(59,130,246,0.8); }
-        }
-        .completed-task { opacity: 0.6; }
-        .completed-task .task-title { text-decoration: line-through; }
     </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-gradient-to-r from-blue-900 to-purple-900 text-white p-4 shadow-lg">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-4">
-                <div>
-                    <h1 class="text-2xl font-bold">Living SEO Engine</h1>
-                    <p class="text-sm text-blue-200">Automated Research → Analysis → Implementation</p>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-gradient-to-r from-blue-900 to-purple-900 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-white hover:text-gray-200"><i class="fas fa-arrow-left"></i></a>
+                    <h1 class="text-2xl font-bold"><i class="fas fa-rocket mr-2"></i>SEO Action Plan</h1>
+                    <span id="versionBadge" class="bg-green-500 px-3 py-1 rounded text-sm font-bold">Loading...</span>
                 </div>
-                <div class="flex items-center gap-4">
-                    <span id="versionBadge" class="bg-green-600 px-3 py-1 rounded text-sm font-bold">Loading...</span>
-                    <span id="lastCycleRun" class="text-sm text-blue-200">Last cycle: Never</span>
+                <div class="flex items-center space-x-4">
+                    <span id="dataSourceBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded bg-green-200 text-green-800">Checking...</span>
+                    <span id="lastUpdated" class="text-sm text-blue-200">Loading...</span>
+                    <button onclick="refreshData()" class="bg-white text-blue-900 px-4 py-2 rounded-lg hover:bg-gray-100 font-semibold">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh
+                    </button>
                 </div>
             </div>
+        </div>
+    </header>
 
-            <!-- Navigation - Reorganized by importance -->
-            <div class="flex flex-wrap gap-2 text-sm">
-                <!-- PRIMARY: Core Business Metrics -->
-                <a href="index.html" class="bg-purple-600 hover:bg-purple-500 px-3 py-1 rounded">🎯 SEO Score</a>
-                <a href="visitor-metrics.html" class="bg-blue-600 hover:bg-blue-500 px-3 py-1 rounded">📈 Traffic</a>
-                <a href="engagement-tracker.html" class="bg-green-600 hover:bg-green-500 px-3 py-1 rounded">💰 Conversions</a>
-
-                <!-- SECONDARY: Analysis -->
-                <a href="competitors.html" class="bg-orange-600 hover:bg-orange-500 px-3 py-1 rounded">🏆 Competitors</a>
-                <a href="rankings.html" class="bg-yellow-600 hover:bg-yellow-500 px-3 py-1 rounded">📊 Rankings</a>
-
-                <!-- ACTION: Implementation -->
-                <a href="seo-action-plan.html" class="bg-red-600 px-3 py-1 rounded font-bold pulse-glow">🚀 Action Plan</a>
-                <a href="seo-tasks.html" class="bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded">✅ Tasks</a>
-
-                <!-- ADVANCED: Deep Dives -->
-                <a href="seo-score-tracker.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📉 History</a>
-                <a href="analytics-command-center.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">📊 Analytics</a>
-                <a href="microsites.html" class="bg-purple-800 hover:bg-purple-700 px-3 py-1 rounded">🌐 Microsites</a>
+    <nav class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex space-x-4 overflow-x-auto py-2">
+                <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">SEO Score</a>
+                <a href="visitor-metrics.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Traffic</a>
+                <a href="engagement-tracker.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Conversions</a>
+                <a href="competitors.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Competitors</a>
+                <a href="rankings.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Rankings</a>
+                <a href="seo-action-plan.html" class="px-4 py-2 text-purple-600 border-b-2 border-purple-600 font-semibold whitespace-nowrap">Action Plan</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto p-6">
-        <!-- Virtuous Cycle Overview -->
-        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl shadow-2xl p-8 mb-8">
-            <div class="flex justify-between items-start">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">🔄 The Virtuous Cycle Engine</h2>
-                    <p class="text-blue-100 text-lg mb-4">Automated weekly process that continuously improves SEO</p>
-
-                    <div class="flex gap-4 mt-6">
-                        <div class="text-center bg-white/20 rounded-lg p-4">
-                            <div class="text-4xl font-bold" id="cycleStep">1</div>
-                            <div class="text-sm">Current Step</div>
-                        </div>
-                        <div class="text-center bg-white/20 rounded-lg p-4">
-                            <div class="text-4xl font-bold" id="tasksCompleted">0</div>
-                            <div class="text-sm">Tasks Done</div>
-                        </div>
-                        <div class="text-center bg-white/20 rounded-lg p-4">
-                            <div class="text-4xl font-bold" id="tasksPending">0</div>
-                            <div class="text-sm">Pending</div>
-                        </div>
-                        <div class="text-center bg-white/20 rounded-lg p-4">
-                            <div class="text-4xl font-bold" id="seoImprovement">+0</div>
-                            <div class="text-sm">SEO Impact</div>
-                        </div>
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500">SEO Score</p>
+                        <p class="text-3xl font-bold text-gray-900" id="seoScore">--</p>
+                    </div>
+                    <div class="p-3 bg-blue-100 rounded-lg">
+                        <i class="fas fa-chart-line text-blue-600 text-xl"></i>
                     </div>
                 </div>
-
-                <div class="text-right">
-                    <button onclick="runFullCycle()" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">
-                        <i class="fas fa-play-circle mr-2"></i>Run Full Cycle
-                    </button>
-                    <p class="text-xs text-blue-200 mt-2">Research → Analyze → Plan → Implement</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500">Market Position</p>
+                        <p class="text-3xl font-bold text-gray-900" id="marketPosition">--</p>
+                    </div>
+                    <div class="p-3 bg-yellow-100 rounded-lg">
+                        <i class="fas fa-trophy text-yellow-600 text-xl"></i>
+                    </div>
                 </div>
             </div>
-
-            <!-- Cycle Steps Visual -->
-            <div class="mt-8 grid grid-cols-5 gap-2">
-                <div class="bg-white/30 rounded-lg p-3 text-center" id="step1">
-                    <i class="fas fa-search text-2xl mb-2"></i>
-                    <div class="text-sm font-bold">1. Research</div>
-                    <div class="text-xs">Gather data</div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500">Monthly Visitors</p>
+                        <p class="text-3xl font-bold text-gray-900" id="monthlyVisitors">--</p>
+                    </div>
+                    <div class="p-3 bg-green-100 rounded-lg">
+                        <i class="fas fa-users text-green-600 text-xl"></i>
+                    </div>
                 </div>
-                <div class="bg-white/20 rounded-lg p-3 text-center" id="step2">
-                    <i class="fas fa-brain text-2xl mb-2"></i>
-                    <div class="text-sm font-bold">2. Analyze</div>
-                    <div class="text-xs">AI insights</div>
-                </div>
-                <div class="bg-white/20 rounded-lg p-3 text-center" id="step3">
-                    <i class="fas fa-clipboard-list text-2xl mb-2"></i>
-                    <div class="text-sm font-bold">3. Plan</div>
-                    <div class="text-xs">Prioritize</div>
-                </div>
-                <div class="bg-white/20 rounded-lg p-3 text-center" id="step4">
-                    <i class="fas fa-hammer text-2xl mb-2"></i>
-                    <div class="text-sm font-bold">4. Implement</div>
-                    <div class="text-xs">Auto-create</div>
-                </div>
-                <div class="bg-white/20 rounded-lg p-3 text-center" id="step5">
-                    <i class="fas fa-chart-line text-2xl mb-2"></i>
-                    <div class="text-sm font-bold">5. Track</div>
-                    <div class="text-xs">Measure</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-500">Potential Revenue</p>
+                        <p class="text-3xl font-bold text-gray-900" id="potentialRevenue">--</p>
+                    </div>
+                    <div class="p-3 bg-purple-100 rounded-lg">
+                        <i class="fas fa-dollar-sign text-purple-600 text-xl"></i>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Live Data Status Panel -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h3 class="text-xl font-bold mb-4 flex items-center">
-                <i class="fas fa-satellite-dish text-blue-600 mr-2"></i>
-                Live Data Sources
-                <span id="dataStatusBadge" class="ml-4 text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Checking...</span>
-            </h3>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="dataSourcesGrid">
-                <!-- Populated by JavaScript -->
-            </div>
-        </div>
-
-        <!-- Current Action Plan -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <!-- High Priority Tasks -->
+        <!-- Priority Actions -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- High Priority -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                 <div class="bg-red-600 text-white px-6 py-4">
-                    <h3 class="text-xl font-bold"><i class="fas fa-fire mr-2"></i>High Priority</h3>
-                    <p class="text-sm text-red-100">Do this week</p>
+                    <h3 class="text-xl font-bold"><i class="fas fa-fire mr-2"></i>High Priority Actions</h3>
+                    <p class="text-sm text-red-100">Do this week for maximum impact</p>
                 </div>
-                <div id="highPriorityTasks" class="p-4 space-y-3 max-h-96 overflow-y-auto">
+                <div id="highPriorityTasks" class="p-4 space-y-3">
                     <div class="text-gray-500 text-center py-8">Loading tasks...</div>
                 </div>
             </div>
 
-            <!-- Medium Priority Tasks -->
+            <!-- Medium Priority -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
                 <div class="bg-yellow-500 text-white px-6 py-4">
-                    <h3 class="text-xl font-bold"><i class="fas fa-clock mr-2"></i>Medium Priority</h3>
-                    <p class="text-sm text-yellow-100">This month</p>
+                    <h3 class="text-xl font-bold"><i class="fas fa-clock mr-2"></i>Medium Priority Actions</h3>
+                    <p class="text-sm text-yellow-100">Complete this month</p>
                 </div>
-                <div id="mediumPriorityTasks" class="p-4 space-y-3 max-h-96 overflow-y-auto">
-                    <div class="text-gray-500 text-center py-8">Loading tasks...</div>
-                </div>
-            </div>
-
-            <!-- Completed Tasks -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div class="bg-green-600 text-white px-6 py-4">
-                    <h3 class="text-xl font-bold"><i class="fas fa-check-circle mr-2"></i>Completed</h3>
-                    <p class="text-sm text-green-100">Implemented changes</p>
-                </div>
-                <div id="completedTasks" class="p-4 space-y-3 max-h-96 overflow-y-auto">
+                <div id="mediumPriorityTasks" class="p-4 space-y-3">
                     <div class="text-gray-500 text-center py-8">Loading tasks...</div>
                 </div>
             </div>
         </div>
 
-        <!-- Recent Implementations -->
+        <!-- Opportunities -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h3 class="text-xl font-bold mb-4 flex items-center">
-                <i class="fas fa-code-branch text-purple-600 mr-2"></i>
-                Recent Auto-Implementations
-                <span class="ml-auto text-sm text-gray-500">Pages created by the SEO engine</span>
+            <h3 class="text-lg font-bold text-gray-900 mb-4">
+                <i class="fas fa-lightbulb text-yellow-600 mr-2"></i>Growth Opportunities
             </h3>
-
-            <div id="recentImplementations" class="space-y-3">
-                <!-- Populated by JavaScript -->
+            <div id="opportunitiesSection" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="text-gray-500 text-center py-8 col-span-3">Loading opportunities...</div>
             </div>
         </div>
 
-        <!-- Weekly SEO Report -->
-        <div class="bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-xl shadow-lg p-6">
-            <h3 class="text-xl font-bold mb-4 flex items-center">
-                <i class="fas fa-file-alt text-blue-400 mr-2"></i>
-                Weekly SEO Report
-                <button onclick="generateWeeklyReport()" class="ml-auto bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-sm">
-                    <i class="fas fa-sync mr-2"></i>Generate Report
-                </button>
+        <!-- Competitor Gap Analysis -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">
+                <i class="fas fa-trophy text-yellow-600 mr-2"></i>Competitor Gap Analysis
             </h3>
-
-            <div id="weeklyReport" class="prose prose-invert max-w-none">
-                <p class="text-gray-400">Click "Generate Report" to create a comprehensive weekly SEO analysis.</p>
+            <div id="competitorGapSection">
+                <div class="text-gray-500 text-center py-8">Loading competitor data...</div>
             </div>
         </div>
     </main>
 
     <script>
-        // Task data structure - loaded from API
-        let seoTasks = {
-            high: [],
-            medium: [],
-            completed: []
-        };
+        // ALL DATA FROM API - NO HARDCODED VALUES
+        let dashboardData = null;
 
-        // Data source status
-        const dataSources = [
-            { id: 'pagespeed', name: 'PageSpeed API', icon: 'fa-tachometer-alt', status: 'checking', endpoint: '/api/pagespeed?url=https://www.chrisdavidsalon.com' },
-            { id: 'analytics', name: 'Google Analytics', icon: 'fa-chart-bar', status: 'manual', endpoint: '/api/analytics?type=visitors' },
-            { id: 'search', name: 'Search Console', icon: 'fa-search', status: 'not-connected', endpoint: null },
-            { id: 'places', name: 'Google Places', icon: 'fa-map-marker-alt', status: 'checking', endpoint: '/api/admin-data?type=competitors' }
-        ];
-
-        // Initialize page
-        async function init() {
-            await loadVersion();
-            await checkDataSources();
-            await loadTasks();
-            renderTasks();
-            renderDataSources();
-            loadRecentImplementations();
-        }
-
-        // Load version
         async function loadVersion() {
             try {
                 const response = await fetch('/data/version.json');
@@ -237,396 +155,163 @@
             }
         }
 
-        // Check data source connectivity
-        async function checkDataSources() {
-            for (const source of dataSources) {
-                if (!source.endpoint) continue;
-
-                try {
-                    const response = await fetch(source.endpoint);
-                    const data = await response.json();
-
-                    if (data.success || data.lighthouseResult) {
-                        source.status = data.dataSource === 'manual-ga-observation' ? 'manual' : 'live';
-                    } else {
-                        source.status = 'error';
-                    }
-                } catch (e) {
-                    source.status = 'error';
-                }
-            }
-
-            renderDataSources();
-        }
-
-        // Render data sources grid
-        function renderDataSources() {
-            const grid = document.getElementById('dataSourcesGrid');
-            grid.innerHTML = '';
-
-            let liveCount = 0;
-
-            dataSources.forEach(source => {
-                const statusConfig = {
-                    'live': { bg: 'bg-green-100', text: 'text-green-800', label: '🟢 LIVE' },
-                    'manual': { bg: 'bg-yellow-100', text: 'text-yellow-800', label: '🟡 Manual' },
-                    'checking': { bg: 'bg-blue-100', text: 'text-blue-800', label: '⏳ Checking' },
-                    'not-connected': { bg: 'bg-gray-100', text: 'text-gray-800', label: '⚪ Not Setup' },
-                    'error': { bg: 'bg-red-100', text: 'text-red-800', label: '🔴 Error' }
-                };
-
-                const config = statusConfig[source.status] || statusConfig['error'];
-
-                if (source.status === 'live') liveCount++;
-
-                grid.innerHTML += `
-                    <div class="p-4 rounded-lg ${config.bg} border">
-                        <div class="flex items-center justify-between mb-2">
-                            <i class="fas ${source.icon} ${config.text}"></i>
-                            <span class="text-xs ${config.text} font-semibold">${config.label}</span>
-                        </div>
-                        <div class="font-semibold text-gray-900">${source.name}</div>
-                    </div>
-                `;
-            });
-
-            // Update status badge
-            const badge = document.getElementById('dataStatusBadge');
-            if (liveCount >= 2) {
-                badge.className = 'ml-4 text-sm bg-green-100 text-green-800 px-2 py-1 rounded';
-                badge.textContent = `${liveCount}/4 Live`;
-            } else {
-                badge.className = 'ml-4 text-sm bg-yellow-100 text-yellow-800 px-2 py-1 rounded';
-                badge.textContent = `${liveCount}/4 Live - Setup needed`;
-            }
-        }
-
-        // Load tasks from API and storage
-        async function loadTasks() {
-            // Get tasks from API
+        async function fetchDashboardData() {
             try {
                 const response = await fetch('/api/admin-data?type=dashboard');
                 const result = await response.json();
 
-                if (result.success && result.data.actionItems) {
-                    seoTasks.high = result.data.actionItems
-                        .filter(t => t.priority === 'high')
-                        .map((t, i) => ({
-                            id: `api-high-${i}`,
-                            title: t.task,
-                            description: t.impact,
-                            status: 'pending',
-                            source: 'api',
-                            createdAt: new Date().toISOString()
-                        }));
-
-                    seoTasks.medium = result.data.actionItems
-                        .filter(t => t.priority === 'medium')
-                        .map((t, i) => ({
-                            id: `api-med-${i}`,
-                            title: t.task,
-                            description: t.impact,
-                            status: 'pending',
-                            source: 'api',
-                            createdAt: new Date().toISOString()
-                        }));
+                if (result.success) {
+                    dashboardData = result.data;
+                    return result;
+                } else {
+                    throw new Error(result.error || 'Failed to fetch data');
                 }
-            } catch (e) {
-                console.error('Failed to load tasks from API:', e);
+            } catch (error) {
+                console.error('Error:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        function updateUI(result) {
+            const badge = document.getElementById('dataSourceBadge');
+
+            if (!result.success) {
+                badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded data-error';
+                badge.textContent = 'API Error';
+                return;
             }
 
-            // Load completed tasks from localStorage
-            const savedCompleted = localStorage.getItem('completedSeoTasks');
-            if (savedCompleted) {
-                seoTasks.completed = JSON.parse(savedCompleted);
-            }
+            badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded data-live';
+            badge.textContent = 'Live API Data';
 
-            // Add auto-generated tasks based on recent implementations
-            addImplementedTasks();
+            const data = result.data;
 
-            updateTaskCounts();
+            // Update summary cards
+            document.getElementById('seoScore').textContent = data.seoScore;
+            document.getElementById('marketPosition').textContent = '#' + data.marketPosition;
+            document.getElementById('monthlyVisitors').textContent = data.monthlyVisitors;
+            document.getElementById('potentialRevenue').textContent = '$' + data.opportunities.missedRevenue.toLocaleString();
+
+            // Update tasks
+            updateTasks(data.actionItems);
+
+            // Update opportunities
+            updateOpportunities(data.opportunities);
+
+            // Update competitor gap
+            updateCompetitorGap(data.topCompetitors);
+
+            // Update timestamp
+            document.getElementById('lastUpdated').textContent = `Updated: ${new Date().toLocaleString()}`;
         }
 
-        // Add tasks that were automatically implemented
-        function addImplementedTasks() {
-            const implementations = [
-                { title: 'Create Wedding Hair Landing Page', url: '/services/wedding-hair-delray-beach.html', date: '2025-11-26' },
-                { title: 'Create Balayage Landing Page', url: '/services/balayage-delray-beach.html', date: '2025-11-26' },
-                { title: 'Create Color Correction Landing Page', url: '/services/color-correction-delray-beach.html', date: '2025-11-26' },
-                { title: 'Create Hair Extensions Landing Page', url: '/services/hair-extensions-delray-beach.html', date: '2025-11-26' },
-                { title: 'Create Keratin Treatment Landing Page', url: '/services/keratin-treatment-delray-beach.html', date: '2025-11-26' },
-                { title: 'Add Services Dropdown to Main Navigation', url: '/', date: '2025-11-26' },
-                { title: 'Create Visitor Metrics Dashboard', url: '/admin/visitor-metrics.html', date: '2025-11-26' },
-                { title: 'Create SEO Score Tracker', url: '/admin/seo-score-tracker.html', date: '2025-11-26' },
-                { title: 'Create Engagement Tracker', url: '/admin/engagement-tracker.html', date: '2025-11-26' }
-            ];
+        function updateTasks(items) {
+            const highPriority = items.filter(i => i.priority === 'high');
+            const mediumPriority = items.filter(i => i.priority === 'medium');
 
-            implementations.forEach((impl, i) => {
-                if (!seoTasks.completed.find(t => t.title === impl.title)) {
-                    seoTasks.completed.push({
-                        id: `impl-${i}`,
-                        title: impl.title,
-                        description: `Automatically created: ${impl.url}`,
-                        url: impl.url,
-                        status: 'completed',
-                        source: 'auto-implemented',
-                        completedAt: impl.date
-                    });
-                }
-            });
-        }
-
-        // Render tasks in columns
-        function renderTasks() {
-            const highContainer = document.getElementById('highPriorityTasks');
-            const medContainer = document.getElementById('mediumPriorityTasks');
-            const completedContainer = document.getElementById('completedTasks');
-
-            highContainer.innerHTML = seoTasks.high.length ? '' : '<div class="text-gray-500 text-center py-8">No high priority tasks</div>';
-            medContainer.innerHTML = seoTasks.medium.length ? '' : '<div class="text-gray-500 text-center py-8">No medium priority tasks</div>';
-            completedContainer.innerHTML = seoTasks.completed.length ? '' : '<div class="text-gray-500 text-center py-8">No completed tasks yet</div>';
-
-            seoTasks.high.forEach(task => {
-                highContainer.innerHTML += createTaskCard(task, 'high');
-            });
-
-            seoTasks.medium.forEach(task => {
-                medContainer.innerHTML += createTaskCard(task, 'medium');
-            });
-
-            seoTasks.completed.slice(0, 10).forEach(task => {
-                completedContainer.innerHTML += createTaskCard(task, 'completed');
-            });
-        }
-
-        // Create task card HTML
-        function createTaskCard(task, priority) {
-            const isCompleted = priority === 'completed';
-
-            return `
-                <div class="task-card p-4 rounded-lg border ${isCompleted ? 'bg-gray-50 completed-task' : 'bg-white hover:border-blue-300'}">
-                    <div class="flex items-start justify-between">
-                        <div class="flex-1">
-                            <h4 class="font-semibold text-gray-900 task-title">${task.title}</h4>
-                            <p class="text-sm text-gray-600 mt-1">${task.description}</p>
-                            ${task.url ? `<a href="${task.url}" target="_blank" class="text-xs text-blue-600 hover:underline mt-2 block"><i class="fas fa-external-link-alt mr-1"></i>View</a>` : ''}
-                        </div>
-                        ${!isCompleted ? `
-                            <button onclick="completeTask('${task.id}', '${priority}')" class="ml-2 p-2 text-gray-400 hover:text-green-600" title="Mark complete">
-                                <i class="fas fa-check-circle"></i>
-                            </button>
-                        ` : `
-                            <span class="text-xs text-gray-400">${task.completedAt || 'Completed'}</span>
-                        `}
+            document.getElementById('highPriorityTasks').innerHTML = highPriority.length > 0 ?
+                highPriority.map(task => `
+                    <div class="task-card p-4 bg-red-50 rounded-lg border border-red-200">
+                        <h4 class="font-semibold text-gray-900">${task.task}</h4>
+                        <p class="text-sm text-gray-600 mt-1">Impact: ${task.impact}</p>
                     </div>
-                    <div class="flex items-center mt-2 text-xs text-gray-400">
-                        <span class="bg-${task.source === 'auto-implemented' ? 'green' : 'blue'}-100 text-${task.source === 'auto-implemented' ? 'green' : 'blue'}-800 px-2 py-0.5 rounded">
-                            ${task.source === 'auto-implemented' ? '🤖 Auto' : '📊 API'}
-                        </span>
+                `).join('') : '<p class="text-gray-500 text-center py-4">No high priority tasks</p>';
+
+            document.getElementById('mediumPriorityTasks').innerHTML = mediumPriority.length > 0 ?
+                mediumPriority.map(task => `
+                    <div class="task-card p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                        <h4 class="font-semibold text-gray-900">${task.task}</h4>
+                        <p class="text-sm text-gray-600 mt-1">Impact: ${task.impact}</p>
+                    </div>
+                `).join('') : '<p class="text-gray-500 text-center py-4">No medium priority tasks</p>';
+        }
+
+        function updateOpportunities(opp) {
+            document.getElementById('opportunitiesSection').innerHTML = `
+                <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="text-center">
+                        <i class="fas fa-dollar-sign text-green-600 text-2xl mb-2"></i>
+                        <p class="text-2xl font-bold text-green-600">$${opp.missedRevenue.toLocaleString()}</p>
+                        <p class="text-sm text-gray-600">Potential Monthly Revenue</p>
+                    </div>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <div class="text-center">
+                        <i class="fas fa-users text-blue-600 text-2xl mb-2"></i>
+                        <p class="text-2xl font-bold text-blue-600">${opp.potentialVisitors.toLocaleString()}</p>
+                        <p class="text-sm text-gray-600">Target Visitors Goal</p>
+                    </div>
+                </div>
+                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <div class="text-center">
+                        <i class="fas fa-star text-yellow-600 text-2xl mb-2"></i>
+                        <p class="text-2xl font-bold text-yellow-600">${opp.reviewsNeeded}</p>
+                        <p class="text-sm text-gray-600">Reviews Needed to Rank Up</p>
                     </div>
                 </div>
             `;
         }
 
-        // Complete a task
-        function completeTask(taskId, fromPriority) {
-            let task;
+        function updateCompetitorGap(competitors) {
+            const chrisDavid = competitors.find(c => c.name.includes('Chris David'));
+            const leader = competitors[0];
 
-            if (fromPriority === 'high') {
-                const index = seoTasks.high.findIndex(t => t.id === taskId);
-                if (index !== -1) {
-                    task = seoTasks.high.splice(index, 1)[0];
-                }
-            } else if (fromPriority === 'medium') {
-                const index = seoTasks.medium.findIndex(t => t.id === taskId);
-                if (index !== -1) {
-                    task = seoTasks.medium.splice(index, 1)[0];
-                }
+            if (!chrisDavid || !leader) {
+                document.getElementById('competitorGapSection').innerHTML = '<p class="text-gray-500">No competitor data</p>';
+                return;
             }
 
-            if (task) {
-                task.status = 'completed';
-                task.completedAt = new Date().toISOString().split('T')[0];
-                seoTasks.completed.unshift(task);
+            const reviewGap = leader.reviews - chrisDavid.reviews;
+            const positionGap = chrisDavid.position - leader.position;
 
-                // Save to localStorage
-                localStorage.setItem('completedSeoTasks', JSON.stringify(seoTasks.completed));
-
-                renderTasks();
-                updateTaskCounts();
-            }
-        }
-
-        // Update task counts in header
-        function updateTaskCounts() {
-            document.getElementById('tasksCompleted').textContent = seoTasks.completed.length;
-            document.getElementById('tasksPending').textContent = seoTasks.high.length + seoTasks.medium.length;
-
-            // Calculate SEO impact (rough estimate based on completed tasks)
-            const impact = seoTasks.completed.length * 2;
-            document.getElementById('seoImprovement').textContent = `+${impact}`;
-        }
-
-        // Load recent implementations
-        function loadRecentImplementations() {
-            const container = document.getElementById('recentImplementations');
-
-            const implementations = [
-                {
-                    title: 'Wedding Hair Landing Page',
-                    url: '/services/wedding-hair-delray-beach.html',
-                    date: '2025-11-26',
-                    keywords: ['wedding hair delray beach', 'bridal hair palm beach'],
-                    status: 'indexed'
-                },
-                {
-                    title: 'Balayage Landing Page',
-                    url: '/services/balayage-delray-beach.html',
-                    date: '2025-11-26',
-                    keywords: ['balayage delray beach', 'hand painted highlights'],
-                    status: 'indexed'
-                },
-                {
-                    title: 'Color Correction Landing Page',
-                    url: '/services/color-correction-delray-beach.html',
-                    date: '2025-11-26',
-                    keywords: ['color correction delray beach', 'hair color fix'],
-                    status: 'indexed'
-                },
-                {
-                    title: 'Hair Extensions Landing Page',
-                    url: '/services/hair-extensions-delray-beach.html',
-                    date: '2025-11-26',
-                    keywords: ['hair extensions delray beach', 'tape in extensions'],
-                    status: 'indexed'
-                },
-                {
-                    title: 'Keratin Treatment Landing Page',
-                    url: '/services/keratin-treatment-delray-beach.html',
-                    date: '2025-11-26',
-                    keywords: ['keratin treatment delray beach', 'smoothing treatment'],
-                    status: 'indexed'
-                }
-            ];
-
-            container.innerHTML = implementations.map(impl => `
-                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-4">
-                            <i class="fas fa-file-code text-green-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">${impl.title}</h4>
-                            <p class="text-sm text-gray-500">Keywords: ${impl.keywords.join(', ')}</p>
+            document.getElementById('competitorGapSection').innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-3">Your Position vs #1</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                                <span>Position Gap</span>
+                                <span class="font-bold text-red-600">${positionGap} spots behind</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                                <span>Review Gap</span>
+                                <span class="font-bold text-red-600">${reviewGap} reviews behind</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                                <span>Your Reviews</span>
+                                <span class="font-bold text-blue-600">${chrisDavid.reviews}</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                                <span>Leader's Reviews</span>
+                                <span class="font-bold text-green-600">${leader.reviews}</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-right">
-                        <span class="text-xs ${impl.status === 'indexed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'} px-2 py-1 rounded">
-                            ${impl.status === 'indexed' ? '✓ Indexed' : '⏳ Pending'}
-                        </span>
-                        <div class="text-xs text-gray-400 mt-1">${impl.date}</div>
-                        <a href="${impl.url}" target="_blank" class="text-xs text-blue-600 hover:underline">View →</a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Run full SEO cycle
-        async function runFullCycle() {
-            const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
-
-            for (let i = 0; i < steps.length; i++) {
-                // Highlight current step
-                steps.forEach((s, idx) => {
-                    document.getElementById(s).className = idx === i
-                        ? 'bg-white/40 rounded-lg p-3 text-center border-2 border-white'
-                        : idx < i
-                            ? 'bg-green-500/40 rounded-lg p-3 text-center'
-                            : 'bg-white/20 rounded-lg p-3 text-center';
-                });
-
-                document.getElementById('cycleStep').textContent = i + 1;
-
-                // Simulate step execution
-                await new Promise(resolve => setTimeout(resolve, 1500));
-            }
-
-            // Mark all steps complete
-            steps.forEach(s => {
-                document.getElementById(s).className = 'bg-green-500/40 rounded-lg p-3 text-center';
-            });
-
-            document.getElementById('lastCycleRun').textContent = `Last cycle: ${new Date().toLocaleString()}`;
-
-            // Refresh data
-            await loadTasks();
-            renderTasks();
-
-            alert('SEO Cycle Complete! Check the updated action items.');
-        }
-
-        // Generate weekly report
-        async function generateWeeklyReport() {
-            const reportContainer = document.getElementById('weeklyReport');
-            reportContainer.innerHTML = '<p class="text-blue-400"><i class="fas fa-spinner fa-spin mr-2"></i>Generating report...</p>';
-
-            // Simulate report generation
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            const completedCount = seoTasks.completed.length;
-            const pendingCount = seoTasks.high.length + seoTasks.medium.length;
-
-            reportContainer.innerHTML = `
-                <div class="space-y-4">
-                    <div class="flex items-center text-xl">
-                        <span class="text-3xl mr-3">📊</span>
-                        <span>Weekly SEO Report - Week of ${new Date().toLocaleDateString()}</span>
-                    </div>
-
-                    <div class="grid grid-cols-3 gap-4 mt-4">
-                        <div class="bg-white/10 rounded-lg p-4 text-center">
-                            <div class="text-3xl font-bold text-green-400">${completedCount}</div>
-                            <div class="text-sm text-gray-400">Tasks Completed</div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-3">Top 5 Competitors</h4>
+                        <div class="space-y-2">
+                            ${competitors.map(c => `
+                                <div class="flex justify-between items-center p-2 ${c.name.includes('Chris David') ? 'bg-blue-100 rounded font-semibold' : ''}">
+                                    <span>#${c.position} ${c.name}</span>
+                                    <span>${c.reviews} reviews (${c.rating}★)</span>
+                                </div>
+                            `).join('')}
                         </div>
-                        <div class="bg-white/10 rounded-lg p-4 text-center">
-                            <div class="text-3xl font-bold text-yellow-400">${pendingCount}</div>
-                            <div class="text-sm text-gray-400">Tasks Pending</div>
-                        </div>
-                        <div class="bg-white/10 rounded-lg p-4 text-center">
-                            <div class="text-3xl font-bold text-blue-400">5</div>
-                            <div class="text-sm text-gray-400">Pages Created</div>
-                        </div>
-                    </div>
-
-                    <div class="mt-6">
-                        <h4 class="font-bold text-lg mb-2">Key Accomplishments</h4>
-                        <ul class="list-disc list-inside text-gray-300 space-y-1">
-                            <li>Created 5 dedicated service landing pages for high-volume keywords</li>
-                            <li>Updated main site navigation with services dropdown</li>
-                            <li>Built visitor metrics, SEO score, and engagement tracking dashboards</li>
-                            <li>Integrated PageSpeed API for real-time performance monitoring</li>
-                        </ul>
-                    </div>
-
-                    <div class="mt-6">
-                        <h4 class="font-bold text-lg mb-2">Recommended Next Steps</h4>
-                        <ul class="list-disc list-inside text-gray-300 space-y-1">
-                            <li>Connect Google Analytics API for real-time visitor data</li>
-                            <li>Add 15 more photos to Google Business Profile</li>
-                            <li>Collect 10 new reviews to improve local ranking</li>
-                            <li>Build backlinks to new service pages</li>
-                        </ul>
-                    </div>
-
-                    <div class="mt-6 text-sm text-gray-500">
-                        Report generated at ${new Date().toLocaleString()}
                     </div>
                 </div>
             `;
         }
 
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', init);
+        async function refreshData() {
+            document.getElementById('lastUpdated').textContent = 'Refreshing...';
+            const result = await fetchDashboardData();
+            updateUI(result);
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadVersion();
+            await refreshData();
+        });
     </script>
 </body>
 </html>

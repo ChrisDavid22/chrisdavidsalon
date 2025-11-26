@@ -143,10 +143,29 @@
 
         async function fetchSEOScore() {
             try {
-                const response = await fetch('/api/analytics?type=seo-score');
+                const response = await fetch('/api/admin-data?type=seo-analysis');
                 const result = await response.json();
-                seoData = result;
-                return result;
+
+                if (result.success && result.data) {
+                    // Transform to expected format
+                    seoData = {
+                        success: true,
+                        isLiveData: true,
+                        scores: {
+                            overall: result.data.totalScore,
+                            breakdown: {
+                                performance: result.data.categories?.performance?.score || 0,
+                                seo: result.data.categories?.technical?.score || 0,
+                                accessibility: result.data.categories?.mobile?.score || 0,
+                                bestPractices: result.data.categories?.userExperience?.score || 0
+                            }
+                        },
+                        fetchedAt: new Date().toISOString()
+                    };
+                    return seoData;
+                } else {
+                    throw new Error(result.error || 'Failed to fetch data');
+                }
             } catch (error) {
                 console.error('Error fetching SEO score:', error);
                 return { success: false, error: error.message };
