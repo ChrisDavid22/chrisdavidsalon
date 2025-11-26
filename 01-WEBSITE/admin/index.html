@@ -284,21 +284,25 @@
         document.getElementById('scoreBreakdown').style.opacity = '0.3';
 
         try {
-            // Fetch data from our admin API
-            const response = await fetch('/api/admin-data?type=seo-analysis');
+            // Fetch SEO analysis AND AI recommendations in parallel
+            const [seoResponse, aiResponse] = await Promise.all([
+                fetch('/api/admin-data?type=seo-analysis'),
+                fetch('/api/admin-data?type=ai-recommendations')
+            ]);
 
-            if (!response.ok) {
-                throw new Error(`API error: ${response.status}`);
+            const seoResult = await seoResponse.json();
+            const aiResult = await aiResponse.json();
+
+            if (!seoResult.success) {
+                throw new Error('SEO Analysis failed');
             }
 
-            const result = await response.json();
-
-            if (!result.success) {
-                throw new Error('Analysis failed');
-            }
-
-            const fullAnalysis = result.data;
-            fullAnalysis.timestamp = new Date().toISOString();
+            const fullAnalysis = seoResult.data;
+            const timestamp = new Date();
+            fullAnalysis.timestamp = timestamp.toISOString();
+            fullAnalysis.live = seoResult.live;
+            fullAnalysis.aiRecommendations = aiResult.data?.recommendations || [];
+            fullAnalysis.aiLive = aiResult.live;
 
             // Save results to localStorage directly
             try {
@@ -317,13 +321,29 @@
             // Update history display
             loadHistory();
 
-            // Update last analysis timestamp
-            document.getElementById('lastAnalysis').textContent = new Date().toLocaleString();
+            // Update last analysis timestamp with detailed info
+            const timeStr = timestamp.toLocaleString('en-US', {
+                month: 'short', day: 'numeric', year: 'numeric',
+                hour: 'numeric', minute: '2-digit', hour12: true
+            });
+            const liveStatus = seoResult.live ? '🟢 LIVE' : '🟡 Cached';
+            const aiStatus = aiResult.live ? '🤖 Claude AI' : '📋 Fallback';
+            document.getElementById('lastAnalysis').innerHTML = `
+                <div class="text-lg font-bold">${timeStr}</div>
+                <div class="text-sm mt-1">${liveStatus} Data • ${aiStatus}</div>
+            `;
+
+            // Show success notification
+            const statusMsg = seoResult.live ? 'Live PageSpeed data retrieved!' : 'Using cached data (API rate limited)';
+            const aiMsg = aiResult.live ? 'Claude AI recommendations generated!' : 'Using preset recommendations';
+            console.log(`Analysis complete: ${statusMsg} ${aiMsg}`);
 
         } catch (error) {
             console.error('Analysis error:', error);
-            // Show the fallback data we already have from page load
-            alert('Live API analysis complete. Displaying current data.');
+            document.getElementById('lastAnalysis').innerHTML = `
+                <div class="text-lg font-bold text-red-400">${new Date().toLocaleString()}</div>
+                <div class="text-sm mt-1">⚠️ Error - showing cached data</div>
+            `;
         } finally {
             document.getElementById('loadingIndicator').classList.add('hidden');
             document.getElementById('scoreBreakdown').style.opacity = '1';

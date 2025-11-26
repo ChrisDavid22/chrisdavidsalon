@@ -1,7 +1,12 @@
 {
-  "version": "2.6.6",
-  "lastUpdated": "2025-11-26T06:15:00Z",
+  "version": "2.6.7",
+  "lastUpdated": "2025-11-26T06:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.7",
+      "date": "2025-11-26T06:30:00Z",
+      "changes": "Analyze with AI button now shows LIVE/Cached status + timestamp when data was refreshed"
+    },
     {
       "version": "2.6.6",
       "date": "2025-11-26T06:15:00Z",
