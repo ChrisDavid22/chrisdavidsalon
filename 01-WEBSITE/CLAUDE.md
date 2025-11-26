@@ -9,7 +9,7 @@ Chris David Salon website with **Autonomous SEO Agent** - a complete analytics a
 **Live Site**: https://chrisdavidsalon.com
 **GitHub**: https://github.com/ChrisDavid22/chrisdavidsalon.git
 **Deployment**: Vercel (auto-deploys from main branch)
-**Current Version**: 2.8.0
+**Current Version**: 2.10.4
 
 ---
 
@@ -22,6 +22,46 @@ Chris David Salon website with **Autonomous SEO Agent** - a complete analytics a
 3. **ALWAYS** fetch data from API endpoints
 4. **ALWAYS** show "--" or "Awaiting API" when data isn't available
 5. **ALWAYS** show clear data source badges (LIVE vs Not Connected)
+
+---
+
+## CRITICAL: MANDATORY PLAYWRIGHT TESTING BEFORE DEPLOYMENT
+
+**NEVER SAY "DEPLOYED SUCCESSFULLY" WITHOUT RUNNING PLAYWRIGHT TESTS.**
+
+Before claiming any deployment is successful, you MUST:
+
+1. **Run Playwright tests** that actually load each page and verify data appears
+2. **Take screenshots** and visually confirm the pages look correct
+3. **Test the FULL user flow**, not just "does the page load"
+4. **Wait for API data** - some scores take 30-60 seconds to populate
+5. **Test cache loading** - verify second visit loads instantly from cache
+
+### Required Test Commands
+```bash
+# Run from 01-WEBSITE directory
+cd 01-WEBSITE
+
+# Run all admin page tests
+npx playwright test tests/admin-pages.spec.cjs --config=playwright.config.cjs --project=chromium
+
+# Run full cache test (verifies instant loading)
+npx playwright test tests/cache-full-test.spec.cjs --config=playwright.config.cjs --project=chromium
+```
+
+### What "Working" Means
+- **SEO Command**: All 7 category scores visible (Performance, Technical, Mobile, Content, Local, UX, Authority)
+- **Total score**: Shows a number like "70/100", NOT "--/100"
+- **Second visit**: Loads cached data instantly (under 2 seconds)
+- **Radar chart**: Shows actual scores, not all zeros
+
+### Test Files Location
+```
+01-WEBSITE/tests/
+├── admin-pages.spec.cjs      # Basic page load tests
+├── cache-full-test.spec.cjs  # Full cache verification
+├── api-test.spec.cjs         # Direct API endpoint tests
+```
 
 ---
 
@@ -226,14 +266,15 @@ curl https://www.chrisdavidsalon.com/api/seo-analysis-engine?action=health-check
 
 ## Version History
 
-Current: **2.9.9** - Autonomous SEO Agent System
+Current: **2.10.4** - Instant Cache Loading
 
 Key versions:
+- 2.10.4: Fixed instant cache loading - page loads instantly on return visits
+- 2.10.3: Data integrity audit - removed hardcoded PageRank data
+- 2.10.2: Unified scoring formulas across all pages
+- 2.10.0: Added localStorage caching for instant dashboard loads
 - 2.9.9: Autonomous SEO Agent API with 10 actions
-- 2.9.8: Unified admin navigation fix
 - 2.9.7: SEO Command Center UI overhaul
 - 2.8.0: GA4 API, Analysis Engine, Weekly Reports
-- 2.7.0: Autonomous SEO Agent system, unified dashboard
-- 2.6.14: Zero hardcoded data policy
 
 Full history in `/data/version.json`
