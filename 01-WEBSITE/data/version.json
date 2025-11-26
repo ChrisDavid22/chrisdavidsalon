@@ -1,7 +1,12 @@
 {
-  "version": "2.6.11",
-  "lastUpdated": "2025-11-26T07:30:00Z",
+  "version": "2.6.12",
+  "lastUpdated": "2025-11-26T08:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.12",
+      "date": "2025-11-26T08:00:00Z",
+      "changes": "Fixed competitors page spinner stuck - destroy chart before recreating, better error handling"
+    },
     {
       "version": "2.6.11",
       "date": "2025-11-26T07:30:00Z",
