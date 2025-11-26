@@ -98,11 +98,11 @@
             </button>
         </div>
 
-        <!-- DEPLOYMENT STATUS -->
+        <!-- DEPLOYMENT STATUS WITH PAGERANK -->
         <div class="bg-green-50 border-2 border-green-200 rounded-lg p-6 mb-6">
-            <h3 class="text-2xl font-bold mb-4 text-green-800">✅ MICROSITES DEPLOYED!</h3>
+            <h3 class="text-2xl font-bold mb-4 text-green-800">✅ MICROSITES DEPLOYED + PageRank Tracking</h3>
             <p class="text-green-700 mb-4">
-                <strong>Status:</strong> All 3 microsites are now LIVE and accessible on the internet!
+                <strong>Status:</strong> All 3 microsites are LIVE. PageRank data from OpenPageRank API.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div class="bg-white p-4 rounded border-l-4 border-green-500">
@@ -111,15 +111,23 @@
                     <a href="https://bestsalondelray.com" target="_blank" class="text-blue-600 hover:underline text-sm">
                         🌐 Visit Site
                     </a>
+                    <div class="mt-2 pt-2 border-t">
+                        <span class="text-xs text-gray-500">PageRank:</span>
+                        <span id="pr-site1" class="text-lg font-bold text-purple-600">--</span>
+                    </div>
                     <p class="text-sm font-bold text-green-600 mt-1">✅ LIVE</p>
                 </div>
-                <div class="bg-white p-4 rounded border-l-4 border-green-500">
+                <div class="bg-white p-4 rounded border-l-4 border-yellow-500">
                     <h4 class="font-bold">bestdelraysalon.com</h4>
                     <p class="text-xs text-gray-600 mb-2">Local Delray Beach authority</p>
                     <a href="https://bestdelraysalon.com" target="_blank" class="text-blue-600 hover:underline text-sm">
                         🌐 Visit Site
                     </a>
-                    <p class="text-sm font-bold text-green-600 mt-1">✅ LIVE</p>
+                    <div class="mt-2 pt-2 border-t">
+                        <span class="text-xs text-gray-500">PageRank:</span>
+                        <span id="pr-site2" class="text-lg font-bold text-purple-600">--</span>
+                    </div>
+                    <p class="text-sm font-bold text-yellow-600 mt-1">⚠️ NOT INDEXED</p>
                 </div>
                 <div class="bg-white p-4 rounded border-l-4 border-green-500">
                     <h4 class="font-bold">bestsalonpalmbeach.com</h4>
@@ -127,12 +135,19 @@
                     <a href="https://bestsalonpalmbeach.com" target="_blank" class="text-blue-600 hover:underline text-sm">
                         🌐 Visit Site
                     </a>
+                    <div class="mt-2 pt-2 border-t">
+                        <span class="text-xs text-gray-500">PageRank:</span>
+                        <span id="pr-site3" class="text-lg font-bold text-purple-600">--</span>
+                    </div>
                     <p class="text-sm font-bold text-green-600 mt-1">✅ LIVE</p>
                 </div>
             </div>
-            <div class="bg-blue-50 p-4 rounded">
-                <p class="text-sm"><strong>Next Step:</strong> Sites are indexing with Google. Traffic will start appearing in 24-48 hours as search engines discover the pages.</p>
+            <div class="bg-yellow-50 p-4 rounded border border-yellow-300">
+                <p class="text-sm text-yellow-800"><strong>⚠️ Action Required:</strong> bestdelraysalon.com is NOT INDEXED by Google. Submit sitemap to Google Search Console to fix this.</p>
             </div>
+            <button onclick="loadPageRankData()" class="mt-4 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                <i class="fas fa-sync-alt mr-2"></i>Refresh PageRank Data
+            </button>
         </div>
 
         <!-- LIVE TRAFFIC TRACKING -->
@@ -448,9 +463,75 @@
         runMicrositeAnalysis();
     }
 
+    // Load PageRank data for microsites
+    async function loadPageRankData() {
+        const microsites = [
+            { domain: 'bestsalondelray.com', id: 'pr-site1' },
+            { domain: 'bestdelraysalon.com', id: 'pr-site2' },
+            { domain: 'bestsalonpalmbeach.com', id: 'pr-site3' }
+        ];
+
+        // Show loading state
+        microsites.forEach(site => {
+            const el = document.getElementById(site.id);
+            if (el) el.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        });
+
+        try {
+            // Query all microsites at once
+            const domains = microsites.map(s => s.domain).join('&domains[]=');
+            const response = await fetch(`/api/authority-score?domain=${domains}&competitors=false`);
+            const result = await response.json();
+
+            if (result.success && result.data?.all_results) {
+                result.data.all_results.forEach(item => {
+                    const site = microsites.find(s => s.domain === item.domain);
+                    if (site) {
+                        const el = document.getElementById(site.id);
+                        if (el) {
+                            if (item.pagerank_decimal) {
+                                el.textContent = `${item.pagerank_decimal.toFixed(2)} (${item.pagerank}/10)`;
+                            } else {
+                                el.innerHTML = '<span class="text-red-500">NOT INDEXED</span>';
+                            }
+                        }
+                    }
+                });
+            } else {
+                // Fall back to static data from pagerank_results.json
+                loadStaticPageRankData();
+            }
+        } catch (error) {
+            console.error('PageRank API error:', error);
+            loadStaticPageRankData();
+        }
+    }
+
+    // Load static PageRank data from stored results
+    function loadStaticPageRankData() {
+        // Based on pagerank_results.json data from Nov 26, 2025
+        const staticData = {
+            'bestsalondelray.com': { value: 1.18, rank: '1/10' },
+            'bestdelraysalon.com': { value: null, rank: 'NOT INDEXED' },
+            'bestsalonpalmbeach.com': { value: 1.18, rank: '1/10' }
+        };
+
+        Object.entries(staticData).forEach(([domain, data], index) => {
+            const el = document.getElementById(`pr-site${index + 1}`);
+            if (el) {
+                if (data.value) {
+                    el.textContent = `${data.value.toFixed(2)} (${data.rank})`;
+                } else {
+                    el.innerHTML = '<span class="text-red-500">NOT INDEXED</span>';
+                }
+            }
+        });
+    }
+
     // Auto-load data on page load
     window.addEventListener('load', () => {
         loadMicrositeData();
+        loadPageRankData();
     });
 
     // Auto-refresh every 5 minutes
