@@ -1,16 +1,76 @@
 {
-  "timestamp": "2025-11-26T18:46:58.427Z",
+  "timestamp": "2025-11-26T18:54:01.261Z",
   "baseUrl": "https://www.chrisdavidsalon.com",
   "pages": [
     {
       "name": "SEO Command Center",
       "url": "/admin/index.html",
-      "screenshot": null,
-      "tests": [],
-      "passed": false,
-      "errors": [
-        "Page load error: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.chrisdavidsalon.com/admin/index.html\", waiting until \"networkidle\"\u001b[22m\n"
+      "screenshot": "./screenshots/seo-command-center-initial.png",
+      "tests": [
+        {
+          "name": "Version Badge",
+          "passed": true,
+          "value": "v2.9.7"
+        },
+        {
+          "name": "Performance Score",
+          "passed": true,
+          "value": "45"
+        },
+        {
+          "name": "Content Score",
+          "passed": true,
+          "value": "65"
+        },
+        {
+          "name": "Technical Score",
+          "passed": true,
+          "value": "100"
+        },
+        {
+          "name": "Mobile Score",
+          "passed": true,
+          "value": "81"
+        },
+        {
+          "name": "UX Score",
+          "passed": true,
+          "value": "81"
+        },
+        {
+          "name": "Local SEO Score",
+          "passed": true,
+          "value": "76"
+        },
+        {
+          "name": "Authority Score",
+          "passed": true,
+          "value": "29"
+        },
+        {
+          "name": "GMB Rating",
+          "passed": true,
+          "value": "4.9 ★"
+        },
+        {
+          "name": "Review Count",
+          "passed": true,
+          "value": "140 reviews"
+        },
+        {
+          "name": "Button: Analyze with AI",
+          "passed": true,
+          "value": "Clicked successfully",
+          "screenshot": "./screenshots/seo-command-center-analyze-with-ai.png"
+        },
+        {
+          "name": "Button: Quick Audit",
+          "passed": true,
+          "value": "Visible"
+        }
       ],
+      "passed": true,
+      "errors": [],
       "warnings": []
     },
     {
@@ -21,7 +81,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.6"
+          "value": "v2.9.7"
         },
         {
           "name": "Competitor Table",
@@ -53,7 +113,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.6"
+          "value": "v2.9.7"
         },
         {
           "name": "PageRank Display",
@@ -78,7 +138,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.6"
+          "value": "v2.9.7"
         },
         {
           "name": "Microsite 1 (bestsalondelray)",
@@ -108,7 +168,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.6"
+          "value": "v2.9.7"
         },
         {
           "name": "GA4 Data Display",
@@ -128,7 +188,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.6"
+          "value": "v2.9.7"
         },
         {
           "name": "Keyword Rankings",
@@ -148,7 +208,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.6"
+          "value": "v2.9.7"
         },
         {
           "name": "Log Display",
@@ -163,18 +223,34 @@
   ],
   "summary": {
     "totalPages": 7,
-    "passed": 5,
-    "failed": 2,
+    "passed": 6,
+    "failed": 1,
     "warnings": 0
   },
   "consoleLogs": [
     {
       "type": "log",
-      "text": "fetchLocalSEOScore: Starting..."
+      "text": "fetchContentScore: Starting..."
     },
     {
       "type": "log",
-      "text": "fetchContentScore: Starting..."
+      "text": "fetchContentScore: Got response true true"
+    },
+    {
+      "type": "log",
+      "text": "fetchContentScore: High priority count: 2"
+    },
+    {
+      "type": "log",
+      "text": "fetchContentScore: Calculated score: 65"
+    },
+    {
+      "type": "log",
+      "text": "fetchContentScore: Stored in scoreData.content = 65"
+    },
+    {
+      "type": "log",
+      "text": "fetchLocalSEOScore: Starting..."
     },
     {
       "type": "log",
@@ -190,23 +266,15 @@
     },
     {
       "type": "log",
-      "text": "fetchLocalSEOScore: Set localScore to 76"
+      "text": "fetchLocalSEOScore: Stored in scoreData.local = 76"
     },
     {
       "type": "log",
-      "text": "fetchLocalSEOScore: Set GMB to 4.9"
-    },
-    {
-      "type": "log",
-      "text": "fetchLocalSEOScore: Set citations to 140"
-    },
-    {
-      "type": "log",
-      "text": "fetchLocalSEOScore: Updated DOM successfully"
+      "text": "fetchAuthorityScore: Set authority to 29"
     },
     {
       "type": "error",
-      "text": "Content score error: TypeError: Failed to fetch\n    at fetchContentScore (https://www.chrisdavidsalon.com/admin/index.html:726:36)\n    at https://www.chrisdavidsalon.com/admin/index.html:863:13"
+      "text": "Analysis error: TypeError: Failed to fetch\n    at analyzeMySite (https://www.chrisdavidsalon.com/admin/index.html:314:17)\n    at HTMLButtonElement.onclick (https://www.chrisdavidsalon.com/admin/index.html:63:156)"
     }
   ]
 }

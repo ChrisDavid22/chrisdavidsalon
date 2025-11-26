@@ -1,7 +1,12 @@
 {
-  "version": "2.10.1",
-  "lastUpdated": "2025-11-27T03:30:00Z",
+  "version": "2.10.2",
+  "lastUpdated": "2025-11-27T04:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.10.2",
+      "date": "2025-11-27T04:00:00Z",
+      "changes": "(1) UNIFIED SCORING: Local SEO score formula now IDENTICAL across SEO Command and Competitors pages. Formula: (rating*10) + min(log10(reviews)*15, 40) + 10. Chris David now shows consistent 91/100 on both pages. (2) MICROSITES PAGE OVERHAUL: Redesigned to show PageRank (working data) as primary focus. Clear action items for fixing unindexed site. GA4 traffic section shows exactly what data becomes available once connected - no more walls of dashes."
+    },
     {
       "version": "2.10.1",
       "date": "2025-11-27T03:30:00Z",

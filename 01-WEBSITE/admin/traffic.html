@@ -92,10 +92,22 @@
             </div>
             <!-- Month over Month Comparison (hidden by default) -->
             <div id="monthlyComparisonWrapper" class="hidden">
-                <div id="monthlyComparisonChart" style="height: 250px;">
-                    <canvas id="monthCompareChart"></canvas>
+                <!-- Two separate charts side by side -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold text-indigo-800 mb-2">Users by Month</h3>
+                        <div style="height: 200px;">
+                            <canvas id="monthUsersChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold text-green-800 mb-2">Sessions by Month</h3>
+                        <div style="height: 200px;">
+                            <canvas id="monthSessionsChart"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <div id="monthlyStats" class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div id="monthlyStats" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                     <div class="bg-gray-50 p-3 rounded-lg">
                         <div class="text-sm text-gray-500">This Month</div>
                         <div class="text-2xl font-bold text-indigo-600" id="thisMonthUsers">--</div>
@@ -248,7 +260,8 @@
     </main>
 
     <script>
-        let trafficOverTimeChart, trafficSourcesChart, deviceChart, monthCompareChart;
+        let trafficOverTimeChart, trafficSourcesChart, deviceChart;
+        let monthUsersChart, monthSessionsChart;
         let currentView = 'daily';
         let dailyTrafficData = [];
         let monthlyComparisonData = null;
@@ -335,43 +348,51 @@
         }
 
         function displayMonthlyComparison(data) {
-            const canvas = document.getElementById('monthCompareChart');
+            // Destroy existing charts if any
+            if (monthUsersChart) monthUsersChart.destroy();
+            if (monthSessionsChart) monthSessionsChart.destroy();
 
-            // Destroy existing chart if any
-            if (monthCompareChart) {
-                monthCompareChart.destroy();
-            }
-
-            monthCompareChart = new Chart(canvas.getContext('2d'), {
+            // Users Chart (left side - indigo/blue)
+            const usersCanvas = document.getElementById('monthUsersChart');
+            monthUsersChart = new Chart(usersCanvas.getContext('2d'), {
                 type: 'bar',
                 data: {
                     labels: data.months,
-                    datasets: [
-                        {
-                            label: 'Users',
-                            data: data.users,
-                            backgroundColor: 'rgba(79, 70, 229, 0.8)',
-                            borderColor: 'rgba(79, 70, 229, 1)',
-                            borderWidth: 2
-                        },
-                        {
-                            label: 'Sessions',
-                            data: data.sessions,
-                            backgroundColor: 'rgba(16, 185, 129, 0.8)',
-                            borderColor: 'rgba(16, 185, 129, 1)',
-                            borderWidth: 2
-                        }
-                    ]
+                    datasets: [{
+                        label: 'Users',
+                        data: data.users,
+                        backgroundColor: ['rgba(79, 70, 229, 0.5)', 'rgba(79, 70, 229, 0.7)', 'rgba(79, 70, 229, 1)'],
+                        borderColor: 'rgba(79, 70, 229, 1)',
+                        borderWidth: 2
+                    }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'top' }
-                    },
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+
+            // Sessions Chart (right side - green)
+            const sessionsCanvas = document.getElementById('monthSessionsChart');
+            monthSessionsChart = new Chart(sessionsCanvas.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: data.months,
+                    datasets: [{
+                        label: 'Sessions',
+                        data: data.sessions,
+                        backgroundColor: ['rgba(16, 185, 129, 0.5)', 'rgba(16, 185, 129, 0.7)', 'rgba(16, 185, 129, 1)'],
+                        borderColor: 'rgba(16, 185, 129, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
                 }
             });
 

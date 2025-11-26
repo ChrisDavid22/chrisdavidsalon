@@ -325,38 +325,43 @@
 
     // Display scores from cached data
     function displayCachedScores(data) {
-        const { scoreData: scores } = data;
-        if (!scores) return;
+        const scores = data?.scoreData;
 
-        // Update all score displays
-        document.getElementById('performanceScore').textContent = scores.performance || '--';
-        document.getElementById('pageSpeed').textContent = scores.performance ? scores.performance + '%' : '--';
-        document.getElementById('technicalScore').textContent = scores.technical || '--';
-        document.getElementById('mobileScore').textContent = scores.mobile || '--';
-        document.getElementById('contentScore').textContent = scores.content || '--';
-        document.getElementById('localScore').textContent = scores.local || '--';
-        document.getElementById('uxScore').textContent = scores.ux || '--';
-        document.getElementById('authorityScore').textContent = scores.authority || '--';
+        // If we have cached scores, update global scoreData and display them
+        if (scores && typeof scores === 'object') {
+            // Update global scoreData from cache
+            Object.assign(scoreData, scores);
 
-        // Update sub-metrics from cached details
-        if (data.details) {
-            document.getElementById('metaTags').textContent = scores.technical > 70 ? 'Optimized' : 'Needs Work';
-            document.getElementById('schema').textContent = scores.technical > 70 ? 'Present' : 'Missing';
-            document.getElementById('responsive').textContent = scores.mobile > 70 ? 'Yes' : 'Partial';
-            document.getElementById('mobileUsability').textContent = scores.mobile > 70 ? 'Good' : 'Issues';
-            document.getElementById('keywordUsage').textContent = scores.content > 70 ? 'Good' : 'Needs Work';
-            document.getElementById('contentQuality').textContent = scores.content > 70 ? 'High' : 'Medium';
-            document.getElementById('navigation').textContent = scores.ux > 70 ? 'Clear' : 'Confusing';
-            document.getElementById('design').textContent = scores.ux > 70 ? 'Modern' : 'Dated';
+            // Update all score displays
+            document.getElementById('performanceScore').textContent = scores.performance || '--';
+            document.getElementById('pageSpeed').textContent = scores.performance ? scores.performance + '%' : '--';
+            document.getElementById('technicalScore').textContent = scores.technical || '--';
+            document.getElementById('mobileScore').textContent = scores.mobile || '--';
+            document.getElementById('contentScore').textContent = scores.content || '--';
+            document.getElementById('localScore').textContent = scores.local || '--';
+            document.getElementById('uxScore').textContent = scores.ux || '--';
+            document.getElementById('authorityScore').textContent = scores.authority || '--';
 
-            if (data.details.gmb) document.getElementById('gmb').textContent = data.details.gmb;
-            if (data.details.citations) document.getElementById('citations').textContent = data.details.citations;
-            if (data.details.backlinks) document.getElementById('backlinks').textContent = data.details.backlinks;
-            if (data.details.trust) document.getElementById('trust').textContent = data.details.trust;
-            if (data.details.loadTime) document.getElementById('loadTime').textContent = data.details.loadTime;
+            // Update sub-metrics from cached details
+            if (data.details) {
+                document.getElementById('metaTags').textContent = scores.technical > 70 ? 'Optimized' : 'Needs Work';
+                document.getElementById('schema').textContent = scores.technical > 70 ? 'Present' : 'Missing';
+                document.getElementById('responsive').textContent = scores.mobile > 70 ? 'Yes' : 'Partial';
+                document.getElementById('mobileUsability').textContent = scores.mobile > 70 ? 'Good' : 'Issues';
+                document.getElementById('keywordUsage').textContent = scores.content > 70 ? 'Good' : 'Needs Work';
+                document.getElementById('contentQuality').textContent = scores.content > 70 ? 'High' : 'Medium';
+                document.getElementById('navigation').textContent = scores.ux > 70 ? 'Clear' : 'Confusing';
+                document.getElementById('design').textContent = scores.ux > 70 ? 'Modern' : 'Dated';
+
+                if (data.details.gmb) document.getElementById('gmb').textContent = data.details.gmb;
+                if (data.details.citations) document.getElementById('citations').textContent = data.details.citations;
+                if (data.details.backlinks) document.getElementById('backlinks').textContent = data.details.backlinks;
+                if (data.details.trust) document.getElementById('trust').textContent = data.details.trust;
+                if (data.details.loadTime) document.getElementById('loadTime').textContent = data.details.loadTime;
+            }
         }
 
-        // Calculate and display total score
+        // ALWAYS calculate and display total score (uses global scoreData)
         recalculateTotalScore();
     }
 
@@ -787,10 +792,15 @@
 
                 if (chrisDavid) {
                     // Calculate Local SEO score based on rating and reviews
-                    // Formula: (rating * 10) + min(reviews/20, 30) + presence bonus
-                    const ratingScore = (chrisDavid.rating || 0) * 10; // 0-50 points
-                    const reviewScore = Math.min((chrisDavid.reviews || 0) / 20, 30); // 0-30 points
-                    const presenceBonus = 20; // Always give presence bonus - they're on Google Places
+                    // UNIFIED FORMULA (same as competitors.html):
+                    // Rating: (rating * 10) = 0-50 points
+                    // Reviews: min(log10(reviews) * 15, 40) = 0-40 points (logarithmic scale)
+                    // Presence: 10 points for Google Places listing
+                    const rating = chrisDavid.rating || 0;
+                    const reviews = chrisDavid.reviews || 0;
+                    const ratingScore = rating * 10;
+                    const reviewScore = reviews > 0 ? Math.min(Math.log10(reviews) * 15, 40) : 0;
+                    const presenceBonus = 10; // Presence bonus for having Google Places listing
                     const localScore = Math.round(ratingScore + reviewScore + presenceBonus);
                     console.log('fetchLocalSEOScore: Score calculation:', { ratingScore, reviewScore, presenceBonus, localScore });
 
@@ -813,8 +823,9 @@
                     return localScore;
                 } else {
                     // Chris David not found - use known values (4.9 rating, 140 reviews)
+                    // UNIFIED FORMULA: (4.9 * 10) + min(log10(140) * 15, 40) + 10 = 49 + 32.2 + 10 = 91
                     console.log('fetchLocalSEOScore: Chris David not found, using known values');
-                    const localScore = Math.round(4.9 * 10 + Math.min(140 / 20, 30) + 20); // = 76
+                    const localScore = Math.round(4.9 * 10 + Math.min(Math.log10(140) * 15, 40) + 10); // = 91
                     scoreData.local = localScore;
 
                     document.getElementById('localScore').textContent = localScore;
@@ -826,7 +837,8 @@
             } else {
                 console.log('fetchLocalSEOScore: No competitors in response, using known values');
                 // Use known values as fallback
-                const localScore = 76; // (4.9 * 10) + 7 + 20
+                // UNIFIED FORMULA: (4.9 * 10) + min(log10(140) * 15, 40) + 10 = 91
+                const localScore = 91;
                 scoreData.local = localScore;
 
                 document.getElementById('localScore').textContent = localScore;
@@ -837,8 +849,8 @@
             }
         } catch (error) {
             console.error('Local SEO score error:', error);
-            // On error, still set known values
-            const localScore = 76;
+            // On error, still set known values using UNIFIED FORMULA
+            const localScore = 91;
             scoreData.local = localScore;
             document.getElementById('localScore').textContent = localScore;
             document.getElementById('gmb').textContent = '4.9 ★';
