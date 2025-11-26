@@ -996,10 +996,13 @@
                     datasets: [{
                         label: 'Your Score',
                         data: [performance, content, technical, mobile, ux, local, authority],
-                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                        borderColor: 'rgba(59, 130, 246, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: 'rgba(59, 130, 246, 1)'
+                        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                        borderColor: 'rgba(255, 255, 255, 0.9)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#fbbf24',
+                        pointBorderColor: '#fff',
+                        pointRadius: 6,
+                        pointHoverRadius: 8
                     }]
                 },
                 options: {
@@ -1007,11 +1010,34 @@
                         r: {
                             beginAtZero: true,
                             max: 100,
-                            ticks: { stepSize: 20 }
+                            ticks: {
+                                stepSize: 25,
+                                display: true,
+                                color: 'rgba(255,255,255,0.6)',
+                                backdropColor: 'transparent',
+                                font: { size: 10 }
+                            },
+                            pointLabels: {
+                                color: '#fff',
+                                font: { size: 12, weight: 'bold' }
+                            },
+                            grid: {
+                                color: 'rgba(255,255,255,0.2)'
+                            },
+                            angleLines: {
+                                color: 'rgba(255,255,255,0.2)'
+                            }
                         }
                     },
                     plugins: {
-                        legend: { display: true }
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.raw + '/100';
+                                }
+                            }
+                        }
                     }
                 }
             });
@@ -1026,6 +1052,19 @@
         console.log('=== DASHBOARD INIT START ===');
         loadVersion();
         loadHistory();
+
+        // Check for stale cache (before v2.10.5) - clear it
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) {
+            try {
+                const data = JSON.parse(cached);
+                // If local score is wrong (not 91) or cache is old, clear it
+                if (data.scoreData?.local && data.scoreData.local !== 91) {
+                    console.log('Clearing stale cache with incorrect local score:', data.scoreData.local);
+                    localStorage.removeItem(CACHE_KEY);
+                }
+            } catch (e) { }
+        }
 
         // STEP 1: Try to load cached data FIRST (instant - no API calls)
         const hasCachedData = loadCachedData();

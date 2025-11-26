@@ -1,7 +1,12 @@
 {
-  "version": "2.10.4",
-  "lastUpdated": "2025-11-27T05:00:00Z",
+  "version": "2.10.5",
+  "lastUpdated": "2025-11-27T06:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.10.5",
+      "date": "2025-11-27T06:30:00Z",
+      "changes": "(1) RADAR CHART: Improved readability - white labels on purple background, yellow data points, clearer grid lines. (2) TRAFFIC PAGE: Default view now Month-vs-Month instead of Daily. (3) STALE CACHE FIX: Auto-clears old cached data that has incorrect Local SEO score (should be 91). (4) NOTE: 73 is OVERALL score (weighted avg of 7 categories), 91 is LOCAL SEO score - these are intentionally different."
+    },
     {
       "version": "2.10.4",
       "date": "2025-11-27T05:00:00Z",

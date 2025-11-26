@@ -73,10 +73,10 @@
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-lg font-bold">Traffic Over Time</h2>
                 <div class="flex gap-2">
-                    <button id="viewDaily" onclick="setTrafficView('daily')" class="px-3 py-1 rounded text-sm font-semibold bg-indigo-600 text-white">
+                    <button id="viewDaily" onclick="setTrafficView('daily')" class="px-3 py-1 rounded text-sm font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300">
                         Daily
                     </button>
-                    <button id="viewMonthly" onclick="setTrafficView('monthly')" class="px-3 py-1 rounded text-sm font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300">
+                    <button id="viewMonthly" onclick="setTrafficView('monthly')" class="px-3 py-1 rounded text-sm font-semibold bg-indigo-600 text-white">
                         Month vs Month
                     </button>
                 </div>
@@ -262,7 +262,7 @@
     <script>
         let trafficOverTimeChart, trafficSourcesChart, deviceChart;
         let monthUsersChart, monthSessionsChart;
-        let currentView = 'daily';
+        let currentView = 'monthly'; // Default to monthly view
         let dailyTrafficData = [];
         let monthlyComparisonData = null;
 
