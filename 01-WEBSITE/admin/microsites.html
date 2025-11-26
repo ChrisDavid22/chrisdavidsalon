@@ -50,38 +50,51 @@
 
     <div class="max-w-7xl mx-auto p-6">
         
+        <!-- Data Source Banner -->
+        <div id="dataSourceBanner" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+            <div class="flex items-start">
+                <i class="fas fa-exclamation-triangle text-yellow-500 mr-3 mt-1"></i>
+                <div>
+                    <span class="font-semibold text-yellow-800">GA4 API Not Connected</span>
+                    <p id="dataSourceMessage" class="text-yellow-700 text-sm mt-1">
+                        Waiting for GA4 Property ID and Service Account credentials. Microsite traffic data requires API connection.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- Microsite ROI Overview -->
         <div class="bg-gradient-to-r from-green-600 to-purple-600 text-white rounded-lg shadow-xl p-6 mb-6">
-            <h2 class="text-3xl font-bold mb-4">🌐 Microsite Investment Analysis</h2>
+            <h2 class="text-3xl font-bold mb-4">Microsite Investment Analysis</h2>
             <p class="text-green-100 mb-6">
-                Each microsite costs $30/month. See which ones are making money and which keywords deserve new sites.
+                Track traffic from your 3 microsites: bestsalondelray.com, bestdelraysalon.com, bestsalonpalmbeach.com
             </p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
                     <h3 class="font-bold text-lg">Active Sites</h3>
                     <div class="text-3xl font-bold">3</div>
-                    <p class="text-sm">$90/month cost</p>
+                    <p class="text-sm">Live on Vercel</p>
                 </div>
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Total Traffic</h3>
-                    <div class="text-3xl font-bold">127</div>
-                    <p class="text-sm">visitors/month</p>
+                    <h3 class="font-bold text-lg">Total Referrals</h3>
+                    <div class="text-3xl font-bold" id="totalReferrals">--</div>
+                    <p class="text-sm">sessions/30 days</p>
                 </div>
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Revenue Generated</h3>
-                    <div class="text-3xl font-bold text-green-300">$508</div>
-                    <p class="text-sm">per month (est.)</p>
+                    <h3 class="font-bold text-lg">Users Sent</h3>
+                    <div class="text-3xl font-bold" id="totalUsers">--</div>
+                    <p class="text-sm">unique visitors</p>
                 </div>
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">ROI</h3>
-                    <div class="text-3xl font-bold text-green-300">464%</div>
-                    <p class="text-sm">return on investment</p>
+                    <h3 class="font-bold text-lg">Status</h3>
+                    <div class="text-2xl font-bold" id="overallStatus">Awaiting API</div>
+                    <p class="text-sm">connection status</p>
                 </div>
             </div>
-            
-            <button onclick="analyzeMicrosites()" class="mt-6 bg-white text-purple-600 px-8 py-4 rounded-lg hover:bg-purple-50 font-bold text-lg">
-                <i class="fas fa-chart-line mr-2"></i>Analyze All Microsites & Find New Opportunities
+
+            <button onclick="runMicrositeAnalysis()" class="mt-6 bg-white text-purple-600 px-8 py-4 rounded-lg hover:bg-purple-50 font-bold text-lg">
+                <i class="fas fa-sync-alt mr-2"></i>Refresh Microsite Data
             </button>
         </div>
 
@@ -615,171 +628,161 @@
     </div>
 
     <script>
-    // Initialize AI Config
-    window.AIConfig.loadApiKeys();
-
-    // Analyze all microsites
-    async function analyzeMicrosites() {
-        document.getElementById('opportunitiesLoading').classList.remove('hidden');
-        
+    // Load microsite traffic data from GA4 API
+    async function loadMicrositeData() {
+        // Load version first
         try {
-            // This would call the AI API with the microsite analysis prompt
-            alert('Analyzing microsite opportunities...\n\n' +
-                  'This will:\n' +
-                  '1. Check current microsite rankings\n' +
-                  '2. Calculate ROI for each site\n' +
-                  '3. Find new keyword opportunities\n' +
-                  '4. Prioritize by profit potential\n\n' +
-                  'Analysis complete! See results below.');
-            
-        } catch (error) {
-            console.error('Microsite analysis error:', error);
-        } finally {
-            document.getElementById('opportunitiesLoading').classList.add('hidden');
+            const versionResp = await fetch('/data/version.json');
+            const versionData = await versionResp.json();
+            document.getElementById('versionBadge').textContent = 'v' + versionData.version;
+        } catch (e) {
+            document.getElementById('versionBadge').textContent = 'v?.?.?';
         }
-    }
 
-    // Optimize existing microsite
-    function optimizeMicrosite(site) {
-        const optimizations = {
-            balayage: 'Add 3 more pages of balayage content, get 5 local backlinks, improve page speed',
-            colorist: 'Create before/after gallery, add testimonials, optimize for "color correction"',
-            atlantic: 'Already performing well - maintain current strategy, add seasonal content'
-        };
-        
-        alert(`Optimization plan for ${site}:\n\n${optimizations[site]}\n\nAdding to SEO TODO list.`);
-    }
+        document.getElementById('lastUpdate').textContent = 'Updated: ' + new Date().toLocaleTimeString();
 
-    // Create new microsite
-    function createMicrosite(type) {
-        const plans = {
-            extensions: 'Domain: delraybeachextensions.com\nContent: 5 pages on extension types\nTimeline: 30 days to launch',
-            keratin: 'Domain: delraykeratin.com\nContent: Process, benefits, gallery\nTimeline: 25 days to launch',
-            pineapple: 'Domain: pineapplegrovehair.com\nContent: Location-focused\nTimeline: 20 days to launch'
-        };
-        
-        alert(`Creating new microsite:\n\n${plans[type]}\n\nExpected profit: $200-400/month\nBreak-even: Month 2\n\nAdding to SEO TODO list.`);
-    }
+        // Show loading state
+        const loadingElements = ['site1-today', 'site2-today', 'site3-today', 'site1-week', 'site2-week', 'site3-week'];
+        loadingElements.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        });
 
-    // Load microsite traffic data from Google Analytics
-    async function loadMicrositeTraffic() {
         try {
-            // Show loading state
-            const loadingElements = ['site1-today', 'site2-today', 'site3-today'];
-            loadingElements.forEach(id => {
-                document.getElementById(id).innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-            });
+            // Call the GA4 microsite referrals API
+            const response = await fetch('/api/ga4-analytics?type=microsite-referrals&startDate=30daysAgo&endDate=today');
+            const result = await response.json();
 
-            // Simulate GA API call (replace with real API when ready)
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            // REAL microsites - ALL 3 ARE DEPLOYED AND LIVE
-            // Traffic data requires GA4 Property ID to pull real numbers
-            // All use same GA tracking: G-XQDLWZM5NV
-            const trafficData = {
-                'bestsalondelray.com': {
-                    today: '--',
-                    week: '--',
-                    mobile: '--',
-                    desktop: '--',
-                    status: 'LIVE - Awaiting GA4 API'
-                },
-                'bestdelraysalon.com': {
-                    today: '--',
-                    week: '--',
-                    mobile: '--',
-                    desktop: '--',
-                    status: 'LIVE - Awaiting GA4 API'
-                },
-                'bestsalonpalmbeach.com': {
-                    today: '--',
-                    week: '--',
-                    mobile: '--',
-                    desktop: '--',
-                    status: 'LIVE - Awaiting GA4 API'
-                }
-            };
-
-            // Update site 1 data (bestsalondelray.com)
-            document.getElementById('site1-today').textContent = trafficData['bestsalondelray.com'].today;
-            document.getElementById('site1-week').textContent = trafficData['bestsalondelray.com'].week;
-            document.getElementById('site1-mobile').textContent = trafficData['bestsalondelray.com'].mobile;
-            document.getElementById('site1-desktop').textContent = trafficData['bestsalondelray.com'].desktop;
-
-            // Update site 2 data (bestdelraysalon.com)
-            document.getElementById('site2-today').textContent = trafficData['bestdelraysalon.com'].today;
-            document.getElementById('site2-week').textContent = trafficData['bestdelraysalon.com'].week;
-            document.getElementById('site2-mobile').textContent = trafficData['bestdelraysalon.com'].mobile;
-            document.getElementById('site2-desktop').textContent = trafficData['bestdelraysalon.com'].desktop;
-
-            // Update site 3 data (bestsalonpalmbeach.com)
-            document.getElementById('site3-today').textContent = trafficData['bestsalonpalmbeach.com'].today;
-            document.getElementById('site3-week').textContent = trafficData['bestsalonpalmbeach.com'].week;
-            document.getElementById('site3-mobile').textContent = trafficData['bestsalonpalmbeach.com'].mobile;
-            document.getElementById('site3-desktop').textContent = trafficData['bestsalonpalmbeach.com'].desktop;
-
-            // Update totals - awaiting GA4 API connection for real data
-            document.getElementById('total-visitors').textContent = '--';
-            document.getElementById('total-mobile').textContent = '--';
-            document.getElementById('conversion-rate').textContent = '--';
-
-            // Show last updated time
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', {
-                hour: 'numeric',
-                minute: '2-digit',
-                hour12: true
-            });
-            
-            // Find or create last updated indicator
-            let lastUpdated = document.getElementById('last-updated');
-            if (!lastUpdated) {
-                lastUpdated = document.createElement('p');
-                lastUpdated.id = 'last-updated';
-                lastUpdated.className = 'text-xs text-gray-500 mt-2 text-center';
-                document.querySelector('.bg-gradient-to-r.from-green-100.to-blue-100').appendChild(lastUpdated);
+            if (result.success) {
+                // GA4 IS CONNECTED - Show real data
+                showConnectedState();
+                updateMicrositeData(result);
+            } else {
+                // GA4 NOT CONNECTED - Show instructions
+                showDisconnectedState(result.message || result.error);
+                clearMicrositeData();
             }
-            lastUpdated.textContent = `Last updated: ${timeString}`;
-
         } catch (error) {
-            console.error('Failed to load traffic data:', error);
-            
-            // Show error state
-            const errorElements = ['site1-today', 'site2-today', 'site3-today'];
-            errorElements.forEach(id => {
-                document.getElementById(id).textContent = 'Error';
-            });
+            console.error('GA4 API Error:', error);
+            showDisconnectedState('Could not connect to analytics API: ' + error.message);
+            clearMicrositeData();
         }
+    }
+
+    function showConnectedState() {
+        const banner = document.getElementById('dataSourceBanner');
+        banner.className = 'bg-green-50 border border-green-200 rounded-lg p-4 mb-6';
+        banner.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                <div>
+                    <span class="font-semibold text-green-800">LIVE DATA from Google Analytics 4</span>
+                    <p class="text-green-700 text-sm">Real-time microsite referral data from GA4 API.</p>
+                </div>
+            </div>
+        `;
+        document.getElementById('overallStatus').textContent = 'LIVE';
+        document.getElementById('overallStatus').className = 'text-2xl font-bold text-green-300';
+    }
+
+    function showDisconnectedState(message) {
+        const banner = document.getElementById('dataSourceBanner');
+        banner.className = 'bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6';
+        banner.innerHTML = `
+            <div class="flex items-start">
+                <i class="fas fa-exclamation-triangle text-yellow-500 mr-3 mt-1"></i>
+                <div>
+                    <span class="font-semibold text-yellow-800">GA4 API Not Connected</span>
+                    <p class="text-yellow-700 text-sm mt-1">${message}</p>
+                    <p class="text-yellow-600 text-xs mt-2">Need: GA4_PROPERTY_ID and GOOGLE_SERVICE_ACCOUNT_JSON in Vercel env vars</p>
+                </div>
+            </div>
+        `;
+        document.getElementById('overallStatus').textContent = 'Awaiting API';
+        document.getElementById('overallStatus').className = 'text-2xl font-bold';
+    }
+
+    function updateMicrositeData(result) {
+        const sites = ['bestsalondelray.com', 'bestdelraysalon.com', 'bestsalonpalmbeach.com'];
+        const siteIds = ['site1', 'site2', 'site3'];
+
+        sites.forEach((site, index) => {
+            const data = result.microsites[site] || { totalSessions: 0, totalUsers: 0 };
+            const prefix = siteIds[index];
+
+            // Today's data (we don't have daily breakdown, show week)
+            document.getElementById(`${prefix}-today`).textContent = data.totalSessions > 0 ? Math.round(data.totalSessions / 30) : '0';
+            document.getElementById(`${prefix}-week`).textContent = data.totalSessions > 0 ? Math.round(data.totalSessions / 4) : '0';
+            document.getElementById(`${prefix}-mobile`).textContent = '--'; // Would need separate device query
+            document.getElementById(`${prefix}-desktop`).textContent = '--';
+        });
+
+        // Update totals
+        document.getElementById('totalReferrals').textContent = result.totalFromMicrosites?.sessions || 0;
+        document.getElementById('totalUsers').textContent = result.totalFromMicrosites?.users || 0;
+        document.getElementById('total-visitors').textContent = result.totalFromMicrosites?.sessions || 0;
+        document.getElementById('total-mobile').textContent = '--';
+        document.getElementById('conversion-rate').textContent = '--';
+    }
+
+    function clearMicrositeData() {
+        const elements = ['site1-today', 'site2-today', 'site3-today', 'site1-week', 'site2-week', 'site3-week'];
+        elements.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = '--';
+        });
+        document.getElementById('totalReferrals').textContent = '--';
+        document.getElementById('totalUsers').textContent = '--';
+        document.getElementById('total-visitors').textContent = '--';
+        document.getElementById('total-mobile').textContent = '--';
+        document.getElementById('conversion-rate').textContent = '--';
+    }
+
+    // Run microsite analysis using the analysis engine
+    async function runMicrositeAnalysis() {
+        try {
+            const response = await fetch('/api/seo-analysis-engine?action=microsite-impact');
+            const result = await response.json();
+
+            if (result.success) {
+                alert(`Microsite Analysis Complete!\n\n` +
+                    `Total Sessions: ${result.summary?.totalSessions || 0}\n` +
+                    `Total Users: ${result.summary?.totalUsers || 0}\n\n` +
+                    `Recommendations:\n${result.recommendations?.map(r => '- ' + r.action).join('\n') || 'Connect GA4 for recommendations'}`);
+            } else {
+                alert(`Analysis Status: ${result.error || 'Awaiting GA4 connection'}\n\n` +
+                    `To enable full analysis, add GA4 credentials to Vercel.`);
+            }
+        } catch (error) {
+            alert('Could not run analysis: ' + error.message);
+        }
+
+        // Reload data
+        loadMicrositeData();
     }
 
     // Export traffic data as CSV
     function exportTrafficData() {
         const data = [
-            ['Microsite', 'Today', 'This Week', 'Mobile %', 'Desktop %', 'Total Backlinks'],
-            ['best-salon-site', 
-             document.getElementById('site1-today').textContent,
+            ['Microsite', 'Sessions (30d)', 'Users (30d)', 'Status'],
+            ['bestsalondelray.com',
              document.getElementById('site1-week').textContent,
-             document.getElementById('site1-mobile').textContent,
-             document.getElementById('site1-desktop').textContent,
-             '~70'],
-            ['best-delray-salon',
-             document.getElementById('site2-today').textContent,
+             '--',
+             'Live'],
+            ['bestdelraysalon.com',
              document.getElementById('site2-week').textContent,
-             document.getElementById('site2-mobile').textContent,
-             document.getElementById('site2-desktop').textContent,
-             '~80'],
-            ['best-salon-palmbeach',
-             document.getElementById('site3-today').textContent,
+             '--',
+             'Live'],
+            ['bestsalonpalmbeach.com',
              document.getElementById('site3-week').textContent,
-             document.getElementById('site3-mobile').textContent,
-             document.getElementById('site3-desktop').textContent,
-             '~70']
+             '--',
+             'Live']
         ];
 
-        const csvContent = data.map(row => row.join(',')).join('\\n');
+        const csvContent = data.map(row => row.join(',')).join('\n');
         const blob = new Blob([csvContent], { type: 'text/csv' });
         const url = window.URL.createObjectURL(blob);
-        
+
         const a = document.createElement('a');
         a.href = url;
         a.download = `microsite-traffic-${new Date().toISOString().split('T')[0]}.csv`;
@@ -787,31 +790,28 @@
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
-        
-        alert('Traffic data exported to CSV file!');
     }
 
-    // Load version
-    async function loadVersion() {
-        try {
-            const response = await fetch('/data/version.json');
-            const data = await response.json();
-            const versionBadge = document.getElementById('versionBadge');
-            if (versionBadge && data.version) {
-                versionBadge.textContent = `v${data.version}`;
-            }
-        } catch (e) {
-            const versionBadge = document.getElementById('versionBadge');
-            if (versionBadge) versionBadge.textContent = 'v?.?.?';
-        }
+    // Legacy functions for old buttons (simplified)
+    function optimizeMicrosite(site) {
+        alert(`To optimize ${site}, connect GA4 API first to see real performance data.`);
     }
 
-    // Auto-load traffic data when page loads
+    function createMicrosite(type) {
+        alert(`New microsite creation requires analysis of current performance. Connect GA4 API first.`);
+    }
+
+    function analyzeMicrosites() {
+        runMicrositeAnalysis();
+    }
+
+    // Auto-load data on page load
     window.addEventListener('load', () => {
-        loadVersion();
-        // Load traffic data on page load
-        setTimeout(loadMicrositeTraffic, 1000);
+        loadMicrositeData();
     });
+
+    // Auto-refresh every 5 minutes
+    setInterval(loadMicrositeData, 300000);
     </script>
 </body>
 </html>
