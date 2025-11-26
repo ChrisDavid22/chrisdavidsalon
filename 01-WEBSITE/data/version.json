@@ -1,7 +1,12 @@
 {
-  "version": "2.8.2",
-  "lastUpdated": "2025-11-26T16:15:00Z",
+  "version": "2.8.3",
+  "lastUpdated": "2025-11-26T16:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.8.3",
+      "date": "2025-11-26T16:30:00Z",
+      "changes": "Competitors chart now shows all 10 competitors with score labels on top of each bar. Added chartjs-plugin-datalabels for better readability. X-axis labels rotated 45 degrees to fit all names."
+    },
     {
       "version": "2.8.2",
       "date": "2025-11-26T16:15:00Z",
