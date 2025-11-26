@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-26T18:33:06.865Z",
+  "timestamp": "2025-11-26T18:43:01.506Z",
   "baseUrl": "https://www.chrisdavidsalon.com",
   "pages": [
     {
@@ -10,12 +10,12 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.2"
+          "value": "v2.9.5"
         },
         {
           "name": "Performance Score",
           "passed": true,
-          "value": "42"
+          "value": "50"
         },
         {
           "name": "Content Score",
@@ -39,8 +39,8 @@
         },
         {
           "name": "Local SEO Score",
-          "passed": true,
-          "value": "76"
+          "passed": false,
+          "value": "--"
         },
         {
           "name": "Authority Score",
@@ -49,13 +49,13 @@
         },
         {
           "name": "GMB Rating",
-          "passed": true,
-          "value": "4.9 ★"
+          "passed": false,
+          "value": "--"
         },
         {
           "name": "Review Count",
-          "passed": true,
-          "value": "140 reviews"
+          "passed": false,
+          "value": "--"
         },
         {
           "name": "Button: Analyze with AI",
@@ -69,8 +69,12 @@
           "value": "Visible"
         }
       ],
-      "passed": true,
-      "errors": [],
+      "passed": false,
+      "errors": [
+        "Local SEO Score: --",
+        "GMB Rating: --",
+        "Review Count: --"
+      ],
       "warnings": []
     },
     {
@@ -81,7 +85,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.2"
+          "value": "v2.9.5"
         },
         {
           "name": "Competitor Table",
@@ -113,7 +117,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.2"
+          "value": "v2.9.5"
         },
         {
           "name": "PageRank Display",
@@ -138,7 +142,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.2"
+          "value": "v2.9.5"
         },
         {
           "name": "Microsite 1 (bestsalondelray)",
@@ -168,7 +172,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.2"
+          "value": "v2.9.5"
         },
         {
           "name": "GA4 Data Display",
@@ -188,7 +192,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.2"
+          "value": "v2.9.5"
         },
         {
           "name": "Keyword Rankings",
@@ -208,7 +212,7 @@
         {
           "name": "Version Badge",
           "passed": true,
-          "value": "v2.9.2"
+          "value": "v2.9.5"
         },
         {
           "name": "Log Display",
@@ -223,8 +227,8 @@
   ],
   "summary": {
     "totalPages": 7,
-    "passed": 6,
-    "failed": 1,
+    "passed": 5,
+    "failed": 2,
     "warnings": 0
   },
   "consoleLogs": [
@@ -242,15 +246,7 @@
     },
     {
       "type": "log",
-      "text": "fetchLocalSEOScore: Found Chris David: {name: Chris David Salon, rating: 4.9, reviews: 140, address: 1878C Dr. Andres Way, Delray Beach, FL 33445, United States, placeId: ChIJxTZ8Id3f2IgR2XMxX_zRKSg}"
-    },
-    {
-      "type": "log",
-      "text": "fetchLocalSEOScore: Calculated score: 76"
-    },
-    {
-      "type": "log",
-      "text": "fetchLocalSEOScore: Updated DOM successfully"
+      "text": "fetchLocalSEOScore: Found Chris David: undefined"
     },
     {
       "type": "log",
@@ -270,7 +266,7 @@
     },
     {
       "type": "error",
-      "text": "Analysis error: TypeError: Failed to fetch\n    at analyzeMySite (https://www.chrisdavidsalon.com/admin/index.html:297:17)\n    at HTMLButtonElement.onclick (https://www.chrisdavidsalon.com/admin/index.html:63:156)"
+      "text": "Analysis error: TypeError: Failed to fetch\n    at analyzeMySite (https://www.chrisdavidsalon.com/admin/index.html:307:17)\n    at HTMLButtonElement.onclick (https://www.chrisdavidsalon.com/admin/index.html:63:156)"
     }
   ]
 }

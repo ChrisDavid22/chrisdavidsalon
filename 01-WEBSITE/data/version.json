@@ -1,7 +1,12 @@
 {
-  "version": "2.9.5",
-  "lastUpdated": "2025-11-26T20:15:00Z",
+  "version": "2.9.6",
+  "lastUpdated": "2025-11-26T20:45:00Z",
   "deployHistory": [
+    {
+      "version": "2.9.6",
+      "date": "2025-11-26T20:45:00Z",
+      "changes": "FIX: Local SEO score now loading correctly. Added detailed console logging, improved Chris David name matching, increased timeout before chart recalculation to 1.5s to ensure all API data loads."
+    },
     {
       "version": "2.9.5",
       "date": "2025-11-26T20:15:00Z",

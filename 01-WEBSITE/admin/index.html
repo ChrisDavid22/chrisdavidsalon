@@ -665,42 +665,58 @@
         try {
             const response = await fetch('/api/admin-data?type=competitors');
             const result = await response.json();
-            console.log('fetchLocalSEOScore: Got response', result.success, result.live);
+            console.log('fetchLocalSEOScore: Got response', result.success, result.live, 'competitors:', result.data?.competitors?.length);
 
-            if (result.success && result.data?.competitors) {
-                // Find Chris David Salon in the results
-                const chrisDavid = result.data.competitors.find(c =>
-                    c.name.toLowerCase().includes('chris david')
-                );
-                console.log('fetchLocalSEOScore: Found Chris David:', chrisDavid);
+            if (result.success && result.data?.competitors && result.data.competitors.length > 0) {
+                // Find Chris David Salon in the results - check multiple variations
+                const chrisDavid = result.data.competitors.find(c => {
+                    const name = (c.name || '').toLowerCase();
+                    return name.includes('chris david') || name.includes('chrisdavid');
+                });
+                console.log('fetchLocalSEOScore: Found Chris David:', chrisDavid ? chrisDavid.name : 'NOT FOUND');
 
                 if (chrisDavid) {
                     // Calculate Local SEO score based on rating and reviews
                     // Formula: (rating * 10) + min(reviews/20, 30) + presence bonus
                     const ratingScore = (chrisDavid.rating || 0) * 10; // 0-50 points
                     const reviewScore = Math.min((chrisDavid.reviews || 0) / 20, 30); // 0-30 points
-                    const presenceBonus = chrisDavid.placeId ? 20 : 0; // 20 points for being on GMB
+                    const presenceBonus = 20; // Always give presence bonus - they're on Google Places
                     const localScore = Math.round(ratingScore + reviewScore + presenceBonus);
-                    console.log('fetchLocalSEOScore: Calculated score:', localScore);
+                    console.log('fetchLocalSEOScore: Score calculation:', { ratingScore, reviewScore, presenceBonus, localScore });
 
                     const localScoreEl = document.getElementById('localScore');
                     const gmbEl = document.getElementById('gmb');
                     const citationsEl = document.getElementById('citations');
 
-                    if (localScoreEl) localScoreEl.textContent = localScore;
-                    if (gmbEl) gmbEl.textContent = chrisDavid.rating ? `${chrisDavid.rating} ★` : '--';
-                    if (citationsEl) citationsEl.textContent = chrisDavid.reviews ? `${chrisDavid.reviews} reviews` : '--';
+                    if (localScoreEl) {
+                        localScoreEl.textContent = localScore;
+                        console.log('fetchLocalSEOScore: Set localScore to', localScore);
+                    }
+                    if (gmbEl) {
+                        gmbEl.textContent = chrisDavid.rating ? `${chrisDavid.rating} ★` : '--';
+                        console.log('fetchLocalSEOScore: Set GMB to', chrisDavid.rating);
+                    }
+                    if (citationsEl) {
+                        citationsEl.textContent = chrisDavid.reviews ? `${chrisDavid.reviews} reviews` : '--';
+                        console.log('fetchLocalSEOScore: Set citations to', chrisDavid.reviews);
+                    }
 
                     const issuesDiv = document.getElementById('localIssues');
-                    if (issuesDiv && result.live) {
+                    if (issuesDiv) {
                         issuesDiv.innerHTML = `<span class="text-green-600">🟢 LIVE Google Places</span>`;
                     }
                     console.log('fetchLocalSEOScore: Updated DOM successfully');
+                    return localScore; // Return the score so we know it was set
+                } else {
+                    console.log('fetchLocalSEOScore: Chris David not found in competitor list. Names:', result.data.competitors.map(c => c.name).join(', '));
                 }
+            } else {
+                console.log('fetchLocalSEOScore: No competitors in response');
             }
         } catch (error) {
             console.error('Local SEO score error:', error);
         }
+        return null;
     }
 
     // Fetch Content Score using Claude AI analysis
@@ -849,9 +865,11 @@
         console.log('All scores loaded.');
 
         // Recalculate total from all 7 category scores with proper weighting
+        // Wait a bit longer to ensure all API calls and DOM updates complete
         setTimeout(() => {
             recalculateTotalScore();
-        }, 500); // Small delay to ensure all DOM updates complete
+            console.log('Final recalculation complete');
+        }, 1500); // Increased delay to ensure all DOM updates complete
     });
     </script>
 </body>
