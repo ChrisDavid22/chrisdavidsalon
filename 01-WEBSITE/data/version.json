@@ -1,7 +1,12 @@
 {
-  "version": "2.9.4",
-  "lastUpdated": "2025-11-26T20:00:00Z",
+  "version": "2.9.5",
+  "lastUpdated": "2025-11-26T20:15:00Z",
   "deployHistory": [
+    {
+      "version": "2.9.5",
+      "date": "2025-11-26T20:15:00Z",
+      "changes": "UX: Category boxes now sorted by importance (highest weight first). Each box shows its weight percentage (20%, 15%, 15%, 15%, 15%, 10%, 10%). Summary box shows 'Weighted average of all categories'."
+    },
     {
       "version": "2.9.4",
       "date": "2025-11-26T20:00:00Z",
