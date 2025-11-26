@@ -25,7 +25,21 @@ Chris David Salon website with **Autonomous SEO Agent** - a complete analytics a
 
 ---
 
-## SEO Agent Architecture (v2.8.0)
+## SEO Agent Architecture (v2.9.9)
+
+### Autonomous SEO Agent (`/api/autonomous-seo-agent`)
+Master controller that orchestrates all SEO automation across 4 sites.
+```
+?action=status            - Check agent health and all integrations
+?action=run-weekly        - Run full weekly automation cycle
+?action=analyze-all-sites - Comprehensive analysis of all 4 sites
+?action=generate-tasks    - Generate prioritized SEO tasks
+?action=track-change      - POST to log changes for measurement
+?action=get-changes       - Retrieve tracked changes
+?action=measure-effectiveness - Compare before/after metrics
+?action=get-recommendations - AI-powered improvement suggestions
+?action=microsite-sync    - Cross-site content recommendations
+```
 
 ### Core API Endpoints
 
@@ -212,13 +226,14 @@ curl https://www.chrisdavidsalon.com/api/seo-analysis-engine?action=health-check
 
 ## Version History
 
-Current: **2.8.0** - Complete SEO Analysis Engine
+Current: **2.9.9** - Autonomous SEO Agent System
 
 Key versions:
+- 2.9.9: Autonomous SEO Agent API with 10 actions
+- 2.9.8: Unified admin navigation fix
+- 2.9.7: SEO Command Center UI overhaul
 - 2.8.0: GA4 API, Analysis Engine, Weekly Reports
 - 2.7.0: Autonomous SEO Agent system, unified dashboard
 - 2.6.14: Zero hardcoded data policy
-- 2.6.6: Google Places + Claude AI integration
-- 2.6.5: PageSpeed API (free tier)
 
 Full history in `/data/version.json`
