@@ -1,7 +1,12 @@
 {
-  "version": "2.6.15",
-  "lastUpdated": "2025-11-26T11:00:00Z",
+  "version": "2.6.16",
+  "lastUpdated": "2025-11-26T12:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.16",
+      "date": "2025-11-26T12:00:00Z",
+      "changes": "Added cache-busting meta tags to all admin pages to force browser refresh. All pages now use /api/admin-data endpoints."
+    },
     {
       "version": "2.6.15",
       "date": "2025-11-26T11:00:00Z",
