@@ -1,0 +1,161 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - heading "Chris David Salon - SEO Command Center" [level=1] [ref=e6]
+          - paragraph [ref=e7]: AI-Powered SEO Analysis & Intelligence
+        - generic [ref=e8]:
+          - 'generic "Last updated: 11/26/2025, 11:30:00 PM" [ref=e9]': v2.10.3
+          - link "← Back to Main Site" [ref=e10] [cursor=pointer]:
+            - /url: ../index.html
+          - link "Logout" [ref=e11] [cursor=pointer]:
+            - /url: login.html
+      - generic [ref=e12]:
+        - link "SEO Command" [ref=e13] [cursor=pointer]:
+          - /url: index.html
+        - link "Traffic" [ref=e14] [cursor=pointer]:
+          - /url: traffic.html
+        - link "Competitors" [ref=e15] [cursor=pointer]:
+          - /url: competitors.html
+        - link "Rankings" [ref=e16] [cursor=pointer]:
+          - /url: rankings.html
+        - link "Authority" [ref=e17] [cursor=pointer]:
+          - /url: authority.html
+        - link "Microsites" [ref=e18] [cursor=pointer]:
+          - /url: microsites.html
+        - link "Agent Log" [ref=e19] [cursor=pointer]:
+          - /url: agent-log.html
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - heading "🎯 SEO Command Center" [level=2] [ref=e22]
+      - paragraph [ref=e23]: Analyze your site with AI to get a comprehensive SEO score (0-100) with detailed breakdown and actionable improvements.
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - heading "Your Site Score" [level=3] [ref=e26]
+          - generic [ref=e27]: "--"
+          - button " Analyze with AI" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]: 
+            - text: Analyze with AI
+          - paragraph [ref=e30]: Uses Claude AI + Google APIs
+        - generic [ref=e31]:
+          - heading "Last Analysis" [level=3] [ref=e32]
+          - generic [ref=e33]:
+            - generic [ref=e34]: Never
+            - generic [ref=e35]: Click "Analyze with AI" to start
+          - generic [ref=e36]: "--"
+          - paragraph [ref=e37]: Change from previous
+        - generic [ref=e38]:
+          - heading "Quick Actions" [level=3] [ref=e39]
+          - button " Quick Audit" [ref=e40] [cursor=pointer]:
+            - generic [ref=e41]: 
+            - text: Quick Audit
+          - 'button " Compare to #1" [ref=e42] [cursor=pointer]':
+            - generic [ref=e43]: 
+            - text: "Compare to #1"
+    - generic [ref=e44]:
+      - heading "📊 SEO Score Breakdown (7 Categories)" [level=3] [ref=e45]
+      - text: 
+      - generic [ref=e48]:
+        - heading "📊 Overall SEO Score" [level=4] [ref=e49]
+        - generic [ref=e50]: Weighted average of all 7 categories
+        - generic [ref=e51]: "--"
+        - generic [ref=e52]:
+          - generic [ref=e53]: Performance (20%) + Technical (15%) + Mobile (15%)
+          - generic [ref=e54]: + Content (15%) + Local (15%) + UX (10%) + Authority (10%)
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - heading "⚡ Performance" [level=4] [ref=e60]
+            - generic [ref=e61]: "--"
+          - generic [ref=e62]: 20% of total score
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - generic [ref=e65]: "Page Speed:"
+              - generic [ref=e66]: "--"
+            - generic [ref=e67]:
+              - generic [ref=e68]: "Load Time:"
+              - generic [ref=e69]: "--"
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - heading "🔧 Technical" [level=4] [ref=e72]
+            - generic [ref=e73]: "--"
+          - generic [ref=e74]: 15% of total score
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - generic [ref=e77]: "Meta Tags:"
+              - generic [ref=e78]: "--"
+            - generic [ref=e79]:
+              - generic [ref=e80]: "Schema:"
+              - generic [ref=e81]: "--"
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - heading "📱 Mobile" [level=4] [ref=e84]
+            - generic [ref=e85]: "--"
+          - generic [ref=e86]: 15% of total score
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - generic [ref=e89]: "Responsive:"
+              - generic [ref=e90]: "--"
+            - generic [ref=e91]:
+              - generic [ref=e92]: "Usability:"
+              - generic [ref=e93]: "--"
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - heading "📝 Content" [level=4] [ref=e96]
+            - generic [ref=e97]: "--"
+          - generic [ref=e98]: 15% of total score
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - generic [ref=e101]: "Keywords:"
+              - generic [ref=e102]: "--"
+            - generic [ref=e103]:
+              - generic [ref=e104]: "Quality:"
+              - generic [ref=e105]: "--"
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - heading "📍 Local" [level=4] [ref=e108]
+            - generic [ref=e109]: "--"
+          - generic [ref=e110]: 15% of total score
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - generic [ref=e113]: "GMB:"
+              - generic [ref=e114]: "--"
+            - generic [ref=e115]:
+              - generic [ref=e116]: "Citations:"
+              - generic [ref=e117]: "--"
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - heading "🎨 UX" [level=4] [ref=e120]
+            - generic [ref=e121]: "--"
+          - generic [ref=e122]: 10% of total score
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e125]: "Navigation:"
+              - generic [ref=e126]: "--"
+            - generic [ref=e127]:
+              - generic [ref=e128]: "Design:"
+              - generic [ref=e129]: "--"
+        - generic [ref=e130]:
+          - generic [ref=e131]:
+            - heading "🏆 Authority" [level=4] [ref=e132]
+            - generic [ref=e133]: "--"
+          - generic [ref=e134]: 10% of total score
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - generic [ref=e137]: "Backlinks:"
+              - generic [ref=e138]: "--"
+            - generic [ref=e139]:
+              - generic [ref=e140]: "Trust:"
+              - generic [ref=e141]: "--"
+    - generic [ref=e142]:
+      - heading "🎯 Priority Action Items" [level=3] [ref=e143]
+      - paragraph [ref=e146]: Run analysis to get personalized action items
+    - generic [ref=e147]:
+      - heading "🤖 AI Enhancement Prompts" [level=3] [ref=e148]
+      - paragraph [ref=e149]: "Copy these prompts to Claude or ChatGPT to get specific improvements for your site:"
+      - paragraph [ref=e152]: Prompts will appear here after analysis
+```

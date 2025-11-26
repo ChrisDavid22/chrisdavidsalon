@@ -469,16 +469,36 @@
             const aiMsg = aiResult.live ? 'Claude AI recommendations generated!' : (aiResult.success === false ? 'AI API unavailable' : 'AI rate limited');
             console.log(`Analysis complete: ${statusMsg} ${aiMsg}`);
 
-            // Now fetch the other scores (Content, Local, Authority) and save to cache
-            await fetchContentScore();
-            await fetchLocalSEOScore();
-            await fetchAuthorityScore();
+            // IMPORTANT: Save to cache IMMEDIATELY with PageSpeed data
+            // This ensures instant load even if other APIs are slow/failing
+            saveToCache(fullAnalysis);
+            console.log('Initial cache saved with PageSpeed data');
 
-            // Recalculate total with all scores
+            // Fetch additional scores in parallel (don't wait for each)
+            // Use Promise.allSettled so one failure doesn't block others
+            console.log('Fetching Content, Local, Authority scores in parallel...');
+            const additionalResults = await Promise.allSettled([
+                fetchContentScore(),
+                fetchLocalSEOScore(),
+                fetchAuthorityScore()
+            ]);
+
+            // Log which APIs succeeded/failed
+            const apiNames = ['Content', 'Local', 'Authority'];
+            additionalResults.forEach((result, i) => {
+                if (result.status === 'fulfilled') {
+                    console.log(`${apiNames[i]} score: ${result.value}`);
+                } else {
+                    console.warn(`${apiNames[i]} API failed:`, result.reason);
+                }
+            });
+
+            // Recalculate total with all available scores
             recalculateTotalScore();
 
-            // Save everything to cache so it loads instantly next time
+            // Save AGAIN with all scores (updates the initial cache)
             saveToCache(fullAnalysis);
+            console.log('Final cache saved with all scores');
 
         } catch (error) {
             console.error('Analysis error:', error);

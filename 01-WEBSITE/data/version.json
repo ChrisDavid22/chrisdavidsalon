@@ -1,7 +1,12 @@
 {
-  "version": "2.10.3",
-  "lastUpdated": "2025-11-27T04:30:00Z",
+  "version": "2.10.4",
+  "lastUpdated": "2025-11-27T05:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.10.4",
+      "date": "2025-11-27T05:00:00Z",
+      "changes": "INSTANT CACHE FIX: (1) Cache now saves IMMEDIATELY after PageSpeed data loads (not waiting for all APIs). (2) Additional API calls (Content/Local/Authority) now run in PARALLEL using Promise.allSettled. (3) If one API fails, others still complete and cache still saves. This ensures page loads instantly on return visit even if some APIs are slow."
+    },
     {
       "version": "2.10.3",
       "date": "2025-11-27T04:30:00Z",
