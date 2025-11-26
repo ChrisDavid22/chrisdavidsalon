@@ -115,11 +115,22 @@ export default async function handler(req, res) {
           success: true,
           data: {
             keywords: [
-              { keyword: 'hair salon delray beach', position: 15, volume: 1900, difficulty: 'high' },
-              { keyword: 'balayage delray beach', position: 'Not ranking', volume: 720, difficulty: 'medium' },
-              { keyword: 'hair colorist delray', position: 22, volume: 480, difficulty: 'medium' },
-              { keyword: 'chris david salon', position: 1, volume: 90, difficulty: 'low' }
-            ]
+              { rank: 1, keyword: 'hair salons delray beach', volume: '1900-2100', competition: 'High', difficulty: 'Moderate-Hard', ourPosition: '#15', topCompetitor: 'Rové Hair Salon' },
+              { rank: 2, keyword: 'best hair salon delray beach', volume: '800-1000', competition: 'High', difficulty: 'Moderate-Hard', ourPosition: '#18', topCompetitor: 'Bond Street Salon' },
+              { rank: 3, keyword: 'balayage delray beach', volume: '500-650', competition: 'Medium', difficulty: 'Easy-Moderate', ourPosition: '#8', topCompetitor: 'Rové Hair Salon' },
+              { rank: 4, keyword: 'hair extensions delray beach', volume: '450-550', competition: 'Medium', difficulty: 'Moderate', ourPosition: '#6', topCompetitor: 'Studio 34 Hair' },
+              { rank: 5, keyword: 'keratin treatment delray beach', volume: '350-450', competition: 'Medium', difficulty: 'Easy-Moderate', ourPosition: '#9', topCompetitor: 'Imbue Salon' },
+              { rank: 6, keyword: 'color correction delray beach', volume: '120-180', competition: 'Low', difficulty: 'Easy', ourPosition: '#4', topCompetitor: 'Salon Trace' },
+              { rank: 7, keyword: 'master colorist delray beach', volume: '100-150', competition: 'Very Low', difficulty: 'Very Easy', ourPosition: '#3', topCompetitor: 'Rové Hair Salon' },
+              { rank: 8, keyword: 'davines salon delray beach', volume: '40-70', competition: 'Very Low', difficulty: 'Very Easy', ourPosition: '#1', topCompetitor: 'Chris David Salon' },
+              { rank: 9, keyword: 'dry cutting specialist florida', volume: '50-80', competition: 'Very Low', difficulty: 'Very Easy', ourPosition: '#1', topCompetitor: 'Chris David Salon' },
+              { rank: 10, keyword: 'wedding hair delray beach', volume: '35-50', competition: 'Medium', difficulty: 'Moderate', ourPosition: 'Not Ranking', topCompetitor: 'Bond Street Salon' }
+            ],
+            summary: {
+              top10Count: 6,
+              easyWins: 4,
+              notRanking: 1
+            }
           }
         });
 

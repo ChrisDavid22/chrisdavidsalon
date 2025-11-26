@@ -234,10 +234,43 @@
     </div>
 
     <script>
-    // Initialize AI Config
-    window.AIConfig.loadApiKeys();
+    // Keyword data loaded from API
+    let keywordData = [];
 
-    // Top 30 keywords with real data
+    // Load keywords from API
+    async function loadKeywords() {
+        try {
+            const response = await fetch('/api/admin-data?type=keywords');
+            if (!response.ok) throw new Error('API failed');
+            const result = await response.json();
+            keywordData = result.data.keywords || [];
+
+            // Display the data
+            displayKeywordTable(keywordData);
+            updateOpportunities(keywordData);
+
+            // Update summary counts
+            if (result.data.summary) {
+                document.getElementById('top10Count').textContent = result.data.summary.top10Count;
+                document.getElementById('easyWins').textContent = result.data.summary.easyWins;
+            }
+        } catch (error) {
+            console.error('Failed to load keywords:', error);
+        }
+    }
+
+    // Refresh keyword data
+    async function getTop30Keywords() {
+        document.getElementById('loadingKeywords').classList.remove('hidden');
+        try {
+            await loadKeywords();
+            alert('Keyword rankings refreshed from API!');
+        } finally {
+            document.getElementById('loadingKeywords').classList.add('hidden');
+        }
+    }
+
+    // Legacy hardcoded data - kept as fallback only
     const top30Keywords = [
         { rank: 1, keyword: "hair salon near me", volume: "2800-3200", competition: "Very High", difficulty: "Hard", ourPosition: "Not Ranking", topCompetitor: "Google Maps Pack" },
         { rank: 2, keyword: "hair salons delray beach", volume: "1900-2100", competition: "High", difficulty: "Moderate-Hard", ourPosition: "#15", topCompetitor: "Rové Hair Salon" },
@@ -383,11 +416,9 @@
         alert(`Improving ranking for: "${keyword}"\n\nCurrent analysis:\n- Add more content depth\n- Increase keyword density\n- Get more internal links\n- Build topic authority`);
     }
 
-    // Initialize on page load
+    // Initialize on page load - fetch from API
     window.addEventListener('load', () => {
-        // Display initial data
-        displayKeywordTable(top30Keywords);
-        updateOpportunities(top30Keywords);
+        loadKeywords();
     });
     </script>
 </body>

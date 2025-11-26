@@ -1,7 +1,12 @@
 {
-  "version": "2.6.3",
-  "lastUpdated": "2025-11-26T05:25:00Z",
+  "version": "2.6.4",
+  "lastUpdated": "2025-11-26T05:35:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.4",
+      "date": "2025-11-26T05:35:00Z",
+      "changes": "All admin pages now dynamic: index, competitors, rankings load from API"
+    },
     {
       "version": "2.6.3",
       "date": "2025-11-26T05:25:00Z",
