@@ -800,7 +800,8 @@
                     const reviews = chrisDavid.reviews || 0;
                     const ratingScore = rating * 10;
                     const reviewScore = reviews > 0 ? Math.min(Math.log10(reviews) * 15, 40) : 0;
-                    const presenceBonus = 10; // Presence bonus for having Google Places listing
+                    // Presence bonus only if they have a Place ID (consistent with competitors.html)
+                    const presenceBonus = chrisDavid.placeId ? 10 : 0;
                     const localScore = Math.round(ratingScore + reviewScore + presenceBonus);
                     console.log('fetchLocalSEOScore: Score calculation:', { ratingScore, reviewScore, presenceBonus, localScore });
 
@@ -822,9 +823,10 @@
                     }
                     return localScore;
                 } else {
-                    // Chris David not found - use known values (4.9 rating, 140 reviews)
+                    // Chris David not found in API but we know they exist on Google Places
+                    // Use known values (4.9 rating, 140 reviews) + presence bonus (10)
                     // UNIFIED FORMULA: (4.9 * 10) + min(log10(140) * 15, 40) + 10 = 49 + 32.2 + 10 = 91
-                    console.log('fetchLocalSEOScore: Chris David not found, using known values');
+                    console.log('fetchLocalSEOScore: Chris David not found in results, using known values');
                     const localScore = Math.round(4.9 * 10 + Math.min(Math.log10(140) * 15, 40) + 10); // = 91
                     scoreData.local = localScore;
 

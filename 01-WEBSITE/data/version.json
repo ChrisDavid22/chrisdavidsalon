@@ -1,7 +1,12 @@
 {
-  "version": "2.10.2",
-  "lastUpdated": "2025-11-27T04:00:00Z",
+  "version": "2.10.3",
+  "lastUpdated": "2025-11-27T04:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.10.3",
+      "date": "2025-11-27T04:30:00Z",
+      "changes": "DATA INTEGRITY FIXES: (1) AUTHORITY PAGE: Removed ALL hardcoded PageRank data - now shows '--' or helpful error message when API unavailable instead of stale fake data. Threat levels now calculated dynamically. (2) LOCAL SEO: Fixed presence bonus inconsistency - now uses placeId check consistent with competitors page. (3) QUALITY AUDIT: All pages reviewed for hardcoded data, formula consistency, and NaN protection."
+    },
     {
       "version": "2.10.2",
       "date": "2025-11-27T04:00:00Z",

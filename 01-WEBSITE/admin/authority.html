@@ -222,19 +222,7 @@
     </main>
 
     <script>
-        // PageRank data from Nov 26, 2025 scan
-        const PAGERANK_DATA = {
-            "chrisdavidsalon.com": { value: 2.88, rank: 3, threat: null },
-            "studio10bocaraton.com": { value: 3.15, rank: 1, threat: "HIGH" },
-            "bondstreetsalon.com": { value: 3.02, rank: 2, threat: "HIGH" },
-            "amandamajor.com": { value: 2.84, rank: 4, threat: "HIGH" },
-            "hairmesssalon.com": { value: 2.84, rank: 5, threat: "HIGH" },
-            "cloud10usa.com": { value: 2.65, rank: 6, threat: "MEDIUM" },
-            "rovesalon.com": { value: 2.55, rank: 7, threat: "HIGH" },
-            "salonsora.com": { value: 2.54, rank: 8, threat: "MEDIUM" },
-            "dapperanddivinestudio.com": { value: 2.52, rank: 9, threat: "MEDIUM" },
-            "pyuresalon.com": { value: 2.44, rank: 10, threat: "MEDIUM" }
-        };
+        // NOTE: No hardcoded data - all metrics come from OpenPageRank API
 
         async function loadPageData() {
             // Load version
@@ -254,64 +242,79 @@
 
         async function loadAuthorityData() {
             try {
-                // Try to get live data from API
+                // Get live data from OpenPageRank API
                 const response = await fetch('/api/authority-score?competitors=true');
                 const result = await response.json();
 
                 if (result.success && result.data) {
+                    // Show LIVE data status
+                    showLiveDataStatus();
+
                     // Use live API data
                     const authScore = result.data.authority_score;
                     const pagerank = result.data.pagerank_decimal;
                     const position = result.data.comparison?.chris_david_position;
 
-                    document.getElementById('authorityScore').textContent = authScore || 29;
-                    document.getElementById('pagerankValue').textContent = pagerank?.toFixed(2) || '2.88';
-                    document.getElementById('currentRank').textContent = `#${position || 3}`;
+                    document.getElementById('authorityScore').textContent = authScore ?? '--';
+                    document.getElementById('pagerankValue').textContent = pagerank?.toFixed(2) ?? '--';
+                    document.getElementById('currentRank').textContent = position ? `#${position}` : '--';
 
-                    // Update table with live results if available
-                    if (result.data.all_results) {
+                    // Update table with live results
+                    if (result.data.all_results && result.data.all_results.length > 0) {
                         renderCompetitorTable(result.data.all_results);
                     } else {
-                        renderCompetitorTableFromStatic();
+                        showNoDataState('API returned no competitor data');
                     }
                 } else {
-                    // Fall back to static data
-                    renderCompetitorTableFromStatic();
+                    // API returned but with error
+                    showApiUnavailable(result.error || 'API returned unsuccessful response');
                 }
             } catch (error) {
                 console.error('Authority API error:', error);
-                renderCompetitorTableFromStatic();
+                showApiUnavailable(error.message);
             }
         }
 
-        function renderCompetitorTableFromStatic() {
-            // Set Chris David Salon scores from static data
-            document.getElementById('authorityScore').textContent = 29; // (2.88/10) * 100
-            document.getElementById('pagerankValue').textContent = '2.88';
-            document.getElementById('currentRank').textContent = '#3';
+        function showLiveDataStatus() {
+            // Data source banner would be updated here if needed
+            console.log('Authority data loaded from LIVE API');
+        }
 
-            // Render static data table
-            const sorted = Object.entries(PAGERANK_DATA)
-                .sort((a, b) => b[1].value - a[1].value);
+        function showApiUnavailable(message) {
+            // Set all scores to unavailable
+            document.getElementById('authorityScore').textContent = '--';
+            document.getElementById('pagerankValue').textContent = '--';
+            document.getElementById('currentRank').textContent = '--';
 
+            // Show helpful message in the table
             const tbody = document.getElementById('competitorRows');
-            tbody.innerHTML = sorted.map(([domain, data], index) => {
-                const isChrisDavid = domain === 'chrisdavidsalon.com';
-                const rowClass = isChrisDavid ? 'bg-green-50 font-bold' : '';
-                const threatBadge = data.threat
-                    ? `<span class="px-2 py-1 text-xs rounded ${data.threat === 'HIGH' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}">${data.threat}</span>`
-                    : (isChrisDavid ? '<span class="px-2 py-1 text-xs rounded bg-green-100 text-green-700">YOUR SITE</span>' : '--');
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="px-4 py-8 text-center">
+                        <div class="text-yellow-600 mb-2">
+                            <i class="fas fa-exclamation-triangle text-2xl"></i>
+                        </div>
+                        <p class="font-semibold text-yellow-800">OpenPageRank API Unavailable</p>
+                        <p class="text-sm text-gray-600 mt-1">${message}</p>
+                        <p class="text-xs text-gray-500 mt-2">Check OPENPAGERANK_API_KEY in Vercel environment variables</p>
+                    </td>
+                </tr>
+            `;
+        }
 
-                return `
-                    <tr class="${rowClass} border-b hover:bg-gray-50">
-                        <td class="px-4 py-3">${index + 1}</td>
-                        <td class="px-4 py-3">${domain}</td>
-                        <td class="px-4 py-3 text-center">${Math.round(data.value)}/10</td>
-                        <td class="px-4 py-3 text-center">${data.value.toFixed(2)}</td>
-                        <td class="px-4 py-3 text-center">${threatBadge}</td>
-                    </tr>
-                `;
-            }).join('');
+        function showNoDataState(message) {
+            const tbody = document.getElementById('competitorRows');
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5" class="px-4 py-8 text-center">
+                        <div class="text-gray-400 mb-2">
+                            <i class="fas fa-database text-2xl"></i>
+                        </div>
+                        <p class="font-semibold text-gray-600">No PageRank Data Available</p>
+                        <p class="text-sm text-gray-500 mt-1">${message}</p>
+                    </td>
+                </tr>
+            `;
         }
 
         function renderCompetitorTable(results) {
@@ -320,14 +323,27 @@
                 .sort((a, b) => b.pagerank_decimal - a.pagerank_decimal)
                 .slice(0, 10);
 
+            if (sorted.length === 0) {
+                showNoDataState('All competitors returned null PageRank values');
+                return;
+            }
+
             const tbody = document.getElementById('competitorRows');
             tbody.innerHTML = sorted.map((item, index) => {
                 const isChrisDavid = item.domain === 'chrisdavidsalon.com';
                 const rowClass = isChrisDavid ? 'bg-green-50 font-bold' : '';
-                const threat = PAGERANK_DATA[item.domain]?.threat;
-                const threatBadge = threat
-                    ? `<span class="px-2 py-1 text-xs rounded ${threat === 'HIGH' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}">${threat}</span>`
-                    : (isChrisDavid ? '<span class="px-2 py-1 text-xs rounded bg-green-100 text-green-700">YOUR SITE</span>' : '--');
+                // Determine threat level based on how close to Chris David
+                const chrisDavidRank = results.find(r => r.domain === 'chrisdavidsalon.com')?.pagerank_decimal ?? 0;
+                let threatBadge;
+                if (isChrisDavid) {
+                    threatBadge = '<span class="px-2 py-1 text-xs rounded bg-green-100 text-green-700">YOUR SITE</span>';
+                } else if (item.pagerank_decimal > chrisDavidRank + 0.2) {
+                    threatBadge = '<span class="px-2 py-1 text-xs rounded bg-red-100 text-red-700">HIGH</span>';
+                } else if (item.pagerank_decimal > chrisDavidRank - 0.2) {
+                    threatBadge = '<span class="px-2 py-1 text-xs rounded bg-yellow-100 text-yellow-700">MEDIUM</span>';
+                } else {
+                    threatBadge = '<span class="px-2 py-1 text-xs rounded bg-gray-100 text-gray-600">LOW</span>';
+                }
 
                 return `
                     <tr class="${rowClass} border-b hover:bg-gray-50">
