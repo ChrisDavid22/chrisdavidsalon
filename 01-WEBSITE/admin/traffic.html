@@ -37,13 +37,12 @@
             </div>
             <!-- Navigation Tabs -->
             <div class="flex space-x-1 pb-2 overflow-x-auto">
-                <a href="index.html" class="px-4 py-2 hover:bg-white/10 rounded-t">SEO Command</a>
+                <a href="index.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Dashboard</a>
+                <a href="improvement-planner.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Improvement Plan</a>
                 <a href="traffic.html" class="px-4 py-2 bg-white/20 rounded-t font-semibold">Traffic</a>
-                <a href="competitors.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Competitors</a>
-                <a href="rankings.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Rankings</a>
                 <a href="authority.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Authority</a>
                 <a href="microsites.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Microsites</a>
-                <a href="agent-log.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Agent Log</a>
+                <a href="rankings.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Rankings</a>
             </div>
         </div>
     </nav>
@@ -260,6 +259,11 @@
     </main>
 
     <script>
+        // API Base URL - use production when running locally (serverless functions need Vercel)
+        const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'https://www.chrisdavidsalon.com'
+            : '';
+
         let trafficOverTimeChart, trafficSourcesChart, deviceChart;
         let monthUsersChart, monthSessionsChart;
         let currentView = 'monthly'; // Default to monthly view
@@ -310,9 +314,9 @@
 
                 // Fetch data for multiple months
                 const [thisMonthResp, lastMonthResp, twoMonthsAgoResp] = await Promise.all([
-                    fetch(`/api/ga4-analytics?type=overview&startDate=${formatDate(thisMonthStart)}&endDate=${formatDate(now)}`),
-                    fetch(`/api/ga4-analytics?type=overview&startDate=${formatDate(lastMonthStart)}&endDate=${formatDate(lastMonthEnd)}`),
-                    fetch(`/api/ga4-analytics?type=overview&startDate=${formatDate(twoMonthsAgoStart)}&endDate=${formatDate(twoMonthsAgoEnd)}`)
+                    fetch(`${API_BASE}/api/ga4-analytics?type=overview&startDate=${formatDate(thisMonthStart)}&endDate=${formatDate(now)}`),
+                    fetch(`${API_BASE}/api/ga4-analytics?type=overview&startDate=${formatDate(lastMonthStart)}&endDate=${formatDate(lastMonthEnd)}`),
+                    fetch(`${API_BASE}/api/ga4-analytics?type=overview&startDate=${formatDate(twoMonthsAgoStart)}&endDate=${formatDate(twoMonthsAgoEnd)}`)
                 ]);
 
                 const thisMonth = await thisMonthResp.json();
@@ -427,7 +431,7 @@
         async function loadTrafficData() {
             // Load version first
             try {
-                const versionResp = await fetch('/data/version.json');
+                const versionResp = await fetch(`${API_BASE}/data/version.json`);
                 const versionData = await versionResp.json();
                 document.getElementById('versionBadge').textContent = 'v' + versionData.version;
             } catch (e) {
@@ -438,7 +442,7 @@
 
             // Try to load from GA4 API
             try {
-                const response = await fetch('/api/ga4-analytics?type=overview&startDate=30daysAgo&endDate=today');
+                const response = await fetch(`${API_BASE}/api/ga4-analytics?type=overview&startDate=30daysAgo&endDate=today`);
                 const result = await response.json();
 
                 if (result.success) {
@@ -502,7 +506,7 @@
 
         async function loadTrafficOverTime() {
             try {
-                const response = await fetch('/api/ga4-analytics?type=traffic-over-time&startDate=30daysAgo&endDate=today');
+                const response = await fetch(`${API_BASE}/api/ga4-analytics?type=traffic-over-time&startDate=30daysAgo&endDate=today`);
                 const result = await response.json();
 
                 if (result.success && result.data.length > 0) {
@@ -548,7 +552,7 @@
 
         async function loadTrafficSources() {
             try {
-                const response = await fetch('/api/ga4-analytics?type=traffic-sources&startDate=30daysAgo&endDate=today');
+                const response = await fetch(`${API_BASE}/api/ga4-analytics?type=traffic-sources&startDate=30daysAgo&endDate=today`);
                 const result = await response.json();
 
                 if (result.success && result.data.length > 0) {
@@ -597,7 +601,7 @@
 
         async function loadDeviceBreakdown() {
             try {
-                const response = await fetch('/api/ga4-analytics?type=devices&startDate=30daysAgo&endDate=today');
+                const response = await fetch(`${API_BASE}/api/ga4-analytics?type=devices&startDate=30daysAgo&endDate=today`);
                 const result = await response.json();
 
                 if (result.success && result.data.length > 0) {
@@ -646,7 +650,7 @@
 
         async function loadTopPages() {
             try {
-                const response = await fetch('/api/ga4-analytics?type=top-pages&startDate=30daysAgo&endDate=today');
+                const response = await fetch(`${API_BASE}/api/ga4-analytics?type=top-pages&startDate=30daysAgo&endDate=today`);
                 const result = await response.json();
 
                 if (result.success && result.data.length > 0) {
@@ -669,7 +673,7 @@
 
         async function loadMicrositeReferrals() {
             try {
-                const response = await fetch('/api/ga4-analytics?type=microsite-referrals&startDate=30daysAgo&endDate=today');
+                const response = await fetch(`${API_BASE}/api/ga4-analytics?type=microsite-referrals&startDate=30daysAgo&endDate=today`);
                 const result = await response.json();
 
                 if (result.success) {

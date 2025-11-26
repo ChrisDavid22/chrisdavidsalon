@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>SEO Command Center - Chris David Salon</title>
+    <title>SEO Dashboard - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -18,8 +18,8 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <div>
-                    <h1 class="text-2xl font-bold">Chris David Salon - SEO Command Center</h1>
-                    <p class="text-sm text-purple-200">AI-Powered SEO Analysis & Intelligence</p>
+                    <h1 class="text-2xl font-bold">SEO Dashboard</h1>
+                    <p class="text-sm text-purple-200">Composite SEO Score - All 7 Ranking Factors</p>
                 </div>
                 <div class="flex items-center gap-4">
                     <span id="versionBadge" class="bg-green-600 px-3 py-1 rounded text-sm font-bold">v2.6.12</span>
@@ -32,16 +32,14 @@
                 </div>
             </div>
             
-            <!-- Navigation Menu - Unified 7-Page Navigation -->
+            <!-- Navigation Menu -->
             <div class="flex space-x-1 pb-2 overflow-x-auto">
-                <a href="dashboard-v2.html" class="px-4 py-2 bg-green-500 rounded-t font-semibold text-white">NEW: Actions</a>
-                <a href="index.html" class="px-4 py-2 bg-white/20 rounded-t font-semibold">SEO Command</a>
+                <a href="index.html" class="px-4 py-2 bg-white/20 rounded-t font-semibold">Dashboard</a>
+                <a href="improvement-planner.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Improvement Plan</a>
                 <a href="traffic.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Traffic</a>
-                <a href="competitors.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Competitors</a>
-                <a href="rankings.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Rankings</a>
                 <a href="authority.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Authority</a>
                 <a href="microsites.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Microsites</a>
-                <a href="agent-log.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Agent Log</a>
+                <a href="rankings.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Rankings</a>
             </div>
         </div>
     </nav>
@@ -306,6 +304,56 @@
             </div>
         </div>
 
+        <!-- COMPETITOR COMPARISON -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold">📊 Your Ranking vs Competitors</h3>
+                <a href="improvement-planner.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold text-sm">
+                    View Improvement Plan →
+                </a>
+            </div>
+
+            <!-- Your Position Summary -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-4 mb-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-sm text-blue-100">Your Current Position</div>
+                        <div class="text-4xl font-bold">#<span id="competitorRank">--</span></div>
+                        <div class="text-sm text-blue-100">out of <span id="totalCompetitorCount">--</span> local salons</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-blue-100">Gap to #1</div>
+                        <div class="text-2xl font-bold"><span id="reviewGap">--</span> reviews</div>
+                        <div class="text-sm text-blue-100">behind <span id="leaderName">--</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitor Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-100 text-left">
+                            <th class="px-3 py-2">Rank</th>
+                            <th class="px-3 py-2">Salon</th>
+                            <th class="px-3 py-2 text-center">Rating</th>
+                            <th class="px-3 py-2 text-center">Reviews</th>
+                            <th class="px-3 py-2 text-center">Local SEO</th>
+                            <th class="px-3 py-2 text-center">Authority</th>
+                            <th class="px-3 py-2 text-center">Overall</th>
+                        </tr>
+                    </thead>
+                    <tbody id="competitorTableBody">
+                        <tr><td colspan="7" class="text-center py-4 text-gray-500">Loading competitor data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 text-xs text-gray-500">
+                <strong>Methodology:</strong> Local SEO = Rating + Reviews + Presence | Authority = PageRank | Overall = Weighted combination
+            </div>
+        </div>
+
         <!-- Action Items -->
         <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg shadow-lg p-6 mb-6">
             <h3 class="text-2xl font-bold mb-4">🎯 Priority Action Items</h3>
@@ -330,8 +378,19 @@
     </div>
 
     <script>
-    // Load AI Config
-    window.AIConfig.loadApiKeys();
+    // API Base URL - use production when running locally (serverless functions need Vercel)
+    const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'https://www.chrisdavidsalon.com'
+        : '';
+
+    // Load AI Config (optional - dashboard works without it)
+    try {
+        if (window.AIConfig && window.AIConfig.loadApiKeys) {
+            window.AIConfig.loadApiKeys();
+        }
+    } catch (e) {
+        console.warn('AIConfig not available, dashboard will use direct API calls');
+    }
 
     // ============================================
     // CACHED DATA SYSTEM - Load instantly on arrival
@@ -450,7 +509,18 @@
     let historicalScores = [];
 
     function loadHistory() {
-        historicalScores = window.AIConfig.getHistory('seo', 30);
+        try {
+            if (window.AIConfig && window.AIConfig.getHistory) {
+                historicalScores = window.AIConfig.getHistory('seo', 30);
+            } else {
+                // Fallback: get from localStorage directly
+                const history = JSON.parse(localStorage.getItem('seoHistory') || '[]');
+                historicalScores = history.slice(-30);
+            }
+        } catch (e) {
+            console.warn('Could not load history:', e);
+            historicalScores = [];
+        }
     }
 
     // Main analysis function
@@ -464,8 +534,8 @@
         try {
             // Fetch SEO analysis AND AI recommendations in parallel
             const [seoResponse, aiResponse] = await Promise.all([
-                fetch('/api/admin-data?type=seo-analysis'),
-                fetch('/api/admin-data?type=ai-recommendations')
+                fetch(`${API_BASE}/api/admin-data?type=seo-analysis`),
+                fetch(`${API_BASE}/api/admin-data?type=ai-recommendations`)
             ]);
 
             const seoResult = await seoResponse.json();
@@ -746,7 +816,7 @@
     async function loadDashboardData() {
         try {
             // Fetch dashboard data from API
-            const response = await fetch('/api/admin-data?type=dashboard');
+            const response = await fetch(`${API_BASE}/api/admin-data?type=dashboard`);
             if (!response.ok) throw new Error('Dashboard API failed');
             const result = await response.json();
             const data = result.data;
@@ -779,7 +849,7 @@
             }
 
             // Fetch SEO analysis data
-            const seoResponse = await fetch('/api/admin-data?type=seo-analysis');
+            const seoResponse = await fetch(`${API_BASE}/api/admin-data?type=seo-analysis`);
             if (seoResponse.ok) {
                 const seoResult = await seoResponse.json();
                 if (seoResult.data) displayScoreBreakdown(seoResult.data);
@@ -796,7 +866,7 @@
     // Load and display version from version.json
     async function loadVersion() {
         try {
-            const response = await fetch('/data/version.json');
+            const response = await fetch(`${API_BASE}/data/version.json`);
             const data = await response.json();
             const versionBadge = document.getElementById('versionBadge');
             if (versionBadge && data.version) {
@@ -813,11 +883,11 @@
     // Fetch Authority Score from OpenPageRank API
     async function fetchAuthorityScore() {
         try {
-            const response = await fetch('/api/authority-score?competitors=true');
+            const response = await fetch(`${API_BASE}/api/authority-score?competitors=true`);
             const result = await response.json();
 
             if (result.success && result.data) {
-                const authScore = result.data.authority_score || 29; // Default based on PageRank
+                const authScore = result.data.authority_score; // No fallback - must be real data
                 const pagerank = result.data.pagerank_decimal;
                 const position = result.data.comparison?.chris_david_position;
                 const total = result.data.comparison?.total_compared;
@@ -845,7 +915,7 @@
     async function fetchLocalSEOScore() {
         console.log('fetchLocalSEOScore: Starting...');
         try {
-            const response = await fetch('/api/admin-data?type=competitors');
+            const response = await fetch(`${API_BASE}/api/admin-data?type=competitors`);
             const result = await response.json();
             console.log('fetchLocalSEOScore: Got response', result.success, result.live, 'competitors:', result.data?.competitors?.length);
 
@@ -890,40 +960,32 @@
                     }
                     return localScore;
                 } else {
-                    // Chris David not found in API but we know they exist on Google Places
-                    // Use known values (4.9 rating, 140 reviews) + presence bonus (10)
-                    // UNIFIED FORMULA: (4.9 * 10) + min(log10(140) * 15, 40) + 10 = 49 + 32.2 + 10 = 91
-                    console.log('fetchLocalSEOScore: Chris David not found in results, using known values');
-                    const localScore = Math.round(4.9 * 10 + Math.min(Math.log10(140) * 15, 40) + 10); // = 91
-                    scoreData.local = localScore;
-
-                    document.getElementById('localScore').textContent = localScore;
-                    document.getElementById('gmb').textContent = '4.9 ★';
-                    document.getElementById('citations').textContent = '140 reviews';
-                    document.getElementById('localIssues').innerHTML = `<span class="text-yellow-600">🟡 Known data</span>`;
-                    return localScore;
+                    // Chris David not found in API - show unavailable
+                    console.log('fetchLocalSEOScore: Chris David not found in results');
+                    scoreData.local = null;
+                    document.getElementById('localScore').textContent = '--';
+                    document.getElementById('gmb').textContent = '--';
+                    document.getElementById('citations').textContent = '--';
+                    document.getElementById('localIssues').innerHTML = `<span class="text-red-600">🔴 Not found in API</span>`;
+                    return null;
                 }
             } else {
-                console.log('fetchLocalSEOScore: No competitors in response, using known values');
-                // Use known values as fallback
-                // UNIFIED FORMULA: (4.9 * 10) + min(log10(140) * 15, 40) + 10 = 91
-                const localScore = 91;
-                scoreData.local = localScore;
-
-                document.getElementById('localScore').textContent = localScore;
-                document.getElementById('gmb').textContent = '4.9 ★';
-                document.getElementById('citations').textContent = '140 reviews';
-                document.getElementById('localIssues').innerHTML = `<span class="text-yellow-600">🟡 Known data</span>`;
-                return localScore;
+                console.log('fetchLocalSEOScore: No competitors in response');
+                // No data available - show unavailable
+                scoreData.local = null;
+                document.getElementById('localScore').textContent = '--';
+                document.getElementById('gmb').textContent = '--';
+                document.getElementById('citations').textContent = '--';
+                document.getElementById('localIssues').innerHTML = `<span class="text-red-600">🔴 API unavailable</span>`;
+                return null;
             }
         } catch (error) {
             console.error('Local SEO score error:', error);
-            // On error, still set known values using UNIFIED FORMULA
-            const localScore = 91;
-            scoreData.local = localScore;
-            document.getElementById('localScore').textContent = localScore;
-            document.getElementById('gmb').textContent = '4.9 ★';
-            document.getElementById('citations').textContent = '140 reviews';
+            // On error, show unavailable - NO FAKE DATA
+            scoreData.local = null;
+            document.getElementById('localScore').textContent = '--';
+            document.getElementById('gmb').textContent = '--';
+            document.getElementById('citations').textContent = '--';
         }
         return scoreData.local;
     }
@@ -932,7 +994,7 @@
     async function fetchContentScore() {
         console.log('fetchContentScore: Starting...');
         try {
-            const response = await fetch('/api/admin-data?type=ai-recommendations');
+            const response = await fetch(`${API_BASE}/api/admin-data?type=ai-recommendations`);
             const result = await response.json();
             console.log('fetchContentScore: Got response', result.success, result.live);
 
@@ -963,21 +1025,19 @@
                     issuesDiv.innerHTML = `<span class="text-green-600">🟢 Claude AI Analysis</span>`;
                 }
             } else {
-                // API not live - use default content score
-                console.log('fetchContentScore: API not live, using default score');
-                const contentScore = 65;
-                scoreData.content = contentScore;
-
-                document.getElementById('contentScore').textContent = contentScore;
-                document.getElementById('keywordUsage').textContent = 'Needs Work';
-                document.getElementById('contentQuality').textContent = 'Medium';
-                document.getElementById('contentIssues').innerHTML = `<span class="text-yellow-600">🟡 Default</span>`;
+                // API not live - show unavailable, NO FAKE DATA
+                console.log('fetchContentScore: API not live');
+                scoreData.content = null;
+                document.getElementById('contentScore').textContent = '--';
+                document.getElementById('keywordUsage').textContent = '--';
+                document.getElementById('contentQuality').textContent = '--';
+                document.getElementById('contentIssues').innerHTML = `<span class="text-red-600">🔴 API unavailable</span>`;
             }
         } catch (error) {
             console.error('Content score error:', error);
-            // On error, use default
-            scoreData.content = 65;
-            document.getElementById('contentScore').textContent = 65;
+            // On error, show unavailable - NO FAKE DATA
+            scoreData.content = null;
+            document.getElementById('contentScore').textContent = '--';
         }
         return scoreData.content;
     }
@@ -1094,41 +1154,170 @@
         return totalScore;
     }
 
-    // Initialize on load - INSTANT from cache, no API calls unless explicitly requested
+    // Load and display competitor comparison
+    async function loadCompetitorComparison() {
+        try {
+            // Fetch both data sources in parallel
+            const [authorityResponse, placesResponse] = await Promise.all([
+                fetch(`${API_BASE}/api/authority-score?competitors=true`),
+                fetch(`${API_BASE}/api/admin-data?type=competitors`)
+            ]);
+
+            const authorityData = await authorityResponse.json();
+            const placesData = await placesResponse.json();
+
+            // Build PageRank lookup
+            const pageRankMap = {};
+            if (authorityData.success && authorityData.data?.all_results) {
+                authorityData.data.all_results.forEach(item => {
+                    pageRankMap[item.domain.toLowerCase()] = {
+                        pagerank: item.pagerank || 0,
+                        pagerank_decimal: item.pagerank_decimal || 0
+                    };
+                });
+            }
+
+            // Domain mapping
+            const domainMap = {
+                'rové hair salon': 'rovesalon.com',
+                'studio 34 delray': 'studio34delray.com',
+                'kaan hair design': 'kaanhairdesign.com',
+                'salon south flow': 'salonsouthflow.com',
+                'one aveda': 'onesalondelray.com',
+                'bond street': 'bondstreetsalon.com',
+                'shearluck': 'slshair.com',
+                'amanda major': 'amandamajor.com',
+                'chris david': 'chrisdavidsalon.com',
+                'imbue': 'imbuesalon.com',
+                'cloud 10': 'cloud10usa.com'
+            };
+
+            const competitors = [];
+
+            if (placesData.success && placesData.data?.competitors) {
+                placesData.data.competitors.forEach(salon => {
+                    const name = salon.name || '';
+                    const rating = salon.rating || 0;
+                    const reviews = salon.reviews || 0;
+
+                    // Local SEO score
+                    const ratingScore = rating * 10;
+                    const reviewScore = reviews > 0 ? Math.min(Math.log10(reviews) * 15, 40) : 0;
+                    const presenceBonus = salon.placeId ? 10 : 0;
+                    const localSEO = Math.round(ratingScore + reviewScore + presenceBonus);
+
+                    // Find PageRank
+                    let authority = 0;
+                    const nameLower = name.toLowerCase();
+
+                    for (const [key, dom] of Object.entries(domainMap)) {
+                        if (nameLower.includes(key) && pageRankMap[dom]) {
+                            authority = Math.round(pageRankMap[dom].pagerank_decimal * 10);
+                            break;
+                        }
+                    }
+
+                    // Estimated overall
+                    const estimatedTechnical = 70;
+                    const overallScore = Math.round(
+                        localSEO * 0.40 +
+                        authority * 0.20 +
+                        estimatedTechnical * 0.40
+                    );
+
+                    competitors.push({
+                        name,
+                        rating,
+                        reviews,
+                        localSEO,
+                        authority,
+                        overall: overallScore,
+                        isUs: salon.isOurSalon || nameLower.includes('chris david')
+                    });
+                });
+            }
+
+            // Sort by overall
+            competitors.sort((a, b) => b.overall - a.overall);
+
+            // Find Chris David and leader
+            const chrisDavid = competitors.find(c => c.isUs);
+            const chrisDavidIndex = competitors.findIndex(c => c.isUs);
+            const leader = competitors[0];
+
+            // Update summary
+            document.getElementById('competitorRank').textContent = chrisDavidIndex + 1;
+            document.getElementById('totalCompetitorCount').textContent = competitors.length;
+            document.getElementById('reviewGap').textContent = leader ? (leader.reviews - (chrisDavid?.reviews || 0)).toLocaleString() : '--';
+            document.getElementById('leaderName').textContent = leader ? leader.name.substring(0, 20) : '--';
+
+            // Build table
+            const tbody = document.getElementById('competitorTableBody');
+            tbody.innerHTML = competitors.slice(0, 10).map((c, i) => {
+                const rowClass = c.isUs ? 'bg-blue-50 font-semibold' : '';
+                const marker = c.isUs ? ' ← YOU' : '';
+                return `
+                    <tr class="${rowClass}">
+                        <td class="px-3 py-2 font-bold">#${i + 1}</td>
+                        <td class="px-3 py-2">${c.name.substring(0, 30)}${marker}</td>
+                        <td class="px-3 py-2 text-center">${c.rating}</td>
+                        <td class="px-3 py-2 text-center">${c.reviews.toLocaleString()}</td>
+                        <td class="px-3 py-2 text-center">${c.localSEO}</td>
+                        <td class="px-3 py-2 text-center">${c.authority || '--'}</td>
+                        <td class="px-3 py-2 text-center font-bold">${c.overall}</td>
+                    </tr>
+                `;
+            }).join('');
+
+        } catch (error) {
+            console.error('Failed to load competitor comparison:', error);
+            document.getElementById('competitorTableBody').innerHTML =
+                '<tr><td colspan="7" class="text-center py-4 text-red-500">Failed to load competitor data</td></tr>';
+        }
+    }
+
+    // Initialize on load - Load from cache OR fetch fresh data automatically
     window.addEventListener('DOMContentLoaded', async () => {
         console.log('=== DASHBOARD INIT START ===');
         loadVersion();
         loadHistory();
 
-        // Check for stale cache (before v2.10.5) - clear it
+        // Check for stale cache - clear it
         const cached = localStorage.getItem(CACHE_KEY);
         if (cached) {
             try {
                 const data = JSON.parse(cached);
-                // If local score is wrong (not 91) or cache is old, clear it
-                if (data.scoreData?.local && data.scoreData.local !== 91) {
-                    console.log('Clearing stale cache with incorrect local score:', data.scoreData.local);
+                // If cache is older than 24 hours, we'll refresh it
+                const cacheAge = Date.now() - new Date(data.timestamp).getTime();
+                const maxAge = 24 * 60 * 60 * 1000; // 24 hours
+                if (cacheAge > maxAge) {
+                    console.log('Cache is stale (older than 24h), will refresh');
                     localStorage.removeItem(CACHE_KEY);
                 }
-            } catch (e) { }
+            } catch (e) {
+                localStorage.removeItem(CACHE_KEY);
+            }
         }
 
-        // STEP 1: Try to load cached data FIRST (instant - no API calls)
+        // STEP 1: Try to load cached data FIRST (instant)
         const hasCachedData = loadCachedData();
 
         if (hasCachedData) {
             console.log('Loaded cached data - dashboard ready instantly!');
-            console.log('Click "Analyze with AI" to refresh with live data.');
         } else {
-            // No cached data - show first-time message
-            console.log('No cached data found - waiting for first analysis');
+            // No cached data - AUTO-FETCH fresh data immediately
+            console.log('No cached data found - fetching fresh data automatically...');
             document.getElementById('lastAnalysis').innerHTML = `
-                <div class="text-lg font-bold">Never</div>
-                <div class="text-sm mt-1">Click "Analyze with AI" to start</div>
+                <div class="text-lg font-bold">Loading...</div>
+                <div class="text-sm mt-1">Fetching live data from APIs</div>
             `;
-            document.getElementById('yourScore').textContent = '--';
-            document.getElementById('totalScore').textContent = '--';
+
+            // Auto-trigger the analysis
+            await analyzeMySite();
         }
+
+        // ALWAYS load competitor comparison (separate from cached SEO data)
+        loadCompetitorComparison();
 
         console.log('=== DASHBOARD INIT COMPLETE ===');
     });

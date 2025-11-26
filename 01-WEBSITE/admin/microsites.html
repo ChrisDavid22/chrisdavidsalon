@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>Microsites ROI - Chris David Salon</title>
+    <title>Microsites - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .pulse-green { animation: pulse-green 2s infinite; }
         @keyframes pulse-green {
@@ -37,229 +36,265 @@
             </div>
             <!-- Navigation Tabs -->
             <div class="flex space-x-1 pb-2 overflow-x-auto">
-                <a href="index.html" class="px-4 py-2 hover:bg-white/10 rounded-t">SEO Command</a>
+                <a href="index.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Dashboard</a>
+                <a href="improvement-planner.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Improvement Plan</a>
                 <a href="traffic.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Traffic</a>
-                <a href="competitors.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Competitors</a>
-                <a href="rankings.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Rankings</a>
                 <a href="authority.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Authority</a>
                 <a href="microsites.html" class="px-4 py-2 bg-white/20 rounded-t font-semibold">Microsites</a>
-                <a href="agent-log.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Agent Log</a>
+                <a href="rankings.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Rankings</a>
             </div>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto p-6">
-        
-        <!-- Data Source Banner -->
-        <div id="dataSourceBanner" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-            <div class="flex items-start">
-                <i class="fas fa-exclamation-triangle text-yellow-500 mr-3 mt-1"></i>
-                <div>
-                    <span class="font-semibold text-yellow-800">GA4 API Not Connected</span>
-                    <p id="dataSourceMessage" class="text-yellow-700 text-sm mt-1">
-                        Waiting for GA4 Property ID and Service Account credentials. Microsite traffic data requires API connection.
-                    </p>
-                </div>
-            </div>
-        </div>
 
-        <!-- Microsite Strategy Overview -->
-        <div class="bg-gradient-to-r from-green-600 to-purple-600 text-white rounded-lg shadow-xl p-6 mb-6">
-            <h2 class="text-3xl font-bold mb-4">Microsite Link Building Strategy</h2>
+        <!-- THE #1 METRIC: LEADS SENT TO MAIN SITE -->
+        <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg shadow-xl p-6 mb-6">
+            <div class="flex items-center gap-2 mb-2">
+                <h2 class="text-3xl font-bold">Microsites → Leads to Main Site</h2>
+                <span class="relative group cursor-help">
+                    <i class="fas fa-info-circle text-green-200"></i>
+                    <div class="absolute left-0 bottom-full mb-2 hidden group-hover:block w-72 p-3 bg-gray-900 text-white text-sm rounded-lg shadow-xl z-50">
+                        <strong>What are microsites?</strong><br>
+                        Small websites that rank for specific keywords and send visitors to your main site.<br><br>
+                        <strong>Why do they matter?</strong><br>
+                        Each visitor they send = potential client. They also pass SEO authority (backlinks) to help your main site rank higher.
+                    </div>
+                </span>
+            </div>
             <p class="text-green-100 mb-6">
-                3 authority microsites linking back to chrisdavidsalon.com for SEO boost. Each targets different keywords.
+                The only question that matters: <strong>How many potential clients did these microsites send to chrisdavidsalon.com?</strong>
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Active Sites</h3>
-                    <div class="text-3xl font-bold">3</div>
-                    <p class="text-sm">Deployed on Vercel</p>
+            <!-- THE BIG NUMBER -->
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg mb-4">
+                <div class="text-center">
+                    <div class="text-sm text-green-200 mb-2">Total Visitors Sent to Main Site (Last 30 Days)</div>
+                    <div id="totalLeads" class="text-7xl font-bold">--</div>
+                    <div class="text-lg mt-2" id="leadsStatus">
+                        <span class="bg-yellow-500 px-3 py-1 rounded text-sm">GA4 Not Connected - Connect to see real leads</span>
+                    </div>
                 </div>
-                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Indexed by Google</h3>
-                    <div class="text-3xl font-bold">2 of 3</div>
-                    <p class="text-sm">See action below</p>
+            </div>
+
+            <!-- Breakdown by site -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white/10 p-4 rounded-lg text-center">
+                    <div class="text-sm text-green-200 mb-1">bestsalondelray.com</div>
+                    <div id="site1Leads" class="text-3xl font-bold">--</div>
+                    <div class="text-xs text-green-200">visitors sent</div>
                 </div>
-                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">GA4 Traffic</h3>
-                    <div class="text-2xl font-bold" id="totalReferrals">--</div>
-                    <p class="text-sm" id="ga4StatusText">Awaiting connection</p>
+                <div class="bg-white/10 p-4 rounded-lg text-center">
+                    <div class="text-sm text-green-200 mb-1">bestdelraysalon.com</div>
+                    <div id="site2Leads" class="text-3xl font-bold">--</div>
+                    <div class="text-xs text-green-200">visitors sent</div>
                 </div>
-                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Strategy Status</h3>
-                    <div class="text-2xl font-bold text-green-300">ACTIVE</div>
-                    <p class="text-sm">Sites live and linking</p>
+                <div class="bg-white/10 p-4 rounded-lg text-center">
+                    <div class="text-sm text-green-200 mb-1">bestsalonpalmbeach.com</div>
+                    <div id="site3Leads" class="text-3xl font-bold">--</div>
+                    <div class="text-xs text-green-200">visitors sent</div>
                 </div>
             </div>
         </div>
 
-        <!-- MICROSITE AUTHORITY STATUS - MAIN SECTION -->
-        <div class="bg-white border-2 border-purple-300 rounded-lg shadow-lg p-6 mb-6">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-2xl font-bold text-purple-800">Microsite Authority Scores</h3>
-                <button onclick="loadPageRankData()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 text-sm">
-                    <i class="fas fa-sync-alt mr-2"></i>Refresh PageRank
-                </button>
-            </div>
-            <p class="text-gray-600 mb-6">
-                PageRank data from OpenPageRank API. Higher scores = more authority passing to chrisdavidsalon.com
-            </p>
+        <!-- HOW TO SEE REAL LEADS -->
+        <div id="connectGA4Section" class="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6 mb-6">
+            <div class="flex items-start gap-3">
+                <i class="fas fa-exclamation-triangle text-yellow-500 text-2xl mt-1"></i>
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-800 mb-2">You Can't See Your Leads Without GA4</h3>
+                    <p class="text-yellow-700 mb-4">
+                        Your microsites are live and sending visitors to your main site, but without Google Analytics connected, we can't tell you <em>how many</em>.
+                    </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <!-- Site 1: bestsalondelray.com -->
-                <div class="bg-gradient-to-br from-green-50 to-blue-50 p-5 rounded-lg border-2 border-green-400">
+                    <div class="bg-white p-4 rounded-lg border border-yellow-200">
+                        <h4 class="font-bold text-gray-800 mb-3">To connect GA4 (takes 15 minutes):</h4>
+                        <ol class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-start gap-2">
+                                <span class="bg-yellow-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
+                                <div>
+                                    <strong>Get your GA4 Property ID</strong><br>
+                                    Go to <a href="https://analytics.google.com" target="_blank" class="text-blue-600 underline">analytics.google.com</a> → Admin → Property Settings → Copy the Property ID (looks like: 123456789)
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="bg-yellow-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
+                                <div>
+                                    <strong>Create a Service Account</strong><br>
+                                    Go to <a href="https://console.cloud.google.com/iam-admin/serviceaccounts" target="_blank" class="text-blue-600 underline">Google Cloud Console</a> → Create service account → Download JSON key
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="bg-yellow-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">3</span>
+                                <div>
+                                    <strong>Add to Vercel</strong><br>
+                                    In Vercel dashboard, add environment variables:<br>
+                                    <code class="bg-gray-100 px-1">GA4_PROPERTY_ID</code> = your property ID<br>
+                                    <code class="bg-gray-100 px-1">GOOGLE_SERVICE_ACCOUNT_JSON</code> = paste entire JSON key
+                                </div>
+                            </li>
+                        </ol>
+                        <p class="mt-4 text-sm text-gray-600">
+                            <strong>Need help?</strong> Ask your developer or email the GA4 admin for your account.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MICROSITE STATUS CARDS -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4">Microsite Status</h3>
+            <p class="text-gray-600 mb-6">Each microsite targets different keywords and sends visitors to your main booking page.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Site 1 -->
+                <div class="border-2 border-green-300 rounded-lg p-5 bg-green-50">
                     <div class="flex justify-between items-start mb-3">
                         <h4 class="font-bold text-lg">bestsalondelray.com</h4>
-                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">INDEXED</span>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">LIVE</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3">Target: "best salon delray" keywords</p>
-
+                    <p class="text-sm text-gray-600 mb-3">
+                        <strong>Target:</strong> "best salon delray beach"<br>
+                        <strong>Status:</strong> ✅ Indexed by Google
+                    </p>
                     <div class="bg-white p-3 rounded mb-3">
-                        <div class="text-xs text-gray-500 mb-1">PageRank Score</div>
-                        <div id="pr-site1" class="text-3xl font-bold text-purple-600">--</div>
+                        <div class="text-xs text-gray-500">PageRank Authority</div>
+                        <div id="pr-site1" class="text-xl font-bold text-purple-600">1.18/10</div>
                     </div>
-
-                    <div class="flex gap-2 text-sm">
-                        <a href="https://bestsalondelray.com" target="_blank" class="flex-1 bg-blue-500 text-white px-3 py-2 rounded text-center hover:bg-blue-600">
-                            Visit
-                        </a>
-                        <a href="https://bestsalondelray.com/sitemap.xml" target="_blank" class="flex-1 bg-gray-500 text-white px-3 py-2 rounded text-center hover:bg-gray-600">
-                            Sitemap
-                        </a>
-                    </div>
+                    <a href="https://bestsalondelray.com" target="_blank" class="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Visit Site →
+                    </a>
                 </div>
 
-                <!-- Site 2: bestdelraysalon.com -->
-                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-5 rounded-lg border-2 border-yellow-400">
+                <!-- Site 2 -->
+                <div class="border-2 border-yellow-300 rounded-lg p-5 bg-yellow-50">
                     <div class="flex justify-between items-start mb-3">
                         <h4 class="font-bold text-lg">bestdelraysalon.com</h4>
                         <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded">NOT INDEXED</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3">Target: "delray salon" local keywords</p>
-
+                    <p class="text-sm text-gray-600 mb-3">
+                        <strong>Target:</strong> "delray beach salon"<br>
+                        <strong>Status:</strong> ⚠️ Google hasn't found it yet
+                    </p>
                     <div class="bg-white p-3 rounded mb-3">
-                        <div class="text-xs text-gray-500 mb-1">PageRank Score</div>
-                        <div id="pr-site2" class="text-3xl font-bold text-red-500">--</div>
+                        <div class="text-xs text-gray-500">PageRank Authority</div>
+                        <div id="pr-site2" class="text-xl font-bold text-red-500">NOT INDEXED</div>
                     </div>
-
-                    <div class="flex gap-2 text-sm">
-                        <a href="https://bestdelraysalon.com" target="_blank" class="flex-1 bg-blue-500 text-white px-3 py-2 rounded text-center hover:bg-blue-600">
-                            Visit
-                        </a>
-                        <a href="https://bestdelraysalon.com/sitemap.xml" target="_blank" class="flex-1 bg-gray-500 text-white px-3 py-2 rounded text-center hover:bg-gray-600">
-                            Sitemap
-                        </a>
-                    </div>
+                    <a href="https://bestdelraysalon.com" target="_blank" class="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Visit Site →
+                    </a>
                 </div>
 
-                <!-- Site 3: bestsalonpalmbeach.com -->
-                <div class="bg-gradient-to-br from-green-50 to-blue-50 p-5 rounded-lg border-2 border-green-400">
+                <!-- Site 3 -->
+                <div class="border-2 border-green-300 rounded-lg p-5 bg-green-50">
                     <div class="flex justify-between items-start mb-3">
                         <h4 class="font-bold text-lg">bestsalonpalmbeach.com</h4>
-                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">INDEXED</span>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">LIVE</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3">Target: "palm beach salon" regional</p>
-
+                    <p class="text-sm text-gray-600 mb-3">
+                        <strong>Target:</strong> "salon palm beach county"<br>
+                        <strong>Status:</strong> ✅ Indexed by Google
+                    </p>
                     <div class="bg-white p-3 rounded mb-3">
-                        <div class="text-xs text-gray-500 mb-1">PageRank Score</div>
-                        <div id="pr-site3" class="text-3xl font-bold text-purple-600">--</div>
+                        <div class="text-xs text-gray-500">PageRank Authority</div>
+                        <div id="pr-site3" class="text-xl font-bold text-purple-600">1.18/10</div>
                     </div>
-
-                    <div class="flex gap-2 text-sm">
-                        <a href="https://bestsalonpalmbeach.com" target="_blank" class="flex-1 bg-blue-500 text-white px-3 py-2 rounded text-center hover:bg-blue-600">
-                            Visit
-                        </a>
-                        <a href="https://bestsalonpalmbeach.com/sitemap.xml" target="_blank" class="flex-1 bg-gray-500 text-white px-3 py-2 rounded text-center hover:bg-gray-600">
-                            Sitemap
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Action Required Box -->
-            <div class="bg-red-50 border-2 border-red-300 p-4 rounded-lg">
-                <h4 class="font-bold text-red-800 mb-2">Action Required: Fix bestdelraysalon.com Indexing</h4>
-                <p class="text-sm text-red-700 mb-3">This site is NOT being crawled by Google. Without indexing, it provides ZERO SEO value.</p>
-                <div class="bg-white p-3 rounded text-sm">
-                    <p class="font-semibold mb-2">Steps to Fix:</p>
-                    <ol class="list-decimal ml-5 space-y-1 text-gray-700">
-                        <li>Go to <a href="https://search.google.com/search-console" target="_blank" class="text-blue-600 hover:underline">Google Search Console</a></li>
-                        <li>Add property: bestdelraysalon.com</li>
-                        <li>Submit sitemap: bestdelraysalon.com/sitemap.xml</li>
-                        <li>Request indexing for the homepage</li>
-                    </ol>
+                    <a href="https://bestsalonpalmbeach.com" target="_blank" class="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Visit Site →
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- GA4 TRAFFIC DATA - Collapsed by default since not connected -->
-        <div class="bg-gray-50 border border-gray-300 rounded-lg p-6 mb-6">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-gray-700">Microsite Traffic Analytics</h3>
-                <span id="ga4Badge" class="bg-yellow-500 text-white text-xs px-3 py-1 rounded">GA4 Not Connected</span>
-            </div>
-
-            <div id="ga4NotConnectedMessage" class="bg-yellow-50 border border-yellow-200 rounded p-4 mb-4">
-                <p class="text-yellow-800 mb-3"><strong>Traffic data requires GA4 connection.</strong></p>
-                <p class="text-sm text-yellow-700 mb-3">Once connected, you'll see:</p>
-                <ul class="text-sm text-yellow-700 list-disc ml-5 space-y-1">
-                    <li>Real-time visitor counts for each microsite</li>
-                    <li>How many users clicked through to chrisdavidsalon.com</li>
-                    <li>Mobile vs desktop breakdown</li>
-                    <li>Week-over-week traffic trends</li>
-                </ul>
-                <div class="mt-4 bg-white p-3 rounded border">
-                    <p class="font-semibold text-sm mb-2">To connect GA4:</p>
-                    <ol class="text-sm text-gray-700 list-decimal ml-5 space-y-1">
-                        <li>Get GA4 Property ID from analytics.google.com → Admin → Property Settings</li>
-                        <li>Create Service Account at console.cloud.google.com</li>
-                        <li>Add both to Vercel environment variables</li>
-                    </ol>
-                </div>
-            </div>
-
-            <!-- Hidden until GA4 connects -->
-            <div id="ga4ConnectedContent" class="hidden">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                    <div class="bg-white p-4 rounded border">
-                        <h4 class="font-bold">bestsalondelray.com</h4>
-                        <div class="mt-2 space-y-1 text-sm">
-                            <div class="flex justify-between"><span>Sessions:</span><span id="site1-sessions" class="font-semibold">--</span></div>
-                            <div class="flex justify-between"><span>Users:</span><span id="site1-users" class="font-semibold">--</span></div>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded border">
-                        <h4 class="font-bold">bestdelraysalon.com</h4>
-                        <div class="mt-2 space-y-1 text-sm">
-                            <div class="flex justify-between"><span>Sessions:</span><span id="site2-sessions" class="font-semibold">--</span></div>
-                            <div class="flex justify-between"><span>Users:</span><span id="site2-users" class="font-semibold">--</span></div>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded border">
-                        <h4 class="font-bold">bestsalonpalmbeach.com</h4>
-                        <div class="mt-2 space-y-1 text-sm">
-                            <div class="flex justify-between"><span>Sessions:</span><span id="site3-sessions" class="font-semibold">--</span></div>
-                            <div class="flex justify-between"><span>Users:</span><span id="site3-users" class="font-semibold">--</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-green-50 p-3 rounded text-center">
-                    <span class="text-green-700 font-semibold">Total Referrals to Main Site: </span>
-                    <span id="totalReferralsConnected" class="text-2xl font-bold text-green-600">--</span>
-                </div>
+        <!-- FIX THE UNINDEXED SITE -->
+        <div class="bg-red-50 border-2 border-red-300 rounded-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-red-800 mb-2">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                Action Required: Fix bestdelraysalon.com
+            </h3>
+            <p class="text-red-700 mb-4">
+                This site is NOT indexed by Google. That means it can't show up in search results and can't send you any leads. It's providing ZERO value right now.
+            </p>
+            <div class="bg-white p-4 rounded-lg">
+                <h4 class="font-bold mb-3">How to fix it (takes 5 minutes):</h4>
+                <ol class="space-y-2 text-sm text-gray-700">
+                    <li class="flex items-start gap-2">
+                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
+                        <span>Go to <a href="https://search.google.com/search-console" target="_blank" class="text-blue-600 underline">Google Search Console</a></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
+                        <span>Click "Add Property" and enter: bestdelraysalon.com</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">3</span>
+                        <span>Verify ownership (use the DNS method if prompted)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">4</span>
+                        <span>Go to Sitemaps → Submit: bestdelraysalon.com/sitemap.xml</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">5</span>
+                        <span>Go to URL Inspection → Enter homepage URL → Click "Request Indexing"</span>
+                    </li>
+                </ol>
+                <p class="mt-4 text-sm text-gray-600">
+                    After submitting, Google typically indexes within 24-48 hours. Check back next week.
+                </p>
             </div>
         </div>
 
-        <!-- Note: Microsite ROI section removed - data was not from real API sources -->
+        <!-- WHAT THE MICROSITES DO FOR YOU -->
+        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-6">
+            <h3 class="text-xl font-bold mb-4">
+                <i class="fas fa-question-circle text-indigo-500 mr-2"></i>
+                How Do Microsites Help Your Business?
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-4 rounded-lg">
+                    <h4 class="font-bold text-indigo-800 mb-2">1. More Keywords = More Visibility</h4>
+                    <p class="text-sm text-gray-600">
+                        Each microsite targets different keywords that your main site might not rank for.
+                        "best salon delray" → bestsalondelray.com → sends visitors to chrisdavidsalon.com
+                    </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg">
+                    <h4 class="font-bold text-indigo-800 mb-2">2. Backlinks = Higher Authority</h4>
+                    <p class="text-sm text-gray-600">
+                        Each microsite links to your main site. Google sees this as a vote of confidence,
+                        helping chrisdavidsalon.com rank higher overall.
+                    </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg">
+                    <h4 class="font-bold text-indigo-800 mb-2">3. Direct Leads</h4>
+                    <p class="text-sm text-gray-600">
+                        Someone searching "best salon palm beach" finds bestsalonpalmbeach.com,
+                        clicks through to your site, and books an appointment. That's a lead.
+                    </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg">
+                    <h4 class="font-bold text-indigo-800 mb-2">4. Long-Term Investment</h4>
+                    <p class="text-sm text-gray-600">
+                        As these sites age and build authority, they become more valuable.
+                        A 2-year-old microsite ranks better than a new one.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-    // Load microsite traffic data from GA4 API
-    async function loadMicrositeData() {
-        // Load version first
+    // API Base URL - use production when running locally (serverless functions need Vercel)
+    const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'https://www.chrisdavidsalon.com'
+        : '';
+
+    async function loadPageData() {
+        // Load version
         try {
-            const versionResp = await fetch('/data/version.json');
+            const versionResp = await fetch(`${API_BASE}/data/version.json`);
             const versionData = await versionResp.json();
             document.getElementById('versionBadge').textContent = 'v' + versionData.version;
         } catch (e) {
@@ -268,248 +303,34 @@
 
         document.getElementById('lastUpdate').textContent = 'Updated: ' + new Date().toLocaleTimeString();
 
-        // Show loading state for GA4 elements
-        const loadingElements = ['site1-sessions', 'site2-sessions', 'site3-sessions', 'site1-users', 'site2-users', 'site3-users'];
-        loadingElements.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.innerHTML = '<i class="fas fa-spinner fa-spin text-gray-400"></i>';
-        });
-
+        // Try to load lead data from GA4
         try {
-            // Call the GA4 microsite referrals API
-            const response = await fetch('/api/ga4-analytics?type=microsite-referrals&startDate=30daysAgo&endDate=today');
+            const response = await fetch(`${API_BASE}/api/ga4-analytics?type=microsite-referrals&startDate=30daysAgo&endDate=today`);
             const result = await response.json();
 
             if (result.success) {
-                // GA4 IS CONNECTED - Show real data
-                showConnectedState();
-                updateMicrositeData(result);
-            } else {
-                // GA4 NOT CONNECTED - Show instructions
-                showDisconnectedState(result.message || result.error);
-                clearMicrositeData();
+                // GA4 IS CONNECTED - Show real lead counts
+                document.getElementById('connectGA4Section').classList.add('hidden');
+
+                const site1 = result.microsites?.['bestsalondelray.com']?.totalUsers || 0;
+                const site2 = result.microsites?.['bestdelraysalon.com']?.totalUsers || 0;
+                const site3 = result.microsites?.['bestsalonpalmbeach.com']?.totalUsers || 0;
+                const total = site1 + site2 + site3;
+
+                document.getElementById('totalLeads').textContent = total;
+                document.getElementById('site1Leads').textContent = site1;
+                document.getElementById('site2Leads').textContent = site2;
+                document.getElementById('site3Leads').textContent = site3;
+                document.getElementById('leadsStatus').innerHTML = `
+                    <span class="bg-green-500 px-3 py-1 rounded text-sm">✓ Live data from GA4</span>
+                `;
             }
-        } catch (error) {
-            console.error('GA4 API Error:', error);
-            showDisconnectedState('Could not connect to analytics API: ' + error.message);
-            clearMicrositeData();
+        } catch (e) {
+            console.log('GA4 not connected, showing instructions');
         }
     }
 
-    function showConnectedState() {
-        // Update top banner
-        const banner = document.getElementById('dataSourceBanner');
-        banner.className = 'bg-green-50 border border-green-200 rounded-lg p-4 mb-6';
-        banner.innerHTML = `
-            <div class="flex items-center">
-                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                <div>
-                    <span class="font-semibold text-green-800">LIVE DATA from Google Analytics 4</span>
-                    <p class="text-green-700 text-sm">Real-time microsite referral data from GA4 API.</p>
-                </div>
-            </div>
-        `;
-
-        // Update GA4 section
-        document.getElementById('ga4Badge').textContent = 'GA4 Connected';
-        document.getElementById('ga4Badge').className = 'bg-green-500 text-white text-xs px-3 py-1 rounded';
-        document.getElementById('ga4NotConnectedMessage').classList.add('hidden');
-        document.getElementById('ga4ConnectedContent').classList.remove('hidden');
-        document.getElementById('ga4StatusText').textContent = 'Live data';
-    }
-
-    function showDisconnectedState(message) {
-        // Update top banner
-        const banner = document.getElementById('dataSourceBanner');
-        banner.className = 'bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6';
-        banner.innerHTML = `
-            <div class="flex items-start">
-                <i class="fas fa-exclamation-triangle text-yellow-500 mr-3 mt-1"></i>
-                <div>
-                    <span class="font-semibold text-yellow-800">GA4 API Not Connected</span>
-                    <p class="text-yellow-700 text-sm mt-1">${message}</p>
-                </div>
-            </div>
-        `;
-
-        // Keep GA4 section in disconnected state
-        document.getElementById('ga4Badge').textContent = 'GA4 Not Connected';
-        document.getElementById('ga4Badge').className = 'bg-yellow-500 text-white text-xs px-3 py-1 rounded';
-        document.getElementById('ga4NotConnectedMessage').classList.remove('hidden');
-        document.getElementById('ga4ConnectedContent').classList.add('hidden');
-        document.getElementById('ga4StatusText').textContent = 'Awaiting connection';
-    }
-
-    function updateMicrositeData(result) {
-        const sites = ['bestsalondelray.com', 'bestdelraysalon.com', 'bestsalonpalmbeach.com'];
-        const siteIds = ['site1', 'site2', 'site3'];
-
-        sites.forEach((site, index) => {
-            const data = result.microsites?.[site] || { totalSessions: 0, totalUsers: 0 };
-            const prefix = siteIds[index];
-
-            const sessionsEl = document.getElementById(`${prefix}-sessions`);
-            const usersEl = document.getElementById(`${prefix}-users`);
-            if (sessionsEl) sessionsEl.textContent = data.totalSessions || '0';
-            if (usersEl) usersEl.textContent = data.totalUsers || '0';
-        });
-
-        // Update totals
-        const totalReferrals = result.totalFromMicrosites?.sessions || 0;
-        document.getElementById('totalReferrals').textContent = totalReferrals;
-        const totalRefConnected = document.getElementById('totalReferralsConnected');
-        if (totalRefConnected) totalRefConnected.textContent = totalReferrals;
-    }
-
-    function clearMicrositeData() {
-        const elements = ['site1-sessions', 'site2-sessions', 'site3-sessions', 'site1-users', 'site2-users', 'site3-users'];
-        elements.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = '--';
-        });
-        document.getElementById('totalReferrals').textContent = '--';
-    }
-
-    // Run microsite analysis using the analysis engine
-    async function runMicrositeAnalysis() {
-        try {
-            const response = await fetch('/api/seo-analysis-engine?action=microsite-impact');
-            const result = await response.json();
-
-            if (result.success) {
-                alert(`Microsite Analysis Complete!\n\n` +
-                    `Total Sessions: ${result.summary?.totalSessions || 0}\n` +
-                    `Total Users: ${result.summary?.totalUsers || 0}\n\n` +
-                    `Recommendations:\n${result.recommendations?.map(r => '- ' + r.action).join('\n') || 'Connect GA4 for recommendations'}`);
-            } else {
-                alert(`Analysis Status: ${result.error || 'Awaiting GA4 connection'}\n\n` +
-                    `To enable full analysis, add GA4 credentials to Vercel.`);
-            }
-        } catch (error) {
-            alert('Could not run analysis: ' + error.message);
-        }
-
-        // Reload data
-        loadMicrositeData();
-    }
-
-    // Export traffic data as CSV
-    function exportTrafficData() {
-        const data = [
-            ['Microsite', 'Sessions (30d)', 'Users (30d)', 'Status'],
-            ['bestsalondelray.com',
-             document.getElementById('site1-week').textContent,
-             '--',
-             'Live'],
-            ['bestdelraysalon.com',
-             document.getElementById('site2-week').textContent,
-             '--',
-             'Live'],
-            ['bestsalonpalmbeach.com',
-             document.getElementById('site3-week').textContent,
-             '--',
-             'Live']
-        ];
-
-        const csvContent = data.map(row => row.join(',')).join('\n');
-        const blob = new Blob([csvContent], { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
-
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `microsite-traffic-${new Date().toISOString().split('T')[0]}.csv`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-    }
-
-    // Legacy functions for old buttons (simplified)
-    function optimizeMicrosite(site) {
-        alert(`To optimize ${site}, connect GA4 API first to see real performance data.`);
-    }
-
-    function createMicrosite(type) {
-        alert(`New microsite creation requires analysis of current performance. Connect GA4 API first.`);
-    }
-
-    function analyzeMicrosites() {
-        runMicrositeAnalysis();
-    }
-
-    // Load PageRank data for microsites
-    async function loadPageRankData() {
-        const microsites = [
-            { domain: 'bestsalondelray.com', id: 'pr-site1' },
-            { domain: 'bestdelraysalon.com', id: 'pr-site2' },
-            { domain: 'bestsalonpalmbeach.com', id: 'pr-site3' }
-        ];
-
-        // Show loading state
-        microsites.forEach(site => {
-            const el = document.getElementById(site.id);
-            if (el) el.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-        });
-
-        try {
-            // Query all microsites at once
-            const domains = microsites.map(s => s.domain).join('&domains[]=');
-            const response = await fetch(`/api/authority-score?domain=${domains}&competitors=false`);
-            const result = await response.json();
-
-            if (result.success && result.data?.all_results) {
-                result.data.all_results.forEach(item => {
-                    const site = microsites.find(s => s.domain === item.domain);
-                    if (site) {
-                        const el = document.getElementById(site.id);
-                        if (el) {
-                            if (item.pagerank_decimal) {
-                                el.textContent = `${item.pagerank_decimal.toFixed(2)} (${item.pagerank}/10)`;
-                            } else {
-                                el.innerHTML = '<span class="text-red-500">NOT INDEXED</span>';
-                            }
-                        }
-                    }
-                });
-            } else {
-                // Fall back to static data from pagerank_results.json
-                loadStaticPageRankData();
-            }
-        } catch (error) {
-            console.error('PageRank API error:', error);
-            loadStaticPageRankData();
-        }
-    }
-
-    // Load static PageRank data from stored results
-    function loadStaticPageRankData() {
-        // Based on pagerank_results.json data from Nov 26, 2025
-        const staticData = {
-            'bestsalondelray.com': { value: 1.18, rank: '1/10' },
-            'bestdelraysalon.com': { value: null, rank: 'NOT INDEXED' },
-            'bestsalonpalmbeach.com': { value: 1.18, rank: '1/10' }
-        };
-
-        Object.entries(staticData).forEach(([domain, data], index) => {
-            const el = document.getElementById(`pr-site${index + 1}`);
-            if (el) {
-                if (data.value) {
-                    el.textContent = `${data.value.toFixed(2)} (${data.rank})`;
-                } else {
-                    el.innerHTML = '<span class="text-red-500">NOT INDEXED</span>';
-                }
-            }
-        });
-    }
-
-    // Auto-load data on page load
-    window.addEventListener('load', () => {
-        loadMicrositeData();
-        loadPageRankData();
-    });
-
-    // Auto-refresh every 5 minutes
-    setInterval(loadMicrositeData, 300000);
+    loadPageData();
     </script>
 </body>
 </html>

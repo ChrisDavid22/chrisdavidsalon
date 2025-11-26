@@ -36,177 +36,281 @@
             </div>
             <!-- Navigation Tabs -->
             <div class="flex space-x-1 pb-2 overflow-x-auto">
-                <a href="index.html" class="px-4 py-2 hover:bg-white/10 rounded-t">SEO Command</a>
+                <a href="index.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Dashboard</a>
+                <a href="improvement-planner.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Improvement Plan</a>
                 <a href="traffic.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Traffic</a>
-                <a href="competitors.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Competitors</a>
-                <a href="rankings.html" class="px-4 py-2 bg-white/20 rounded-t font-semibold">Rankings</a>
                 <a href="authority.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Authority</a>
                 <a href="microsites.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Microsites</a>
-                <a href="agent-log.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Agent Log</a>
+                <a href="rankings.html" class="px-4 py-2 bg-white/20 rounded-t font-semibold">Rankings</a>
             </div>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto p-6">
-        <!-- Data Source Banner -->
-        <div id="dataSourceBanner" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-            <div class="flex items-start">
-                <i class="fas fa-exclamation-triangle text-yellow-500 mr-3 mt-1"></i>
-                <div>
-                    <span class="font-semibold text-yellow-800">Ranking Data Requires Google Search Console API</span>
-                    <p class="text-yellow-700 text-sm mt-1">
-                        Keyword position data requires Search Console API connection. Currently showing strategy guidance only.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Keyword Strategy Overview -->
+        <!-- Page Header with Explanation -->
         <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg shadow-xl p-6 mb-6">
-            <h2 class="text-3xl font-bold mb-4">Keyword Strategy</h2>
-            <p class="text-green-100 mb-6">
-                Target keywords for Delray Beach hair salon search visibility
+            <h2 class="text-3xl font-bold mb-2">🔍 Keyword Rankings</h2>
+            <p class="text-green-100">
+                Where does Chris David Salon appear when people search Google? Check your rankings manually below.
             </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Keywords Tracked</h3>
-                    <div class="text-3xl font-bold" id="keywordCount">--</div>
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Top 10 Rankings</h3>
-                    <div class="text-3xl font-bold" id="top10Count">--</div>
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Opportunities</h3>
-                    <div class="text-3xl font-bold" id="opportunities">--</div>
-                </div>
-                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Data Status</h3>
-                    <div class="text-xl font-bold">Awaiting API</div>
-                </div>
-            </div>
         </div>
 
-        <!-- Target Keywords by Category -->
+        <!-- Manual Rank Checker -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 class="text-2xl font-bold mb-6">Target Keywords by Category</h3>
+            <div class="flex items-center gap-2 mb-4">
+                <h3 class="text-2xl font-bold">Check Your Google Ranking</h3>
+                <span class="relative group cursor-help">
+                    <i class="fas fa-info-circle text-blue-500"></i>
+                    <div class="absolute left-0 bottom-full mb-2 hidden group-hover:block w-72 p-3 bg-gray-900 text-white text-sm rounded-lg shadow-xl z-50">
+                        <strong>How to use:</strong><br>
+                        1. Click any keyword below<br>
+                        2. Google opens in a new tab<br>
+                        3. Find "Chris David Salon" in results<br>
+                        4. Count what position it appears in<br><br>
+                        <strong>Tip:</strong> Use incognito/private mode for accurate results not influenced by your search history.
+                    </div>
+                </span>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- High Volume -->
+            <p class="text-gray-600 mb-6">Click any keyword to open a Google search and manually check your position. Use <strong>Incognito/Private mode</strong> for accurate results.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Primary Keywords -->
                 <div class="border-2 border-blue-200 rounded-lg p-4">
                     <h4 class="font-bold text-blue-700 mb-3 flex items-center">
-                        <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                        High Volume Keywords
+                        <i class="fas fa-star text-yellow-500 mr-2"></i>
+                        Primary Keywords (High Value)
                     </h4>
-                    <p class="text-sm text-gray-600 mb-3">Main targets - competitive but high value</p>
-                    <ul class="space-y-2 text-sm">
-                        <li class="p-2 bg-gray-50 rounded">"hair salon delray beach"</li>
-                        <li class="p-2 bg-gray-50 rounded">"best hair salon delray beach"</li>
-                        <li class="p-2 bg-gray-50 rounded">"hair salon atlantic avenue"</li>
-                        <li class="p-2 bg-gray-50 rounded">"balayage delray beach"</li>
-                    </ul>
+                    <div class="space-y-2">
+                        <a href="https://www.google.com/search?q=hair+salon+delray+beach" target="_blank" class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"hair salon delray beach"</span>
+                                <i class="fas fa-external-link-alt text-blue-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=best+hair+salon+delray+beach" target="_blank" class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"best hair salon delray beach"</span>
+                                <i class="fas fa-external-link-alt text-blue-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=hair+salon+atlantic+avenue+delray" target="_blank" class="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"hair salon atlantic avenue"</span>
+                                <i class="fas fa-external-link-alt text-blue-500"></i>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Service-Specific -->
+                <!-- Service Keywords -->
                 <div class="border-2 border-green-200 rounded-lg p-4">
                     <h4 class="font-bold text-green-700 mb-3 flex items-center">
-                        <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                        <i class="fas fa-cut text-green-500 mr-2"></i>
                         Service Keywords
                     </h4>
-                    <p class="text-sm text-gray-600 mb-3">Specific services - easier to rank</p>
-                    <ul class="space-y-2 text-sm">
-                        <li class="p-2 bg-gray-50 rounded">"color correction delray beach"</li>
-                        <li class="p-2 bg-gray-50 rounded">"hair extensions delray beach"</li>
-                        <li class="p-2 bg-gray-50 rounded">"keratin treatment delray beach"</li>
-                        <li class="p-2 bg-gray-50 rounded">"wedding hair delray beach"</li>
-                    </ul>
+                    <div class="space-y-2">
+                        <a href="https://www.google.com/search?q=balayage+delray+beach" target="_blank" class="block p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"balayage delray beach"</span>
+                                <i class="fas fa-external-link-alt text-green-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=color+correction+delray+beach" target="_blank" class="block p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"color correction delray beach"</span>
+                                <i class="fas fa-external-link-alt text-green-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=hair+extensions+delray+beach" target="_blank" class="block p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"hair extensions delray beach"</span>
+                                <i class="fas fa-external-link-alt text-green-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=keratin+treatment+delray+beach" target="_blank" class="block p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"keratin treatment delray beach"</span>
+                                <i class="fas fa-external-link-alt text-green-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=wedding+hair+delray+beach" target="_blank" class="block p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"wedding hair delray beach"</span>
+                                <i class="fas fa-external-link-alt text-green-500"></i>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Unique Advantages -->
+                <!-- Specialty Keywords -->
                 <div class="border-2 border-purple-200 rounded-lg p-4">
                     <h4 class="font-bold text-purple-700 mb-3 flex items-center">
-                        <span class="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
-                        Unique Advantage Keywords
+                        <i class="fas fa-award text-purple-500 mr-2"></i>
+                        Chris's Specialties
                     </h4>
-                    <p class="text-sm text-gray-600 mb-3">Keywords where Chris has an edge</p>
-                    <ul class="space-y-2 text-sm">
-                        <li class="p-2 bg-gray-50 rounded">"davines salon delray beach"</li>
-                        <li class="p-2 bg-gray-50 rounded">"master colorist delray beach"</li>
-                        <li class="p-2 bg-gray-50 rounded">"blonde specialist delray"</li>
-                        <li class="p-2 bg-gray-50 rounded">"free parking hair salon delray"</li>
-                    </ul>
+                    <div class="space-y-2">
+                        <a href="https://www.google.com/search?q=davines+salon+delray+beach" target="_blank" class="block p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"davines salon delray beach"</span>
+                                <i class="fas fa-external-link-alt text-purple-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=master+colorist+delray+beach" target="_blank" class="block p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"master colorist delray beach"</span>
+                                <i class="fas fa-external-link-alt text-purple-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=blonde+specialist+delray+beach" target="_blank" class="block p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"blonde specialist delray beach"</span>
+                                <i class="fas fa-external-link-alt text-purple-500"></i>
+                            </div>
+                        </a>
+                        <a href="https://www.google.com/search?q=Chris+David+Salon+Delray+Beach" target="_blank" class="block p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+                            <div class="flex justify-between items-center">
+                                <span>"Chris David Salon Delray Beach"</span>
+                                <i class="fas fa-external-link-alt text-purple-500"></i>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Content Strategy -->
-        <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg shadow-lg p-6">
-            <h3 class="text-2xl font-bold mb-4">Content Strategy for Rankings</h3>
+        <!-- What Rankings Mean -->
+        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                Understanding Your Rankings
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-lg border-l-4 border-green-500">
+                    <h4 class="font-bold text-green-700">Position 1-3 = Excellent</h4>
+                    <p class="text-sm text-gray-600 mt-1">You're getting most of the clicks for this keyword. Keep doing what you're doing!</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border-l-4 border-yellow-500">
+                    <h4 class="font-bold text-yellow-700">Position 4-10 = Good</h4>
+                    <p class="text-sm text-gray-600 mt-1">You're on page 1. Small improvements to content or backlinks could push you higher.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 class="font-bold text-red-700">Position 11+ = Needs Work</h4>
+                    <p class="text-sm text-gray-600 mt-1">Page 2 or beyond. Most searchers never get here. Focus on this keyword with dedicated content.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Maps Rankings -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 flex items-center">
+                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                Google Maps Rankings (Local Pack)
+            </h3>
+            <p class="text-gray-600 mb-4">The "3-pack" of businesses shown on Google Maps is often more important than organic rankings for local searches.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://www.google.com/maps/search/hair+salon+delray+beach" target="_blank" class="block p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors border-2 border-red-200">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-red-800">Hair Salon Delray Beach</div>
+                            <div class="text-sm text-red-600">Check if you appear in the top 3</div>
+                        </div>
+                        <i class="fas fa-map text-red-500 text-2xl"></i>
+                    </div>
+                </a>
+                <a href="https://www.google.com/maps/search/balayage+delray+beach" target="_blank" class="block p-4 bg-red-50 rounded-lg hover:bg-red-100 transition-colors border-2 border-red-200">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <div class="font-bold text-red-800">Balayage Delray Beach</div>
+                            <div class="text-sm text-red-600">Check Maps ranking for this service</div>
+                        </div>
+                        <i class="fas fa-map text-red-500 text-2xl"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- How to Improve Rankings -->
+        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg shadow-lg p-6">
+            <h3 class="text-2xl font-bold mb-4">How to Improve Your Rankings</h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <h4 class="font-bold text-purple-800 mb-3">Content Creation Plan</h4>
+                    <h4 class="font-bold text-indigo-800 mb-3">Quick Wins (Do This Week)</h4>
                     <ul class="space-y-2">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
                             <div>
-                                <strong>Balayage Guide:</strong> 2000+ word ultimate guide
-                                <div class="text-sm text-gray-600">Target: "balayage delray beach"</div>
+                                <strong>Ask for Google Reviews</strong>
+                                <div class="text-sm text-gray-600">More 5-star reviews = better Maps ranking</div>
                             </div>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
                             <div>
-                                <strong>Color Correction:</strong> Before/after gallery + process
-                                <div class="text-sm text-gray-600">Target: "color correction delray"</div>
+                                <strong>Post on Google Business Profile</strong>
+                                <div class="text-sm text-gray-600">Weekly posts signal active business</div>
                             </div>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
                             <div>
-                                <strong>Davines Page:</strong> Why we're certified
-                                <div class="text-sm text-gray-600">Target: "davines salon delray"</div>
+                                <strong>Add Photos</strong>
+                                <div class="text-sm text-gray-600">Upload recent work to Google Business</div>
                             </div>
                         </li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-pink-800 mb-3">Technical Optimizations</h4>
+                    <h4 class="font-bold text-purple-800 mb-3">Long-Term Strategy</h4>
                     <ul class="space-y-2">
                         <li class="flex items-start">
                             <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
                             <div>
-                                <strong>Title Tags:</strong> Include location + service
-                                <div class="text-sm text-gray-600">Impact: All keywords</div>
+                                <strong>Build Service Pages</strong>
+                                <div class="text-sm text-gray-600">One page per major service (already built!)</div>
                             </div>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
                             <div>
-                                <strong>Schema Markup:</strong> LocalBusiness + Service
-                                <div class="text-sm text-gray-600">Impact: Rich snippets</div>
+                                <strong>Get Local Backlinks</strong>
+                                <div class="text-sm text-gray-600">Local press, blogger features, chamber of commerce</div>
                             </div>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
                             <div>
-                                <strong>Internal Linking:</strong> Service pages linked
-                                <div class="text-sm text-gray-600">Impact: Authority flow</div>
+                                <strong>Citations Consistency</strong>
+                                <div class="text-sm text-gray-600">Same name/address/phone everywhere</div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
+        </div>
+
+        <!-- Future Enhancement Notice -->
+        <div class="bg-gray-100 rounded-lg p-4 mt-6 text-center text-gray-600">
+            <i class="fas fa-info-circle mr-2"></i>
+            <strong>Want automatic tracking?</strong> Connect Google Search Console API to see exact rankings updated daily.
+            <br><span class="text-sm">Contact your developer to set up SEARCH_CONSOLE_PROPERTY_ID in Vercel.</span>
         </div>
     </div>
 
     <script>
+    // API Base URL - use production when running locally (serverless functions need Vercel)
+    const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'https://www.chrisdavidsalon.com'
+        : '';
+
     async function loadPageData() {
         // Load version
         try {
-            const response = await fetch('/data/version.json');
+            const response = await fetch(`${API_BASE}/data/version.json`);
             const data = await response.json();
             document.getElementById('versionBadge').textContent = `v${data.version}`;
         } catch (e) {
@@ -214,12 +318,6 @@
         }
 
         document.getElementById('lastUpdate').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
-
-        // Ranking data requires Search Console API
-        // Show "--" for all metrics until connected
-        document.getElementById('keywordCount').textContent = '--';
-        document.getElementById('top10Count').textContent = '--';
-        document.getElementById('opportunities').textContent = '--';
     }
 
     loadPageData();
