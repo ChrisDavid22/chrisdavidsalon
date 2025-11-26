@@ -580,71 +580,27 @@ class AIConfig {
 
     /**
      * Fallback competitors if API fails
+     * NOTE: Returns empty array - competitor data MUST come from Google Places API
+     * NO HARDCODED DATA per project policy
      */
     getFallbackCompetitors() {
+        // Return structure with empty data - API must provide real data
         return {
-            competitors: [
-                {
-                    name: 'Rové Hair Salon',
-                    url: 'https://www.rovehairsalon.com',
-                    rating: 4.8,
-                    reviews: 203,
-                    strengths: 'Balayage specialists, multiple master colorists',
-                    seoScore: 89
-                },
-                {
-                    name: 'Bond Street Salon',
-                    url: 'https://bondstreetsalon.com',
-                    rating: 4.7,
-                    reviews: 156,
-                    strengths: 'Pineapple Grove location, luxury positioning',
-                    seoScore: 85
-                },
-                {
-                    name: 'Salon Trace',
-                    url: 'https://salontrace.com',
-                    rating: 4.9,
-                    reviews: 127,
-                    strengths: 'Blonde specialists, head spa services',
-                    seoScore: 82
-                },
-                {
-                    name: 'One Aveda Salon',
-                    url: 'https://oneaveda.com',
-                    rating: 4.6,
-                    reviews: 189,
-                    strengths: 'Aveda products, spa services',
-                    seoScore: 78
-                },
-                {
-                    name: 'Tyler Presley Salon',
-                    url: 'https://tylerpresleysalon.com',
-                    rating: 4.7,
-                    reviews: 98,
-                    strengths: 'Full service, multiple product lines',
-                    seoScore: 75
-                }
-            ]
+            competitors: [],
+            error: 'Google Places API not connected',
+            message: 'Add GOOGLE_PLACES_API_KEY to Vercel environment variables for competitor data'
         };
     }
 
     /**
      * Fallback keywords if API fails
+     * NOTE: NO HARDCODED DATA - keyword research requires Google Search Console API
      */
     getFallbackKeywords() {
         return {
-            keywords: [
-                { phrase: 'hair salon delray beach', volume: 1900, competition: 'high' },
-                { phrase: 'balayage delray beach', volume: 720, competition: 'medium' },
-                { phrase: 'hair extensions delray beach', volume: 480, competition: 'medium' },
-                { phrase: 'colorist delray beach', volume: 390, competition: 'low' },
-                { phrase: 'keratin treatment delray beach', volume: 550, competition: 'medium' },
-                { phrase: 'best hair salon atlantic avenue', volume: 340, competition: 'low' },
-                { phrase: 'luxury hair salon delray', volume: 290, competition: 'low' },
-                { phrase: 'blonde specialist delray beach', volume: 210, competition: 'low' },
-                { phrase: 'hair color correction delray', volume: 170, competition: 'low' },
-                { phrase: 'brazilian blowout delray beach', volume: 380, competition: 'medium' }
-            ]
+            keywords: [],
+            error: 'Search Console API not connected',
+            message: 'Keyword data requires Google Search Console API connection'
         };
     }
 
@@ -717,25 +673,12 @@ class AIConfig {
 
     /**
      * Find competitors using Google Custom Search
+     * NOTE: NO HARDCODED DATA - must use API or return empty
      */
     async findCompetitors(keywords = 'hair salon', location = 'Delray Beach') {
-        // REAL competitors verified to exist in Delray Beach
-        const realCompetitors = [
-            { name: 'Rové Hair Salon', url: 'https://www.rovehairsalon.com', snippet: 'Premier balayage and color specialists with 203 reviews' },
-            { name: 'Bond Street Salon', url: 'https://bondstreetsalon.com', snippet: 'Luxury salon in Pineapple Grove with 156 reviews' },
-            { name: 'Salon Trace', url: 'https://salontrace.com', snippet: 'Blonde specialists and head spa services with 127 reviews' },
-            { name: 'One Aveda Salon', url: 'https://oneaveda.com', snippet: 'Aveda products and spa services with 189 reviews' },
-            { name: 'Tyler Presley Salon', url: 'https://tylerpresleysalon.com', snippet: 'Full service salon with 98 reviews' },
-            { name: 'Studio 34 Hair', url: 'https://studio34hair.com', snippet: 'Hair extensions specialists with 87 reviews' },
-            { name: 'Imbue Salon', url: 'https://imbuesalon.com', snippet: 'Trendy salon with modern techniques and 76 reviews' },
-            { name: 'The Salon Delray', url: 'https://thesalondelray.com', snippet: 'Downtown location with 112 reviews' },
-            { name: 'ShearLuck Salon', url: 'https://shearlucksalon.com', snippet: 'Boutique salon with 54 reviews' },
-            { name: "Christopher's Too", url: 'https://christopherstoo.com', snippet: 'Established salon serving Delray for 15+ years' }
-        ];
-        
         if (!this.apis.google.customSearch.key || !this.apis.google.customSearch.cx) {
-            console.warn('Google Custom Search API not configured. Using researched competitor data.');
-            return realCompetitors;
+            console.warn('Google Custom Search API not configured. No competitor data available.');
+            return [];
         }
 
         try {
@@ -752,7 +695,7 @@ class AIConfig {
             const data = await response.json();
             
             if (!data.items || data.items.length === 0) {
-                return realCompetitors;
+                return [];
             }
             
             // Return actual search results
@@ -765,8 +708,8 @@ class AIConfig {
             
         } catch (error) {
             console.error('Competitor search error:', error);
-            // Return real competitor data as fallback
-            return realCompetitors;
+            // NO HARDCODED FALLBACK - return empty array
+            return [];
         }
     }
 
@@ -916,6 +859,7 @@ class AIConfig {
 
     /**
      * Get real-time analytics data
+     * NOTE: NO HARDCODED FALLBACK DATA - must use GA4 API
      */
     async getRealTimeAnalytics() {
         try {
@@ -924,12 +868,13 @@ class AIConfig {
             return await response.json();
         } catch (error) {
             console.error('Failed to load analytics:', error);
-            // Return cached data as fallback
+            // NO HARDCODED DATA - return null values
             return {
-                visitors: 247,
-                pageViews: 892,
-                averageTime: '2:34',
-                bounceRate: '52%'
+                visitors: null,
+                pageViews: null,
+                averageTime: null,
+                bounceRate: null,
+                error: 'GA4 API not connected'
             };
         }
     }

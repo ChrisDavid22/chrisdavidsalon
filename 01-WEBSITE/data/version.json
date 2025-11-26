@@ -1,7 +1,12 @@
 {
-  "version": "2.8.3",
-  "lastUpdated": "2025-11-26T16:30:00Z",
+  "version": "2.8.4",
+  "lastUpdated": "2025-11-26T17:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.8.4",
+      "date": "2025-11-26T17:30:00Z",
+      "changes": "CRITICAL: Removed ALL hardcoded fake data from every admin page and ai-config.js. Microsites backlink counts now show '--' until API connected. Competitor fallbacks return empty arrays. Analytics fallbacks return null. NO FAKE DATA - all metrics require real API connections."
+    },
     {
       "version": "2.8.3",
       "date": "2025-11-26T16:30:00Z",
