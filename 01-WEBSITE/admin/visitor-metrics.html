@@ -13,6 +13,9 @@
         .trend-up { color: #10b981; }
         .trend-down { color: #ef4444; }
         .trend-neutral { color: #6b7280; }
+        .data-live { background-color: #dcfce7; color: #166534; }
+        .data-manual { background-color: #fef3c7; color: #92400e; }
+        .data-error { background-color: #fee2e2; color: #991b1b; }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -26,9 +29,10 @@
                 <h1 class="text-2xl font-bold text-gray-900">
                     <i class="fas fa-chart-line text-blue-600 mr-2"></i>Visitor Metrics Dashboard
                 </h1>
-                <span id="versionBadge" class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">v2.6.12</span>
+                <span id="versionBadge" class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Loading...</span>
             </div>
             <div class="flex items-center space-x-4">
+                <span id="dataSourceBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded data-manual">Checking...</span>
                 <span id="lastUpdated" class="text-sm text-gray-500">Loading...</span>
                 <button onclick="refreshData()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                     <i class="fas fa-sync-alt mr-2"></i>Refresh
@@ -41,28 +45,44 @@
     <nav class="bg-white border-b">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex space-x-4 overflow-x-auto py-2">
-                <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Dashboard</a>
+                <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">SEO Score</a>
+                <a href="visitor-metrics.html" class="px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-semibold whitespace-nowrap">Traffic</a>
+                <a href="engagement-tracker.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Conversions</a>
                 <a href="competitors.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Competitors</a>
                 <a href="rankings.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Rankings</a>
-                <a href="visitor-metrics.html" class="px-4 py-2 text-blue-600 border-b-2 border-blue-600 font-semibold whitespace-nowrap">Visitor Metrics</a>
-                <a href="seo-tasks.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">SEO Tasks</a>
-                <a href="performance.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Performance</a>
-                <a href="microsites.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Microsites</a>
+                <a href="seo-action-plan.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Action Plan</a>
+                <a href="seo-score-tracker.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">History</a>
             </div>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Data Source Warning -->
+        <div id="dataWarning" class="mb-6 p-4 rounded-xl bg-yellow-50 border border-yellow-200 hidden">
+            <div class="flex items-start">
+                <i class="fas fa-exclamation-triangle text-yellow-600 mt-1 mr-3"></i>
+                <div>
+                    <h4 class="font-bold text-yellow-800">Limited Data Available</h4>
+                    <p class="text-sm text-yellow-700" id="dataWarningMessage">
+                        Real-time Google Analytics API not connected. Showing last observed data.
+                    </p>
+                    <p class="text-xs text-yellow-600 mt-1">
+                        To enable live data: Set up Google Analytics Data API and add credentials to environment variables.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- Growth Status Banner -->
-        <div id="growthBanner" class="mb-8 p-6 rounded-xl shadow-lg">
+        <div id="growthBanner" class="mb-8 p-6 rounded-xl shadow-lg bg-gray-200">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="text-2xl font-bold" id="growthTitle">Loading Traffic Data...</h2>
-                    <p class="text-lg mt-1" id="growthSubtitle">Analyzing visitor trends</p>
+                    <h2 class="text-2xl font-bold text-gray-700" id="growthTitle">Loading Traffic Data...</h2>
+                    <p class="text-lg mt-1 text-gray-600" id="growthSubtitle">Fetching from data sources</p>
                 </div>
                 <div class="text-right">
-                    <div class="text-5xl font-bold" id="growthPercent">--</div>
-                    <div class="text-sm" id="growthPeriod">vs last month</div>
+                    <div class="text-5xl font-bold text-gray-700" id="growthPercent">--</div>
+                    <div class="text-sm text-gray-600" id="growthPeriod">vs last month</div>
                 </div>
             </div>
         </div>
@@ -75,25 +95,25 @@
                     <div class="p-3 bg-blue-100 rounded-lg">
                         <i class="fas fa-users text-blue-600 text-xl"></i>
                     </div>
-                    <span id="currentTrend" class="flex items-center text-sm font-semibold">
-                        <i class="fas fa-arrow-up mr-1"></i>--
+                    <span id="currentTrend" class="flex items-center text-sm font-semibold text-gray-400">
+                        --
                     </span>
                 </div>
-                <h3 class="text-gray-500 text-sm font-medium">This Month</h3>
+                <h3 class="text-gray-500 text-sm font-medium">Last Known Month</h3>
                 <p class="text-3xl font-bold text-gray-900" id="currentMonthVisitors">--</p>
-                <p class="text-sm text-gray-500 mt-1" id="currentMonthName">November 2025</p>
+                <p class="text-sm text-gray-500 mt-1" id="currentMonthName">Loading...</p>
             </div>
 
-            <!-- Last Month Visitors -->
+            <!-- Data Source -->
             <div class="bg-white rounded-xl shadow-lg p-6 metric-card">
                 <div class="flex justify-between items-start mb-4">
                     <div class="p-3 bg-gray-100 rounded-lg">
-                        <i class="fas fa-calendar-alt text-gray-600 text-xl"></i>
+                        <i class="fas fa-database text-gray-600 text-xl"></i>
                     </div>
                 </div>
-                <h3 class="text-gray-500 text-sm font-medium">Last Month</h3>
-                <p class="text-3xl font-bold text-gray-900" id="lastMonthVisitors">--</p>
-                <p class="text-sm text-gray-500 mt-1" id="lastMonthName">October 2025</p>
+                <h3 class="text-gray-500 text-sm font-medium">Data Source</h3>
+                <p class="text-lg font-bold text-gray-900" id="dataSourceName">Checking...</p>
+                <p class="text-sm text-gray-500 mt-1" id="dataSourceStatus">Connecting to APIs...</p>
             </div>
 
             <!-- Conversion Rate -->
@@ -102,9 +122,6 @@
                     <div class="p-3 bg-green-100 rounded-lg">
                         <i class="fas fa-percentage text-green-600 text-xl"></i>
                     </div>
-                    <span id="conversionTrend" class="flex items-center text-sm font-semibold">
-                        <i class="fas fa-arrow-up mr-1"></i>--
-                    </span>
                 </div>
                 <h3 class="text-gray-500 text-sm font-medium">Conversion Rate</h3>
                 <p class="text-3xl font-bold text-gray-900" id="conversionRate">--</p>
@@ -126,155 +143,237 @@
 
         <!-- Charts Row -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <!-- Monthly Trend Chart -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-4">
-                    <i class="fas fa-chart-area text-blue-600 mr-2"></i>Monthly Visitor Trend
-                </h3>
-                <div class="h-80">
-                    <canvas id="monthlyTrendChart"></canvas>
-                </div>
-            </div>
-
             <!-- Traffic Sources Chart -->
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <h3 class="text-lg font-bold text-gray-900 mb-4">
                     <i class="fas fa-chart-pie text-purple-600 mr-2"></i>Traffic Sources
+                    <span id="trafficChartStatus" class="text-xs font-normal text-gray-500 ml-2">Loading...</span>
                 </h3>
                 <div class="h-80">
                     <canvas id="trafficSourcesChart"></canvas>
                 </div>
             </div>
+
+            <!-- API Status Panel -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">
+                    <i class="fas fa-plug text-blue-600 mr-2"></i>Data Connections
+                </h3>
+                <div id="apiStatusPanel" class="space-y-4">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
         </div>
 
-        <!-- Monthly Breakdown Table -->
+        <!-- Real Data Notice -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
             <h3 class="text-lg font-bold text-gray-900 mb-4">
-                <i class="fas fa-table text-gray-600 mr-2"></i>Monthly Performance Breakdown
+                <i class="fas fa-info-circle text-blue-600 mr-2"></i>About This Data
             </h3>
-            <div class="overflow-x-auto">
-                <table class="min-w-full">
-                    <thead>
-                        <tr class="bg-gray-50">
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Month</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Visitors</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Change</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bookings</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Conversion</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Top Source</th>
-                        </tr>
-                    </thead>
-                    <tbody id="monthlyTable" class="bg-white divide-y divide-gray-200">
-                        <!-- Populated by JavaScript -->
-                    </tbody>
-                </table>
+            <div id="dataExplanation" class="prose max-w-none">
+                <p class="text-gray-600">Loading data source information...</p>
             </div>
         </div>
 
         <!-- Action Items -->
         <div class="bg-white rounded-xl shadow-lg p-6">
             <h3 class="text-lg font-bold text-gray-900 mb-4">
-                <i class="fas fa-tasks text-yellow-600 mr-2"></i>Traffic Improvement Actions
+                <i class="fas fa-tasks text-yellow-600 mr-2"></i>To Enable Real-Time Data
             </h3>
-            <div id="trafficActions" class="space-y-4">
-                <!-- Populated by JavaScript -->
+            <div id="setupActions" class="space-y-4">
+                <div class="flex items-start p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <div class="p-2 bg-blue-100 rounded-lg mr-4">
+                        <i class="fas fa-key text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">1. Enable Google Analytics Data API</h4>
+                        <p class="text-gray-600 text-sm mt-1">Go to Google Cloud Console, enable the GA Data API, and create credentials.</p>
+                        <a href="https://console.cloud.google.com/apis/library/analyticsdata.googleapis.com" target="_blank" class="text-blue-600 text-sm hover:underline">Open Google Cloud Console →</a>
+                    </div>
+                </div>
+                <div class="flex items-start p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="p-2 bg-green-100 rounded-lg mr-4">
+                        <i class="fas fa-cog text-green-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">2. Add Environment Variables to Vercel</h4>
+                        <p class="text-gray-600 text-sm mt-1">Add GOOGLE_ANALYTICS_PROPERTY_ID and service account credentials to Vercel.</p>
+                    </div>
+                </div>
+                <div class="flex items-start p-4 bg-purple-50 rounded-lg border border-purple-200">
+                    <div class="p-2 bg-purple-100 rounded-lg mr-4">
+                        <i class="fas fa-sync text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">3. Redeploy to Activate</h4>
+                        <p class="text-gray-600 text-sm mt-1">After adding credentials, redeploy the site to start receiving live data.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
     <script>
-        // Monthly visitor data - This would ideally come from Google Analytics API
-        // For now using realistic estimates based on the data we have
-        const monthlyData = [
-            { month: 'Jun 2025', visitors: 185, bookings: 18, mobilePercent: 65, topSource: 'Google Search' },
-            { month: 'Jul 2025', visitors: 198, bookings: 20, mobilePercent: 66, topSource: 'Google Search' },
-            { month: 'Aug 2025', visitors: 247, bookings: 28, mobilePercent: 68, topSource: 'Google Search' },
-            { month: 'Sep 2025', visitors: 268, bookings: 31, mobilePercent: 68, topSource: 'Google Search' },
-            { month: 'Oct 2025', visitors: 289, bookings: 35, mobilePercent: 69, topSource: 'Google Search' },
-            { month: 'Nov 2025', visitors: 312, bookings: 38, mobilePercent: 70, topSource: 'Google Search' }
-        ];
-
-        const trafficSources = {
-            'Google Search': 58,
-            'Direct': 18,
-            'Google Maps': 12,
-            'Instagram': 7,
-            'Facebook': 3,
-            'Other': 2
-        };
-
-        let monthlyTrendChart = null;
+        // NO HARDCODED DATA - Everything fetched from API
         let trafficSourcesChart = null;
+        let visitorData = null;
 
-        function initializeCharts() {
-            // Monthly Trend Chart
-            const trendCtx = document.getElementById('monthlyTrendChart').getContext('2d');
+        // Load version
+        async function loadVersion() {
+            try {
+                const response = await fetch('/data/version.json');
+                const data = await response.json();
+                document.getElementById('versionBadge').textContent = `v${data.version}`;
+            } catch (e) {
+                document.getElementById('versionBadge').textContent = 'v?.?.?';
+            }
+        }
 
-            if (monthlyTrendChart) {
-                monthlyTrendChart.destroy();
+        // Fetch ALL data from API - NO HARDCODED VALUES
+        async function fetchVisitorData() {
+            try {
+                // Fetch visitor data from analytics API
+                const response = await fetch('/api/analytics?type=visitors');
+                const result = await response.json();
+
+                if (result.success) {
+                    visitorData = result;
+                    return result;
+                } else {
+                    throw new Error(result.message || 'Failed to fetch visitor data');
+                }
+            } catch (error) {
+                console.error('Error fetching visitor data:', error);
+                return {
+                    success: false,
+                    error: error.message,
+                    currentData: null,
+                    dataSource: 'error'
+                };
+            }
+        }
+
+        // Fetch traffic sources from API
+        async function fetchTrafficSources() {
+            try {
+                const response = await fetch('/api/analytics?type=traffic-sources');
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error('Error fetching traffic sources:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Update the UI with fetched data
+        function updateUI(data) {
+            // Update data source badge
+            const badge = document.getElementById('dataSourceBadge');
+            const warning = document.getElementById('dataWarning');
+
+            if (data.dataSource === 'error' || !data.success) {
+                badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded data-error';
+                badge.textContent = 'API Error';
+                warning.classList.remove('hidden');
+                document.getElementById('dataWarningMessage').textContent = data.error || 'Could not fetch data from API';
+                return;
             }
 
-            monthlyTrendChart = new Chart(trendCtx, {
-                type: 'line',
-                data: {
-                    labels: monthlyData.map(d => d.month),
-                    datasets: [{
-                        label: 'Visitors',
-                        data: monthlyData.map(d => d.visitors),
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 6,
-                        pointBackgroundColor: '#3b82f6'
-                    }, {
-                        label: 'Bookings',
-                        data: monthlyData.map(d => d.bookings),
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 6,
-                        pointBackgroundColor: '#10b981'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }
-            });
+            if (data.dataSource === 'manual-ga-observation') {
+                badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded data-manual';
+                badge.textContent = 'Manual Observation';
+                warning.classList.remove('hidden');
+                document.getElementById('dataWarningMessage').textContent = data.disclaimer || 'Data from manual Google Analytics observation.';
+            } else if (data.dataSource === 'google-analytics-api') {
+                badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded data-live';
+                badge.textContent = 'LIVE Data';
+                warning.classList.add('hidden');
+            }
 
-            // Traffic Sources Chart
-            const sourcesCtx = document.getElementById('trafficSourcesChart').getContext('2d');
+            // Update metrics from API data
+            if (data.currentData) {
+                const current = data.currentData;
+
+                document.getElementById('currentMonthVisitors').textContent = current.visitors ? current.visitors.toLocaleString() : 'N/A';
+                document.getElementById('currentMonthName').textContent = current.month || 'Unknown';
+                document.getElementById('conversionRate').textContent = current.visitors && current.bookingClicks
+                    ? ((current.bookingClicks / current.visitors) * 100).toFixed(1) + '%'
+                    : 'N/A';
+                document.getElementById('mobileTraffic').textContent = current.mobilePercent
+                    ? current.mobilePercent + '%'
+                    : 'N/A';
+
+                // Update growth banner based on real data availability
+                const banner = document.getElementById('growthBanner');
+                if (current.isReal) {
+                    banner.className = 'mb-8 p-6 rounded-xl shadow-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white';
+                    document.getElementById('growthTitle').textContent = `${current.visitors} Visitors`;
+                    document.getElementById('growthSubtitle').textContent = `Last observed: ${current.month}`;
+                    document.getElementById('growthPercent').textContent = '--';
+                    document.getElementById('growthPeriod').textContent = 'Historical data not available';
+                } else {
+                    banner.className = 'mb-8 p-6 rounded-xl shadow-lg bg-gray-200';
+                    document.getElementById('growthTitle').textContent = 'No Data Available';
+                    document.getElementById('growthSubtitle').textContent = 'Connect Google Analytics API';
+                }
+            }
+
+            // Update data source info
+            document.getElementById('dataSourceName').textContent = data.dataSource === 'manual-ga-observation'
+                ? 'Manual Observation'
+                : data.dataSource === 'google-analytics-api'
+                    ? 'Google Analytics API'
+                    : 'Not Connected';
+
+            document.getElementById('dataSourceStatus').textContent = data.currentData?.source || 'Unknown source';
+
+            // Update timestamp
+            document.getElementById('lastUpdated').textContent = `Updated: ${new Date(data.timestamp).toLocaleString()}`;
+
+            // Update data explanation
+            document.getElementById('dataExplanation').innerHTML = `
+                <p class="text-gray-600">
+                    <strong>Data Source:</strong> ${data.dataSource}<br>
+                    <strong>Last Updated:</strong> ${new Date(data.timestamp).toLocaleString()}<br>
+                    ${data.disclaimer ? `<strong>Note:</strong> ${data.disclaimer}` : ''}
+                </p>
+                ${data.apiStatus ? `
+                    <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                        <strong>API Status:</strong><br>
+                        Google Analytics: ${data.apiStatus.googleAnalytics?.connected ? 'Connected' : 'Not Connected'}<br>
+                        ${data.apiStatus.googleAnalytics?.message || ''}
+                    </div>
+                ` : ''}
+            `;
+        }
+
+        // Update traffic sources chart from API data
+        async function updateTrafficChart() {
+            const result = await fetchTrafficSources();
+
+            const chartStatus = document.getElementById('trafficChartStatus');
+
+            if (!result.success || !result.trafficSources) {
+                chartStatus.textContent = '(No data available)';
+                return;
+            }
+
+            chartStatus.textContent = `(${result.dataSource})`;
+
+            const sources = result.trafficSources.sources;
+
+            const ctx = document.getElementById('trafficSourcesChart').getContext('2d');
 
             if (trafficSourcesChart) {
                 trafficSourcesChart.destroy();
             }
 
-            trafficSourcesChart = new Chart(sourcesCtx, {
+            trafficSourcesChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: Object.keys(trafficSources),
+                    labels: sources.map(s => s.source),
                     datasets: [{
-                        data: Object.values(trafficSources),
+                        data: sources.map(s => s.percent),
                         backgroundColor: [
                             '#3b82f6',
                             '#10b981',
@@ -292,178 +391,97 @@
                     plugins: {
                         legend: {
                             position: 'right'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const source = sources[context.dataIndex];
+                                    return `${source.source}: ${source.percent}% (${source.visitors} visitors)`;
+                                }
+                            }
                         }
                     }
                 }
             });
         }
 
-        function updateMetrics() {
-            const currentMonth = monthlyData[monthlyData.length - 1];
-            const lastMonth = monthlyData[monthlyData.length - 2];
+        // Update API status panel
+        function updateAPIStatusPanel() {
+            const panel = document.getElementById('apiStatusPanel');
 
-            // Calculate growth
-            const growth = ((currentMonth.visitors - lastMonth.visitors) / lastMonth.visitors * 100).toFixed(1);
-            const isGrowing = growth > 0;
-
-            // Update growth banner
-            const banner = document.getElementById('growthBanner');
-            if (isGrowing) {
-                banner.className = 'mb-8 p-6 rounded-xl shadow-lg bg-gradient-to-r from-green-500 to-green-600 text-white';
-                document.getElementById('growthTitle').textContent = 'Traffic is Growing!';
-                document.getElementById('growthSubtitle').textContent = `You're on track for continued growth`;
-            } else {
-                banner.className = 'mb-8 p-6 rounded-xl shadow-lg bg-gradient-to-r from-red-500 to-red-600 text-white';
-                document.getElementById('growthTitle').textContent = 'Traffic Needs Attention';
-                document.getElementById('growthSubtitle').textContent = 'Focus on SEO improvements';
-            }
-            document.getElementById('growthPercent').textContent = (isGrowing ? '+' : '') + growth + '%';
-
-            // Update metric cards
-            document.getElementById('currentMonthVisitors').textContent = currentMonth.visitors.toLocaleString();
-            document.getElementById('lastMonthVisitors').textContent = lastMonth.visitors.toLocaleString();
-            document.getElementById('conversionRate').textContent = ((currentMonth.bookings / currentMonth.visitors) * 100).toFixed(1) + '%';
-            document.getElementById('mobileTraffic').textContent = currentMonth.mobilePercent + '%';
-
-            // Update trends
-            const currentTrend = document.getElementById('currentTrend');
-            currentTrend.innerHTML = `<i class="fas fa-arrow-${isGrowing ? 'up' : 'down'} mr-1"></i>${Math.abs(growth)}%`;
-            currentTrend.className = `flex items-center text-sm font-semibold ${isGrowing ? 'trend-up' : 'trend-down'}`;
-
-            // Update month names
-            document.getElementById('currentMonthName').textContent = currentMonth.month;
-            document.getElementById('lastMonthName').textContent = lastMonth.month;
-
-            // Update timestamp
-            document.getElementById('lastUpdated').textContent = 'Updated: ' + new Date().toLocaleString();
-        }
-
-        function populateTable() {
-            const tbody = document.getElementById('monthlyTable');
-            tbody.innerHTML = '';
-
-            // Reverse to show newest first
-            const reversedData = [...monthlyData].reverse();
-
-            reversedData.forEach((month, index) => {
-                const prevMonth = reversedData[index + 1];
-                let change = '--';
-                let changeClass = 'trend-neutral';
-
-                if (prevMonth) {
-                    const diff = ((month.visitors - prevMonth.visitors) / prevMonth.visitors * 100).toFixed(1);
-                    change = (diff > 0 ? '+' : '') + diff + '%';
-                    changeClass = diff > 0 ? 'trend-up' : (diff < 0 ? 'trend-down' : 'trend-neutral');
+            const apis = [
+                {
+                    name: 'Google Analytics',
+                    status: visitorData?.apiStatus?.googleAnalytics?.connected ? 'connected' : 'not-connected',
+                    message: visitorData?.apiStatus?.googleAnalytics?.message || 'Not configured',
+                    icon: 'fa-chart-bar'
+                },
+                {
+                    name: 'PageSpeed API',
+                    status: 'connected', // Always available (free tier)
+                    message: 'Free tier - no key required',
+                    icon: 'fa-tachometer-alt'
+                },
+                {
+                    name: 'Google Search Console',
+                    status: 'not-connected',
+                    message: 'Integration required for keyword data',
+                    icon: 'fa-search'
+                },
+                {
+                    name: 'Google Places',
+                    status: 'checking',
+                    message: 'Checking connection...',
+                    icon: 'fa-map-marker-alt'
                 }
+            ];
 
-                const conversion = ((month.bookings / month.visitors) * 100).toFixed(1) + '%';
+            panel.innerHTML = apis.map(api => {
+                const statusColors = {
+                    'connected': 'bg-green-100 text-green-800 border-green-200',
+                    'not-connected': 'bg-gray-100 text-gray-600 border-gray-200',
+                    'checking': 'bg-blue-100 text-blue-800 border-blue-200',
+                    'error': 'bg-red-100 text-red-800 border-red-200'
+                };
 
-                tbody.innerHTML += `
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap font-medium">${month.month}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">${month.visitors.toLocaleString()}</td>
-                        <td class="px-6 py-4 whitespace-nowrap ${changeClass} font-semibold">${change}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">${month.bookings}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">${conversion}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">${month.topSource}</td>
-                    </tr>
-                `;
-            });
-        }
+                const statusLabels = {
+                    'connected': 'Connected',
+                    'not-connected': 'Not Setup',
+                    'checking': 'Checking...',
+                    'error': 'Error'
+                };
 
-        function generateActions() {
-            const actionsContainer = document.getElementById('trafficActions');
-            const currentMonth = monthlyData[monthlyData.length - 1];
-            const lastMonth = monthlyData[monthlyData.length - 2];
-            const growth = ((currentMonth.visitors - lastMonth.visitors) / lastMonth.visitors * 100);
-
-            const actions = [];
-
-            // Always add actions based on data
-            if (growth < 10) {
-                actions.push({
-                    priority: 'high',
-                    title: 'Boost Google Rankings',
-                    description: 'Current growth of ' + growth.toFixed(1) + '% is below target. Focus on adding more service pages and building backlinks.',
-                    icon: 'fa-search',
-                    color: 'red'
-                });
-            }
-
-            if (currentMonth.bookings / currentMonth.visitors < 0.15) {
-                actions.push({
-                    priority: 'high',
-                    title: 'Improve Conversion Rate',
-                    description: 'Current conversion rate is ' + ((currentMonth.bookings / currentMonth.visitors) * 100).toFixed(1) + '%. Add more prominent CTAs and simplify booking process.',
-                    icon: 'fa-percentage',
-                    color: 'yellow'
-                });
-            }
-
-            actions.push({
-                priority: 'medium',
-                title: 'Expand Service Pages',
-                description: 'New dedicated landing pages for wedding hair, balayage, extensions, keratin, and color correction have been created. Monitor their performance.',
-                icon: 'fa-file-alt',
-                color: 'blue'
-            });
-
-            actions.push({
-                priority: 'medium',
-                title: 'Increase Social Traffic',
-                description: 'Social media drives only 10% of traffic. Post more Instagram content linking to website.',
-                icon: 'fa-instagram',
-                color: 'purple'
-            });
-
-            actions.push({
-                priority: 'low',
-                title: 'Collect More Reviews',
-                description: 'Currently at 133 reviews. Target 150+ to improve local SEO ranking vs competitors.',
-                icon: 'fa-star',
-                color: 'yellow'
-            });
-
-            actionsContainer.innerHTML = actions.map(action => `
-                <div class="flex items-start p-4 bg-${action.color}-50 rounded-lg border border-${action.color}-200">
-                    <div class="p-2 bg-${action.color}-100 rounded-lg mr-4">
-                        <i class="fas ${action.icon} text-${action.color}-600"></i>
-                    </div>
-                    <div>
+                return `
+                    <div class="flex items-center justify-between p-3 rounded-lg border ${statusColors[api.status]}">
                         <div class="flex items-center">
-                            <h4 class="font-semibold text-gray-900">${action.title}</h4>
-                            <span class="ml-2 px-2 py-0.5 text-xs font-semibold rounded ${
-                                action.priority === 'high' ? 'bg-red-100 text-red-800' :
-                                action.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                                'bg-green-100 text-green-800'
-                            }">${action.priority.toUpperCase()}</span>
+                            <i class="fas ${api.icon} mr-3"></i>
+                            <div>
+                                <div class="font-semibold">${api.name}</div>
+                                <div class="text-xs opacity-75">${api.message}</div>
+                            </div>
                         </div>
-                        <p class="text-gray-600 text-sm mt-1">${action.description}</p>
+                        <span class="text-xs font-bold px-2 py-1 rounded ${statusColors[api.status]}">
+                            ${statusLabels[api.status]}
+                        </span>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
-        function refreshData() {
-            // In a real implementation, this would fetch from Google Analytics API
-            // For now, we'll just update the timestamp
+        // Refresh all data
+        async function refreshData() {
             document.getElementById('lastUpdated').textContent = 'Refreshing...';
 
-            setTimeout(() => {
-                updateMetrics();
-                initializeCharts();
-                populateTable();
-                generateActions();
-                document.getElementById('lastUpdated').textContent = 'Updated: ' + new Date().toLocaleString();
-            }, 1000);
+            const data = await fetchVisitorData();
+            updateUI(data);
+            await updateTrafficChart();
+            updateAPIStatusPanel();
         }
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            updateMetrics();
-            initializeCharts();
-            populateTable();
-            generateActions();
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadVersion();
+            await refreshData();
         });
     </script>
 </body>

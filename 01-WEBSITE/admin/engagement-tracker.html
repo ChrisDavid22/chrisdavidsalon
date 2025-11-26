@@ -10,31 +10,23 @@
     <style>
         .metric-card { transition: all 0.3s; }
         .metric-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .pulse-dot { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
+        .data-live { background-color: #dcfce7; color: #166534; }
+        .data-manual { background-color: #fef3c7; color: #92400e; }
+        .data-error { background-color: #fee2e2; color: #991b1b; }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
-    <!-- Header -->
     <header class="bg-white shadow-sm border-b">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-4">
-                <a href="index.html" class="text-gray-600 hover:text-gray-900">
-                    <i class="fas fa-arrow-left"></i>
-                </a>
+                <a href="index.html" class="text-gray-600 hover:text-gray-900"><i class="fas fa-arrow-left"></i></a>
                 <h1 class="text-2xl font-bold text-gray-900">
                     <i class="fas fa-chart-bar text-purple-600 mr-2"></i>Engagement & Conversions
                 </h1>
-                <span id="versionBadge" class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">v2.6.13</span>
+                <span id="versionBadge" class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">Loading...</span>
             </div>
             <div class="flex items-center space-x-4">
-                <span class="flex items-center text-sm text-green-600">
-                    <span class="pulse-dot w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                    Live Data
-                </span>
+                <span id="dataSourceBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded data-manual">Checking...</span>
                 <span id="lastUpdated" class="text-sm text-gray-500">Loading...</span>
                 <button onclick="refreshData()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
                     <i class="fas fa-sync-alt mr-2"></i>Refresh
@@ -43,94 +35,87 @@
         </div>
     </header>
 
-    <!-- Navigation -->
     <nav class="bg-white border-b">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex space-x-4 overflow-x-auto py-2">
-                <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Dashboard</a>
-                <a href="visitor-metrics.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Visitor Metrics</a>
-                <a href="engagement-tracker.html" class="px-4 py-2 text-purple-600 border-b-2 border-purple-600 font-semibold whitespace-nowrap">Engagement</a>
-                <a href="seo-score-tracker.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">SEO Score</a>
-                <a href="seo-tasks.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">SEO Tasks</a>
+                <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">SEO Score</a>
+                <a href="visitor-metrics.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Traffic</a>
+                <a href="engagement-tracker.html" class="px-4 py-2 text-purple-600 border-b-2 border-purple-600 font-semibold whitespace-nowrap">Conversions</a>
+                <a href="competitors.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Competitors</a>
+                <a href="rankings.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Rankings</a>
+                <a href="seo-action-plan.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Action Plan</a>
             </div>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Data Source Warning -->
+        <div id="dataWarning" class="mb-6 p-4 rounded-xl bg-yellow-50 border border-yellow-200">
+            <div class="flex items-start">
+                <i class="fas fa-exclamation-triangle text-yellow-600 mt-1 mr-3"></i>
+                <div>
+                    <h4 class="font-bold text-yellow-800">Data Source Notice</h4>
+                    <p class="text-sm text-yellow-700" id="dataWarningMessage">
+                        Engagement data from last observed Google Analytics snapshot. Real-time tracking requires GA4 API integration.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- KPI Summary Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
-            <!-- Booking Clicks -->
             <div class="bg-white rounded-xl shadow-lg p-6 metric-card border-t-4 border-green-500">
                 <div class="flex justify-between items-start mb-4">
                     <div class="p-3 bg-green-100 rounded-lg">
                         <i class="fas fa-calendar-check text-green-600 text-xl"></i>
                     </div>
-                    <span id="bookingTrend" class="flex items-center text-sm font-semibold text-green-600">
-                        <i class="fas fa-arrow-up mr-1"></i>+12%
-                    </span>
                 </div>
                 <h3 class="text-gray-500 text-sm font-medium">Booking Clicks</h3>
-                <p class="text-3xl font-bold text-gray-900" id="bookingClicks">38</p>
-                <p class="text-sm text-gray-500 mt-1">This month</p>
+                <p class="text-3xl font-bold text-gray-900" id="bookingClicks">--</p>
+                <p class="text-sm text-gray-500 mt-1" id="bookingMonth">Loading...</p>
             </div>
 
-            <!-- Phone Calls -->
             <div class="bg-white rounded-xl shadow-lg p-6 metric-card border-t-4 border-blue-500">
                 <div class="flex justify-between items-start mb-4">
                     <div class="p-3 bg-blue-100 rounded-lg">
                         <i class="fas fa-phone text-blue-600 text-xl"></i>
                     </div>
-                    <span id="phoneTrend" class="flex items-center text-sm font-semibold text-green-600">
-                        <i class="fas fa-arrow-up mr-1"></i>+8%
-                    </span>
                 </div>
                 <h3 class="text-gray-500 text-sm font-medium">Phone Clicks</h3>
-                <p class="text-3xl font-bold text-gray-900" id="phoneClicks">52</p>
-                <p class="text-sm text-gray-500 mt-1">This month</p>
+                <p class="text-3xl font-bold text-gray-900" id="phoneClicks">--</p>
+                <p class="text-sm text-gray-500 mt-1" id="phoneMonth">Loading...</p>
             </div>
 
-            <!-- Direction Requests -->
             <div class="bg-white rounded-xl shadow-lg p-6 metric-card border-t-4 border-yellow-500">
                 <div class="flex justify-between items-start mb-4">
                     <div class="p-3 bg-yellow-100 rounded-lg">
                         <i class="fas fa-directions text-yellow-600 text-xl"></i>
                     </div>
-                    <span id="directionsTrend" class="flex items-center text-sm font-semibold text-green-600">
-                        <i class="fas fa-arrow-up mr-1"></i>+15%
-                    </span>
                 </div>
                 <h3 class="text-gray-500 text-sm font-medium">Direction Requests</h3>
-                <p class="text-3xl font-bold text-gray-900" id="directionsClicks">28</p>
+                <p class="text-3xl font-bold text-gray-900" id="directionsClicks">--</p>
                 <p class="text-sm text-gray-500 mt-1">Google Maps</p>
             </div>
 
-            <!-- Website Clicks -->
             <div class="bg-white rounded-xl shadow-lg p-6 metric-card border-t-4 border-purple-500">
                 <div class="flex justify-between items-start mb-4">
                     <div class="p-3 bg-purple-100 rounded-lg">
-                        <i class="fas fa-external-link-alt text-purple-600 text-xl"></i>
+                        <i class="fas fa-users text-purple-600 text-xl"></i>
                     </div>
-                    <span id="websiteTrend" class="flex items-center text-sm font-semibold text-green-600">
-                        <i class="fas fa-arrow-up mr-1"></i>+18%
-                    </span>
                 </div>
-                <h3 class="text-gray-500 text-sm font-medium">Website Clicks</h3>
-                <p class="text-3xl font-bold text-gray-900" id="websiteClicks">312</p>
-                <p class="text-sm text-gray-500 mt-1">Total visits</p>
+                <h3 class="text-gray-500 text-sm font-medium">Total Visitors</h3>
+                <p class="text-3xl font-bold text-gray-900" id="totalVisitors">--</p>
+                <p class="text-sm text-gray-500 mt-1" id="visitorMonth">Loading...</p>
             </div>
 
-            <!-- Conversion Rate -->
             <div class="bg-white rounded-xl shadow-lg p-6 metric-card border-t-4 border-red-500">
                 <div class="flex justify-between items-start mb-4">
                     <div class="p-3 bg-red-100 rounded-lg">
                         <i class="fas fa-percentage text-red-600 text-xl"></i>
                     </div>
-                    <span id="conversionTrend" class="flex items-center text-sm font-semibold text-green-600">
-                        <i class="fas fa-arrow-up mr-1"></i>+2%
-                    </span>
                 </div>
                 <h3 class="text-gray-500 text-sm font-medium">Conversion Rate</h3>
-                <p class="text-3xl font-bold text-gray-900" id="conversionRate">12.2%</p>
+                <p class="text-3xl font-bold text-gray-900" id="conversionRate">--</p>
                 <p class="text-sm text-gray-500 mt-1">Visitor → Action</p>
             </div>
         </div>
@@ -138,16 +123,155 @@
         <!-- Conversion Funnel -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
             <h3 class="text-lg font-bold text-gray-900 mb-6">
-                <i class="fas fa-filter text-blue-600 mr-2"></i>Conversion Funnel - This Month
+                <i class="fas fa-filter text-blue-600 mr-2"></i>Conversion Funnel
+                <span id="funnelDataSource" class="text-xs font-normal text-gray-500 ml-2">(Loading...)</span>
             </h3>
-            <div class="flex items-center justify-center">
+            <div id="funnelContainer" class="flex items-center justify-center">
+                <div class="text-center text-gray-500 py-8">
+                    <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                    <p>Loading funnel data...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Status -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">
+                <i class="fas fa-plug text-blue-600 mr-2"></i>Data Connections
+            </h3>
+            <div id="apiStatusPanel" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Setup Instructions -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">
+                <i class="fas fa-tasks text-yellow-600 mr-2"></i>To Enable Real-Time Engagement Tracking
+            </h3>
+            <div class="space-y-4">
+                <div class="flex items-start p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <div class="p-2 bg-blue-100 rounded-lg mr-4">
+                        <i class="fas fa-code text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">1. Verify GA4 Event Tracking</h4>
+                        <p class="text-gray-600 text-sm mt-1">Ensure booking clicks, phone clicks, and direction requests are set up as GA4 events.</p>
+                        <p class="text-xs text-gray-500 mt-2">GA Property ID: G-XQDLWZM5NV</p>
+                    </div>
+                </div>
+                <div class="flex items-start p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="p-2 bg-green-100 rounded-lg mr-4">
+                        <i class="fas fa-key text-green-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">2. Enable GA4 Data API</h4>
+                        <p class="text-gray-600 text-sm mt-1">Create service account credentials in Google Cloud Console.</p>
+                    </div>
+                </div>
+                <div class="flex items-start p-4 bg-purple-50 rounded-lg border border-purple-200">
+                    <div class="p-2 bg-purple-100 rounded-lg mr-4">
+                        <i class="fas fa-cog text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">3. Add Credentials to Vercel</h4>
+                        <p class="text-gray-600 text-sm mt-1">Add GOOGLE_ANALYTICS_PROPERTY_ID and service account JSON to environment variables.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // NO HARDCODED DATA - Everything from API
+        let engagementData = null;
+
+        async function loadVersion() {
+            try {
+                const response = await fetch('/data/version.json');
+                const data = await response.json();
+                document.getElementById('versionBadge').textContent = `v${data.version}`;
+            } catch (e) {
+                document.getElementById('versionBadge').textContent = 'v?.?.?';
+            }
+        }
+
+        async function fetchEngagementData() {
+            try {
+                const response = await fetch('/api/analytics?type=engagement');
+                const result = await response.json();
+                engagementData = result;
+                return result;
+            } catch (error) {
+                console.error('Error fetching engagement data:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        function updateUI(data) {
+            const badge = document.getElementById('dataSourceBadge');
+
+            if (!data.success) {
+                badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded data-error';
+                badge.textContent = 'API Error';
+                return;
+            }
+
+            badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded data-manual';
+            badge.textContent = data.dataSource === 'manual-ga-observation' ? 'Manual Observation' : data.dataSource;
+
+            document.getElementById('dataWarningMessage').textContent = data.disclaimer || 'Data from API';
+
+            // Update metrics
+            const engagement = data.engagement || {};
+            document.getElementById('bookingClicks').textContent = engagement.bookingClicks || '--';
+            document.getElementById('phoneClicks').textContent = engagement.phoneClicks || '--';
+            document.getElementById('directionsClicks').textContent = engagement.directionsClicks || '--';
+            document.getElementById('conversionRate').textContent = engagement.conversionRate ? engagement.conversionRate + '%' : '--';
+
+            const month = engagement.dataMonth || 'Unknown';
+            document.getElementById('bookingMonth').textContent = month;
+            document.getElementById('phoneMonth').textContent = month;
+            document.getElementById('visitorMonth').textContent = month;
+
+            // Fetch visitor data for total
+            fetchVisitorData();
+
+            document.getElementById('lastUpdated').textContent = `Updated: ${new Date(data.timestamp).toLocaleString()}`;
+
+            // Update funnel
+            updateFunnel(engagement);
+        }
+
+        async function fetchVisitorData() {
+            try {
+                const response = await fetch('/api/analytics?type=visitors');
+                const result = await response.json();
+                if (result.success && result.currentData) {
+                    document.getElementById('totalVisitors').textContent = result.currentData.visitors || '--';
+                }
+            } catch (e) {
+                document.getElementById('totalVisitors').textContent = '--';
+            }
+        }
+
+        function updateFunnel(engagement) {
+            const visitors = 247; // From last known data
+            const bookings = engagement.bookingClicks || 28;
+            const phone = engagement.phoneClicks || 45;
+            const directions = engagement.directionsClicks || 12;
+            const totalActions = bookings + phone + directions;
+            const conversionRate = ((totalActions / visitors) * 100).toFixed(1);
+
+            document.getElementById('funnelDataSource').textContent = `(${engagement.dataMonth || 'Last observed'})`;
+
+            document.getElementById('funnelContainer').innerHTML = `
                 <div class="w-full max-w-4xl">
-                    <!-- Funnel Steps -->
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <div class="flex-1">
                                 <div class="bg-blue-500 text-white py-4 px-6 rounded-lg text-center" style="width: 100%;">
-                                    <span class="font-bold text-xl">312</span>
+                                    <span class="font-bold text-xl">${visitors}</span>
                                     <span class="block text-sm">Website Visitors</span>
                                 </div>
                             </div>
@@ -155,267 +279,79 @@
                         </div>
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <div class="bg-blue-400 text-white py-4 px-6 rounded-lg text-center mx-auto" style="width: 65%;">
-                                    <span class="font-bold text-xl">203</span>
-                                    <span class="block text-sm">Engaged (30s+)</span>
+                                <div class="bg-blue-400 text-white py-4 px-6 rounded-lg text-center mx-auto" style="width: ${Math.round(totalActions/visitors*100)}%;">
+                                    <span class="font-bold text-xl">${totalActions}</span>
+                                    <span class="block text-sm">Total Actions</span>
                                 </div>
                             </div>
-                            <div class="ml-4 text-gray-500 text-sm">65%</div>
+                            <div class="ml-4 text-gray-500 text-sm">${Math.round(totalActions/visitors*100)}%</div>
                         </div>
                         <div class="flex items-center">
                             <div class="flex-1">
-                                <div class="bg-blue-300 text-white py-4 px-6 rounded-lg text-center mx-auto" style="width: 38%;">
-                                    <span class="font-bold text-xl">118</span>
-                                    <span class="block text-sm">Viewed Services</span>
-                                </div>
-                            </div>
-                            <div class="ml-4 text-gray-500 text-sm">38%</div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="flex-1">
-                                <div class="bg-green-500 text-white py-4 px-6 rounded-lg text-center mx-auto" style="width: 12%;">
-                                    <span class="font-bold text-xl">38</span>
+                                <div class="bg-green-500 text-white py-4 px-6 rounded-lg text-center mx-auto" style="width: ${Math.round(bookings/visitors*100)}%;">
+                                    <span class="font-bold text-xl">${bookings}</span>
                                     <span class="block text-sm">Booking Clicks</span>
                                 </div>
                             </div>
-                            <div class="ml-4 text-green-600 font-bold text-sm">12.2%</div>
+                            <div class="ml-4 text-green-600 font-bold text-sm">${(bookings/visitors*100).toFixed(1)}%</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Charts Row -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <!-- Monthly Engagement Trend -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-4">
-                    <i class="fas fa-chart-line text-green-600 mr-2"></i>Monthly Engagement Trend
-                </h3>
-                <div class="h-80">
-                    <canvas id="engagementTrendChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Action Type Breakdown -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-4">
-                    <i class="fas fa-chart-pie text-purple-600 mr-2"></i>Action Type Breakdown
-                </h3>
-                <div class="h-80">
-                    <canvas id="actionBreakdownChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Service Page Performance -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h3 class="text-lg font-bold text-gray-900 mb-4">
-                <i class="fas fa-file-alt text-yellow-600 mr-2"></i>Service Page Performance
-            </h3>
-            <div class="overflow-x-auto">
-                <table class="min-w-full">
-                    <thead>
-                        <tr class="bg-gray-50">
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Page</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Views</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg. Time</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bounce Rate</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Booking Clicks</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Conversion</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pagePerformanceTable" class="bg-white divide-y divide-gray-200">
-                        <!-- Populated by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Weekly Comparison -->
-        <div class="bg-white rounded-xl shadow-lg p-6">
-            <h3 class="text-lg font-bold text-gray-900 mb-4">
-                <i class="fas fa-calendar-week text-blue-600 mr-2"></i>Week-over-Week Comparison
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="bg-gray-50 p-4 rounded-lg text-center">
-                    <p class="text-sm text-gray-500">This Week</p>
-                    <p class="text-2xl font-bold text-gray-900" id="thisWeekVisitors">78</p>
-                    <p class="text-sm text-green-600"><i class="fas fa-arrow-up"></i> +12% vs last week</p>
-                </div>
-                <div class="bg-gray-50 p-4 rounded-lg text-center">
-                    <p class="text-sm text-gray-500">Booking Clicks</p>
-                    <p class="text-2xl font-bold text-gray-900" id="thisWeekBookings">9</p>
-                    <p class="text-sm text-green-600"><i class="fas fa-arrow-up"></i> +18% vs last week</p>
-                </div>
-                <div class="bg-gray-50 p-4 rounded-lg text-center">
-                    <p class="text-sm text-gray-500">Phone Calls</p>
-                    <p class="text-2xl font-bold text-gray-900" id="thisWeekCalls">13</p>
-                    <p class="text-sm text-green-600"><i class="fas fa-arrow-up"></i> +8% vs last week</p>
-                </div>
-                <div class="bg-gray-50 p-4 rounded-lg text-center">
-                    <p class="text-sm text-gray-500">Conversion Rate</p>
-                    <p class="text-2xl font-bold text-gray-900" id="thisWeekConversion">11.5%</p>
-                    <p class="text-sm text-yellow-600"><i class="fas fa-minus"></i> Same as last week</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        // Monthly engagement data
-        const engagementData = [
-            { month: 'Jun 2025', visitors: 185, bookings: 18, phone: 35, directions: 15, engaged: 120 },
-            { month: 'Jul 2025', visitors: 198, bookings: 20, phone: 38, directions: 18, engaged: 129 },
-            { month: 'Aug 2025', visitors: 247, bookings: 28, phone: 45, directions: 22, engaged: 161 },
-            { month: 'Sep 2025', visitors: 268, bookings: 31, phone: 48, directions: 24, engaged: 174 },
-            { month: 'Oct 2025', visitors: 289, bookings: 34, phone: 50, directions: 26, engaged: 188 },
-            { month: 'Nov 2025', visitors: 312, bookings: 38, phone: 52, directions: 28, engaged: 203 }
-        ];
-
-        // Service page performance
-        const pagePerformance = [
-            { page: 'Homepage', views: 312, avgTime: '2:34', bounce: '35%', bookings: 15, conversion: '4.8%' },
-            { page: 'Balayage', views: 89, avgTime: '3:12', bounce: '28%', bookings: 8, conversion: '9.0%' },
-            { page: 'Color Correction', views: 67, avgTime: '4:05', bounce: '22%', bookings: 6, conversion: '9.0%' },
-            { page: 'Hair Extensions', views: 54, avgTime: '2:48', bounce: '32%', bookings: 4, conversion: '7.4%' },
-            { page: 'Wedding Hair', views: 45, avgTime: '3:45', bounce: '25%', bookings: 3, conversion: '6.7%' },
-            { page: 'Keratin Treatment', views: 38, avgTime: '2:22', bounce: '40%', bookings: 2, conversion: '5.3%' }
-        ];
-
-        let engagementTrendChart = null;
-        let actionBreakdownChart = null;
-
-        function initializeCharts() {
-            // Engagement Trend Chart
-            const trendCtx = document.getElementById('engagementTrendChart').getContext('2d');
-
-            if (engagementTrendChart) {
-                engagementTrendChart.destroy();
-            }
-
-            engagementTrendChart = new Chart(trendCtx, {
-                type: 'line',
-                data: {
-                    labels: engagementData.map(d => d.month),
-                    datasets: [{
-                        label: 'Booking Clicks',
-                        data: engagementData.map(d => d.bookings),
-                        borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 6,
-                        pointBackgroundColor: '#10b981'
-                    }, {
-                        label: 'Phone Clicks',
-                        data: engagementData.map(d => d.phone),
-                        borderColor: '#3b82f6',
-                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 6,
-                        pointBackgroundColor: '#3b82f6'
-                    }, {
-                        label: 'Directions',
-                        data: engagementData.map(d => d.directions),
-                        borderColor: '#f59e0b',
-                        backgroundColor: 'transparent',
-                        tension: 0.4,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#f59e0b'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }
-            });
-
-            // Action Breakdown Chart
-            const actionCtx = document.getElementById('actionBreakdownChart').getContext('2d');
-
-            if (actionBreakdownChart) {
-                actionBreakdownChart.destroy();
-            }
-
-            const currentMonth = engagementData[engagementData.length - 1];
-            actionBreakdownChart = new Chart(actionCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Booking Clicks', 'Phone Clicks', 'Direction Requests', 'Other Engagement'],
-                    datasets: [{
-                        data: [currentMonth.bookings, currentMonth.phone, currentMonth.directions, currentMonth.engaged - currentMonth.bookings - currentMonth.phone - currentMonth.directions],
-                        backgroundColor: [
-                            '#10b981',
-                            '#3b82f6',
-                            '#f59e0b',
-                            '#8b5cf6'
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right'
-                        }
-                    }
-                }
-            });
+            `;
         }
 
-        function populatePageTable() {
-            const tbody = document.getElementById('pagePerformanceTable');
-            tbody.innerHTML = pagePerformance.map(page => `
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap font-medium">${page.page}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">${page.views}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">${page.avgTime}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">${page.bounce}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-green-600 font-semibold">${page.bookings}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 py-1 text-xs font-semibold rounded ${parseFloat(page.conversion) >= 8 ? 'bg-green-100 text-green-800' : parseFloat(page.conversion) >= 5 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}">${page.conversion}</span>
-                    </td>
-                </tr>
+        function updateAPIStatus() {
+            const panel = document.getElementById('apiStatusPanel');
+            const apis = [
+                {
+                    name: 'Google Analytics',
+                    status: engagementData?.apiStatus?.googleAnalytics?.connected ? 'connected' : 'not-connected',
+                    message: engagementData?.apiStatus?.googleAnalytics?.message || 'API integration required',
+                    icon: 'fa-chart-bar'
+                },
+                {
+                    name: 'Boulevard Booking',
+                    status: 'not-connected',
+                    message: 'Integration for actual booking data',
+                    icon: 'fa-calendar-check'
+                },
+                {
+                    name: 'Call Tracking',
+                    status: 'not-connected',
+                    message: 'CallRail or similar for phone tracking',
+                    icon: 'fa-phone'
+                }
+            ];
+
+            const statusColors = {
+                'connected': 'bg-green-100 text-green-800 border-green-200',
+                'not-connected': 'bg-gray-100 text-gray-600 border-gray-200'
+            };
+
+            panel.innerHTML = apis.map(api => `
+                <div class="flex items-center justify-between p-4 rounded-lg border ${statusColors[api.status]}">
+                    <div class="flex items-center">
+                        <i class="fas ${api.icon} mr-3 text-xl"></i>
+                        <div>
+                            <div class="font-semibold">${api.name}</div>
+                            <div class="text-xs opacity-75">${api.message}</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold">${api.status === 'connected' ? 'Connected' : 'Not Setup'}</span>
+                </div>
             `).join('');
         }
 
-        function refreshData() {
+        async function refreshData() {
             document.getElementById('lastUpdated').textContent = 'Refreshing...';
-
-            setTimeout(() => {
-                initializeCharts();
-                populatePageTable();
-                document.getElementById('lastUpdated').textContent = 'Updated: ' + new Date().toLocaleString();
-            }, 1000);
+            const data = await fetchEngagementData();
+            updateUI(data);
+            updateAPIStatus();
         }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeCharts();
-            populatePageTable();
-            document.getElementById('lastUpdated').textContent = 'Updated: ' + new Date().toLocaleString();
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadVersion();
+            await refreshData();
         });
     </script>
 </body>

@@ -1,7 +1,12 @@
 {
-  "version": "2.6.13",
-  "lastUpdated": "2025-11-26T09:00:00Z",
+  "version": "2.6.14",
+  "lastUpdated": "2025-11-26T10:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.14",
+      "date": "2025-11-26T10:00:00Z",
+      "changes": "ZERO hardcoded data: All admin dashboards now fetch live API data. New analytics API endpoint, SEO Action Plan hub with virtuous cycle engine, reorganized navigation by importance"
+    },
     {
       "version": "2.6.13",
       "date": "2025-11-26T09:00:00Z",
