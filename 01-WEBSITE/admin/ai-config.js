@@ -348,25 +348,19 @@ class AIConfig {
     }
 
     /**
-     * Legacy proxy server method (deprecated)
+     * Analyze SEO via production API
      */
     async analyzeSEOViaLocalProxy(url) {
         // Check cache first
         const cacheKey = `seo_${url}`;
-        if (this.cache.results[cacheKey] && 
+        if (this.cache.results[cacheKey] &&
             Date.now() - this.cache.results[cacheKey].timestamp < this.cache.maxAge) {
             return this.cache.results[cacheKey].data;
         }
 
         try {
-            // Legacy local proxy (requires local server)
-            const response = await fetch('http://localhost:3001/api/analyze-seo', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ url })
-            });
+            // Use production API endpoint
+            const response = await fetch('/api/admin-data?type=seo-analysis');
 
             if (!response.ok) {
                 throw new Error(`Analysis failed: ${response.status}`);
@@ -376,11 +370,11 @@ class AIConfig {
 
             // Cache the result
             this.cache.results[cacheKey] = {
-                data: result,
+                data: result.data || result,
                 timestamp: Date.now()
             };
 
-            return result;
+            return result.data || result;
         } catch (error) {
             console.error('SEO Analysis error:', error);
             // Fallback to basic analysis using PageSpeed data
@@ -449,7 +443,7 @@ class AIConfig {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/api/analyze-competitors', {
+            const response = await fetch('/api/admin-data?type=competitors', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -481,7 +475,7 @@ class AIConfig {
      */
     async checkKeywordRanking(keyword) {
         try {
-            const response = await fetch('http://localhost:3001/api/check-rankings', {
+            const response = await fetch('/api/admin-data?type=keywords', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -857,7 +851,7 @@ class AIConfig {
      */
     async getSEOTasks() {
         try {
-            const response = await fetch('http://localhost:3001/api/seo-tasks');
+            const response = await fetch('/api/admin-data?type=tasks');
             if (!response.ok) throw new Error('Failed to load tasks');
             return await response.json();
         } catch (error) {
@@ -871,7 +865,7 @@ class AIConfig {
      */
     async addSEOTask(task) {
         try {
-            const response = await fetch('http://localhost:3001/api/seo-tasks', {
+            const response = await fetch('/api/admin-data?type=add-task', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ task })
@@ -889,7 +883,7 @@ class AIConfig {
      */
     async updateSEOTask(id, status, notes) {
         try {
-            const response = await fetch(`http://localhost:3001/api/seo-tasks/${id}`, {
+            const response = await fetch(`/api/admin-data?type=update-task&id=${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status, notes })
@@ -907,7 +901,7 @@ class AIConfig {
      */
     async applyFix(type, issue) {
         try {
-            const response = await fetch(`http://localhost:3001/api/fix/${type}`, {
+            const response = await fetch(`/api/admin-data?type=apply-fix&fix=${type}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ issue })
@@ -925,7 +919,7 @@ class AIConfig {
      */
     async getRealTimeAnalytics() {
         try {
-            const response = await fetch('http://localhost:3001/api/analytics/realtime');
+            const response = await fetch('/api/admin-data?type=analytics');
             if (!response.ok) throw new Error('Failed to load analytics');
             return await response.json();
         } catch (error) {
