@@ -7,9 +7,9 @@
       - generic [ref=e4]:
         - generic [ref=e5]:
           - generic [ref=e8]: Chris David SEO Agent
-          - generic [ref=e9]: v2.8.4
+          - generic [ref=e9]: v2.8.5
         - generic [ref=e10]:
-          - generic [ref=e11]: "Updated: 11:31:13 AM"
+          - generic [ref=e11]: "Updated: 11:36:13 AM"
           - link "View Site" [ref=e12] [cursor=pointer]:
             - /url: ../index.html
       - generic [ref=e13]:
@@ -42,16 +42,16 @@
         - generic [ref=e35]:
           - generic [ref=e36]:
             - generic [ref=e37]: SEO Score
-            - generic [ref=e38]: "73"
+            - generic [ref=e38]: "--"
           - generic [ref=e39]: "--"
-        - generic [ref=e40]: From competitor analysis
+        - generic [ref=e40]: Awaiting API
       - generic [ref=e41]:
         - generic [ref=e42]:
           - generic [ref=e43]:
             - generic [ref=e44]: Market Position
-            - generic [ref=e45]: "#15"
+            - generic [ref=e45]: "--"
           - generic [ref=e47]: 
-        - generic [ref=e48]: of 5 tracked
+        - generic [ref=e48]: No data
       - generic [ref=e49]:
         - generic [ref=e50]:
           - generic [ref=e51]:
@@ -63,7 +63,7 @@
         - generic [ref=e58]:
           - generic [ref=e59]:
             - generic [ref=e60]: Monthly Visitors
-            - generic [ref=e61]: "307"
+            - generic [ref=e61]: "309"
           - generic [ref=e63]: 
         - generic [ref=e64]: Last 30 days from GA4
     - generic [ref=e65]:
@@ -71,96 +71,62 @@
         - generic [ref=e68]:
           - generic [ref=e69]: 
           - generic [ref=e70]:
-            - text: All APIs Connected
-            - paragraph [ref=e71]: Google Places API + GA4 API both returning live data
+            - text: Partial API Connection
+            - paragraph [ref=e71]: "Google Places: ✗ | GA4: ✓"
         - generic [ref=e72]:
           - heading " Agent Insights" [level=2] [ref=e73]:
             - generic [ref=e74]: 
             - text: Agent Insights
-          - generic [ref=e75]:
-            - generic [ref=e76]:
-              - generic [ref=e77]:
-                - generic [ref=e78]: 70 Reviews Behind Leader
-                - generic [ref=e79]: HIGH
-              - generic [ref=e80]: Salon Sora has 203 reviews vs your 133
-              - generic [ref=e81]: → Focus on review generation strategy
-            - generic [ref=e82]:
-              - generic [ref=e83]:
-                - generic [ref=e84]: High Bounce Rate
-                - generic [ref=e85]: MEDIUM
-              - generic [ref=e86]: 73.4% of visitors leave without interacting
-              - generic [ref=e87]: → Improve page load speed and content engagement
-        - generic [ref=e88]:
-          - heading " Competitive Standing" [level=2] [ref=e89]:
-            - generic [ref=e90]: 
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]: High Bounce Rate
+              - generic [ref=e79]: MEDIUM
+            - generic [ref=e80]: 73.5% of visitors leave without interacting
+            - generic [ref=e81]: → Improve page load speed and content engagement
+        - generic [ref=e82]:
+          - heading " Competitive Standing" [level=2] [ref=e83]:
+            - generic [ref=e84]: 
             - text: Competitive Standing
+          - generic [ref=e86]: Awaiting competitor data
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - heading " Traffic (GA4)" [level=2] [ref=e89]:
+            - generic [ref=e90]: 
+            - text: Traffic (GA4)
           - generic [ref=e91]:
             - generic [ref=e92]:
               - generic [ref=e93]:
-                - generic [ref=e94]: Your Position
-                - generic [ref=e95]: "#5"
-                - generic [ref=e96]: of 5
-              - generic [ref=e97]:
-                - generic [ref=e98]: Your Score
-                - generic [ref=e99]: "--"
-                - generic [ref=e100]: "vs leader: undefined"
-            - generic [ref=e101]:
-              - generic [ref=e102]: "Gap to #1: Salon Sora"
-              - generic [ref=e103]: "Score: NaN points behind • Reviews: 70 behind"
-      - generic [ref=e104]:
-        - generic [ref=e105]:
-          - heading " Traffic (GA4)" [level=2] [ref=e106]:
-            - generic [ref=e107]: 
-            - text: Traffic (GA4)
-          - generic [ref=e108]:
-            - generic [ref=e109]:
-              - generic [ref=e110]:
-                - generic [ref=e111]: Active Users
-                - generic [ref=e112]: "307"
-              - generic [ref=e113]:
-                - generic [ref=e114]: Sessions
-                - generic [ref=e115]: "432"
-              - generic [ref=e116]:
-                - generic [ref=e117]: Page Views
-                - generic [ref=e118]: "433"
-              - generic [ref=e119]:
-                - generic [ref=e120]: Bounce Rate
-                - generic [ref=e121]: 73.4%
-            - generic [ref=e122]: Last 30 days from Google Analytics 4
-        - generic [ref=e123]:
-          - heading " Top Competitors" [level=2] [ref=e124]:
-            - generic [ref=e125]: 
+                - generic [ref=e94]: Active Users
+                - generic [ref=e95]: "309"
+              - generic [ref=e96]:
+                - generic [ref=e97]: Sessions
+                - generic [ref=e98]: "434"
+              - generic [ref=e99]:
+                - generic [ref=e100]: Page Views
+                - generic [ref=e101]: "436"
+              - generic [ref=e102]:
+                - generic [ref=e103]: Bounce Rate
+                - generic [ref=e104]: 73.5%
+            - generic [ref=e105]: Last 30 days from Google Analytics 4
+        - generic [ref=e106]:
+          - heading " Top Competitors" [level=2] [ref=e107]:
+            - generic [ref=e108]: 
             - text: Top Competitors
-          - generic [ref=e126]:
-            - generic [ref=e127]:
-              - generic [ref=e128]:
-                - generic [ref=e129]: 1. Salon Sora
-                - generic [ref=e130]: 203 reviews • 4.8★
-              - generic [ref=e131]: "--"
-            - generic [ref=e132]:
-              - generic [ref=e133]:
-                - generic [ref=e134]: 2. Drybar Delray
-                - generic [ref=e135]: 189 reviews • 4.7★
-              - generic [ref=e136]: "--"
-            - generic [ref=e137]:
-              - generic [ref=e138]:
-                - generic [ref=e139]: 3. The W Salon
-                - generic [ref=e140]: 156 reviews • 4.9★
-              - generic [ref=e141]: "--"
-        - generic [ref=e142]:
-          - heading " Recent Changes" [level=2] [ref=e143]:
-            - generic [ref=e144]: 
+          - generic [ref=e110]: Google Places API not returning data
+        - generic [ref=e111]:
+          - heading " Recent Changes" [level=2] [ref=e112]:
+            - generic [ref=e113]: 
             - text: Recent Changes
-          - generic [ref=e145]:
-            - generic [ref=e148]:
-              - generic [ref=e149]: REMOVED ALL HARDCODED FAKE DATA
-              - generic [ref=e150]: 11/26/2025 • v2.8.4
-            - generic [ref=e153]:
-              - generic [ref=e154]: Competitors chart shows all 10 with score labels
-              - generic [ref=e155]: 11/26/2025 • v2.8.3
-            - generic [ref=e158]:
-              - generic [ref=e159]: Fixed all admin page rendering issues
-              - generic [ref=e160]: 11/26/2025 • v2.8.2
-          - link "View all implementations →" [ref=e161] [cursor=pointer]:
+          - generic [ref=e114]:
+            - generic [ref=e117]:
+              - generic [ref=e118]: REMOVED ALL HARDCODED FAKE DATA
+              - generic [ref=e119]: 11/26/2025 • v2.8.4
+            - generic [ref=e122]:
+              - generic [ref=e123]: Competitors chart shows all 10 with score labels
+              - generic [ref=e124]: 11/26/2025 • v2.8.3
+            - generic [ref=e127]:
+              - generic [ref=e128]: Fixed all admin page rendering issues
+              - generic [ref=e129]: 11/26/2025 • v2.8.2
+          - link "View all implementations →" [ref=e130] [cursor=pointer]:
             - /url: agent-log.html
 ```
