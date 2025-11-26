@@ -70,7 +70,17 @@
 
         <!-- Traffic Over Time Chart -->
         <div class="bg-white rounded-xl shadow p-6 mb-6">
-            <h2 class="text-lg font-bold mb-4">Traffic Over Time</h2>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold">Traffic Over Time</h2>
+                <div class="flex gap-2">
+                    <button id="viewDaily" onclick="setTrafficView('daily')" class="px-3 py-1 rounded text-sm font-semibold bg-indigo-600 text-white">
+                        Daily
+                    </button>
+                    <button id="viewMonthly" onclick="setTrafficView('monthly')" class="px-3 py-1 rounded text-sm font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300">
+                        Month vs Month
+                    </button>
+                </div>
+            </div>
             <div id="trafficChartContainer" class="h-64 flex items-center justify-center">
                 <div class="text-center text-gray-500">
                     <i class="fas fa-chart-line text-4xl mb-2"></i>
@@ -79,6 +89,34 @@
             </div>
             <div id="trafficChartWrapper" class="hidden" style="height: 250px;">
                 <canvas id="trafficOverTimeChart"></canvas>
+            </div>
+            <!-- Month over Month Comparison (hidden by default) -->
+            <div id="monthlyComparisonWrapper" class="hidden">
+                <div id="monthlyComparisonChart" style="height: 250px;">
+                    <canvas id="monthCompareChart"></canvas>
+                </div>
+                <div id="monthlyStats" class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="text-sm text-gray-500">This Month</div>
+                        <div class="text-2xl font-bold text-indigo-600" id="thisMonthUsers">--</div>
+                        <div class="text-xs text-gray-500">users</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="text-sm text-gray-500">Last Month</div>
+                        <div class="text-2xl font-bold text-gray-600" id="lastMonthUsers">--</div>
+                        <div class="text-xs text-gray-500">users</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="text-sm text-gray-500">Change</div>
+                        <div class="text-2xl font-bold" id="monthChange">--%</div>
+                        <div class="text-xs text-gray-500">vs last month</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="text-sm text-gray-500">Trend</div>
+                        <div class="text-2xl font-bold" id="monthTrend">--</div>
+                        <div class="text-xs text-gray-500">direction</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -210,7 +248,160 @@
     </main>
 
     <script>
-        let trafficOverTimeChart, trafficSourcesChart, deviceChart;
+        let trafficOverTimeChart, trafficSourcesChart, deviceChart, monthCompareChart;
+        let currentView = 'daily';
+        let dailyTrafficData = [];
+        let monthlyComparisonData = null;
+
+        // Toggle between daily and monthly views
+        function setTrafficView(view) {
+            currentView = view;
+            const dailyBtn = document.getElementById('viewDaily');
+            const monthlyBtn = document.getElementById('viewMonthly');
+            const dailyWrapper = document.getElementById('trafficChartWrapper');
+            const monthlyWrapper = document.getElementById('monthlyComparisonWrapper');
+
+            if (view === 'daily') {
+                dailyBtn.className = 'px-3 py-1 rounded text-sm font-semibold bg-indigo-600 text-white';
+                monthlyBtn.className = 'px-3 py-1 rounded text-sm font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300';
+                dailyWrapper.classList.remove('hidden');
+                monthlyWrapper.classList.add('hidden');
+            } else {
+                dailyBtn.className = 'px-3 py-1 rounded text-sm font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300';
+                monthlyBtn.className = 'px-3 py-1 rounded text-sm font-semibold bg-indigo-600 text-white';
+                dailyWrapper.classList.add('hidden');
+                monthlyWrapper.classList.remove('hidden');
+                loadMonthlyComparison();
+            }
+        }
+
+        // Load month-over-month comparison data
+        async function loadMonthlyComparison() {
+            if (monthlyComparisonData) {
+                // Already loaded, just display
+                displayMonthlyComparison(monthlyComparisonData);
+                return;
+            }
+
+            try {
+                // Get this month's data
+                const now = new Date();
+                const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+                const lastMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+                const lastMonthEnd = new Date(now.getFullYear(), now.getMonth(), 0);
+                const twoMonthsAgoStart = new Date(now.getFullYear(), now.getMonth() - 2, 1);
+                const twoMonthsAgoEnd = new Date(now.getFullYear(), now.getMonth() - 1, 0);
+
+                // Format dates for GA4 API
+                const formatDate = (d) => d.toISOString().split('T')[0];
+
+                // Fetch data for multiple months
+                const [thisMonthResp, lastMonthResp, twoMonthsAgoResp] = await Promise.all([
+                    fetch(`/api/ga4-analytics?type=overview&startDate=${formatDate(thisMonthStart)}&endDate=${formatDate(now)}`),
+                    fetch(`/api/ga4-analytics?type=overview&startDate=${formatDate(lastMonthStart)}&endDate=${formatDate(lastMonthEnd)}`),
+                    fetch(`/api/ga4-analytics?type=overview&startDate=${formatDate(twoMonthsAgoStart)}&endDate=${formatDate(twoMonthsAgoEnd)}`)
+                ]);
+
+                const thisMonth = await thisMonthResp.json();
+                const lastMonth = await lastMonthResp.json();
+                const twoMonthsAgo = await twoMonthsAgoResp.json();
+
+                // Get month names
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const thisMonthName = monthNames[now.getMonth()];
+                const lastMonthName = monthNames[(now.getMonth() - 1 + 12) % 12];
+                const twoMonthsAgoName = monthNames[(now.getMonth() - 2 + 12) % 12];
+
+                monthlyComparisonData = {
+                    months: [twoMonthsAgoName, lastMonthName, thisMonthName],
+                    users: [
+                        twoMonthsAgo.success ? twoMonthsAgo.data.activeUsers : 0,
+                        lastMonth.success ? lastMonth.data.activeUsers : 0,
+                        thisMonth.success ? thisMonth.data.activeUsers : 0
+                    ],
+                    sessions: [
+                        twoMonthsAgo.success ? twoMonthsAgo.data.sessions : 0,
+                        lastMonth.success ? lastMonth.data.sessions : 0,
+                        thisMonth.success ? thisMonth.data.sessions : 0
+                    ],
+                    thisMonth: thisMonth.success ? thisMonth.data : null,
+                    lastMonth: lastMonth.success ? lastMonth.data : null
+                };
+
+                displayMonthlyComparison(monthlyComparisonData);
+            } catch (e) {
+                console.error('Monthly comparison error:', e);
+            }
+        }
+
+        function displayMonthlyComparison(data) {
+            const canvas = document.getElementById('monthCompareChart');
+
+            // Destroy existing chart if any
+            if (monthCompareChart) {
+                monthCompareChart.destroy();
+            }
+
+            monthCompareChart = new Chart(canvas.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: data.months,
+                    datasets: [
+                        {
+                            label: 'Users',
+                            data: data.users,
+                            backgroundColor: 'rgba(79, 70, 229, 0.8)',
+                            borderColor: 'rgba(79, 70, 229, 1)',
+                            borderWidth: 2
+                        },
+                        {
+                            label: 'Sessions',
+                            data: data.sessions,
+                            backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                            borderColor: 'rgba(16, 185, 129, 1)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Update stats
+            const thisMonthUsers = data.users[2] || 0;
+            const lastMonthUsers = data.users[1] || 0;
+
+            document.getElementById('thisMonthUsers').textContent = thisMonthUsers.toLocaleString();
+            document.getElementById('lastMonthUsers').textContent = lastMonthUsers.toLocaleString();
+
+            // Calculate change
+            if (lastMonthUsers > 0) {
+                const change = ((thisMonthUsers - lastMonthUsers) / lastMonthUsers * 100).toFixed(1);
+                const changeEl = document.getElementById('monthChange');
+                changeEl.textContent = (change >= 0 ? '+' : '') + change + '%';
+                changeEl.className = 'text-2xl font-bold ' + (change >= 0 ? 'text-green-600' : 'text-red-600');
+
+                const trendEl = document.getElementById('monthTrend');
+                if (change > 10) {
+                    trendEl.textContent = '📈 Growing';
+                    trendEl.className = 'text-2xl font-bold text-green-600';
+                } else if (change < -10) {
+                    trendEl.textContent = '📉 Declining';
+                    trendEl.className = 'text-2xl font-bold text-red-600';
+                } else {
+                    trendEl.textContent = '➡️ Stable';
+                    trendEl.className = 'text-2xl font-bold text-yellow-600';
+                }
+            }
+        }
 
         async function loadTrafficData() {
             // Load version first

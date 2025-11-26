@@ -71,9 +71,9 @@
                     <p class="text-orange-100" id="totalCompetitors">Loading...</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-2">Your SEO Score</h3>
+                    <h3 class="text-xl font-bold mb-2">Your Local SEO Score</h3>
                     <div class="text-5xl font-bold" id="ourScore">--</div>
-                    <p class="text-orange-100" id="targetScore">From API analysis</p>
+                    <p class="text-orange-100" id="targetScore">Based on Google Places data</p>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-2">Gap to #1</h3>
@@ -89,7 +89,8 @@
 
         <!-- SEO Score Comparison Chart -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 class="text-2xl font-bold mb-6">SEO Score Comparison</h3>
+            <h3 class="text-2xl font-bold mb-2">Local SEO Score Comparison</h3>
+            <p class="text-sm text-gray-500 mb-6">Score based on Google Places: (Rating × 10) + (Reviews logarithmic) + Presence bonus. Different from Website SEO Score.</p>
             <div id="competitorChart" class="relative" style="height: 400px;">
                 <canvas id="seoComparisonChart"></canvas>
             </div>
