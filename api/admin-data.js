@@ -105,41 +105,25 @@ export default async function handler(req, res) {
         // Try to get REAL competitor data from Google Places API
         if (GOOGLE_PLACES_API_KEY) {
           try {
-            // Place IDs for Delray Beach salons (pre-looked up for efficiency)
-            const placeIds = {
-              'Chris David Salon': 'ChIJp3_dxPy15ogRQKKxjA-JYJE',
-              'Salon Sora': 'ChIJoXV8CsO15ogRAPTcGcP8F0E',
-              'Drybar Delray Beach': 'ChIJn6m3F8K15ogRxXl4jxLWy4Y',
-              'The W Salon': 'ChIJL7ZYdP615ogRJYFZYFOWGVc',
-              'Bond Street Salon': 'ChIJaUv78di15ogRIgZGJAv8ncc'
-            };
+            // Search for hair salons in Delray Beach
+            const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=hair+salon+Delray+Beach+FL&key=${GOOGLE_PLACES_API_KEY}`;
+            const searchResponse = await fetch(searchUrl);
+            const searchData = await searchResponse.json();
 
-            const competitors = [];
+            if (searchData.status === 'OK' && searchData.results) {
+              const competitors = searchData.results.slice(0, 15).map(place => ({
+                name: place.name,
+                rating: place.rating || 0,
+                reviews: place.user_ratings_total || 0,
+                address: place.formatted_address || '',
+                placeId: place.place_id,
+                seoScore: null, // SEO score requires separate analysis
+                live: true
+              }));
 
-            for (const [name, placeId] of Object.entries(placeIds)) {
-              try {
-                const placeUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,user_ratings_total,website&key=${GOOGLE_PLACES_API_KEY}`;
-                const placeResponse = await fetch(placeUrl);
-                const placeData = await placeResponse.json();
-
-                if (placeData.status === 'OK' && placeData.result) {
-                  competitors.push({
-                    name: placeData.result.name || name,
-                    url: placeData.result.website || '',
-                    reviews: placeData.result.user_ratings_total || 0,
-                    rating: placeData.result.rating || 0,
-                    seoScore: null, // SEO score requires separate analysis
-                    live: true
-                  });
-                }
-              } catch (e) {
-                console.error(`Failed to fetch ${name}:`, e);
-              }
-            }
-
-            if (competitors.length > 0) {
               // Sort by reviews (most first)
               competitors.sort((a, b) => b.reviews - a.reviews);
+
               return res.status(200).json({
                 success: true,
                 live: true,
