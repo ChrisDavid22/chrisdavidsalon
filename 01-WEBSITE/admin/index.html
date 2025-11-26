@@ -339,18 +339,17 @@
                             <th class="px-3 py-2 text-center">Rating</th>
                             <th class="px-3 py-2 text-center">Reviews</th>
                             <th class="px-3 py-2 text-center">Local SEO</th>
-                            <th class="px-3 py-2 text-center">Authority</th>
-                            <th class="px-3 py-2 text-center">Overall</th>
+                            <th class="px-3 py-2 text-center">PageRank</th>
                         </tr>
                     </thead>
                     <tbody id="competitorTableBody">
-                        <tr><td colspan="7" class="text-center py-4 text-gray-500">Loading competitor data...</td></tr>
+                        <tr><td colspan="6" class="text-center py-4 text-gray-500">Loading competitor data...</td></tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="mt-4 text-xs text-gray-500">
-                <strong>Methodology:</strong> Local SEO = Rating + Reviews + Presence | Authority = PageRank | Overall = Weighted combination
+                <strong>All data is REAL:</strong> Rating & Reviews from Google Places API | Local SEO = Rating × 10 + log(Reviews) × 15 + Presence | PageRank from OpenPageRank API
             </div>
         </div>
 
@@ -1177,19 +1176,37 @@
                 });
             }
 
-            // Domain mapping
+            // Domain mapping - expanded to all 26 competitors
             const domainMap = {
                 'rové hair salon': 'rovesalon.com',
-                'studio 34 delray': 'studio34delray.com',
-                'kaan hair design': 'kaanhairdesign.com',
+                'rove hair': 'rovesalon.com',
+                'studio 34': 'studio34delray.com',
+                'kaan hair': 'kaanhairdesign.com',
                 'salon south flow': 'salonsouthflow.com',
+                'flow by resta': 'salonsouthflow.com',
                 'one aveda': 'onesalondelray.com',
                 'bond street': 'bondstreetsalon.com',
                 'shearluck': 'slshair.com',
                 'amanda major': 'amandamajor.com',
                 'chris david': 'chrisdavidsalon.com',
                 'imbue': 'imbuesalon.com',
-                'cloud 10': 'cloud10usa.com'
+                'lmbue': 'imbuesalon.com',
+                'cloud 10': 'cloud10usa.com',
+                'studio 10': 'studio10bocaraton.com',
+                'aura hair': 'aurahairco.com',
+                'moxie salon': 'moxiesalon.com',
+                'perk salon': 'perksalondelray.com',
+                'odeon': 'odeonsalon.com',
+                'chloe & co': 'chloeandcosalon.com',
+                'tyler presley': 'tylerpresleysalon.com',
+                'conte salon': 'contesalon.com',
+                'salon sora': 'salonsora.com',
+                'pyure': 'pyuresalon.com',
+                'dapper and divine': 'dapperanddivinestudio.com',
+                'hair mess': 'hairmesssalon.com',
+                'salon trace': 'salontrace.com',
+                'arielle settel': 'ariellesettel.com',
+                'christopher stoo': 'christopherstoosalon.com'
             };
 
             const competitors = [];
@@ -1200,45 +1217,38 @@
                     const rating = salon.rating || 0;
                     const reviews = salon.reviews || 0;
 
-                    // Local SEO score
+                    // Local SEO score (REAL - from Google Places)
                     const ratingScore = rating * 10;
                     const reviewScore = reviews > 0 ? Math.min(Math.log10(reviews) * 15, 40) : 0;
                     const presenceBonus = salon.placeId ? 10 : 0;
                     const localSEO = Math.round(ratingScore + reviewScore + presenceBonus);
 
-                    // Find PageRank
-                    let authority = 0;
+                    // Find PageRank (REAL - from OpenPageRank API)
+                    let pageRankDecimal = 0;
                     const nameLower = name.toLowerCase();
 
                     for (const [key, dom] of Object.entries(domainMap)) {
                         if (nameLower.includes(key) && pageRankMap[dom]) {
-                            authority = Math.round(pageRankMap[dom].pagerank_decimal * 10);
+                            pageRankDecimal = pageRankMap[dom].pagerank_decimal || 0;
                             break;
                         }
                     }
 
-                    // Estimated overall
-                    const estimatedTechnical = 70;
-                    const overallScore = Math.round(
-                        localSEO * 0.40 +
-                        authority * 0.20 +
-                        estimatedTechnical * 0.40
-                    );
+                    const isChrisDavid = salon.isOurSalon || nameLower.includes('chris david');
 
                     competitors.push({
                         name,
                         rating,
                         reviews,
                         localSEO,
-                        authority,
-                        overall: overallScore,
-                        isUs: salon.isOurSalon || nameLower.includes('chris david')
+                        pageRank: pageRankDecimal,
+                        isUs: isChrisDavid
                     });
                 });
             }
 
-            // Sort by overall
-            competitors.sort((a, b) => b.overall - a.overall);
+            // Sort by Local SEO score (reviews + rating) - this is what matters for Google local rankings
+            competitors.sort((a, b) => b.localSEO - a.localSEO);
 
             // Find Chris David and leader
             const chrisDavid = competitors.find(c => c.isUs);
@@ -1251,20 +1261,20 @@
             document.getElementById('reviewGap').textContent = leader ? (leader.reviews - (chrisDavid?.reviews || 0)).toLocaleString() : '--';
             document.getElementById('leaderName').textContent = leader ? leader.name.substring(0, 20) : '--';
 
-            // Build table
+            // Build table - ONLY REAL DATA (no estimates)
             const tbody = document.getElementById('competitorTableBody');
             tbody.innerHTML = competitors.slice(0, 10).map((c, i) => {
                 const rowClass = c.isUs ? 'bg-blue-50 font-semibold' : '';
                 const marker = c.isUs ? ' ← YOU' : '';
+                const pageRankDisplay = c.pageRank ? c.pageRank.toFixed(2) : '--';
                 return `
                     <tr class="${rowClass}">
                         <td class="px-3 py-2 font-bold">#${i + 1}</td>
                         <td class="px-3 py-2">${c.name.substring(0, 30)}${marker}</td>
                         <td class="px-3 py-2 text-center">${c.rating}</td>
                         <td class="px-3 py-2 text-center">${c.reviews.toLocaleString()}</td>
-                        <td class="px-3 py-2 text-center">${c.localSEO}</td>
-                        <td class="px-3 py-2 text-center">${c.authority || '--'}</td>
-                        <td class="px-3 py-2 text-center font-bold">${c.overall}</td>
+                        <td class="px-3 py-2 text-center font-bold">${c.localSEO}</td>
+                        <td class="px-3 py-2 text-center">${pageRankDisplay}</td>
                     </tr>
                 `;
             }).join('');
@@ -1272,7 +1282,7 @@
         } catch (error) {
             console.error('Failed to load competitor comparison:', error);
             document.getElementById('competitorTableBody').innerHTML =
-                '<tr><td colspan="7" class="text-center py-4 text-red-500">Failed to load competitor data</td></tr>';
+                '<tr><td colspan="6" class="text-center py-4 text-red-500">Failed to load competitor data</td></tr>';
         }
     }
 

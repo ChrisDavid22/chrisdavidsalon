@@ -30,16 +30,34 @@ export default async function handler(req, res) {
     let domains = [domain];
 
     if (competitors === 'true') {
-      // Add top competitors for comparison
+      // All 26 competitor domains from OpenPageRank research
       domains = [
         'chrisdavidsalon.com',
+        'bestsalondelray.com',
+        'bestdelraysalon.com',
+        'bestsalonpalmbeach.com',
         'rovesalon.com',
+        'studio34delray.com',
         'bondstreetsalon.com',
-        'studio10bocaraton.com',
         'kaanhairdesign.com',
+        'onesalondelray.com',
+        'tylerpresleysalon.com',
+        'slshair.com',
+        'imbuesalon.com',
         'amandamajor.com',
         'salonsouthflow.com',
-        'cloud10usa.com'
+        'contesalon.com',
+        'salonhotheads.com',
+        'pyuresalon.com',
+        'salonsora.com',
+        'studio10bocaraton.com',
+        'dapperanddivinestudio.com',
+        'hairmesssalon.com',
+        'bocaratonsalon.com',
+        'salontrace.com',
+        'cloud10usa.com',
+        'ariellesettel.com',
+        'christopherstoosalon.com'
       ];
     }
 
