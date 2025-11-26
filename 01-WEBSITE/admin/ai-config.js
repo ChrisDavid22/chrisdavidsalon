@@ -624,8 +624,8 @@ class AIConfig {
                     issues: ['Check Core Web Vitals', 'Optimize images', 'Enable caching']
                 },
                 content: {
-                    score: 70, // Estimated
-                    issues: ['Add more content', 'Include target keywords', 'Improve meta descriptions']
+                    score: null, // Requires content analysis API - not available
+                    issues: ['Content score requires separate API']
                 },
                 technical: {
                     score: seo,
@@ -640,12 +640,12 @@ class AIConfig {
                     issues: ['Improve navigation', 'Add breadcrumbs', 'Enhance design consistency']
                 },
                 localSEO: {
-                    score: 60, // Estimated
-                    issues: ['Optimize Google My Business', 'Add local keywords', 'Build local citations']
+                    score: null, // Requires GMB API - not connected
+                    issues: ['Local SEO score requires GMB API connection']
                 },
                 authority: {
-                    score: 40, // Estimated
-                    issues: ['Build quality backlinks', 'Create shareable content', 'Increase domain authority']
+                    score: null, // Requires Moz/Ahrefs API - not connected
+                    issues: ['Authority score requires backlink API (Moz/Ahrefs)']
                 }
             }
         };

@@ -333,23 +333,23 @@
                 month: 'short', day: 'numeric', year: 'numeric',
                 hour: 'numeric', minute: '2-digit', hour12: true
             });
-            const liveStatus = seoResult.live ? '🟢 LIVE' : '🟡 Cached';
-            const aiStatus = aiResult.live ? '🤖 Claude AI' : '📋 Fallback';
+            const liveStatus = seoResult.live ? '🟢 LIVE PageSpeed' : (seoResult.success === false ? '🔴 API Unavailable' : '🟡 API Limited');
+            const aiStatus = aiResult.live ? '🟢 Claude AI' : (aiResult.success === false ? '🔴 AI Unavailable' : '🟡 AI Limited');
             document.getElementById('lastAnalysis').innerHTML = `
                 <div class="text-lg font-bold">${timeStr}</div>
-                <div class="text-sm mt-1">${liveStatus} Data • ${aiStatus}</div>
+                <div class="text-sm mt-1">${liveStatus} • ${aiStatus}</div>
             `;
 
             // Show success notification
-            const statusMsg = seoResult.live ? 'Live PageSpeed data retrieved!' : 'Using cached data (API rate limited)';
-            const aiMsg = aiResult.live ? 'Claude AI recommendations generated!' : 'Using preset recommendations';
+            const statusMsg = seoResult.live ? 'Live PageSpeed data retrieved!' : (seoResult.success === false ? 'PageSpeed API unavailable - try again later' : 'PageSpeed API rate limited');
+            const aiMsg = aiResult.live ? 'Claude AI recommendations generated!' : (aiResult.success === false ? 'AI API unavailable' : 'AI rate limited');
             console.log(`Analysis complete: ${statusMsg} ${aiMsg}`);
 
         } catch (error) {
             console.error('Analysis error:', error);
             document.getElementById('lastAnalysis').innerHTML = `
                 <div class="text-lg font-bold text-red-400">${new Date().toLocaleString()}</div>
-                <div class="text-sm mt-1">⚠️ Error - showing cached data</div>
+                <div class="text-sm mt-1">🔴 Error - No data available</div>
             `;
         } finally {
             document.getElementById('loadingIndicator').classList.add('hidden');
@@ -393,13 +393,13 @@
             
             // Local
             document.getElementById('localScore').textContent = Math.round(data.categories.localSEO?.score || 0);
-            document.getElementById('gmb').textContent = 'Active';
-            document.getElementById('citations').textContent = '15+';
-            
+            document.getElementById('gmb').textContent = '--';  // Requires GMB API
+            document.getElementById('citations').textContent = '--';  // Requires citation API
+
             // Authority
             document.getElementById('authorityScore').textContent = Math.round(data.categories.authority?.score || 0);
-            document.getElementById('backlinks').textContent = '15 microsites';
-            document.getElementById('trust').textContent = data.categories.authority?.score > 50 ? 'Growing' : 'Low';
+            document.getElementById('backlinks').textContent = '--';  // Requires backlink API
+            document.getElementById('trust').textContent = '--';  // Requires authority API
         }
         
         // Draw chart
@@ -555,11 +555,11 @@
             const result = await response.json();
             const data = result.data;
 
-            // Update score display
+            // Update score display - NO HARDCODED FALLBACK
             const yourScoreEl = document.getElementById('yourScore');
             const totalScoreEl = document.getElementById('totalScore');
-            if (yourScoreEl) yourScoreEl.textContent = data.seoScore || 73;
-            if (totalScoreEl) totalScoreEl.textContent = (data.seoScore || 73) + '/100';
+            if (yourScoreEl) yourScoreEl.textContent = data.seoScore !== null ? data.seoScore : '--';
+            if (totalScoreEl) totalScoreEl.textContent = data.seoScore !== null ? data.seoScore + '/100' : '--';
 
             // Display action items
             const actionContainer = document.getElementById('actionItems');
@@ -591,8 +591,9 @@
 
         } catch (error) {
             console.error('Failed to load dashboard:', error);
+            // NO HARDCODED FALLBACK - show error state
             const yourScoreEl = document.getElementById('yourScore');
-            if (yourScoreEl) yourScoreEl.textContent = '73';
+            if (yourScoreEl) yourScoreEl.textContent = '--';
         }
     }
     
