@@ -6,137 +6,142 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Chris David Salon website with comprehensive admin dashboard for business intelligence and marketing automation. Located in Delray Beach, competing with 47 other salons.
 
-**Live Site**: https://chrisdavidsalon.com  
-**GitHub**: https://github.com/ChrisDavid22/chrisdavidsalon.git  
+**Live Site**: https://chrisdavidsalon.com
+**GitHub**: https://github.com/ChrisDavid22/chrisdavidsalon.git
 **Deployment**: Vercel (auto-deploys from main branch)
+**Current Version**: 2.6.14
+
+---
+
+## CRITICAL: ABSOLUTE NO HARDCODED DATA POLICY
+
+**HARDCODED DATA IS TOXIC AND ABSOLUTELY FORBIDDEN.**
+
+This is the most important rule in this codebase:
+
+1. **NEVER** put hardcoded numbers, statistics, or fake data in ANY admin dashboard
+2. **NEVER** create JavaScript arrays/objects with sample data that looks real
+3. **NEVER** show misleading statistics that aren't from a real data source
+4. **ALWAYS** fetch data from API endpoints (`/api/analytics`, `/api/admin-data`, etc.)
+5. **ALWAYS** show clear data source badges (LIVE, Manual Observation, Error)
+6. **ALWAYS** show "Loading...", "--", or "Awaiting API" when data isn't available
+
+### Why This Matters
+- Fake data leads to bad business decisions
+- It's impossible to trust dashboards with any fake data
+- The business owner needs to know exactly what's real
+- Every metric must be traceable to its source
+
+### How Data Should Work
+```javascript
+// WRONG - NEVER DO THIS
+const visitors = 312;  // Hardcoded fake number
+const monthlyData = [185, 198, 247, 268];  // Fake historical data
+
+// CORRECT - ALWAYS DO THIS
+const response = await fetch('/api/analytics?type=visitors');
+const data = await response.json();
+if (data.success) {
+    document.getElementById('visitors').textContent = data.currentData.visitors;
+} else {
+    document.getElementById('visitors').textContent = '--';
+}
+```
+
+### Data Source Badges Required
+Every dashboard page MUST show:
+- What data source it's using
+- Whether data is LIVE or from manual observation
+- When data was last updated
+- Clear error states if API fails
+
+---
+
+## Admin Dashboard Architecture
+
+### Core Admin Pages (Priority Order - Left to Right)
+1. **SEO Score** (`/admin/index.html`) - Live PageSpeed scores
+2. **Traffic** (`/admin/visitor-metrics.html`) - Visitor metrics from API
+3. **Conversions** (`/admin/engagement-tracker.html`) - Booking/phone clicks
+4. **Competitors** (`/admin/competitors.html`) - Google Places API data
+5. **Rankings** (`/admin/rankings.html`) - Keyword positions
+6. **Action Plan** (`/admin/seo-action-plan.html`) - Virtuous cycle hub
+
+### API Endpoints
+```
+/api/analytics?type=visitors      - Traffic data
+/api/analytics?type=seo-score     - Live PageSpeed scores
+/api/analytics?type=engagement    - Booking/phone click data
+/api/analytics?type=traffic-sources - Traffic breakdown
+/api/analytics?type=keywords      - Keyword rankings
+/api/analytics?type=overview      - Combined business metrics
+/api/admin-data?type=competitors  - Google Places competitor data
+/api/admin-data?type=dashboard    - Dashboard overview
+/api/pagespeed                    - Direct PageSpeed analysis
+```
+
+### Data Source Types
+- **LIVE (PageSpeed)**: Real-time from Google PageSpeed API
+- **LIVE (Places)**: Real-time from Google Places API
+- **Manual Observation**: Data observed from GA dashboard (not API-connected)
+- **Not Connected**: API not yet configured
+
+---
+
+## Service Landing Pages (SEO)
+
+Five dedicated landing pages targeting high-value keywords:
+- `/services/wedding-hair-delray-beach.html`
+- `/services/balayage-delray-beach.html`
+- `/services/color-correction-delray-beach.html`
+- `/services/hair-extensions-delray-beach.html`
+- `/services/keratin-treatment-delray-beach.html`
+
+All include:
+- Schema.org LocalBusiness + Service markup
+- Google Analytics tracking (G-XQDLWZM5NV)
+- Boulevard booking widget
+- Internal linking back to main site
+
+---
 
 ## Essential Commands
 
 ### Deploy Changes
 ```bash
-# FROM ROOT DIRECTORY (UPDATED 2025-08-12):
-./deploy.sh "Description of changes"
-
-# OR FROM 01-WEBSITE DIRECTORY:
-cd 01-WEBSITE && ./deploy.sh "Description of changes"
-
-# Skip tests if needed (not recommended)
-./deploy.sh "Description" --skip-tests
-
-# The script now VERIFIES deployment - wait for confirmation!
-# It will show either:
-#   ✅ VERIFIED: Version X.X.X is LIVE
-#   ⚠️  WARNING: Version mismatch!
+cd 01-WEBSITE && git add -A && git commit -m "message" && git push
+# Vercel auto-deploys from main branch
 ```
 
-### CRITICAL: Verify Deployment Before Claiming Success
+### Verify Deployment
 ```bash
-# NEVER say "deployed" until you verify:
 curl -s https://www.chrisdavidsalon.com/data/version.json | grep version
-
-# If version.json has errors, the site shows "Loading..." or falls back to "2.6.0"
-# Always check the actual JSON is valid and matches expected version
 ```
 
-### Run Tests
-```bash
-# Pre-deployment checks
-bash tests/pre-deploy-check.sh --local
+---
 
-# Audit fake data
-cd admin && node audit-fake-data.js
-```
+## API Integration Status
 
-### Check Status
-```bash
-# Current version
-cat data/version.json
+### Connected (Working)
+- **PageSpeed API**: Live SEO scores (free tier, no key required)
+- **Google Places API**: Competitor data (GOOGLE_PLACES_API_KEY in Vercel)
+- **Claude AI**: AI recommendations (ANTHROPIC_API_KEY in Vercel)
 
-# Git status
-git status
+### Manual Observation Only
+- **Google Analytics**: GA4 tracking code installed, API not connected
+- Data source: `manual-ga-observation`
+- Last known: 247 visitors, 68% mobile, August 2025
 
-# View real analytics data
-cat data/analytics.json
-```
+### Not Connected (Setup Required)
+- **Google Analytics Data API**: Needs GA4 service account
+- **Google Search Console API**: Needs Search Console credentials
+- **Boulevard API**: Needs API access from Boulevard
 
-## High-Level Architecture
+---
 
-### Directory Structure
-```
-01-WEBSITE/                    # Root deployed to Vercel
-├── admin/                     # 16 admin dashboard pages
-│   ├── index.html            # Admin hub with navigation to all pages
-│   ├── backlink-*.html       # Backlink campaign tools (3 pages)
-│   ├── revenue-tracker.html  # Revenue analytics (needs Boulevard API)
-│   └── [13 more pages]       # Analytics, SEO, competition monitoring
-├── data/                      # Persistent JSON data storage
-│   ├── version.json          # Auto-incremented by deploy.sh
-│   ├── analytics.json        # Real visitor data (247 visitors, 68% mobile)
-│   └── seo-tracking.json     # SEO metrics and backlink data
-├── tools/                     # Automation scripts and utilities
-├── reports/                   # Analysis documents
-└── deploy.sh                  # CRITICAL: Always use for deployment
-```
+## Chris David's Credentials (For SEO Content)
 
-### Admin System Architecture
-
-**9 Functional Admin Pages** accessible from `/admin/index.html`:
-1. **Dashboard** (index.html) - Central hub with overview
-2. **Analytics** (analytics.html) - Traffic and visitor data
-3. **Performance Tracker** (performance-tracker.html) - Historical metrics
-4. **SEO Dashboard** (seo-dashboard.html) - SEO health monitoring
-5. **Keyword Rankings** (keyword-rankings.html) - Search position tracking
-6. **Competitor Analysis** (competitor-analysis.html) - Market competition with API
-7. **Microsites** (microsites.html) - Microsite performance
-8. **Reviews & Reputation** (reviews-reputation.html) - Review management
-9. **Market Intelligence** (market-intelligence.html) - Market position
-
-**Missing/Not Created Yet**:
-- Backlink campaign pages (referenced but don't exist)
-- Revenue tracker (needs Boulevard API)
-- Other pages mentioned in old documentation
-
-**Navigation Pattern**: Every admin page has identical nav bar with color-coded sections:
-- Purple: Core pages
-- Green: Backlink tools  
-- Blue: Analytics
-- Yellow: Market position
-- Orange: SEO tools
-
-### Data Flow
-
-1. **Real Data Sources**:
-   - `data/analytics.json`: Actual visitor metrics (247 visitors, 68% mobile)
-   - Google My Business: 133 reviews, 4.9★ rating
-   - Manual competitor research
-
-2. **Pending Integrations**:
-   - Boulevard API: Revenue and booking data
-   - Google Search Console: Keyword rankings
-   - Form tracking: Contact form submissions
-
-3. **Fake Data Policy**: 
-   - ALL fake numbers removed
-   - Greyed-out "Awaiting API" placeholders used
-   - Never show misleading statistics
-
-## Critical Business Context
-
-### Competition Landscape
-- **#1**: Salon Sora (203 reviews, 8 years)
-- **#2**: Drybar (189 reviews, national chain)
-- **#3**: The W Salon (156 reviews, 5 years)
-- **#15**: Chris David Salon (127 reviews, rising fast)
-
-### Key Metrics (Real Data)
-- **Visitors**: 247/month (August)
-- **Mobile Traffic**: 68% (168 visitors)
-- **Booking Clicks**: 28
-- **Phone Clicks**: 45
-- **Conversion Rate**: 11.3%
-- **SEO Score**: 83/100
-
-### Chris David's Credentials
+**Color Correction Expert** - Should be #1-2 in local rankings
 - 20+ years cutting expertise
 - Former educator for 5 major brands:
   - Davines (6 years)
@@ -144,79 +149,42 @@ cat data/analytics.json
   - Cezanne
   - Platinum Seamless
   - Organic Color Systems
+- Has trained hundreds of professionals worldwide
 
-## Immediate Priorities
-
-1. **Execute Backlink Campaign**
-   - Navigate to `/admin/backlink-campaign.html`
-   - 87 directories ready for submission
-   - Click "START AUTOMATED CAMPAIGN"
-
-2. **Boulevard API Request**
-   - Email ready at `/tools/boulevard-api-request.txt`
-   - Send to: support@blvd.co
-   - Unlocks revenue tracking
-
-3. **Monitor Production**
-   - Check https://chrisdavidsalon.com/admin/
-   - Verify mobile responsiveness (68% of traffic)
-   - Ensure data updates properly
-
-## Version Management
-
-**Production**: 2.5.24 (Last successful deployment)
-**Local**: 2.5.27 (Recent changes not deploying)
-**Issue**: Vercel deployments failing for versions 2.5.25-27
-
-**Version History**: Tracked in `data/version.json` with:
-- Version number
-- Timestamp
-- Change description
-- Last 10 deployments
-
-**NEVER** manually push to git. **ALWAYS** use `./deploy.sh`
-
-## Important URLs & Credentials
-
-- **Admin Login**: `/admin/login.html`
-- **Password**: CDK2025
-- **Vercel Dashboard**: Check deployment status
-- **GitHub Repo**: ChrisDavid22/chrisdavidsalon
-
-## Project Status Documentation (Added 2025-08-12)
-
-- **PROJECT-STATUS-ASSESSMENT.md**: Comprehensive reality check and findings
-- **CRITICAL-ACTION-ITEMS.md**: Immediate tasks with step-by-step instructions
-- Both files in root directory - READ THESE FIRST in next session
+---
 
 ## Development Guidelines
 
-1. **No Fake Data**: Use real numbers or "Pending API" placeholders
+1. **ZERO HARDCODED DATA** - See policy above
 2. **Mobile First**: 68% of traffic is mobile
-3. **Use Deploy Script**: Auto-increments version, maintains history
-4. **File Organization**:
-   - Reports → `/reports/`
-   - Tools → `/tools/`
-   - Admin features → `/admin/`
-5. **Test Before Deploy**: Run `tests/pre-deploy-check.sh`
+3. **Show Data Sources**: Always indicate where data comes from
+4. **Error States**: Show clear errors, not fake fallback data
+5. **API-First**: All metrics must come from API endpoints
 
-## API Integration Status
+---
 
-✅ **Working**:
-- Static site deployment
-- Admin dashboard navigation
-- Real analytics data display
+## The Virtuous Cycle Engine
 
-⏳ **Pending**:
-- Boulevard API (revenue/bookings)
-- Google Search Console (rankings)
-- Google My Business API (reviews)
-- Weather API (demand correlation)
+The admin system is designed as a living SEO engine that:
+1. **Researches** - Gathers live data from APIs
+2. **Analyzes** - Uses AI to identify opportunities
+3. **Plans** - Creates prioritized action items
+4. **Implements** - Auto-generates new pages/content
+5. **Tracks** - Measures impact
+6. **Repeats** - Feeds results back into research
 
-## Next Session Checklist
+Access via: `/admin/seo-action-plan.html`
 
-1. Check PROJECT-TODO.md for latest priorities
-2. Verify version in data/version.json
-3. Run `git status` to check for uncommitted changes
-4. Execute pending backlink campaign if not done
-5. Check Boulevard API response status
+---
+
+## Version History
+
+Current: **2.6.14** - ZERO hardcoded data, all dashboards use live API
+
+Key versions:
+- 2.6.14: Removed ALL hardcoded data, analytics API
+- 2.6.13: Service landing pages, dashboard pages created
+- 2.6.6: Google Places + Claude AI integration
+- 2.6.5: PageSpeed API (free tier)
+
+Full history in `/data/version.json`
