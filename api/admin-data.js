@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   // API keys from Vercel environment variables only
   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || '';
   const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY || '';
-  const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '';
+  const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || process.env.CLAUDE_API_KEY || '';
 
   try {
     switch(type) {
