@@ -1,0 +1,167 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e8]: Chris David SEO Agent
+          - generic [ref=e9]: v2.8.4
+        - generic [ref=e10]:
+          - generic [ref=e11]: "Updated: 11:31:08 AM"
+          - link "View Site" [ref=e12] [cursor=pointer]:
+            - /url: ../index.html
+      - generic [ref=e13]:
+        - link "Dashboard" [ref=e14] [cursor=pointer]:
+          - /url: dashboard.html
+        - link "Traffic" [ref=e15] [cursor=pointer]:
+          - /url: traffic.html
+        - link "Competitors" [ref=e16] [cursor=pointer]:
+          - /url: competitors.html
+        - link "Rankings" [ref=e17] [cursor=pointer]:
+          - /url: rankings.html
+        - link "Authority" [ref=e18] [cursor=pointer]:
+          - /url: authority.html
+        - link "Microsites" [ref=e19] [cursor=pointer]:
+          - /url: microsites.html
+        - link "Agent Log" [ref=e20] [cursor=pointer]:
+          - /url: agent-log.html
+  - generic [ref=e21]:
+    - generic [ref=e23]:
+      - generic [ref=e24]: 
+      - generic [ref=e25]:
+        - text: Live Data from Google Places API
+        - paragraph [ref=e26]: 5 competitors loaded from Google Places
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - heading "Your Market Position" [level=2] [ref=e30]
+          - generic [ref=e31]: "#5"
+          - paragraph [ref=e32]: out of 5 competitors
+        - generic [ref=e33]:
+          - heading "Your SEO Score" [level=3] [ref=e34]
+          - generic [ref=e35]: "73"
+          - paragraph [ref=e36]: "Target: 93+ for Top 3"
+        - generic [ref=e37]:
+          - 'heading "Gap to #1" [level=3] [ref=e38]'
+          - generic [ref=e39]: "-16"
+          - paragraph [ref=e40]: vs Salon Sora
+      - button " Refresh Competitor Data" [ref=e41] [cursor=pointer]:
+        - generic [ref=e42]: 
+        - text: Refresh Competitor Data
+    - generic [ref=e43]:
+      - heading "SEO Score Comparison" [level=3] [ref=e44]
+      - text: 
+    - generic [ref=e47]:
+      - heading "Top Competitors - From Google Places API" [level=3] [ref=e48]
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]:
+              - heading "1. Salon Sora" [level=4] [ref=e53]
+              - paragraph [ref=e54]: https://www.salonsora.com
+            - generic [ref=e55]:
+              - generic [ref=e56]: 89/100
+              - paragraph [ref=e57]: 203 reviews
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: Rating
+              - generic [ref=e61]: 4.8★
+            - generic [ref=e62]:
+              - generic [ref=e63]: Reviews
+              - generic [ref=e64]: "203"
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - heading "2. Drybar Delray" [level=4] [ref=e68]
+              - paragraph [ref=e69]: https://www.thedrybar.com
+            - generic [ref=e70]:
+              - generic [ref=e71]: 85/100
+              - paragraph [ref=e72]: 189 reviews
+          - generic [ref=e73]:
+            - generic [ref=e74]:
+              - generic [ref=e75]: Rating
+              - generic [ref=e76]: 4.7★
+            - generic [ref=e77]:
+              - generic [ref=e78]: Reviews
+              - generic [ref=e79]: "189"
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - heading "3. The W Salon" [level=4] [ref=e83]
+              - paragraph [ref=e84]: https://thewsalon.com
+            - generic [ref=e85]:
+              - generic [ref=e86]: 82/100
+              - paragraph [ref=e87]: 156 reviews
+          - generic [ref=e88]:
+            - generic [ref=e89]:
+              - generic [ref=e90]: Rating
+              - generic [ref=e91]: 4.9★
+            - generic [ref=e92]:
+              - generic [ref=e93]: Reviews
+              - generic [ref=e94]: "156"
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - generic [ref=e97]:
+              - heading "4. Bond Street Salon" [level=4] [ref=e98]
+              - paragraph [ref=e99]: https://bondstreetsalon.com
+            - generic [ref=e100]:
+              - generic [ref=e101]: 78/100
+              - paragraph [ref=e102]: 148 reviews
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - generic [ref=e105]: Rating
+              - generic [ref=e106]: 4.7★
+            - generic [ref=e107]:
+              - generic [ref=e108]: Reviews
+              - generic [ref=e109]: "148"
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - heading "5. Chris David Salon" [level=4] [ref=e113]
+              - paragraph [ref=e114]: https://chrisdavidsalon.com
+            - generic [ref=e115]:
+              - generic [ref=e116]: 73/100
+              - paragraph [ref=e117]: 133 reviews
+          - generic [ref=e118]:
+            - generic [ref=e119]:
+              - generic [ref=e120]: Rating
+              - generic [ref=e121]: 4.9★
+            - generic [ref=e122]:
+              - generic [ref=e123]: Reviews
+              - generic [ref=e124]: "133"
+          - generic [ref=e125]: YOUR SALON
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - heading "Gaps to Close" [level=3] [ref=e128]
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e131]: 
+            - generic [ref=e132]:
+              - strong [ref=e133]: "Review Count:"
+              - text: Salon Sora has 203 reviews vs your 133
+          - generic [ref=e134]:
+            - generic [ref=e135]: 
+            - generic [ref=e136]:
+              - strong [ref=e137]: "SEO Score:"
+              - text: Leader scores 89/100 vs your 73/100
+          - generic [ref=e138]:
+            - generic [ref=e139]: 
+            - generic [ref=e140]:
+              - strong [ref=e141]: "Review Ranking:"
+              - text: 4 competitors have more reviews than you
+      - generic [ref=e142]:
+        - heading "Your Strengths" [level=3] [ref=e143]
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - generic [ref=e146]: 
+            - generic [ref=e147]:
+              - strong [ref=e148]: "Top 5 Position:"
+              - text: "You rank #5 out of 5 competitors"
+          - generic [ref=e149]:
+            - generic [ref=e150]: 
+            - generic [ref=e151]:
+              - strong [ref=e152]: "Solid SEO Score:"
+              - text: Your score of 73/100 is competitive
+```
