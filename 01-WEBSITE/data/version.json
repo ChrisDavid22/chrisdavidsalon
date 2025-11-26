@@ -1,7 +1,12 @@
 {
-  "version": "2.6.2",
-  "lastUpdated": "2025-11-26T05:10:00Z",
+  "version": "2.6.3",
+  "lastUpdated": "2025-11-26T05:25:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.3",
+      "date": "2025-11-26T05:25:00Z",
+      "changes": "Admin index.html now fetches all data from API - no hardcoded data"
+    },
     {
       "version": "2.6.2",
       "date": "2025-11-26T05:10:00Z",
