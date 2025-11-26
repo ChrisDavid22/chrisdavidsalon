@@ -1,0 +1,33 @@
+{
+  "name": "citation-automation-agent",
+  "version": "1.0.0",
+  "description": "Automated citation/directory submission system using Playwright with anti-detection measures",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "submit": "node index.js submit",
+    "verify": "node index.js verify",
+    "status": "node index.js status",
+    "submit:all": "node index.js submit --all",
+    "submit:safe": "node index.js submit --safe-only",
+    "test": "node index.js test"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "dotenv": "^16.3.1",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1",
+    "commander": "^11.1.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Claude Flow SEO Agent",
+  "license": "MIT"
+}

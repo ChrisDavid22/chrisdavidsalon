@@ -1,7 +1,12 @@
 {
-  "version": "2.9.0",
-  "lastUpdated": "2025-11-26T23:10:00Z",
+  "version": "2.9.1",
+  "lastUpdated": "2025-11-26T18:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.9.1",
+      "date": "2025-11-26T18:30:00Z",
+      "changes": "FIX: Content and Local SEO scores now display correctly. Added console logging for debugging. Changed from window.load to DOMContentLoaded for faster initialization. Added null checks for DOM elements."
+    },
     {
       "version": "2.9.0",
       "date": "2025-11-26T23:10:00Z",

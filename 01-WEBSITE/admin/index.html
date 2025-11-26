@@ -651,15 +651,18 @@
 
     // Fetch Local SEO Score from Google Places API
     async function fetchLocalSEOScore() {
+        console.log('fetchLocalSEOScore: Starting...');
         try {
             const response = await fetch('/api/admin-data?type=competitors');
             const result = await response.json();
+            console.log('fetchLocalSEOScore: Got response', result.success, result.live);
 
             if (result.success && result.data?.competitors) {
                 // Find Chris David Salon in the results
                 const chrisDavid = result.data.competitors.find(c =>
                     c.name.toLowerCase().includes('chris david')
                 );
+                console.log('fetchLocalSEOScore: Found Chris David:', chrisDavid);
 
                 if (chrisDavid) {
                     // Calculate Local SEO score based on rating and reviews
@@ -668,15 +671,21 @@
                     const reviewScore = Math.min((chrisDavid.reviews || 0) / 20, 30); // 0-30 points
                     const presenceBonus = chrisDavid.placeId ? 20 : 0; // 20 points for being on GMB
                     const localScore = Math.round(ratingScore + reviewScore + presenceBonus);
+                    console.log('fetchLocalSEOScore: Calculated score:', localScore);
 
-                    document.getElementById('localScore').textContent = localScore;
-                    document.getElementById('gmb').textContent = chrisDavid.rating ? `${chrisDavid.rating} ★` : '--';
-                    document.getElementById('citations').textContent = chrisDavid.reviews ? `${chrisDavid.reviews} reviews` : '--';
+                    const localScoreEl = document.getElementById('localScore');
+                    const gmbEl = document.getElementById('gmb');
+                    const citationsEl = document.getElementById('citations');
+
+                    if (localScoreEl) localScoreEl.textContent = localScore;
+                    if (gmbEl) gmbEl.textContent = chrisDavid.rating ? `${chrisDavid.rating} ★` : '--';
+                    if (citationsEl) citationsEl.textContent = chrisDavid.reviews ? `${chrisDavid.reviews} reviews` : '--';
 
                     const issuesDiv = document.getElementById('localIssues');
                     if (issuesDiv && result.live) {
                         issuesDiv.innerHTML = `<span class="text-green-600">🟢 LIVE Google Places</span>`;
                     }
+                    console.log('fetchLocalSEOScore: Updated DOM successfully');
                 }
             }
         } catch (error) {
@@ -686,27 +695,37 @@
 
     // Fetch Content Score using Claude AI analysis
     async function fetchContentScore() {
+        console.log('fetchContentScore: Starting...');
         try {
             const response = await fetch('/api/admin-data?type=ai-recommendations');
             const result = await response.json();
+            console.log('fetchContentScore: Got response', result.success, result.live);
 
             if (result.success && result.live) {
-                // If AI is working, assume content is being analyzed
                 // Content score based on presence of AI recommendations
                 const recommendations = result.data?.recommendations || [];
                 const highPriority = recommendations.filter(r => r.priority === 'high').length;
+                console.log('fetchContentScore: High priority count:', highPriority);
 
-                // Score: Start at 85, subtract 5 for each high-priority issue
+                // Score: Start at 85, subtract 10 for each high-priority issue
                 const contentScore = Math.max(60, 85 - (highPriority * 10));
+                console.log('fetchContentScore: Calculated score:', contentScore);
 
-                document.getElementById('contentScore').textContent = contentScore;
-                document.getElementById('keywordUsage').textContent = contentScore > 70 ? 'Good' : 'Needs Work';
-                document.getElementById('contentQuality').textContent = contentScore > 70 ? 'High' : 'Medium';
+                const contentScoreEl = document.getElementById('contentScore');
+                const keywordEl = document.getElementById('keywordUsage');
+                const qualityEl = document.getElementById('contentQuality');
+
+                if (contentScoreEl) contentScoreEl.textContent = contentScore;
+                if (keywordEl) keywordEl.textContent = contentScore > 70 ? 'Good' : 'Needs Work';
+                if (qualityEl) qualityEl.textContent = contentScore > 70 ? 'High' : 'Medium';
 
                 const issuesDiv = document.getElementById('contentIssues');
                 if (issuesDiv) {
                     issuesDiv.innerHTML = `<span class="text-green-600">🟢 Claude AI Analysis</span>`;
                 }
+                console.log('fetchContentScore: Updated DOM successfully');
+            } else {
+                console.log('fetchContentScore: API not live or failed', result);
             }
         } catch (error) {
             console.error('Content score error:', error);
@@ -714,15 +733,19 @@
     }
 
     // Initialize on load
-    window.addEventListener('load', () => {
+    window.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM loaded, initializing dashboard...');
         loadVersion();
         loadHistory();
         loadDashboardData();
 
-        // Fetch additional scores in parallel
-        fetchAuthorityScore();
-        fetchLocalSEOScore();
-        fetchContentScore();
+        // Fetch additional scores in parallel with slight delay to ensure DOM is ready
+        setTimeout(() => {
+            console.log('Fetching additional scores...');
+            fetchAuthorityScore();
+            fetchLocalSEOScore();
+            fetchContentScore();
+        }, 100);
     });
     </script>
 </body>

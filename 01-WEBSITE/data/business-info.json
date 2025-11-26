@@ -1,0 +1,209 @@
+{
+  "business": {
+    "name": "Chris David Salon",
+    "legalName": "Chris David Salon LLC",
+    "owner": "Chris David",
+    "founded": "2019",
+    "type": "HairSalon",
+    "description": "Premier hair salon in Delray Beach specializing in balayage, color correction, extensions, and luxury hair services. Master colorist with 20+ years experience.",
+    "shortDescription": "Delray Beach's #1 rated hair salon with 133 five-star reviews",
+    "tagline": "Master Colorist & Hair Artist"
+  },
+  "contact": {
+    "phone": "+1-561-299-0950",
+    "phoneDisplay": "(561) 299-0950",
+    "email": "info@chrisdavidsalon.com",
+    "website": "https://chrisdavidsalon.com",
+    "bookingUrl": "https://chrisdavidsalon.com/book"
+  },
+  "location": {
+    "address": {
+      "street": "1878C Dr. Andres Way",
+      "city": "Delray Beach",
+      "state": "FL",
+      "stateCode": "FL",
+      "zip": "33445",
+      "country": "United States",
+      "countryCode": "US"
+    },
+    "coordinates": {
+      "lat": 26.4614,
+      "lng": -80.0728
+    },
+    "googlePlaceId": "ChIJXzVfBdqp2YgRhDDA-MPBwwQ",
+    "serviceArea": ["Delray Beach", "Boca Raton", "Boynton Beach", "Lake Worth", "Palm Beach County"]
+  },
+  "hours": {
+    "monday": "9:00 AM - 6:00 PM",
+    "tuesday": "9:00 AM - 6:00 PM",
+    "wednesday": "9:00 AM - 6:00 PM",
+    "thursday": "9:00 AM - 7:00 PM",
+    "friday": "9:00 AM - 7:00 PM",
+    "saturday": "9:00 AM - 5:00 PM",
+    "sunday": "Closed",
+    "timezone": "America/New_York"
+  },
+  "social": {
+    "instagram": "https://instagram.com/chrisdavidsalon",
+    "facebook": "https://facebook.com/chrisdavidsalon",
+    "google": "https://g.page/r/CYQww8PBocaVEBM",
+    "yelp": "https://yelp.com/biz/chris-david-salon-delray-beach"
+  },
+  "ratings": {
+    "google": {
+      "rating": 4.9,
+      "reviewCount": 133,
+      "url": "https://g.page/r/CYQww8PBocaVEBM/review"
+    },
+    "yelp": {
+      "rating": 5.0,
+      "reviewCount": 28
+    }
+  },
+  "services": {
+    "primary": [
+      {
+        "name": "Balayage",
+        "description": "Natural, sun-kissed highlights that grow out beautifully",
+        "priceRange": "$250-$450"
+      },
+      {
+        "name": "Color Correction",
+        "description": "Expert fix for color disasters and uneven tones",
+        "priceRange": "$350-$600"
+      },
+      {
+        "name": "Hair Extensions",
+        "description": "Natural-looking extensions that blend perfectly",
+        "priceRange": "$500-$1500"
+      },
+      {
+        "name": "Brazilian Blowout",
+        "description": "Smooth, frizz-free hair lasting 3-4 months",
+        "priceRange": "$300-$400"
+      }
+    ],
+    "keywords": [
+      "balayage specialist",
+      "color correction expert",
+      "hair extensions",
+      "Brazilian blowout",
+      "highlights",
+      "hair color",
+      "keratin treatment",
+      "luxury hair salon"
+    ]
+  },
+  "categories": {
+    "primary": "Hair Salon",
+    "secondary": [
+      "Beauty Salon",
+      "Hair Colorist",
+      "Hair Stylist",
+      "Hair Extensions",
+      "Keratin Treatment"
+    ],
+    "naics": "812111",
+    "sic": "7231"
+  },
+  "microsites": [
+    {
+      "domain": "bestsalondelray.com",
+      "purpose": "Best salon keywords for Delray Beach",
+      "targetKeywords": ["best hair salon delray beach", "best colorist delray beach"]
+    },
+    {
+      "domain": "bestdelraysalon.com",
+      "purpose": "Top 15 salon rankings aggregator",
+      "targetKeywords": ["top salons delray beach", "best delray salons"]
+    },
+    {
+      "domain": "bestsalonpalmbeach.com",
+      "purpose": "Palm Beach County keyword capture",
+      "targetKeywords": ["best salon palm beach", "palm beach hair salon"]
+    }
+  ],
+  "citations": {
+    "existing": [
+      "Google Business Profile",
+      "Yelp",
+      "Facebook",
+      "Instagram"
+    ],
+    "priority": [
+      {
+        "name": "Apple Maps",
+        "url": "https://mapsconnect.apple.com",
+        "status": "pending",
+        "automatable": false
+      },
+      {
+        "name": "Bing Places",
+        "url": "https://www.bingplaces.com",
+        "status": "pending",
+        "automatable": true
+      },
+      {
+        "name": "Yellow Pages",
+        "url": "https://www.yellowpages.com/addlisting",
+        "status": "pending",
+        "automatable": true
+      },
+      {
+        "name": "Foursquare",
+        "url": "https://business.foursquare.com",
+        "status": "pending",
+        "automatable": true
+      },
+      {
+        "name": "Hotfrog",
+        "url": "https://www.hotfrog.com",
+        "status": "pending",
+        "automatable": true
+      },
+      {
+        "name": "Manta",
+        "url": "https://www.manta.com/add-company",
+        "status": "pending",
+        "automatable": true
+      },
+      {
+        "name": "Superpages",
+        "url": "https://www.superpages.com",
+        "status": "pending",
+        "automatable": true
+      },
+      {
+        "name": "CitySearch",
+        "url": "https://www.citysearch.com",
+        "status": "pending",
+        "automatable": true
+      }
+    ],
+    "dataAggregators": [
+      {
+        "name": "Data Axle (InfoUSA)",
+        "coverage": "Feeds 70+ directories",
+        "hasApi": true,
+        "cost": "~$300/year"
+      },
+      {
+        "name": "Neustar/Localeze",
+        "coverage": "Feeds 100+ directories",
+        "hasApi": true,
+        "cost": "~$300/year"
+      },
+      {
+        "name": "Foursquare",
+        "coverage": "Feeds Apple Maps, Uber, etc",
+        "hasApi": true,
+        "cost": "Free for basic"
+      }
+    ]
+  },
+  "metadata": {
+    "created": "2025-11-26",
+    "lastUpdated": "2025-11-26",
+    "version": "1.0.0"
+  }
+}
