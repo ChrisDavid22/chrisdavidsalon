@@ -1,7 +1,12 @@
 {
-  "version": "2.9.9",
-  "lastUpdated": "2025-11-27T02:30:00Z",
+  "version": "2.10.0",
+  "lastUpdated": "2025-11-27T03:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.10.0",
+      "date": "2025-11-27T03:00:00Z",
+      "changes": "INSTANT DASHBOARD LOADING: SEO Command Center now loads cached data instantly on arrival - no waiting for API calls. Data is cached in localStorage after each 'Analyze with AI' click. Only refreshes when you explicitly click the button. Shows 'Updated X ago' timestamp. First-time visitors see 'Never - Click Analyze to start' message."
+    },
     {
       "version": "2.9.9",
       "date": "2025-11-27T02:30:00Z",

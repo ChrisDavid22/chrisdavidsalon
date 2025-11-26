@@ -286,17 +286,119 @@
     // Load AI Config
     window.AIConfig.loadApiKeys();
 
-    // Load historical data
+    // ============================================
+    // CACHED DATA SYSTEM - Load instantly on arrival
+    // ============================================
+    const CACHE_KEY = 'seoCommandCenterData';
+
+    // Load cached data immediately - no API calls on page load
+    function loadCachedData() {
+        try {
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const data = JSON.parse(cached);
+                console.log('Loading cached data from:', data.timestamp);
+
+                // Restore all scores from cache
+                if (data.scoreData) {
+                    Object.assign(scoreData, data.scoreData);
+                }
+
+                // Display the cached data
+                displayCachedScores(data);
+
+                // Show when it was last updated
+                const lastUpdate = new Date(data.timestamp);
+                const timeAgo = getTimeAgo(lastUpdate);
+                document.getElementById('lastAnalysis').innerHTML = `
+                    <div class="text-lg font-bold">${lastUpdate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>
+                    <div class="text-sm mt-1">Updated ${timeAgo}</div>
+                `;
+
+                return true;
+            }
+        } catch (e) {
+            console.warn('Could not load cached data:', e);
+        }
+        return false;
+    }
+
+    // Display scores from cached data
+    function displayCachedScores(data) {
+        const { scoreData: scores } = data;
+        if (!scores) return;
+
+        // Update all score displays
+        document.getElementById('performanceScore').textContent = scores.performance || '--';
+        document.getElementById('pageSpeed').textContent = scores.performance ? scores.performance + '%' : '--';
+        document.getElementById('technicalScore').textContent = scores.technical || '--';
+        document.getElementById('mobileScore').textContent = scores.mobile || '--';
+        document.getElementById('contentScore').textContent = scores.content || '--';
+        document.getElementById('localScore').textContent = scores.local || '--';
+        document.getElementById('uxScore').textContent = scores.ux || '--';
+        document.getElementById('authorityScore').textContent = scores.authority || '--';
+
+        // Update sub-metrics from cached details
+        if (data.details) {
+            document.getElementById('metaTags').textContent = scores.technical > 70 ? 'Optimized' : 'Needs Work';
+            document.getElementById('schema').textContent = scores.technical > 70 ? 'Present' : 'Missing';
+            document.getElementById('responsive').textContent = scores.mobile > 70 ? 'Yes' : 'Partial';
+            document.getElementById('mobileUsability').textContent = scores.mobile > 70 ? 'Good' : 'Issues';
+            document.getElementById('keywordUsage').textContent = scores.content > 70 ? 'Good' : 'Needs Work';
+            document.getElementById('contentQuality').textContent = scores.content > 70 ? 'High' : 'Medium';
+            document.getElementById('navigation').textContent = scores.ux > 70 ? 'Clear' : 'Confusing';
+            document.getElementById('design').textContent = scores.ux > 70 ? 'Modern' : 'Dated';
+
+            if (data.details.gmb) document.getElementById('gmb').textContent = data.details.gmb;
+            if (data.details.citations) document.getElementById('citations').textContent = data.details.citations;
+            if (data.details.backlinks) document.getElementById('backlinks').textContent = data.details.backlinks;
+            if (data.details.trust) document.getElementById('trust').textContent = data.details.trust;
+            if (data.details.loadTime) document.getElementById('loadTime').textContent = data.details.loadTime;
+        }
+
+        // Calculate and display total score
+        recalculateTotalScore();
+    }
+
+    // Save analysis results to cache
+    function saveToCache(analysisData) {
+        try {
+            const cacheData = {
+                timestamp: new Date().toISOString(),
+                scoreData: { ...scoreData },
+                details: {
+                    gmb: document.getElementById('gmb')?.textContent,
+                    citations: document.getElementById('citations')?.textContent,
+                    backlinks: document.getElementById('backlinks')?.textContent,
+                    trust: document.getElementById('trust')?.textContent,
+                    loadTime: document.getElementById('loadTime')?.textContent
+                },
+                rawAnalysis: analysisData
+            };
+            localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
+            console.log('Saved analysis to cache');
+        } catch (e) {
+            console.warn('Could not save to cache:', e);
+        }
+    }
+
+    // Helper to show time ago
+    function getTimeAgo(date) {
+        const seconds = Math.floor((new Date() - date) / 1000);
+        if (seconds < 60) return 'just now';
+        const minutes = Math.floor(seconds / 60);
+        if (minutes < 60) return `${minutes}m ago`;
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) return `${hours}h ago`;
+        const days = Math.floor(hours / 24);
+        return `${days}d ago`;
+    }
+
+    // Load historical data (legacy support)
     let historicalScores = [];
-    
+
     function loadHistory() {
         historicalScores = window.AIConfig.getHistory('seo', 30);
-        if (historicalScores.length > 0) {
-            const latest = historicalScores[0];
-            document.getElementById('lastAnalysis').textContent = new Date(latest.timestamp).toLocaleDateString();
-            document.getElementById('yourScore').textContent = Math.round(latest.data.totalScore);
-            displayScoreBreakdown(latest.data);
-        }
     }
 
     // Main analysis function
@@ -361,6 +463,17 @@
             const statusMsg = seoResult.live ? 'Live PageSpeed data retrieved!' : (seoResult.success === false ? 'PageSpeed API unavailable - try again later' : 'PageSpeed API rate limited');
             const aiMsg = aiResult.live ? 'Claude AI recommendations generated!' : (aiResult.success === false ? 'AI API unavailable' : 'AI rate limited');
             console.log(`Analysis complete: ${statusMsg} ${aiMsg}`);
+
+            // Now fetch the other scores (Content, Local, Authority) and save to cache
+            await fetchContentScore();
+            await fetchLocalSEOScore();
+            await fetchAuthorityScore();
+
+            // Recalculate total with all scores
+            recalculateTotalScore();
+
+            // Save everything to cache so it loads instantly next time
+            saveToCache(fullAnalysis);
 
         } catch (error) {
             console.error('Analysis error:', error);
@@ -874,33 +987,30 @@
         return totalScore;
     }
 
-    // Initialize on load - comprehensive loading sequence
+    // Initialize on load - INSTANT from cache, no API calls unless explicitly requested
     window.addEventListener('DOMContentLoaded', async () => {
         console.log('=== DASHBOARD INIT START ===');
         loadVersion();
         loadHistory();
 
-        // STEP 1: Load main dashboard data (gets Performance, Technical, Mobile, UX from PageSpeed)
-        console.log('Step 1: Loading PageSpeed data...');
-        await loadDashboardData();
+        // STEP 1: Try to load cached data FIRST (instant - no API calls)
+        const hasCachedData = loadCachedData();
 
-        // STEP 2: Fetch the 3 additional scores sequentially to ensure each completes
-        console.log('Step 2: Loading Content score...');
-        await fetchContentScore();
+        if (hasCachedData) {
+            console.log('Loaded cached data - dashboard ready instantly!');
+            console.log('Click "Analyze with AI" to refresh with live data.');
+        } else {
+            // No cached data - show first-time message
+            console.log('No cached data found - waiting for first analysis');
+            document.getElementById('lastAnalysis').innerHTML = `
+                <div class="text-lg font-bold">Never</div>
+                <div class="text-sm mt-1">Click "Analyze with AI" to start</div>
+            `;
+            document.getElementById('yourScore').textContent = '--';
+            document.getElementById('totalScore').textContent = '--';
+        }
 
-        console.log('Step 3: Loading Local SEO score...');
-        await fetchLocalSEOScore();
-
-        console.log('Step 4: Loading Authority score...');
-        await fetchAuthorityScore();
-
-        // STEP 3: Final recalculation with all scores loaded
-        console.log('Step 5: Final recalculation...');
-        // Give DOM time to update, then calculate
-        setTimeout(() => {
-            recalculateTotalScore();
-            console.log('=== DASHBOARD INIT COMPLETE ===');
-        }, 500);
+        console.log('=== DASHBOARD INIT COMPLETE ===');
     });
     </script>
 </body>
