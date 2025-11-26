@@ -1,6 +1,9 @@
 {
   "buildCommand": "echo 'Build complete'",
   "outputDirectory": "01-WEBSITE",
+  "git": {
+    "submodules": false
+  },
   "functions": {
     "api/*.js": {
       "maxDuration": 30
