@@ -1,7 +1,12 @@
 {
-  "version": "2.6.16",
-  "lastUpdated": "2025-11-26T12:00:00Z",
+  "version": "2.7.0",
+  "lastUpdated": "2025-11-26T14:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.7.0",
+      "date": "2025-11-26T14:00:00Z",
+      "changes": "MAJOR: Autonomous SEO Agent system launched. Unified 6-page admin dashboard (Dashboard, Traffic, Competitors, Rankings, Authority, Agent Log). SQLite database for historical tracking. Auto-refresh every 5 minutes. Weekly analysis scheduled for Sundays 6 AM EST."
+    },
     {
       "version": "2.6.16",
       "date": "2025-11-26T12:00:00Z",
