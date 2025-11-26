@@ -1,7 +1,12 @@
 {
-  "version": "2.6.5",
-  "lastUpdated": "2025-11-26T06:00:00Z",
+  "version": "2.6.6",
+  "lastUpdated": "2025-11-26T06:15:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.6",
+      "date": "2025-11-26T06:15:00Z",
+      "changes": "Google Places + Claude AI integration - LIVE competitor data and AI recommendations"
+    },
     {
       "version": "2.6.5",
       "date": "2025-11-26T06:00:00Z",
