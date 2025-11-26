@@ -4,12 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Chris David Salon website with comprehensive admin dashboard for business intelligence and marketing automation. Located in Delray Beach, competing with 47 other salons.
+Chris David Salon website with **Autonomous SEO Agent** - a complete analytics and optimization system that runs on real data only.
 
 **Live Site**: https://chrisdavidsalon.com
 **GitHub**: https://github.com/ChrisDavid22/chrisdavidsalon.git
 **Deployment**: Vercel (auto-deploys from main branch)
-**Current Version**: 2.6.14
+**Current Version**: 2.8.0
 
 ---
 
@@ -17,131 +17,151 @@ Chris David Salon website with comprehensive admin dashboard for business intell
 
 **HARDCODED DATA IS TOXIC AND ABSOLUTELY FORBIDDEN.**
 
-This is the most important rule in this codebase:
-
-1. **NEVER** put hardcoded numbers, statistics, or fake data in ANY admin dashboard
+1. **NEVER** put hardcoded numbers, statistics, or fake data in ANY dashboard
 2. **NEVER** create JavaScript arrays/objects with sample data that looks real
-3. **NEVER** show misleading statistics that aren't from a real data source
-4. **ALWAYS** fetch data from API endpoints (`/api/analytics`, `/api/admin-data`, etc.)
-5. **ALWAYS** show clear data source badges (LIVE, Manual Observation, Error)
-6. **ALWAYS** show "Loading...", "--", or "Awaiting API" when data isn't available
-
-### Why This Matters
-- Fake data leads to bad business decisions
-- It's impossible to trust dashboards with any fake data
-- The business owner needs to know exactly what's real
-- Every metric must be traceable to its source
-
-### How Data Should Work
-```javascript
-// WRONG - NEVER DO THIS
-const visitors = 312;  // Hardcoded fake number
-const monthlyData = [185, 198, 247, 268];  // Fake historical data
-
-// CORRECT - ALWAYS DO THIS
-const response = await fetch('/api/analytics?type=visitors');
-const data = await response.json();
-if (data.success) {
-    document.getElementById('visitors').textContent = data.currentData.visitors;
-} else {
-    document.getElementById('visitors').textContent = '--';
-}
-```
-
-### Data Source Badges Required
-Every dashboard page MUST show:
-- What data source it's using
-- Whether data is LIVE or from manual observation
-- When data was last updated
-- Clear error states if API fails
+3. **ALWAYS** fetch data from API endpoints
+4. **ALWAYS** show "--" or "Awaiting API" when data isn't available
+5. **ALWAYS** show clear data source badges (LIVE vs Not Connected)
 
 ---
 
-## Admin Dashboard Architecture
+## SEO Agent Architecture (v2.8.0)
 
-### Core Admin Pages (Priority Order - Left to Right)
-1. **SEO Score** (`/admin/index.html`) - Live PageSpeed scores
-2. **Traffic** (`/admin/visitor-metrics.html`) - Visitor metrics from API
-3. **Conversions** (`/admin/engagement-tracker.html`) - Booking/phone clicks
-4. **Competitors** (`/admin/competitors.html`) - Google Places API data
-5. **Rankings** (`/admin/rankings.html`) - Keyword positions
-6. **Action Plan** (`/admin/seo-action-plan.html`) - Virtuous cycle hub
+### Core API Endpoints
 
-### API Endpoints
+#### GA4 Analytics API (`/api/ga4-analytics`)
+Pulls REAL data from Google Analytics 4. Requires credentials.
 ```
-/api/analytics?type=visitors      - Traffic data
-/api/analytics?type=seo-score     - Live PageSpeed scores
-/api/analytics?type=engagement    - Booking/phone click data
-/api/analytics?type=traffic-sources - Traffic breakdown
-/api/analytics?type=keywords      - Keyword rankings
-/api/analytics?type=overview      - Combined business metrics
-/api/admin-data?type=competitors  - Google Places competitor data
-/api/admin-data?type=dashboard    - Dashboard overview
-/api/pagespeed                    - Direct PageSpeed analysis
+?type=overview          - Active users, sessions, page views, bounce rate
+?type=traffic-over-time - Daily traffic for charts (30 days)
+?type=traffic-sources   - Where traffic comes from (organic, direct, referral)
+?type=microsite-referrals - Traffic from the 3 microsites
+?type=top-pages         - Top landing pages with metrics
+?type=devices           - Mobile/desktop/tablet breakdown
+?type=events            - Booking clicks, phone clicks, form submissions
 ```
 
-### Data Source Types
-- **LIVE (PageSpeed)**: Real-time from Google PageSpeed API
-- **LIVE (Places)**: Real-time from Google Places API
-- **Manual Observation**: Data observed from GA dashboard (not API-connected)
-- **Not Connected**: API not yet configured
+#### SEO Analysis Engine (`/api/seo-analysis-engine`)
+The "brain" that compares data and generates insights.
+```
+?action=analyze         - Full week-over-week analysis
+?action=compare-weeks   - This week vs last week comparison
+?action=microsite-impact - Microsite effectiveness analysis
+?action=trend-detection - Identify traffic trends
+?action=generate-actions - Priority action items
+?action=health-check    - System status check
+```
+
+#### Weekly Report (`/api/weekly-seo-report`)
+Automated weekly analysis (free tier compatible).
+```
+?action=generate        - Generate weekly report
+?action=latest          - Get most recent report
+?action=status          - Check report system status
+```
+
+### Admin Dashboard Pages
+```
+/admin/dashboard.html   - Main overview
+/admin/traffic.html     - GA4 traffic analytics with charts
+/admin/competitors.html - Google Places competitor data
+/admin/rankings.html    - Keyword positions
+/admin/authority.html   - Domain authority tracking
+/admin/microsites.html  - Microsite referral tracking
+/admin/agent-log.html   - SEO agent activity log
+```
+
+### The 3 Microsites (LIVE)
+All deployed on Vercel, all have GA tracking (G-XQDLWZM5NV):
+- **bestsalondelray.com** - General salon authority
+- **bestdelraysalon.com** - Local Delray Beach focus
+- **bestsalonpalmbeach.com** - Palm Beach County regional
 
 ---
 
-## Service Landing Pages (SEO)
+## GA4 Integration Status
 
-Five dedicated landing pages targeting high-value keywords:
-- `/services/wedding-hair-delray-beach.html`
-- `/services/balayage-delray-beach.html`
-- `/services/color-correction-delray-beach.html`
-- `/services/hair-extensions-delray-beach.html`
-- `/services/keratin-treatment-delray-beach.html`
+### What's Built (Ready to Go)
+- Complete GA4 Data API integration
+- Week-over-week comparison logic
+- Trend detection algorithms
+- Action generation system
+- Microsite referral tracking
+- Health scoring system
+- Weekly report generator
 
-All include:
-- Schema.org LocalBusiness + Service markup
-- Google Analytics tracking (G-XQDLWZM5NV)
-- Boulevard booking widget
-- Internal linking back to main site
+### What's Needed (Credentials)
+Two environment variables in Vercel:
+
+1. **GA4_PROPERTY_ID**
+   - Numeric ID like `123456789`
+   - Get from: analytics.google.com → Admin → Property Settings
+
+2. **GOOGLE_SERVICE_ACCOUNT_JSON**
+   - Full JSON key contents
+   - Create at: console.cloud.google.com → IAM → Service Accounts
+   - Must have Analytics Viewer access in GA4 Admin
+
+### What Becomes Available Once Connected
+- Real-time traffic numbers
+- Historical trend charts
+- Week-over-week comparisons
+- Microsite referral counts
+- Device breakdown
+- Top landing pages
+- Conversion events
+- Automated weekly reports
+- AI-generated action items
 
 ---
 
-## Essential Commands
+## Data Available from GA4 API
 
-### Deploy Changes
-```bash
-cd 01-WEBSITE && git add -A && git commit -m "message" && git push
-# Vercel auto-deploys from main branch
-```
+### Metrics
+- `activeUsers` - Users in date range
+- `sessions` - Total sessions
+- `screenPageViews` - Page views
+- `bounceRate` - Bounce rate (0-1)
+- `averageSessionDuration` - Avg session length
+- `newUsers` - New visitors
+- `eventCount` - Event occurrences
 
-### Verify Deployment
-```bash
-curl -s https://www.chrisdavidsalon.com/data/version.json | grep version
-```
+### Dimensions
+- `date` - For time series
+- `sessionSource` - Traffic source
+- `sessionMedium` - Traffic medium
+- `deviceCategory` - Mobile/desktop/tablet
+- `landingPage` - Entry page
+- `eventName` - Event names
+
+### Rate Limits
+- Token-based (~10 tokens per request)
+- Plenty of capacity for this use case
+- No cost at current usage levels
 
 ---
 
-## API Integration Status
+## Existing API Integrations (Working)
 
-### Connected (Working)
-- **PageSpeed API**: Live SEO scores (free tier, no key required)
-- **Google Places API**: Competitor data (GOOGLE_PLACES_API_KEY in Vercel)
-- **Claude AI**: AI recommendations (ANTHROPIC_API_KEY in Vercel)
+### PageSpeed API
+- Endpoint: `/api/pagespeed`
+- Status: LIVE (free tier, no key required)
+- Returns: Performance, accessibility, SEO, best practices scores
 
-### Manual Observation Only
-- **Google Analytics**: GA4 tracking code installed, API not connected
-- Data source: `manual-ga-observation`
-- Last known: 247 visitors, 68% mobile, August 2025
+### Google Places API
+- Endpoint: `/api/admin-data?type=competitors`
+- Status: LIVE (GOOGLE_PLACES_API_KEY in Vercel)
+- Returns: Competitor ratings, review counts, addresses
 
-### Not Connected (Setup Required)
-- **Google Analytics Data API**: Needs GA4 service account
-- **Google Search Console API**: Needs Search Console credentials
-- **Boulevard API**: Needs API access from Boulevard
+### Claude AI
+- Used for: AI recommendations in dashboards
+- Status: LIVE (ANTHROPIC_API_KEY in Vercel)
 
 ---
 
 ## Chris David's Credentials (For SEO Content)
 
-**Color Correction Expert** - Should be #1-2 in local rankings
+**Color Correction Expert** - Target ranking #1-2 locally
 - 20+ years cutting expertise
 - Former educator for 5 major brands:
   - Davines (6 years)
@@ -153,37 +173,51 @@ curl -s https://www.chrisdavidsalon.com/data/version.json | grep version
 
 ---
 
-## Development Guidelines
+## Service Landing Pages
 
-1. **ZERO HARDCODED DATA** - See policy above
-2. **Mobile First**: 68% of traffic is mobile
-3. **Show Data Sources**: Always indicate where data comes from
-4. **Error States**: Show clear errors, not fake fallback data
-5. **API-First**: All metrics must come from API endpoints
+Five SEO landing pages targeting high-value keywords:
+- `/services/wedding-hair-delray-beach.html`
+- `/services/balayage-delray-beach.html`
+- `/services/color-correction-delray-beach.html`
+- `/services/hair-extensions-delray-beach.html`
+- `/services/keratin-treatment-delray-beach.html`
+
+All include Schema.org markup, GA tracking, Boulevard booking widget.
 
 ---
 
-## The Virtuous Cycle Engine
+## Essential Commands
 
-The admin system is designed as a living SEO engine that:
-1. **Researches** - Gathers live data from APIs
-2. **Analyzes** - Uses AI to identify opportunities
-3. **Plans** - Creates prioritized action items
-4. **Implements** - Auto-generates new pages/content
-5. **Tracks** - Measures impact
-6. **Repeats** - Feeds results back into research
+### Deploy Changes
+```bash
+cd 01-WEBSITE && git add -A && git commit -m "message" && git push
+```
 
-Access via: `/admin/seo-action-plan.html`
+### Verify Deployment
+```bash
+curl -s https://www.chrisdavidsalon.com/data/version.json | grep version
+```
+
+### Test GA4 API (once credentials added)
+```bash
+curl https://www.chrisdavidsalon.com/api/ga4-analytics?type=overview
+```
+
+### Test Analysis Engine
+```bash
+curl https://www.chrisdavidsalon.com/api/seo-analysis-engine?action=health-check
+```
 
 ---
 
 ## Version History
 
-Current: **2.6.14** - ZERO hardcoded data, all dashboards use live API
+Current: **2.8.0** - Complete SEO Analysis Engine
 
 Key versions:
-- 2.6.14: Removed ALL hardcoded data, analytics API
-- 2.6.13: Service landing pages, dashboard pages created
+- 2.8.0: GA4 API, Analysis Engine, Weekly Reports
+- 2.7.0: Autonomous SEO Agent system, unified dashboard
+- 2.6.14: Zero hardcoded data policy
 - 2.6.6: Google Places + Claude AI integration
 - 2.6.5: PageSpeed API (free tier)
 

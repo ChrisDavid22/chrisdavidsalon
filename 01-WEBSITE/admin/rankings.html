@@ -7,8 +7,6 @@
     <title>Keyword Rankings - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="ai-config.js"></script>
     <style>
         .pulse-green { animation: pulse-green 2s infinite; }
         @keyframes pulse-green {
@@ -50,135 +48,102 @@
     </nav>
 
     <div class="max-w-7xl mx-auto p-6">
-        
-        <!-- Keyword Opportunity Overview -->
+        <!-- Data Source Banner -->
+        <div id="dataSourceBanner" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+            <div class="flex items-start">
+                <i class="fas fa-exclamation-triangle text-yellow-500 mr-3 mt-1"></i>
+                <div>
+                    <span class="font-semibold text-yellow-800">Ranking Data Requires Google Search Console API</span>
+                    <p class="text-yellow-700 text-sm mt-1">
+                        Keyword position data requires Search Console API connection. Currently showing strategy guidance only.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyword Strategy Overview -->
         <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg shadow-xl p-6 mb-6">
-            <h2 class="text-3xl font-bold mb-4">🎯 Keyword Market Intelligence</h2>
+            <h2 class="text-3xl font-bold mb-4">Keyword Strategy</h2>
             <p class="text-green-100 mb-6">
-                Discover the top 30 keywords for Delray Beach hair salons, sorted by monthly search volume with competition analysis.
+                Target keywords for Delray Beach hair salon search visibility
             </p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
                     <h3 class="font-bold text-lg">Keywords Tracked</h3>
-                    <div class="text-3xl font-bold">30</div>
+                    <div class="text-3xl font-bold" id="keywordCount">--</div>
                 </div>
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
                     <h3 class="font-bold text-lg">Top 10 Rankings</h3>
-                    <div class="text-3xl font-bold" id="top10Count">4</div>
+                    <div class="text-3xl font-bold" id="top10Count">--</div>
                 </div>
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Easy Wins</h3>
-                    <div class="text-3xl font-bold" id="easyWins">12</div>
+                    <h3 class="font-bold text-lg">Opportunities</h3>
+                    <div class="text-3xl font-bold" id="opportunities">--</div>
                 </div>
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
-                    <h3 class="font-bold text-lg">Total Volume</h3>
-                    <div class="text-3xl font-bold">14K</div>
-                    <p class="text-sm">searches/month</p>
+                    <h3 class="font-bold text-lg">Data Status</h3>
+                    <div class="text-xl font-bold">Awaiting API</div>
                 </div>
             </div>
-            
-            <button onclick="getTop30Keywords()" class="bg-white text-green-600 px-8 py-4 rounded-lg hover:bg-green-50 font-bold text-lg">
-                <i class="fas fa-search mr-2"></i>Get Top 30 Keywords & Rankings
-            </button>
         </div>
 
-        <!-- Top 30 Keywords Table -->
+        <!-- Target Keywords by Category -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 class="text-2xl font-bold mb-6">📊 Top 30 Keywords by Monthly Search Volume</h3>
-            
-            <div id="loadingKeywords" class="hidden text-center py-12">
-                <i class="fas fa-spinner fa-spin text-5xl text-blue-600 mb-4"></i>
-                <p class="text-xl text-gray-600">Analyzing keyword opportunities with AI...</p>
-            </div>
-            
-            <div id="keywordTableContainer">
-                <table class="w-full">
-                    <thead class="bg-gray-100">
-                        <tr>
-                            <th class="p-3 text-left">Rank</th>
-                            <th class="p-3 text-left">Keyword</th>
-                            <th class="p-3 text-center">Monthly Searches</th>
-                            <th class="p-3 text-center">Competition</th>
-                            <th class="p-3 text-center">Our Position</th>
-                            <th class="p-3 text-center">Top Competitor</th>
-                            <th class="p-3 text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="keywordTableBody">
-                        <!-- Will be populated by JavaScript -->
-                    </tbody>
-                </table>
+            <h3 class="text-2xl font-bold mb-6">Target Keywords by Category</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- High Volume -->
+                <div class="border-2 border-blue-200 rounded-lg p-4">
+                    <h4 class="font-bold text-blue-700 mb-3 flex items-center">
+                        <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+                        High Volume Keywords
+                    </h4>
+                    <p class="text-sm text-gray-600 mb-3">Main targets - competitive but high value</p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="p-2 bg-gray-50 rounded">"hair salon delray beach"</li>
+                        <li class="p-2 bg-gray-50 rounded">"best hair salon delray beach"</li>
+                        <li class="p-2 bg-gray-50 rounded">"hair salon atlantic avenue"</li>
+                        <li class="p-2 bg-gray-50 rounded">"balayage delray beach"</li>
+                    </ul>
+                </div>
+
+                <!-- Service-Specific -->
+                <div class="border-2 border-green-200 rounded-lg p-4">
+                    <h4 class="font-bold text-green-700 mb-3 flex items-center">
+                        <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                        Service Keywords
+                    </h4>
+                    <p class="text-sm text-gray-600 mb-3">Specific services - easier to rank</p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="p-2 bg-gray-50 rounded">"color correction delray beach"</li>
+                        <li class="p-2 bg-gray-50 rounded">"hair extensions delray beach"</li>
+                        <li class="p-2 bg-gray-50 rounded">"keratin treatment delray beach"</li>
+                        <li class="p-2 bg-gray-50 rounded">"wedding hair delray beach"</li>
+                    </ul>
+                </div>
+
+                <!-- Unique Advantages -->
+                <div class="border-2 border-purple-200 rounded-lg p-4">
+                    <h4 class="font-bold text-purple-700 mb-3 flex items-center">
+                        <span class="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
+                        Unique Advantage Keywords
+                    </h4>
+                    <p class="text-sm text-gray-600 mb-3">Keywords where Chris has an edge</p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="p-2 bg-gray-50 rounded">"davines salon delray beach"</li>
+                        <li class="p-2 bg-gray-50 rounded">"master colorist delray beach"</li>
+                        <li class="p-2 bg-gray-50 rounded">"blonde specialist delray"</li>
+                        <li class="p-2 bg-gray-50 rounded">"free parking hair salon delray"</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <!-- Strategic Opportunities -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <!-- Quick Wins -->
-            <div class="bg-green-50 rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-bold mb-4 text-green-800">🎯 Quick Wins</h3>
-                <p class="text-sm text-gray-600 mb-4">Low competition, easy to rank</p>
-                <ul id="quickWinsList" class="space-y-2">
-                    <li class="bg-white p-3 rounded">
-                        <strong>"davines salon delray beach"</strong>
-                        <div class="text-sm text-gray-600">40-70/mo • UNIQUE advantage</div>
-                    </li>
-                    <li class="bg-white p-3 rounded">
-                        <strong>"master colorist delray beach"</strong>
-                        <div class="text-sm text-gray-600">100-150/mo • Very low competition</div>
-                    </li>
-                    <li class="bg-white p-3 rounded">
-                        <strong>"free parking hair salon"</strong>
-                        <div class="text-sm text-gray-600">80-120/mo • Unique amenity</div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- High Priority -->
-            <div class="bg-yellow-50 rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-bold mb-4 text-yellow-800">⚡ High Priority</h3>
-                <p class="text-sm text-gray-600 mb-4">Best ROI opportunities</p>
-                <ul id="highPriorityList" class="space-y-2">
-                    <li class="bg-white p-3 rounded">
-                        <strong>"balayage delray beach"</strong>
-                        <div class="text-sm text-gray-600">500-650/mo • Your specialty</div>
-                    </li>
-                    <li class="bg-white p-3 rounded">
-                        <strong>"color correction delray"</strong>
-                        <div class="text-sm text-gray-600">120-180/mo • High-value service</div>
-                    </li>
-                    <li class="bg-white p-3 rounded">
-                        <strong>"blonde specialist delray"</strong>
-                        <div class="text-sm text-gray-600">250-350/mo • Growing trend</div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Long-term Targets -->
-            <div class="bg-blue-50 rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-bold mb-4 text-blue-800">🚀 Long-term Targets</h3>
-                <p class="text-sm text-gray-600 mb-4">Build authority over time</p>
-                <ul id="longTermList" class="space-y-2">
-                    <li class="bg-white p-3 rounded">
-                        <strong>"hair salon delray beach"</strong>
-                        <div class="text-sm text-gray-600">1900-2100/mo • Main target</div>
-                    </li>
-                    <li class="bg-white p-3 rounded">
-                        <strong>"best hair salon delray"</strong>
-                        <div class="text-sm text-gray-600">800-1000/mo • Trust signals</div>
-                    </li>
-                    <li class="bg-white p-3 rounded">
-                        <strong>"atlantic avenue salon"</strong>
-                        <div class="text-sm text-gray-600">600-750/mo • Location-based</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Action Plan -->
+        <!-- Content Strategy -->
         <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg shadow-lg p-6">
-            <h3 class="text-2xl font-bold mb-4">📈 Keyword Domination Strategy</h3>
-            
+            <h3 class="text-2xl font-bold mb-4">Content Strategy for Rankings</h3>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <h4 class="font-bold text-purple-800 mb-3">Content Creation Plan</h4>
@@ -200,13 +165,13 @@
                         <li class="flex items-start">
                             <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
                             <div>
-                                <strong>Davines Page:</strong> Why we're exclusive certified
+                                <strong>Davines Page:</strong> Why we're certified
                                 <div class="text-sm text-gray-600">Target: "davines salon delray"</div>
                             </div>
                         </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-bold text-pink-800 mb-3">Technical Optimizations</h4>
                     <ul class="space-y-2">
@@ -221,231 +186,43 @@
                             <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
                             <div>
                                 <strong>Schema Markup:</strong> LocalBusiness + Service
-                                <div class="text-sm text-gray-600">Impact: +10-15 positions</div>
+                                <div class="text-sm text-gray-600">Impact: Rich snippets</div>
                             </div>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-cog text-blue-500 mt-1 mr-2"></i>
                             <div>
-                                <strong>Internal Linking:</strong> Service → location pages
+                                <strong>Internal Linking:</strong> Service pages linked
                                 <div class="text-sm text-gray-600">Impact: Authority flow</div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="mt-6 text-center">
-                <a href="../SEO-TODO-LIST.md" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 font-bold">
-                    <i class="fas fa-tasks mr-2"></i>View Full SEO Action Plan
-                </a>
-            </div>
         </div>
     </div>
 
     <script>
-    // Keyword data loaded from API
-    let keywordData = [];
-
-    // Load keywords from API
-    async function loadKeywords() {
-        try {
-            const response = await fetch('/api/admin-data?type=keywords');
-            if (!response.ok) throw new Error('API failed');
-            const result = await response.json();
-            keywordData = result.data.keywords || [];
-
-            // Display the data
-            displayKeywordTable(keywordData);
-            updateOpportunities(keywordData);
-
-            // Update summary counts
-            if (result.data.summary) {
-                document.getElementById('top10Count').textContent = result.data.summary.top10Count;
-                document.getElementById('easyWins').textContent = result.data.summary.easyWins;
-            }
-        } catch (error) {
-            console.error('Failed to load keywords:', error);
-        }
-    }
-
-    // Refresh keyword data
-    async function getTop30Keywords() {
-        document.getElementById('loadingKeywords').classList.remove('hidden');
-        try {
-            await loadKeywords();
-            alert('Keyword rankings refreshed from API!');
-        } finally {
-            document.getElementById('loadingKeywords').classList.add('hidden');
-        }
-    }
-
-    // Legacy hardcoded data - kept as fallback only
-    const top30Keywords = [
-        { rank: 1, keyword: "hair salon near me", volume: "2800-3200", competition: "Very High", difficulty: "Hard", ourPosition: "Not Ranking", topCompetitor: "Google Maps Pack" },
-        { rank: 2, keyword: "hair salons delray beach", volume: "1900-2100", competition: "High", difficulty: "Moderate-Hard", ourPosition: "#15", topCompetitor: "Rové Hair Salon" },
-        { rank: 3, keyword: "best hair salon delray beach", volume: "800-1000", competition: "High", difficulty: "Moderate-Hard", ourPosition: "#18", topCompetitor: "Bond Street Salon" },
-        { rank: 4, keyword: "hair salon atlantic avenue", volume: "600-750", competition: "Medium", difficulty: "Moderate", ourPosition: "#12", topCompetitor: "Salon Trace" },
-        { rank: 5, keyword: "balayage delray beach", volume: "500-650", competition: "Medium", difficulty: "Easy-Moderate", ourPosition: "#8", topCompetitor: "Rové Hair Salon" },
-        { rank: 6, keyword: "hair extensions delray beach", volume: "450-550", competition: "Medium", difficulty: "Moderate", ourPosition: "#6", topCompetitor: "Studio 34 Hair" },
-        { rank: 7, keyword: "hair colorist delray beach", volume: "400-500", competition: "Medium", difficulty: "Moderate", ourPosition: "#12", topCompetitor: "Salon Trace" },
-        { rank: 8, keyword: "keratin treatment delray beach", volume: "350-450", competition: "Medium", difficulty: "Easy-Moderate", ourPosition: "#9", topCompetitor: "Imbue Salon" },
-        { rank: 9, keyword: "brazilian blowout delray beach", volume: "300-400", competition: "Low-Medium", difficulty: "Easy", ourPosition: "#11", topCompetitor: "One Aveda" },
-        { rank: 10, keyword: "haircut delray beach", volume: "300-380", competition: "High", difficulty: "Moderate", ourPosition: "#22", topCompetitor: "Tyler Presley" },
-        { rank: 11, keyword: "blonde specialist delray beach", volume: "250-350", competition: "Low", difficulty: "Easy", ourPosition: "#7", topCompetitor: "Salon Trace" },
-        { rank: 12, keyword: "luxury hair salon delray beach", volume: "200-300", competition: "Medium", difficulty: "Moderate", ourPosition: "#14", topCompetitor: "Rové Hair Salon" },
-        { rank: 13, keyword: "hair salon pineapple grove", volume: "180-250", competition: "Low", difficulty: "Easy", ourPosition: "Not Ranking", topCompetitor: "Bond Street Salon" },
-        { rank: 14, keyword: "hair highlights delray beach", volume: "150-220", competition: "Medium", difficulty: "Moderate", ourPosition: "#16", topCompetitor: "Rové Hair Salon" },
-        { rank: 15, keyword: "color correction delray beach", volume: "120-180", competition: "Low", difficulty: "Easy", ourPosition: "#4", topCompetitor: "Salon Trace" },
-        { rank: 16, keyword: "master colorist delray beach", volume: "100-150", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#3", topCompetitor: "Rové Hair Salon" },
-        { rank: 17, keyword: "hair salon free parking delray", volume: "80-120", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#2", topCompetitor: "Tyler Presley" },
-        { rank: 18, keyword: "lived-in color delray beach", volume: "70-100", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#5", topCompetitor: "Salon Trace" },
-        { rank: 19, keyword: "precision haircut delray beach", volume: "60-90", competition: "Low", difficulty: "Easy", ourPosition: "#8", topCompetitor: "One Aveda" },
-        { rank: 20, keyword: "dry cutting specialist florida", volume: "50-80", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#1", topCompetitor: "Chris David Salon" },
-        { rank: 21, keyword: "davines salon delray beach", volume: "40-70", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#1", topCompetitor: "Chris David Salon" },
-        { rank: 22, keyword: "andre design district salon", volume: "40-60", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#2", topCompetitor: "Local Competitor" },
-        { rank: 23, keyword: "ombre hair delray beach", volume: "35-55", competition: "Low", difficulty: "Easy", ourPosition: "#10", topCompetitor: "Rové Hair Salon" },
-        { rank: 24, keyword: "wedding hair delray beach", volume: "35-50", competition: "Medium", difficulty: "Moderate", ourPosition: "Not Ranking", topCompetitor: "Bond Street Salon" },
-        { rank: 25, keyword: "mens haircut delray beach", volume: "30-45", competition: "Medium", difficulty: "Moderate", ourPosition: "Not Ranking", topCompetitor: "Tyler Presley" },
-        { rank: 26, keyword: "frizz control treatment florida", volume: "25-40", competition: "Low", difficulty: "Easy", ourPosition: "#6", topCompetitor: "Imbue Salon" },
-        { rank: 27, keyword: "platinum blonde specialist delray", volume: "20-35", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#4", topCompetitor: "Salon Trace" },
-        { rank: 28, keyword: "beach hair color delray beach", volume: "15-30", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#3", topCompetitor: "Rové Hair Salon" },
-        { rank: 29, keyword: "air composition color mapping", volume: "10-20", competition: "Zero", difficulty: "Very Easy", ourPosition: "Not Ranking", topCompetitor: "None" },
-        { rank: 30, keyword: "bellami extensions delray beach", volume: "10-15", competition: "Very Low", difficulty: "Very Easy", ourPosition: "#2", topCompetitor: "Studio 34 Hair" }
-    ];
-
-    // Get top 30 keywords from AI
-    async function getTop30Keywords() {
-        document.getElementById('loadingKeywords').classList.remove('hidden');
-        
-        try {
-            // Ask AI for keyword research
-            const prompt = `What are the top 30 keyword searches for hair salons in Delray Beach, Florida, 
-                           sorted by monthly search volume? Include competition level and where ChrisDavidSalon.com 
-                           currently ranks for each. Format as actionable data.`;
-            
-            // This would call the AI API
-            // const keywordData = await window.AIConfig.getKeywordResearch();
-            
-            // For now, display our real data
-            displayKeywordTable(top30Keywords);
-            updateOpportunities(top30Keywords);
-            
-        } catch (error) {
-            console.error('Keyword research error:', error);
-            // Use fallback data
-            displayKeywordTable(top30Keywords);
-        } finally {
-            document.getElementById('loadingKeywords').classList.add('hidden');
-        }
-    }
-
-    // Display keyword table
-    function displayKeywordTable(keywords) {
-        const tbody = document.getElementById('keywordTableBody');
-        tbody.innerHTML = '';
-        
-        keywords.forEach(kw => {
-            const row = document.createElement('tr');
-            row.className = 'border-b hover:bg-gray-50';
-            
-            // Determine competition color
-            let competitionClass = '';
-            let competitionBadge = '';
-            if (kw.competition.includes('Very Low') || kw.competition === 'Zero') {
-                competitionClass = 'bg-green-100 text-green-800';
-                competitionBadge = '🟢';
-            } else if (kw.competition.includes('Low')) {
-                competitionClass = 'bg-yellow-100 text-yellow-800';
-                competitionBadge = '🟡';
-            } else if (kw.competition.includes('Medium')) {
-                competitionClass = 'bg-orange-100 text-orange-800';
-                competitionBadge = '🟠';
-            } else {
-                competitionClass = 'bg-red-100 text-red-800';
-                competitionBadge = '🔴';
-            }
-            
-            // Determine position color
-            let positionClass = '';
-            if (kw.ourPosition === '#1' || kw.ourPosition === '#2') {
-                positionClass = 'text-green-600 font-bold';
-            } else if (kw.ourPosition.startsWith('#') && parseInt(kw.ourPosition.slice(1)) <= 10) {
-                positionClass = 'text-yellow-600 font-semibold';
-            } else if (kw.ourPosition === 'Not Ranking') {
-                positionClass = 'text-gray-400';
-            } else {
-                positionClass = 'text-red-600';
-            }
-            
-            // Determine if we own this keyword
-            const weOwnIt = kw.topCompetitor === 'Chris David Salon';
-            
-            row.innerHTML = `
-                <td class="p-3">${kw.rank}</td>
-                <td class="p-3">
-                    <strong>${kw.keyword}</strong>
-                    ${weOwnIt ? '<span class="ml-2 text-green-600">👑</span>' : ''}
-                </td>
-                <td class="p-3 text-center">${kw.volume}</td>
-                <td class="p-3 text-center">
-                    <span class="px-2 py-1 rounded text-xs ${competitionClass}">
-                        ${competitionBadge} ${kw.competition}
-                    </span>
-                </td>
-                <td class="p-3 text-center ${positionClass}">${kw.ourPosition}</td>
-                <td class="p-3 text-center text-sm">${kw.topCompetitor}</td>
-                <td class="p-3 text-center">
-                    ${kw.ourPosition === 'Not Ranking' ? 
-                        '<button onclick="createContent(\'' + kw.keyword + '\')" class="text-blue-600 hover:text-blue-800 text-sm"><i class="fas fa-plus"></i> Target</button>' :
-                        '<button onclick="improveRanking(\'' + kw.keyword + '\')" class="text-green-600 hover:text-green-800 text-sm"><i class="fas fa-arrow-up"></i> Improve</button>'}
-                </td>
-            `;
-            
-            tbody.appendChild(row);
-        });
-    }
-
-    // Update opportunity lists
-    function updateOpportunities(keywords) {
-        // Count metrics
-        const top10 = keywords.filter(k => k.ourPosition.startsWith('#') && parseInt(k.ourPosition.slice(1)) <= 10).length;
-        const easyWins = keywords.filter(k => k.difficulty.includes('Easy')).length;
-        
-        document.getElementById('top10Count').textContent = top10;
-        document.getElementById('easyWins').textContent = easyWins;
-    }
-
-    // Create content for keyword
-    function createContent(keyword) {
-        alert(`Creating content strategy for: "${keyword}"\n\nNext steps:\n1. Create dedicated page\n2. Write 1500+ words\n3. Add schema markup\n4. Build internal links`);
-    }
-
-    // Improve ranking for keyword
-    function improveRanking(keyword) {
-        alert(`Improving ranking for: "${keyword}"\n\nCurrent analysis:\n- Add more content depth\n- Increase keyword density\n- Get more internal links\n- Build topic authority`);
-    }
-
-    // Load version
-    async function loadVersion() {
+    async function loadPageData() {
+        // Load version
         try {
             const response = await fetch('/data/version.json');
             const data = await response.json();
-            const versionBadge = document.getElementById('versionBadge');
-            if (versionBadge && data.version) {
-                versionBadge.textContent = `v${data.version}`;
-            }
+            document.getElementById('versionBadge').textContent = `v${data.version}`;
         } catch (e) {
-            const versionBadge = document.getElementById('versionBadge');
-            if (versionBadge) versionBadge.textContent = 'v?.?.?';
+            document.getElementById('versionBadge').textContent = 'v?.?.?';
         }
+
+        document.getElementById('lastUpdate').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
+
+        // Ranking data requires Search Console API
+        // Show "--" for all metrics until connected
+        document.getElementById('keywordCount').textContent = '--';
+        document.getElementById('top10Count').textContent = '--';
+        document.getElementById('opportunities').textContent = '--';
     }
 
-    // Initialize on page load - fetch from API
-    window.addEventListener('load', () => {
-        loadVersion();
-        loadKeywords();
-    });
+    loadPageData();
     </script>
 </body>
 </html>
