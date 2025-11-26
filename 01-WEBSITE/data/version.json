@@ -1,7 +1,12 @@
 {
-  "version": "2.6.12",
-  "lastUpdated": "2025-11-26T08:00:00Z",
+  "version": "2.6.13",
+  "lastUpdated": "2025-11-26T09:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.13",
+      "date": "2025-11-26T09:00:00Z",
+      "changes": "Major SEO upgrade: 5 dedicated service landing pages (wedding, balayage, color-correction, extensions, keratin), visitor metrics dashboard, SEO score tracker, engagement tracker, updated navigation with services dropdown"
+    },
     {
       "version": "2.6.12",
       "date": "2025-11-26T08:00:00Z",
@@ -71,46 +76,6 @@
       "version": "2.5.49",
       "date": "2025-11-26T04:30:00Z",
       "changes": "Moved API functions to root /api folder for Vercel serverless support"
-    },
-    {
-      "version": "2.5.48",
-      "date": "2025-11-26T04:25:00Z",
-      "changes": "Vercel v2 config with explicit builds and routes for API functions"
-    },
-    {
-      "version": "2.5.47",
-      "date": "2025-11-26T04:20:00Z",
-      "changes": "Fixed API routing in vercel.json, removed hardcoded API keys for security"
-    },
-    {
-      "version": "2.5.46",
-      "date": "2025-11-26T04:15:00Z",
-      "changes": "Test deployment - verifying Vercel auto-deploy from GitHub"
-    },
-    {
-      "version": "2.5.45",
-      "date": "2025-08-20T14:11:49Z",
-      "changes": "Fixed admin page to work with API endpoints and display real data"
-    },
-    {
-      "version": "2.5.44",
-      "date": "2025-08-18T23:37:41Z",
-      "changes": "Auto-setup page and fixed vercel.json - APIs work automatically with fallback key"
-    },
-    {
-      "version": "2.5.43",
-      "date": "2025-08-18T23:27:38Z",
-      "changes": "Proper architecture: Serverless API functions - no more client-side API key issues"
-    },
-    {
-      "version": "2.5.42",
-      "date": "2025-08-18T20:42:39Z",
-      "changes": "Admin API integration with Google Gemini - secure implementation using environment variables only"
-    },
-    {
-      "version": "2.5.41",
-      "date": "2025-08-16T06:16:45Z",
-      "changes": "Fix admin microsites with real domain URLs + complete system test"
     }
   ]
 }

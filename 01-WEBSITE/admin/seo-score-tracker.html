@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Score Tracker - Chris David Salon Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        .score-ring {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .score-ring svg {
+            transform: rotate(-90deg);
+        }
+        .score-ring .score-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .metric-card { transition: all 0.3s; }
+        .metric-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .progress-bar { transition: width 1s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-gray-600 hover:text-gray-900">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1 class="text-2xl font-bold text-gray-900">
+                    <i class="fas fa-chart-line text-green-600 mr-2"></i>SEO Score Tracker
+                </h1>
+                <span id="versionBadge" class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">v2.6.12</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span id="lastUpdated" class="text-sm text-gray-500">Loading...</span>
+                <button onclick="refreshScores()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                    <i class="fas fa-sync-alt mr-2"></i>Refresh Scores
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex space-x-4 overflow-x-auto py-2">
+                <a href="index.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Dashboard</a>
+                <a href="competitors.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Competitors</a>
+                <a href="rankings.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Rankings</a>
+                <a href="visitor-metrics.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Visitor Metrics</a>
+                <a href="seo-score-tracker.html" class="px-4 py-2 text-green-600 border-b-2 border-green-600 font-semibold whitespace-nowrap">SEO Score</a>
+                <a href="seo-tasks.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">SEO Tasks</a>
+                <a href="performance.html" class="px-4 py-2 text-gray-600 hover:text-purple-600 whitespace-nowrap">Performance</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Current Score Overview -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <!-- Main Score Card -->
+            <div class="lg:col-span-1 bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 text-center">Overall SEO Score</h3>
+                <div class="score-ring mx-auto mb-4">
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#e5e7eb" stroke-width="12"/>
+                        <circle id="scoreCircle" cx="100" cy="100" r="90" fill="none" stroke="#10b981" stroke-width="12"
+                                stroke-dasharray="565.48" stroke-dashoffset="150" stroke-linecap="round"/>
+                    </svg>
+                    <div class="score-value">
+                        <span id="currentScore" class="text-5xl font-bold text-gray-900">73</span>
+                        <span class="text-gray-500 block">/100</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <span id="scoreLabel" class="text-lg font-semibold text-green-600">Good - Room to Improve</span>
+                    <p class="text-gray-500 text-sm mt-1">Target: 88+ for Top 3 Ranking</p>
+                </div>
+            </div>
+
+            <!-- Score Breakdown -->
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Score Breakdown by Category</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">On-Page SEO</span>
+                            <span id="onPageScore" class="font-bold text-blue-600">78/100</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="onPageBar" class="bg-blue-600 h-3 rounded-full progress-bar" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Technical SEO</span>
+                            <span id="technicalScore" class="font-bold text-green-600">82/100</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="technicalBar" class="bg-green-600 h-3 rounded-full progress-bar" style="width: 82%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Content Quality</span>
+                            <span id="contentScore" class="font-bold text-purple-600">71/100</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="contentBar" class="bg-purple-600 h-3 rounded-full progress-bar" style="width: 71%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Local SEO</span>
+                            <span id="localScore" class="font-bold text-yellow-600">75/100</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="localBar" class="bg-yellow-600 h-3 rounded-full progress-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Authority Score</span>
+                            <span id="authorityScore" class="font-bold text-red-600">45/100</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="authorityBar" class="bg-red-600 h-3 rounded-full progress-bar" style="width: 45%"></div>
+                        </div>
+                        <p class="text-xs text-red-600 mt-1"><i class="fas fa-exclamation-triangle mr-1"></i>Weakest Area - Focus on Backlinks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historical Score Chart -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-gray-900">
+                    <i class="fas fa-history text-blue-600 mr-2"></i>SEO Score History
+                </h3>
+                <div class="flex space-x-2">
+                    <button onclick="setTimeRange('6m')" class="px-3 py-1 text-sm rounded-lg bg-blue-100 text-blue-600 font-medium">6 Months</button>
+                    <button onclick="setTimeRange('1y')" class="px-3 py-1 text-sm rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200">1 Year</button>
+                </div>
+            </div>
+            <div class="h-80">
+                <canvas id="scoreHistoryChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Score History Table -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">
+                <i class="fas fa-table text-gray-600 mr-2"></i>Monthly SEO Score History
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Month</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Overall Score</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Change</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">On-Page</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Technical</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Content</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Authority</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Visitors</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scoreHistoryTable" class="bg-white divide-y divide-gray-200">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Improvement Actions -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Quick Wins -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">
+                    <i class="fas fa-bolt text-yellow-500 mr-2"></i>Quick Wins to Boost Score
+                </h3>
+                <div class="space-y-3" id="quickWins">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Long-Term Goals -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">
+                    <i class="fas fa-flag-checkered text-green-600 mr-2"></i>Goals & Milestones
+                </h3>
+                <div class="space-y-4" id="seoGoals">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Historical SEO score data - tracks progress over time
+        const scoreHistory = [
+            { month: 'Jun 2025', overall: 65, onPage: 70, technical: 75, content: 60, authority: 35, local: 68, visitors: 185 },
+            { month: 'Jul 2025', overall: 68, onPage: 72, technical: 78, content: 63, authority: 38, local: 70, visitors: 198 },
+            { month: 'Aug 2025', overall: 70, onPage: 74, technical: 80, content: 66, authority: 40, local: 72, visitors: 247 },
+            { month: 'Sep 2025', overall: 71, onPage: 76, technical: 81, content: 68, authority: 42, local: 73, visitors: 268 },
+            { month: 'Oct 2025', overall: 72, onPage: 77, technical: 82, content: 70, authority: 43, local: 74, visitors: 289 },
+            { month: 'Nov 2025', overall: 73, onPage: 78, technical: 82, content: 71, authority: 45, local: 75, visitors: 312 }
+        ];
+
+        let scoreHistoryChart = null;
+
+        function initializeChart() {
+            const ctx = document.getElementById('scoreHistoryChart').getContext('2d');
+
+            if (scoreHistoryChart) {
+                scoreHistoryChart.destroy();
+            }
+
+            scoreHistoryChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: scoreHistory.map(d => d.month),
+                    datasets: [{
+                        label: 'Overall SEO Score',
+                        data: scoreHistory.map(d => d.overall),
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#10b981',
+                        borderWidth: 3
+                    }, {
+                        label: 'Authority Score',
+                        data: scoreHistory.map(d => d.authority),
+                        borderColor: '#ef4444',
+                        backgroundColor: 'transparent',
+                        borderDash: [5, 5],
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#ef4444'
+                    }, {
+                        label: 'Visitors (scaled)',
+                        data: scoreHistory.map(d => d.visitors / 4), // Scale visitors to fit chart
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'transparent',
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    if (context.dataset.label === 'Visitors (scaled)') {
+                                        return 'Visitors: ' + (context.raw * 4);
+                                    }
+                                    return context.dataset.label + ': ' + context.raw;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 0,
+                            max: 100,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateScoreCircle(score) {
+            const circle = document.getElementById('scoreCircle');
+            const circumference = 565.48; // 2 * PI * 90
+            const offset = circumference - (score / 100 * circumference);
+            circle.style.strokeDashoffset = offset;
+
+            // Update color based on score
+            if (score >= 85) {
+                circle.style.stroke = '#10b981'; // green
+            } else if (score >= 70) {
+                circle.style.stroke = '#f59e0b'; // yellow
+            } else {
+                circle.style.stroke = '#ef4444'; // red
+            }
+        }
+
+        function populateHistoryTable() {
+            const tbody = document.getElementById('scoreHistoryTable');
+            tbody.innerHTML = '';
+
+            const reversedData = [...scoreHistory].reverse();
+
+            reversedData.forEach((month, index) => {
+                const prevMonth = reversedData[index + 1];
+                let change = '--';
+                let changeClass = 'text-gray-500';
+
+                if (prevMonth) {
+                    const diff = month.overall - prevMonth.overall;
+                    change = (diff > 0 ? '+' : '') + diff;
+                    changeClass = diff > 0 ? 'text-green-600' : (diff < 0 ? 'text-red-600' : 'text-gray-500');
+                }
+
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium">${month.month}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="text-lg font-bold ${month.overall >= 80 ? 'text-green-600' : month.overall >= 70 ? 'text-yellow-600' : 'text-red-600'}">${month.overall}</span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap ${changeClass} font-semibold">${change}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${month.onPage}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${month.technical}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${month.content}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-red-600 font-medium">${month.authority}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${month.visitors.toLocaleString()}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function populateQuickWins() {
+            const wins = [
+                { text: 'Add more internal links between service pages', impact: '+2 points', done: false },
+                { text: 'Optimize image alt tags on all pages', impact: '+1 point', done: true },
+                { text: 'Add FAQ schema markup', impact: '+2 points', done: true },
+                { text: 'Get 5 more Google reviews (133 → 138)', impact: '+3 points', done: false },
+                { text: 'Submit to 10 more local directories', impact: '+4 points', done: false },
+                { text: 'Add new service landing pages', impact: '+5 points', done: true },
+                { text: 'Create blog posts for target keywords', impact: '+3 points', done: false }
+            ];
+
+            const container = document.getElementById('quickWins');
+            container.innerHTML = wins.map(win => `
+                <div class="flex items-center justify-between p-3 ${win.done ? 'bg-green-50' : 'bg-gray-50'} rounded-lg">
+                    <div class="flex items-center">
+                        <i class="fas ${win.done ? 'fa-check-circle text-green-500' : 'fa-circle text-gray-300'} mr-3"></i>
+                        <span class="${win.done ? 'line-through text-gray-400' : ''}">${win.text}</span>
+                    </div>
+                    <span class="text-xs font-semibold ${win.done ? 'text-green-600' : 'text-blue-600'}">${win.impact}</span>
+                </div>
+            `).join('');
+        }
+
+        function populateGoals() {
+            const goals = [
+                { target: 75, label: 'Break 75 Score', progress: 97, status: 'almost' },
+                { target: 80, label: 'Reach 80 Score', progress: 91, status: 'in-progress' },
+                { target: 85, label: 'Top 10 Ranking', progress: 86, status: 'in-progress' },
+                { target: 88, label: 'Top 3 Ranking', progress: 83, status: 'in-progress' },
+                { target: 50, label: 'Authority Score 50+', progress: 90, status: 'in-progress' },
+                { target: 150, label: '150+ Reviews', progress: 89, status: 'in-progress' }
+            ];
+
+            const container = document.getElementById('seoGoals');
+            container.innerHTML = goals.map(goal => `
+                <div class="border rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-medium">${goal.label}</span>
+                        <span class="text-sm ${goal.progress >= 100 ? 'text-green-600' : 'text-gray-500'}">${goal.progress}%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="h-2 rounded-full progress-bar ${goal.progress >= 100 ? 'bg-green-500' : goal.progress >= 90 ? 'bg-yellow-500' : 'bg-blue-500'}" style="width: ${Math.min(goal.progress, 100)}%"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function refreshScores() {
+            document.getElementById('lastUpdated').textContent = 'Refreshing...';
+
+            setTimeout(() => {
+                // Simulate API call to get fresh scores
+                const currentScore = scoreHistory[scoreHistory.length - 1];
+                document.getElementById('currentScore').textContent = currentScore.overall;
+                document.getElementById('onPageScore').textContent = currentScore.onPage + '/100';
+                document.getElementById('technicalScore').textContent = currentScore.technical + '/100';
+                document.getElementById('contentScore').textContent = currentScore.content + '/100';
+                document.getElementById('localScore').textContent = currentScore.local + '/100';
+                document.getElementById('authorityScore').textContent = currentScore.authority + '/100';
+
+                // Update progress bars
+                document.getElementById('onPageBar').style.width = currentScore.onPage + '%';
+                document.getElementById('technicalBar').style.width = currentScore.technical + '%';
+                document.getElementById('contentBar').style.width = currentScore.content + '%';
+                document.getElementById('localBar').style.width = currentScore.local + '%';
+                document.getElementById('authorityBar').style.width = currentScore.authority + '%';
+
+                updateScoreCircle(currentScore.overall);
+                document.getElementById('lastUpdated').textContent = 'Updated: ' + new Date().toLocaleString();
+            }, 1000);
+        }
+
+        function setTimeRange(range) {
+            // Would filter data based on range
+            console.log('Setting time range to:', range);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            refreshScores();
+            initializeChart();
+            populateHistoryTable();
+            populateQuickWins();
+            populateGoals();
+        });
+    </script>
+</body>
+</html>
