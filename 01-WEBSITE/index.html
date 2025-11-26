@@ -510,17 +510,17 @@
                 
                 <div class="flex items-center space-x-4">
                     <!-- Phone Number CTA -->
-                    <a href="tel:5612990950" onclick="if(typeof gtag !== 'undefined') gtag('event', 'click', {'event_category': 'Contact', 'event_label': 'Phone Call', 'value': 1});" class="hidden sm:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors">
+                    <a href="tel:5612990950" onclick="trackPhoneClick('Header')" class="hidden sm:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors">
                         <i class="fas fa-phone mr-2"></i>
                         <span class="text-lg">(561) 299-0950</span>
                     </a>
                     
                     <!-- Social Media Icons -->
                     <div class="hidden lg:flex items-center space-x-3">
-                        <a href="https://www.instagram.com/chrisdavidsalon/" target="_blank" rel="noopener" class="text-gray-600 hover:text-gray-900">
+                        <a href="https://www.instagram.com/chrisdavidsalon/" target="_blank" rel="noopener" onclick="trackSocialClick('Instagram Header')" class="text-gray-600 hover:text-gray-900">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.facebook.com/ChrisDavidSalon/" target="_blank" rel="noopener" class="text-gray-600 hover:text-gray-900">
+                        <a href="https://www.facebook.com/ChrisDavidSalon/" target="_blank" rel="noopener" onclick="trackSocialClick('Facebook Header')" class="text-gray-600 hover:text-gray-900">
                             <i class="fab fa-facebook"></i>
                         </a>
                     </div>
@@ -563,7 +563,7 @@
                     <i class="fas fa-envelope mr-3 text-gray-500"></i>Contact
                 </a>
                 <div class="border-t border-gray-200 mt-3 pt-3 px-6">
-                    <a href="tel:5612990950" class="block py-3 text-gray-700 hover:text-yellow-600 transition-colors">
+                    <a href="tel:5612990950" onclick="trackPhoneClick('Mobile Menu')" class="block py-3 text-gray-700 hover:text-yellow-600 transition-colors">
                         <i class="fas fa-phone mr-3 text-gray-500"></i>Call (561) 299-0950
                     </a>
                     <button onclick="openBookingModal()" type="button" class="block w-full py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-2">
@@ -1043,7 +1043,7 @@
                                 <div>
                                     <h4 class="font-semibold mb-1">Phone</h4>
                                     <p class="text-gray-600">
-                                        <a href="tel:5612990950" class="hover:text-yellow-600">(561) 299-0950</a><br>
+                                        <a href="tel:5612990950" onclick="trackPhoneClick('Contact Section')" class="hover:text-yellow-600">(561) 299-0950</a><br>
                                         <span class="text-sm">Text available 24/7</span>
                                     </p>
                                 </div>
@@ -1054,7 +1054,7 @@
                                 <div>
                                     <h4 class="font-semibold mb-1">Email</h4>
                                     <p class="text-gray-600">
-                                        <a href="mailto:chrisdavidsalon@gmail.com" class="hover:text-yellow-600">chrisdavidsalon@gmail.com</a>
+                                        <a href="mailto:chrisdavidsalon@gmail.com" onclick="trackEmailClick('Contact Section')" class="hover:text-yellow-600">chrisdavidsalon@gmail.com</a>
                                     </p>
                                 </div>
                             </div>
@@ -1097,7 +1097,7 @@
                             <button type="button" onclick="openBookingModal()" class="block w-full bg-white text-gray-900 text-center px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
                                 Book Online Now
                             </button>
-                            <a href="tel:5612990950" class="block w-full bg-transparent border-2 border-white text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+                            <a href="tel:5612990950" onclick="trackPhoneClick('CTA Button')" class="block w-full bg-transparent border-2 border-white text-white text-center px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-colors">
                                 Call (561) 299-0950
                             </a>
                         </div>
@@ -1277,8 +1277,8 @@
                     <div class="space-y-2 text-gray-300 text-sm">
                         <p>1878C Dr. Andres Way</p>
                         <p>Delray Beach, FL 33445</p>
-                        <p><a href="tel:5612990950" class="hover:text-yellow-400">(561) 299-0950</a></p>
-                        <p><a href="mailto:chrisdavidsalon@gmail.com" class="hover:text-yellow-400">chrisdavidsalon@gmail.com</a></p>
+                        <p><a href="tel:5612990950" onclick="trackPhoneClick('Footer')" class="hover:text-yellow-400">(561) 299-0950</a></p>
+                        <p><a href="mailto:chrisdavidsalon@gmail.com" onclick="trackEmailClick('Footer')" class="hover:text-yellow-400">chrisdavidsalon@gmail.com</a></p>
                     </div>
                     
                     <!-- Social Icons -->
@@ -1317,17 +1317,75 @@
 
     <!-- JavaScript -->
     <script>
-        // Booking Modal Functions - Using Boulevard
-        function openBookingModal() {
-            // Track booking button click in Google Analytics
+        // =========================================
+        // CONVERSION TRACKING - GA4 Events
+        // These events are tracked in GA4 for ROI measurement
+        // =========================================
+
+        // Track booking button clicks (most important conversion)
+        function trackBookingClick(source) {
             if (typeof gtag !== 'undefined') {
-                gtag('event', 'click', {
-                    'event_category': 'Booking',
-                    'event_label': 'Book Now Button',
+                gtag('event', 'booking_click', {
+                    'event_category': 'Conversion',
+                    'event_label': source || 'Book Now Button',
+                    'value': 1
+                });
+                console.log('[GA4] Tracked booking_click from:', source);
+            }
+        }
+
+        // Track phone calls
+        function trackPhoneClick(source) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_click', {
+                    'event_category': 'Conversion',
+                    'event_label': source || 'Phone Number',
+                    'value': 1
+                });
+                console.log('[GA4] Tracked phone_click from:', source);
+            }
+        }
+
+        // Track directions/map clicks
+        function trackDirectionsClick(source) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'directions_click', {
+                    'event_category': 'Conversion',
+                    'event_label': source || 'Get Directions',
+                    'value': 1
+                });
+                console.log('[GA4] Tracked directions_click from:', source);
+            }
+        }
+
+        // Track email clicks
+        function trackEmailClick(source) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_click', {
+                    'event_category': 'Conversion',
+                    'event_label': source || 'Email Link',
+                    'value': 1
+                });
+                console.log('[GA4] Tracked email_click from:', source);
+            }
+        }
+
+        // Track social media clicks
+        function trackSocialClick(platform) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'social_click', {
+                    'event_category': 'Engagement',
+                    'event_label': platform,
                     'value': 1
                 });
             }
-            
+        }
+
+        // Booking Modal Functions - Using Boulevard
+        function openBookingModal() {
+            // Track booking button click with new conversion tracking
+            trackBookingClick('Modal Button');
+
             // Boulevard widget - use the documented method from Boulevard support
             if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
                 // This is the correct method according to Boulevard documentation
@@ -1420,7 +1478,7 @@
     </button>
     
     <!-- Mobile Phone CTA (visible only on mobile) -->
-    <a href="tel:5612990950" 
+    <a href="tel:5612990950" onclick="trackPhoneClick('Mobile Floating Button')"
        class="mobile-phone-cta md:hidden">
         <i class="fas fa-phone text-2xl"></i>
     </a>

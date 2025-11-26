@@ -1,7 +1,12 @@
 {
-  "version": "2.10.5",
-  "lastUpdated": "2025-11-27T06:30:00Z",
+  "version": "2.11.0",
+  "lastUpdated": "2025-11-27T08:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.11.0",
+      "date": "2025-11-27T08:00:00Z",
+      "changes": "ACTION-FOCUSED DASHBOARD: (1) NEW dashboard-v2.html - shows WHAT TO DO, not just metrics. Three sections: This Week's Results (booking clicks, visits, phone calls), This Week's Actions (3 prioritized tasks with WHY/HOW/TIME/IMPACT), Agent Activity log. (2) NEW /api/generate-actions - analyzes competitor data, authority, traffic and generates personalized weekly action items. (3) CONVERSION TRACKING: Added GA4 events for booking_click, phone_click, email_click, directions_click, social_click on main website. All CTAs now tracked for ROI measurement."
+    },
     {
       "version": "2.10.5",
       "date": "2025-11-27T06:30:00Z",
