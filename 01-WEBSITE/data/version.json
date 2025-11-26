@@ -1,7 +1,17 @@
 {
-  "version": "2.5.49",
-  "lastUpdated": "2025-11-26T04:30:00Z",
+  "version": "2.6.1",
+  "lastUpdated": "2025-11-26T05:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.1",
+      "date": "2025-11-26T05:00:00Z",
+      "changes": "Removed hardcoded version fallback, consolidated to single version.json, API endpoints working"
+    },
+    {
+      "version": "2.5.50",
+      "date": "2025-11-26T04:55:00Z",
+      "changes": "Fixed invalid JSON (trailing comma) that prevented version display in footer"
+    },
     {
       "version": "2.5.49",
       "date": "2025-11-26T04:30:00Z",
@@ -46,26 +56,6 @@
       "version": "2.5.41",
       "date": "2025-08-16T06:16:45Z",
       "changes": "Fix admin microsites with real domain URLs + complete system test"
-    },
-    {
-      "version": "2.5.40",
-      "date": "2025-08-16T04:55:05Z",
-      "changes": "ADMIN AUDIT COMPLETE: Security fix for API keys, verified all pages, added microsite transformation strategy"
-    },
-    {
-      "version": "2.5.39",
-      "date": "2025-08-16T04:47:47Z",
-      "changes": "Admin system complete rewrite with intelligent AI prompts for business insights"
-    },
-    {
-      "version": "2.5.38",
-      "date": "2025-08-15T04:04:13Z",
-      "changes": "GALLERY SIMPLIFIED: Removed all embedded images. Gallery now directly links to Google Business Profile where all 211+ actual photos are hosted. Clean, simple solution as requested."
-    },
-    {
-      "version": "2.5.36",
-      "date": "2025-08-15T03:55:23Z",
-      "changes": "GALLERY FIXED: Replaced duplicate Squarespace images with diverse portfolio showing actual work - 1 Google Business photo + 7 service images from '11 Hair' series. All 8 images unique and load correctly. Verified with Puppeteer testing."
-    },
+    }
   ]
 }

@@ -1388,15 +1388,18 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Load version dynamically from version.json
+        // Load version dynamically from version.json (never hardcoded)
         fetch('./data/version.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error('Version file not found');
+                return response.json();
+            })
             .then(data => {
                 document.getElementById('version-display').textContent = `Version: ${data.version}`;
             })
             .catch(error => {
                 console.error('Error loading version:', error);
-                document.getElementById('version-display').textContent = 'Version: 2.6.0';
+                document.getElementById('version-display').textContent = 'Version: Error';
             });
     </script>
     
