@@ -1,7 +1,12 @@
 {
-  "version": "2.6.10",
-  "lastUpdated": "2025-11-26T07:15:00Z",
+  "version": "2.6.11",
+  "lastUpdated": "2025-11-26T07:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.6.11",
+      "date": "2025-11-26T07:30:00Z",
+      "changes": "Fixed dashboard Error - added null checks for DOM elements, score now loads correctly"
+    },
     {
       "version": "2.6.10",
       "date": "2025-11-26T07:15:00Z",
