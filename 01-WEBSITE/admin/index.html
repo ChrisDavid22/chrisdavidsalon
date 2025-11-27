@@ -123,7 +123,10 @@
                             </span>
                         </div>
                         <div class="text-xs text-indigo-200 font-semibold mb-4">Weighted average of all 7 categories below</div>
-                        <div id="totalScore" class="text-7xl font-bold text-white mb-2">--</div>
+                        <div id="totalScore" class="text-7xl font-bold text-white mb-4">--</div>
+                        <button type="button" onclick="analyzeMySite()" class="bg-yellow-400 hover:bg-yellow-300 text-indigo-900 px-6 py-3 rounded-lg font-bold text-lg shadow-lg transform hover:scale-105 transition-all mb-4">
+                            <i class="fas fa-sync-alt mr-2"></i>Refresh Score
+                        </button>
                         <div class="text-sm text-indigo-200 space-y-1">
                             <div>Performance (20%) + Technical (15%) + Mobile (15%)</div>
                             <div>+ Content (15%) + Local (15%) + UX (10%) + Authority (10%)</div>
@@ -314,52 +317,107 @@
             </div>
         </div>
 
-        <!-- COMPETITOR COMPARISON -->
+        <!-- TWO TYPES OF RANKINGS -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+
+            <!-- LOCAL RANKINGS (Google Maps) -->
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center gap-2 mb-2">
+                    <h3 class="text-xl font-bold">📍 Local Rankings</h3>
+                    <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded font-semibold">Google Maps</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    "Hair salon near me" searches. <strong>Reviews dominate</strong> - hard to win as solo practitioner.
+                </p>
+
+                <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg p-4 mb-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <div class="text-sm text-orange-100">Your Position</div>
+                            <div class="text-4xl font-bold">#<span id="competitorRank">--</span></div>
+                            <div class="text-sm text-orange-100">of <span id="totalCompetitorCount">--</span> salons</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm text-orange-100">Gap to #1</div>
+                            <div class="text-xl font-bold"><span id="reviewGap">--</span> reviews</div>
+                            <div class="text-xs text-orange-100">behind <span id="leaderName">--</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-600 bg-orange-50 p-3 rounded">
+                    <strong>Reality check:</strong> Rové has 1,514 reviews. As a solo practitioner, Chris can't match their volume. <strong>Focus on organic rankings instead.</strong>
+                </div>
+            </div>
+
+            <!-- ORGANIC RANKINGS (Website SEO) -->
+            <div class="bg-white rounded-lg shadow-lg p-6 border-2 border-green-300">
+                <div class="flex items-center gap-2 mb-2">
+                    <h3 class="text-xl font-bold">🎯 Organic Rankings</h3>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-semibold">YOUR OPPORTUNITY</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">
+                    Specific service searches. <strong>SEO & content matter</strong> - winnable for specialists.
+                </p>
+
+                <div class="bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-lg p-4 mb-4">
+                    <div class="text-sm text-green-100 mb-1">Target Keywords to Dominate</div>
+                    <div class="space-y-1">
+                        <div class="flex justify-between items-center">
+                            <span>"color correction delray beach"</span>
+                            <span class="bg-white/20 px-2 py-0.5 rounded text-xs">Check rank →</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>"balayage specialist palm beach"</span>
+                            <span class="bg-white/20 px-2 py-0.5 rounded text-xs">Check rank →</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>"davines salon florida"</span>
+                            <span class="bg-white/20 px-2 py-0.5 rounded text-xs">Check rank →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="rankings.html" class="block w-full bg-green-600 hover:bg-green-700 text-white text-center px-4 py-3 rounded font-semibold">
+                    View Keyword Rankings →
+                </a>
+            </div>
+        </div>
+
+        <!-- COMPETITOR TABLE (Collapsed by default) -->
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="text-2xl font-bold">📊 Your Ranking vs Competitors</h3>
+                <div class="flex items-center gap-2 cursor-pointer" onclick="toggleCompetitorTable()">
+                    <h3 class="text-xl font-bold">📊 Full Competitor Comparison</h3>
+                    <span id="competitorToggleIcon" class="text-gray-400">▼</span>
+                </div>
                 <a href="improvement-planner.html" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold text-sm">
                     View Improvement Plan →
                 </a>
             </div>
 
-            <!-- Your Position Summary -->
-            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-4 mb-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <div class="text-sm text-blue-100">Your Current Position</div>
-                        <div class="text-4xl font-bold">#<span id="competitorRank">--</span></div>
-                        <div class="text-sm text-blue-100">out of <span id="totalCompetitorCount">--</span> local salons</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-sm text-blue-100">Gap to #1</div>
-                        <div class="text-2xl font-bold"><span id="reviewGap">--</span> reviews</div>
-                        <div class="text-sm text-blue-100">behind <span id="leaderName">--</span></div>
-                    </div>
+            <!-- Competitor Table (toggleable) -->
+            <div id="competitorTableSection">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-100 text-left">
+                                <th class="px-3 py-2">Rank</th>
+                                <th class="px-3 py-2">Salon</th>
+                                <th class="px-3 py-2 text-center">Reviews</th>
+                                <th class="px-3 py-2 text-center">Local SEO</th>
+                                <th class="px-3 py-2 text-center">PageRank</th>
+                            </tr>
+                        </thead>
+                        <tbody id="competitorTableBody">
+                            <tr><td colspan="5" class="text-center py-4 text-gray-500">Loading competitor data...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
 
-            <!-- Competitor Table -->
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                    <thead>
-                        <tr class="bg-gray-100 text-left">
-                            <th class="px-3 py-2">Rank</th>
-                            <th class="px-3 py-2">Salon</th>
-                            <th class="px-3 py-2 text-center">Rating</th>
-                            <th class="px-3 py-2 text-center">Reviews</th>
-                            <th class="px-3 py-2 text-center">Local SEO</th>
-                            <th class="px-3 py-2 text-center">PageRank</th>
-                        </tr>
-                    </thead>
-                    <tbody id="competitorTableBody">
-                        <tr><td colspan="6" class="text-center py-4 text-gray-500">Loading competitor data...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="mt-4 text-xs text-gray-500">
-                <strong>All data is REAL:</strong> Rating & Reviews from Google Places API | Local SEO = Rating × 10 + log(Reviews) × 15 + Presence | PageRank from OpenPageRank API
+                <div class="mt-4 text-xs text-gray-500">
+                    <strong>All data is REAL:</strong> Reviews from Google Places API | PageRank from OpenPageRank API
+                </div>
             </div>
         </div>
 
@@ -426,7 +484,7 @@
                 const lastUpdate = new Date(data.timestamp);
                 const timeAgo = getTimeAgo(lastUpdate);
                 document.getElementById('lastAnalysis').innerHTML = `
-                    <div class="text-lg font-bold">${lastUpdate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>
+                    <div class="text-lg font-bold">${lastUpdate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
                     <div class="text-sm mt-1">Updated ${timeAgo}</div>
                 `;
 
@@ -778,6 +836,18 @@
             // Scroll to section when opening
             if (!section.classList.contains('hidden')) {
                 section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
+
+    // Toggle competitor table
+    function toggleCompetitorTable() {
+        const section = document.getElementById('competitorTableSection');
+        const icon = document.getElementById('competitorToggleIcon');
+        if (section) {
+            section.classList.toggle('hidden');
+            if (icon) {
+                icon.textContent = section.classList.contains('hidden') ? '▶' : '▼';
             }
         }
     }
@@ -1286,14 +1356,13 @@
             // Build table - ONLY REAL DATA (no estimates)
             const tbody = document.getElementById('competitorTableBody');
             tbody.innerHTML = competitors.slice(0, 20).map((c, i) => {
-                const rowClass = c.isUs ? 'bg-blue-50 font-semibold' : '';
+                const rowClass = c.isUs ? 'bg-green-50 font-semibold border-l-4 border-green-500' : '';
                 const marker = c.isUs ? ' ← YOU' : '';
                 const pageRankDisplay = c.pageRank ? c.pageRank.toFixed(2) : '--';
                 return `
                     <tr class="${rowClass}">
                         <td class="px-3 py-2 font-bold">#${i + 1}</td>
                         <td class="px-3 py-2">${c.name.substring(0, 30)}${marker}</td>
-                        <td class="px-3 py-2 text-center">${c.rating}</td>
                         <td class="px-3 py-2 text-center">${c.reviews.toLocaleString()}</td>
                         <td class="px-3 py-2 text-center font-bold">${c.localSEO}</td>
                         <td class="px-3 py-2 text-center">${pageRankDisplay}</td>
@@ -1304,7 +1373,7 @@
         } catch (error) {
             console.error('Failed to load competitor comparison:', error);
             document.getElementById('competitorTableBody').innerHTML =
-                '<tr><td colspan="6" class="text-center py-4 text-red-500">Failed to load competitor data</td></tr>';
+                '<tr><td colspan="5" class="text-center py-4 text-red-500">Failed to load competitor data</td></tr>';
         }
     }
 
