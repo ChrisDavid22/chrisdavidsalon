@@ -4,29 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>SEO Improvement Planner - Chris David Salon</title>
+    <title>SEO Improvement Plan - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-100">
     <!-- Navigation -->
-    <nav class="bg-gradient-to-r from-green-800 to-teal-800 text-white p-4 shadow-lg">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-4">
-                <div>
-                    <h1 class="text-2xl font-bold">SEO Improvement Planner</h1>
-                    <p class="text-sm text-green-200">What to change & track your progress</p>
+    <nav class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+                        <span class="font-bold text-xl">Chris David SEO Agent</span>
+                    </div>
+                    <span id="versionBadge" class="bg-green-500 px-2 py-1 rounded text-xs font-bold">Loading...</span>
                 </div>
-                <div class="flex items-center gap-4">
-                    <span id="lastUpdated" class="text-sm text-green-200">Loading...</span>
-                    <button onclick="refreshAll()" class="bg-white text-green-800 px-4 py-2 rounded text-sm font-semibold hover:bg-green-50">
-                        <i class="fas fa-sync-alt mr-2"></i>Refresh
-                    </button>
+                <div class="flex items-center space-x-4">
+                    <span id="lastUpdate" class="text-sm text-indigo-200">Loading...</span>
+                    <a href="../index.html" class="bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded text-sm font-semibold">View Site</a>
                 </div>
             </div>
-
-            <!-- Navigation Menu -->
             <div class="flex space-x-1 pb-2 overflow-x-auto">
                 <a href="index.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Dashboard</a>
                 <a href="improvement-planner.html" class="px-4 py-2 bg-white/20 rounded-t font-semibold">Improvement Plan</a>
@@ -40,674 +38,570 @@
 
     <div class="max-w-7xl mx-auto p-6">
 
-        <!-- PROGRESS SUMMARY -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                <i class="fas fa-chart-line text-green-500"></i>
-                YOUR PROGRESS
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="bg-green-50 rounded-lg p-4 text-center border border-green-200">
-                    <div class="text-3xl font-bold text-green-700" id="tasksCompleted">0</div>
-                    <div class="text-sm text-green-600">Tasks Completed</div>
+        <!-- Current Status Banner -->
+        <div id="statusBanner" class="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl shadow-xl p-6 mb-6">
+            <div class="flex items-start justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold mb-2">SEO Improvement Plan</h1>
+                    <p class="text-orange-100">Data-driven recommendations based on your actual search performance</p>
                 </div>
-                <div class="bg-yellow-50 rounded-lg p-4 text-center border border-yellow-200">
-                    <div class="text-3xl font-bold text-yellow-700" id="tasksPending">0</div>
-                    <div class="text-sm text-yellow-600">In Progress</div>
-                </div>
-                <div class="bg-blue-50 rounded-lg p-4 text-center border border-blue-200">
-                    <div class="text-3xl font-bold text-blue-700" id="reviewsGained">+0</div>
-                    <div class="text-sm text-blue-600">Reviews Gained</div>
-                </div>
-                <div class="bg-purple-50 rounded-lg p-4 text-center border border-purple-200">
-                    <div class="text-3xl font-bold text-purple-700" id="rankChange">--</div>
-                    <div class="text-sm text-purple-600">Rank Change</div>
+                <div class="text-right">
+                    <div class="text-4xl font-bold" id="overallGrade">C</div>
+                    <div class="text-sm text-orange-200">Current SEO Grade</div>
                 </div>
             </div>
         </div>
 
-        <!-- RANKING FACTORS OVERVIEW -->
+        <!-- Key Metrics Summary -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+            <div class="bg-white rounded-xl shadow p-4 text-center">
+                <div class="text-sm text-gray-500">Avg Position</div>
+                <div class="text-3xl font-bold text-red-600" id="avgPosition">--</div>
+                <div class="text-xs text-gray-400">Goal: &lt;10</div>
+            </div>
+            <div class="bg-white rounded-xl shadow p-4 text-center">
+                <div class="text-sm text-gray-500">Total Clicks</div>
+                <div class="text-3xl font-bold text-orange-600" id="totalClicks">--</div>
+                <div class="text-xs text-gray-400">Last 28 days</div>
+            </div>
+            <div class="bg-white rounded-xl shadow p-4 text-center">
+                <div class="text-sm text-gray-500">Impressions</div>
+                <div class="text-3xl font-bold text-blue-600" id="totalImpressions">--</div>
+                <div class="text-xs text-gray-400">Search appearances</div>
+            </div>
+            <div class="bg-white rounded-xl shadow p-4 text-center">
+                <div class="text-sm text-gray-500">Click Rate</div>
+                <div class="text-3xl font-bold text-purple-600" id="avgCTR">--%</div>
+                <div class="text-xs text-gray-400">Goal: 15%+</div>
+            </div>
+            <div class="bg-white rounded-xl shadow p-4 text-center">
+                <div class="text-sm text-gray-500">Keywords</div>
+                <div class="text-3xl font-bold text-green-600" id="totalKeywords">--</div>
+                <div class="text-xs text-gray-400">You rank for</div>
+            </div>
+        </div>
+
+        <!-- The Problem Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold text-red-700 mb-4 flex items-center gap-2">
+                <i class="fas fa-exclamation-triangle"></i>
+                The Problem: You're Invisible for High-Value Keywords
+            </h2>
+            <p class="text-gray-700 mb-4">
+                When someone in Delray Beach searches for a hair salon, Chris David Salon appears on <strong>page 3</strong> (position 25+).
+                <strong>90% of clicks go to the top 3 results.</strong> Page 3 = essentially invisible.
+            </p>
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                <h3 class="font-semibold text-red-800 mb-2">Your Biggest Missed Opportunities:</h3>
+                <div id="missedOpportunities" class="space-y-2">
+                    <div class="text-gray-500">Loading keyword data...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Priority Actions -->
+        <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
+                <i class="fas fa-rocket"></i>
+                Priority Actions (Do These First)
+            </h2>
+            <p class="text-green-700 mb-4">These actions will have the biggest impact on your rankings. Ordered by potential ROI.</p>
+
+            <div id="priorityActions" class="space-y-4">
+                <div class="text-gray-500 text-center py-4">Loading recommendations...</div>
+            </div>
+        </div>
+
+        <!-- Keyword Strategy -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
             <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <i class="fas fa-pie-chart text-blue-500"></i>
-                Local SEO Ranking Factors
+                <i class="fas fa-key text-yellow-500"></i>
+                Keyword Strategy: What Pages to Build
             </h2>
-            <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
-                <div class="text-center p-3 bg-red-50 rounded-lg border border-red-200">
-                    <div class="text-2xl font-bold text-red-700">25-30%</div>
-                    <div class="text-xs text-red-600">Google Business</div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Already Winning -->
+                <div class="border-2 border-green-200 rounded-lg p-4">
+                    <h3 class="font-bold text-green-700 mb-3 flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i>
+                        Already Winning (Maintain)
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Position 1-3. Keep doing what you're doing.</p>
+                    <div id="winningKeywords" class="space-y-2">
+                        <div class="text-gray-400 text-sm">Loading...</div>
+                    </div>
                 </div>
-                <div class="text-center p-3 bg-orange-50 rounded-lg border border-orange-200">
-                    <div class="text-2xl font-bold text-orange-700">20-25%</div>
-                    <div class="text-xs text-orange-600">On-Page SEO</div>
+
+                <!-- Almost There -->
+                <div class="border-2 border-yellow-200 rounded-lg p-4">
+                    <h3 class="font-bold text-yellow-700 mb-3 flex items-center gap-2">
+                        <i class="fas fa-arrow-up"></i>
+                        Almost There (Optimize)
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Position 4-10. Small improvements = big gains.</p>
+                    <div id="almostKeywords" class="space-y-2">
+                        <div class="text-gray-400 text-sm">Loading...</div>
+                    </div>
                 </div>
-                <div class="text-center p-3 bg-yellow-50 rounded-lg border border-yellow-200">
-                    <div class="text-2xl font-bold text-yellow-700">15-20%</div>
-                    <div class="text-xs text-yellow-600">Reviews</div>
-                </div>
-                <div class="text-center p-3 bg-green-50 rounded-lg border border-green-200">
-                    <div class="text-2xl font-bold text-green-700">15-20%</div>
-                    <div class="text-xs text-green-600">Citations/Links</div>
-                </div>
-                <div class="text-center p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <div class="text-2xl font-bold text-blue-700">10-15%</div>
-                    <div class="text-xs text-blue-600">Technical SEO</div>
-                </div>
-                <div class="text-center p-3 bg-purple-50 rounded-lg border border-purple-200">
-                    <div class="text-2xl font-bold text-purple-700">5-10%</div>
-                    <div class="text-xs text-purple-600">Behavioral</div>
+
+                <!-- Big Opportunities -->
+                <div class="border-2 border-orange-200 rounded-lg p-4">
+                    <h3 class="font-bold text-orange-700 mb-3 flex items-center gap-2">
+                        <i class="fas fa-bullseye"></i>
+                        Create New Pages For
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Position 11+. Need dedicated landing pages.</p>
+                    <div id="opportunityKeywords" class="space-y-2">
+                        <div class="text-gray-400 text-sm">Loading...</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- IMPROVEMENT CATEGORIES -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <!-- Suggested New Pages -->
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
+                <i class="fas fa-file-alt"></i>
+                Recommended New Pages to Build
+            </h2>
+            <p class="text-blue-700 mb-4">Based on your Search Console data, these pages would capture traffic you're currently missing:</p>
 
-            <!-- GOOGLE BUSINESS PROFILE (25-30%) -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                        <i class="fab fa-google text-red-500"></i>
-                        Google Business Profile
-                    </h3>
-                    <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">25-30% of ranking</span>
-                </div>
-                <div class="space-y-4 max-h-96 overflow-y-auto" id="gbpTasks"></div>
+            <div id="suggestedPages" class="grid md:grid-cols-2 gap-4">
+                <div class="text-gray-500 text-center py-4">Loading suggestions...</div>
             </div>
-
-            <!-- ON-PAGE SEO (20-25%) -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                        <i class="fas fa-file-code text-orange-500"></i>
-                        On-Page SEO
-                    </h3>
-                    <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">20-25% of ranking</span>
-                </div>
-                <div class="space-y-4 max-h-96 overflow-y-auto" id="onpageTasks"></div>
-            </div>
-
-            <!-- REVIEWS (15-20%) -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                        <i class="fas fa-star text-yellow-500"></i>
-                        Reviews
-                    </h3>
-                    <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-semibold">15-20% of ranking</span>
-                </div>
-                <div class="space-y-4 max-h-96 overflow-y-auto" id="reviewTasks"></div>
-            </div>
-
-            <!-- CITATIONS & LINKS (15-20%) -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                        <i class="fas fa-link text-green-500"></i>
-                        Citations & Backlinks
-                    </h3>
-                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">15-20% of ranking</span>
-                </div>
-                <div class="space-y-4 max-h-96 overflow-y-auto" id="citationTasks"></div>
-            </div>
-
-            <!-- TECHNICAL SEO (10-15%) -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                        <i class="fas fa-cog text-blue-500"></i>
-                        Technical SEO
-                    </h3>
-                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">10-15% of ranking</span>
-                </div>
-                <div class="space-y-4 max-h-96 overflow-y-auto" id="technicalTasks"></div>
-            </div>
-
-            <!-- BEHAVIORAL SIGNALS (5-10%) -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                        <i class="fas fa-mouse-pointer text-purple-500"></i>
-                        Behavioral Signals
-                    </h3>
-                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">5-10% of ranking</span>
-                </div>
-                <div class="space-y-4 max-h-96 overflow-y-auto" id="behavioralTasks"></div>
-            </div>
-
         </div>
 
-        <!-- TRACKING HISTORY -->
+        <!-- Quick Wins Checklist -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <i class="fas fa-tasks text-purple-500"></i>
+                Quick Wins Checklist
+            </h2>
+            <p class="text-gray-600 mb-4">These don't require building new pages - just optimization.</p>
+
+            <div class="grid md:grid-cols-2 gap-4" id="quickWins">
+                <!-- Will be populated by JS -->
+            </div>
+        </div>
+
+        <!-- Review Strategy -->
+        <div class="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold text-yellow-800 mb-4 flex items-center gap-2">
+                <i class="fas fa-star"></i>
+                Review Strategy (15-20% of Local Rankings)
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-yellow-700 mb-2">Current Status:</h3>
+                    <div class="bg-white rounded-lg p-4 border border-yellow-200">
+                        <div class="text-3xl font-bold text-yellow-600" id="currentReviews">--</div>
+                        <div class="text-sm text-gray-600">Google Reviews</div>
+                        <div class="mt-2 text-sm text-gray-500">Rating: <span id="currentRating">--</span>/5</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-yellow-700 mb-2">Action Items:</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>Ask 3 happy clients for reviews this week</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>Respond to ALL reviews within 24 hours</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>Create a review request card/text template</span>
+                        </li>
+                    </ul>
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJxTZ8If_f2IgR2XMxX_zRKSg"
+                       target="_blank"
+                       class="mt-3 inline-block bg-yellow-500 text-white px-4 py-2 rounded font-semibold text-sm hover:bg-yellow-600">
+                        <i class="fas fa-external-link-alt mr-2"></i>Get Review Link
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
         <div class="bg-white rounded-xl shadow-lg p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
-                    <i class="fas fa-history text-gray-500"></i>
-                    Action History
-                </h2>
-                <button onclick="clearHistory()" class="text-sm text-gray-500 hover:text-red-500">Clear History</button>
-            </div>
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <i class="fas fa-calendar-alt text-indigo-500"></i>
+                Recommended Action Timeline
+            </h2>
 
-            <div class="overflow-x-auto">
-                <table class="w-full">
-                    <thead>
-                        <tr class="border-b-2 border-gray-200">
-                            <th class="text-left py-3 px-4 font-semibold text-gray-600">Date</th>
-                            <th class="text-left py-3 px-4 font-semibold text-gray-600">Action</th>
-                            <th class="text-left py-3 px-4 font-semibold text-gray-600">Category</th>
-                            <th class="text-center py-3 px-4 font-semibold text-gray-600">Before</th>
-                            <th class="text-center py-3 px-4 font-semibold text-gray-600">After</th>
-                            <th class="text-center py-3 px-4 font-semibold text-gray-600">Impact</th>
-                        </tr>
-                    </thead>
-                    <tbody id="historyTable">
-                        <!-- Will be populated -->
-                    </tbody>
-                </table>
+            <div class="space-y-4">
+                <div class="flex gap-4">
+                    <div class="w-24 flex-shrink-0">
+                        <div class="bg-red-100 text-red-700 font-bold py-2 px-3 rounded text-center">Week 1</div>
+                    </div>
+                    <div class="flex-1 bg-red-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-red-800">Fix the Foundations</h4>
+                        <ul class="text-sm text-gray-700 mt-2 space-y-1">
+                            <li>• Optimize Google Business Profile (complete all fields, add photos)</li>
+                            <li>• Fix title tags on existing pages to include "Delray Beach"</li>
+                            <li>• Ask 5 recent clients for Google reviews</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="w-24 flex-shrink-0">
+                        <div class="bg-orange-100 text-orange-700 font-bold py-2 px-3 rounded text-center">Week 2-3</div>
+                    </div>
+                    <div class="flex-1 bg-orange-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-orange-800">Build High-Priority Pages</h4>
+                        <ul class="text-sm text-gray-700 mt-2 space-y-1">
+                            <li>• Create "Best Hair Salon Delray Beach" landing page</li>
+                            <li>• Optimize existing "Balayage Delray Beach" page</li>
+                            <li>• Add schema markup to all service pages</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="w-24 flex-shrink-0">
+                        <div class="bg-yellow-100 text-yellow-700 font-bold py-2 px-3 rounded text-center">Week 4</div>
+                    </div>
+                    <div class="flex-1 bg-yellow-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-yellow-800">Build Authority</h4>
+                        <ul class="text-sm text-gray-700 mt-2 space-y-1">
+                            <li>• Get listed on 5 local directories (Yelp, YP, etc.)</li>
+                            <li>• Reach out to local bloggers for features</li>
+                            <li>• Continue review generation (target 10+ new reviews)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="w-24 flex-shrink-0">
+                        <div class="bg-green-100 text-green-700 font-bold py-2 px-3 rounded text-center">Ongoing</div>
+                    </div>
+                    <div class="flex-1 bg-green-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-green-800">Maintain & Monitor</h4>
+                        <ul class="text-sm text-gray-700 mt-2 space-y-1">
+                            <li>• Post to Google Business Profile weekly</li>
+                            <li>• Check rankings monthly and adjust strategy</li>
+                            <li>• Keep asking for reviews (velocity matters)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
 
     <script>
-    // ==========================================
-    // SEO IMPROVEMENT PLANNER
-    // ==========================================
-
-    const API_BASE = window.location.hostname === 'localhost'
+    const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'https://www.chrisdavidsalon.com'
         : '';
 
-    const STORAGE_KEY = 'seoImprovementTracker';
+    let keywordsData = [];
 
-    // Task definitions - ALL SEO ranking factors
-    const improvementTasks = {
-        gbp: [
-            {
-                id: 'gbp-1',
-                title: 'Complete ALL Google Business Profile fields',
-                description: 'Hours, services, attributes, appointment links - every field matters',
-                impact: '+25% visibility in local pack',
-                weight: 'HIGH - GBP is 25-30% of ranking',
-                link: 'https://business.google.com',
-                linkText: 'Edit profile'
-            },
-            {
-                id: 'gbp-2',
-                title: 'Add 20+ high-quality photos',
-                description: 'Interior, exterior, team, work samples - Google shows photo-rich profiles more',
-                impact: '+35% more direction requests',
-                weight: 'HIGH',
-                link: 'https://business.google.com',
-                linkText: 'Add photos'
-            },
-            {
-                id: 'gbp-3',
-                title: 'Post weekly updates to GBP',
-                description: 'Before/afters, offers, events - shows Google you\'re active',
-                impact: '+15-20% profile views',
-                weight: 'MEDIUM',
-                link: 'https://business.google.com',
-                linkText: 'Create post'
-            },
-            {
-                id: 'gbp-4',
-                title: 'Add all services with descriptions',
-                description: 'Each service = keyword opportunity (balayage, color correction, etc)',
-                impact: 'Rank for service-specific searches',
-                weight: 'HIGH',
-                link: 'https://business.google.com',
-                linkText: 'Edit services'
-            },
-            {
-                id: 'gbp-5',
-                title: 'Enable and respond to Q&A',
-                description: 'Seed your own FAQs, answer customer questions',
-                impact: 'More real estate in search results',
-                weight: 'MEDIUM',
-                link: 'https://business.google.com',
-                linkText: 'View Q&A'
-            }
-        ],
-        onpage: [
-            {
-                id: 'onpage-1',
-                title: 'Optimize title tags for each page',
-                description: 'Format: "Service | Chris David Salon | Delray Beach"',
-                impact: 'Primary ranking factor for target keywords',
-                weight: 'HIGH - Title tags are #1 on-page factor',
-                technical: true
-            },
-            {
-                id: 'onpage-2',
-                title: 'Write unique meta descriptions',
-                description: 'Include call-to-action, phone number, location',
-                impact: '+15-30% click-through rate',
-                weight: 'HIGH',
-                technical: true
-            },
-            {
-                id: 'onpage-3',
-                title: 'Add LocalBusiness schema markup',
-                description: 'Structured data helps Google understand your business',
-                impact: 'Rich snippets in search results',
-                weight: 'HIGH',
-                technical: true
-            },
-            {
-                id: 'onpage-4',
-                title: 'Create location-specific landing pages',
-                description: 'Pages for "Hair Salon Delray Beach", "Balayage Boca Raton"',
-                impact: 'Rank in nearby cities',
-                weight: 'MEDIUM'
-            },
-            {
-                id: 'onpage-5',
-                title: 'Add internal links between service pages',
-                description: 'Link related services to spread page authority',
-                impact: 'Better crawling, higher page authority',
-                weight: 'MEDIUM',
-                technical: true
-            },
-            {
-                id: 'onpage-6',
-                title: 'Ensure NAP is consistent everywhere',
-                description: 'Name, Address, Phone must match GBP exactly',
-                impact: 'Critical for local SEO trust',
-                weight: 'HIGH'
-            }
-        ],
-        reviews: [
-            {
-                id: 'review-1',
-                title: 'Ask 3 clients for reviews this week',
-                description: 'Text after appointment with direct review link',
-                impact: '+3 reviews, signals to Google you\'re active',
-                weight: 'HIGH - Reviews are 15-20% of ranking',
-                link: 'https://search.google.com/local/writereview?placeid=ChIJxTZ8If_f2IgR2XMxX_zRKSg',
-                linkText: 'Get review link'
-            },
-            {
-                id: 'review-2',
-                title: 'Respond to EVERY review within 24 hours',
-                description: 'Thank positive, address negative professionally',
-                impact: 'Response rate affects ranking + builds trust',
-                weight: 'HIGH',
-                link: 'https://business.google.com',
-                linkText: 'View reviews'
-            },
-            {
-                id: 'review-3',
-                title: 'Get reviews on other platforms',
-                description: 'Yelp, Facebook - diversity of reviews matters',
-                impact: 'More citation sources, broader visibility',
-                weight: 'MEDIUM',
-                link: 'https://biz.yelp.com',
-                linkText: 'Claim Yelp'
-            },
-            {
-                id: 'review-4',
-                title: 'Create review generation system',
-                description: 'Automated text/email after appointments',
-                impact: 'Consistent review velocity beats one-time pushes',
-                weight: 'HIGH'
-            }
-        ],
-        citations: [
-            {
-                id: 'cite-1',
-                title: 'Claim/update Yelp Business listing',
-                description: 'Second most important directory after Google',
-                impact: 'High authority backlink + review source',
-                weight: 'HIGH - Citations are 15-20% of ranking',
-                link: 'https://biz.yelp.com',
-                linkText: 'Claim listing'
-            },
-            {
-                id: 'cite-2',
-                title: 'List on Yellow Pages / YP.com',
-                description: 'Still carries SEO weight for local businesses',
-                impact: 'Citation + backlink',
-                weight: 'MEDIUM',
-                link: 'https://www.yellowpages.com',
-                linkText: 'Add listing'
-            },
-            {
-                id: 'cite-3',
-                title: 'Join Delray Beach Chamber of Commerce',
-                description: 'Local .org backlink = high authority',
-                impact: 'Strong local relevance signal',
-                weight: 'HIGH',
-                link: 'https://delraybeach.com',
-                linkText: 'Join chamber'
-            },
-            {
-                id: 'cite-4',
-                title: 'Get listed on StyleSeat or Booksy',
-                description: 'Industry-specific directories',
-                impact: 'Relevant backlinks + booking channel',
-                weight: 'MEDIUM'
-            },
-            {
-                id: 'cite-5',
-                title: 'Submit to local news/blog for feature',
-                description: 'Reach out to Delray Beach Magazine, local bloggers',
-                impact: 'High-quality local backlink',
-                weight: 'HIGH'
-            },
-            {
-                id: 'cite-6',
-                title: 'Ensure NAP consistency across all listings',
-                description: 'Audit all directories - name/address/phone must match',
-                impact: 'Inconsistent NAP hurts rankings',
-                weight: 'HIGH'
-            }
-        ],
-        technical: [
-            {
-                id: 'tech-1',
-                title: 'Improve page speed (currently slow on mobile)',
-                description: 'Compress images, enable caching, minify CSS/JS',
-                impact: 'Page speed is a direct ranking factor',
-                weight: 'HIGH - Technical is 10-15% of ranking',
-                technical: true
-            },
-            {
-                id: 'tech-2',
-                title: 'Fix Core Web Vitals issues',
-                description: 'LCP, FID, CLS - Google\'s page experience metrics',
-                impact: 'Better rankings + user experience',
-                weight: 'HIGH',
-                technical: true
-            },
-            {
-                id: 'tech-3',
-                title: 'Ensure mobile-friendliness',
-                description: '60%+ of searches are mobile - must be perfect',
-                impact: 'Mobile-first indexing means mobile = desktop',
-                weight: 'HIGH',
-                technical: true
-            },
-            {
-                id: 'tech-4',
-                title: 'Add XML sitemap and submit to Search Console',
-                description: 'Helps Google find and index all pages',
-                impact: 'Faster indexing of new content',
-                weight: 'MEDIUM',
-                technical: true,
-                link: 'https://search.google.com/search-console',
-                linkText: 'Search Console'
-            },
-            {
-                id: 'tech-5',
-                title: 'Set up Google Search Console',
-                description: 'Monitor search performance, fix issues',
-                impact: 'See what keywords you rank for',
-                weight: 'HIGH',
-                technical: true,
-                link: 'https://search.google.com/search-console',
-                linkText: 'Set up'
-            },
-            {
-                id: 'tech-6',
-                title: 'Fix any crawl errors',
-                description: 'Broken links, 404s hurt SEO',
-                impact: 'Clean site = better crawling',
-                weight: 'MEDIUM',
-                technical: true
-            }
-        ],
-        behavioral: [
-            {
-                id: 'behav-1',
-                title: 'Improve click-through rate from search',
-                description: 'Better titles/descriptions = more clicks = higher rankings',
-                impact: 'CTR is a ranking signal',
-                weight: 'MEDIUM - Behavioral is 5-10% of ranking'
-            },
-            {
-                id: 'behav-2',
-                title: 'Reduce bounce rate (currently 74%)',
-                description: 'Add compelling content, faster load, clear CTAs',
-                impact: 'Lower bounce = higher engagement signal',
-                weight: 'MEDIUM'
-            },
-            {
-                id: 'behav-3',
-                title: 'Increase time on site',
-                description: 'Add video, galleries, helpful content',
-                impact: 'Longer visits = quality signal to Google',
-                weight: 'MEDIUM'
-            },
-            {
-                id: 'behav-4',
-                title: 'Add clear calls-to-action',
-                description: 'Book Now buttons, phone numbers prominent',
-                impact: 'More conversions + engagement',
-                weight: 'MEDIUM'
-            }
-        ]
-    };
-
-    // Load saved progress
-    function loadProgress() {
+    async function loadAllData() {
+        // Load version
         try {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            return saved ? JSON.parse(saved) : { completed: [], history: [], baseline: null };
+            const versionResp = await fetch(`${API_BASE}/data/version.json`);
+            const versionData = await versionResp.json();
+            document.getElementById('versionBadge').textContent = 'v' + versionData.version;
         } catch (e) {
-            return { completed: [], history: [], baseline: null };
+            document.getElementById('versionBadge').textContent = 'v?.?.?';
         }
+        document.getElementById('lastUpdate').textContent = 'Updated: ' + new Date().toLocaleTimeString();
+
+        // Load Search Console data
+        await loadSearchConsoleData();
+
+        // Load competitor data for reviews
+        await loadCompetitorData();
+
+        // Render quick wins
+        renderQuickWins();
     }
 
-    // Save progress
-    function saveProgress(data) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }
-
-    // Render tasks for a category
-    function renderTasks(category, containerId) {
-        const container = document.getElementById(containerId);
-        const progress = loadProgress();
-        container.innerHTML = '';
-
-        improvementTasks[category].forEach(task => {
-            const isCompleted = progress.completed.includes(task.id);
-
-            const div = document.createElement('div');
-            div.className = `p-4 rounded-lg border ${isCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`;
-            div.innerHTML = `
-                <div class="flex items-start gap-3">
-                    <label class="flex items-center mt-1">
-                        <input type="checkbox"
-                               ${isCompleted ? 'checked' : ''}
-                               onchange="toggleTask('${task.id}', '${category}', this.checked)"
-                               class="w-5 h-5 rounded border-gray-300 text-green-600 focus:ring-green-500">
-                    </label>
-                    <div class="flex-1">
-                        <h4 class="font-semibold ${isCompleted ? 'text-green-700 line-through' : 'text-gray-800'}">${task.title}</h4>
-                        <p class="text-sm text-gray-600 mt-1">${task.description}</p>
-                        <div class="flex flex-wrap items-center gap-2 mt-2">
-                            ${task.weight?.includes('HIGH') ? '<span class="text-xs px-2 py-1 bg-red-100 text-red-700 rounded font-semibold">HIGH IMPACT</span>' : ''}
-                            <span class="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded">${task.impact}</span>
-                            ${task.technical ? '<span class="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded">Technical</span>' : ''}
-                        </div>
-                        ${task.link ? `
-                            <a href="${task.link}" target="_blank" class="inline-block mt-2 text-sm text-blue-600 hover:text-blue-800">
-                                <i class="fas fa-external-link-alt mr-1"></i>${task.linkText}
-                            </a>
-                        ` : ''}
-                    </div>
-                </div>
-            `;
-            container.appendChild(div);
-        });
-    }
-
-    // Toggle task completion
-    async function toggleTask(taskId, category, completed) {
-        const progress = loadProgress();
-
-        // Get current metrics for baseline
-        let currentMetrics = await fetchCurrentMetrics();
-
-        if (completed) {
-            // Mark as completed
-            if (!progress.completed.includes(taskId)) {
-                progress.completed.push(taskId);
-            }
-
-            // Find the task
-            const task = improvementTasks[category].find(t => t.id === taskId);
-
-            // Log to history
-            progress.history.unshift({
-                date: new Date().toISOString(),
-                taskId: taskId,
-                action: task.title,
-                category: category,
-                beforeMetrics: currentMetrics,
-                status: 'completed'
-            });
-
-        } else {
-            // Remove from completed
-            progress.completed = progress.completed.filter(id => id !== taskId);
-        }
-
-        saveProgress(progress);
-        renderAllTasks();
-        renderHistory();
-        updateProgressSummary();
-    }
-
-    // Fetch current metrics
-    async function fetchCurrentMetrics() {
+    async function loadSearchConsoleData() {
         try {
-            const [compResponse, trafficResponse] = await Promise.all([
-                fetch(`${API_BASE}/api/admin-data?type=competitors`),
-                fetch(`${API_BASE}/api/ga4-analytics?type=overview`)
-            ]);
+            const response = await fetch(`${API_BASE}/api/ga4-analytics?type=search-rankings`);
+            const result = await response.json();
 
-            const compResult = await compResponse.json();
-            const trafficResult = await trafficResponse.json();
+            if (result.success) {
+                // Update metrics
+                document.getElementById('avgPosition').textContent = result.summary.averagePosition;
+                document.getElementById('totalClicks').textContent = result.summary.totalClicks;
+                document.getElementById('totalImpressions').textContent = result.summary.totalImpressions;
+                document.getElementById('avgCTR').textContent = result.summary.averageCTR + '%';
+                document.getElementById('totalKeywords').textContent = result.summary.totalKeywords;
 
-            const chrisDavid = compResult.data?.competitors?.find(c =>
-                c.isOurSalon || c.name.toLowerCase().includes('chris david')
-            );
+                // Calculate grade
+                const avgPos = parseFloat(result.summary.averagePosition);
+                let grade = 'F';
+                let gradeColor = 'from-red-500 to-red-600';
+                if (avgPos <= 3) { grade = 'A'; gradeColor = 'from-green-500 to-green-600'; }
+                else if (avgPos <= 10) { grade = 'B'; gradeColor = 'from-green-400 to-yellow-500'; }
+                else if (avgPos <= 20) { grade = 'C'; gradeColor = 'from-yellow-500 to-orange-500'; }
+                else if (avgPos <= 30) { grade = 'D'; gradeColor = 'from-orange-500 to-red-500'; }
 
-            return {
-                reviews: chrisDavid?.reviews || 0,
-                rating: chrisDavid?.rating || 0,
-                sessions: trafficResult.data?.sessions || 0,
-                users: trafficResult.data?.activeUsers || 0,
-                timestamp: new Date().toISOString()
-            };
-        } catch (e) {
-            return null;
+                document.getElementById('overallGrade').textContent = grade;
+                document.getElementById('statusBanner').className = `bg-gradient-to-r ${gradeColor} text-white rounded-xl shadow-xl p-6 mb-6`;
+
+                // Process keywords
+                keywordsData = result.topKeywords;
+
+                // Render sections
+                renderMissedOpportunities();
+                renderKeywordCategories();
+                renderPriorityActions();
+                renderSuggestedPages();
+            }
+        } catch (error) {
+            console.error('Search Console error:', error);
         }
     }
 
-    // Render history table
-    function renderHistory() {
-        const progress = loadProgress();
-        const container = document.getElementById('historyTable');
-        container.innerHTML = '';
+    async function loadCompetitorData() {
+        try {
+            const response = await fetch(`${API_BASE}/api/admin-data?type=competitors`);
+            const result = await response.json();
 
-        if (progress.history.length === 0) {
-            container.innerHTML = `
-                <tr>
-                    <td colspan="6" class="py-8 text-center text-gray-500">
-                        No actions tracked yet. Complete tasks above to start tracking!
-                    </td>
-                </tr>
-            `;
+            if (result.success) {
+                const chrisDavid = result.data.competitors.find(c =>
+                    c.isOurSalon || c.name.toLowerCase().includes('chris david')
+                );
+                if (chrisDavid) {
+                    document.getElementById('currentReviews').textContent = chrisDavid.reviews || '--';
+                    document.getElementById('currentRating').textContent = chrisDavid.rating || '--';
+                }
+            }
+        } catch (error) {
+            console.error('Competitor data error:', error);
+        }
+    }
+
+    function renderMissedOpportunities() {
+        const container = document.getElementById('missedOpportunities');
+        const opportunities = keywordsData
+            .filter(k => parseFloat(k.position) > 10 && parseInt(k.impressions) > 10)
+            .sort((a, b) => parseInt(b.impressions) - parseInt(a.impressions))
+            .slice(0, 5);
+
+        if (opportunities.length === 0) {
+            container.innerHTML = '<div class="text-green-600">No major missed opportunities found!</div>';
             return;
         }
 
-        progress.history.slice(0, 20).forEach(item => {
-            const date = new Date(item.date);
-            const tr = document.createElement('tr');
-            tr.className = 'border-b border-gray-100';
-            tr.innerHTML = `
-                <td class="py-3 px-4 text-sm text-gray-600">${date.toLocaleDateString()}</td>
-                <td class="py-3 px-4 text-sm font-medium text-gray-800">${item.action}</td>
-                <td class="py-3 px-4">
-                    <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded capitalize">${item.category}</span>
-                </td>
-                <td class="py-3 px-4 text-center text-sm text-gray-600">
-                    ${item.beforeMetrics ? `${item.beforeMetrics.reviews} reviews` : '--'}
-                </td>
-                <td class="py-3 px-4 text-center text-sm text-gray-600">
-                    <span class="text-gray-400">Measuring...</span>
-                </td>
-                <td class="py-3 px-4 text-center">
-                    <span class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">Completed</span>
-                </td>
-            `;
-            container.appendChild(tr);
+        container.innerHTML = opportunities.map(k => `
+            <div class="flex justify-between items-center py-2 px-3 bg-white rounded border">
+                <span class="font-medium">"${k.keyword}"</span>
+                <div class="flex items-center gap-4 text-sm">
+                    <span class="text-gray-500">${k.impressions} impressions</span>
+                    <span class="text-red-600 font-semibold">Position #${k.position}</span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderKeywordCategories() {
+        // Winning (position 1-3)
+        const winning = keywordsData.filter(k => parseFloat(k.position) <= 3);
+        document.getElementById('winningKeywords').innerHTML = winning.length > 0
+            ? winning.slice(0, 5).map(k => `
+                <div class="text-sm py-1 px-2 bg-green-50 rounded">
+                    "${k.keyword}" <span class="text-green-600">#${k.position}</span>
+                </div>
+            `).join('')
+            : '<div class="text-gray-400 text-sm">None yet - that\'s the goal!</div>';
+
+        // Almost there (position 4-10)
+        const almost = keywordsData.filter(k => parseFloat(k.position) > 3 && parseFloat(k.position) <= 10);
+        document.getElementById('almostKeywords').innerHTML = almost.length > 0
+            ? almost.slice(0, 5).map(k => `
+                <div class="text-sm py-1 px-2 bg-yellow-50 rounded">
+                    "${k.keyword}" <span class="text-yellow-600">#${k.position}</span>
+                </div>
+            `).join('')
+            : '<div class="text-gray-400 text-sm">None in this range</div>';
+
+        // Opportunities (position 11+)
+        const opportunities = keywordsData
+            .filter(k => parseFloat(k.position) > 10)
+            .sort((a, b) => parseInt(b.impressions) - parseInt(a.impressions));
+        document.getElementById('opportunityKeywords').innerHTML = opportunities.length > 0
+            ? opportunities.slice(0, 5).map(k => `
+                <div class="text-sm py-1 px-2 bg-orange-50 rounded">
+                    "${k.keyword}" <span class="text-orange-600">#${k.position}</span>
+                </div>
+            `).join('')
+            : '<div class="text-gray-400 text-sm">None - you\'re doing great!</div>';
+    }
+
+    function renderPriorityActions() {
+        const container = document.getElementById('priorityActions');
+
+        // Find top opportunities
+        const topOpps = keywordsData
+            .filter(k => parseFloat(k.position) > 10 && parseInt(k.impressions) > 20)
+            .sort((a, b) => parseInt(b.impressions) - parseInt(a.impressions))
+            .slice(0, 3);
+
+        const actions = [];
+
+        // Action 1: Always optimize GBP
+        actions.push({
+            priority: 1,
+            title: 'Optimize Google Business Profile',
+            description: 'Complete ALL fields, add 20+ photos, post weekly. GBP is 25-30% of local rankings.',
+            impact: 'HIGH',
+            effort: 'MEDIUM',
+            link: 'https://business.google.com',
+            linkText: 'Edit Profile'
         });
-    }
 
-    // Update progress summary
-    async function updateProgressSummary() {
-        const progress = loadProgress();
-        const totalTasks = Object.values(improvementTasks).flat().length;
-        const completedCount = progress.completed.length;
-        const pendingCount = totalTasks - completedCount;
-
-        document.getElementById('tasksCompleted').textContent = completedCount;
-        document.getElementById('tasksPending').textContent = pendingCount;
-
-        // Get current metrics and compare to baseline
-        const currentMetrics = await fetchCurrentMetrics();
-        if (currentMetrics && progress.baseline) {
-            const reviewsGained = currentMetrics.reviews - progress.baseline.reviews;
-            document.getElementById('reviewsGained').textContent = `+${reviewsGained}`;
+        // Action 2: Based on top opportunity
+        if (topOpps.length > 0) {
+            const topOpp = topOpps[0];
+            actions.push({
+                priority: 2,
+                title: `Create landing page for "${topOpp.keyword}"`,
+                description: `You're showing up ${topOpp.impressions} times but at position ${topOpp.position}. A dedicated page could capture this traffic.`,
+                impact: 'HIGH',
+                effort: 'MEDIUM',
+                keyword: topOpp.keyword
+            });
         }
 
-        // Set baseline if not set
-        if (!progress.baseline && currentMetrics) {
-            progress.baseline = currentMetrics;
-            saveProgress(progress);
+        // Action 3: Reviews
+        actions.push({
+            priority: 3,
+            title: 'Generate 10+ new Google reviews',
+            description: 'Reviews are 15-20% of ranking. Ask every satisfied client. Respond to all reviews within 24 hours.',
+            impact: 'HIGH',
+            effort: 'LOW',
+            link: 'https://search.google.com/local/writereview?placeid=ChIJxTZ8If_f2IgR2XMxX_zRKSg',
+            linkText: 'Review Link'
+        });
+
+        // Action 4: Optimize balayage page if relevant
+        const balayage = keywordsData.find(k => k.keyword.includes('balayage') && parseFloat(k.position) > 3);
+        if (balayage) {
+            actions.push({
+                priority: 4,
+                title: 'Optimize "Balayage Delray Beach" page',
+                description: `Currently position ${balayage.position} with ${balayage.impressions} impressions. Add more content, before/after photos, testimonials.`,
+                impact: 'MEDIUM',
+                effort: 'LOW'
+            });
         }
+
+        container.innerHTML = actions.map((a, i) => `
+            <div class="bg-white rounded-lg p-4 border-2 ${i === 0 ? 'border-green-300' : 'border-gray-200'}">
+                <div class="flex items-start justify-between">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold flex-shrink-0">
+                            ${a.priority}
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">${a.title}</h4>
+                            <p class="text-sm text-gray-600 mt-1">${a.description}</p>
+                            ${a.link ? `
+                                <a href="${a.link}" target="_blank" class="inline-block mt-2 text-sm text-blue-600 hover:text-blue-800">
+                                    <i class="fas fa-external-link-alt mr-1"></i>${a.linkText}
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1">
+                        <span class="text-xs px-2 py-1 ${a.impact === 'HIGH' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'} rounded font-semibold">
+                            ${a.impact} IMPACT
+                        </span>
+                        <span class="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded">
+                            ${a.effort} effort
+                        </span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
     }
 
-    // Render all task categories
-    function renderAllTasks() {
-        renderTasks('gbp', 'gbpTasks');
-        renderTasks('onpage', 'onpageTasks');
-        renderTasks('reviews', 'reviewTasks');
-        renderTasks('citations', 'citationTasks');
-        renderTasks('technical', 'technicalTasks');
-        renderTasks('behavioral', 'behavioralTasks');
+    function renderSuggestedPages() {
+        const container = document.getElementById('suggestedPages');
+
+        // Find keywords that need new pages
+        const needsPages = keywordsData
+            .filter(k => {
+                const pos = parseFloat(k.position);
+                const impressions = parseInt(k.impressions);
+                // High impressions, poor ranking, not already a service page
+                return pos > 15 && impressions > 15 &&
+                    !k.keyword.includes('chris david') &&
+                    !k.keyword.includes('review');
+            })
+            .sort((a, b) => parseInt(b.impressions) - parseInt(a.impressions))
+            .slice(0, 4);
+
+        // Also add some strategic recommendations
+        const suggestions = [
+            ...needsPages.map(k => ({
+                keyword: k.keyword,
+                url: `/services/${k.keyword.replace(/\s+/g, '-').toLowerCase()}.html`,
+                reason: `${k.impressions} impressions at position ${k.position}`,
+                fromData: true
+            })),
+            {
+                keyword: 'best hair salon delray beach',
+                url: '/best-hair-salon-delray-beach.html',
+                reason: 'High-value competitive keyword',
+                fromData: false
+            },
+            {
+                keyword: 'hair colorist delray beach',
+                url: '/hair-colorist-delray-beach.html',
+                reason: 'Chris\'s specialty - differentiation',
+                fromData: false
+            }
+        ];
+
+        // Remove duplicates
+        const uniqueSuggestions = suggestions.filter((s, i, arr) =>
+            arr.findIndex(x => x.keyword === s.keyword) === i
+        ).slice(0, 6);
+
+        container.innerHTML = uniqueSuggestions.map(s => `
+            <div class="bg-white rounded-lg p-4 border ${s.fromData ? 'border-blue-200' : 'border-gray-200'}">
+                <div class="flex items-start justify-between mb-2">
+                    <h4 class="font-semibold text-gray-800">"${s.keyword}"</h4>
+                    ${s.fromData ? '<span class="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded">From your data</span>' : ''}
+                </div>
+                <p class="text-sm text-gray-600 mb-2">${s.reason}</p>
+                <code class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">${s.url}</code>
+            </div>
+        `).join('');
     }
 
-    // Clear history
-    function clearHistory() {
-        if (confirm('Clear all history and reset progress?')) {
-            localStorage.removeItem(STORAGE_KEY);
-            renderAllTasks();
-            renderHistory();
-            updateProgressSummary();
-        }
-    }
+    function renderQuickWins() {
+        const container = document.getElementById('quickWins');
+        const wins = [
+            { task: 'Add "Delray Beach" to all page titles', impact: 'Location relevance' },
+            { task: 'Add alt text to all images with keywords', impact: 'Image SEO' },
+            { task: 'Create internal links between service pages', impact: 'Link equity' },
+            { task: 'Add FAQ section with schema markup', impact: 'Rich snippets' },
+            { task: 'Speed up page load (compress images)', impact: 'Core Web Vitals' },
+            { task: 'Add "Call Now" button above the fold', impact: 'Conversions' }
+        ];
 
-    // Refresh all data
-    async function refreshAll() {
-        document.getElementById('lastUpdated').textContent = 'Refreshing...';
-        await updateProgressSummary();
-        document.getElementById('lastUpdated').textContent =
-            `Updated ${new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
+        container.innerHTML = wins.map(w => `
+            <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <input type="checkbox" class="w-5 h-5 rounded border-gray-300 text-purple-600">
+                <div class="flex-1">
+                    <div class="font-medium text-gray-800">${w.task}</div>
+                    <div class="text-xs text-gray-500">${w.impact}</div>
+                </div>
+            </div>
+        `).join('');
     }
 
     // Initialize
-    window.addEventListener('DOMContentLoaded', () => {
-        renderAllTasks();
-        renderHistory();
-        updateProgressSummary();
-        document.getElementById('lastUpdated').textContent =
-            `Updated ${new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
-    });
+    loadAllData();
     </script>
 </body>
 </html>

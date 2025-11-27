@@ -97,12 +97,16 @@
             </div>
         </div>
 
-        <!-- Opportunity Score Explanation -->
-        <div class="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-4 mb-6">
-            <h3 class="font-bold text-orange-800 mb-2"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Understanding Opportunity Score</h3>
-            <p class="text-sm text-orange-700">
-                <strong>Opportunity = High Impressions + Low Position</strong>. Keywords with high scores are being searched often but you're not ranking well -
-                these are your best targets for new SEO pages! A score of 100+ means Google is showing you but people aren't clicking because you're too far down.
+        <!-- Value & Opportunity Explanation -->
+        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-4 mb-6">
+            <h3 class="font-bold text-green-800 mb-2"><i class="fas fa-dollar-sign text-green-500 mr-2"></i>Understanding Keyword Value</h3>
+            <p class="text-sm text-gray-700 mb-2">
+                <strong>Monthly Value</strong> = Estimated revenue if you ranked #1-3 for this keyword.<br>
+                Formula: (Impressions × 30% CTR × 10% booking rate × $150 avg ticket)
+            </p>
+            <p class="text-sm text-gray-700">
+                <strong>Opportunity Score</strong> = Value you're MISSING because of poor ranking.<br>
+                High opportunity = high impressions + bad position. <span class="text-green-700 font-semibold">Focus on keywords with highest $ opportunity.</span>
             </p>
         </div>
 
@@ -133,7 +137,8 @@
                             <th class="px-4 py-3 text-center text-sm font-semibold text-gray-600">Impressions</th>
                             <th class="px-4 py-3 text-center text-sm font-semibold text-gray-600">Clicks</th>
                             <th class="px-4 py-3 text-center text-sm font-semibold text-gray-600">CTR</th>
-                            <th class="px-4 py-3 text-center text-sm font-semibold text-gray-600">Opportunity</th>
+                            <th class="px-4 py-3 text-center text-sm font-semibold text-gray-600">Monthly Value</th>
+                            <th class="px-4 py-3 text-center text-sm font-semibold text-gray-600">Opportunity $</th>
                             <th class="px-4 py-3 text-center text-sm font-semibold text-gray-600">Action</th>
                         </tr>
                     </thead>
@@ -146,6 +151,10 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="bg-gray-50 px-6 py-3 border-t text-sm text-gray-600">
+                <strong>Total Monthly Opportunity:</strong> <span id="totalOpportunity" class="text-green-600 font-bold">$--</span>
+                (potential revenue if you ranked #1-3 for all keywords)
             </div>
         </div>
 
@@ -263,22 +272,28 @@
                 document.getElementById('totalImpressions').textContent = result.summary.totalImpressions.toLocaleString();
                 document.getElementById('avgPosition').textContent = result.summary.averagePosition;
 
-                // Process keywords with opportunity score
+                // Process keywords with value and opportunity calculations
+                // Constants for value calculation
+                const AVG_TICKET = 150; // Average service value
+                const BOOKING_RATE = 0.10; // 10% of clicks become bookings
+                const TOP3_CTR = 0.30; // 30% CTR if ranked #1-3
+
                 keywordsData = result.topKeywords.map(k => {
                     const pos = parseFloat(k.position);
                     const impressions = parseInt(k.impressions);
-                    // Opportunity = impressions * (position penalty)
-                    // Higher position = lower opportunity (you're already ranking well)
-                    // Lower position with high impressions = HIGH opportunity
-                    let opportunity = 0;
-                    if (pos > 10) {
-                        opportunity = Math.round(impressions * (pos / 10));
-                    } else if (pos > 3) {
-                        opportunity = Math.round(impressions * (pos / 20));
-                    } else {
-                        opportunity = 0; // Already ranking well
-                    }
-                    return { ...k, opportunity };
+                    const currentCTR = parseFloat(k.ctr) / 100;
+
+                    // Monthly value if ranked #1-3
+                    // = impressions * 30% CTR * 10% booking rate * $150
+                    const monthlyValue = Math.round(impressions * TOP3_CTR * BOOKING_RATE * AVG_TICKET);
+
+                    // Current value (what you're getting now)
+                    const currentValue = Math.round(impressions * currentCTR * BOOKING_RATE * AVG_TICKET);
+
+                    // Opportunity = value you're MISSING
+                    const opportunityDollar = Math.max(0, monthlyValue - currentValue);
+
+                    return { ...k, monthlyValue, currentValue, opportunityDollar };
                 });
 
                 // Display table (default sort by opportunity)
@@ -354,11 +369,15 @@
 
         // Sort data
         const sorted = [...keywordsData].sort((a, b) => {
-            if (sortBy === 'opportunity') return b.opportunity - a.opportunity;
+            if (sortBy === 'opportunity') return b.opportunityDollar - a.opportunityDollar;
             if (sortBy === 'clicks') return parseInt(b.clicks) - parseInt(a.clicks);
             if (sortBy === 'impressions') return parseInt(b.impressions) - parseInt(a.impressions);
             return 0;
         });
+
+        // Calculate total opportunity
+        const totalOpp = keywordsData.reduce((sum, k) => sum + k.opportunityDollar, 0);
+        document.getElementById('totalOpportunity').textContent = '$' + totalOpp.toLocaleString();
 
         // Render table
         const tbody = document.getElementById('keywordsTable');
@@ -371,13 +390,12 @@
 
             let oppColor = 'text-gray-400';
             let oppBg = '';
-            if (k.opportunity > 500) {
-                oppColor = 'text-red-600 font-bold';
-                oppBg = 'bg-red-50';
-            } else if (k.opportunity > 100) {
-                oppColor = 'text-orange-600 font-semibold';
-                oppBg = 'bg-orange-50';
-            } else if (k.opportunity > 50) {
+            if (k.opportunityDollar >= 100) {
+                oppColor = 'text-green-600 font-bold';
+                oppBg = 'bg-green-50';
+            } else if (k.opportunityDollar >= 50) {
+                oppColor = 'text-green-600 font-semibold';
+            } else if (k.opportunityDollar >= 20) {
                 oppColor = 'text-yellow-600';
             }
 
@@ -393,7 +411,8 @@
                     <td class="px-4 py-3 text-center font-semibold">${parseInt(k.impressions).toLocaleString()}</td>
                     <td class="px-4 py-3 text-center font-semibold text-green-600">${k.clicks}</td>
                     <td class="px-4 py-3 text-center text-gray-600">${k.ctr}%</td>
-                    <td class="px-4 py-3 text-center ${oppColor}">${k.opportunity > 0 ? k.opportunity : '-'}</td>
+                    <td class="px-4 py-3 text-center text-blue-600">$${k.monthlyValue}</td>
+                    <td class="px-4 py-3 text-center ${oppColor}">${k.opportunityDollar > 0 ? '$' + k.opportunityDollar : '-'}</td>
                     <td class="px-4 py-3 text-center">
                         <a href="${searchUrl}" target="_blank" class="text-blue-500 hover:text-blue-700" title="Search Google">
                             <i class="fas fa-search"></i>
@@ -406,8 +425,8 @@
 
     function displayOpportunities() {
         const opportunities = keywordsData
-            .filter(k => k.opportunity > 50)
-            .sort((a, b) => b.opportunity - a.opportunity)
+            .filter(k => k.opportunityDollar >= 20)
+            .sort((a, b) => b.opportunityDollar - a.opportunityDollar)
             .slice(0, 6);
 
         const container = document.getElementById('topOpportunities');
@@ -423,7 +442,7 @@
         }
 
         container.innerHTML = opportunities.map(k => `
-            <div class="bg-white rounded-lg p-4 border-2 border-orange-200 shadow">
+            <div class="bg-white rounded-lg p-4 border-2 border-green-200 shadow">
                 <div class="font-semibold text-gray-800 mb-2 truncate" title="${k.keyword}">"${k.keyword}"</div>
                 <div class="grid grid-cols-2 gap-2 text-sm">
                     <div>
@@ -435,13 +454,15 @@
                         <span class="font-bold">${parseInt(k.impressions).toLocaleString()}</span>
                     </div>
                 </div>
-                <div class="mt-2 pt-2 border-t text-sm">
-                    <span class="text-gray-500">Opportunity Score:</span>
-                    <span class="font-bold text-red-600">${k.opportunity}</span>
+                <div class="mt-2 pt-2 border-t">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500 text-sm">Monthly opportunity:</span>
+                        <span class="font-bold text-green-600 text-lg">$${k.opportunityDollar}/mo</span>
+                    </div>
                 </div>
                 <a href="https://www.google.com/search?q=${encodeURIComponent(k.keyword)}"
                    target="_blank"
-                   class="mt-2 block text-center bg-orange-100 text-orange-700 rounded py-1 text-sm hover:bg-orange-200">
+                   class="mt-2 block text-center bg-green-100 text-green-700 rounded py-1 text-sm hover:bg-green-200">
                     <i class="fas fa-search mr-1"></i> Check Ranking
                 </a>
             </div>

@@ -1,7 +1,12 @@
 {
-  "version": "2.12.2",
-  "lastUpdated": "2025-11-27T15:00:00Z",
+  "version": "2.12.3",
+  "lastUpdated": "2025-11-27T16:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.12.3",
+      "date": "2025-11-27T16:00:00Z",
+      "changes": "DOLLAR VALUE KEYWORDS: (1) Rankings page now shows Monthly Value ($) for each keyword - estimated revenue if ranked #1-3. (2) Opportunity $ column shows money left on table due to poor ranking. (3) Formula: impressions × 30% CTR × 10% booking rate × $150 avg ticket. (4) Total Monthly Opportunity shows combined value of all missed rankings. (5) Improvement Plan page rebuilt with data-driven recommendations based on actual Search Console data."
+    },
     {
       "version": "2.12.2",
       "date": "2025-11-27T15:00:00Z",
