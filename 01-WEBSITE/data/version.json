@@ -1,7 +1,12 @@
 {
-  "version": "2.12.6",
-  "lastUpdated": "2025-11-27T19:00:00Z",
+  "version": "2.12.7",
+  "lastUpdated": "2025-11-28T00:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.12.7",
+      "date": "2025-11-28T00:00:00Z",
+      "changes": "MEGA COLOR PAGE: New /services/hair-color-delray-beach.html targeting ALL high-volume color keywords. (1) Targets: balayage (40K+/mo), highlights (30K+/mo), hair color (25K+/mo), blonde specialist, ombre, grey blending, color correction. (2) Features Chris's 5 brand certifications prominently (Davines, Goldwell, Organic Color Systems, Platinum Seamless, Cezanne). (3) Comprehensive schema markup for HairSalon with OfferCatalog + Person schema for Chris's credentials. (4) 6 service cards with detailed descriptions. (5) Areas served for local SEO targeting. (6) GA4 tracking on all booking buttons."
+    },
     {
       "version": "2.12.5",
       "date": "2025-11-27T18:00:00Z",
