@@ -1,7 +1,12 @@
 {
-  "version": "2.12.3",
-  "lastUpdated": "2025-11-27T16:00:00Z",
+  "version": "2.12.4",
+  "lastUpdated": "2025-11-27T17:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.12.4",
+      "date": "2025-11-27T17:00:00Z",
+      "changes": "COLOR CORRECTION FOCUS + BETTER VALUE CALC: (1) Added Color Correction Dominance section as #1 priority in Improvement Plan - 8 target keywords, 4-step action plan. (2) Fixed value calculation: $200 avg ticket, 15% booking rate, accounts for position-based visibility (page 3 sees 1/8 of searches). (3) Much more meaningful dollar values that justify investment in SEO."
+    },
     {
       "version": "2.12.3",
       "date": "2025-11-27T16:00:00Z",
