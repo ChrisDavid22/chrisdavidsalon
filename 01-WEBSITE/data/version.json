@@ -1,7 +1,12 @@
 {
-  "version": "2.11.0",
-  "lastUpdated": "2025-11-27T08:00:00Z",
+  "version": "2.11.1",
+  "lastUpdated": "2025-11-27T12:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.11.1",
+      "date": "2025-11-27T12:00:00Z",
+      "changes": "DASHBOARD SIMPLIFICATION: (1) Removed superfluous Quick Audit and Compare to #1 buttons. (2) Added big yellow 'See Details' button next to score 73. (3) Added 'Refresh Score' button. (4) Changed date display to full year (November 26, 2025). (5) Simplified layout from 3 columns to 2 columns."
+    },
     {
       "version": "2.11.0",
       "date": "2025-11-27T08:00:00Z",
