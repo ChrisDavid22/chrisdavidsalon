@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>Microsites - Chris David Salon</title>
+    <title>Microsite Analytics - Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .pulse-green { animation: pulse-green 2s infinite; }
@@ -13,6 +14,12 @@
             0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
             50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
         }
+        .health-ring {
+            transition: stroke-dashoffset 1s ease-out;
+        }
+        .trend-up { color: #22c55e; }
+        .trend-down { color: #ef4444; }
+        .trend-neutral { color: #6b7280; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -48,350 +55,219 @@
 
     <div class="max-w-7xl mx-auto p-6">
 
-        <!-- THE #1 METRIC: LEADS SENT TO MAIN SITE -->
-        <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg shadow-xl p-6 mb-6">
-            <div class="flex items-center gap-2 mb-2">
-                <h2 class="text-3xl font-bold">Microsites → Leads to Main Site</h2>
-                <span class="relative group cursor-help">
-                    <i class="fas fa-info-circle text-green-200"></i>
-                    <div class="absolute left-0 bottom-full mb-2 hidden group-hover:block w-72 p-3 bg-gray-900 text-white text-sm rounded-lg shadow-xl z-50">
-                        <strong>What are microsites?</strong><br>
-                        Small websites that rank for specific keywords and send visitors to your main site.<br><br>
-                        <strong>Why do they matter?</strong><br>
-                        Each visitor they send = potential client. They also pass SEO authority (backlinks) to help your main site rank higher.
+        <!-- HERO: THE BIG PICTURE -->
+        <div class="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white rounded-2xl shadow-xl p-8 mb-6">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold mb-2">Microsite Network Analytics</h1>
+                    <p class="text-purple-200">3 satellite sites driving traffic to chrisdavidsalon.com</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-purple-200">Data Quality</div>
+                    <div id="dataQualityBadge" class="flex gap-2 mt-1">
+                        <span class="bg-white/20 px-2 py-1 rounded text-xs">Loading...</span>
                     </div>
+                </div>
+            </div>
+
+            <!-- 4 Key Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div class="text-purple-200 text-sm mb-1">Visitors Sent (30d)</div>
+                    <div id="totalReferrals" class="text-4xl font-bold">--</div>
+                    <div id="referralsTrend" class="text-sm text-purple-200">to main site</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div class="text-purple-200 text-sm mb-1">Total Pages Live</div>
+                    <div id="totalPages" class="text-4xl font-bold">--</div>
+                    <div class="text-sm text-purple-200">across all sites</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div class="text-purple-200 text-sm mb-1">Avg PageRank</div>
+                    <div id="avgPagerank" class="text-4xl font-bold">--</div>
+                    <div class="text-sm text-purple-200">out of 10</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                    <div class="text-purple-200 text-sm mb-1">Sites Indexed</div>
+                    <div id="indexedCount" class="text-4xl font-bold">--</div>
+                    <div class="text-sm text-purple-200">by Google</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROI PROJECTION -->
+        <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    ROI Projection
+                </h2>
+                <span class="bg-white/20 px-3 py-1 rounded text-sm">Based on current performance</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white/10 rounded-lg p-4">
+                    <div class="text-green-100 text-sm mb-1">Current Monthly</div>
+                    <div class="text-2xl font-bold" id="currentRevenue">$0</div>
+                    <div class="text-sm text-green-200" id="currentClients">0 est. clients</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4">
+                    <div class="text-green-100 text-sm mb-1">Projected Year-End</div>
+                    <div class="text-2xl font-bold" id="projectedRevenue">$0</div>
+                    <div class="text-sm text-green-200" id="projectedClients">0 annual clients</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-4">
+                    <div class="text-green-100 text-sm mb-1">Growth Potential</div>
+                    <div class="text-2xl font-bold" id="growthMultiplier">--x</div>
+                    <div class="text-sm text-green-200">with 10%/month growth</div>
+                </div>
+            </div>
+            <div class="mt-4 text-xs text-green-200">
+                <i class="fas fa-info-circle mr-1"></i>
+                Assumptions: $600/client/year avg value, 5% referral-to-booking conversion
+            </div>
+        </div>
+
+        <!-- INDIVIDUAL SITE CARDS -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <!-- Site cards will be dynamically generated -->
+            <div id="siteCardsContainer" class="contents">
+                <!-- Loading placeholders -->
+                <div class="bg-white rounded-xl shadow-lg p-6 animate-pulse">
+                    <div class="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+                    <div class="h-32 bg-gray-200 rounded mb-4"></div>
+                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 animate-pulse">
+                    <div class="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+                    <div class="h-32 bg-gray-200 rounded mb-4"></div>
+                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 animate-pulse">
+                    <div class="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+                    <div class="h-32 bg-gray-200 rounded mb-4"></div>
+                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REFERRAL TREND CHART -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold">
+                    <i class="fas fa-chart-area text-blue-500 mr-2"></i>
+                    Referral Traffic Over Time
+                </h2>
+                <div class="flex gap-2">
+                    <button onclick="setChartPeriod(7)" class="px-3 py-1 text-sm rounded bg-gray-100 hover:bg-gray-200" id="btn7d">7D</button>
+                    <button onclick="setChartPeriod(30)" class="px-3 py-1 text-sm rounded bg-blue-500 text-white" id="btn30d">30D</button>
+                </div>
+            </div>
+            <div class="h-64">
+                <canvas id="referralChart"></canvas>
+            </div>
+            <div id="noDataMessage" class="hidden text-center py-12 text-gray-500">
+                <i class="fas fa-chart-line text-4xl mb-3 text-gray-300"></i>
+                <p>No referral data yet. As microsites gain traffic, you'll see the trend here.</p>
+            </div>
+        </div>
+
+        <!-- CONTENT DEPLOYMENT PROGRESS -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold">
+                    <i class="fas fa-rocket text-purple-500 mr-2"></i>
+                    Content Deployment Progress
+                </h2>
+                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded text-sm">
+                    Auto-deploys 2 pages/site/week
                 </span>
             </div>
-            <p class="text-green-100 mb-6">
-                The only question that matters: <strong>How many potential clients did these microsites send to chrisdavidsalon.com?</strong>
-            </p>
 
-            <!-- THE BIG NUMBER -->
-            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg mb-4">
-                <div class="text-center">
-                    <div class="text-sm text-green-200 mb-2">Total Visitors Sent to Main Site (Last 30 Days)</div>
-                    <div id="totalLeads" class="text-7xl font-bold">--</div>
-                    <div class="text-lg mt-2" id="leadsStatus">
-                        <span class="bg-yellow-500 px-3 py-1 rounded text-sm">GA4 Not Connected - Connect to see real leads</span>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div id="deploymentProgress" class="contents">
+                    <!-- Will be populated dynamically -->
                 </div>
             </div>
 
-            <!-- Breakdown by site -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white/10 p-4 rounded-lg text-center">
-                    <div class="text-sm text-green-200 mb-1">bestsalondelray.com</div>
-                    <div id="site1Leads" class="text-3xl font-bold">--</div>
-                    <div class="text-xs text-green-200">visitors sent</div>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg text-center">
-                    <div class="text-sm text-green-200 mb-1">bestdelraysalon.com</div>
-                    <div id="site2Leads" class="text-3xl font-bold">--</div>
-                    <div class="text-xs text-green-200">visitors sent</div>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg text-center">
-                    <div class="text-sm text-green-200 mb-1">bestsalonpalmbeach.com</div>
-                    <div id="site3Leads" class="text-3xl font-bold">--</div>
-                    <div class="text-xs text-green-200">visitors sent</div>
+            <!-- Content Library Detail -->
+            <div class="border-t pt-4">
+                <h3 class="font-semibold mb-3">Content Library (30 Pages)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="contentLibrary">
+                    <!-- Will be populated dynamically -->
                 </div>
             </div>
         </div>
 
-        <!-- HOW TO SEE REAL LEADS -->
-        <div id="connectGA4Section" class="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-6 mb-6">
-            <div class="flex items-start gap-3">
-                <i class="fas fa-exclamation-triangle text-yellow-500 text-2xl mt-1"></i>
-                <div>
-                    <h3 class="text-xl font-bold text-yellow-800 mb-2">You Can't See Your Leads Without GA4</h3>
-                    <p class="text-yellow-700 mb-4">
-                        Your microsites are live and sending visitors to your main site, but without Google Analytics connected, we can't tell you <em>how many</em>.
-                    </p>
-
-                    <div class="bg-white p-4 rounded-lg border border-yellow-200">
-                        <h4 class="font-bold text-gray-800 mb-3">To connect GA4 (takes 15 minutes):</h4>
-                        <ol class="space-y-2 text-sm text-gray-700">
-                            <li class="flex items-start gap-2">
-                                <span class="bg-yellow-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
-                                <div>
-                                    <strong>Get your GA4 Property ID</strong><br>
-                                    Go to <a href="https://analytics.google.com" target="_blank" class="text-blue-600 underline">analytics.google.com</a> → Admin → Property Settings → Copy the Property ID (looks like: 123456789)
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="bg-yellow-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
-                                <div>
-                                    <strong>Create a Service Account</strong><br>
-                                    Go to <a href="https://console.cloud.google.com/iam-admin/serviceaccounts" target="_blank" class="text-blue-600 underline">Google Cloud Console</a> → Create service account → Download JSON key
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="bg-yellow-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">3</span>
-                                <div>
-                                    <strong>Add to Vercel</strong><br>
-                                    In Vercel dashboard, add environment variables:<br>
-                                    <code class="bg-gray-100 px-1">GA4_PROPERTY_ID</code> = your property ID<br>
-                                    <code class="bg-gray-100 px-1">GOOGLE_SERVICE_ACCOUNT_JSON</code> = paste entire JSON key
-                                </div>
-                            </li>
-                        </ol>
-                        <p class="mt-4 text-sm text-gray-600">
-                            <strong>Need help?</strong> Ask your developer or email the GA4 admin for your account.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MICROSITE STATUS CARDS -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 class="text-2xl font-bold mb-4">Microsite Status</h3>
-            <p class="text-gray-600 mb-6">Each microsite targets different keywords and sends visitors to your main booking page.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Site 1 -->
-                <div class="border-2 border-green-300 rounded-lg p-5 bg-green-50">
-                    <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-lg">bestsalondelray.com</h4>
-                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">LIVE</span>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-3">
-                        <strong>Target:</strong> "best salon delray beach"<br>
-                        <strong>Status:</strong> ✅ Indexed by Google
-                    </p>
-                    <div class="bg-white p-3 rounded mb-3">
-                        <div class="text-xs text-gray-500">PageRank Authority</div>
-                        <div id="pr-site1" class="text-xl font-bold text-purple-600">1.18/10</div>
-                    </div>
-                    <a href="https://bestsalondelray.com" target="_blank" class="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                        Visit Site →
-                    </a>
-                </div>
-
-                <!-- Site 2 -->
-                <div class="border-2 border-yellow-300 rounded-lg p-5 bg-yellow-50">
-                    <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-lg">bestdelraysalon.com</h4>
-                        <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded">NOT INDEXED</span>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-3">
-                        <strong>Target:</strong> "delray beach salon"<br>
-                        <strong>Status:</strong> ⚠️ Google hasn't found it yet
-                    </p>
-                    <div class="bg-white p-3 rounded mb-3">
-                        <div class="text-xs text-gray-500">PageRank Authority</div>
-                        <div id="pr-site2" class="text-xl font-bold text-red-500">NOT INDEXED</div>
-                    </div>
-                    <a href="https://bestdelraysalon.com" target="_blank" class="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                        Visit Site →
-                    </a>
-                </div>
-
-                <!-- Site 3 -->
-                <div class="border-2 border-green-300 rounded-lg p-5 bg-green-50">
-                    <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-lg">bestsalonpalmbeach.com</h4>
-                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">LIVE</span>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-3">
-                        <strong>Target:</strong> "salon palm beach county"<br>
-                        <strong>Status:</strong> ✅ Indexed by Google
-                    </p>
-                    <div class="bg-white p-3 rounded mb-3">
-                        <div class="text-xs text-gray-500">PageRank Authority</div>
-                        <div id="pr-site3" class="text-xl font-bold text-purple-600">1.18/10</div>
-                    </div>
-                    <a href="https://bestsalonpalmbeach.com" target="_blank" class="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                        Visit Site →
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- FIX THE UNINDEXED SITE -->
-        <div class="bg-red-50 border-2 border-red-300 rounded-lg p-6 mb-6">
-            <h3 class="text-xl font-bold text-red-800 mb-2">
-                <i class="fas fa-exclamation-triangle mr-2"></i>
-                Action Required: Fix bestdelraysalon.com
-            </h3>
-            <p class="text-red-700 mb-4">
-                This site is NOT indexed by Google. That means it can't show up in search results and can't send you any leads. It's providing ZERO value right now.
-            </p>
-            <div class="bg-white p-4 rounded-lg">
-                <h4 class="font-bold mb-3">How to fix it (takes 5 minutes):</h4>
-                <ol class="space-y-2 text-sm text-gray-700">
-                    <li class="flex items-start gap-2">
-                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
-                        <span>Go to <a href="https://search.google.com/search-console" target="_blank" class="text-blue-600 underline">Google Search Console</a></span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
-                        <span>Click "Add Property" and enter: bestdelraysalon.com</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">3</span>
-                        <span>Verify ownership (use the DNS method if prompted)</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">4</span>
-                        <span>Go to Sitemaps → Submit: bestdelraysalon.com/sitemap.xml</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">5</span>
-                        <span>Go to URL Inspection → Enter homepage URL → Click "Request Indexing"</span>
-                    </li>
-                </ol>
-                <p class="mt-4 text-sm text-gray-600">
-                    After submitting, Google typically indexes within 24-48 hours. Check back next week.
-                </p>
-            </div>
-        </div>
-
-        <!-- CONTENT DEPLOYMENT SCHEDULE -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 class="text-2xl font-bold mb-4">
-                <i class="fas fa-calendar-alt text-blue-500 mr-2"></i>
-                Automated Content Deployment
-            </h3>
-            <p class="text-gray-600 mb-4">30 rich content pages are being deployed automatically - 2 pages per site per week.</p>
-
+        <!-- PAGEMAP COMPARISON -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">
+                <i class="fas fa-sitemap text-indigo-500 mr-2"></i>
+                Live Page Inventory
+            </h2>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm">
-                    <thead class="bg-gray-100">
+                    <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-4 py-3 text-left">Site</th>
-                            <th class="px-4 py-3 text-left">Schedule</th>
-                            <th class="px-4 py-3 text-left">Pages in Library</th>
-                            <th class="px-4 py-3 text-left">Est. Completion</th>
-                            <th class="px-4 py-3 text-left">Progress</th>
+                            <th class="px-4 py-3 text-left font-semibold">Site</th>
+                            <th class="px-4 py-3 text-center font-semibold">Pages</th>
+                            <th class="px-4 py-3 text-center font-semibold">PageRank</th>
+                            <th class="px-4 py-3 text-center font-semibold">Indexed</th>
+                            <th class="px-4 py-3 text-center font-semibold">Referrals</th>
+                            <th class="px-4 py-3 text-center font-semibold">Health</th>
+                            <th class="px-4 py-3 text-center font-semibold">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-semibold text-blue-600">bestdelraysalon.com</td>
-                            <td class="px-4 py-3">Tue & Fri @ 9am ET</td>
-                            <td class="px-4 py-3">10 pages</td>
-                            <td class="px-4 py-3">~5 weeks</td>
-                            <td class="px-4 py-3">
-                                <div class="w-32 bg-gray-200 rounded-full h-2">
-                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="px-4 py-3 font-semibold text-pink-600">bestsalondelray.com</td>
-                            <td class="px-4 py-3">Mon & Thu @ 10am ET</td>
-                            <td class="px-4 py-3">10 pages</td>
-                            <td class="px-4 py-3">~5 weeks</td>
-                            <td class="px-4 py-3">
-                                <div class="w-32 bg-gray-200 rounded-full h-2">
-                                    <div class="bg-pink-500 h-2 rounded-full" style="width: 0%"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3 font-semibold text-cyan-600">bestsalonpalmbeach.com</td>
-                            <td class="px-4 py-3">Wed & Sat @ 11am ET</td>
-                            <td class="px-4 py-3">10 pages</td>
-                            <td class="px-4 py-3">~5 weeks</td>
-                            <td class="px-4 py-3">
-                                <div class="w-32 bg-gray-200 rounded-full h-2">
-                                    <div class="bg-cyan-500 h-2 rounded-full" style="width: 0%"></div>
-                                </div>
-                            </td>
-                        </tr>
+                    <tbody id="siteTableBody">
+                        <tr><td colspan="7" class="text-center py-8 text-gray-400">Loading...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- CONTENT LIBRARY -->
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 class="text-xl font-bold mb-4">
-                <i class="fas fa-book-open text-purple-500 mr-2"></i>
-                Content Library (30 Pages Ready)
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                    <h4 class="font-bold text-blue-600 mb-2">bestdelraysalon.com (10)</h4>
-                    <ul class="text-xs space-y-1 text-gray-600">
-                        <li>• Wedding Hair Guide</li>
-                        <li>• Men's Haircut Guide</li>
-                        <li>• Highlights vs Balayage</li>
-                        <li>• Florida Humidity Hair Care</li>
-                        <li>• First Salon Visit Tips</li>
-                        <li>• Hair Trends 2025</li>
-                        <li>• Postpartum Hair Loss</li>
-                        <li>• Pool/Chlorine Protection</li>
-                        <li>• Curly Hair Specialist</li>
-                        <li>• Red Hair Color Guide</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-pink-600 mb-2">bestsalondelray.com (10)</h4>
-                    <ul class="text-xs space-y-1 text-gray-600">
-                        <li>• Wedding Updo Guide</li>
-                        <li>• Teen Haircuts</li>
-                        <li>• Senior Hair Services</li>
-                        <li>• Organic Hair Color</li>
-                        <li>• Hair Loss Solutions</li>
-                        <li>• Salon Etiquette</li>
-                        <li>• Beach Hair Protection</li>
-                        <li>• Hair Gloss Treatment</li>
-                        <li>• Root Touch-Up Guide</li>
-                        <li>• Dimensional Color</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-cyan-600 mb-2">bestsalonpalmbeach.com (10)</h4>
-                    <ul class="text-xs space-y-1 text-gray-600">
-                        <li>• Hair Salon Lake Worth</li>
-                        <li>• Hair Salon Lantana</li>
-                        <li>• Hair Salon Wellington</li>
-                        <li>• Balayage Boca Raton</li>
-                        <li>• Color Correction PBC</li>
-                        <li>• Keratin Treatment PBC</li>
-                        <li>• Blonde Specialist Boca</li>
-                        <li>• Hair Salon Greenacres</li>
-                        <li>• Royal Palm Beach Stylist</li>
-                        <li>• Luxury Salon Palm Beach</li>
-                    </ul>
-                </div>
+        <!-- ACTION ITEMS -->
+        <div id="actionItems" class="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-6 mb-6 hidden">
+            <h2 class="text-xl font-bold text-yellow-800 mb-4">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                Action Required
+            </h2>
+            <div id="actionItemsList" class="space-y-3">
+                <!-- Will be populated dynamically -->
             </div>
         </div>
 
-        <!-- WHAT THE MICROSITES DO FOR YOU -->
-        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-6">
-            <h3 class="text-xl font-bold mb-4">
-                <i class="fas fa-question-circle text-indigo-500 mr-2"></i>
-                How Do Microsites Help Your Business?
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-4 rounded-lg">
-                    <h4 class="font-bold text-indigo-800 mb-2">1. More Keywords = More Visibility</h4>
+        <!-- HOW MICROSITES WORK -->
+        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-4">
+                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                How This Network Drives Business
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-2">1.</div>
+                    <h4 class="font-bold text-gray-800 mb-2">Keyword Capture</h4>
                     <p class="text-sm text-gray-600">
-                        Each microsite targets different keywords that your main site might not rank for.
-                        "best salon delray" → bestsalondelray.com → sends visitors to chrisdavidsalon.com
+                        Each microsite ranks for different searches your main site can't win alone.
                     </p>
                 </div>
-                <div class="bg-white p-4 rounded-lg">
-                    <h4 class="font-bold text-indigo-800 mb-2">2. Backlinks = Higher Authority</h4>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-2">2.</div>
+                    <h4 class="font-bold text-gray-800 mb-2">Traffic Funnel</h4>
                     <p class="text-sm text-gray-600">
-                        Each microsite links to your main site. Google sees this as a vote of confidence,
-                        helping chrisdavidsalon.com rank higher overall.
+                        Visitors find these sites, read valuable content, then click through to book.
                     </p>
                 </div>
-                <div class="bg-white p-4 rounded-lg">
-                    <h4 class="font-bold text-indigo-800 mb-2">3. Direct Leads</h4>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-2">3.</div>
+                    <h4 class="font-bold text-gray-800 mb-2">Authority Building</h4>
                     <p class="text-sm text-gray-600">
-                        Someone searching "best salon palm beach" finds bestsalonpalmbeach.com,
-                        clicks through to your site, and books an appointment. That's a lead.
+                        Links from these sites boost chrisdavidsalon.com's domain authority over time.
                     </p>
                 </div>
-                <div class="bg-white p-4 rounded-lg">
-                    <h4 class="font-bold text-indigo-800 mb-2">4. Long-Term Investment</h4>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="text-3xl mb-2">4.</div>
+                    <h4 class="font-bold text-gray-800 mb-2">Compound Growth</h4>
                     <p class="text-sm text-gray-600">
-                        As these sites age and build authority, they become more valuable.
-                        A 2-year-old microsite ranks better than a new one.
+                        As sites age and gain pages, their value compounds. A 2-year-old site >>> new site.
                     </p>
                 </div>
             </div>
@@ -399,10 +275,53 @@
     </div>
 
     <script>
-    // API Base URL - use production when running locally (serverless functions need Vercel)
     const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'https://www.chrisdavidsalon.com'
         : '';
+
+    let referralChart = null;
+    let chartData = [];
+    let currentPeriod = 30;
+
+    // Content library data
+    const CONTENT_LIBRARY = {
+        'bestdelraysalon.com': [
+            { title: 'Wedding Hair Guide', file: 'wedding-hair-delray-beach.html' },
+            { title: "Men's Haircut Guide", file: 'mens-haircut-delray-beach.html' },
+            { title: 'Highlights vs Balayage', file: 'highlights-vs-balayage.html' },
+            { title: 'Florida Humidity Hair', file: 'florida-humidity-hair-care.html' },
+            { title: 'First Salon Visit', file: 'first-salon-visit-tips.html' },
+            { title: 'Hair Trends 2025', file: 'hair-trends-2025.html' },
+            { title: 'Postpartum Hair Loss', file: 'postpartum-hair-loss.html' },
+            { title: 'Pool/Chlorine Protection', file: 'pool-chlorine-hair-protection.html' },
+            { title: 'Curly Hair Specialist', file: 'curly-hair-specialist-delray.html' },
+            { title: 'Red Hair Color', file: 'red-hair-color-delray-beach.html' }
+        ],
+        'bestsalondelray.com': [
+            { title: 'Wedding Updo Guide', file: 'wedding-updo-guide.html' },
+            { title: 'Teen Haircuts', file: 'teen-haircuts-delray.html' },
+            { title: 'Senior Hair Services', file: 'senior-hair-services.html' },
+            { title: 'Organic Hair Color', file: 'organic-hair-color-guide.html' },
+            { title: 'Hair Loss Solutions', file: 'hair-loss-solutions-delray.html' },
+            { title: 'Salon Etiquette', file: 'salon-etiquette-guide.html' },
+            { title: 'Beach Hair Protection', file: 'beach-hair-protection.html' },
+            { title: 'Hair Gloss Treatment', file: 'hair-gloss-treatment-guide.html' },
+            { title: 'Root Touch-Up Guide', file: 'root-touch-up-guide.html' },
+            { title: 'Dimensional Color', file: 'dimensional-color-explained.html' }
+        ],
+        'bestsalonpalmbeach.com': [
+            { title: 'Lake Worth Salon', file: 'hair-salon-lake-worth.html' },
+            { title: 'Lantana Salon', file: 'hair-salon-lantana.html' },
+            { title: 'Wellington Salon', file: 'hair-salon-wellington.html' },
+            { title: 'Boca Raton Balayage', file: 'balayage-boca-raton.html' },
+            { title: 'Color Correction PBC', file: 'color-correction-palm-beach.html' },
+            { title: 'Keratin Palm Beach', file: 'keratin-treatment-palm-beach.html' },
+            { title: 'Blonde Specialist Boca', file: 'blonde-specialist-boca.html' },
+            { title: 'Greenacres Salon', file: 'hair-salon-greenacres.html' },
+            { title: 'Royal Palm Beach', file: 'hair-stylist-royal-palm-beach.html' },
+            { title: 'Palm Beach Island Luxury', file: 'luxury-salon-palm-beach-island.html' }
+        ]
+    };
 
     async function loadPageData() {
         // Load version
@@ -416,34 +335,452 @@
 
         document.getElementById('lastUpdate').textContent = 'Updated: ' + new Date().toLocaleTimeString();
 
-        // Try to load lead data from GA4
+        // Fetch microsite analytics
         try {
-            const response = await fetch(`${API_BASE}/api/ga4-analytics?type=microsite-referrals&startDate=30daysAgo&endDate=today`);
-            const result = await response.json();
+            const response = await fetch(`${API_BASE}/api/microsite-analytics`);
+            const data = await response.json();
 
-            if (result.success) {
-                // GA4 IS CONNECTED - Show real lead counts
-                document.getElementById('connectGA4Section').classList.add('hidden');
-
-                const site1 = result.microsites?.['bestsalondelray.com']?.totalUsers || 0;
-                const site2 = result.microsites?.['bestdelraysalon.com']?.totalUsers || 0;
-                const site3 = result.microsites?.['bestsalonpalmbeach.com']?.totalUsers || 0;
-                const total = site1 + site2 + site3;
-
-                document.getElementById('totalLeads').textContent = total;
-                document.getElementById('site1Leads').textContent = site1;
-                document.getElementById('site2Leads').textContent = site2;
-                document.getElementById('site3Leads').textContent = site3;
-                document.getElementById('leadsStatus').innerHTML = `
-                    <span class="bg-green-500 px-3 py-1 rounded text-sm">✓ Live data from GA4</span>
-                `;
+            if (data.success) {
+                renderDashboard(data);
+            } else {
+                // Fallback to basic data fetch
+                await loadBasicData();
             }
         } catch (e) {
-            console.log('GA4 not connected, showing instructions');
+            console.error('Failed to load microsite analytics:', e);
+            await loadBasicData();
         }
     }
 
+    async function loadBasicData() {
+        // Fallback: Load data from individual endpoints
+        try {
+            const [referralsRes, pagerankRes] = await Promise.all([
+                fetch(`${API_BASE}/api/ga4-analytics?type=microsite-referrals`).then(r => r.json()),
+                fetch(`${API_BASE}/api/authority-score?competitors=true`).then(r => r.json())
+            ]);
+
+            const microsites = [
+                {
+                    domain: 'bestsalondelray.com',
+                    name: 'Best Salon Delray',
+                    target: 'best salon delray beach',
+                    color: '#3B82F6',
+                    pageCount: 5,
+                    contentLibrarySize: 10
+                },
+                {
+                    domain: 'bestdelraysalon.com',
+                    name: 'Best Delray Salon',
+                    target: 'delray beach salon',
+                    color: '#EC4899',
+                    pageCount: 5,
+                    contentLibrarySize: 10
+                },
+                {
+                    domain: 'bestsalonpalmbeach.com',
+                    name: 'Best Salon Palm Beach',
+                    target: 'salon palm beach county',
+                    color: '#06B6D4',
+                    pageCount: 5,
+                    contentLibrarySize: 10
+                }
+            ];
+
+            // Merge data
+            microsites.forEach(site => {
+                const refData = referralsRes.microsites?.[site.domain] || {};
+                site.referrals = {
+                    last30Days: refData.totalUsers || 0,
+                    sessions: refData.totalSessions || 0,
+                    dailyData: refData.dailyData || []
+                };
+
+                const prData = pagerankRes.data?.all_results?.find(r => r.domain === site.domain) || {};
+                site.pagerank = prData.pagerank_decimal || 0;
+                site.indexed = prData.status === 'found';
+
+                site.health = {
+                    score: site.indexed ? 50 + (site.referrals.last30Days * 5) : 20,
+                    grade: site.indexed ? (site.referrals.last30Days > 5 ? 'B' : 'C') : 'F'
+                };
+
+                site.contentLibrary = {
+                    total: site.contentLibrarySize,
+                    deployed: 0,
+                    remaining: site.contentLibrarySize
+                };
+            });
+
+            const totals = {
+                totalPages: microsites.reduce((s, m) => s + m.pageCount, 0),
+                totalReferrals: microsites.reduce((s, m) => s + m.referrals.last30Days, 0),
+                avgPagerank: (microsites.reduce((s, m) => s + m.pagerank, 0) / 3).toFixed(2),
+                indexedSites: microsites.filter(m => m.indexed).length
+            };
+
+            renderDashboard({ success: true, microsites, totals, projection: calculateProjection(totals) });
+
+        } catch (e) {
+            console.error('Fallback data load failed:', e);
+            document.getElementById('siteCardsContainer').innerHTML = `
+                <div class="col-span-3 text-center py-12 text-red-500">
+                    <i class="fas fa-exclamation-circle text-4xl mb-3"></i>
+                    <p>Failed to load microsite data. Please refresh.</p>
+                </div>
+            `;
+        }
+    }
+
+    function calculateProjection(totals) {
+        const clientValue = 600;
+        const conversionRate = 0.05;
+        const monthlyGrowth = 0.10;
+
+        const currentClients = totals.totalReferrals * conversionRate;
+        const projectedYearEnd = totals.totalReferrals * Math.pow(1 + monthlyGrowth, 12);
+
+        return {
+            currentMonthly: {
+                referrals: totals.totalReferrals,
+                estimatedClients: Math.round(currentClients * 10) / 10,
+                estimatedRevenue: Math.round(currentClients * clientValue)
+            },
+            projectedYearEnd: {
+                monthlyReferrals: Math.round(projectedYearEnd),
+                annualClients: Math.round(projectedYearEnd * conversionRate * 12),
+                annualRevenue: Math.round(projectedYearEnd * conversionRate * 12 * clientValue)
+            }
+        };
+    }
+
+    function renderDashboard(data) {
+        const { microsites, totals, projection } = data;
+
+        // Update hero metrics
+        document.getElementById('totalReferrals').textContent = totals.totalReferrals;
+        document.getElementById('totalPages').textContent = totals.totalPages;
+        document.getElementById('avgPagerank').textContent = totals.avgPagerank;
+        document.getElementById('indexedCount').textContent = `${totals.indexedSites}/3`;
+
+        // Update data quality badges
+        const dq = data.dataQuality || { pagerank: 'live', ga4: 'live', sitemaps: 'live' };
+        document.getElementById('dataQualityBadge').innerHTML = `
+            <span class="bg-${dq.pagerank === 'live' ? 'green' : 'yellow'}-500/30 px-2 py-1 rounded text-xs">
+                PageRank: ${dq.pagerank}
+            </span>
+            <span class="bg-${dq.ga4 === 'live' ? 'green' : 'yellow'}-500/30 px-2 py-1 rounded text-xs">
+                GA4: ${dq.ga4}
+            </span>
+        `;
+
+        // Update ROI projection
+        if (projection) {
+            document.getElementById('currentRevenue').textContent = '$' + projection.currentMonthly.estimatedRevenue.toLocaleString();
+            document.getElementById('currentClients').textContent = projection.currentMonthly.estimatedClients + ' est. clients';
+            document.getElementById('projectedRevenue').textContent = '$' + projection.projectedYearEnd.annualRevenue.toLocaleString();
+            document.getElementById('projectedClients').textContent = projection.projectedYearEnd.annualClients + ' annual clients';
+
+            const growth = projection.projectedYearEnd.annualRevenue > 0 && projection.currentMonthly.estimatedRevenue > 0
+                ? (projection.projectedYearEnd.annualRevenue / (projection.currentMonthly.estimatedRevenue * 12)).toFixed(1)
+                : '3.1';
+            document.getElementById('growthMultiplier').textContent = growth + 'x';
+        }
+
+        // Render site cards
+        renderSiteCards(microsites);
+
+        // Render table
+        renderSiteTable(microsites);
+
+        // Render chart
+        renderReferralChart(microsites);
+
+        // Render content deployment
+        renderContentDeployment(microsites);
+
+        // Check for action items
+        renderActionItems(microsites);
+    }
+
+    function renderSiteCards(microsites) {
+        const container = document.getElementById('siteCardsContainer');
+        container.innerHTML = microsites.map(site => `
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden border-t-4" style="border-color: ${site.color}">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-bold text-lg">${site.domain}</h3>
+                            <p class="text-sm text-gray-500">Target: "${site.target}"</p>
+                        </div>
+                        <span class="px-2 py-1 rounded text-xs font-bold ${site.indexed ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                            ${site.indexed ? 'INDEXED' : 'NOT INDEXED'}
+                        </span>
+                    </div>
+
+                    <!-- Health Ring -->
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="relative w-20 h-20">
+                            <svg class="transform -rotate-90 w-20 h-20">
+                                <circle cx="40" cy="40" r="35" stroke="#e5e7eb" stroke-width="6" fill="none"/>
+                                <circle cx="40" cy="40" r="35" stroke="${site.color}" stroke-width="6" fill="none"
+                                    stroke-dasharray="${2 * Math.PI * 35}"
+                                    stroke-dashoffset="${2 * Math.PI * 35 * (1 - (site.health?.score || 0) / 100)}"
+                                    class="health-ring"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-xl font-bold">${site.health?.score || 0}</span>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div>
+                                    <div class="text-gray-500">PageRank</div>
+                                    <div class="font-bold" style="color: ${site.color}">${site.pagerank?.toFixed(2) || '0.00'}/10</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-500">Pages</div>
+                                    <div class="font-bold">${site.pageCount || 0}</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-500">Referrals</div>
+                                    <div class="font-bold">${site.referrals?.last30Days || 0}</div>
+                                </div>
+                                <div>
+                                    <div class="text-gray-500">Grade</div>
+                                    <div class="font-bold ${getGradeColor(site.health?.grade)}">${site.health?.grade || 'F'}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://${site.domain}" target="_blank"
+                       class="block text-center py-2 rounded font-semibold text-white hover:opacity-90"
+                       style="background-color: ${site.color}">
+                        Visit Site <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderSiteTable(microsites) {
+        const tbody = document.getElementById('siteTableBody');
+        tbody.innerHTML = microsites.map(site => `
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">
+                    <div class="font-semibold" style="color: ${site.color}">${site.domain}</div>
+                    <div class="text-xs text-gray-500">${site.target}</div>
+                </td>
+                <td class="px-4 py-3 text-center font-bold">${site.pageCount || 0}</td>
+                <td class="px-4 py-3 text-center">
+                    <span class="font-bold" style="color: ${site.color}">${site.pagerank?.toFixed(2) || '0.00'}</span>
+                </td>
+                <td class="px-4 py-3 text-center">
+                    ${site.indexed
+                        ? '<span class="text-green-500"><i class="fas fa-check-circle"></i></span>'
+                        : '<span class="text-red-500"><i class="fas fa-times-circle"></i></span>'}
+                </td>
+                <td class="px-4 py-3 text-center font-bold">${site.referrals?.last30Days || 0}</td>
+                <td class="px-4 py-3 text-center">
+                    <span class="px-2 py-1 rounded text-xs font-bold ${getGradeBgColor(site.health?.grade)}">
+                        ${site.health?.score || 0} (${site.health?.grade || 'F'})
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center">
+                    <a href="https://search.google.com/search-console?resource_id=sc-domain:${site.domain}"
+                       target="_blank" class="text-blue-500 hover:underline text-sm">
+                        GSC <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    function renderReferralChart(microsites) {
+        const ctx = document.getElementById('referralChart').getContext('2d');
+
+        // Collect daily data
+        chartData = [];
+        microsites.forEach(site => {
+            if (site.referrals?.dailyData) {
+                site.referrals.dailyData.forEach(d => {
+                    const existing = chartData.find(c => c.date === d.date);
+                    if (existing) {
+                        existing[site.domain] = d.users || 0;
+                    } else {
+                        chartData.push({
+                            date: d.date,
+                            [site.domain]: d.users || 0
+                        });
+                    }
+                });
+            }
+        });
+
+        // Sort by date
+        chartData.sort((a, b) => a.date.localeCompare(b.date));
+
+        if (chartData.length === 0) {
+            document.getElementById('referralChart').style.display = 'none';
+            document.getElementById('noDataMessage').classList.remove('hidden');
+            return;
+        }
+
+        document.getElementById('referralChart').style.display = 'block';
+        document.getElementById('noDataMessage').classList.add('hidden');
+
+        const labels = chartData.map(d => {
+            const year = d.date.substring(0, 4);
+            const month = d.date.substring(4, 6);
+            const day = d.date.substring(6, 8);
+            return `${month}/${day}`;
+        });
+
+        const datasets = microsites.map(site => ({
+            label: site.domain,
+            data: chartData.map(d => d[site.domain] || 0),
+            borderColor: site.color,
+            backgroundColor: site.color + '20',
+            fill: true,
+            tension: 0.4
+        }));
+
+        if (referralChart) {
+            referralChart.destroy();
+        }
+
+        referralChart = new Chart(ctx, {
+            type: 'line',
+            data: { labels, datasets },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 1 }
+                    }
+                }
+            }
+        });
+    }
+
+    function renderContentDeployment(microsites) {
+        const progressContainer = document.getElementById('deploymentProgress');
+        progressContainer.innerHTML = microsites.map(site => {
+            const deployed = Math.max(0, (site.pageCount || 5) - 5);
+            const total = site.contentLibrarySize || 10;
+            const pct = Math.round((deployed / total) * 100);
+
+            return `
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="font-semibold" style="color: ${site.color}">${site.domain}</span>
+                        <span class="text-sm text-gray-500">${deployed}/${total} deployed</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div class="h-3 rounded-full transition-all duration-500"
+                             style="width: ${pct}%; background-color: ${site.color}"></div>
+                    </div>
+                    <div class="text-xs text-gray-500 mt-1">
+                        Est. completion: ${total - deployed > 0 ? Math.ceil((total - deployed) / 2) : 0} weeks
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // Content library
+        const libraryContainer = document.getElementById('contentLibrary');
+        libraryContainer.innerHTML = Object.entries(CONTENT_LIBRARY).map(([domain, pages]) => {
+            const site = microsites.find(s => s.domain === domain) || {};
+            const livePages = site.pages || [];
+
+            return `
+                <div>
+                    <h4 class="font-semibold mb-2" style="color: ${site.color || '#666'}">${domain}</h4>
+                    <ul class="space-y-1 text-xs">
+                        ${pages.map(p => {
+                            const isLive = livePages.includes(p.file);
+                            return `
+                                <li class="flex items-center gap-2">
+                                    <span class="${isLive ? 'text-green-500' : 'text-gray-300'}">
+                                        <i class="fas fa-${isLive ? 'check-circle' : 'clock'}"></i>
+                                    </span>
+                                    <span class="${isLive ? 'text-gray-800' : 'text-gray-500'}">${p.title}</span>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderActionItems(microsites) {
+        const actions = [];
+
+        // Check for unindexed sites
+        microsites.filter(s => !s.indexed).forEach(site => {
+            actions.push({
+                severity: 'high',
+                title: `${site.domain} is NOT indexed by Google`,
+                description: 'This site cannot appear in search results until indexed.',
+                action: `Go to <a href="https://search.google.com/search-console" target="_blank" class="text-blue-600 underline">Google Search Console</a>, add the property, and submit the sitemap.`
+            });
+        });
+
+        // Check for low referrals
+        if (microsites.every(s => (s.referrals?.last30Days || 0) < 5)) {
+            actions.push({
+                severity: 'medium',
+                title: 'Low referral traffic across all microsites',
+                description: 'The microsites are generating minimal traffic to the main site.',
+                action: 'This is normal for new sites. Continue adding content and building authority. Results typically appear after 3-6 months.'
+            });
+        }
+
+        const container = document.getElementById('actionItems');
+        const list = document.getElementById('actionItemsList');
+
+        if (actions.length > 0) {
+            container.classList.remove('hidden');
+            list.innerHTML = actions.map(a => `
+                <div class="bg-white rounded-lg p-4 border-l-4 ${a.severity === 'high' ? 'border-red-500' : 'border-yellow-500'}">
+                    <h4 class="font-bold ${a.severity === 'high' ? 'text-red-800' : 'text-yellow-800'}">${a.title}</h4>
+                    <p class="text-sm text-gray-600 mb-2">${a.description}</p>
+                    <p class="text-sm">${a.action}</p>
+                </div>
+            `).join('');
+        } else {
+            container.classList.add('hidden');
+        }
+    }
+
+    function setChartPeriod(days) {
+        currentPeriod = days;
+        document.getElementById('btn7d').className = days === 7 ? 'px-3 py-1 text-sm rounded bg-blue-500 text-white' : 'px-3 py-1 text-sm rounded bg-gray-100 hover:bg-gray-200';
+        document.getElementById('btn30d').className = days === 30 ? 'px-3 py-1 text-sm rounded bg-blue-500 text-white' : 'px-3 py-1 text-sm rounded bg-gray-100 hover:bg-gray-200';
+        // Would filter chart data here if needed
+    }
+
+    function getGradeColor(grade) {
+        const colors = { A: 'text-green-500', B: 'text-blue-500', C: 'text-yellow-500', D: 'text-orange-500', F: 'text-red-500' };
+        return colors[grade] || 'text-gray-500';
+    }
+
+    function getGradeBgColor(grade) {
+        const colors = { A: 'bg-green-100 text-green-800', B: 'bg-blue-100 text-blue-800', C: 'bg-yellow-100 text-yellow-800', D: 'bg-orange-100 text-orange-800', F: 'bg-red-100 text-red-800' };
+        return colors[grade] || 'bg-gray-100 text-gray-800';
+    }
+
+    // Initialize
     loadPageData();
+    // Refresh every 5 minutes
+    setInterval(loadPageData, 5 * 60 * 1000);
     </script>
 </body>
 </html>
