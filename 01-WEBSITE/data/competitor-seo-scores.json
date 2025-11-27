@@ -1,0 +1,21 @@
+{
+  "lastUpdated": "2025-11-27T00:00:00Z",
+  "nextUpdate": "2025-12-04T00:00:00Z",
+  "note": "Updated weekly via scheduled job. Scores from Google PageSpeed Insights API.",
+  "competitors": [
+    {
+      "rank": 1,
+      "name": "Chris David Salon",
+      "domain": "chrisdavidsalon.com",
+      "isUs": true,
+      "reviews": 140,
+      "rating": 4.9,
+      "pageRank": 2.88,
+      "performance": 57,
+      "seoScore": 100,
+      "accessibility": 89,
+      "bestPractices": 100,
+      "overallScore": 74
+    }
+  ]
+}
