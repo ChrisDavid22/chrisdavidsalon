@@ -1,0 +1,15 @@
+{
+  "outputDirectory": "docs/claude-conversations",
+  "filenamePattern": "claude-convo-{date}-{number}.md",
+  "formatting": {
+    "syntaxHighlighting": true,
+    "includeMetadata": true,
+    "includeTimestamps": true,
+    "includeToolCalls": true
+  },
+  "performance": {
+    "maxBufferSize": 100,
+    "flushInterval": 5000,
+    "asyncWrites": true
+  }
+}

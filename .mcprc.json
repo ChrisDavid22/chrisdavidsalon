@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "dialogue-reporter": {
+      "command": "node",
+      "args": [
+        "/Users/stuartkerr/.npm-global/lib/node_modules/dialogue-reporter/dist/mcp/server.js"
+      ],
+      "env": {
+        "DIALOGUE_REPORTER_CONFIG": "/Users/stuartkerr/Code/Chris_David_Salon/chrisdavidsalon/.dialogue-reporter.json"
+      }
+    }
+  }
+}
