@@ -1,7 +1,12 @@
 {
-  "version": "2.12.1",
-  "lastUpdated": "2025-11-27T14:00:00Z",
+  "version": "2.12.2",
+  "lastUpdated": "2025-11-27T15:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.12.2",
+      "date": "2025-11-27T15:00:00Z",
+      "changes": "RANKINGS PAGE OVERHAUL: (1) Complete rebuild to show live Search Console data. (2) Top 30 keywords with Position, Impressions, Clicks, CTR. (3) Opportunity Score algorithm: high impressions + low rank = best targets. (4) Sortable table by opportunity/clicks/impressions. (5) Top Opportunities section highlights best keywords to target with new SEO pages."
+    },
     {
       "version": "2.12.1",
       "date": "2025-11-27T14:00:00Z",
