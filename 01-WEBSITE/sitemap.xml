@@ -2,10 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Homepage -->
+  <!-- ============================================ -->
+  <!-- HOMEPAGE -->
+  <!-- ============================================ -->
   <url>
     <loc>https://www.chrisdavidsalon.com/</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -14,12 +16,35 @@
     </image:image>
   </url>
 
-  <!-- Premium Brands Page -->
+  <!-- ============================================ -->
+  <!-- MAIN PAGES -->
+  <!-- ============================================ -->
   <url>
     <loc>https://www.chrisdavidsalon.com/premiumbrands.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.chrisdavidsalon.com/blog.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.chrisdavidsalon.com/careers.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.chrisdavidsalon.com/policies.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- ============================================ -->
@@ -29,7 +54,7 @@
   <!-- MEGA: Hair Salon Delray Beach (targets "hair salon near me" - 3.35M/mo) -->
   <url>
     <loc>https://www.chrisdavidsalon.com/services/hair-salon-delray-beach.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -37,7 +62,7 @@
   <!-- MEGA: Hair Color (targets balayage 40K, highlights 30K, hair color 25K) -->
   <url>
     <loc>https://www.chrisdavidsalon.com/services/hair-color-delray-beach.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -45,7 +70,7 @@
   <!-- Women's Haircut (targets "womens haircut near me" - high volume) -->
   <url>
     <loc>https://www.chrisdavidsalon.com/services/womens-haircut-delray-beach.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -53,23 +78,31 @@
   <!-- Balayage (40K+ searches/month) -->
   <url>
     <loc>https://www.chrisdavidsalon.com/services/balayage-delray-beach.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Color Correction (Chris's specialty) -->
+  <!-- Color Correction Landing Page (Chris's specialty) -->
   <url>
     <loc>https://www.chrisdavidsalon.com/services/color-correction-delray-beach.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Color Correction Service Page -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/services/color-correction.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 
   <!-- Hair Extensions -->
   <url>
     <loc>https://www.chrisdavidsalon.com/services/hair-extensions-delray-beach.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -77,7 +110,7 @@
   <!-- Keratin Treatment -->
   <url>
     <loc>https://www.chrisdavidsalon.com/services/keratin-treatment-delray-beach.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -85,20 +118,26 @@
   <!-- Wedding Hair -->
   <url>
     <loc>https://www.chrisdavidsalon.com/services/wedding-hair-delray-beach.html</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <!-- ============================================ -->
-  <!-- ADMIN DASHBOARD (noindex but in sitemap for completeness) -->
+  <!-- LOCATION PAGES -->
   <!-- ============================================ -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/locations/delray-beach-hair-salon.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <url>
-    <loc>https://www.chrisdavidsalon.com/admin/</loc>
-    <lastmod>2025-11-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.chrisdavidsalon.com/locations/atlantic-avenue-colorist.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
