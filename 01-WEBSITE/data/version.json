@@ -1,7 +1,12 @@
 {
-  "version": "2.12.4",
-  "lastUpdated": "2025-11-27T17:00:00Z",
+  "version": "2.12.5",
+  "lastUpdated": "2025-11-27T18:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.12.5",
+      "date": "2025-11-27T18:00:00Z",
+      "changes": "EXPANDED COLOR KEYWORD STRATEGY: (1) Shows current rankings Chris is winning (grey blending #1, color specialist #8, goldwell #8). (2) 18 target keywords in 3 categories: Color Correction, Color Expert/Specialist, Brand & Specialty. (3) Includes davines, goldwell, organic color, blonde specialist, grey coverage keywords."
+    },
     {
       "version": "2.12.4",
       "date": "2025-11-27T17:00:00Z",
