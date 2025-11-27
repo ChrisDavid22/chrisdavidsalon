@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
+
   <!-- Homepage -->
   <url>
     <loc>https://www.chrisdavidsalon.com/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2025-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -13,53 +13,92 @@
       <image:title>Chris David Salon Interior</image:title>
     </image:image>
   </url>
-  
+
   <!-- Premium Brands Page -->
   <url>
     <loc>https://www.chrisdavidsalon.com/premiumbrands.html</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- Services (anchored sections on main page) -->
-  <url>
-    <loc>https://www.chrisdavidsalon.com/#services</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2025-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- About Section -->
+
+  <!-- ============================================ -->
+  <!-- HIGH-VALUE SERVICE LANDING PAGES -->
+  <!-- ============================================ -->
+
+  <!-- MEGA: Hair Salon Delray Beach (targets "hair salon near me" - 3.35M/mo) -->
   <url>
-    <loc>https://www.chrisdavidsalon.com/#about</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Gallery Section -->
-  <url>
-    <loc>https://www.chrisdavidsalon.com/#gallery</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://www.chrisdavidsalon.com/services/hair-salon-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.95</priority>
   </url>
-  
-  <!-- Careers Section -->
+
+  <!-- MEGA: Hair Color (targets balayage 40K, highlights 30K, hair color 25K) -->
   <url>
-    <loc>https://www.chrisdavidsalon.com/#careers</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://www.chrisdavidsalon.com/services/hair-color-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.95</priority>
   </url>
-  
-  <!-- Contact Section -->
+
+  <!-- Women's Haircut (targets "womens haircut near me" - high volume) -->
   <url>
-    <loc>https://www.chrisdavidsalon.com/#contact</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.chrisdavidsalon.com/services/womens-haircut-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  
+
+  <!-- Balayage (40K+ searches/month) -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/services/balayage-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Color Correction (Chris's specialty) -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/services/color-correction-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Hair Extensions -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/services/hair-extensions-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Keratin Treatment -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/services/keratin-treatment-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Wedding Hair -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/services/wedding-hair-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ============================================ -->
+  <!-- ADMIN DASHBOARD (noindex but in sitemap for completeness) -->
+  <!-- ============================================ -->
+
+  <url>
+    <loc>https://www.chrisdavidsalon.com/admin/</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>

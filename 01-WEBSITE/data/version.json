@@ -1,7 +1,12 @@
 {
-  "version": "2.12.7",
-  "lastUpdated": "2025-11-28T00:00:00Z",
+  "version": "2.12.8",
+  "lastUpdated": "2025-11-28T01:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.12.8",
+      "date": "2025-11-28T01:00:00Z",
+      "changes": "SEO LANDING PAGE EXPANSION: (1) NEW /services/hair-salon-delray-beach.html - mega page targeting 'hair salon near me' (3.35M/mo searches). (2) NEW /services/womens-haircut-delray-beach.html - targets women's haircut keywords. (3) UPDATED sitemap.xml - added ALL 8 service pages with proper priorities for Google indexing. (4) All pages have schema markup, GA4 tracking, and link to each other."
+    },
     {
       "version": "2.12.7",
       "date": "2025-11-28T00:00:00Z",
