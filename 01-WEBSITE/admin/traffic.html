@@ -174,6 +174,58 @@
             </div>
         </div>
 
+        <!-- Search Console Data -->
+        <div class="bg-white rounded-xl shadow p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="text-lg font-bold">Google Search Performance</h2>
+                    <p class="text-sm text-gray-500">How people find you in Google Search</p>
+                </div>
+                <a href="https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Achrisdavidsalon.com"
+                   target="_blank"
+                   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-semibold text-sm flex items-center gap-2">
+                    <i class="fas fa-external-link-alt"></i>
+                    Open Search Console
+                </a>
+            </div>
+
+            <!-- Search Console Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-blue-50 rounded-lg p-4 text-center">
+                    <div class="text-sm text-blue-600 font-semibold">Avg Position</div>
+                    <div class="text-3xl font-bold text-blue-800" id="scAvgPosition">--</div>
+                </div>
+                <div class="bg-green-50 rounded-lg p-4 text-center">
+                    <div class="text-sm text-green-600 font-semibold">Total Clicks</div>
+                    <div class="text-3xl font-bold text-green-800" id="scTotalClicks">--</div>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                    <div class="text-sm text-purple-600 font-semibold">Impressions</div>
+                    <div class="text-3xl font-bold text-purple-800" id="scImpressions">--</div>
+                </div>
+                <div class="bg-yellow-50 rounded-lg p-4 text-center">
+                    <div class="text-sm text-yellow-600 font-semibold">Click Rate</div>
+                    <div class="text-3xl font-bold text-yellow-800" id="scCTR">--%</div>
+                </div>
+            </div>
+
+            <!-- Top Keywords -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-3">Top Keywords (by clicks)</h3>
+                    <div id="scTopKeywords" class="space-y-2">
+                        <div class="text-gray-400 text-center py-4">Loading keyword data...</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-700 mb-3">Opportunities (high impressions, low rank)</h3>
+                    <div id="scOpportunities" class="space-y-2">
+                        <div class="text-gray-400 text-center py-4">Loading opportunities...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Two Column Layout -->
         <div class="grid md:grid-cols-2 gap-6 mb-6">
             <!-- Traffic Sources -->
@@ -718,11 +770,80 @@
             }
         }
 
+        // Load Search Console data
+        async function loadSearchConsoleData() {
+            try {
+                const response = await fetch(`${API_BASE}/api/ga4-analytics?type=search-rankings`);
+                const result = await response.json();
+
+                if (result.success) {
+                    // Update metrics
+                    document.getElementById('scAvgPosition').textContent = result.summary.averagePosition;
+                    document.getElementById('scTotalClicks').textContent = result.summary.totalClicks.toLocaleString();
+                    document.getElementById('scImpressions').textContent = result.summary.totalImpressions.toLocaleString();
+                    document.getElementById('scCTR').textContent = result.summary.averageCTR + '%';
+
+                    // Top keywords
+                    const topKeywords = result.topKeywords.slice(0, 8);
+                    document.getElementById('scTopKeywords').innerHTML = topKeywords.map(k => `
+                        <div class="flex justify-between items-center py-2 px-3 bg-gray-50 rounded">
+                            <span class="text-sm text-gray-700 truncate" style="max-width: 55%">${k.keyword}</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-500">${k.clicks} clicks</span>
+                                <span class="text-xs font-semibold px-2 py-1 rounded ${
+                                    parseFloat(k.position) <= 10 ? 'bg-green-100 text-green-700' :
+                                    parseFloat(k.position) <= 20 ? 'bg-yellow-100 text-yellow-700' :
+                                    'bg-red-100 text-red-700'
+                                }">#${k.position}</span>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    // Opportunities
+                    if (result.opportunities && result.opportunities.length > 0) {
+                        document.getElementById('scOpportunities').innerHTML = result.opportunities.map(k => `
+                            <div class="flex justify-between items-center py-2 px-3 bg-orange-50 rounded border border-orange-200">
+                                <span class="text-sm text-gray-700 truncate" style="max-width: 55%">${k.keyword}</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs text-orange-600">${k.impressions} impressions</span>
+                                    <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-700">#${k.position}</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    } else {
+                        document.getElementById('scOpportunities').innerHTML = `
+                            <div class="text-green-600 text-center py-4">
+                                <i class="fas fa-check-circle mr-2"></i>No major opportunities found - rankings are solid!
+                            </div>
+                        `;
+                    }
+                } else {
+                    document.getElementById('scAvgPosition').textContent = '--';
+                    document.getElementById('scTotalClicks').textContent = '--';
+                    document.getElementById('scImpressions').textContent = '--';
+                    document.getElementById('scCTR').textContent = '--%';
+                    document.getElementById('scTopKeywords').innerHTML = `
+                        <div class="text-red-500 text-center py-4 text-sm">${result.error || 'Unable to load Search Console data'}</div>
+                    `;
+                    document.getElementById('scOpportunities').innerHTML = `
+                        <div class="text-gray-400 text-center py-4 text-sm">${result.suggestion || 'Check Search Console access'}</div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Search Console error:', error);
+                document.getElementById('scTopKeywords').innerHTML = `
+                    <div class="text-red-500 text-center py-4 text-sm">Failed to connect to API</div>
+                `;
+            }
+        }
+
         // Load on page load
         loadTrafficData();
+        loadSearchConsoleData();
 
         // Auto-refresh every 5 minutes
         setInterval(loadTrafficData, 300000);
+        setInterval(loadSearchConsoleData, 300000);
     </script>
 </body>
 </html>
