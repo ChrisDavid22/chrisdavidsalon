@@ -1,7 +1,12 @@
 {
-  "version": "2.11.2",
-  "lastUpdated": "2025-11-27T12:30:00Z",
+  "version": "2.12.0",
+  "lastUpdated": "2025-11-27T13:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.12.0",
+      "date": "2025-11-27T13:00:00Z",
+      "changes": "SEARCH CONSOLE INTEGRATION: (1) Added Google Search Console API to pull real keyword rankings. (2) Organic Rankings section now shows: average position, total keywords, clicks, impressions, CTR. (3) Top 5 keywords displayed with position badges (green ≤10, yellow ≤20, red >20). (4) API added to existing ga4-analytics.js endpoint as type=search-rankings."
+    },
     {
       "version": "2.11.2",
       "date": "2025-11-27T12:30:00Z",

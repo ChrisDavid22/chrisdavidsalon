@@ -1,5 +1,7 @@
-// GA4 Analytics API - Pulls REAL data from Google Analytics 4
+// GA4 Analytics API + Search Console API
+// Pulls REAL data from Google Analytics 4 and Google Search Console
 // Requires: GA4_PROPERTY_ID and GOOGLE_SERVICE_ACCOUNT_JSON in Vercel env vars
+// Search Console: Service account needs Full access in Search Console settings
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -71,6 +73,8 @@ export default async function handler(req, res) {
         return await getDeviceBreakdown(analyticsDataClient, propertyId, startDate, endDate, res);
       case 'events':
         return await getEvents(analyticsDataClient, propertyId, startDate, endDate, res);
+      case 'search-rankings':
+        return await getSearchRankings(credentials, startDate, endDate, res);
       default:
         return await getOverview(analyticsDataClient, propertyId, startDate, endDate, res);
     }
@@ -393,4 +397,117 @@ async function getEvents(client, propertyId, startDate, endDate, res) {
     },
     fetchedAt: new Date().toISOString()
   });
+}
+
+// Get Search Console keyword rankings
+async function getSearchRankings(credentials, startDate, endDate, res) {
+  try {
+    const { google } = await import('googleapis');
+
+    // Create auth client
+    const auth = new google.auth.GoogleAuth({
+      credentials: credentials,
+      scopes: ['https://www.googleapis.com/auth/webmasters.readonly']
+    });
+
+    const searchconsole = google.searchconsole({ version: 'v1', auth });
+
+    // Convert date format if needed (30daysAgo -> actual date)
+    const now = new Date();
+    let start, end;
+
+    if (startDate === '30daysAgo') {
+      start = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    } else if (startDate === '7daysAgo') {
+      start = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    } else {
+      start = new Date(startDate);
+    }
+
+    if (endDate === 'today') {
+      end = new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000); // Search Console data is delayed 3 days
+    } else {
+      end = new Date(endDate);
+    }
+
+    const startDateStr = start.toISOString().split('T')[0];
+    const endDateStr = end.toISOString().split('T')[0];
+
+    // Query Search Console API
+    const response = await searchconsole.searchanalytics.query({
+      siteUrl: 'sc-domain:chrisdavidsalon.com',
+      requestBody: {
+        startDate: startDateStr,
+        endDate: endDateStr,
+        dimensions: ['query'],
+        rowLimit: 50,
+        dataState: 'final'
+      }
+    });
+
+    const rows = response.data.rows || [];
+
+    // Process and categorize keywords
+    const keywords = rows.map(row => ({
+      keyword: row.keys[0],
+      clicks: row.clicks,
+      impressions: row.impressions,
+      ctr: (row.ctr * 100).toFixed(1),
+      position: row.position.toFixed(1)
+    }));
+
+    // Categorize by intent
+    const branded = keywords.filter(k =>
+      k.keyword.toLowerCase().includes('chris david')
+    );
+    const service = keywords.filter(k =>
+      k.keyword.toLowerCase().match(/balayage|color|highlight|keratin|extension|wedding|bridal/)
+    );
+    const local = keywords.filter(k =>
+      k.keyword.toLowerCase().match(/delray|palm beach|boca|near me|salon/)
+    );
+
+    // Calculate average position
+    const avgPosition = keywords.length > 0
+      ? (keywords.reduce((sum, k) => sum + parseFloat(k.position), 0) / keywords.length).toFixed(1)
+      : 0;
+
+    // Find best opportunities (high impressions, low position)
+    const opportunities = keywords
+      .filter(k => k.impressions > 50 && parseFloat(k.position) > 10)
+      .sort((a, b) => b.impressions - a.impressions)
+      .slice(0, 5);
+
+    return res.status(200).json({
+      success: true,
+      dataSource: 'google-search-console-api',
+      isLiveData: true,
+      dateRange: { startDate: startDateStr, endDate: endDateStr },
+      summary: {
+        totalKeywords: keywords.length,
+        totalClicks: keywords.reduce((sum, k) => sum + k.clicks, 0),
+        totalImpressions: keywords.reduce((sum, k) => sum + k.impressions, 0),
+        averagePosition: avgPosition,
+        averageCTR: keywords.length > 0
+          ? (keywords.reduce((sum, k) => sum + parseFloat(k.ctr), 0) / keywords.length).toFixed(1)
+          : 0
+      },
+      categories: {
+        branded: branded.slice(0, 10),
+        service: service.slice(0, 10),
+        local: local.slice(0, 10)
+      },
+      opportunities,
+      topKeywords: keywords.slice(0, 20),
+      fetchedAt: new Date().toISOString()
+    });
+
+  } catch (error) {
+    console.error('Search Console Error:', error);
+    return res.status(200).json({
+      success: false,
+      error: error.message,
+      suggestion: 'Make sure the service account has Full access in Search Console settings'
+    });
+  }
 }
