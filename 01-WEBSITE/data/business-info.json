@@ -130,76 +130,162 @@
       "Facebook",
       "Instagram"
     ],
-    "priority": [
-      {
-        "name": "Apple Maps",
-        "url": "https://mapsconnect.apple.com",
-        "status": "pending",
-        "automatable": false
-      },
-      {
-        "name": "Bing Places",
-        "url": "https://www.bingplaces.com",
-        "status": "pending",
-        "automatable": true
-      },
-      {
-        "name": "Yellow Pages",
-        "url": "https://www.yellowpages.com/addlisting",
-        "status": "pending",
-        "automatable": true
-      },
-      {
-        "name": "Foursquare",
-        "url": "https://business.foursquare.com",
-        "status": "pending",
-        "automatable": true
-      },
-      {
-        "name": "Hotfrog",
-        "url": "https://www.hotfrog.com",
-        "status": "pending",
-        "automatable": true
-      },
-      {
-        "name": "Manta",
-        "url": "https://www.manta.com/add-company",
-        "status": "pending",
-        "automatable": true
-      },
-      {
-        "name": "Superpages",
-        "url": "https://www.superpages.com",
-        "status": "pending",
-        "automatable": true
-      },
-      {
-        "name": "CitySearch",
-        "url": "https://www.citysearch.com",
-        "status": "pending",
-        "automatable": true
-      }
-    ],
-    "dataAggregators": [
-      {
-        "name": "Data Axle (InfoUSA)",
-        "coverage": "Feeds 70+ directories",
-        "hasApi": true,
-        "cost": "~$300/year"
-      },
-      {
-        "name": "Neustar/Localeze",
-        "coverage": "Feeds 100+ directories",
-        "hasApi": true,
-        "cost": "~$300/year"
-      },
-      {
-        "name": "Foursquare",
-        "coverage": "Feeds Apple Maps, Uber, etc",
-        "hasApi": true,
-        "cost": "Free for basic"
-      }
-    ]
+    "directories": {
+      "tier1_critical": [
+        {
+          "name": "Apple Maps",
+          "url": "https://mapsconnect.apple.com",
+          "notes": "Apple ID required. Feeds Siri, CarPlay, all Apple devices.",
+          "status": "pending"
+        },
+        {
+          "name": "Bing Places",
+          "url": "https://www.bingplaces.com",
+          "notes": "Microsoft account required. Feeds Cortana, Edge, Windows.",
+          "status": "pending"
+        },
+        {
+          "name": "Foursquare",
+          "url": "https://business.foursquare.com",
+          "notes": "FREE. Feeds Apple Maps, Uber, Samsung, 100+ apps.",
+          "status": "pending"
+        }
+      ],
+      "tier2_local": [
+        {
+          "name": "Delray Beach Chamber of Commerce",
+          "url": "https://www.delraybeach.com/business-directory",
+          "notes": "Email info@delraybeach.com to request listing.",
+          "status": "pending"
+        },
+        {
+          "name": "Downtown Delray Beach",
+          "url": "https://downtowndelraybeach.com/directory",
+          "notes": "Online form. Local high-authority link.",
+          "status": "pending"
+        },
+        {
+          "name": "Nextdoor Business",
+          "url": "https://business.nextdoor.com",
+          "notes": "Claim free business page. Reaches local neighborhoods.",
+          "status": "pending"
+        },
+        {
+          "name": "Palm Beach Post - Best Of",
+          "url": "https://www.palmbeachpost.com",
+          "notes": "Submit for 'Best Of' nominations when voting opens.",
+          "status": "pending"
+        }
+      ],
+      "tier3_beauty_industry": [
+        {
+          "name": "Booksy",
+          "url": "https://booksy.com/biz/sign-up",
+          "notes": "Beauty booking platform. Free listing, paid booking features.",
+          "status": "pending"
+        },
+        {
+          "name": "StyleSeat",
+          "url": "https://www.styleseat.com/pro/signup",
+          "notes": "Popular with stylists. Free profile.",
+          "status": "pending"
+        },
+        {
+          "name": "Vagaro",
+          "url": "https://www.vagaro.com/businesssignup",
+          "notes": "Salon booking software. Free listing.",
+          "status": "pending"
+        },
+        {
+          "name": "Fresha",
+          "url": "https://www.fresha.com/for-business",
+          "notes": "Free booking software with marketplace listing.",
+          "status": "pending"
+        },
+        {
+          "name": "Goldwell Salon Locator",
+          "url": "https://www.goldwell.com/en-us/salon-locator",
+          "notes": "Contact Goldwell rep to be added (Chris is educator).",
+          "status": "pending"
+        },
+        {
+          "name": "Davines Salon Finder",
+          "url": "https://us.davines.com/pages/salon-finder",
+          "notes": "Contact Davines rep (Chris was 6-year educator).",
+          "status": "pending"
+        }
+      ],
+      "tier4_general_directories": [
+        {
+          "name": "Yellow Pages",
+          "url": "https://www.yellowpages.com/addlisting",
+          "notes": "Free basic listing. Email verification.",
+          "status": "pending"
+        },
+        {
+          "name": "Hotfrog",
+          "url": "https://www.hotfrog.com/add-business",
+          "notes": "Free. No verification needed. Quick signup.",
+          "status": "pending"
+        },
+        {
+          "name": "Manta",
+          "url": "https://www.manta.com/add-company",
+          "notes": "Free listing. Email verification.",
+          "status": "pending"
+        },
+        {
+          "name": "Brownbook",
+          "url": "https://www.brownbook.net/business/add/",
+          "notes": "Free. No verification. International directory.",
+          "status": "pending"
+        },
+        {
+          "name": "Cylex",
+          "url": "https://www.cylex.us.com/add-company.html",
+          "notes": "Free. Quick submission.",
+          "status": "pending"
+        },
+        {
+          "name": "EZLocal",
+          "url": "https://www.ezlocal.com/add-listing",
+          "notes": "Free business directory.",
+          "status": "pending"
+        },
+        {
+          "name": "TripAdvisor",
+          "url": "https://www.tripadvisor.com/GetListedNew",
+          "notes": "Good for tourism visibility. Free listing.",
+          "status": "pending"
+        },
+        {
+          "name": "MapQuest",
+          "url": "https://www.mapquest.com/places",
+          "notes": "Pulls from Foursquare. Submit there first.",
+          "status": "pending"
+        }
+      ],
+      "tier5_data_aggregators": [
+        {
+          "name": "Data Axle (InfoUSA)",
+          "url": "https://www.data-axle.com",
+          "notes": "Feeds 70+ directories. ~$300/year. Highest ROI.",
+          "cost": "$300/year"
+        },
+        {
+          "name": "Neustar/Localeze",
+          "url": "https://www.neustarlocaleze.biz",
+          "notes": "Feeds 100+ directories. ~$300/year.",
+          "cost": "$300/year"
+        },
+        {
+          "name": "Yext",
+          "url": "https://www.yext.com",
+          "notes": "Manages 75+ directories. Premium but comprehensive.",
+          "cost": "$500+/year"
+        }
+      ]
+    }
   },
   "metadata": {
     "created": "2025-11-26",

@@ -1,0 +1,148 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: "🏆 DELRAY BEACH'S #1 RATED SALON"
+    - heading "The Best Hair Salon in Delray Beach" [level=1] [ref=e5]
+    - paragraph [ref=e6]: 133 Five-Star Reviews Can't Be Wrong
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: 
+        - generic [ref=e10]: 
+        - generic [ref=e11]: 
+        - generic [ref=e12]: 
+        - generic [ref=e13]: 
+      - generic [ref=e14]: 4.9/5.0 (133 Reviews)
+    - link "Book at Delray's Best Salon →" [ref=e15] [cursor=pointer]:
+      - /url: https://chrisdavidsalon.com
+  - generic [ref=e17]:
+    - 'heading "Why We''re Rated #1 in Delray Beach" [level=2] [ref=e18]'
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: 🎨
+        - heading "Best Colorist" [level=3] [ref=e22]
+        - paragraph [ref=e23]: Master colorist Chris David with 20+ years perfecting balayage and color correction
+      - generic [ref=e24]:
+        - generic [ref=e25]: ⭐
+        - heading "Best Reviews" [level=3] [ref=e26]
+        - paragraph [ref=e27]: More 5-star reviews than any other Delray Beach salon - 133 and counting!
+      - generic [ref=e28]:
+        - generic [ref=e29]: 💎
+        - heading "Best Experience" [level=3] [ref=e30]
+        - paragraph [ref=e31]: Luxury service with personalized attention from Delray's top hair expert
+  - generic [ref=e33]:
+    - heading "Services We're Famous For" [level=2] [ref=e34]
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e38]: 
+        - generic [ref=e39]:
+          - heading "Best Balayage in Delray Beach" [level=3] [ref=e40]
+          - paragraph [ref=e41]: "Natural, sun-kissed highlights that grow out beautifully. Rated #1 for balayage by our clients."
+          - paragraph [ref=e42]: Starting at $250
+      - generic [ref=e43]:
+        - generic [ref=e45]: 
+        - generic [ref=e46]:
+          - heading "Best Color Correction Specialist" [level=3] [ref=e47]
+          - paragraph [ref=e48]: Fix color disasters with Delray's most experienced color correction expert.
+          - paragraph [ref=e49]: Starting at $350
+      - generic [ref=e50]:
+        - generic [ref=e52]: 
+        - generic [ref=e53]:
+          - heading "Best Hair Extensions" [level=3] [ref=e54]
+          - paragraph [ref=e55]: Natural-looking extensions that blend perfectly with your hair.
+          - paragraph [ref=e56]: Starting at $500
+      - generic [ref=e57]:
+        - generic [ref=e59]: 
+        - generic [ref=e60]:
+          - heading "Best Brazilian Blowout" [level=3] [ref=e61]
+          - paragraph [ref=e62]: "Smooth, frizz-free hair that lasts for months. #1 for Brazilian treatments."
+          - paragraph [ref=e63]: Starting at $300
+  - generic [ref=e65]:
+    - heading "Why Chris David Salon is Delray's Best Choice" [level=2] [ref=e66]
+    - table [ref=e68]:
+      - rowgroup [ref=e69]:
+        - row "Feature Chris David Salon Other Salons" [ref=e70]:
+          - columnheader "Feature" [ref=e71]
+          - columnheader "Chris David Salon" [ref=e72]
+          - columnheader "Other Salons" [ref=e73]
+      - rowgroup [ref=e74]:
+        - row "Master Colorist ✅ Yes (20+ years) Sometimes" [ref=e75]:
+          - cell "Master Colorist" [ref=e76]
+          - cell "✅ Yes (20+ years)" [ref=e77]
+          - cell "Sometimes" [ref=e78]
+        - row "Google Rating ⭐ 4.9/5 (133 reviews) 4.5 average" [ref=e79]:
+          - cell "Google Rating" [ref=e80]
+          - cell "⭐ 4.9/5 (133 reviews)" [ref=e81]
+          - cell "4.5 average" [ref=e82]
+        - row "Personal Attention ✅ Chris personally handles every client Multiple stylists" [ref=e83]:
+          - cell "Personal Attention" [ref=e84]
+          - cell "✅ Chris personally handles every client" [ref=e85]
+          - cell "Multiple stylists" [ref=e86]
+        - row "Color Correction Expert ✅ Specialist Limited experience" [ref=e87]:
+          - cell "Color Correction Expert" [ref=e88]
+          - cell "✅ Specialist" [ref=e89]
+          - cell "Limited experience" [ref=e90]
+        - row "Online Booking ✅ 24/7 Easy Booking Call only" [ref=e91]:
+          - cell "Online Booking" [ref=e92]
+          - cell "✅ 24/7 Easy Booking" [ref=e93]
+          - cell "Call only" [ref=e94]
+        - row "Location ✅ Convenient Delray Location Varies" [ref=e95]:
+          - cell "Location" [ref=e96]
+          - cell "✅ Convenient Delray Location" [ref=e97]
+          - cell "Varies" [ref=e98]
+  - generic [ref=e100]:
+    - heading "Why Clients Say We're The Best" [level=2] [ref=e101]
+    - generic [ref=e102]:
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - generic [ref=e105]: 
+          - generic [ref=e106]: 
+          - generic [ref=e107]: 
+          - generic [ref=e108]: 
+          - generic [ref=e109]: 
+        - paragraph [ref=e110]: "\"Best balayage I've ever had! Chris is truly a master colorist. I've been to many salons in Delray and this is by far the best!\""
+        - paragraph [ref=e111]: "- Sarah M."
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e114]: 
+          - generic [ref=e115]: 
+          - generic [ref=e116]: 
+          - generic [ref=e117]: 
+          - generic [ref=e118]: 
+        - paragraph [ref=e119]: "\"Finally found the best hair salon in Delray Beach! Chris fixed my color disaster and made it look amazing. Highly recommend!\""
+        - paragraph [ref=e120]: "- Jennifer R."
+      - generic [ref=e121]:
+        - generic [ref=e122]:
+          - generic [ref=e123]: 
+          - generic [ref=e124]: 
+          - generic [ref=e125]: 
+          - generic [ref=e126]: 
+          - generic [ref=e127]: 
+        - paragraph [ref=e128]: "\"Best hair salon experience in Delray! The attention to detail and expertise is unmatched. Worth every penny!\""
+        - paragraph [ref=e129]: "- Maria L."
+    - link "Read All 133 Five-Star Reviews →" [ref=e131] [cursor=pointer]:
+      - /url: https://g.page/r/CYQww8PBocaVEBM/review
+  - generic [ref=e133]:
+    - heading "Ready to Experience Delray's Best Salon?" [level=2] [ref=e134]
+    - paragraph [ref=e135]: Join 133+ happy clients who've found their perfect salon
+    - generic [ref=e136]:
+      - link "Book Your Appointment Now" [ref=e137] [cursor=pointer]:
+        - /url: https://chrisdavidsalon.com
+      - link " Or Call (561) 299-0950" [ref=e139] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e140]: 
+        - text: Or Call (561) 299-0950
+  - contentinfo [ref=e141]:
+    - generic [ref=e142]:
+      - paragraph [ref=e143]:
+        - text: Part of
+        - link "Chris David Salon" [ref=e144] [cursor=pointer]:
+          - /url: https://chrisdavidsalon.com
+      - paragraph [ref=e145]:
+        - text: 1878C Dr. Andres Way, Delray Beach, FL 33445 |
+        - link "(561) 299-0950" [ref=e146] [cursor=pointer]:
+          - /url: tel:5612990950
+      - paragraph [ref=e148]: "© 2024 Best Delray Hair Salon. Delray Beach's #1 Rated Hair Salon."
+      - generic [ref=e149]: "v1.1.0 | Last updated: Nov 26, 2025"
+```

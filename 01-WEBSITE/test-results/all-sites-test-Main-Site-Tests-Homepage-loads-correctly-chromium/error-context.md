@@ -1,0 +1,531 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - img "Chris David Salon" [ref=e7]
+          - generic [ref=e8]: Andre Design District • Delray Beach
+        - navigation [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: "#home"
+          - link "About" [ref=e11] [cursor=pointer]:
+            - /url: "#about"
+          - link "Services " [ref=e13] [cursor=pointer]:
+            - /url: "#services"
+            - text: Services
+            - generic [ref=e14]: 
+          - link "Gallery" [ref=e15] [cursor=pointer]:
+            - /url: "#gallery"
+          - link "Premium Brands" [ref=e16] [cursor=pointer]:
+            - /url: premiumbrands.html
+          - link "Reviews" [ref=e17] [cursor=pointer]:
+            - /url: "#testimonials"
+          - link "Blog" [ref=e18] [cursor=pointer]:
+            - /url: blog.html
+          - link "Contact" [ref=e19] [cursor=pointer]:
+            - /url: "#contact"
+        - generic [ref=e20]:
+          - link " (561) 299-0950" [ref=e21] [cursor=pointer]:
+            - /url: tel:5612990950
+            - generic [ref=e22]: 
+            - generic [ref=e23]: (561) 299-0950
+          - generic [ref=e24]:
+            - link:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+            - link:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+          - button "Book Now" [ref=e25] [cursor=pointer]
+          - text: 
+      - text:          
+  - generic [ref=e26]:
+    - img "Chris David Salon Interior" [ref=e28]
+    - generic [ref=e30]:
+      - heading "Chris David Salon" [level=1] [ref=e31]
+      - paragraph [ref=e32]: Goldwell Academy Graduate • 5x Certified Educator • 20 Years Excellence
+      - paragraph [ref=e33]: Delray Beach Since 2012 • Boca Raton Since 2007 • 20 Years Master Experience
+      - generic [ref=e34]:
+        - button "Book Your Transformation" [ref=e35] [cursor=pointer]
+        - link "Explore Services" [ref=e36] [cursor=pointer]:
+          - /url: "#services"
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: 
+          - generic [ref=e40]: 
+          - generic [ref=e41]: 
+          - generic [ref=e42]: 
+          - generic [ref=e43]: 
+        - generic [ref=e44]: 4.9/5.0 • 133+ Reviews • Serving Delray Beach, Boca Raton & Palm Beach County
+  - generic [ref=e47]:
+    - generic [ref=e48]:
+      - heading "Meet Chris David - Delray Beach's Master Colorist" [level=2] [ref=e49]
+      - generic [ref=e50]:
+        - paragraph [ref=e51]:
+          - strong [ref=e52]: 20 Years of Excellence • Educator for 5 Major Brands
+          - strong [ref=e53]: "Timeline of Excellence:"
+          - text: "Started in Boca Raton in 2007, established in Delray Beach since 2012. Chris David is a Goldwell Academy Graduate and Master Colorist with an unprecedented education resume:"
+          - text: •
+          - strong [ref=e54]: Davines Certified Educator (6 Years)
+          - text: "- Trained professionals nationwide"
+          - text: •
+          - strong [ref=e55]: Goldwell Academy Graduate & Master Colorist
+          - text: "- Elite certification"
+          - text: •
+          - strong [ref=e56]: Organic Color Systems Certified Educator
+          - text: "- Natural color expert"
+          - text: •
+          - strong [ref=e57]: Platinum Seamless Extensions Educator
+          - text: "- Extension specialist"
+          - text: •
+          - strong [ref=e58]: Cezanne Smoothing Certified Educator
+          - text: "- Keratin treatment expert"
+          - text: This isn't just experience - it's master-level expertise from someone who has trained hundreds of professionals across multiple premier brands.
+        - paragraph [ref=e59]: Specializing in creating unique, artistically inspired shapes and colors tailored to each individual, Chris transforms hair into wearable art. His signature techniques include revolutionary "cut the hair where it lives" dry cutting method and exclusive air composition color mapping. Located just 5 minutes from Atlantic Avenue and 10 minutes from Delray Beach's pristine beaches.
+        - paragraph [ref=e60]: Located in Delray Beach's prestigious Andre Design District (near Seagate Country Club and The Seagate Hotel), the salon offers a luxurious, personalized experience that goes beyond traditional hair services. As the preferred colorist for residents of Ocean Grande, Delray Beach Club, and Pineapple Grove, Chris's commitment to excellence makes him the go-to "hair salon near me" for discerning clients throughout South Palm Beach County. Free parking available - a rarity in downtown Delray Beach!
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]: 
+          - heading "Master Colorist" [level=4] [ref=e64]
+          - paragraph [ref=e65]: Industry-certified expert
+        - generic [ref=e66]:
+          - generic [ref=e67]: 
+          - heading "Educator" [level=4] [ref=e68]
+          - paragraph [ref=e69]: 10+ years teaching
+        - generic [ref=e70]:
+          - generic [ref=e71]: 
+          - heading "Hair Artist" [level=4] [ref=e72]
+          - paragraph [ref=e73]: Creative visionary
+        - generic [ref=e74]:
+          - generic [ref=e75]: 
+          - heading "Eco-Luxury" [level=4] [ref=e76]
+          - paragraph [ref=e77]: Davines partner
+    - generic [ref=e78]:
+      - img "Chris David at work" [ref=e79]
+      - generic [ref=e80]:
+        - generic [ref=e81]: 10+
+        - generic [ref=e82]: Years of Excellence
+  - generic [ref=e84]:
+    - generic [ref=e85]:
+      - heading "Signature Services" [level=2] [ref=e86]
+      - paragraph [ref=e87]: Experience world-class hair artistry with our comprehensive range of luxury services
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - img "Advanced Color Services" [ref=e91]
+        - generic [ref=e92]:
+          - heading "Advanced Color" [level=3] [ref=e93]
+          - paragraph [ref=e94]:
+            - text: Master colorist techniques including balayage, color correction, and custom formulations tailored to your unique style. Using exclusive Davines products and Chris's signature air composition color mapping.
+            - strong [ref=e95]: Starting at $150+
+          - paragraph [ref=e96]:
+            - strong [ref=e97]: "Popular:"
+            - text: "\"color correction delray beach\" • \"best colorist near me\" • \"balayage delray beach\""
+          - list [ref=e98]:
+            - listitem [ref=e99]: • Balayage & Highlights
+            - listitem [ref=e100]: • Color Correction
+            - listitem [ref=e101]: • Creative Color
+            - listitem [ref=e102]: • Gray Coverage
+          - link "Book Consultation →" [ref=e103] [cursor=pointer]:
+            - /url: "#contact"
+      - generic [ref=e104]:
+        - img "Hair Extensions" [ref=e106]
+        - generic [ref=e107]:
+          - heading "Hair Extensions" [level=3] [ref=e108]
+          - paragraph [ref=e109]:
+            - text: Premium hair extensions for added length, volume, and dramatic transformations using Bellami and Platinum Seamless - the finest quality hair. Chris's certified extension expertise ensures natural results.
+            - strong [ref=e110]: Starting at $300+
+          - paragraph [ref=e111]:
+            - strong [ref=e112]: "Popular:"
+            - text: "\"hair extensions delray beach\" • \"bellami extensions\" • \"extension specialist near me\""
+          - list [ref=e113]:
+            - listitem [ref=e114]: • Tape-in Extensions
+            - listitem [ref=e115]: • Beaded Weft
+            - listitem [ref=e116]: • Custom Blending
+            - listitem [ref=e117]: • Maintenance Services
+          - link "Learn More →" [ref=e118] [cursor=pointer]:
+            - /url: "#contact"
+      - generic [ref=e119]:
+        - img "Precision Cut" [ref=e121]
+        - generic [ref=e122]:
+          - heading "Precision Cuts" [level=3] [ref=e123]
+          - paragraph [ref=e124]:
+            - text: Customized precision cuts using Chris's revolutionary "cut the hair where it lives" dry cutting method. Complements your features, lifestyle, and personal aesthetic. Perfect for Florida's beach lifestyle.
+            - strong [ref=e125]: Women $75+ • Men $45+
+          - paragraph [ref=e126]:
+            - strong [ref=e127]: "Popular:"
+            - text: "\"haircut delray beach\" • \"precision cut\" • \"dry cutting specialist\""
+          - list [ref=e128]:
+            - listitem [ref=e129]: • Custom Consultation
+            - listitem [ref=e130]: • Precision Cutting
+            - listitem [ref=e131]: • Texture Enhancement
+            - listitem [ref=e132]: • Styling Education
+          - link "Schedule Now →" [ref=e133] [cursor=pointer]:
+            - /url: "#contact"
+      - generic [ref=e134]:
+        - img "Keratin Treatment" [ref=e136]
+        - generic [ref=e137]:
+          - heading "Keratin Treatments" [level=3] [ref=e138]
+          - paragraph [ref=e139]:
+            - text: Revolutionary smoothing treatments perfect for South Florida's humidity. Eliminates frizz and reduces styling time by up to 50%. Includes signature scalp massage. Beach-proof results!
+            - strong [ref=e140]: Starting at $200+
+          - paragraph [ref=e141]:
+            - strong [ref=e142]: "Popular:"
+            - text: "\"keratin treatment delray beach\" • \"brazilian blowout\" • \"frizz control florida\""
+          - list [ref=e143]:
+            - listitem [ref=e144]: • Brazilian Blowout
+            - listitem [ref=e145]: • Keratin Complex
+            - listitem [ref=e146]: • Express Treatments
+            - listitem [ref=e147]: • Custom Formulations
+          - link "Get Started →" [ref=e148] [cursor=pointer]:
+            - /url: "#contact"
+      - generic [ref=e149]:
+        - img "Event Styling" [ref=e151]
+        - generic [ref=e152]:
+          - heading "Styling & Blowouts" [level=3] [ref=e153]
+          - paragraph [ref=e154]: Professional styling and blowout services for any occasion, from everyday elegance to special events.
+          - list [ref=e155]:
+            - listitem [ref=e156]: • Professional Blowouts
+            - listitem [ref=e157]: • Special Event Styling
+            - listitem [ref=e158]: • Texture Styling
+            - listitem [ref=e159]: • Express Styling
+          - link "Reserve Time →" [ref=e160] [cursor=pointer]:
+            - /url: "#contact"
+      - generic [ref=e161]:
+        - img "Signature Luxury Hair Service" [ref=e164]
+        - generic [ref=e165]:
+          - heading "Signature Services" [level=3] [ref=e166]
+          - paragraph [ref=e167]:
+            - text: Extended 3+ hour VIP experience providing premier, personalized services and exclusive one-on-one time with Chris David. Perfect for complete transformations and makeovers. Preferred by Delray Beach's most discerning clients.
+            - strong [ref=e168]: Starting at $400+
+          - paragraph [ref=e169]:
+            - strong [ref=e170]: "Popular:"
+            - text: "\"hair transformation delray beach\" • \"luxury hair salon\" • \"complete makeover\""
+          - list [ref=e171]:
+            - listitem [ref=e172]: • Extended Consultation
+            - listitem [ref=e173]: • Personalized Service Journey
+            - listitem [ref=e174]: • Luxury One-on-One Experience
+            - listitem [ref=e175]: • Custom Treatment Plans
+          - link "Book Signature Experience →" [ref=e176] [cursor=pointer]:
+            - /url: "#contact"
+  - generic [ref=e178]:
+    - generic [ref=e179]:
+      - heading "Portfolio Gallery" [level=2] [ref=e180]
+      - paragraph [ref=e181]: Showcasing transformative hair artistry and creative excellence
+    - generic [ref=e182]:
+      - generic [ref=e183]:
+        - heading "View Our Complete Portfolio" [level=3] [ref=e184]
+        - paragraph [ref=e185]: Our entire gallery of 211+ photos is hosted on Google Business Profile
+        - paragraph [ref=e186]: This ensures you see verified, authentic work from Chris David Salon
+      - link " View Gallery on Google Business Profile 211+ Photos of Actual Work" [ref=e187] [cursor=pointer]:
+        - /url: https://www.google.com/maps/place/Chris+David+Salon/@26.4614726,-80.0743227,17z/data=!3m1!4b1!4m6!3m5!1s0x88d8dfdd217c36c5:0x2829d1fc5f3173d9!8m2!3d26.4614726!4d-80.0721478!16s%2Fg%2F11c0w5wkdp?entry=ttu
+        - generic [ref=e188]: 
+        - text: View Gallery on Google Business Profile
+        - generic [ref=e189]: 211+ Photos of Actual Work
+      - generic [ref=e190]:
+        - generic [ref=e191]:
+          - generic [ref=e192]: 
+          - text: Verified by Google
+        - generic [ref=e193]:
+          - generic [ref=e194]: 
+          - text: 133+ Five-Star Reviews
+        - generic [ref=e195]:
+          - generic [ref=e196]: 
+          - text: Real Client Transformations
+    - generic [ref=e197]:
+      - heading "Follow Our Instagram" [level=3] [ref=e198]
+      - link "Follow @chrisdavidsalon on Instagram" [ref=e200] [cursor=pointer]:
+        - /url: https://www.instagram.com/chrisdavidsalon/
+        - text: Follow @chrisdavidsalon on Instagram
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - generic [ref=e203]: 500+
+          - generic [ref=e204]: Happy Clients
+        - generic [ref=e205]:
+          - generic [ref=e206]: 1000+
+          - generic [ref=e207]: Transformations
+        - generic [ref=e208]:
+          - generic [ref=e209]: 15+
+          - generic [ref=e210]: Years Experience
+  - generic [ref=e212]:
+    - generic [ref=e213]:
+      - heading "Client Testimonials" [level=2] [ref=e214]
+      - generic [ref=e215]:
+        - generic [ref=e216]:
+          - generic [ref=e217]: 
+          - generic [ref=e218]: 
+          - generic [ref=e219]: 
+          - generic [ref=e220]: 
+          - generic [ref=e221]: 
+        - generic [ref=e222]: 4.9/5.0
+        - generic [ref=e223]: • 133+ Reviews
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - generic [ref=e226]:
+          - generic [ref=e227]: 
+          - generic [ref=e228]: 
+          - generic [ref=e229]: 
+          - generic [ref=e230]: 
+          - generic [ref=e231]: 
+        - paragraph [ref=e232]: "\"Chris is a true artist, and not just in the hair department! He is a master of color and is meticulous with the scissors—one of a kind in talent and personality.\""
+        - generic [ref=e233]: "- Abigail D."
+        - generic [ref=e234]: Google Review
+      - generic [ref=e235]:
+        - generic [ref=e236]:
+          - generic [ref=e237]: 
+          - generic [ref=e238]: 
+          - generic [ref=e239]: 
+          - generic [ref=e240]: 
+          - generic [ref=e241]: 
+        - paragraph [ref=e242]: "\"Chris is the best hair stylist and colorist I have ever been to. He is a true artist, is brilliant and very entertaining.\""
+        - generic [ref=e243]: "- Janice M."
+        - generic [ref=e244]: Google Review
+      - generic [ref=e245]:
+        - generic [ref=e246]:
+          - generic [ref=e247]: 
+          - generic [ref=e248]: 
+          - generic [ref=e249]: 
+          - generic [ref=e250]: 
+          - generic [ref=e251]: 
+        - paragraph [ref=e252]: "\"Chris David ('hair is art you wear') is an artist in every way. Creative, original, inspired, unconventional, and fully engaging.\""
+        - generic [ref=e253]: "- Erin C."
+        - generic [ref=e254]: Google Review
+      - generic [ref=e255]:
+        - generic [ref=e256]:
+          - generic [ref=e257]: 
+          - generic [ref=e258]: 
+          - generic [ref=e259]: 
+          - generic [ref=e260]: 
+          - generic [ref=e261]: 
+        - paragraph [ref=e262]: "\"Chris is a true artist at what he does. He has a unique way of cutting and a unique style that I had never before experienced.\""
+        - generic [ref=e263]: "- Judith S."
+        - generic [ref=e264]: Google Review
+      - generic [ref=e265]:
+        - generic [ref=e266]:
+          - generic [ref=e267]: 
+          - generic [ref=e268]: 
+          - generic [ref=e269]: 
+          - generic [ref=e270]: 
+          - generic [ref=e271]: 
+        - paragraph [ref=e272]: "\"This is a very great place. The owner has great energy... impeccable taste impeccable style ambience is great.\""
+        - generic [ref=e273]: "- Yared A."
+        - generic [ref=e274]: Google Review
+      - generic [ref=e275]:
+        - generic [ref=e276]:
+          - generic [ref=e277]: 
+          - generic [ref=e278]: 
+          - generic [ref=e279]: 
+          - generic [ref=e280]: 
+          - generic [ref=e281]: 
+        - paragraph [ref=e282]: "\"Found my forever hair stylist! Chris transformed my hair beyond my expectations. His attention to detail is incredible.\""
+        - generic [ref=e283]: "- Sarah K."
+        - generic [ref=e284]: Google Review
+    - link "Read More Reviews on Google" [ref=e286] [cursor=pointer]:
+      - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+      - text: Read More Reviews on Google
+  - generic [ref=e288]:
+    - generic [ref=e289]:
+      - heading "Visit Our Salon" [level=2] [ref=e290]
+      - paragraph [ref=e291]: Located in the heart of Delray Beach's Andre Design District
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - generic [ref=e294]:
+          - heading "Get in Touch" [level=3] [ref=e295]
+          - generic [ref=e296]:
+            - generic [ref=e297]:
+              - generic [ref=e298]: 
+              - generic [ref=e299]:
+                - heading "Location" [level=4] [ref=e300]
+                - paragraph [ref=e301]:
+                  - text: 1878C Dr. Andres Way
+                  - text: Delray Beach, FL 33445
+                  - text: Andre Design District
+            - generic [ref=e302]:
+              - generic [ref=e303]: 
+              - generic [ref=e304]:
+                - heading "Phone" [level=4] [ref=e305]
+                - paragraph [ref=e306]:
+                  - link "(561) 299-0950" [ref=e307] [cursor=pointer]:
+                    - /url: tel:5612990950
+                  - text: Text available 24/7
+            - generic [ref=e308]:
+              - generic [ref=e309]: 
+              - generic [ref=e310]:
+                - heading "Email" [level=4] [ref=e311]
+                - paragraph [ref=e312]:
+                  - link "chrisdavidsalon@gmail.com" [ref=e313] [cursor=pointer]:
+                    - /url: mailto:chrisdavidsalon@gmail.com
+            - generic [ref=e314]:
+              - generic [ref=e315]: 
+              - generic [ref=e316]:
+                - heading "Hours" [level=4] [ref=e317]
+                - generic [ref=e318]:
+                  - paragraph [ref=e319]: "Tuesday - Friday: 11:00 AM - 6:00 PM"
+                  - paragraph [ref=e320]: "Saturday: 11:00 AM - 6:00 PM"
+                  - paragraph [ref=e321]: "Sunday - Monday: Closed"
+          - generic [ref=e322]:
+            - heading "Follow Us" [level=4] [ref=e323]
+            - generic [ref=e324]:
+              - link [ref=e325] [cursor=pointer]:
+                - /url: https://www.instagram.com/chrisdavidsalon/
+              - link [ref=e326] [cursor=pointer]:
+                - /url: https://www.facebook.com/ChrisDavidSalon/
+              - link [ref=e327] [cursor=pointer]:
+                - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+        - generic [ref=e328]:
+          - heading "Ready to Book?" [level=3] [ref=e329]
+          - paragraph [ref=e330]: Experience the Chris David difference. Book your appointment online or call us today.
+          - generic [ref=e331]:
+            - button "Book Online Now" [ref=e332] [cursor=pointer]
+            - link "Call (561) 299-0950" [ref=e333] [cursor=pointer]:
+              - /url: tel:5612990950
+      - iframe [ref=e335]
+  - generic [ref=e337]:
+    - generic [ref=e338]:
+      - heading "Frequently Asked Questions" [level=2] [ref=e339]
+      - paragraph [ref=e340]: Answers to common questions about hair services in Delray Beach
+    - generic [ref=e341]:
+      - generic [ref=e342]:
+        - heading "Where is the best hair salon in Delray Beach?" [level=3] [ref=e343]
+        - paragraph [ref=e344]: Chris David Salon is located in the prestigious Andre Design District at 1878C Dr. Andres Way, just 5 minutes from Atlantic Avenue and 10 minutes from Delray Municipal Beach. We're the only certified Davines salon in Delray Beach, serving clients from Boca Raton, Boynton Beach, and throughout Palm Beach County.
+      - generic [ref=e345]:
+        - heading "How much does a haircut cost in Delray Beach?" [level=3] [ref=e346]
+        - paragraph [ref=e347]: At Chris David Salon, women's precision cuts start at $75+ and men's cuts start at $45+. Our cuts use the revolutionary "cut the hair where it lives" dry cutting method and include a consultation and styling. We serve clients throughout South Palm Beach County with premium services.
+      - generic [ref=e348]:
+        - heading "Who is the best colorist near me in Delray Beach?" [level=3] [ref=e349]
+        - paragraph [ref=e350]: Chris David brings 20 years of master-level expertise, starting in Boca Raton in 2007 and establishing in Delray Beach since 2012. As a Goldwell Academy Graduate and certified educator for FIVE major brands (Davines for 6 years, Goldwell, Organic Color Systems, Platinum Seamless, and Cezanne), Chris doesn't just use premium products - he's trained hundreds of professionals on how to master them. This unparalleled expertise is why he's the preferred colorist for residents of The Seagate Hotel, Ocean Grande, and Pineapple Grove.
+      - generic [ref=e351]:
+        - heading "Do you offer hair extensions in Delray Beach?" [level=3] [ref=e352]
+        - paragraph [ref=e353]: Yes! We specialize in premium hair extensions using Bellami and Platinum Seamless products. Chris is certified in multiple extension methods including tape-in, clip-in, and permanent extensions. Starting at $300+, perfect for special events or everyday glamour.
+      - generic [ref=e354]:
+        - heading "What's the best keratin treatment near Atlantic Avenue?" [level=3] [ref=e355]
+        - paragraph [ref=e356]: Our Brazilian Blowout and keratin treatments are perfect for South Florida's humidity. Starting at $200+, these treatments include Chris's signature scalp massage and eliminate frizz for up to 4 months. Beach-proof results that last through Florida's weather!
+      - generic [ref=e357]:
+        - heading "Is there parking at your Delray Beach salon?" [level=3] [ref=e358]
+        - paragraph [ref=e359]: Yes! We offer free parking - a rarity in downtown Delray Beach. Located in the Andre Design District, we're easily accessible from I-95, Florida's Turnpike, and Atlantic Avenue. Just minutes from Seagate Country Club, The Seagate Hotel, and popular Delray Beach restaurants.
+  - generic [ref=e361]:
+    - generic [ref=e362]:
+      - heading "Serving All of South Palm Beach County" [level=2] [ref=e363]
+      - paragraph [ref=e364]: Chris David Salon is the premier destination for luxury hair services in Delray Beach and surrounding areas
+    - generic [ref=e365]:
+      - generic [ref=e366]:
+        - heading "Delray Beach" [level=3] [ref=e367]
+        - paragraph [ref=e368]: Downtown • Pineapple Grove • Beach Area • Lake Ida
+      - generic [ref=e369]:
+        - heading "Boca Raton" [level=3] [ref=e370]
+        - paragraph [ref=e371]: East Boca • Mizner Park • Royal Palm • Boca Square
+      - generic [ref=e372]:
+        - heading "Boynton Beach" [level=3] [ref=e373]
+        - paragraph [ref=e374]: Ocean Ridge • Gulf Stream • Boynton Village
+      - generic [ref=e375]:
+        - heading "Highland Beach" [level=3] [ref=e376]
+        - paragraph [ref=e377]: Coastal Areas • A1A Corridor • Beachside Communities
+    - generic [ref=e378]:
+      - heading "Why Clients Choose Chris David Salon" [level=3] [ref=e379]
+      - generic [ref=e380]:
+        - generic [ref=e381]:
+          - generic [ref=e382]: 
+          - heading "Prime Location" [level=4] [ref=e383]
+          - paragraph [ref=e384]: Conveniently located in Andre Design District, just off Atlantic Ave and minutes from I-95. Easy access from Boca Raton, Boynton Beach, and all of East Delray.
+        - generic [ref=e385]:
+          - generic [ref=e386]: 
+          - heading "Award-Winning Excellence" [level=4] [ref=e387]
+          - paragraph [ref=e388]: Recognized as the best hair colorist in Delray Beach. Serving Palm Beach County's most discerning clients with luxury hair services since establishment.
+        - generic [ref=e389]:
+          - generic [ref=e390]: 
+          - heading "Convenient Amenities" [level=4] [ref=e391]
+          - paragraph [ref=e392]: Free parking, wheelchair accessible, complimentary Wi-Fi. Located near popular Delray Beach attractions, restaurants, and shopping.
+    - generic [ref=e393]:
+      - paragraph [ref=e394]:
+        - strong [ref=e395]: "Service Areas:"
+        - text: Delray Beach 33445 • Delray Beach 33483 • Delray Beach 33444 • Boca Raton 33432 • Boca Raton 33486 • Boynton Beach 33435 • Highland Beach 33487 • Gulf Stream 33483 • Ocean Ridge 33435
+      - paragraph [ref=e396]:
+        - strong [ref=e397]: "Nearby Landmarks:"
+        - text: Atlantic Avenue • Delray Beach Tennis Center • Old School Square • Delray Beach Market • Pineapple Grove Arts District • Seagate Country Club • The Seagate Hotel • Delray Beach Golf Club
+  - contentinfo [ref=e398]:
+    - generic [ref=e399]:
+      - generic [ref=e400]:
+        - generic [ref=e401]:
+          - img "Chris David Salon" [ref=e403]
+          - paragraph [ref=e404]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e405]:
+          - heading "Quick Links" [level=4] [ref=e406]
+          - list [ref=e407]:
+            - listitem [ref=e408]:
+              - link "About" [ref=e409] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e410]:
+              - link "Gallery" [ref=e411] [cursor=pointer]:
+                - /url: "#gallery"
+            - listitem [ref=e412]:
+              - link "Reviews" [ref=e413] [cursor=pointer]:
+                - /url: "#testimonials"
+            - listitem [ref=e414]:
+              - link "Blog" [ref=e415] [cursor=pointer]:
+                - /url: blog.html
+            - listitem [ref=e416]:
+              - link "Careers" [ref=e417] [cursor=pointer]:
+                - /url: careers.html
+            - listitem [ref=e418]:
+              - link "Policies" [ref=e419] [cursor=pointer]:
+                - /url: policies.html
+        - generic [ref=e420]:
+          - heading "Services" [level=4] [ref=e421]
+          - list [ref=e422]:
+            - listitem [ref=e423]:
+              - link "All Services" [ref=e424] [cursor=pointer]:
+                - /url: services/hair-salon-delray-beach.html
+            - listitem [ref=e425]:
+              - link "Hair Color" [ref=e426] [cursor=pointer]:
+                - /url: services/hair-color-delray-beach.html
+            - listitem [ref=e427]:
+              - link "Women's Haircuts" [ref=e428] [cursor=pointer]:
+                - /url: services/womens-haircut-delray-beach.html
+            - listitem [ref=e429]:
+              - link "Balayage" [ref=e430] [cursor=pointer]:
+                - /url: services/balayage-delray-beach.html
+            - listitem [ref=e431]:
+              - link "Extensions" [ref=e432] [cursor=pointer]:
+                - /url: services/hair-extensions-delray-beach.html
+        - generic [ref=e433]:
+          - heading "Contact" [level=4] [ref=e434]
+          - generic [ref=e435]:
+            - paragraph [ref=e436]: 1878C Dr. Andres Way
+            - paragraph [ref=e437]: Delray Beach, FL 33445
+            - paragraph [ref=e438]:
+              - link "(561) 299-0950" [ref=e439] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e440]:
+              - link "chrisdavidsalon@gmail.com" [ref=e441] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e442]:
+            - link:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+            - link:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+            - link:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+      - generic [ref=e443]:
+        - paragraph [ref=e444]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+        - paragraph [ref=e445]:
+          - link "Admin" [ref=e446] [cursor=pointer]:
+            - /url: ./admin/login.html
+          - text: "Version: 2.15.0"
+  - text: 
+  - button " Book Now" [ref=e447] [cursor=pointer]:
+    - generic [ref=e448]: 
+    - text: Book Now
+  - text: 
+  - iframe [ref=e449]:
+    - generic [ref=f2e2]:
+      - link "Your appointments" [ref=f2e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f2e8]:
+          - generic [ref=f2e9]: Your appointments
+          - img [ref=f2e10]
+      - generic [ref=f2e24]:
+        - generic [ref=f2e25]: Powered by
+        - link [ref=f2e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f2e27]
+```

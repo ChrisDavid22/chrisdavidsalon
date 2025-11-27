@@ -1,0 +1,391 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e8]: Chris David SEO Agent
+          - generic [ref=e9]: v2.15.0
+        - generic [ref=e10]:
+          - generic [ref=e11]: "Updated: 11:50:22 PM"
+          - link "View Site" [ref=e12] [cursor=pointer]:
+            - /url: ../index.html
+      - generic [ref=e13]:
+        - link "Dashboard" [ref=e14] [cursor=pointer]:
+          - /url: index.html
+        - link "Improvement Plan" [ref=e15] [cursor=pointer]:
+          - /url: improvement-planner.html
+        - link "Traffic" [ref=e16] [cursor=pointer]:
+          - /url: traffic.html
+        - link "Authority" [ref=e17] [cursor=pointer]:
+          - /url: authority.html
+        - link "Microsites" [ref=e18] [cursor=pointer]:
+          - /url: microsites.html
+        - link "Rankings" [ref=e19] [cursor=pointer]:
+          - /url: rankings.html
+  - generic [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - heading "Microsite Network Analytics" [level=1] [ref=e24]
+          - paragraph [ref=e25]: 3 satellite sites driving traffic to chrisdavidsalon.com
+        - generic [ref=e26]:
+          - generic [ref=e27]: Data Quality
+          - generic [ref=e28]:
+            - generic [ref=e29]: "PageRank: live"
+            - generic [ref=e30]: "GA4: live"
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]: Visitors Sent (30d)
+          - generic [ref=e34]: "1"
+          - generic [ref=e35]: to main site
+        - generic [ref=e36]:
+          - generic [ref=e37]: Total Pages Live
+          - generic [ref=e38]: "26"
+          - generic [ref=e39]: across all sites
+        - generic [ref=e40]:
+          - generic [ref=e41]: Avg PageRank
+          - generic [ref=e42]: "0.79"
+          - generic [ref=e43]: out of 10
+        - generic [ref=e44]:
+          - generic [ref=e45]: Sites Indexed
+          - generic [ref=e46]: 2/3
+          - generic [ref=e47]: by Google
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - heading " ROI Projection" [level=2] [ref=e50]:
+          - generic [ref=e51]: 
+          - text: ROI Projection
+        - generic [ref=e52]: Based on current performance
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e55]: Current Monthly
+          - generic [ref=e56]: $30
+          - generic [ref=e57]: 0.1 est. clients
+        - generic [ref=e58]:
+          - generic [ref=e59]: Projected Year-End
+          - generic [ref=e60]: $1,130
+          - generic [ref=e61]: 2 annual clients
+        - generic [ref=e62]:
+          - generic [ref=e63]: Growth Potential
+          - generic [ref=e64]: 3.1x
+          - generic [ref=e65]: with 10%/month growth
+      - generic [ref=e66]:
+        - generic [ref=e67]: 
+        - text: "Assumptions: $600/client/year avg value, 5% referral-to-booking conversion"
+    - generic [ref=e69]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e73]:
+            - heading "bestsalondelray.com" [level=3] [ref=e74]
+            - paragraph [ref=e75]: "Target: \"best salon delray beach\""
+          - generic [ref=e76]: INDEXED
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - img [ref=e79]
+            - generic [ref=e83]: "55"
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e87]: PageRank
+              - generic [ref=e88]: 1.18/10
+            - generic [ref=e89]:
+              - generic [ref=e90]: Pages
+              - generic [ref=e91]: "5"
+            - generic [ref=e92]:
+              - generic [ref=e93]: Referrals
+              - generic [ref=e94]: "1"
+            - generic [ref=e95]:
+              - generic [ref=e96]: Grade
+              - generic [ref=e97]: C
+        - link "Visit Site " [ref=e98] [cursor=pointer]:
+          - /url: https://bestsalondelray.com
+          - text: Visit Site
+          - generic [ref=e99]: 
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - heading "bestdelraysalon.com" [level=3] [ref=e104]
+            - paragraph [ref=e105]: "Target: \"delray beach salon\""
+          - generic [ref=e106]: NOT INDEXED
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - img [ref=e109]
+            - generic [ref=e113]: "20"
+          - generic [ref=e115]:
+            - generic [ref=e116]:
+              - generic [ref=e117]: PageRank
+              - generic [ref=e118]: 0.00/10
+            - generic [ref=e119]:
+              - generic [ref=e120]: Pages
+              - generic [ref=e121]: "16"
+            - generic [ref=e122]:
+              - generic [ref=e123]: Referrals
+              - generic [ref=e124]: "0"
+            - generic [ref=e125]:
+              - generic [ref=e126]: Grade
+              - generic [ref=e127]: D
+        - link "Visit Site " [ref=e128] [cursor=pointer]:
+          - /url: https://bestdelraysalon.com
+          - text: Visit Site
+          - generic [ref=e129]: 
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - heading "bestsalonpalmbeach.com" [level=3] [ref=e134]
+            - paragraph [ref=e135]: "Target: \"salon palm beach county\""
+          - generic [ref=e136]: INDEXED
+        - generic [ref=e137]:
+          - generic [ref=e138]:
+            - img [ref=e139]
+            - generic [ref=e143]: "52"
+          - generic [ref=e145]:
+            - generic [ref=e146]:
+              - generic [ref=e147]: PageRank
+              - generic [ref=e148]: 1.18/10
+            - generic [ref=e149]:
+              - generic [ref=e150]: Pages
+              - generic [ref=e151]: "5"
+            - generic [ref=e152]:
+              - generic [ref=e153]: Referrals
+              - generic [ref=e154]: "0"
+            - generic [ref=e155]:
+              - generic [ref=e156]: Grade
+              - generic [ref=e157]: C
+        - link "Visit Site " [ref=e158] [cursor=pointer]:
+          - /url: https://bestsalonpalmbeach.com
+          - text: Visit Site
+          - generic [ref=e159]: 
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - heading " Referral Traffic Over Time" [level=2] [ref=e162]:
+          - generic [ref=e163]: 
+          - text: Referral Traffic Over Time
+        - generic [ref=e164]:
+          - button "7D" [ref=e165] [cursor=pointer]
+          - button "30D" [ref=e166] [cursor=pointer]
+      - text: 
+    - generic [ref=e169]:
+      - generic [ref=e170]:
+        - heading " Content Deployment Progress" [level=2] [ref=e171]:
+          - generic [ref=e172]: 
+          - text: Content Deployment Progress
+        - generic [ref=e173]: Auto-deploys 2 pages/site/week
+      - generic [ref=e175]:
+        - generic [ref=e176]:
+          - generic [ref=e177]:
+            - generic [ref=e178]: bestsalondelray.com
+            - generic [ref=e179]: 0/10 deployed
+          - generic [ref=e181]: "Est. completion: 5 weeks"
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - generic [ref=e184]: bestdelraysalon.com
+            - generic [ref=e185]: 11/10 deployed
+          - generic [ref=e188]: "Est. completion: 0 weeks"
+        - generic [ref=e189]:
+          - generic [ref=e190]:
+            - generic [ref=e191]: bestsalonpalmbeach.com
+            - generic [ref=e192]: 0/10 deployed
+          - generic [ref=e194]: "Est. completion: 5 weeks"
+      - generic [ref=e195]:
+        - heading "Content Library (30 Pages)" [level=3] [ref=e196]
+        - generic [ref=e197]:
+          - generic [ref=e198]:
+            - heading "bestdelraysalon.com" [level=4] [ref=e199]
+            - list [ref=e200]:
+              - listitem [ref=e201]:
+                - generic [ref=e203]: 
+                - generic [ref=e204]: Wedding Hair Guide
+              - listitem [ref=e205]:
+                - generic [ref=e207]: 
+                - generic [ref=e208]: Men's Haircut Guide
+              - listitem [ref=e209]:
+                - generic [ref=e211]: 
+                - generic [ref=e212]: Highlights vs Balayage
+              - listitem [ref=e213]:
+                - generic [ref=e215]: 
+                - generic [ref=e216]: Florida Humidity Hair
+              - listitem [ref=e217]:
+                - generic [ref=e219]: 
+                - generic [ref=e220]: First Salon Visit
+              - listitem [ref=e221]:
+                - generic [ref=e223]: 
+                - generic [ref=e224]: Hair Trends 2025
+              - listitem [ref=e225]:
+                - generic [ref=e227]: 
+                - generic [ref=e228]: Postpartum Hair Loss
+              - listitem [ref=e229]:
+                - generic [ref=e231]: 
+                - generic [ref=e232]: Pool/Chlorine Protection
+              - listitem [ref=e233]:
+                - generic [ref=e235]: 
+                - generic [ref=e236]: Curly Hair Specialist
+              - listitem [ref=e237]:
+                - generic [ref=e239]: 
+                - generic [ref=e240]: Red Hair Color
+          - generic [ref=e241]:
+            - heading "bestsalondelray.com" [level=4] [ref=e242]
+            - list [ref=e243]:
+              - listitem [ref=e244]:
+                - generic [ref=e246]: 
+                - generic [ref=e247]: Wedding Updo Guide
+              - listitem [ref=e248]:
+                - generic [ref=e250]: 
+                - generic [ref=e251]: Teen Haircuts
+              - listitem [ref=e252]:
+                - generic [ref=e254]: 
+                - generic [ref=e255]: Senior Hair Services
+              - listitem [ref=e256]:
+                - generic [ref=e258]: 
+                - generic [ref=e259]: Organic Hair Color
+              - listitem [ref=e260]:
+                - generic [ref=e262]: 
+                - generic [ref=e263]: Hair Loss Solutions
+              - listitem [ref=e264]:
+                - generic [ref=e266]: 
+                - generic [ref=e267]: Salon Etiquette
+              - listitem [ref=e268]:
+                - generic [ref=e270]: 
+                - generic [ref=e271]: Beach Hair Protection
+              - listitem [ref=e272]:
+                - generic [ref=e274]: 
+                - generic [ref=e275]: Hair Gloss Treatment
+              - listitem [ref=e276]:
+                - generic [ref=e278]: 
+                - generic [ref=e279]: Root Touch-Up Guide
+              - listitem [ref=e280]:
+                - generic [ref=e282]: 
+                - generic [ref=e283]: Dimensional Color
+          - generic [ref=e284]:
+            - heading "bestsalonpalmbeach.com" [level=4] [ref=e285]
+            - list [ref=e286]:
+              - listitem [ref=e287]:
+                - generic [ref=e289]: 
+                - generic [ref=e290]: Lake Worth Salon
+              - listitem [ref=e291]:
+                - generic [ref=e293]: 
+                - generic [ref=e294]: Lantana Salon
+              - listitem [ref=e295]:
+                - generic [ref=e297]: 
+                - generic [ref=e298]: Wellington Salon
+              - listitem [ref=e299]:
+                - generic [ref=e301]: 
+                - generic [ref=e302]: Boca Raton Balayage
+              - listitem [ref=e303]:
+                - generic [ref=e305]: 
+                - generic [ref=e306]: Color Correction PBC
+              - listitem [ref=e307]:
+                - generic [ref=e309]: 
+                - generic [ref=e310]: Keratin Palm Beach
+              - listitem [ref=e311]:
+                - generic [ref=e313]: 
+                - generic [ref=e314]: Blonde Specialist Boca
+              - listitem [ref=e315]:
+                - generic [ref=e317]: 
+                - generic [ref=e318]: Greenacres Salon
+              - listitem [ref=e319]:
+                - generic [ref=e321]: 
+                - generic [ref=e322]: Royal Palm Beach
+              - listitem [ref=e323]:
+                - generic [ref=e325]: 
+                - generic [ref=e326]: Palm Beach Island Luxury
+    - generic [ref=e327]:
+      - heading " Live Page Inventory" [level=2] [ref=e328]:
+        - generic [ref=e329]: 
+        - text: Live Page Inventory
+      - table [ref=e331]:
+        - rowgroup [ref=e332]:
+          - row "Site Pages PageRank Indexed Referrals Health Action" [ref=e333]:
+            - columnheader "Site" [ref=e334]
+            - columnheader "Pages" [ref=e335]
+            - columnheader "PageRank" [ref=e336]
+            - columnheader "Indexed" [ref=e337]
+            - columnheader "Referrals" [ref=e338]
+            - columnheader "Health" [ref=e339]
+            - columnheader "Action" [ref=e340]
+        - rowgroup [ref=e341]:
+          - row "bestsalondelray.com best salon delray beach 5 1.18  1 55 (C) GSC " [ref=e342]:
+            - cell "bestsalondelray.com best salon delray beach" [ref=e343]:
+              - generic [ref=e344]: bestsalondelray.com
+              - generic [ref=e345]: best salon delray beach
+            - cell "5" [ref=e346]
+            - cell "1.18" [ref=e347]
+            - cell "" [ref=e348]:
+              - generic [ref=e350]: 
+            - cell "1" [ref=e351]
+            - cell "55 (C)" [ref=e352]
+            - cell "GSC " [ref=e353]:
+              - link "GSC " [ref=e354] [cursor=pointer]:
+                - /url: https://search.google.com/search-console?resource_id=sc-domain:bestsalondelray.com
+                - text: GSC
+                - generic [ref=e355]: 
+          - row "bestdelraysalon.com delray beach salon 16 0.00  0 20 (D) GSC " [ref=e356]:
+            - cell "bestdelraysalon.com delray beach salon" [ref=e357]:
+              - generic [ref=e358]: bestdelraysalon.com
+              - generic [ref=e359]: delray beach salon
+            - cell "16" [ref=e360]
+            - cell "0.00" [ref=e361]
+            - cell "" [ref=e362]:
+              - generic [ref=e364]: 
+            - cell "0" [ref=e365]
+            - cell "20 (D)" [ref=e366]
+            - cell "GSC " [ref=e367]:
+              - link "GSC " [ref=e368] [cursor=pointer]:
+                - /url: https://search.google.com/search-console?resource_id=sc-domain:bestdelraysalon.com
+                - text: GSC
+                - generic [ref=e369]: 
+          - row "bestsalonpalmbeach.com salon palm beach county 5 1.18  0 52 (C) GSC " [ref=e370]:
+            - cell "bestsalonpalmbeach.com salon palm beach county" [ref=e371]:
+              - generic [ref=e372]: bestsalonpalmbeach.com
+              - generic [ref=e373]: salon palm beach county
+            - cell "5" [ref=e374]
+            - cell "1.18" [ref=e375]
+            - cell "" [ref=e376]:
+              - generic [ref=e378]: 
+            - cell "0" [ref=e379]
+            - cell "52 (C)" [ref=e380]
+            - cell "GSC " [ref=e381]:
+              - link "GSC " [ref=e382] [cursor=pointer]:
+                - /url: https://search.google.com/search-console?resource_id=sc-domain:bestsalonpalmbeach.com
+                - text: GSC
+                - generic [ref=e383]: 
+    - generic [ref=e384]:
+      - heading " Action Required" [level=2] [ref=e385]:
+        - generic [ref=e386]: 
+        - text: Action Required
+      - generic [ref=e387]:
+        - generic [ref=e388]:
+          - heading "bestdelraysalon.com is NOT indexed by Google" [level=4] [ref=e389]
+          - paragraph [ref=e390]: This site cannot appear in search results until indexed.
+          - paragraph [ref=e391]:
+            - text: Go to
+            - link "Google Search Console" [ref=e392] [cursor=pointer]:
+              - /url: https://search.google.com/search-console
+            - text: ", add the property, and submit the sitemap."
+        - generic [ref=e393]:
+          - heading "Low referral traffic across all microsites" [level=4] [ref=e394]
+          - paragraph [ref=e395]: The microsites are generating minimal traffic to the main site.
+          - paragraph [ref=e396]: This is normal for new sites. Continue adding content and building authority. Results typically appear after 3-6 months.
+    - generic [ref=e397]:
+      - heading " How This Network Drives Business" [level=2] [ref=e398]:
+        - generic [ref=e399]: 
+        - text: How This Network Drives Business
+      - generic [ref=e400]:
+        - generic [ref=e401]:
+          - generic [ref=e402]: "1."
+          - heading "Keyword Capture" [level=4] [ref=e403]
+          - paragraph [ref=e404]: Each microsite ranks for different searches your main site can't win alone.
+        - generic [ref=e405]:
+          - generic [ref=e406]: "2."
+          - heading "Traffic Funnel" [level=4] [ref=e407]
+          - paragraph [ref=e408]: Visitors find these sites, read valuable content, then click through to book.
+        - generic [ref=e409]:
+          - generic [ref=e410]: "3."
+          - heading "Authority Building" [level=4] [ref=e411]
+          - paragraph [ref=e412]: Links from these sites boost chrisdavidsalon.com's domain authority over time.
+        - generic [ref=e413]:
+          - generic [ref=e414]: "4."
+          - heading "Compound Growth" [level=4] [ref=e415]
+          - paragraph [ref=e416]: As sites age and gain pages, their value compounds. A 2-year-old site >>> new site.
+```
