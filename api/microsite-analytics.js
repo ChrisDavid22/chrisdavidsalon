@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       domain: 'bestsalondelray.com',
       name: 'Best Salon Delray',
       target: 'best salon delray beach',
-      color: '#3B82F6', // blue
+      color: '#3B82F6',
       sitemapUrl: 'https://bestsalondelray.com/sitemap.xml',
       contentLibrarySize: 10
     },
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       domain: 'bestdelraysalon.com',
       name: 'Best Delray Salon',
       target: 'delray beach salon',
-      color: '#EC4899', // pink
+      color: '#EC4899',
       sitemapUrl: 'https://bestdelraysalon.com/sitemap.xml',
       contentLibrarySize: 10
     },
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
       domain: 'bestsalonpalmbeach.com',
       name: 'Best Salon Palm Beach',
       target: 'salon palm beach county',
-      color: '#06B6D4', // cyan
+      color: '#06B6D4',
       sitemapUrl: 'https://bestsalonpalmbeach.com/sitemap.xml',
       contentLibrarySize: 10
     }
@@ -50,7 +50,7 @@ export default async function handler(req, res) {
     ]);
 
     // Combine all data
-    const microsites = MICROSITES.map((site, i) => {
+    const microsites = MICROSITES.map((site) => {
       const pr = pageRankData.find(p => p.domain === site.domain) || {};
       const pages = sitemapData[site.domain] || { count: 0, pages: [] };
       const referrals = ga4Data[site.domain] || { sessions: 0, users: 0, dailyData: [] };
@@ -70,8 +70,8 @@ export default async function handler(req, res) {
         },
         contentLibrary: {
           total: site.contentLibrarySize,
-          deployed: pages.count - 5, // Subtract original 5 pages
-          remaining: Math.max(0, site.contentLibrarySize - (pages.count - 5))
+          deployed: Math.max(0, pages.count - 5),
+          remaining: Math.max(0, site.contentLibrarySize - Math.max(0, pages.count - 5))
         },
         health: calculateHealth(pr, pages, referrals)
       };
@@ -83,12 +83,12 @@ export default async function handler(req, res) {
       totalReferrals: microsites.reduce((sum, s) => sum + s.referrals.last30Days, 0),
       avgPagerank: (microsites.reduce((sum, s) => sum + s.pagerank, 0) / microsites.length).toFixed(2),
       indexedSites: microsites.filter(s => s.indexed).length,
-      contentDeployed: microsites.reduce((sum, s) => sum + Math.max(0, s.contentLibrary.deployed), 0),
+      contentDeployed: microsites.reduce((sum, s) => sum + s.contentLibrary.deployed, 0),
       contentRemaining: microsites.reduce((sum, s) => sum + s.contentLibrary.remaining, 0)
     };
 
     // ROI projection
-    const projection = calculateROI(microsites, totals);
+    const projection = calculateROI(totals);
 
     return res.status(200).json({
       success: true,
@@ -113,7 +113,7 @@ export default async function handler(req, res) {
         pagerank: 0,
         indexed: false,
         pageCount: 0,
-        referrals: { last30Days: 0, sessions: 0 }
+        referrals: { last30Days: 0, sessions: 0, dailyData: [] }
       }))
     });
   }
@@ -184,66 +184,56 @@ async function fetchSitemapCounts(microsites) {
 }
 
 async function fetchGA4Referrals(propertyId, serviceAccountJson, microsites) {
+  const defaultResult = microsites.reduce((acc, s) => {
+    acc[s.domain] = { sessions: 0, users: 0, dailyData: [] };
+    return acc;
+  }, {});
+
   if (!propertyId || !serviceAccountJson) {
-    return microsites.reduce((acc, s) => {
-      acc[s.domain] = { sessions: 0, users: 0, dailyData: [] };
-      return acc;
-    }, {});
+    return defaultResult;
   }
 
   try {
-    // Parse service account
-    const serviceAccount = JSON.parse(serviceAccountJson);
-    const token = await getGoogleAccessToken(serviceAccount);
+    // Parse service account credentials
+    const credentials = JSON.parse(serviceAccountJson);
+
+    // Import Google Analytics Data API client
+    const { BetaAnalyticsDataClient } = await import('@google-analytics/data');
+
+    // Initialize client with credentials
+    const analyticsDataClient = new BetaAnalyticsDataClient({ credentials });
 
     // Query GA4 for referrals from microsites
-    const response = await fetch(
-      `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
-      {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
-          dimensions: [
-            { name: 'sessionSource' },
-            { name: 'date' }
-          ],
-          metrics: [
-            { name: 'sessions' },
-            { name: 'totalUsers' }
-          ],
-          dimensionFilter: {
-            orGroup: {
-              expressions: microsites.map(s => ({
-                filter: {
-                  fieldName: 'sessionSource',
-                  stringFilter: {
-                    matchType: 'CONTAINS',
-                    value: s.domain.replace('.com', '')
-                  }
-                }
-              }))
+    const [response] = await analyticsDataClient.runReport({
+      property: `properties/${propertyId}`,
+      dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }],
+      dimensions: [
+        { name: 'sessionSource' },
+        { name: 'date' }
+      ],
+      metrics: [
+        { name: 'sessions' },
+        { name: 'totalUsers' }
+      ],
+      dimensionFilter: {
+        orGroup: {
+          expressions: microsites.map(s => ({
+            filter: {
+              fieldName: 'sessionSource',
+              stringFilter: {
+                matchType: 'CONTAINS',
+                value: s.domain.replace('.com', '').replace('best', '')
+              }
             }
-          }
-        })
+          }))
+        }
       }
-    );
+    });
 
-    if (!response.ok) {
-      throw new Error(`GA4 API error: ${response.status}`);
-    }
+    const results = { ...defaultResult };
 
-    const data = await response.json();
-    const results = microsites.reduce((acc, s) => {
-      acc[s.domain] = { sessions: 0, users: 0, dailyData: [] };
-      return acc;
-    }, {});
-
-    if (data.rows) {
-      data.rows.forEach(row => {
+    if (response.rows) {
+      response.rows.forEach(row => {
         const source = row.dimensionValues[0].value;
         const date = row.dimensionValues[1].value;
         const sessions = parseInt(row.metricValues[0].value) || 0;
@@ -251,7 +241,8 @@ async function fetchGA4Referrals(propertyId, serviceAccountJson, microsites) {
 
         // Match to microsite
         microsites.forEach(site => {
-          if (source.includes(site.domain.replace('.com', ''))) {
+          const searchTerm = site.domain.replace('.com', '').replace('best', '');
+          if (source.toLowerCase().includes(searchTerm.toLowerCase())) {
             results[site.domain].sessions += sessions;
             results[site.domain].users += users;
             results[site.domain].dailyData.push({ date, sessions, users });
@@ -263,36 +254,8 @@ async function fetchGA4Referrals(propertyId, serviceAccountJson, microsites) {
     return results;
   } catch (e) {
     console.error('GA4 referrals fetch error:', e);
-    return microsites.reduce((acc, s) => {
-      acc[s.domain] = { sessions: 0, users: 0, dailyData: [] };
-      return acc;
-    }, {});
+    return defaultResult;
   }
-}
-
-async function getGoogleAccessToken(serviceAccount) {
-  const jwt = require('jsonwebtoken');
-  const now = Math.floor(Date.now() / 1000);
-
-  const payload = {
-    iss: serviceAccount.client_email,
-    sub: serviceAccount.client_email,
-    aud: 'https://oauth2.googleapis.com/token',
-    iat: now,
-    exp: now + 3600,
-    scope: 'https://www.googleapis.com/auth/analytics.readonly'
-  };
-
-  const token = jwt.sign(payload, serviceAccount.private_key, { algorithm: 'RS256' });
-
-  const response = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${token}`
-  });
-
-  const data = await response.json();
-  return data.access_token;
 }
 
 function calculateHealth(pr, pages, referrals) {
@@ -329,7 +292,7 @@ function calculateHealth(pr, pages, referrals) {
   };
 }
 
-function calculateROI(microsites, totals) {
+function calculateROI(totals) {
   // Average client value: $150/visit, 4 visits/year = $600/year
   const clientValue = 600;
   // Conversion rate from referral to booking: ~5%
