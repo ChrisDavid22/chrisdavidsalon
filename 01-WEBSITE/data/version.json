@@ -1,7 +1,12 @@
 {
-  "version": "2.13.0",
-  "lastUpdated": "2025-11-28T03:00:00Z",
+  "version": "2.14.0",
+  "lastUpdated": "2025-11-28T06:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.14.0",
+      "date": "2025-11-28T06:00:00Z",
+      "changes": "AUTONOMOUS SEO BRAIN: (1) NEW /api/seo-brain - weekly intelligence system that pulls data from GA4, Search Console, Competitors, Authority APIs and generates prioritized actionable tasks. (2) NEW /admin/weekly-brain.html - dashboard showing AI-generated weekly SEO tasks with implementation steps. (3) NEW /api/review-keywords - analyzes Google reviews to extract SEO keywords and match reviews to service pages for strategic testimonial placement. (4) Review insights section shows which reviews to feature on which pages. (5) Updated navigation across all admin pages."
+    },
     {
       "version": "2.13.0",
       "date": "2025-11-28T03:00:00Z",
