@@ -57,12 +57,16 @@
                 <!-- Your Site Analysis -->
                 <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
                     <h3 class="font-bold text-xl mb-4">Your Site Score</h3>
-                    <div id="yourScore" class="text-6xl font-bold mb-4 cursor-pointer hover:text-yellow-300 transition-colors" onclick="toggleScoreBreakdown()" title="Click to see breakdown">--</div>
-                    <button onclick="analyzeMySite()" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 w-full font-bold transition-all">
+                    <div class="cursor-pointer" onclick="toggleScoreBreakdown()">
+                        <div id="yourScore" class="text-6xl font-bold mb-2 hover:text-yellow-300 transition-colors">--</div>
+                        <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded font-bold text-sm inline-block animate-pulse">
+                            👆 Click for details
+                        </div>
+                    </div>
+                    <button onclick="analyzeMySite()" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 w-full font-bold transition-all mt-4">
                         <i class="fas fa-brain mr-2"></i>Analyze with AI
                     </button>
                     <p class="text-xs mt-2 text-blue-100">Uses Claude AI + Google APIs</p>
-                    <p class="text-xs mt-1 text-yellow-300">Click score to see breakdown ↓</p>
                 </div>
                 
                 <!-- Last Analysis -->
