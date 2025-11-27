@@ -53,39 +53,28 @@
                 Analyze your site with AI to get a comprehensive SEO score (0-100) with detailed breakdown and actionable improvements.
             </p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- Your Site Analysis -->
                 <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
                     <h3 class="font-bold text-xl mb-4">Your Site Score</h3>
-                    <div class="cursor-pointer" onclick="toggleScoreBreakdown()">
-                        <div id="yourScore" class="text-6xl font-bold mb-2 hover:text-yellow-300 transition-colors">--</div>
-                        <div class="bg-yellow-400 text-blue-900 px-3 py-1 rounded font-bold text-sm inline-block animate-pulse">
-                            👆 Click for details
-                        </div>
+                    <div class="flex items-center gap-6">
+                        <div id="yourScore" class="text-6xl font-bold">--</div>
+                        <button type="button" onclick="toggleScoreBreakdown()" class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 px-6 py-3 rounded-lg font-bold text-lg shadow-lg transform hover:scale-105 transition-all">
+                            <i class="fas fa-list-ul mr-2"></i>See Details
+                        </button>
                     </div>
-                    <button onclick="analyzeMySite()" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 w-full font-bold transition-all mt-4">
-                        <i class="fas fa-brain mr-2"></i>Analyze with AI
+                    <button type="button" onclick="analyzeMySite()" class="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 w-full font-bold transition-all mt-4">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh Score
                     </button>
-                    <p class="text-xs mt-2 text-blue-100">Uses Claude AI + Google APIs</p>
+                    <p class="text-xs mt-2 text-blue-100">Uses Google PageSpeed + Places APIs</p>
                 </div>
-                
+
                 <!-- Last Analysis -->
                 <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
-                    <h3 class="font-bold text-xl mb-4">Last Analysis</h3>
+                    <h3 class="font-bold text-xl mb-4">Last Updated</h3>
                     <div id="lastAnalysis" class="text-lg mb-4">Never</div>
                     <div id="scoreChange" class="text-3xl font-bold">--</div>
                     <p class="text-sm mt-2">Change from previous</p>
-                </div>
-                
-                <!-- Quick Actions -->
-                <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
-                    <h3 class="font-bold text-xl mb-4">Quick Actions</h3>
-                    <button onclick="runQuickAudit()" class="bg-yellow-500 text-white px-4 py-2 rounded w-full mb-2 hover:bg-yellow-600">
-                        <i class="fas fa-bolt mr-2"></i>Quick Audit
-                    </button>
-                    <button onclick="compareToCompetitor()" class="bg-green-500 text-white px-4 py-2 rounded w-full hover:bg-green-600">
-                        <i class="fas fa-chart-line mr-2"></i>Compare to #1
-                    </button>
                 </div>
             </div>
         </div>
@@ -94,7 +83,7 @@
         <div id="scoreBreakdownSection" class="bg-white rounded-lg shadow-lg p-6 mb-6 hidden">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-2xl font-bold">📊 SEO Score Breakdown (7 Categories)</h3>
-                <button onclick="toggleScoreBreakdown()" class="text-gray-500 hover:text-gray-700">
+                <button type="button" onclick="toggleScoreBreakdown()" class="text-gray-500 hover:text-gray-700">
                     <i class="fas fa-times text-xl"></i> Close
                 </button>
             </div>
@@ -850,19 +839,6 @@
                 icon.textContent = section.classList.contains('hidden') ? '▶' : '▼';
             }
         }
-    }
-
-    // Quick audit (simplified version)
-    async function runQuickAudit() {
-        alert('Running quick PageSpeed test...');
-        const data = await window.AIConfig.getPageSpeed('https://www.chrisdavidsalon.com');
-        const score = Math.round(data.lighthouseResult.categories.performance.score * 100);
-        alert(`Quick Performance Score: ${score}/100`);
-    }
-
-    // Compare to competitor
-    function compareToCompetitor() {
-        window.location.href = 'competitors.html';
     }
 
     // Draw score chart
