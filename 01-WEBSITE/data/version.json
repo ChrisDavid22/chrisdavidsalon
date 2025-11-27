@@ -1,7 +1,12 @@
 {
-  "version": "2.14.0",
-  "lastUpdated": "2025-11-28T06:00:00Z",
+  "version": "2.15.0",
+  "lastUpdated": "2025-11-27T04:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.15.0",
+      "date": "2025-11-27T04:30:00Z",
+      "changes": "MICROSITE ANALYTICS DASHBOARD: (1) NEW /api/microsite-analytics - comprehensive API aggregating PageRank, sitemap page counts, GA4 referral traffic for all 3 microsites. (2) REBUILT /admin/microsites.html - complete redesign with health scores, ROI projections, referral trend charts, content deployment progress. (3) 30 rich content pages created for microsite content libraries. (4) GitHub Actions workflows for automated weekly content deployment. (5) AI image generation script for original microsite imagery."
+    },
     {
       "version": "2.14.0",
       "date": "2025-11-28T06:00:00Z",
