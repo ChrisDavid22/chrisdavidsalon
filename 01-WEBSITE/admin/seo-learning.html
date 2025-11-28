@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Learning Agent | Chris David Salon Admin</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0f172a; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+        .glow-yellow { box-shadow: 0 0 20px rgba(234, 179, 8, 0.3); }
+        .glow-purple { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3); }
+        .glow-blue { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .learning-bar {
+            background: linear-gradient(90deg, #22c55e 0%, #eab308 50%, #ef4444 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <span class="text-xl font-bold text-white">🧠 SEO Learning Agent</span>
+                    <span id="versionBadge" class="px-2 py-1 bg-purple-600 text-white text-xs rounded-full">Loading...</span>
+                </div>
+                <div class="flex items-center space-x-6 text-sm">
+                    <a href="index.html" class="text-gray-400 hover:text-white">SEO Command</a>
+                    <a href="traffic.html" class="text-gray-400 hover:text-white">Traffic</a>
+                    <a href="competitors.html" class="text-gray-400 hover:text-white">Competitors</a>
+                    <a href="microsites.html" class="text-gray-400 hover:text-white">Microsites</a>
+                    <a href="seo-learning.html" class="text-purple-400 font-semibold">Learning</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Status Banner -->
+        <div id="statusBanner" class="glass-card rounded-xl p-6 mb-8 glow-purple">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-4 h-4 bg-green-500 rounded-full pulse-dot"></div>
+                    <div>
+                        <h2 class="text-xl font-bold">Self-Learning SEO System</h2>
+                        <p class="text-gray-400">RuVector-powered knowledge graph with GNN learning layers</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="runIngestion()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-semibold transition">
+                        <i class="fas fa-sync-alt mr-2"></i>Ingest Data
+                    </button>
+                    <button onclick="runAnalysis()" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm font-semibold transition">
+                        <i class="fas fa-brain mr-2"></i>Analyze & Learn
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Learning Progress -->
+            <div class="glass-card rounded-xl p-6 glow-green">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-gray-400 text-sm">Learning Progress</span>
+                    <i class="fas fa-graduation-cap text-green-500"></i>
+                </div>
+                <div class="text-3xl font-bold text-green-400" id="learningProgress">--</div>
+                <div class="text-sm text-gray-500 mt-2">Patterns Learned</div>
+                <div class="mt-3 h-2 bg-gray-700 rounded-full overflow-hidden">
+                    <div id="learningBar" class="h-full learning-bar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Success Rate -->
+            <div class="glass-card rounded-xl p-6 glow-yellow">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-gray-400 text-sm">Success Rate</span>
+                    <i class="fas fa-check-circle text-yellow-500"></i>
+                </div>
+                <div class="text-3xl font-bold text-yellow-400" id="successRate">--%</div>
+                <div class="text-sm text-gray-500 mt-2">Optimizations Working</div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="glass-card rounded-xl p-6 glow-blue">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-gray-400 text-sm">Active Recommendations</span>
+                    <i class="fas fa-lightbulb text-blue-500"></i>
+                </div>
+                <div class="text-3xl font-bold text-blue-400" id="recommendationCount">--</div>
+                <div class="text-sm text-gray-500 mt-2">AI-Generated Actions</div>
+            </div>
+
+            <!-- Sites Monitored -->
+            <div class="glass-card rounded-xl p-6 glow-purple">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-gray-400 text-sm">Sites Monitored</span>
+                    <i class="fas fa-globe text-purple-500"></i>
+                </div>
+                <div class="text-3xl font-bold text-purple-400">4</div>
+                <div class="text-sm text-gray-500 mt-2">Main + 3 Microsites</div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Top Recommendations -->
+            <div class="glass-card rounded-xl p-6">
+                <h3 class="text-lg font-bold mb-4 flex items-center">
+                    <i class="fas fa-star text-yellow-500 mr-2"></i>
+                    Top Recommendations
+                </h3>
+                <div id="recommendationsList" class="space-y-4">
+                    <div class="text-gray-500 text-center py-8">
+                        <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                        <p>Loading recommendations...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Patterns -->
+            <div class="glass-card rounded-xl p-6">
+                <h3 class="text-lg font-bold mb-4 flex items-center">
+                    <i class="fas fa-brain text-purple-500 mr-2"></i>
+                    Learned Patterns
+                </h3>
+                <div id="patternsList" class="space-y-4">
+                    <div class="text-gray-500 text-center py-8">
+                        <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                        <p>Loading patterns...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cross-Site Insights -->
+        <div class="glass-card rounded-xl p-6 mb-8">
+            <h3 class="text-lg font-bold mb-4 flex items-center">
+                <i class="fas fa-project-diagram text-blue-500 mr-2"></i>
+                Cross-Site Intelligence
+            </h3>
+            <div id="crossSiteInsights" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Main Site -->
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <div class="flex items-center mb-3">
+                        <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span class="font-semibold">chrisdavidsalon.com</span>
+                        <span class="ml-auto text-xs text-green-400">Main Site</span>
+                    </div>
+                    <p class="text-sm text-gray-400">Primary conversion hub - all microsites drive traffic here</p>
+                </div>
+
+                <!-- Microsite 1 -->
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <div class="flex items-center mb-3">
+                        <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                        <span class="font-semibold">bestsalondelray.com</span>
+                        <span class="ml-auto text-xs text-blue-400">Authority</span>
+                    </div>
+                    <p class="text-sm text-gray-400">Focus: General salon authority, service guides</p>
+                </div>
+
+                <!-- Microsite 2 -->
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <div class="flex items-center mb-3">
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
+                        <span class="font-semibold">bestdelraysalon.com</span>
+                        <span class="ml-auto text-xs text-yellow-400">Local</span>
+                    </div>
+                    <p class="text-sm text-gray-400">Focus: Local Delray Beach keywords, neighborhood targeting</p>
+                </div>
+
+                <!-- Microsite 3 -->
+                <div class="bg-gray-800 rounded-lg p-4">
+                    <div class="flex items-center mb-3">
+                        <div class="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+                        <span class="font-semibold">bestsalonpalmbeach.com</span>
+                        <span class="ml-auto text-xs text-purple-400">Regional</span>
+                    </div>
+                    <p class="text-sm text-gray-400">Focus: Regional Palm Beach County, luxury positioning</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Knowledge Graph Stats -->
+        <div class="glass-card rounded-xl p-6">
+            <h3 class="text-lg font-bold mb-4 flex items-center">
+                <i class="fas fa-database text-green-500 mr-2"></i>
+                Knowledge Graph Statistics
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="graphStats">
+                <div class="bg-gray-800 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-white" id="totalNodes">--</div>
+                    <div class="text-xs text-gray-500">Nodes</div>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-white" id="totalRelationships">--</div>
+                    <div class="text-xs text-gray-500">Relationships</div>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-white" id="totalOptimizations">--</div>
+                    <div class="text-xs text-gray-500">Optimizations Tracked</div>
+                </div>
+                <div class="bg-gray-800 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-white" id="avgConfidence">--</div>
+                    <div class="text-xs text-gray-500">Avg Confidence</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = window.location.hostname === 'localhost'
+            ? 'http://localhost:3000'
+            : 'https://www.chrisdavidsalon.com';
+
+        // Load version
+        async function loadVersion() {
+            try {
+                const response = await fetch(`${API_BASE}/data/version.json`);
+                const data = await response.json();
+                document.getElementById('versionBadge').textContent = `v${data.version}`;
+            } catch (e) {
+                document.getElementById('versionBadge').textContent = 'v2.16.0';
+            }
+        }
+
+        // Load learning status
+        async function loadStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/api/seo-learning?action=status`);
+                const data = await response.json();
+
+                if (data.success && data.stats) {
+                    const stats = data.stats;
+                    document.getElementById('learningProgress').textContent = stats.totalPatterns || '0';
+                    document.getElementById('successRate').textContent = (stats.successRate || 0) + '%';
+                    document.getElementById('totalNodes').textContent = stats.totalNodes || '0';
+                    document.getElementById('totalRelationships').textContent = stats.totalRelationships || '0';
+                    document.getElementById('totalOptimizations').textContent = stats.totalOptimizations || '0';
+                    document.getElementById('avgConfidence').textContent =
+                        stats.avgConfidence ? Math.round(stats.avgConfidence * 100) + '%' : '--';
+
+                    // Update learning bar
+                    const progress = Math.min((stats.totalPatterns || 0) / 100 * 100, 100);
+                    document.getElementById('learningBar').style.width = progress + '%';
+
+                    // Display top patterns
+                    if (stats.topPatterns && stats.topPatterns.length > 0) {
+                        displayPatterns(stats.topPatterns);
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load status:', error);
+            }
+        }
+
+        // Load recommendations
+        async function loadRecommendations() {
+            try {
+                const response = await fetch(`${API_BASE}/api/seo-learning?action=recommendations`);
+                const data = await response.json();
+
+                if (data.success && data.recommendations) {
+                    document.getElementById('recommendationCount').textContent = data.recommendations.length;
+                    displayRecommendations(data.recommendations.slice(0, 5));
+                }
+            } catch (error) {
+                console.error('Failed to load recommendations:', error);
+                document.getElementById('recommendationsList').innerHTML = `
+                    <div class="text-gray-500 text-center py-4">
+                        <p>Run "Analyze & Learn" to generate recommendations</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Display recommendations
+        function displayRecommendations(recommendations) {
+            const container = document.getElementById('recommendationsList');
+
+            if (!recommendations || recommendations.length === 0) {
+                container.innerHTML = `
+                    <div class="text-gray-500 text-center py-4">
+                        <p>No recommendations yet. Run analysis first.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = recommendations.map((rec, i) => {
+                const priorityColors = {
+                    critical: 'bg-red-500',
+                    high: 'bg-orange-500',
+                    medium: 'bg-yellow-500',
+                    low: 'bg-gray-500'
+                };
+                const priorityColor = priorityColors[rec.priority] || 'bg-gray-500';
+
+                return `
+                    <div class="bg-gray-800 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-semibold">${rec.actionType || rec.details?.type || 'Optimization'}</span>
+                            <span class="px-2 py-1 ${priorityColor} text-white text-xs rounded">${rec.priority || 'medium'}</span>
+                        </div>
+                        <p class="text-sm text-gray-400">${rec.details?.description || rec.reasoning || 'AI-generated recommendation'}</p>
+                        <div class="mt-2 flex items-center text-xs text-gray-500">
+                            <span>Confidence: ${Math.round((rec.confidence || 0.5) * 100)}%</span>
+                            <span class="mx-2">•</span>
+                            <span>Source: ${rec.source || 'analysis'}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Display patterns
+        function displayPatterns(patterns) {
+            const container = document.getElementById('patternsList');
+
+            if (!patterns || patterns.length === 0) {
+                container.innerHTML = `
+                    <div class="text-gray-500 text-center py-4">
+                        <p>No patterns learned yet</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = patterns.map(pattern => {
+                const successRate = pattern.success_count / (pattern.success_count + pattern.failure_count) * 100;
+                const confidenceColor = pattern.confidence > 0.7 ? 'text-green-400' :
+                                       pattern.confidence > 0.4 ? 'text-yellow-400' : 'text-red-400';
+
+                return `
+                    <div class="bg-gray-800 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm font-semibold">${pattern.pattern_type}</span>
+                            <span class="${confidenceColor} text-sm font-bold">${Math.round(pattern.confidence * 100)}%</span>
+                        </div>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <span class="text-green-400">${pattern.success_count} successes</span>
+                            <span class="mx-2">•</span>
+                            <span class="text-red-400">${pattern.failure_count} failures</span>
+                        </div>
+                        <div class="mt-2 h-1 bg-gray-700 rounded-full overflow-hidden">
+                            <div class="h-full bg-green-500" style="width: ${successRate}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Run data ingestion
+        async function runIngestion() {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Ingesting...';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/seo-learning?action=ingest`);
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Data ingestion complete! Knowledge graph updated.');
+                    loadStatus();
+                } else {
+                    alert('Ingestion failed: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                alert('Ingestion failed: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-sync-alt mr-2"></i>Ingest Data';
+            }
+        }
+
+        // Run analysis
+        async function runAnalysis() {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Analyzing...';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/seo-learning?action=analyze`);
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Analysis complete! Recommendations generated.');
+                    loadStatus();
+                    loadRecommendations();
+                } else {
+                    alert('Analysis failed: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                alert('Analysis failed: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-brain mr-2"></i>Analyze & Learn';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadVersion();
+            loadStatus();
+            loadRecommendations();
+        });
+    </script>
+</body>
+</html>

@@ -5,7 +5,8 @@
     "@google-analytics/data": "^4.12.1",
     "dotenv": "^17.2.3",
     "googleapis": "^166.0.0",
-    "playwright": "^1.57.0"
+    "playwright": "^1.57.0",
+    "ruvector": "^0.1.24"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0"

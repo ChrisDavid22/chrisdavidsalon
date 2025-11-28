@@ -1,7 +1,12 @@
 {
-  "version": "2.16.0",
-  "lastUpdated": "2025-11-28T05:20:00Z",
+  "version": "2.17.0",
+  "lastUpdated": "2025-11-28T08:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.17.0",
+      "date": "2025-11-28T08:00:00Z",
+      "changes": "SELF-LEARNING SEO SYSTEM (RuVector Integration): (1) NEW lib/seo-learning/seo-knowledge-graph.js - Graph database tracking keywords, pages, competitors, rankings, conversions across all 4 sites. (2) NEW lib/seo-learning/learning-agent.js - AI agent that identifies gaps, opportunities, threats and generates prioritized recommendations. (3) NEW lib/seo-learning/data-ingestion.js - Pipeline pulling data from GA4, competitors, authority, rankings APIs. (4) NEW lib/seo-learning/weekly-learning-cycle.js - 6-phase automated weekly process: ingest data, measure past optimizations, analyze patterns, generate recommendations, auto-implement safe changes, produce reports. (5) NEW api/seo-learning.js - REST API with 10 actions (status, ingest, analyze, recommendations, record-action, measure-action, learning-report, export-graph, query). (6) NEW admin/seo-learning.html - Dashboard showing learning progress, success rates, patterns, cross-site insights. (7) NEW .github/workflows/weekly-seo-learning.yml - GitHub Actions running every Sunday 6AM EST. (8) Bayesian confidence updates (+20% success, -15% failure) for continuous learning. (9) Auto-implements low-risk, high-confidence (>80%) optimizations. (10) Cross-site coordination for 4-site microsite strategy."
+    },
     {
       "version": "2.16.0",
       "date": "2025-11-28T05:20:00Z",

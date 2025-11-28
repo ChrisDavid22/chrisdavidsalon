@@ -1,0 +1,75 @@
+name: Weekly SEO Learning Cycle
+
+on:
+  schedule:
+    # Run every Sunday at 6 AM EST (11:00 UTC)
+    - cron: '0 11 * * 0'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  seo-learning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: '01-WEBSITE/package-lock.json'
+
+      - name: Install dependencies
+        working-directory: 01-WEBSITE
+        run: npm ci
+
+      - name: Run Weekly SEO Learning Cycle
+        working-directory: 01-WEBSITE
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "Starting Weekly SEO Learning Cycle..."
+          node -e "
+            const KnowledgeGraph = require('./lib/seo-learning/seo-knowledge-graph');
+            const SEOLearningAgent = require('./lib/seo-learning/learning-agent');
+            const DataIngestion = require('./lib/seo-learning/data-ingestion');
+            const { runWeeklyLearningCycle } = require('./lib/seo-learning/weekly-learning-cycle');
+
+            async function main() {
+              await KnowledgeGraph.initialize();
+              const agent = new SEOLearningAgent(KnowledgeGraph);
+              const results = await runWeeklyLearningCycle(KnowledgeGraph, agent, DataIngestion);
+              console.log(JSON.stringify(results.report, null, 2));
+            }
+
+            main().catch(console.error);
+          "
+
+      - name: Trigger Site Reindex
+        run: |
+          echo "Pinging sitemaps for reindexing..."
+          # Note: Google deprecated ping, but we can trigger via Search Console API
+          curl -s "https://www.chrisdavidsalon.com/sitemap.xml" > /dev/null
+          curl -s "https://bestsalondelray.com/sitemap.xml" > /dev/null
+          curl -s "https://bestdelraysalon.com/sitemap.xml" > /dev/null
+          curl -s "https://bestsalonpalmbeach.com/sitemap.xml" > /dev/null
+          echo "Sitemap checks complete"
+
+      - name: Upload Learning Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-learning-report-${{ github.run_number }}
+          path: 01-WEBSITE/data/learning-reports/
+          retention-days: 90
+          if-no-files-found: ignore
+
+      - name: Notify on Completion
+        if: always()
+        run: |
+          echo "Weekly SEO Learning Cycle completed at $(date)"
+          echo "Check the admin dashboard at https://www.chrisdavidsalon.com/admin/seo-learning.html"

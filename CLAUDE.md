@@ -4,8 +4,56 @@
 
 **Live Site**: https://www.chrisdavidsalon.com
 **Admin Dashboard**: https://www.chrisdavidsalon.com/admin/
-**Current Version**: v2.10.5
+**SEO Learning Dashboard**: https://www.chrisdavidsalon.com/admin/seo-learning.html
+**Current Version**: v2.17.0
 **Deployment**: Vercel (auto-deploys from main branch)
+
+---
+
+## SELF-LEARNING SEO SYSTEM (RuVector)
+
+### Overview
+The site now includes a **self-learning SEO optimization system** powered by RuVector, a vector database with Graph Neural Network (GNN) layers that learns from data over time.
+
+### What It Does
+1. **Monitors all 4 sites**: chrisdavidsalon.com + 3 microsites
+2. **Ingests data weekly**: Traffic, rankings, competitors, conversions
+3. **Learns what works**: Tracks which optimizations improve metrics
+4. **Recommends actions**: AI-generated suggestions based on learned patterns
+5. **Gets smarter over time**: Success/failure feedback improves future recommendations
+
+### Managed Sites
+| Site | Purpose | Focus Keywords |
+|------|---------|----------------|
+| chrisdavidsalon.com | Main conversion hub | All service + location terms |
+| bestsalondelray.com | Authority building | General salon guides, service info |
+| bestdelraysalon.com | Local SEO | Delray Beach neighborhood terms |
+| bestsalonpalmbeach.com | Regional SEO | Palm Beach County, luxury terms |
+
+### API Endpoint
+- **Endpoint**: `/api/seo-learning`
+- **Actions**:
+  - `?action=status` - Check system status and stats
+  - `?action=ingest` - Run full data ingestion
+  - `?action=analyze` - Run analysis and update learning
+  - `?action=recommendations` - Get prioritized recommendations
+  - `?action=learning-report` - Get learning progress report
+  - `?action=export-graph` - Export knowledge graph
+
+### Automated Weekly Cycle
+GitHub Actions workflow runs every Sunday at 6 AM EST:
+1. Ingests fresh data from all APIs
+2. Measures effectiveness of past optimizations
+3. Updates learned patterns
+4. Generates new recommendations
+5. Auto-implements safe, high-confidence changes
+
+### Learning Metrics Tracked
+- **Traffic**: sessions, users, pageviews, bounce rate
+- **Rankings**: position, impressions, clicks, CTR
+- **Conversions**: booking clicks, phone clicks, form submissions
+- **Authority**: PageRank, domain authority, backlinks
+- **Competitors**: ratings, reviews, ranking gaps
 
 ---
 
@@ -111,6 +159,7 @@ All APIs are **LIVE AND OPERATIONAL** as of November 2024. Do NOT ask for creden
 | Authority | `/admin/authority.html` | OpenPageRank API | Working |
 | Microsites | `/admin/microsites.html` | Static data | Working |
 | Agent Log | `/admin/agent-log.html` | Agent API | Working |
+| SEO Learning | `/admin/seo-learning.html` | Knowledge Graph | Working |
 
 ---
 
@@ -239,10 +288,13 @@ curl "https://www.chrisdavidsalon.com/api/autonomous-seo-agent?action=status"
 - PageSpeed monitoring
 - SEO scoring engine
 - Autonomous agent framework
-- Admin dashboard with 7 pages
+- Admin dashboard with 8 pages
+- **Self-Learning SEO System** (RuVector knowledge graph)
+- Automated weekly learning cycles (GitHub Actions)
+- Cross-site optimization for 4 domains
+- Booking click conversion tracking (GA4 events)
 
 ### NOT YET BUILT (Phase 2-4 of Implementation Plan)
-- Booking click conversion tracking (GA4 events)
 - Action queue system (AI + approval workflow)
 - Email notifications
 - ROI measurement (before/after tracking)
