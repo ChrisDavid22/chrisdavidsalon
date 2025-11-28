@@ -1,18 +1,235 @@
 # Page snapshot
 
 ```yaml
-- main [ref=e3]:
-  - paragraph [ref=e4]:
-    - generic [ref=e5]:
-      - strong [ref=e6]: "404"
-      - text: ": NOT_FOUND"
-    - generic [ref=e7]:
-      - text: "Code:"
-      - code [ref=e8]: "`NOT_FOUND`"
-    - generic [ref=e9]:
-      - text: "ID:"
-      - code [ref=e10]: "`iad1::c2tbj-1764306506570-efd9ad4e4f2c`"
-  - link "Read our documentation to learn more about this error." [ref=e11] [cursor=pointer]:
-    - /url: https://vercel.com/docs/errors/platform-error-codes#not_found
-    - generic [ref=e12]: Read our documentation to learn more about this error.
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon Andre Design District - Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District - Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e14]:
+        - link " (561) 299-0950" [ref=e15] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e16]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]:
+    - img "Hair Salon Serving Boynton Beach" [ref=e21]
+    - generic [ref=e23]:
+      - paragraph [ref=e24]: SERVING BOYNTON BEACH, OCEAN RIDGE & GULF STREAM
+      - heading "Boynton Beach's Premier Colorist" [level=1] [ref=e25]:
+        - text: Boynton Beach's
+        - text: Premier Colorist
+      - paragraph [ref=e26]: Just 10 minutes from Boynton Beach, master colorist Chris David brings 20+ years of expertise to every appointment at our Delray Beach salon.
+      - generic [ref=e27]:
+        - button " Book Your Appointment" [ref=e28] [cursor=pointer]:
+          - generic [ref=e29]: 
+          - text: Book Your Appointment
+        - link " Call (561) 299-0950" [ref=e30] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e31]: 
+          - text: Call (561) 299-0950
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - generic [ref=e35]: 
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+            - generic [ref=e39]: 
+          - generic [ref=e40]: 4.9/5 - 140+ Reviews
+        - generic [ref=e41]:
+          - generic [ref=e42]: 
+          - generic [ref=e43]: 10 Min from Boynton Beach
+        - generic [ref=e44]:
+          - generic [ref=e45]: 
+          - generic [ref=e46]: 20+ Years Experience
+  - generic [ref=e49]:
+    - generic [ref=e50]:
+      - heading "Why Boynton Beach Residents Make the Short Trip" [level=2] [ref=e51]
+      - generic [ref=e52]:
+        - paragraph [ref=e53]:
+          - text: Residents of Boynton Beach, Ocean Ridge, Gulf Stream, and Highland Beach have discovered that a
+          - strong [ref=e54]: quick 10-minute drive
+          - text: to Chris David Salon is well worth it for master-level hair services.
+        - paragraph [ref=e55]:
+          - text: Unlike chain salons, Chris David brings
+          - strong [ref=e56]: 20+ years of expertise
+          - text: and certifications from 5 major brands. He's not just a stylist - he's trained hundreds of professionals worldwide.
+        - paragraph [ref=e57]: Whether you're looking for the perfect balayage, expert color correction, or smoothing treatments that stand up to Florida humidity, you'll find it just minutes from home.
+      - generic [ref=e58]:
+        - heading " Easy Access from Boynton Beach" [level=4] [ref=e59]:
+          - generic [ref=e60]: 
+          - text: Easy Access from Boynton Beach
+        - list [ref=e61]:
+          - listitem [ref=e62]: • 10 minutes from downtown Boynton Beach
+          - listitem [ref=e63]: • 8 minutes from Ocean Ridge
+          - listitem [ref=e64]: • 12 minutes from Gulf Stream
+          - listitem [ref=e65]: • Free parking at our salon
+    - generic [ref=e66]:
+      - img "Hair services for Boynton Beach clients" [ref=e68]
+      - generic [ref=e69]:
+        - generic [ref=e70]: 4.9★
+        - generic [ref=e71]: 140+ Reviews
+  - generic [ref=e73]:
+    - generic [ref=e74]:
+      - heading "Services for Boynton Beach Clients" [level=2] [ref=e75]
+      - paragraph [ref=e76]: Luxury hair services just minutes from your doorstep
+    - generic [ref=e77]:
+      - link " Balayage Sun-kissed, hand-painted highlights From $200+" [ref=e78] [cursor=pointer]:
+        - /url: ../services/balayage-delray-beach.html
+        - generic [ref=e80]: 
+        - heading "Balayage" [level=3] [ref=e81]
+        - paragraph [ref=e82]: Sun-kissed, hand-painted highlights
+        - text: From $200+
+      - link " Highlights Precision foil highlights From $175+" [ref=e83] [cursor=pointer]:
+        - /url: ../services/highlights-delray-beach.html
+        - generic [ref=e85]: 
+        - heading "Highlights" [level=3] [ref=e86]
+        - paragraph [ref=e87]: Precision foil highlights
+        - text: From $175+
+      - link " Keratin Beat Florida humidity From $200+" [ref=e88] [cursor=pointer]:
+        - /url: ../services/keratin-treatment-delray-beach.html
+        - generic [ref=e90]: 
+        - heading "Keratin" [level=3] [ref=e91]
+        - paragraph [ref=e92]: Beat Florida humidity
+        - text: From $200+
+      - link " Extensions Premium tape-in extensions From $300+" [ref=e93] [cursor=pointer]:
+        - /url: ../services/hair-extensions-delray-beach.html
+        - generic [ref=e95]: 
+        - heading "Extensions" [level=3] [ref=e96]
+        - paragraph [ref=e97]: Premium tape-in extensions
+        - text: From $300+
+    - link "View All Services " [ref=e99] [cursor=pointer]:
+      - /url: ../services/hair-salon-delray-beach.html
+      - text: View All Services
+      - generic [ref=e100]: 
+  - generic [ref=e102]:
+    - generic [ref=e103]:
+      - heading "Visit Our Delray Beach Salon" [level=2] [ref=e104]
+      - paragraph [ref=e105]: Just minutes from Boynton Beach
+    - generic [ref=e106]:
+      - generic [ref=e107]:
+        - heading "Salon Information" [level=3] [ref=e108]
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - generic [ref=e111]: 
+            - generic [ref=e112]:
+              - strong [ref=e113]: Address
+              - text: 1878C Dr. Andres Way
+              - text: Delray Beach, FL 33445
+              - text: (Andre Design District)
+          - generic [ref=e114]:
+            - generic [ref=e115]: 
+            - generic [ref=e116]:
+              - strong [ref=e117]: Phone
+              - link "(561) 299-0950" [ref=e118] [cursor=pointer]:
+                - /url: tel:5612990950
+          - generic [ref=e119]:
+            - generic [ref=e120]: 
+            - generic [ref=e121]:
+              - strong [ref=e122]: Hours
+              - text: "Tuesday - Saturday: 11:00 AM - 6:00 PM"
+              - text: "Sunday - Monday: Closed"
+          - generic [ref=e123]:
+            - generic [ref=e124]: 
+            - generic [ref=e125]:
+              - strong [ref=e126]: Parking
+              - text: Free parking available on-site
+      - generic [ref=e127]:
+        - heading "Directions from Boynton Beach" [level=3] [ref=e128]
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - strong [ref=e131]: "From Downtown Boynton Beach:"
+            - paragraph [ref=e132]: Head south on Federal Hwy (US-1) for about 3 miles. Turn right on Linton Blvd, then right on Dr. Andres Way. ~10 minutes.
+          - generic [ref=e133]:
+            - strong [ref=e134]: "From Ocean Ridge / Briny Breezes:"
+            - paragraph [ref=e135]: Take A1A south to Atlantic Ave, head west to Federal Hwy, then south to Linton Blvd. ~8 minutes.
+          - generic [ref=e136]:
+            - strong [ref=e137]: "From West Boynton:"
+            - paragraph [ref=e138]: Take Boynton Beach Blvd east to I-95 South, exit at Linton Blvd, head east. ~15 minutes.
+        - link " Get Directions" [ref=e139] [cursor=pointer]:
+          - /url: https://www.google.com/maps/dir/?api=1&destination=1878C+Dr.+Andres+Way,+Delray+Beach,+FL+33445
+          - generic [ref=e140]: 
+          - text: Get Directions
+  - generic [ref=e142]:
+    - heading "Ready for Salon-Quality Results?" [level=2] [ref=e143]
+    - paragraph [ref=e144]: Join the Boynton Beach residents who've discovered master-level hair services just 10 minutes away.
+    - generic [ref=e145]:
+      - button " Book Appointment" [ref=e146] [cursor=pointer]:
+        - generic [ref=e147]: 
+        - text: Book Appointment
+      - link " Call (561) 299-0950" [ref=e148] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e149]: 
+        - text: Call (561) 299-0950
+  - contentinfo [ref=e150]:
+    - generic [ref=e151]:
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - img "Chris David Salon" [ref=e155]
+          - paragraph [ref=e156]: Serving Boynton Beach clients from our Delray Beach salon.
+        - generic [ref=e157]:
+          - heading "Services" [level=4] [ref=e158]
+          - list [ref=e159]:
+            - listitem [ref=e160]:
+              - link "Balayage" [ref=e161] [cursor=pointer]:
+                - /url: ../services/balayage-delray-beach.html
+            - listitem [ref=e162]:
+              - link "Highlights" [ref=e163] [cursor=pointer]:
+                - /url: ../services/highlights-delray-beach.html
+            - listitem [ref=e164]:
+              - link "Color Correction" [ref=e165] [cursor=pointer]:
+                - /url: ../services/color-correction-delray-beach.html
+            - listitem [ref=e166]:
+              - link "Hair Extensions" [ref=e167] [cursor=pointer]:
+                - /url: ../services/hair-extensions-delray-beach.html
+        - generic [ref=e168]:
+          - heading "Areas Served" [level=4] [ref=e169]
+          - list [ref=e170]:
+            - listitem [ref=e171]:
+              - link "Delray Beach" [ref=e172] [cursor=pointer]:
+                - /url: delray-beach-hair-salon.html
+            - listitem [ref=e173]:
+              - link "Boca Raton" [ref=e174] [cursor=pointer]:
+                - /url: boca-raton-hair-salon.html
+            - listitem [ref=e175]:
+              - link "Boynton Beach" [ref=e176] [cursor=pointer]:
+                - /url: boynton-beach-hair-salon.html
+        - generic [ref=e177]:
+          - heading "Follow Us" [level=4] [ref=e178]
+          - generic [ref=e179]:
+            - link "" [ref=e180] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e181]: 
+            - link "" [ref=e182] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e183]: 
+      - generic [ref=e184]:
+        - paragraph [ref=e185]: © 2024 Chris David Salon. All rights reserved.
+        - paragraph [ref=e186]:
+          - link "Back to Main Site" [ref=e187] [cursor=pointer]:
+            - /url: ../index.html
+  - iframe [ref=e188]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
 ```

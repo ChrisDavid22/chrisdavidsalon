@@ -57,7 +57,7 @@
           - generic [ref=e41]: 
           - generic [ref=e42]: 
           - generic [ref=e43]: 
-        - generic [ref=e44]: 4.9/5.0 • 133+ Reviews • Serving Delray Beach, Boca Raton & Palm Beach County
+        - generic [ref=e44]: 4.9/5.0 • 140+ Reviews • Serving Delray Beach, Boca Raton & Palm Beach County
   - generic [ref=e47]:
     - generic [ref=e48]:
       - heading "Meet Chris David - Delray Beach's Master Colorist" [level=2] [ref=e49]
@@ -104,7 +104,7 @@
     - generic [ref=e78]:
       - img "Chris David at work" [ref=e79]
       - generic [ref=e80]:
-        - generic [ref=e81]: 10+
+        - generic [ref=e81]: 20+
         - generic [ref=e82]: Years of Excellence
   - generic [ref=e84]:
     - generic [ref=e85]:
@@ -228,7 +228,7 @@
           - text: Verified by Google
         - generic [ref=e193]:
           - generic [ref=e194]: 
-          - text: 133+ Five-Star Reviews
+          - text: 140+ Five-Star Reviews
         - generic [ref=e195]:
           - generic [ref=e196]: 
           - text: Real Client Transformations
@@ -245,7 +245,7 @@
           - generic [ref=e206]: 1000+
           - generic [ref=e207]: Transformations
         - generic [ref=e208]:
-          - generic [ref=e209]: 15+
+          - generic [ref=e209]: 20+
           - generic [ref=e210]: Years Experience
   - generic [ref=e212]:
     - generic [ref=e213]:
@@ -258,7 +258,7 @@
           - generic [ref=e220]: 
           - generic [ref=e221]: 
         - generic [ref=e222]: 4.9/5.0
-        - generic [ref=e223]: • 133+ Reviews
+        - generic [ref=e223]: • 140+ Reviews
     - generic [ref=e224]:
       - generic [ref=e225]:
         - generic [ref=e226]:
@@ -474,7 +474,7 @@
               - link "Policies" [ref=e423] [cursor=pointer]:
                 - /url: policies.html
         - generic [ref=e424]:
-          - heading "Locations" [level=4] [ref=e425]
+          - heading "Areas Served" [level=4] [ref=e425]
           - list [ref=e426]:
             - listitem [ref=e427]:
               - link "Delray Beach Hair Salon" [ref=e428] [cursor=pointer]:
@@ -482,66 +482,75 @@
             - listitem [ref=e429]:
               - link "Atlantic Avenue Colorist" [ref=e430] [cursor=pointer]:
                 - /url: locations/atlantic-avenue-colorist.html
-        - generic [ref=e431]:
-          - heading "Services" [level=4] [ref=e432]
-          - list [ref=e433]:
-            - listitem [ref=e434]:
-              - link "All Services" [ref=e435] [cursor=pointer]:
-                - /url: services/hair-salon-delray-beach.html
-            - listitem [ref=e436]:
-              - link "Hair Color" [ref=e437] [cursor=pointer]:
-                - /url: services/hair-color-delray-beach.html
+            - listitem [ref=e431]:
+              - link "Boca Raton Clients" [ref=e432] [cursor=pointer]:
+                - /url: locations/boca-raton-hair-salon.html
+            - listitem [ref=e433]:
+              - link "Boynton Beach Clients" [ref=e434] [cursor=pointer]:
+                - /url: locations/boynton-beach-hair-salon.html
+        - generic [ref=e435]:
+          - heading "Services" [level=4] [ref=e436]
+          - list [ref=e437]:
             - listitem [ref=e438]:
-              - link "Balayage" [ref=e439] [cursor=pointer]:
-                - /url: services/balayage-delray-beach.html
+              - link "All Services" [ref=e439] [cursor=pointer]:
+                - /url: services/hair-salon-delray-beach.html
             - listitem [ref=e440]:
-              - link "Color Correction" [ref=e441] [cursor=pointer]:
-                - /url: services/color-correction-delray-beach.html
+              - link "Hair Color" [ref=e441] [cursor=pointer]:
+                - /url: services/hair-color-delray-beach.html
             - listitem [ref=e442]:
-              - link "Color Correction Guide" [ref=e443] [cursor=pointer]:
-                - /url: services/color-correction.html
-            - listitem [ref=e444]:
-              - link "Extensions" [ref=e445] [cursor=pointer]:
-                - /url: services/hair-extensions-delray-beach.html
-            - listitem [ref=e446]:
-              - link "Keratin Treatment" [ref=e447] [cursor=pointer]:
-                - /url: services/keratin-treatment-delray-beach.html
-            - listitem [ref=e448]:
-              - link "Wedding Hair" [ref=e449] [cursor=pointer]:
-                - /url: services/wedding-hair-delray-beach.html
-            - listitem [ref=e450]:
-              - link "Women's Haircuts" [ref=e451] [cursor=pointer]:
+              - link "Women's Haircuts" [ref=e443] [cursor=pointer]:
                 - /url: services/womens-haircut-delray-beach.html
-        - generic [ref=e452]:
-          - heading "Contact" [level=4] [ref=e453]
-          - generic [ref=e454]:
-            - paragraph [ref=e455]: 1878C Dr. Andres Way
-            - paragraph [ref=e456]: Delray Beach, FL 33445
-            - paragraph [ref=e457]:
-              - link "(561) 299-0950" [ref=e458] [cursor=pointer]:
+            - listitem [ref=e444]:
+              - link "Men's Haircuts" [ref=e445] [cursor=pointer]:
+                - /url: services/mens-haircut-delray-beach.html
+            - listitem [ref=e446]:
+              - link "Balayage" [ref=e447] [cursor=pointer]:
+                - /url: services/balayage-delray-beach.html
+            - listitem [ref=e448]:
+              - link "Highlights" [ref=e449] [cursor=pointer]:
+                - /url: services/highlights-delray-beach.html
+            - listitem [ref=e450]:
+              - link "Color Correction" [ref=e451] [cursor=pointer]:
+                - /url: services/color-correction-delray-beach.html
+            - listitem [ref=e452]:
+              - link "Extensions" [ref=e453] [cursor=pointer]:
+                - /url: services/hair-extensions-delray-beach.html
+            - listitem [ref=e454]:
+              - link "Keratin Treatment" [ref=e455] [cursor=pointer]:
+                - /url: services/keratin-treatment-delray-beach.html
+            - listitem [ref=e456]:
+              - link "Wedding Hair" [ref=e457] [cursor=pointer]:
+                - /url: services/wedding-hair-delray-beach.html
+        - generic [ref=e458]:
+          - heading "Contact" [level=4] [ref=e459]
+          - generic [ref=e460]:
+            - paragraph [ref=e461]: 1878C Dr. Andres Way
+            - paragraph [ref=e462]: Delray Beach, FL 33445
+            - paragraph [ref=e463]:
+              - link "(561) 299-0950" [ref=e464] [cursor=pointer]:
                 - /url: tel:5612990950
-            - paragraph [ref=e459]:
-              - link "chrisdavidsalon@gmail.com" [ref=e460] [cursor=pointer]:
+            - paragraph [ref=e465]:
+              - link "chrisdavidsalon@gmail.com" [ref=e466] [cursor=pointer]:
                 - /url: mailto:chrisdavidsalon@gmail.com
-          - generic [ref=e461]:
+          - generic [ref=e467]:
             - link:
               - /url: https://www.instagram.com/chrisdavidsalon/
             - link:
               - /url: https://www.facebook.com/ChrisDavidSalon/
             - link:
               - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
-      - generic [ref=e462]:
-        - paragraph [ref=e463]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
-        - paragraph [ref=e464]:
-          - link "Admin" [ref=e465] [cursor=pointer]:
+      - generic [ref=e468]:
+        - paragraph [ref=e469]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+        - paragraph [ref=e470]:
+          - link "Admin" [ref=e471] [cursor=pointer]:
             - /url: ./admin/login.html
           - text: "Version: 2.15.0"
   - text: 
-  - button " Book Now" [ref=e466] [cursor=pointer]:
-    - generic [ref=e467]: 
+  - button " Book Now" [ref=e472] [cursor=pointer]:
+    - generic [ref=e473]: 
     - text: Book Now
   - text: 
-  - iframe [ref=e468]:
+  - iframe [ref=e474]:
     - generic [ref=f2e2]:
       - link "Your appointments" [ref=f2e7] [cursor=pointer]:
         - /url: https://blvd.app/@chris-david-salon/login

@@ -1,7 +1,12 @@
 {
-  "version": "2.15.0",
-  "lastUpdated": "2025-11-27T04:30:00Z",
+  "version": "2.16.0",
+  "lastUpdated": "2025-11-28T05:20:00Z",
   "deployHistory": [
+    {
+      "version": "2.16.0",
+      "date": "2025-11-28T05:20:00Z",
+      "changes": "MAJOR SEO EXPANSION + SERVICE AREA PAGES: (1) NEW /services/mens-haircut-delray-beach.html - targets 'mens haircut delray beach', 'barber delray beach'. (2) NEW /services/highlights-delray-beach.html - targets 'highlights delray beach', 'foil highlights'. (3) NEW /locations/boca-raton-hair-salon.html - service area page for Boca Raton clients (Chris served since 2007). (4) NEW /locations/boynton-beach-hair-salon.html - service area page for Boynton Beach/Ocean Ridge/Gulf Stream clients. (5) Updated navigation dropdown with Men's Haircuts and Highlights links. (6) Updated footer with 'Areas Served' section including Boca Raton and Boynton Beach links. (7) Updated all service pages with consistent 140 review count from GBP. (8) Added booking click tracking to admin traffic page. (9) Comprehensive Playwright tests (36 tests) for all public pages. (10) Updated sitemap.xml with all 4 new pages."
+    },
     {
       "version": "2.15.0",
       "date": "2025-11-27T04:30:00Z",
