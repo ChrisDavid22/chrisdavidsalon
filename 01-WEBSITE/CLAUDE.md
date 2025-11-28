@@ -9,7 +9,8 @@ Chris David Salon website with **Autonomous SEO Agent** - a complete analytics a
 **Live Site**: https://chrisdavidsalon.com
 **GitHub**: https://github.com/ChrisDavid22/chrisdavidsalon.git
 **Deployment**: Vercel (auto-deploys from main branch)
-**Current Version**: 2.10.4
+**Current Version**: 2.18.0
+**Site Readiness Score**: 88/100
 
 ---
 
@@ -62,6 +63,38 @@ npx playwright test tests/cache-full-test.spec.cjs --config=playwright.config.cj
 ├── cache-full-test.spec.cjs  # Full cache verification
 ├── api-test.spec.cjs         # Direct API endpoint tests
 ```
+
+---
+
+## Directory Submission Automation (v2.18.0)
+
+Complete toolkit for automating business directory submissions located in `03-AUTOMATION/directory-submit/`:
+
+### Files
+- **business-config.js** - Verified NAP (Name, Address, Phone) data
+- **auto-submit.js** - Playwright browser automation for directory submissions
+- **browser-agent.py** - AI-powered browser control using browser-use + Claude
+- **interactive-submit.js** - Guided manual submission helper
+
+### Documentation
+- **DIRECTORY_ACTION_PLAN.md** - Comprehensive action plan with:
+  - BrightLocal recommendation ($150 for 75+ directories)
+  - Manual submission priority list
+  - Automation requirements for each directory
+  - OAuth/2FA blockers explained
+
+- **DIRECTORY_STATUS.md** - Current listing status across all directories
+
+### Directory Status Summary
+| Status | Directories |
+|--------|-------------|
+| Listed | Google, Yelp, Nextdoor, Waze, ClassPass, Facebook, Instagram |
+| Not Listed (Priority) | Bing Places, Apple Business Connect, Yellow Pages, Manta, MapQuest |
+
+### Recommendation
+1. Do Apple Business Connect manually (requires Apple ID 2FA)
+2. Pay BrightLocal $150 for 75+ other directories
+3. Total time: 30 minutes + $150
 
 ---
 
@@ -266,15 +299,19 @@ curl https://www.chrisdavidsalon.com/api/seo-analysis-engine?action=health-check
 
 ## Version History
 
-Current: **2.10.4** - Instant Cache Loading
+Current: **2.18.0** - Directory Submission Automation
 
 Key versions:
+- 2.18.0: Directory submission automation toolkit, site readiness 88/100, GA4 live (416 users)
+- 2.17.0: Self-Learning SEO System with RuVector knowledge graph
+- 2.16.0: Service area pages (Boca Raton, Boynton Beach) + men's/highlights pages
+- 2.15.0: Microsite analytics dashboard with ROI projections
+- 2.14.0: Autonomous SEO Brain - weekly intelligence system
+- 2.13.0: Competitor-inspired SEO - mega keywords, FAQ schema
+- 2.12.0: Search Console integration with live keyword rankings
+- 2.11.0: Action-focused dashboard with conversion tracking
 - 2.10.4: Fixed instant cache loading - page loads instantly on return visits
-- 2.10.3: Data integrity audit - removed hardcoded PageRank data
-- 2.10.2: Unified scoring formulas across all pages
-- 2.10.0: Added localStorage caching for instant dashboard loads
 - 2.9.9: Autonomous SEO Agent API with 10 actions
-- 2.9.7: SEO Command Center UI overhaul
 - 2.8.0: GA4 API, Analysis Engine, Weekly Reports
 
 Full history in `/data/version.json`
