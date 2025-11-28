@@ -123,6 +123,22 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- Men's Haircuts -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/services/mens-haircut-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Highlights -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/services/highlights-delray-beach.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- ============================================ -->
   <!-- LOCATION PAGES -->
   <!-- ============================================ -->
@@ -136,6 +152,21 @@
   <url>
     <loc>https://www.chrisdavidsalon.com/locations/atlantic-avenue-colorist.html</loc>
     <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- SERVICE AREA PAGES (Not physical locations - targeting nearby cities) -->
+  <url>
+    <loc>https://www.chrisdavidsalon.com/locations/boca-raton-hair-salon.html</loc>
+    <lastmod>2025-11-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.chrisdavidsalon.com/locations/boynton-beach-hair-salon.html</loc>
+    <lastmod>2025-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

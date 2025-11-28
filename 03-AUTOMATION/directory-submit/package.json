@@ -1,0 +1,17 @@
+{
+  "name": "directory-submit",
+  "version": "1.0.0",
+  "description": "Playwright tool to submit Chris David Salon to business directories",
+  "type": "module",
+  "scripts": {
+    "submit": "node submit.js",
+    "foursquare": "node submit.js foursquare",
+    "bing": "node submit.js bing",
+    "apple": "node submit.js apple",
+    "facebook": "node submit.js facebook",
+    "all": "node submit.js all"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}

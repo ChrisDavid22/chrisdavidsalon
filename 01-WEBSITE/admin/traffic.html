@@ -132,7 +132,7 @@
         </div>
 
         <!-- Key Metrics Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
             <div class="bg-white rounded-xl shadow p-4">
                 <div class="flex items-center justify-between">
                     <div>
@@ -170,6 +170,54 @@
                         <div class="text-3xl font-bold" id="bounceRate">--%</div>
                     </div>
                     <div class="text-3xl text-yellow-500"><i class="fas fa-sign-out-alt"></i></div>
+                </div>
+            </div>
+
+            <!-- NEW: Booking Clicks Counter -->
+            <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow p-4 text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-sm text-green-100">Booking Clicks (30d)</div>
+                        <div class="text-3xl font-bold" id="bookingClicks">--</div>
+                        <div class="text-xs text-green-200 mt-1" id="bookingConversion">--% conversion</div>
+                    </div>
+                    <div class="text-3xl text-green-200"><i class="fas fa-calendar-check"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conversion Events Section -->
+        <div class="bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl shadow p-6 mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="text-lg font-bold text-gray-800">Conversion Events (30 Days)</h2>
+                    <p class="text-sm text-gray-500">Track booking clicks, phone calls, and other conversion actions</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm text-gray-500">Data Source:</span>
+                    <span id="conversionDataSource" class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold">GA4 Live</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                    <div class="text-3xl font-bold text-emerald-600" id="totalBookingClicks">--</div>
+                    <div class="text-sm text-gray-600 mt-1">Booking Clicks</div>
+                    <div class="text-xs text-gray-400">Book Now button</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                    <div class="text-3xl font-bold text-blue-600" id="totalPhoneClicks">--</div>
+                    <div class="text-sm text-gray-600 mt-1">Phone Clicks</div>
+                    <div class="text-xs text-gray-400">Call button taps</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                    <div class="text-3xl font-bold text-purple-600" id="totalFormSubmits">--</div>
+                    <div class="text-sm text-gray-600 mt-1">Form Submissions</div>
+                    <div class="text-xs text-gray-400">Contact forms</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                    <div class="text-3xl font-bold text-orange-600" id="totalConversions">--</div>
+                    <div class="text-sm text-gray-600 mt-1">Total Conversions</div>
+                    <div class="text-xs text-gray-400">All actions</div>
                 </div>
             </div>
         </div>
@@ -508,7 +556,8 @@
                         loadTrafficSources(),
                         loadDeviceBreakdown(),
                         loadTopPages(),
-                        loadMicrositeReferrals()
+                        loadMicrositeReferrals(),
+                        loadConversionEvents()
                     ]);
                 } else {
                     // GA4 NOT CONNECTED - Show instructions
@@ -720,6 +769,53 @@
                 }
             } catch (e) {
                 console.error('Top pages error:', e);
+            }
+        }
+
+        // NEW: Load Conversion Events (Booking Clicks, Phone Clicks, etc.)
+        async function loadConversionEvents() {
+            try {
+                const response = await fetch(`${API_BASE}/api/ga4-analytics?type=events`);
+                const result = await response.json();
+
+                if (result.success && result.data) {
+                    // Find specific events
+                    const bookingClicks = result.data.find(e => e.eventName === 'booking_click')?.count || 0;
+                    const phoneClicks = result.data.find(e => e.eventName === 'phone_click')?.count ||
+                                       result.data.find(e => e.eventName === 'click' && e.eventName.includes('phone'))?.count || 0;
+                    const formSubmits = result.data.find(e => e.eventName === 'form_submit')?.count || 0;
+                    const allClicks = result.data.find(e => e.eventName === 'click')?.count || 0;
+
+                    // Calculate total conversions (booking + phone + form)
+                    const totalConversions = bookingClicks + phoneClicks + formSubmits;
+
+                    // Get active users for conversion rate calculation
+                    const activeUsers = parseInt(document.getElementById('activeUsers').textContent.replace(/,/g, '')) || 0;
+                    const conversionRate = activeUsers > 0 ? ((totalConversions / activeUsers) * 100).toFixed(1) : 0;
+
+                    // Update the main booking clicks counter
+                    document.getElementById('bookingClicks').textContent = bookingClicks.toLocaleString();
+                    document.getElementById('bookingConversion').textContent = `${conversionRate}% conversion`;
+
+                    // Update the detailed conversion section
+                    document.getElementById('totalBookingClicks').textContent = bookingClicks.toLocaleString();
+                    document.getElementById('totalPhoneClicks').textContent = phoneClicks.toLocaleString();
+                    document.getElementById('totalFormSubmits').textContent = formSubmits.toLocaleString();
+                    document.getElementById('totalConversions').textContent = totalConversions.toLocaleString();
+
+                    // Update data source badge
+                    document.getElementById('conversionDataSource').textContent = result.isLiveData ? 'GA4 Live' : 'Cached';
+                    document.getElementById('conversionDataSource').className = result.isLiveData
+                        ? 'bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-semibold'
+                        : 'bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs font-semibold';
+
+                    console.log('Conversion events loaded:', { bookingClicks, phoneClicks, formSubmits, totalConversions, conversionRate });
+                }
+            } catch (e) {
+                console.error('Conversion events error:', e);
+                // Show error state
+                document.getElementById('conversionDataSource').textContent = 'Error';
+                document.getElementById('conversionDataSource').className = 'bg-red-100 text-red-700 px-2 py-1 rounded text-xs font-semibold';
             }
         }
 

@@ -1,0 +1,367 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]: This XML file does not appear to have any style information associated with it. The document tree is shown below.
+  - generic [ref=e4]:
+    - generic [ref=e7]:
+      - text: <urlset
+      - generic [ref=e8]: xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      - generic [ref=e9]: xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+      - text: ">"
+    - generic [ref=e10]:
+      - generic [ref=e11]: <!-- ============================================ -->
+      - generic [ref=e12]: <!-- HOMEPAGE -->
+      - generic [ref=e13]: <!-- ============================================ -->
+      - generic [ref=e14]:
+        - generic [ref=e17]: <url>
+        - generic [ref=e18]:
+          - generic [ref=e19]:
+            - generic [ref=e20]: <loc>
+            - text: https://www.chrisdavidsalon.com/
+            - generic [ref=e21]: </loc>
+          - generic [ref=e22]:
+            - generic [ref=e23]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e24]: </lastmod>
+          - generic [ref=e25]:
+            - generic [ref=e26]: <changefreq>
+            - text: weekly
+            - generic [ref=e27]: </changefreq>
+          - generic [ref=e28]:
+            - generic [ref=e29]: <priority>
+            - text: "1.0"
+            - generic [ref=e30]: </priority>
+          - generic [ref=e31]:
+            - generic [ref=e34]: <image:image>
+            - generic [ref=e35]:
+              - generic [ref=e36]:
+                - generic [ref=e37]: <image:loc>
+                - text: https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/744b1af5-5703-4fe0-96ad-024cbdefbddc/ESCAPE+By+Chris+David+-+The+Feeling.jpg
+                - generic [ref=e38]: </image:loc>
+              - generic [ref=e39]:
+                - generic [ref=e40]: <image:title>
+                - text: Chris David Salon Interior
+                - generic [ref=e41]: </image:title>
+            - generic [ref=e43]: </image:image>
+        - generic [ref=e45]: </url>
+      - generic [ref=e46]: <!-- ============================================ -->
+      - generic [ref=e47]: <!-- MAIN PAGES -->
+      - generic [ref=e48]: <!-- ============================================ -->
+      - generic [ref=e49]:
+        - generic [ref=e52]: <url>
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: <loc>
+            - text: https://www.chrisdavidsalon.com/premiumbrands.html
+            - generic [ref=e56]: </loc>
+          - generic [ref=e57]:
+            - generic [ref=e58]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e59]: </lastmod>
+          - generic [ref=e60]:
+            - generic [ref=e61]: <changefreq>
+            - text: monthly
+            - generic [ref=e62]: </changefreq>
+          - generic [ref=e63]:
+            - generic [ref=e64]: <priority>
+            - text: "0.8"
+            - generic [ref=e65]: </priority>
+        - generic [ref=e67]: </url>
+      - generic [ref=e68]:
+        - generic [ref=e71]: <url>
+        - generic [ref=e72]:
+          - generic [ref=e73]:
+            - generic [ref=e74]: <loc>
+            - text: https://www.chrisdavidsalon.com/blog.html
+            - generic [ref=e75]: </loc>
+          - generic [ref=e76]:
+            - generic [ref=e77]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e78]: </lastmod>
+          - generic [ref=e79]:
+            - generic [ref=e80]: <changefreq>
+            - text: weekly
+            - generic [ref=e81]: </changefreq>
+          - generic [ref=e82]:
+            - generic [ref=e83]: <priority>
+            - text: "0.7"
+            - generic [ref=e84]: </priority>
+        - generic [ref=e86]: </url>
+      - generic [ref=e87]:
+        - generic [ref=e90]: <url>
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - generic [ref=e93]: <loc>
+            - text: https://www.chrisdavidsalon.com/careers.html
+            - generic [ref=e94]: </loc>
+          - generic [ref=e95]:
+            - generic [ref=e96]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e97]: </lastmod>
+          - generic [ref=e98]:
+            - generic [ref=e99]: <changefreq>
+            - text: monthly
+            - generic [ref=e100]: </changefreq>
+          - generic [ref=e101]:
+            - generic [ref=e102]: <priority>
+            - text: "0.6"
+            - generic [ref=e103]: </priority>
+        - generic [ref=e105]: </url>
+      - generic [ref=e106]:
+        - generic [ref=e109]: <url>
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - generic [ref=e112]: <loc>
+            - text: https://www.chrisdavidsalon.com/policies.html
+            - generic [ref=e113]: </loc>
+          - generic [ref=e114]:
+            - generic [ref=e115]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e116]: </lastmod>
+          - generic [ref=e117]:
+            - generic [ref=e118]: <changefreq>
+            - text: monthly
+            - generic [ref=e119]: </changefreq>
+          - generic [ref=e120]:
+            - generic [ref=e121]: <priority>
+            - text: "0.5"
+            - generic [ref=e122]: </priority>
+        - generic [ref=e124]: </url>
+      - generic [ref=e125]: <!-- ============================================ -->
+      - generic [ref=e126]: <!-- HIGH-VALUE SERVICE LANDING PAGES -->
+      - generic [ref=e127]: <!-- ============================================ -->
+      - generic [ref=e128]: "<!-- MEGA: Hair Salon Delray Beach (targets \"hair salon near me\" - 3.35M/mo) -->"
+      - generic [ref=e129]:
+        - generic [ref=e132]: <url>
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - generic [ref=e135]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/hair-salon-delray-beach.html
+            - generic [ref=e136]: </loc>
+          - generic [ref=e137]:
+            - generic [ref=e138]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e139]: </lastmod>
+          - generic [ref=e140]:
+            - generic [ref=e141]: <changefreq>
+            - text: weekly
+            - generic [ref=e142]: </changefreq>
+          - generic [ref=e143]:
+            - generic [ref=e144]: <priority>
+            - text: "0.95"
+            - generic [ref=e145]: </priority>
+        - generic [ref=e147]: </url>
+      - generic [ref=e148]: "<!-- MEGA: Hair Color (targets balayage 40K, highlights 30K, hair color 25K) -->"
+      - generic [ref=e149]:
+        - generic [ref=e152]: <url>
+        - generic [ref=e153]:
+          - generic [ref=e154]:
+            - generic [ref=e155]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/hair-color-delray-beach.html
+            - generic [ref=e156]: </loc>
+          - generic [ref=e157]:
+            - generic [ref=e158]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e159]: </lastmod>
+          - generic [ref=e160]:
+            - generic [ref=e161]: <changefreq>
+            - text: weekly
+            - generic [ref=e162]: </changefreq>
+          - generic [ref=e163]:
+            - generic [ref=e164]: <priority>
+            - text: "0.95"
+            - generic [ref=e165]: </priority>
+        - generic [ref=e167]: </url>
+      - generic [ref=e168]: <!-- Women's Haircut (targets "womens haircut near me" - high volume) -->
+      - generic [ref=e169]:
+        - generic [ref=e172]: <url>
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - generic [ref=e175]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/womens-haircut-delray-beach.html
+            - generic [ref=e176]: </loc>
+          - generic [ref=e177]:
+            - generic [ref=e178]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e179]: </lastmod>
+          - generic [ref=e180]:
+            - generic [ref=e181]: <changefreq>
+            - text: weekly
+            - generic [ref=e182]: </changefreq>
+          - generic [ref=e183]:
+            - generic [ref=e184]: <priority>
+            - text: "0.9"
+            - generic [ref=e185]: </priority>
+        - generic [ref=e187]: </url>
+      - generic [ref=e188]: <!-- Balayage (40K+ searches/month) -->
+      - generic [ref=e189]:
+        - generic [ref=e192]: <url>
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - generic [ref=e195]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/balayage-delray-beach.html
+            - generic [ref=e196]: </loc>
+          - generic [ref=e197]:
+            - generic [ref=e198]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e199]: </lastmod>
+          - generic [ref=e200]:
+            - generic [ref=e201]: <changefreq>
+            - text: weekly
+            - generic [ref=e202]: </changefreq>
+          - generic [ref=e203]:
+            - generic [ref=e204]: <priority>
+            - text: "0.9"
+            - generic [ref=e205]: </priority>
+        - generic [ref=e207]: </url>
+      - generic [ref=e208]: <!-- Color Correction Landing Page (Chris's specialty) -->
+      - generic [ref=e209]:
+        - generic [ref=e212]: <url>
+        - generic [ref=e213]:
+          - generic [ref=e214]:
+            - generic [ref=e215]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/color-correction-delray-beach.html
+            - generic [ref=e216]: </loc>
+          - generic [ref=e217]:
+            - generic [ref=e218]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e219]: </lastmod>
+          - generic [ref=e220]:
+            - generic [ref=e221]: <changefreq>
+            - text: weekly
+            - generic [ref=e222]: </changefreq>
+          - generic [ref=e223]:
+            - generic [ref=e224]: <priority>
+            - text: "0.9"
+            - generic [ref=e225]: </priority>
+        - generic [ref=e227]: </url>
+      - generic [ref=e228]: <!-- Color Correction Service Page -->
+      - generic [ref=e229]:
+        - generic [ref=e232]: <url>
+        - generic [ref=e233]:
+          - generic [ref=e234]:
+            - generic [ref=e235]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/color-correction.html
+            - generic [ref=e236]: </loc>
+          - generic [ref=e237]:
+            - generic [ref=e238]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e239]: </lastmod>
+          - generic [ref=e240]:
+            - generic [ref=e241]: <changefreq>
+            - text: weekly
+            - generic [ref=e242]: </changefreq>
+          - generic [ref=e243]:
+            - generic [ref=e244]: <priority>
+            - text: "0.85"
+            - generic [ref=e245]: </priority>
+        - generic [ref=e247]: </url>
+      - generic [ref=e248]: <!-- Hair Extensions -->
+      - generic [ref=e249]:
+        - generic [ref=e252]: <url>
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - generic [ref=e255]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/hair-extensions-delray-beach.html
+            - generic [ref=e256]: </loc>
+          - generic [ref=e257]:
+            - generic [ref=e258]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e259]: </lastmod>
+          - generic [ref=e260]:
+            - generic [ref=e261]: <changefreq>
+            - text: weekly
+            - generic [ref=e262]: </changefreq>
+          - generic [ref=e263]:
+            - generic [ref=e264]: <priority>
+            - text: "0.85"
+            - generic [ref=e265]: </priority>
+        - generic [ref=e267]: </url>
+      - generic [ref=e268]: <!-- Keratin Treatment -->
+      - generic [ref=e269]:
+        - generic [ref=e272]: <url>
+        - generic [ref=e273]:
+          - generic [ref=e274]:
+            - generic [ref=e275]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/keratin-treatment-delray-beach.html
+            - generic [ref=e276]: </loc>
+          - generic [ref=e277]:
+            - generic [ref=e278]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e279]: </lastmod>
+          - generic [ref=e280]:
+            - generic [ref=e281]: <changefreq>
+            - text: weekly
+            - generic [ref=e282]: </changefreq>
+          - generic [ref=e283]:
+            - generic [ref=e284]: <priority>
+            - text: "0.85"
+            - generic [ref=e285]: </priority>
+        - generic [ref=e287]: </url>
+      - generic [ref=e288]: <!-- Wedding Hair -->
+      - generic [ref=e289]:
+        - generic [ref=e292]: <url>
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - generic [ref=e295]: <loc>
+            - text: https://www.chrisdavidsalon.com/services/wedding-hair-delray-beach.html
+            - generic [ref=e296]: </loc>
+          - generic [ref=e297]:
+            - generic [ref=e298]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e299]: </lastmod>
+          - generic [ref=e300]:
+            - generic [ref=e301]: <changefreq>
+            - text: weekly
+            - generic [ref=e302]: </changefreq>
+          - generic [ref=e303]:
+            - generic [ref=e304]: <priority>
+            - text: "0.85"
+            - generic [ref=e305]: </priority>
+        - generic [ref=e307]: </url>
+      - generic [ref=e308]: <!-- ============================================ -->
+      - generic [ref=e309]: <!-- LOCATION PAGES -->
+      - generic [ref=e310]: <!-- ============================================ -->
+      - generic [ref=e311]:
+        - generic [ref=e314]: <url>
+        - generic [ref=e315]:
+          - generic [ref=e316]:
+            - generic [ref=e317]: <loc>
+            - text: https://www.chrisdavidsalon.com/locations/delray-beach-hair-salon.html
+            - generic [ref=e318]: </loc>
+          - generic [ref=e319]:
+            - generic [ref=e320]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e321]: </lastmod>
+          - generic [ref=e322]:
+            - generic [ref=e323]: <changefreq>
+            - text: monthly
+            - generic [ref=e324]: </changefreq>
+          - generic [ref=e325]:
+            - generic [ref=e326]: <priority>
+            - text: "0.8"
+            - generic [ref=e327]: </priority>
+        - generic [ref=e329]: </url>
+      - generic [ref=e330]:
+        - generic [ref=e333]: <url>
+        - generic [ref=e334]:
+          - generic [ref=e335]:
+            - generic [ref=e336]: <loc>
+            - text: https://www.chrisdavidsalon.com/locations/atlantic-avenue-colorist.html
+            - generic [ref=e337]: </loc>
+          - generic [ref=e338]:
+            - generic [ref=e339]: <lastmod>
+            - text: 2025-11-27
+            - generic [ref=e340]: </lastmod>
+          - generic [ref=e341]:
+            - generic [ref=e342]: <changefreq>
+            - text: monthly
+            - generic [ref=e343]: </changefreq>
+          - generic [ref=e344]:
+            - generic [ref=e345]: <priority>
+            - text: "0.8"
+            - generic [ref=e346]: </priority>
+        - generic [ref=e348]: </url>
+    - generic [ref=e350]: </urlset>
+```
