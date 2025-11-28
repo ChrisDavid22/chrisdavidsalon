@@ -1,0 +1,145 @@
+{
+  "cookies": [
+    {
+      "name": "bbhive",
+      "value": "MKLQ35X53APRMMLJUX40AUJBMPMZ54%3A%3A1827382579",
+      "domain": ".foursquare.com",
+      "path": "/",
+      "expires": 1798870579.344183,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "PixelDensity",
+      "value": "1",
+      "domain": "app.foursquare.com",
+      "path": "/",
+      "expires": 1795846579,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSALBTG",
+      "value": "PU7K8u/RolGk+yH84y4hscKJUjjhU68xUOwTND2hL1UC9a5j77IpWiWSwGG9783Anllm8yCoM6WuD4KDlc5JW3iyk02g0VODQvWRnPK6T8Z697c/yYDsGCg6o0uj4ARSwrudAO4B4SVKgusGDade/ePeu/R1rzMXYgUg3lW2A0jt",
+      "domain": "app.foursquare.com",
+      "path": "/",
+      "expires": 1764915379.441877,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSALBTGCORS",
+      "value": "PU7K8u/RolGk+yH84y4hscKJUjjhU68xUOwTND2hL1UC9a5j77IpWiWSwGG9783Anllm8yCoM6WuD4KDlc5JW3iyk02g0VODQvWRnPK6T8Z697c/yYDsGCg6o0uj4ARSwrudAO4B4SVKgusGDade/ePeu/R1rzMXYgUg3lW2A0jt",
+      "domain": "app.foursquare.com",
+      "path": "/",
+      "expires": 1764915379.441924,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALB",
+      "value": "Jyk3E+OT5OpK95wC7eH5SG+UCsyv/98oY/K/RFk7MFxLd9z75Q+QfJ7llaU8r/t44oZMFyw4h4rLAu+gKToMMVu+DKRBJpuKbvmllwdfsIQPMneh8REihIZgYYN+",
+      "domain": "app.foursquare.com",
+      "path": "/",
+      "expires": 1764915379.441939,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "Jyk3E+OT5OpK95wC7eH5SG+UCsyv/98oY/K/RFk7MFxLd9z75Q+QfJ7llaU8r/t44oZMFyw4h4rLAu+gKToMMVu+DKRBJpuKbvmllwdfsIQPMneh8REihIZgYYN+",
+      "domain": "app.foursquare.com",
+      "path": "/",
+      "expires": 1764915379.441955,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "XSESSIONID",
+      "value": "dlese2r0qvv11gx3k0hl0jr1w",
+      "domain": "app.foursquare.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "mp_1c99e5137ade8b0ba4718ac657e19ce6_mixpanel",
+      "value": "%7B%22distinct_id%22%3A%22%24device%3A69ded57c-783c-4a2a-a398-c874838acfb3%22%2C%22%24device_id%22%3A%2269ded57c-783c-4a2a-a398-c874838acfb3%22%2C%22%24initial_referrer%22%3A%22%24direct%22%2C%22%24initial_referring_domain%22%3A%22%24direct%22%2C%22__mps%22%3A%7B%7D%2C%22__mpso%22%3A%7B%22%24initial_referrer%22%3A%22%24direct%22%2C%22%24initial_referring_domain%22%3A%22%24direct%22%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%7D",
+      "domain": ".foursquare.com",
+      "path": "/",
+      "expires": 1795846579,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "isGpcEnabled=0&datestamp=Fri+Nov+28+2025+01%3A16%3A19+GMT-0500+(Eastern+Standard+Time)&version=202304.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&landingPath=https%3A%2F%2Fapp.foursquare.com%2Flogin%3Fcontinue%3D%252Fexplore%253Fmode%253Durl%2526near%253DDelray%252520Beach%25252C%252520FL%2526q%253DChris%252520David%252520Salon&groups=C0001%3A1%2CC0002%3A0%2CC0004%3A0%2CC0005%3A0%2CC0003%3A0",
+      "domain": ".foursquare.com",
+      "path": "/",
+      "expires": 1795846579,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__utma",
+      "value": "88987723.979086454.1764310581.1764310581.1764310581.1",
+      "domain": ".app.foursquare.com",
+      "path": "/",
+      "expires": 1798870580.573563,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__utmc",
+      "value": "88987723",
+      "domain": ".app.foursquare.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__utmz",
+      "value": "88987723.1764310581.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)",
+      "domain": ".app.foursquare.com",
+      "path": "/",
+      "expires": 1780078580,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__utmt",
+      "value": "1",
+      "domain": ".app.foursquare.com",
+      "path": "/",
+      "expires": 1764311180,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__utmb",
+      "value": "88987723.1.10.1764310581",
+      "domain": ".app.foursquare.com",
+      "path": "/",
+      "expires": 1764312380,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

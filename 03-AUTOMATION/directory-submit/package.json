@@ -12,6 +12,12 @@
     "all": "node submit.js all"
   },
   "dependencies": {
-    "playwright": "^1.40.0"
-  }
+    "@playwright/test": "^1.57.0",
+    "dotenv": "^17.2.3",
+    "playwright": "^1.57.0"
+  },
+  "main": "submit.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

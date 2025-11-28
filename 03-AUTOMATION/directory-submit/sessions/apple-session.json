@@ -1,0 +1,89 @@
+{
+  "cookies": [
+    {
+      "name": "geo",
+      "value": "US",
+      "domain": ".apple.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AMCV_92F33704532954D30A490D44%40AdobeOrg",
+      "value": "179643557%7CMCIDTS%7C20421%7CMCMID%7C32037549084059266660683315920958584124%7CvVersion%7C5.5.0",
+      "domain": ".apple.com",
+      "path": "/",
+      "expires": 1764312373,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "gpv_Page",
+      "value": "maps%3ABusiness%20Connect%3Apage",
+      "domain": ".apple.com",
+      "path": "/",
+      "expires": 1764312373,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_ips",
+      "value": "720",
+      "domain": ".apple.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_ppv",
+      "value": "maps%253ABusiness%2520Connect%253Apage%2C10%2C10%2C720%2C1%2C9",
+      "domain": ".apple.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_cc",
+      "value": "true",
+      "domain": ".apple.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "s_tp",
+      "value": "6932",
+      "domain": ".apple.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://businessconnect.apple.com",
+      "localStorage": [
+        {
+          "name": "acv-audiotrack-language",
+          "value": "en"
+        },
+        {
+          "name": "acv-audiotrack-type",
+          "value": "main"
+        }
+      ]
+    }
+  ]
+}

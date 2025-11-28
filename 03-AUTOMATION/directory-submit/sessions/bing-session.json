@@ -1,0 +1,105 @@
+{
+  "cookies": [
+    {
+      "name": "MUID",
+      "value": "03E5FE5F3BFE6A681245E8ED3A756B3E",
+      "domain": ".bing.com",
+      "path": "/",
+      "expires": 1798006569.609737,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "MUIDB",
+      "value": "03E5FE5F3BFE6A681245E8ED3A756B3E",
+      "domain": "www.bing.com",
+      "path": "/",
+      "expires": 1798006569.6101,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_EDGE_S",
+      "value": "F=1&SID=2EDE72F871836AA303D7644A70086BA1",
+      "domain": ".bing.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_EDGE_V",
+      "value": "1",
+      "domain": ".bing.com",
+      "path": "/",
+      "expires": 1798006569.610127,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "SRCHD",
+      "value": "AF=NOFORM",
+      "domain": ".bing.com",
+      "path": "/",
+      "expires": 1798870569.610139,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "SRCHUID",
+      "value": "V=2&GUID=0C2C2E7A5132470AB75DAFD643A6D024&dmnchg=1",
+      "domain": ".bing.com",
+      "path": "/",
+      "expires": 1798870569.610156,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "SRCHUSR",
+      "value": "DOB=20251128",
+      "domain": ".bing.com",
+      "path": "/",
+      "expires": 1798870569.61017,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_SS",
+      "value": "SID=2EDE72F871836AA303D7644A70086BA1",
+      "domain": ".bing.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "SRCHHPGUSR",
+      "value": "SRCHLANG=en&B=Q",
+      "domain": ".bing.com",
+      "path": "/",
+      "expires": 1798870570.642301,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.bing.com",
+      "localStorage": [
+        {
+          "name": "eventLogQueue_Offline",
+          "value": "[{\"log\":{\"impressionGuid\":\"CEE9DB16920D4EC98D90A9589C8FC02B\",\"timestamp\":1764310570642,\"data\":{\"eventType\":\"ClientInst\",\"eventData\":{\"CurUrl\":\"https://www.bing.com/forbusiness/\",\"T\":\"CI.SystemEvent\",\"FID\":\"0\",\"Name\":\"Result\",\"Namespace\":\"XY\",\"CustomDataKeys\":\"r,k\",\"SDK\":\"XLS-CD\",\"r\":\"1\",\"k\":\"Q\",\"TS\":1764310570642,\"RTS\":1025,\"SEQ\":5},\"dataSources\":null,\"pageLayout\":null}},\"retried\":false,\"inProgress\":false,\"size\":420},{\"log\":{\"impressionGuid\":\"CEE9DB16920D4EC98D90A9589C8FC02B\",\"timestamp\":1764310570642,\"data\":{\"eventType\":\"ClientInst\",\"eventData\":{\"CurUrl\":\"https://www.bing.com/forbusiness/\",\"T\":\"CI.SystemEvent\",\"FID\":\"0\",\"Name\":\"Detections\",\"Namespace\":\"XY\",\"CustomDataKeys\":\"detectWebDriver\",\"SDK\":\"XLS-CD\",\"detectWebDriver\":\"Q\",\"TS\":1764310570642,\"RTS\":1025,\"SEQ\":6},\"dataSources\":null,\"pageLayout\":null}},\"retried\":false,\"inProgress\":false,\"size\":442}]"
+        }
+      ]
+    }
+  ]
+}

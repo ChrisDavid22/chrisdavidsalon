@@ -1,0 +1,41 @@
+[
+  {
+    "directory": "Bing Places",
+    "status": "NEEDS_AUTH",
+    "timestamp": "2025-11-28T06:16:11.465Z",
+    "message": "Requires Microsoft account login first",
+    "action": "Login manually, then run script again"
+  },
+  {
+    "directory": "Apple Business Connect",
+    "status": "NEEDS_AUTH",
+    "timestamp": "2025-11-28T06:16:18.534Z",
+    "message": "Requires Apple ID login",
+    "action": "Login with Apple ID, search for \"Chris David Salon\", claim business"
+  },
+  {
+    "directory": "Foursquare",
+    "status": "NEEDS_AUTH",
+    "timestamp": "2025-11-28T06:16:21.257Z",
+    "message": "Ready to add business - requires account",
+    "action": "Create Foursquare account or login to add business"
+  },
+  {
+    "directory": "Yellow Pages",
+    "status": "ERROR",
+    "timestamp": "2025-11-28T06:16:51.671Z",
+    "message": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.yellowpages.com/search?search_terms=Chris+David+Salon&geo_location_terms=Delray+Beach%2C+FL\", waiting until \"networkidle\"\u001b[22m\n"
+  },
+  {
+    "directory": "Manta",
+    "status": "ERROR",
+    "timestamp": "2025-11-28T06:17:22.151Z",
+    "message": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.manta.com/search?search=Chris+David+Salon&search_location=Delray+Beach%2C+FL\", waiting until \"networkidle\"\u001b[22m\n"
+  },
+  {
+    "directory": "MapQuest",
+    "status": "ERROR",
+    "timestamp": "2025-11-28T06:17:52.532Z",
+    "message": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.mapquest.com/search/results?query=Chris%20David%20Salon&boundingBox=26.5,-80.15,26.4,-80.0\", waiting until \"networkidle\"\u001b[22m\n"
+  }
+]

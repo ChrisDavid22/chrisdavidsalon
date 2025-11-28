@@ -1,7 +1,12 @@
 {
-  "version": "2.17.0",
-  "lastUpdated": "2025-11-28T08:00:00Z",
+  "version": "2.18.0",
+  "lastUpdated": "2025-11-28T08:15:00Z",
   "deployHistory": [
+    {
+      "version": "2.18.0",
+      "date": "2025-11-28T08:15:00Z",
+      "changes": "DIRECTORY SUBMISSION AUTOMATION: (1) Created 03-AUTOMATION/directory-submit/ toolkit with business-config.js (verified NAP data), auto-submit.js (Playwright automation), browser-agent.py (AI browser control), interactive-submit.js (guided manual submissions). (2) DIRECTORY_ACTION_PLAN.md with prioritized action list, automation requirements analysis, BrightLocal recommendation ($150 for 75+ directories). (3) Verified all public pages consistent (9/10 consistency score). (4) Confirmed GA4 tracking live - 416 users, 535 sessions in 30 days. (5) All service and location pages have identical header/footer/fonts. (6) Playwright tests: 7 passed, 5 failed (admin API timeouts only). (7) Overall site readiness: 88/100."
+    },
     {
       "version": "2.17.0",
       "date": "2025-11-28T08:00:00Z",
