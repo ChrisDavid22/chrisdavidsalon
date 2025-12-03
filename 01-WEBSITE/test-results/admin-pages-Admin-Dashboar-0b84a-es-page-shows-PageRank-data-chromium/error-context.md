@@ -7,9 +7,9 @@
       - generic [ref=e4]:
         - generic [ref=e5]:
           - generic [ref=e8]: Chris David SEO Agent
-          - generic [ref=e9]: v2.17.0
+          - generic [ref=e9]: v2.18.0
         - generic [ref=e10]:
-          - generic [ref=e11]: "Updated: 3:07:21 AM"
+          - generic [ref=e11]: "Updated: 5:23:53 PM"
           - link "View Site" [ref=e12] [cursor=pointer]:
             - /url: ../index.html
       - generic [ref=e13]:
@@ -43,7 +43,7 @@
           - generic [ref=e35]: to main site
         - generic [ref=e36]:
           - generic [ref=e37]: Total Pages Live
-          - generic [ref=e38]: "62"
+          - generic [ref=e38]: "67"
           - generic [ref=e39]: across all sites
         - generic [ref=e40]:
           - generic [ref=e41]: Avg PageRank
@@ -92,7 +92,7 @@
               - generic [ref=e88]: 1.18/10
             - generic [ref=e89]:
               - generic [ref=e90]: Pages
-              - generic [ref=e91]: "21"
+              - generic [ref=e91]: "22"
             - generic [ref=e92]:
               - generic [ref=e93]: Referrals
               - generic [ref=e94]: "1"
@@ -119,7 +119,7 @@
               - generic [ref=e118]: 0.00/10
             - generic [ref=e119]:
               - generic [ref=e120]: Pages
-              - generic [ref=e121]: "22"
+              - generic [ref=e121]: "24"
             - generic [ref=e122]:
               - generic [ref=e123]: Referrals
               - generic [ref=e124]: "0"
@@ -146,7 +146,7 @@
               - generic [ref=e148]: 1.18/10
             - generic [ref=e149]:
               - generic [ref=e150]: Pages
-              - generic [ref=e151]: "19"
+              - generic [ref=e151]: "21"
             - generic [ref=e152]:
               - generic [ref=e153]: Referrals
               - generic [ref=e154]: "0"
@@ -176,17 +176,17 @@
         - generic [ref=e176]:
           - generic [ref=e177]:
             - generic [ref=e178]: bestsalondelray.com
-            - generic [ref=e179]: 16/10 deployed
+            - generic [ref=e179]: 17/10 deployed
           - generic [ref=e182]: "Est. completion: 0 weeks"
         - generic [ref=e183]:
           - generic [ref=e184]:
             - generic [ref=e185]: bestdelraysalon.com
-            - generic [ref=e186]: 17/10 deployed
+            - generic [ref=e186]: 19/10 deployed
           - generic [ref=e189]: "Est. completion: 0 weeks"
         - generic [ref=e190]:
           - generic [ref=e191]:
             - generic [ref=e192]: bestsalonpalmbeach.com
-            - generic [ref=e193]: 14/10 deployed
+            - generic [ref=e193]: 16/10 deployed
           - generic [ref=e196]: "Est. completion: 0 weeks"
       - generic [ref=e197]:
         - heading "Content Library (30 Pages)" [level=3] [ref=e198]
@@ -305,11 +305,11 @@
             - columnheader "Health" [ref=e341]
             - columnheader "Action" [ref=e342]
         - rowgroup [ref=e343]:
-          - row "bestsalondelray.com best salon delray beach 21 1.18  1 65 (B) GSC " [ref=e344]:
+          - row "bestsalondelray.com best salon delray beach 22 1.18  1 65 (B) GSC " [ref=e344]:
             - cell "bestsalondelray.com best salon delray beach" [ref=e345]:
               - generic [ref=e346]: bestsalondelray.com
               - generic [ref=e347]: best salon delray beach
-            - cell "21" [ref=e348]
+            - cell "22" [ref=e348]
             - cell "1.18" [ref=e349]
             - cell "" [ref=e350]:
               - generic [ref=e352]: 
@@ -320,11 +320,11 @@
                 - /url: https://search.google.com/search-console?resource_id=sc-domain:bestsalondelray.com
                 - text: GSC
                 - generic [ref=e357]: 
-          - row "bestdelraysalon.com delray beach salon 22 0.00  0 20 (D) GSC " [ref=e358]:
+          - row "bestdelraysalon.com delray beach salon 24 0.00  0 20 (D) GSC " [ref=e358]:
             - cell "bestdelraysalon.com delray beach salon" [ref=e359]:
               - generic [ref=e360]: bestdelraysalon.com
               - generic [ref=e361]: delray beach salon
-            - cell "22" [ref=e362]
+            - cell "24" [ref=e362]
             - cell "0.00" [ref=e363]
             - cell "" [ref=e364]:
               - generic [ref=e366]: 
@@ -335,11 +335,11 @@
                 - /url: https://search.google.com/search-console?resource_id=sc-domain:bestdelraysalon.com
                 - text: GSC
                 - generic [ref=e371]: 
-          - row "bestsalonpalmbeach.com salon palm beach county 19 1.18  0 62 (B) GSC " [ref=e372]:
+          - row "bestsalonpalmbeach.com salon palm beach county 21 1.18  0 62 (B) GSC " [ref=e372]:
             - cell "bestsalonpalmbeach.com salon palm beach county" [ref=e373]:
               - generic [ref=e374]: bestsalonpalmbeach.com
               - generic [ref=e375]: salon palm beach county
-            - cell "19" [ref=e376]
+            - cell "21" [ref=e376]
             - cell "1.18" [ref=e377]
             - cell "" [ref=e378]:
               - generic [ref=e380]: 

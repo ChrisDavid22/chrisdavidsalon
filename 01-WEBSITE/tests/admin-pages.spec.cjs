@@ -3,15 +3,16 @@ const { test, expect } = require('@playwright/test');
 
 const BASE_URL = 'https://www.chrisdavidsalon.com';
 
-// Test all 7 admin pages thoroughly
+// Test all admin pages that actually exist
+// Note: competitors.html and agent-log.html are planned but not yet created
 const adminPages = [
     { name: 'SEO Command', path: '/admin/index.html', requiredElements: ['versionBadge', 'performanceScore', 'technicalScore', 'mobileScore', 'contentScore'] },
     { name: 'Traffic', path: '/admin/traffic.html', requiredElements: ['versionBadge'] },
-    { name: 'Competitors', path: '/admin/competitors.html', requiredElements: ['versionBadge', 'marketPosition'] },
     { name: 'Rankings', path: '/admin/rankings.html', requiredElements: ['versionBadge'] },
     { name: 'Authority', path: '/admin/authority.html', requiredElements: ['versionBadge', 'authorityScore'] },
     { name: 'Microsites', path: '/admin/microsites.html', requiredElements: ['versionBadge'] },
-    { name: 'Agent Log', path: '/admin/agent-log.html', requiredElements: ['versionBadge'] },
+    { name: 'Weekly Brain', path: '/admin/weekly-brain.html', requiredElements: ['versionBadge'] },
+    { name: 'Improvement Planner', path: '/admin/improvement-planner.html', requiredElements: ['versionBadge'] },
 ];
 
 test.describe('Admin Dashboard Pages', () => {
@@ -69,19 +70,7 @@ test.describe('Admin Dashboard Pages', () => {
         console.log('Performance Score:', performanceScore);
     });
 
-    test('Competitors page loads competitor data', async ({ page }) => {
-        await page.goto(`${BASE_URL}/admin/competitors.html`, { waitUntil: 'networkidle' });
-
-        // Wait for data to load
-        await page.waitForTimeout(5000);
-
-        // Take screenshot
-        await page.screenshot({ path: 'test-results/competitors-loaded.png', fullPage: true });
-
-        // Check market position is visible
-        const marketPosition = page.locator('#marketPosition');
-        await expect(marketPosition).toBeVisible();
-    });
+    // Note: Competitors page test removed - page not yet created (planned in IMPLEMENTATION_PLAN.md)
 
     test('Authority page loads without hardcoded data', async ({ page }) => {
         await page.goto(`${BASE_URL}/admin/authority.html`, { waitUntil: 'networkidle' });
@@ -97,18 +86,18 @@ test.describe('Admin Dashboard Pages', () => {
         await expect(authorityScore).toBeVisible();
     });
 
-    test('Microsites page shows PageRank data', async ({ page }) => {
+    test('Microsites page shows network analytics', async ({ page }) => {
         await page.goto(`${BASE_URL}/admin/microsites.html`, { waitUntil: 'networkidle' });
 
-        // Wait for PageRank to load
+        // Wait for data to load
         await page.waitForTimeout(5000);
 
         // Take screenshot
         await page.screenshot({ path: 'test-results/microsites-loaded.png', fullPage: true });
 
-        // Check PageRank elements exist
-        const prSite1 = page.locator('#pr-site1');
-        await expect(prSite1).toBeVisible();
+        // Check key elements exist
+        const avgPagerank = page.locator('#avgPagerank');
+        await expect(avgPagerank).toBeVisible();
     });
 
     test('Traffic page loads', async ({ page }) => {

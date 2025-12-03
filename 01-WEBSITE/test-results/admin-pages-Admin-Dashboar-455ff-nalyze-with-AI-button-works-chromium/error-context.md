@@ -9,7 +9,7 @@
           - heading "SEO Dashboard" [level=1] [ref=e6]
           - paragraph [ref=e7]: Composite SEO Score - All 7 Ranking Factors
         - generic [ref=e8]:
-          - 'generic "Last updated: 11/28/2025, 3:00:00 AM" [ref=e9]': v2.17.0
+          - 'generic "Last updated: 11/28/2025, 3:15:00 AM" [ref=e9]': v2.18.0
           - link "← Back to Main Site" [ref=e10] [cursor=pointer]:
             - /url: ../index.html
           - link "Logout" [ref=e11] [cursor=pointer]:
@@ -33,7 +33,7 @@
         - generic [ref=e23]:
           - heading "Your Site Score" [level=3] [ref=e24]
           - generic [ref=e25]:
-            - generic [ref=e26]: "73"
+            - generic [ref=e26]: "61"
             - button " See Details" [ref=e27] [cursor=pointer]:
               - generic [ref=e28]: 
               - text: See Details
@@ -44,7 +44,7 @@
         - generic [ref=e32]:
           - heading "Last Updated" [level=3] [ref=e33]
           - generic [ref=e34]:
-            - generic [ref=e35]: Nov 28, 2025, 3:06 AM
+            - generic [ref=e35]: Dec 3, 2025, 5:23 PM
             - generic [ref=e36]: 🟢 LIVE PageSpeed • 🟢 Claude AI
           - generic [ref=e37]: "--"
           - paragraph [ref=e38]: Change from previous
@@ -61,12 +61,12 @@
         - generic [ref=e47]:
           - generic [ref=e48]:
             - generic [ref=e49]: Your Position
-            - generic [ref=e50]: "#10"
-            - generic [ref=e51]: of 15 salons
+            - generic [ref=e50]: "#0"
+            - generic [ref=e51]: of 0 salons
           - generic [ref=e52]:
             - generic [ref=e53]: "Gap to #1"
-            - generic [ref=e54]: 1,374 reviews
-            - generic [ref=e55]: behind Rové Hair Salon
+            - generic [ref=e54]: "-- reviews"
+            - generic [ref=e55]: behind --
         - generic [ref=e56]:
           - strong [ref=e57]: "Reality check:"
           - text: Rové has 1,514 reviews. As a solo practitioner, Chris can't match their volume.
@@ -84,39 +84,39 @@
             - generic [ref=e67]: Average Position
             - generic [ref=e68]: Last 30 Days
           - generic [ref=e69]:
-            - generic [ref=e70]: "28.7"
+            - generic [ref=e70]: "29.0"
             - generic [ref=e71]:
               - generic [ref=e72]: "50"
               - generic [ref=e73]: keywords ranking
-          - generic [ref=e74]: 38 clicks · 446 impressions · 7.2% CTR
+          - generic [ref=e74]: 56 clicks · 485 impressions · 6.7% CTR
         - generic [ref=e75]:
           - generic [ref=e76]: Top Keywords
           - generic [ref=e77]:
             - generic [ref=e78]:
               - generic [ref=e79]: "\"chris david salon\""
               - generic [ref=e80]:
-                - generic [ref=e81]: 28 clicks
+                - generic [ref=e81]: 41 clicks
                 - generic [ref=e82]: "#1.0"
             - generic [ref=e83]:
-              - generic [ref=e84]: "\"best color specialist near me\""
+              - generic [ref=e84]: "\"chris david salon photos\""
               - generic [ref=e85]:
-                - generic [ref=e86]: 1 clicks
-                - generic [ref=e87]: "#8.0"
+                - generic [ref=e86]: 2 clicks
+                - generic [ref=e87]: "#2.0"
             - generic [ref=e88]:
-              - generic [ref=e89]: "\"chris david salon photos\""
+              - generic [ref=e89]: "\"chris david salon reviews\""
               - generic [ref=e90]:
-                - generic [ref=e91]: 1 clicks
-                - generic [ref=e92]: "#2.0"
+                - generic [ref=e91]: 2 clicks
+                - generic [ref=e92]: "#2.6"
             - generic [ref=e93]:
-              - generic [ref=e94]: "\"chris david salon reviews\""
+              - generic [ref=e94]: "\"hair salons near me\""
               - generic [ref=e95]:
-                - generic [ref=e96]: 1 clicks
-                - generic [ref=e97]: "#2.8"
+                - generic [ref=e96]: 2 clicks
+                - generic [ref=e97]: "#11.9"
             - generic [ref=e98]:
-              - generic [ref=e99]: "\"curly hair salon near me\""
+              - generic [ref=e99]: "\"color correction salon near me\""
               - generic [ref=e100]:
                 - generic [ref=e101]: 1 clicks
-                - generic [ref=e102]: "#9.0"
+                - generic [ref=e102]: "#8.0"
         - link "View All Keywords →" [ref=e103] [cursor=pointer]:
           - /url: rankings.html
     - generic [ref=e104]:
@@ -135,128 +135,38 @@
               - columnheader "Reviews" [ref=e117]
               - columnheader "Local SEO" [ref=e118]
               - columnheader "PageRank" [ref=e119]
-          - rowgroup [ref=e120]:
-            - row "#1 Rové Hair Salon 1,514 100 2.55" [ref=e121]:
-              - cell "#1" [ref=e122]
-              - cell "Rové Hair Salon" [ref=e123]
-              - cell "1,514" [ref=e124]
-              - cell "100" [ref=e125]
-              - cell "2.55" [ref=e126]
-            - row "#2 Studio 34 Delray Hair 897 99 0.53" [ref=e127]:
-              - cell "#2" [ref=e128]
-              - cell "Studio 34 Delray Hair" [ref=e129]
-              - cell "897" [ref=e130]
-              - cell "99" [ref=e131]
-              - cell "0.53" [ref=e132]
-            - row "#3 Salon South Flow by Resta 529 99 2.19" [ref=e133]:
-              - cell "#3" [ref=e134]
-              - cell "Salon South Flow by Resta" [ref=e135]
-              - cell "529" [ref=e136]
-              - cell "99" [ref=e137]
-              - cell "2.19" [ref=e138]
-            - row "#4 Kaan Hair Design 861 98 1.63" [ref=e139]:
-              - cell "#4" [ref=e140]
-              - cell "Kaan Hair Design" [ref=e141]
-              - cell "861" [ref=e142]
-              - cell "98" [ref=e143]
-              - cell "1.63" [ref=e144]
-            - row "#5 ONE aveda salon 389 98 --" [ref=e145]:
-              - cell "#5" [ref=e146]
-              - cell "ONE aveda salon" [ref=e147]
-              - cell "389" [ref=e148]
-              - cell "98" [ref=e149]
-              - cell "--" [ref=e150]
-            - row "#6 Bond Street Salon- Luxury Hair 264 94 3.02" [ref=e151]:
-              - cell "#6" [ref=e152]
-              - cell "Bond Street Salon- Luxury Hair" [ref=e153]
-              - cell "264" [ref=e154]
-              - cell "94" [ref=e155]
-              - cell "3.02" [ref=e156]
-            - row "#7 Tyler Presley Salon 241 94 0.53" [ref=e157]:
-              - cell "#7" [ref=e158]
-              - cell "Tyler Presley Salon" [ref=e159]
-              - cell "241" [ref=e160]
-              - cell "94" [ref=e161]
-              - cell "0.53" [ref=e162]
-            - row "#8 Amanda Major The Studio 154 93 2.84" [ref=e163]:
-              - cell "#8" [ref=e164]
-              - cell "Amanda Major The Studio" [ref=e165]
-              - cell "154" [ref=e166]
-              - cell "93" [ref=e167]
-              - cell "2.84" [ref=e168]
-            - row "#9 ShearLuck Salon 186 92 0.53" [ref=e169]:
-              - cell "#9" [ref=e170]
-              - cell "ShearLuck Salon" [ref=e171]
-              - cell "186" [ref=e172]
-              - cell "92" [ref=e173]
-              - cell "0.53" [ref=e174]
-            - row "#10 Chris David Salon ← YOU 140 91 2.88" [ref=e175]:
-              - cell "#10" [ref=e176]
-              - cell "Chris David Salon ← YOU" [ref=e177]
-              - cell "140" [ref=e178]
-              - cell "91" [ref=e179]
-              - cell "2.88" [ref=e180]
-            - row "#11 Exquiste Hair Studio 121 90 --" [ref=e181]:
-              - cell "#11" [ref=e182]
-              - cell "Exquiste Hair Studio" [ref=e183]
-              - cell "121" [ref=e184]
-              - cell "90" [ref=e185]
-              - cell "--" [ref=e186]
-            - row "#12 Jennifer The Hairstylist 123 89 --" [ref=e187]:
-              - cell "#12" [ref=e188]
-              - cell "Jennifer The Hairstylist" [ref=e189]
-              - cell "123" [ref=e190]
-              - cell "89" [ref=e191]
-              - cell "--" [ref=e192]
-            - row "#13 lmbue Salon 101 88 1.85" [ref=e193]:
-              - cell "#13" [ref=e194]
-              - cell "lmbue Salon" [ref=e195]
-              - cell "101" [ref=e196]
-              - cell "88" [ref=e197]
-              - cell "1.85" [ref=e198]
-            - row "#14 Odeon Salon - Delray Beach 86 88 --" [ref=e199]:
-              - cell "#14" [ref=e200]
-              - cell "Odeon Salon - Delray Beach" [ref=e201]
-              - cell "86" [ref=e202]
-              - cell "88" [ref=e203]
-              - cell "--" [ref=e204]
-            - row "#15 Moxie Salon and Beauty Bar - D 65 86 --" [ref=e205]:
-              - cell "#15" [ref=e206]
-              - cell "Moxie Salon and Beauty Bar - D" [ref=e207]
-              - cell "65" [ref=e208]
-              - cell "86" [ref=e209]
-              - cell "--" [ref=e210]
-        - generic [ref=e211]:
-          - strong [ref=e212]: "All data is REAL:"
+          - rowgroup
+        - generic [ref=e120]:
+          - strong [ref=e121]: "All data is REAL:"
           - text: Reviews from Google Places API | PageRank from OpenPageRank API
-    - generic [ref=e213]:
-      - heading "🎯 Priority Action Items" [level=3] [ref=e214]
-      - generic [ref=e217]:
-        - generic [ref=e218]: 
-        - generic [ref=e219]:
-          - heading "performance" [level=4] [ref=e220]
-          - paragraph [ref=e221]: Performance audit passed
-          - paragraph [ref=e222]: "Current score: 59/100"
-    - generic [ref=e223]:
-      - heading "🤖 AI Enhancement Prompts" [level=3] [ref=e224]
-      - paragraph [ref=e225]: "Copy these prompts to Claude or ChatGPT to get specific improvements for your site:"
-      - generic [ref=e226]:
-        - generic [ref=e227]:
-          - heading "Performance Optimization" [level=4] [ref=e228]
-          - paragraph [ref=e230]: I have a salon website at chrisdavidsalon.com with a current PageSpeed score of 59. Please provide specific code changes to improve load time, optimize images, and enhance Core Web Vitals.
-          - button " Copy Prompt" [ref=e231] [cursor=pointer]:
-            - generic [ref=e232]: 
+    - generic [ref=e122]:
+      - heading "🎯 Priority Action Items" [level=3] [ref=e123]
+      - generic [ref=e126]:
+        - generic [ref=e127]: 
+        - generic [ref=e128]:
+          - heading "performance" [level=4] [ref=e129]
+          - paragraph [ref=e130]: Performance audit passed
+          - paragraph [ref=e131]: "Current score: 63/100"
+    - generic [ref=e132]:
+      - heading "🤖 AI Enhancement Prompts" [level=3] [ref=e133]
+      - paragraph [ref=e134]: "Copy these prompts to Claude or ChatGPT to get specific improvements for your site:"
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - heading "Performance Optimization" [level=4] [ref=e137]
+          - paragraph [ref=e139]: I have a salon website at chrisdavidsalon.com with a current PageSpeed score of 63. Please provide specific code changes to improve load time, optimize images, and enhance Core Web Vitals.
+          - button " Copy Prompt" [ref=e140] [cursor=pointer]:
+            - generic [ref=e141]: 
             - text: Copy Prompt
-        - generic [ref=e233]:
-          - heading "Content Enhancement" [level=4] [ref=e234]
-          - paragraph [ref=e236]: My salon website needs better SEO content. We're a luxury salon in Delray Beach specializing in color and cuts. Current content score is 0. Please write optimized title tags, meta descriptions, and suggest content improvements for better local SEO.
-          - button " Copy Prompt" [ref=e237] [cursor=pointer]:
-            - generic [ref=e238]: 
+        - generic [ref=e142]:
+          - heading "Content Enhancement" [level=4] [ref=e143]
+          - paragraph [ref=e145]: My salon website needs better SEO content. We're a luxury salon in Delray Beach specializing in color and cuts. Current content score is 0. Please write optimized title tags, meta descriptions, and suggest content improvements for better local SEO.
+          - button " Copy Prompt" [ref=e146] [cursor=pointer]:
+            - generic [ref=e147]: 
             - text: Copy Prompt
-        - generic [ref=e239]:
-          - heading "Technical SEO Fixes" [level=4] [ref=e240]
-          - paragraph [ref=e242]: Review the technical SEO for chrisdavidsalon.com. Current score is 100. Provide schema markup for a hair salon, optimize robots.txt, and suggest technical improvements.
-          - button " Copy Prompt" [ref=e243] [cursor=pointer]:
-            - generic [ref=e244]: 
+        - generic [ref=e148]:
+          - heading "Technical SEO Fixes" [level=4] [ref=e149]
+          - paragraph [ref=e151]: Review the technical SEO for chrisdavidsalon.com. Current score is 100. Provide schema markup for a hair salon, optimize robots.txt, and suggest technical improvements.
+          - button " Copy Prompt" [ref=e152] [cursor=pointer]:
+            - generic [ref=e153]: 
             - text: Copy Prompt
 ```
