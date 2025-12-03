@@ -1,0 +1,48 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e8]: SEO Brain
+          - generic [ref=e9]: AUTONOMOUS
+        - generic [ref=e10]:
+          - generic [ref=e11]: Loading...
+          - link "Dashboard" [ref=e12] [cursor=pointer]:
+            - /url: index.html
+          - link "View Site" [ref=e13] [cursor=pointer]:
+            - /url: ../index.html
+      - generic [ref=e14]:
+        - link "Dashboard" [ref=e15] [cursor=pointer]:
+          - /url: index.html
+        - link "Improvement Plan" [ref=e16] [cursor=pointer]:
+          - /url: improvement-planner.html
+        - link "Weekly Brain" [ref=e17] [cursor=pointer]:
+          - /url: weekly-brain.html
+        - link "Traffic" [ref=e18] [cursor=pointer]:
+          - /url: traffic.html
+        - link "Rankings" [ref=e19] [cursor=pointer]:
+          - /url: rankings.html
+  - generic [ref=e20]:
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - heading " Weekly SEO Intelligence" [level=1] [ref=e24]:
+          - generic [ref=e25]: 
+          - text: Weekly SEO Intelligence
+        - paragraph [ref=e26]: AI-powered analysis of your data. Concrete actions to move up the rankings.
+        - button " Generate This Week's Tasks" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Generate This Week's Tasks
+      - generic [ref=e29]:
+        - generic [ref=e30]: Analysis Status
+        - generic [ref=e31]:
+          - generic [ref=e32]: 
+          - text: Ready
+    - text:    
+    - generic [ref=e33]:
+      - generic [ref=e34]: 
+      - generic [ref=e35]: No analysis run yet
+      - generic [ref=e36]: Click the button above to generate this week's SEO tasks
+```

@@ -40,30 +40,24 @@ test.describe('Admin Dashboard Pages', () => {
         });
     }
 
-    test('SEO Command - Analyze with AI button works', async ({ page }) => {
+    test('SEO Command - Refresh Score button works', async ({ page }) => {
         await page.goto(`${BASE_URL}/admin/index.html`, { waitUntil: 'networkidle' });
 
-        // Find and click the Analyze button
-        const analyzeButton = page.locator('button:has-text("Analyze with AI")');
-        await expect(analyzeButton).toBeVisible();
+        // Find and click the Refresh Score button
+        const refreshButton = page.locator('button:has-text("Refresh Score")');
+        await expect(refreshButton).toBeVisible();
 
         // Take screenshot before clicking
-        await page.screenshot({ path: 'test-results/seo-command-before-analyze.png', fullPage: true });
+        await page.screenshot({ path: 'test-results/seo-command-before-refresh.png', fullPage: true });
 
         // Click the button
-        await analyzeButton.click();
-
-        // Wait for analysis to start (spinner or loading state)
-        await page.waitForTimeout(3000);
-
-        // Take screenshot after clicking
-        await page.screenshot({ path: 'test-results/seo-command-after-analyze.png', fullPage: true });
+        await refreshButton.click();
 
         // Wait for scores to load (up to 30 seconds)
         await page.waitForTimeout(15000);
 
         // Take final screenshot
-        await page.screenshot({ path: 'test-results/seo-command-final.png', fullPage: true });
+        await page.screenshot({ path: 'test-results/seo-command-after-refresh.png', fullPage: true });
 
         // Check that at least some scores are populated (not all dashes)
         const performanceScore = await page.locator('#performanceScore').textContent();

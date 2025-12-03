@@ -33,7 +33,7 @@
         - generic [ref=e23]:
           - heading "Your Site Score" [level=3] [ref=e24]
           - generic [ref=e25]:
-            - generic [ref=e26]: "61"
+            - generic [ref=e26]: "--"
             - button " See Details" [ref=e27] [cursor=pointer]:
               - generic [ref=e28]: 
               - text: See Details
@@ -44,8 +44,8 @@
         - generic [ref=e32]:
           - heading "Last Updated" [level=3] [ref=e33]
           - generic [ref=e34]:
-            - generic [ref=e35]: Dec 3, 2025, 5:23 PM
-            - generic [ref=e36]: 🟢 LIVE PageSpeed • 🟢 Claude AI
+            - generic [ref=e35]: 12/3/2025, 5:32:27 PM
+            - generic [ref=e36]: 🔴 Error - No data available
           - generic [ref=e37]: "--"
           - paragraph [ref=e38]: Change from previous
     - text:       
@@ -141,32 +141,9 @@
           - text: Reviews from Google Places API | PageRank from OpenPageRank API
     - generic [ref=e122]:
       - heading "🎯 Priority Action Items" [level=3] [ref=e123]
-      - generic [ref=e126]:
-        - generic [ref=e127]: 
-        - generic [ref=e128]:
-          - heading "performance" [level=4] [ref=e129]
-          - paragraph [ref=e130]: Performance audit passed
-          - paragraph [ref=e131]: "Current score: 63/100"
-    - generic [ref=e132]:
-      - heading "🤖 AI Enhancement Prompts" [level=3] [ref=e133]
-      - paragraph [ref=e134]: "Copy these prompts to Claude or ChatGPT to get specific improvements for your site:"
-      - generic [ref=e135]:
-        - generic [ref=e136]:
-          - heading "Performance Optimization" [level=4] [ref=e137]
-          - paragraph [ref=e139]: I have a salon website at chrisdavidsalon.com with a current PageSpeed score of 63. Please provide specific code changes to improve load time, optimize images, and enhance Core Web Vitals.
-          - button " Copy Prompt" [ref=e140] [cursor=pointer]:
-            - generic [ref=e141]: 
-            - text: Copy Prompt
-        - generic [ref=e142]:
-          - heading "Content Enhancement" [level=4] [ref=e143]
-          - paragraph [ref=e145]: My salon website needs better SEO content. We're a luxury salon in Delray Beach specializing in color and cuts. Current content score is 0. Please write optimized title tags, meta descriptions, and suggest content improvements for better local SEO.
-          - button " Copy Prompt" [ref=e146] [cursor=pointer]:
-            - generic [ref=e147]: 
-            - text: Copy Prompt
-        - generic [ref=e148]:
-          - heading "Technical SEO Fixes" [level=4] [ref=e149]
-          - paragraph [ref=e151]: Review the technical SEO for chrisdavidsalon.com. Current score is 100. Provide schema markup for a hair salon, optimize robots.txt, and suggest technical improvements.
-          - button " Copy Prompt" [ref=e152] [cursor=pointer]:
-            - generic [ref=e153]: 
-            - text: Copy Prompt
+      - paragraph [ref=e126]: Run analysis to get personalized action items
+    - generic [ref=e127]:
+      - heading "🤖 AI Enhancement Prompts" [level=3] [ref=e128]
+      - paragraph [ref=e129]: "Copy these prompts to Claude or ChatGPT to get specific improvements for your site:"
+      - paragraph [ref=e132]: Prompts will appear here after analysis
 ```
