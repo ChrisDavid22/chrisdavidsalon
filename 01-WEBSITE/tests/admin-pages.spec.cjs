@@ -43,8 +43,8 @@ test.describe('Admin Dashboard Pages', () => {
     test('SEO Command - Refresh Score button works', async ({ page }) => {
         await page.goto(`${BASE_URL}/admin/index.html`, { waitUntil: 'networkidle' });
 
-        // Find and click the Refresh Score button
-        const refreshButton = page.locator('button:has-text("Refresh Score")');
+        // Find and click the first Refresh Score button
+        const refreshButton = page.locator('button:has-text("Refresh Score")').first();
         await expect(refreshButton).toBeVisible();
 
         // Take screenshot before clicking
