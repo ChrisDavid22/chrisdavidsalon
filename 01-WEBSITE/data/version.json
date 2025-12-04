@@ -1,7 +1,12 @@
 {
-  "version": "2.19.0",
-  "lastUpdated": "2025-12-04T07:30:00Z",
+  "version": "2.20.0",
+  "lastUpdated": "2025-12-04T09:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.20.0",
+      "date": "2025-12-04T09:00:00Z",
+      "changes": "BOUTIQUE ADVANTAGE STRATEGY + PROACTIVE SEO AGENTS: (1) NEW /api/gbp-agent - GBP Enhancement Agent with audit, weekly-tasks, photo-strategy, post-ideas, qa-suggestions, competitor-gbp analysis. GBP is 32% of local pack ranking - biggest winnable factor. (2) NEW /api/proactive-seo-agent - Leads from the front, takes action without being asked. Runs boutique-strategy, quick-wins, learn actions. (3) FLYWHEEL STRATEGY OVERHAUL: Reframed from 'compete on review count' to 'win on expertise'. Deprioritized review count comparison (we're boutique, can't match 1500 reviews). (4) Added GBP tracking to INGEST phase with score and daily tasks. (5) Added GBP gap analysis in ANALYZE phase (32% weight, biggest factor). (6) Added long-tail keyword targets: color correction specialist, grey blending expert, davines salon, etc. (7) Added E-E-A-T credential advantage section highlighting 5 brand certifications. (8) EXECUTE phase now runs proactive agent and generates GBP weekly tasks. (9) Boutique Advantage Reminder in every flywheel run."
+    },
     {
       "version": "2.19.0",
       "date": "2025-12-04T07:30:00Z",

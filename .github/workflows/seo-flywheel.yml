@@ -12,9 +12,17 @@ name: SEO Learning Flywheel
 # - Competitors (gap analysis)
 # - Content (freshness, completeness)
 # - Technical SEO (schema, sitemap, robots)
-# - Local SEO (GBP signals)
+# - Local SEO (GBP signals) ★ 32% OF LOCAL PACK RANKING
 # - Mobile usability
 # - Microsite network health
+# - Keyword rankings (money keywords)
+#
+# BOUTIQUE ADVANTAGE STRATEGY (Don't compete on review count):
+# - GBP Optimization (32% - biggest factor, winnable)
+# - Content Authority (5 brand certifications = unmatched)
+# - Long-tail Keywords (own niches competitors ignore)
+# - Microsite Network (4 sites vs 1 = more coverage)
+# - Niche Positioning (boutique expertise vs volume)
 
 on:
   schedule:
@@ -51,6 +59,7 @@ jobs:
       performance_data: ${{ steps.performance.outputs.data }}
       seo_scores: ${{ steps.seo_scores.outputs.data }}
       microsite_health: ${{ steps.microsites.outputs.data }}
+      gbp_status: ${{ steps.gbp.outputs.data }}
       keyword_rankings: ${{ steps.keywords.outputs.data }}
     steps:
       - name: 📊 Fetch GA4 Traffic Data
@@ -142,6 +151,29 @@ jobs:
           MICROSITES="{\"main\":$MAIN_STATUS,\"ms1\":$MS1_STATUS,\"ms2\":$MS2_STATUS,\"ms3\":$MS3_STATUS,\"healthy_count\":$HEALTHY}"
           echo "data=$MICROSITES" >> $GITHUB_OUTPUT
           echo "Microsite Health: $MICROSITES"
+
+      - name: 📍 Fetch GBP Optimization Status (32% of ranking!)
+        id: gbp
+        run: |
+          echo "Fetching GBP agent recommendations..."
+
+          # Get GBP audit and recommendations
+          GBP_AUDIT=$(curl -s --max-time 30 "${{ env.SITE_URL }}/api/gbp-agent?action=audit" 2>/dev/null || echo '{"success":false}')
+          GBP_SCORE=$(echo "$GBP_AUDIT" | jq -r '.data.overallScore // 0' 2>/dev/null || echo "0")
+          GBP_ACTIONS=$(echo "$GBP_AUDIT" | jq -r '[.data.priorityActions[]?.action] | join(", ")' 2>/dev/null || echo "none")
+
+          # Get weekly tasks
+          GBP_WEEKLY=$(curl -s --max-time 30 "${{ env.SITE_URL }}/api/gbp-agent?action=weekly-tasks" 2>/dev/null || echo '{"success":false}')
+          TODAY_TASK=$(echo "$GBP_WEEKLY" | jq -r '.data.todaysPriority.task // "Check GBP"' 2>/dev/null || echo "Check GBP")
+
+          GBP="{\"score\":$GBP_SCORE,\"today_task\":\"$TODAY_TASK\",\"priority_actions\":\"$GBP_ACTIONS\"}"
+          echo "data=$GBP" >> $GITHUB_OUTPUT
+          echo ""
+          echo "📍 GBP STATUS (32% of local pack ranking!)"
+          echo "══════════════════════════════════════════"
+          echo "GBP Optimization Score: $GBP_SCORE/100"
+          echo "Today's Priority: $TODAY_TASK"
+          echo "Pending Actions: $GBP_ACTIONS"
 
       - name: 🔑 Fetch Keyword Rankings (Search Console)
         id: keywords
@@ -266,41 +298,85 @@ jobs:
           echo "═══════════════"
 
           # ─────────────────────────────────────────────────────────
-          # 1. REVIEW GAP ANALYSIS (20% of local pack ranking)
+          # 1. REVIEW ANALYSIS (20% of ranking - but we're BOUTIQUE)
+          # STRATEGY: Don't compete on volume. Win on quality + response
           # ─────────────────────────────────────────────────────────
           OUR_REVIEWS=$(echo "$COMPETITORS" | jq -r '.our_reviews // 0' 2>/dev/null || echo "0")
           OUR_RATING=$(echo "$COMPETITORS" | jq -r '.our_rating // 0' 2>/dev/null || echo "0")
           TOP_REVIEWS=$(echo "$COMPETITORS" | jq -r '.top_competitor_reviews // 0' 2>/dev/null || echo "0")
 
           if [ "$OUR_REVIEWS" != "0" ] && [ "$OUR_REVIEWS" != "null" ]; then
-            REVIEW_GAP=$((TOP_REVIEWS - OUR_REVIEWS))
             echo ""
-            echo "⭐ REVIEWS (20% of ranking)"
+            echo "⭐ REVIEWS - BOUTIQUE STRATEGY (20% of ranking)"
             echo "   Current: $OUR_REVIEWS reviews, $OUR_RATING stars"
-            echo "   Top Competitor: $TOP_REVIEWS reviews"
-            echo "   Gap: $REVIEW_GAP reviews behind"
+            echo "   Top Competitor: $TOP_REVIEWS reviews (but they're 10x our size)"
+            echo ""
+            echo "   💡 BOUTIQUE ADVANTAGE: We can't match volume, so we WIN on:"
+            echo "      - Rating quality (4.9 vs 5.0 is close!)"
+            echo "      - Response personalization (not templates)"
+            echo "      - Review recency (fresh reviews matter more)"
+            echo "      - Response speed (under 24 hours)"
 
-            if [ "$REVIEW_GAP" -gt 500 ]; then
-              echo "   🔴 CRITICAL: Massive review gap ($REVIEW_GAP behind)"
-              GAPS="${GAPS}reviews:CRITICAL:${OUR_REVIEWS}vs${TOP_REVIEWS},"
-              ACTIONS="${ACTIONS}increase_review_velocity:CRITICAL,"
-              GAP_COUNT=$((GAP_COUNT + 1))
-              CRITICAL_COUNT=$((CRITICAL_COUNT + 1))
-            elif [ "$REVIEW_GAP" -gt 100 ]; then
-              echo "   🟠 HIGH: Significant review gap"
-              GAPS="${GAPS}reviews:HIGH:${OUR_REVIEWS}vs${TOP_REVIEWS},"
-              ACTIONS="${ACTIONS}increase_review_velocity:HIGH,"
+            # Focus on rating quality, not count comparison
+            RATING_CHECK=$(echo "$OUR_RATING < $RATING_MIN" | bc -l 2>/dev/null || echo "0")
+            if [ "$RATING_CHECK" = "1" ]; then
+              echo "   🟠 HIGH: Rating below $RATING_MIN threshold"
+              GAPS="${GAPS}rating:HIGH:${OUR_RATING}vs${RATING_MIN},"
+              ACTIONS="${ACTIONS}improve_review_quality:HIGH,"
               GAP_COUNT=$((GAP_COUNT + 1))
               HIGH_COUNT=$((HIGH_COUNT + 1))
             elif [ "$OUR_REVIEWS" -lt "$REVIEW_MIN" ]; then
-              echo "   🟡 MEDIUM: Below minimum threshold"
+              echo "   🟡 MEDIUM: Below minimum review count ($REVIEW_MIN)"
               GAPS="${GAPS}reviews:MEDIUM:${OUR_REVIEWS}vs${REVIEW_MIN},"
-              ACTIONS="${ACTIONS}increase_review_velocity:MEDIUM,"
+              ACTIONS="${ACTIONS}steady_review_growth:MEDIUM,"
               GAP_COUNT=$((GAP_COUNT + 1))
               MEDIUM_COUNT=$((MEDIUM_COUNT + 1))
             else
-              echo "   ✅ OK: Reviews are competitive"
+              echo "   ✅ STRONG: Rating is excellent, focus on other factors"
             fi
+          fi
+
+          # ─────────────────────────────────────────────────────────
+          # 1b. GBP OPTIMIZATION (32% of ranking - BIGGEST FACTOR!)
+          # This is where boutique salons can WIN
+          # ─────────────────────────────────────────────────────────
+          GBP='${{ needs.ingest.outputs.gbp_status }}'
+          GBP_SCORE=$(echo "$GBP" | jq -r '.score // 0' 2>/dev/null || echo "0")
+          GBP_TODAY=$(echo "$GBP" | jq -r '.today_task // "Check GBP"' 2>/dev/null || echo "Check GBP")
+
+          echo ""
+          echo "📍 GBP OPTIMIZATION (32% of ranking - BIGGEST FACTOR!)"
+          echo "   GBP Score: $GBP_SCORE/100"
+          echo "   Today's Task: $GBP_TODAY"
+
+          if [ "$GBP_SCORE" != "0" ] && [ "$GBP_SCORE" != "null" ]; then
+            if [ "$GBP_SCORE" -lt 50 ]; then
+              echo "   🔴 CRITICAL: GBP severely under-optimized"
+              GAPS="${GAPS}gbp:CRITICAL:${GBP_SCORE}vs100,"
+              ACTIONS="${ACTIONS}optimize_gbp_immediately:CRITICAL,add_gbp_photos:CRITICAL,create_gbp_post:CRITICAL,"
+              GAP_COUNT=$((GAP_COUNT + 1))
+              CRITICAL_COUNT=$((CRITICAL_COUNT + 1))
+            elif [ "$GBP_SCORE" -lt 75 ]; then
+              echo "   🟠 HIGH: GBP needs attention - biggest ranking factor!"
+              GAPS="${GAPS}gbp:HIGH:${GBP_SCORE}vs100,"
+              ACTIONS="${ACTIONS}create_gbp_post:HIGH,add_gbp_photos:HIGH,respond_reviews:HIGH,"
+              GAP_COUNT=$((GAP_COUNT + 1))
+              HIGH_COUNT=$((HIGH_COUNT + 1))
+            elif [ "$GBP_SCORE" -lt 90 ]; then
+              echo "   🟡 MEDIUM: GBP good but room for improvement"
+              GAPS="${GAPS}gbp:MEDIUM:${GBP_SCORE}vs100,"
+              ACTIONS="${ACTIONS}weekly_gbp_post:MEDIUM,add_gbp_qa:MEDIUM,"
+              GAP_COUNT=$((GAP_COUNT + 1))
+              MEDIUM_COUNT=$((MEDIUM_COUNT + 1))
+            else
+              echo "   ✅ EXCELLENT: GBP well optimized"
+            fi
+          else
+            echo "   🟠 HIGH: Unable to fetch GBP status - needs manual check"
+            GAPS="${GAPS}gbp:HIGH:unknown,"
+            ACTIONS="${ACTIONS}check_gbp_manually:HIGH,"
+            GAP_COUNT=$((GAP_COUNT + 1))
+            HIGH_COUNT=$((HIGH_COUNT + 1))
           fi
 
           # ─────────────────────────────────────────────────────────
@@ -422,19 +498,32 @@ jobs:
 
           # ─────────────────────────────────────────────────────────
           # 6. KEYWORD RANKING ANALYSIS (CRITICAL FOR LOCAL SEO)
-          # Target: Top 3 for money keywords = massive traffic gain
+          # BOUTIQUE STRATEGY: Own niches that big salons ignore
           # ─────────────────────────────────────────────────────────
           KEYWORDS='${{ needs.ingest.outputs.keyword_rankings }}'
 
           HAIR_SALON_POS=$(echo "$KEYWORDS" | jq -r '.hair_salon_delray // 100' 2>/dev/null || echo "100")
           BALAYAGE_POS=$(echo "$KEYWORDS" | jq -r '.balayage_delray // 100' 2>/dev/null || echo "100")
+          COLOR_CORRECTION_POS=$(echo "$KEYWORDS" | jq -r '.color_correction // 100' 2>/dev/null || echo "100")
           STRIKING_DISTANCE=$(echo "$KEYWORDS" | jq -r '.striking_distance_count // 0' 2>/dev/null || echo "0")
 
           echo ""
-          echo "🔑 KEYWORD RANKINGS (Drives 70%+ of organic traffic)"
+          echo "🔑 KEYWORD RANKINGS - BOUTIQUE STRATEGY"
+          echo "   BROAD TERMS (competitive - fight for page 1):"
           echo "   'hair salon delray beach': Position $HAIR_SALON_POS (Target: Top 10)"
           echo "   'balayage delray beach': Position $BALAYAGE_POS (Target: Top 5)"
+          echo ""
+          echo "   💡 LONG-TAIL WINS (less competition, higher intent):"
+          echo "   'color correction delray beach': Position $COLOR_CORRECTION_POS (Own this!)"
           echo "   Keywords in striking distance (4-20): $STRIKING_DISTANCE"
+          echo ""
+          echo "   🎯 NICHE KEYWORDS TO DOMINATE (competitors ignore these):"
+          echo "      - color correction specialist delray beach"
+          echo "      - grey blending expert palm beach"
+          echo "      - davines salon delray beach"
+          echo "      - goldwell certified colorist florida"
+          echo "      - hair extensions atlantic avenue"
+          echo "      - bridal hair delray beach"
 
           # Money keyword analysis - "hair salon delray beach"
           if [ "$HAIR_SALON_POS" != "100" ] && [ "$HAIR_SALON_POS" != "null" ]; then
@@ -480,6 +569,37 @@ jobs:
             else
               echo "   ✅ OK: Balayage keyword well-positioned"
             fi
+          fi
+
+          # ─────────────────────────────────────────────────────────
+          # 7. E-E-A-T & CREDENTIAL ADVANTAGE (Boutique wins here!)
+          # Chris has 5 brand certifications - competitors can't match
+          # ─────────────────────────────────────────────────────────
+          echo ""
+          echo "🏆 E-E-A-T CREDENTIAL ADVANTAGE (Google loves expertise)"
+          echo "   Chris's UNMATCHED credentials:"
+          echo "      ✓ Davines Certified Educator (6 years)"
+          echo "      ✓ Goldwell Academy Graduate"
+          echo "      ✓ Cezanne Certified"
+          echo "      ✓ Platinum Seamless Certified"
+          echo "      ✓ Organic Color Systems Certified"
+          echo "      ✓ 20+ years experience"
+          echo ""
+          echo "   💡 ACTIONS TO LEVERAGE:"
+          echo "      - Add certification badges to About page"
+          echo "      - Create blog posts about each certification"
+          echo "      - Add Schema.org credentials markup"
+          echo "      - Mention in GBP Q&As"
+          echo "      - Use in review response templates"
+
+          # Check if credential pages exist
+          if [ ! -f "services/color-correction-specialist.html" ] 2>/dev/null; then
+            echo ""
+            echo "   🟡 MEDIUM: Could create dedicated credential landing pages"
+            GAPS="${GAPS}credentials:MEDIUM:pages_missing,"
+            ACTIONS="${ACTIONS}create_credential_pages:MEDIUM,"
+            GAP_COUNT=$((GAP_COUNT + 1))
+            MEDIUM_COUNT=$((MEDIUM_COUNT + 1))
           fi
 
           # ─────────────────────────────────────────────────────────
@@ -663,6 +783,49 @@ jobs:
           echo "   Target position: Top 10 for 'hair salon delray beach'"
           echo "   Current: Position 26 (needs improvement)"
           EXECUTED="$EXECUTED,keyword_status_recorded"
+
+          # 7. Run Proactive SEO Agent (LEADS FROM THE FRONT)
+          echo ""
+          echo "🚀 PROACTIVE SEO AGENT - Taking automatic actions..."
+          PROACTIVE=$(curl -s --max-time 30 "${{ env.SITE_URL }}/api/proactive-seo-agent?action=run-proactive" 2>/dev/null || echo '{"success":false}')
+          if [ "$(echo "$PROACTIVE" | jq -r '.success')" = "true" ]; then
+            echo "   ✓ Proactive agent executed"
+            echo "   Today's Focus: $(echo "$PROACTIVE" | jq -r '.boutiqueReminder.todaysFocus' 2>/dev/null)"
+            EXECUTED="$EXECUTED,proactive_agent_run"
+          else
+            echo "   ⚠ Proactive agent unavailable"
+          fi
+
+          # 8. GBP Agent - Get weekly tasks
+          echo ""
+          echo "📍 GBP OPTIMIZATION TASKS (32% of ranking!)"
+          echo "═══════════════════════════════════════════"
+          GBP_TASKS=$(curl -s --max-time 30 "${{ env.SITE_URL }}/api/gbp-agent?action=weekly-tasks" 2>/dev/null || echo '{"success":false}')
+          if [ "$(echo "$GBP_TASKS" | jq -r '.success')" = "true" ]; then
+            DAY=$(echo "$GBP_TASKS" | jq -r '.data.todaysPriority.day // "Unknown"' 2>/dev/null)
+            TASK=$(echo "$GBP_TASKS" | jq -r '.data.todaysPriority.task // "Check GBP"' 2>/dev/null)
+            echo "   📅 $DAY: $TASK"
+            echo ""
+            echo "   Weekly GBP Schedule:"
+            echo "      Mon: Check and respond to all reviews"
+            echo "      Wed: Add 2 photos to GBP"
+            echo "      Fri: Create Google Post"
+            echo "      Sat: Check Q&A section"
+            EXECUTED="$EXECUTED,gbp_tasks_generated"
+          else
+            echo "   ⚠ GBP agent unavailable - check manually!"
+          fi
+
+          # 9. Boutique Strategy Reminder
+          echo ""
+          echo "💡 BOUTIQUE ADVANTAGE REMINDER"
+          echo "══════════════════════════════"
+          echo "   We WIN by being BETTER, not BIGGER:"
+          echo "   ✓ GBP Optimization (32%) - Consistency beats size"
+          echo "   ✓ Long-tail Keywords - Own niches competitors ignore"
+          echo "   ✓ E-E-A-T Credentials - 5 certifications = unmatched"
+          echo "   ✓ Microsite Network - 4 sites vs competitors' 1"
+          echo "   ✓ Personal Touch - Boutique attention vs volume salon"
 
           echo "actions=$EXECUTED" >> $GITHUB_OUTPUT
           echo ""
