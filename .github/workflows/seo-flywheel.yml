@@ -876,7 +876,7 @@ jobs:
   # ============================================
   learn:
     runs-on: ubuntu-latest
-    needs: [measure]
+    needs: [ingest, analyze, execute, measure]
     steps:
       - name: 🧠 Update Learning Patterns
         run: |
@@ -893,6 +893,51 @@ jobs:
           echo ""
           echo "🔄 Learning cycle complete!"
           echo "📅 Next cycle: Sunday $(date -d 'next sunday' '+%Y-%m-%d' 2>/dev/null || echo 'next week') at 6:00 AM EST"
+
+      - name: 📋 Generate Change Log Entry
+        run: |
+          echo ""
+          echo "╔══════════════════════════════════════════════════════════╗"
+          echo "║              WEEKLY CHANGE LOG ENTRY                      ║"
+          echo "╚══════════════════════════════════════════════════════════╝"
+          echo ""
+          echo "🗓️  Week: $(date -u +%Y-%W)"
+          echo "📅 Date: $(date -u +%Y-%m-%d)"
+          echo "🔢 Run ID: ${{ github.run_id }}"
+          echo ""
+          echo "📊 METRICS SNAPSHOT FOR COMPARISON"
+          echo "═══════════════════════════════════"
+          echo ""
+          echo "Traffic Data:"
+          echo '${{ needs.ingest.outputs.traffic_data }}' | jq '.' 2>/dev/null || echo "  (parse error)"
+          echo ""
+          echo "Keyword Rankings:"
+          echo '${{ needs.ingest.outputs.keyword_rankings }}' | jq '.' 2>/dev/null || echo "  (parse error)"
+          echo ""
+          echo "GBP Status:"
+          echo '${{ needs.ingest.outputs.gbp_status }}' | jq '.' 2>/dev/null || echo "  (parse error)"
+          echo ""
+          echo "Authority:"
+          echo '${{ needs.ingest.outputs.authority_data }}' | jq '.' 2>/dev/null || echo "  (parse error)"
+          echo ""
+          echo "📋 GAPS IDENTIFIED THIS WEEK"
+          echo "════════════════════════════"
+          echo "Severity: ${{ needs.analyze.outputs.severity }}"
+          echo "Gap Count: ${{ needs.analyze.outputs.gap_count }}"
+          echo "Gaps: ${{ needs.analyze.outputs.gaps }}"
+          echo ""
+          echo "✅ ACTIONS EXECUTED THIS WEEK"
+          echo "═════════════════════════════"
+          echo "${{ needs.execute.outputs.executed }}" | tr ',' '\n' | while read action; do
+            [ -n "$action" ] && echo "  ✓ $action"
+          done
+          echo ""
+          echo "📌 VIEW FULL LOG: https://www.chrisdavidsalon.com/admin/changes-log.html"
+          echo ""
+          echo "═══════════════════════════════════════════════════════════"
+          echo "  To update the changes log, commit updates to:"
+          echo "  01-WEBSITE/data/seo-changes-log.json"
+          echo "═══════════════════════════════════════════════════════════"
 
   # ============================================
   # REPORT: Generate comprehensive summary

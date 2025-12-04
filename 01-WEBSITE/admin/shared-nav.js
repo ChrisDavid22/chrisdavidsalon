@@ -27,6 +27,8 @@ const ADMIN_NAV_CONFIG = {
         { id: 'progress', label: 'Progress', path: 'progress-report.html', icon: 'fa-chart-line' },
         // 9. Advanced - Self-learning system
         { id: 'seo-learning', label: 'Learning', path: 'seo-learning.html', icon: 'fa-graduation-cap' },
+        // 10. Changes Log - Track all SEO changes and their effectiveness
+        { id: 'changes-log', label: 'Changes', path: 'changes-log.html', icon: 'fa-clipboard-list' },
     ]
 };
 
