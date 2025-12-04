@@ -15,8 +15,10 @@ async function loadKnowledgeBase() {
   const knowledge = {
     localSEO: null,
     hairSalonSEO: null,
+    advancedTactics: null,
     loaded: false,
-    loadedAt: null
+    loadedAt: null,
+    expertiseScore: 0
   };
 
   try {
@@ -32,16 +34,67 @@ async function loadKnowledgeBase() {
       knowledge.hairSalonSEO = JSON.parse(fs.readFileSync(salonGuidePath, 'utf8'));
     }
 
+    // Load advanced tactics (schema, E-E-A-T, voice search, etc.)
+    const advancedPath = path.join(KNOWLEDGE_BASE_DIR, 'local-seo-advanced-tactics.json');
+    if (fs.existsSync(advancedPath)) {
+      knowledge.advancedTactics = JSON.parse(fs.readFileSync(advancedPath, 'utf8'));
+    }
+
     knowledge.loaded = true;
     knowledge.loadedAt = new Date().toISOString();
 
-    console.log('[KnowledgeBase] Loaded SEO knowledge base successfully');
+    // Calculate expertise score based on loaded knowledge
+    knowledge.expertiseScore = calculateExpertiseScore(knowledge);
+
+    console.log(`[KnowledgeBase] Loaded SEO knowledge base successfully (Expertise: ${knowledge.expertiseScore}/100)`);
     return knowledge;
 
   } catch (error) {
     console.error('[KnowledgeBase] Error loading knowledge base:', error.message);
     return knowledge;
   }
+}
+
+/**
+ * Calculate expertise score based on knowledge coverage
+ */
+function calculateExpertiseScore(knowledge) {
+  let score = 0;
+
+  // Core local SEO knowledge (30 points)
+  if (knowledge.localSEO) {
+    if (knowledge.localSEO.coreAlgorithmPillars) score += 5;
+    if (knowledge.localSEO.rankingFactorsByChannel) score += 5;
+    if (knowledge.localSEO.googleBusinessProfile) score += 5;
+    if (knowledge.localSEO.reviews) score += 5;
+    if (knowledge.localSEO.citations) score += 3;
+    if (knowledge.localSEO.onPageOptimization) score += 4;
+    if (knowledge.localSEO.linkBuilding) score += 3;
+  }
+
+  // Industry-specific knowledge (20 points)
+  if (knowledge.hairSalonSEO) {
+    if (knowledge.hairSalonSEO.keyMetrics) score += 5;
+    if (knowledge.hairSalonSEO.rankingFactors) score += 5;
+    if (knowledge.hairSalonSEO.actionPlan) score += 5;
+    if (knowledge.hairSalonSEO.chrisdavidSalonCurrentState) score += 5;
+  }
+
+  // Advanced tactics (45 points)
+  if (knowledge.advancedTactics) {
+    if (knowledge.advancedTactics.schemaMarkup) score += 8;
+    if (knowledge.advancedTactics.eeat) score += 7;
+    if (knowledge.advancedTactics.voiceSearch) score += 5;
+    if (knowledge.advancedTactics.algorithmUpdates) score += 5;
+    if (knowledge.advancedTactics.negativeSEO) score += 5;
+    if (knowledge.advancedTactics.conversionRateOptimization) score += 5;
+    if (knowledge.advancedTactics.entitySEO) score += 3;
+    if (knowledge.advancedTactics.seasonalSEO) score += 3;
+    if (knowledge.advancedTactics.imageSEO) score += 2;
+    if (knowledge.advancedTactics.multiLocationSEO) score += 2;
+  }
+
+  return Math.min(score, 100);
 }
 
 /**
