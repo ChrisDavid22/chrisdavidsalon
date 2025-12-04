@@ -206,40 +206,60 @@
     }
 
     async function loadCurrentMetrics() {
+        document.getElementById('lastUpdate').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
+        document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
+
+        // Fetch traffic from GA4 API
         try {
-            const res = await fetch(`${API_BASE}/api/progress-tracker?action=summary`);
-            const data = await res.json();
+            const trafficRes = await fetch(`${API_BASE}/api/ga4-analytics?type=overview`);
+            const trafficData = await trafficRes.json();
 
-            if (data.success) {
-                document.getElementById('lastUpdate').textContent = `Updated: ${new Date().toLocaleTimeString()}`;
-                document.getElementById('reportDate').textContent = new Date().toLocaleDateString();
-
-                // Traffic
-                if (data.current.traffic && data.current.traffic.users) {
-                    document.getElementById('trafficValue').textContent = data.current.traffic.users.toLocaleString() + ' users';
-                    document.getElementById('trafficSource').textContent = data.current.traffic.source;
-                } else {
-                    document.getElementById('trafficValue').textContent = 'Unavailable';
-                }
-
-                // Authority
-                if (data.current.authority && data.current.authority.score) {
-                    document.getElementById('authorityValue').textContent = data.current.authority.score + '/100';
-                    document.getElementById('authoritySource').textContent = data.current.authority.source;
-                } else {
-                    document.getElementById('authorityValue').textContent = 'Unavailable';
-                }
-
-                // Weeks tracking
-                if (data.historical && data.historical.weeksOfData !== undefined) {
-                    document.getElementById('weeksTracking').textContent = data.historical.weeksOfData;
-                }
+            if (trafficData.success && trafficData.data) {
+                const users = trafficData.data.activeUsers || trafficData.data.users || 0;
+                document.getElementById('trafficValue').textContent = users.toLocaleString() + ' users';
+                document.getElementById('trafficSource').textContent = trafficData.dataSource || 'GA4 API';
+                document.getElementById('ga4Status').textContent = 'LIVE';
+                document.getElementById('ga4Status').className = 'bg-green-500 text-white text-xs px-2 py-1 rounded font-bold';
+            } else {
+                document.getElementById('trafficValue').textContent = 'Unavailable';
+                document.getElementById('ga4Status').textContent = 'ERROR';
+                document.getElementById('ga4Status').className = 'bg-red-500 text-white text-xs px-2 py-1 rounded font-bold';
             }
         } catch (e) {
-            console.error('Error loading metrics:', e);
+            console.error('Error loading traffic:', e);
             document.getElementById('trafficValue').textContent = 'Error';
-            document.getElementById('authorityValue').textContent = 'Error';
+            document.getElementById('ga4Status').textContent = 'ERROR';
+            document.getElementById('ga4Status').className = 'bg-red-500 text-white text-xs px-2 py-1 rounded font-bold';
         }
+
+        // Fetch authority from OpenPageRank API
+        try {
+            const authorityRes = await fetch(`${API_BASE}/api/authority-score`);
+            const authorityData = await authorityRes.json();
+
+            if (authorityData.success && authorityData.data) {
+                const score = authorityData.data.authority_score || authorityData.data.pagerank || 0;
+                document.getElementById('authorityValue').textContent = score + '/100';
+                document.getElementById('authoritySource').textContent = 'OpenPageRank API';
+                document.getElementById('oprStatus').textContent = 'LIVE';
+                document.getElementById('oprStatus').className = 'bg-green-500 text-white text-xs px-2 py-1 rounded font-bold';
+            } else {
+                document.getElementById('authorityValue').textContent = 'Unavailable';
+                document.getElementById('oprStatus').textContent = 'ERROR';
+                document.getElementById('oprStatus').className = 'bg-red-500 text-white text-xs px-2 py-1 rounded font-bold';
+            }
+        } catch (e) {
+            console.error('Error loading authority:', e);
+            document.getElementById('authorityValue').textContent = 'Error';
+            document.getElementById('oprStatus').textContent = 'ERROR';
+            document.getElementById('oprStatus').className = 'bg-red-500 text-white text-xs px-2 py-1 rounded font-bold';
+        }
+
+        // Calculate weeks tracking (since Nov 26, 2024)
+        const startDate = new Date('2024-11-26');
+        const now = new Date();
+        const weeksTracking = Math.floor((now - startDate) / (7 * 24 * 60 * 60 * 1000));
+        document.getElementById('weeksTracking').textContent = weeksTracking;
     }
 
     async function loadRuvectorStatus() {
@@ -249,6 +269,9 @@
             if (data.success && data.status === 'operational') {
                 document.getElementById('ruvectorStatus').textContent = 'OPERATIONAL';
                 document.getElementById('ruvectorStatus').className = 'bg-green-500 text-white text-xs px-2 py-1 rounded font-bold';
+            } else {
+                document.getElementById('ruvectorStatus').textContent = 'INACTIVE';
+                document.getElementById('ruvectorStatus').className = 'bg-yellow-500 text-white text-xs px-2 py-1 rounded font-bold';
             }
         } catch (e) {
             document.getElementById('ruvectorStatus').textContent = 'ERROR';
