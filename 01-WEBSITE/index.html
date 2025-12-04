@@ -51,6 +51,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <!-- Preload hero image for faster LCP -->
+    <link rel="preload" as="image" href="./images/hero-salon.webp" type="image/webp">
     
     <!-- Load fonts with display swap for better performance -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
@@ -540,7 +543,7 @@
                     <!-- NOTE: All images are located in ./images/ directory relative to this index.html -->
                     <picture>
                         <source srcset="./images/cds-logo.webp" type="image/webp">
-                        <img src="./images/cds-logo.jpg" alt="Chris David Salon" class="h-12 md:h-14 object-contain" loading="eager">
+                        <img src="./images/cds-logo.webp" alt="Chris David Salon" class="h-12 md:h-14 object-contain" loading="eager" width="243" height="48" fetchpriority="high">
                     </picture>
                     <span class="text-xs text-gray-600 mt-1">Andre Design District • Delray Beach</span>
                 </div>
@@ -640,7 +643,14 @@
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
-            <img src="https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/744b1af5-5703-4fe0-96ad-024cbdefbddc/ESCAPE+By+Chris+David+-+The+Feeling.jpg" alt="Chris David Salon Interior" class="w-full h-full object-cover">
+            <!-- Preload hero image with explicit dimensions to prevent CLS -->
+            <img src="./images/hero-salon.webp"
+                 alt="Chris David Salon Interior"
+                 class="w-full h-full object-cover"
+                 width="1920"
+                 height="1080"
+                 fetchpriority="high"
+                 decoding="async">
             <div class="hero-overlay absolute inset-0"></div>
         </div>
         <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
@@ -728,7 +738,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="https://images.squarespace-cdn.com/content/v1/61893d6880857832f81caac0/1638325723812-L5KC142ZC0LFE9CMIH0Z/Chris%252BDavid%252BAction%252BFinish%252BReflection-M.jpg" alt="Chris David at work" class="rounded-lg shadow-2xl">
+                    <img src="./images/chris-david-action.webp" alt="Chris David at work" class="rounded-lg shadow-2xl" width="380" height="323" loading="lazy">
                     <div class="absolute -bottom-6 -right-6 bg-yellow-600 text-white p-6 rounded-lg shadow-xl">
                         <div class="text-3xl font-bold">20+</div>
                         <div class="text-sm">Years of Excellence</div>
@@ -754,7 +764,7 @@
                 <!-- Advanced Color Service -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="./images/hair-color.webp" alt="Advanced Color Services" class="w-full h-full object-contain bg-gray-100">
+                        <img src="./images/hair-color.webp" alt="Advanced Color Services" class="w-full h-full object-contain bg-gray-100" width="400" height="256" loading="lazy">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Advanced Color</h3>
@@ -773,7 +783,7 @@
                 <!-- Hair Extensions -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="./images/hair-extensions.webp" alt="Hair Extensions" class="w-full h-full object-contain bg-gray-100">
+                        <img src="./images/hair-extensions.webp" alt="Hair Extensions" class="w-full h-full object-contain bg-gray-100" width="400" height="256" loading="lazy">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Hair Extensions</h3>
@@ -792,7 +802,7 @@
                 <!-- Precision Cuts -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="./images/hair-cut.webp" alt="Precision Cut" class="w-full h-full object-contain bg-gray-100">
+                        <img src="./images/hair-cut.webp" alt="Precision Cut" class="w-full h-full object-contain bg-gray-100" width="400" height="256" loading="lazy">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Precision Cuts</h3>
@@ -811,7 +821,7 @@
                 <!-- Keratin Treatments -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="./images/keratin-treatment.webp" alt="Keratin Treatment" class="w-full h-full object-contain bg-gray-100">
+                        <img src="./images/keratin-treatment.webp" alt="Keratin Treatment" class="w-full h-full object-contain bg-gray-100" width="400" height="256" loading="lazy">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Keratin Treatments</h3>
@@ -830,7 +840,7 @@
                 <!-- Special Events -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden hover-lift">
                     <div class="w-full h-64 overflow-hidden">
-                        <img src="./images/event-styling.webp" alt="Event Styling" class="w-full h-full object-contain bg-gray-100">
+                        <img src="./images/event-styling.webp" alt="Event Styling" class="w-full h-full object-contain bg-gray-100" width="400" height="256" loading="lazy">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-playfair font-semibold mb-3">Styling & Blowouts</h3>
@@ -850,7 +860,7 @@
                     <div class="w-full h-64 overflow-hidden">
                         <picture>
                             <source srcset="./images/signature.webp" type="image/webp">
-                            <img src="./images/signature.jpg" alt="Signature Luxury Hair Service" class="w-full h-full object-cover" loading="lazy">
+                            <img src="./images/signature.jpg" alt="Signature Luxury Hair Service" class="w-full h-full object-cover" width="400" height="256" loading="lazy">
                         </picture>
                     </div>
                     <div class="p-6">
