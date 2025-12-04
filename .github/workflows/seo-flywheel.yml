@@ -153,11 +153,16 @@ jobs:
 
           # Extract key metrics for target keywords
           # These are the MONEY KEYWORDS we must track
-          HAIR_SALON_POS=$(echo "$KEYWORDS_RAW" | jq -r '.topKeywords[] | select(.keyword == "hair salon delray beach") | .position // 100' 2>/dev/null || echo "100")
-          HAIR_SALONS_POS=$(echo "$KEYWORDS_RAW" | jq -r '.topKeywords[] | select(.keyword == "hair salons delray beach") | .position // 100' 2>/dev/null || echo "100")
-          BALAYAGE_POS=$(echo "$KEYWORDS_RAW" | jq -r '.topKeywords[] | select(.keyword == "balayage delray beach") | .position // 100' 2>/dev/null || echo "100")
-          COLORIST_POS=$(echo "$KEYWORDS_RAW" | jq -r '.topKeywords[] | select(.keyword | contains("colorist")) | .position // 100' 2>/dev/null | head -1 || echo "100")
-          COLOR_CORRECTION_POS=$(echo "$KEYWORDS_RAW" | jq -r '.topKeywords[] | select(.keyword | contains("color correction")) | .position // 100' 2>/dev/null | head -1 || echo "100")
+          HAIR_SALON_POS=$(echo "$KEYWORDS_RAW" | jq -r '[.topKeywords[] | select(.keyword == "hair salon delray beach") | .position] | first // 100' 2>/dev/null || echo "100")
+          [ -z "$HAIR_SALON_POS" ] || [ "$HAIR_SALON_POS" = "null" ] && HAIR_SALON_POS="100"
+          HAIR_SALONS_POS=$(echo "$KEYWORDS_RAW" | jq -r '[.topKeywords[] | select(.keyword == "hair salons delray beach") | .position] | first // 100' 2>/dev/null || echo "100")
+          [ -z "$HAIR_SALONS_POS" ] || [ "$HAIR_SALONS_POS" = "null" ] && HAIR_SALONS_POS="100"
+          BALAYAGE_POS=$(echo "$KEYWORDS_RAW" | jq -r '[.topKeywords[] | select(.keyword == "balayage delray beach") | .position] | first // 100' 2>/dev/null || echo "100")
+          [ -z "$BALAYAGE_POS" ] || [ "$BALAYAGE_POS" = "null" ] && BALAYAGE_POS="100"
+          COLORIST_POS=$(echo "$KEYWORDS_RAW" | jq -r '[.topKeywords[] | select(.keyword | contains("colorist")) | .position] | first // 100' 2>/dev/null || echo "100")
+          [ -z "$COLORIST_POS" ] && COLORIST_POS="100"
+          COLOR_CORRECTION_POS=$(echo "$KEYWORDS_RAW" | jq -r '[.topKeywords[] | select(.keyword | contains("color correction")) | .position] | first // 100' 2>/dev/null || echo "100")
+          [ -z "$COLOR_CORRECTION_POS" ] && COLOR_CORRECTION_POS="100"
 
           # Get summary stats
           AVG_POS=$(echo "$KEYWORDS_RAW" | jq -r '.summary.averagePosition // "100"' 2>/dev/null || echo "100")
