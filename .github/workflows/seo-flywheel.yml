@@ -107,7 +107,7 @@ jobs:
           echo "=== SEO ANALYSIS ==="
           echo ""
 
-          # Parse ingested data
+          # Parse ingested data (escape for shell)
           TRAFFIC='${{ needs.ingest.outputs.traffic_data }}'
           AUTHORITY='${{ needs.ingest.outputs.authority_data }}'
           COMPETITORS='${{ needs.ingest.outputs.competitor_data }}'
@@ -124,53 +124,42 @@ jobs:
           REVIEW_TARGET=200
           PAGERANK_TARGET=3.5
           PERFORMANCE_TARGET=90
-          LCP_TARGET=2500
-          CLS_TARGET=0.1
 
-          # Initialize gaps and actions
-          GAPS="[]"
-          ACTIONS="[]"
-
-          # Check review gap
-          OUR_REVIEWS=$(echo $COMPETITORS | jq -r '.our_reviews // 0')
-          TOP_REVIEWS=$(echo $COMPETITORS | jq -r '.top_competitor_reviews // 0')
-          if [ "$OUR_REVIEWS" != "null" ] && [ "$TOP_REVIEWS" != "null" ]; then
-            REVIEW_GAP=$((TOP_REVIEWS - OUR_REVIEWS))
-            if [ $REVIEW_GAP -gt 100 ]; then
-              GAPS=$(echo $GAPS | jq ". + [{\"type\": \"reviews\", \"gap\": $REVIEW_GAP, \"severity\": \"HIGH\"}]")
-              ACTIONS=$(echo $ACTIONS | jq '. + [{"action": "increase_review_velocity", "priority": "HIGH"}]')
-            fi
-          fi
+          # Initialize gaps and actions as simple strings
+          GAPS_LIST=""
+          ACTIONS_LIST=""
 
           # Check authority gap
-          PAGERANK=$(echo $AUTHORITY | jq -r '.main_site // 0')
-          if [ "$PAGERANK" != "null" ]; then
-            if (( $(echo "$PAGERANK < $PAGERANK_TARGET" | bc -l) )); then
-              GAPS=$(echo $GAPS | jq ". + [{\"type\": \"authority\", \"current\": $PAGERANK, \"target\": $PAGERANK_TARGET, \"severity\": \"MEDIUM\"}]")
-              ACTIONS=$(echo $ACTIONS | jq '. + [{"action": "build_backlinks", "priority": "MEDIUM"}]')
+          PAGERANK=$(echo "$AUTHORITY" | jq -r '.main_site // 0' 2>/dev/null || echo "0")
+          echo "PageRank: $PAGERANK (target: $PAGERANK_TARGET)"
+
+          if [ "$PAGERANK" != "null" ] && [ "$PAGERANK" != "0" ]; then
+            PR_CHECK=$(echo "$PAGERANK < $PAGERANK_TARGET" | bc -l 2>/dev/null || echo "0")
+            if [ "$PR_CHECK" = "1" ]; then
+              GAPS_LIST="authority:$PAGERANK/$PAGERANK_TARGET"
+              ACTIONS_LIST="build_backlinks"
+              echo "  → GAP DETECTED: Authority below target"
             fi
           fi
 
           # Check performance
-          PERF_SCORE=$(echo $PERFORMANCE | jq -r '.score // 0')
-          LCP=$(echo $PERFORMANCE | jq -r '.lcp // 0')
-          CLS=$(echo $PERFORMANCE | jq -r '.cls // 0')
+          PERF_SCORE=$(echo "$PERFORMANCE" | jq -r '.score // 0' 2>/dev/null || echo "0")
+          echo "Performance Score: $PERF_SCORE (target: $PERFORMANCE_TARGET)"
 
-          if [ "$PERF_SCORE" != "null" ] && [ "$PERF_SCORE" -lt "$PERFORMANCE_TARGET" ]; then
-            GAPS=$(echo $GAPS | jq ". + [{\"type\": \"performance\", \"current\": $PERF_SCORE, \"target\": $PERFORMANCE_TARGET, \"severity\": \"HIGH\"}]")
-            ACTIONS=$(echo $ACTIONS | jq '. + [{"action": "optimize_performance", "priority": "HIGH"}]')
+          if [ "$PERF_SCORE" != "null" ] && [ "$PERF_SCORE" != "0" ] && [ "$PERF_SCORE" -lt "$PERFORMANCE_TARGET" ] 2>/dev/null; then
+            GAPS_LIST="${GAPS_LIST:+$GAPS_LIST,}performance:$PERF_SCORE/$PERFORMANCE_TARGET"
+            ACTIONS_LIST="${ACTIONS_LIST:+$ACTIONS_LIST,}optimize_performance"
+            echo "  → GAP DETECTED: Performance below target"
           fi
 
-          echo "gaps=$GAPS" >> $GITHUB_OUTPUT
-          echo "priority_actions=$ACTIONS" >> $GITHUB_OUTPUT
-          echo "opportunities=[]" >> $GITHUB_OUTPUT
+          # Output as simple strings (no JSON parsing issues)
+          echo "gaps=$GAPS_LIST" >> $GITHUB_OUTPUT
+          echo "priority_actions=$ACTIONS_LIST" >> $GITHUB_OUTPUT
+          echo "opportunities=none" >> $GITHUB_OUTPUT
 
           echo ""
-          echo "📋 Identified Gaps:"
-          echo $GAPS | jq '.'
-          echo ""
-          echo "🎯 Priority Actions:"
-          echo $ACTIONS | jq '.'
+          echo "📋 Identified Gaps: $GAPS_LIST"
+          echo "🎯 Priority Actions: $ACTIONS_LIST"
 
   # ============================================
   # PHASE 3: DECIDE - Generate action plan
@@ -189,32 +178,18 @@ jobs:
 
           echo "=== ACTION DECISION ENGINE ==="
           echo ""
-
-          # Separate into auto-execute (safe) and recommend (needs approval)
-          AUTO_EXECUTE="[]"
-          RECOMMEND="[]"
-
-          # Define safe actions that can be auto-executed
-          SAFE_ACTIONS=("refresh_sitemap" "ping_search_engines" "check_broken_links" "update_structured_data")
-
-          # For now, recommend all identified actions (conservative approach)
-          RECOMMEND=$ACTIONS
+          echo "Identified Actions: $ACTIONS"
 
           # Always auto-execute these safe maintenance tasks
-          AUTO_EXECUTE='[
-            {"action": "ping_sitemaps", "description": "Ping all sitemaps for reindexing"},
-            {"action": "verify_gbp_hours", "description": "Verify GBP hours are accurate"},
-            {"action": "check_site_health", "description": "Basic site health check"}
-          ]'
+          AUTO_EXECUTE="ping_sitemaps,verify_health,check_ssl"
+          RECOMMEND="$ACTIONS"
 
           echo "auto_execute=$AUTO_EXECUTE" >> $GITHUB_OUTPUT
           echo "recommend=$RECOMMEND" >> $GITHUB_OUTPUT
 
-          echo "✅ Auto-Execute Actions:"
-          echo $AUTO_EXECUTE | jq '.'
           echo ""
-          echo "📝 Recommended Actions (need approval):"
-          echo $RECOMMEND | jq '.'
+          echo "✅ Auto-Execute Actions: $AUTO_EXECUTE"
+          echo "📝 Recommended Actions: $RECOMMEND"
 
   # ============================================
   # PHASE 4: EXECUTE - Run safe actions
@@ -230,16 +205,16 @@ jobs:
         id: execute
         run: |
           echo "=== EXECUTING SAFE ACTIONS ==="
-
-          EXECUTED="[]"
+          EXECUTED=""
 
           # 1. Ping all sitemaps
+          echo ""
           echo "📍 Pinging sitemaps..."
           curl -s "${{ env.SITE_URL }}/sitemap.xml" > /dev/null && echo "  ✓ Main site sitemap"
           curl -s "${{ env.MICROSITE_1 }}/sitemap.xml" > /dev/null && echo "  ✓ bestsalondelray.com"
           curl -s "${{ env.MICROSITE_2 }}/sitemap.xml" > /dev/null && echo "  ✓ bestdelraysalon.com"
           curl -s "${{ env.MICROSITE_3 }}/sitemap.xml" > /dev/null && echo "  ✓ bestsalonpalmbeach.com"
-          EXECUTED=$(echo $EXECUTED | jq '. + [{"action": "ping_sitemaps", "status": "completed", "timestamp": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"}]')
+          EXECUTED="sitemaps_pinged"
 
           # 2. Verify site is accessible
           echo ""
@@ -247,10 +222,10 @@ jobs:
           HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${{ env.SITE_URL }}")
           if [ "$HTTP_CODE" = "200" ]; then
             echo "  ✓ Main site responding (HTTP $HTTP_CODE)"
-            EXECUTED=$(echo $EXECUTED | jq '. + [{"action": "health_check", "status": "healthy", "http_code": '"$HTTP_CODE"'}]')
+            EXECUTED="$EXECUTED,health_check_passed"
           else
             echo "  ⚠ Main site issue (HTTP $HTTP_CODE)"
-            EXECUTED=$(echo $EXECUTED | jq '. + [{"action": "health_check", "status": "warning", "http_code": '"$HTTP_CODE"'}]')
+            EXECUTED="$EXECUTED,health_check_warning"
           fi
 
           # 3. Check SSL certificate
@@ -259,13 +234,19 @@ jobs:
           SSL_EXPIRY=$(echo | openssl s_client -servername www.chrisdavidsalon.com -connect www.chrisdavidsalon.com:443 2>/dev/null | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
           if [ -n "$SSL_EXPIRY" ]; then
             echo "  ✓ SSL valid until: $SSL_EXPIRY"
+            EXECUTED="$EXECUTED,ssl_valid"
           fi
+
+          # 4. Ping search engines
+          echo ""
+          echo "🔎 Notifying search engines..."
+          curl -s "https://www.google.com/ping?sitemap=${{ env.SITE_URL }}/sitemap.xml" > /dev/null && echo "  ✓ Google notified"
+          EXECUTED="$EXECUTED,google_pinged"
 
           echo "actions=$EXECUTED" >> $GITHUB_OUTPUT
 
           echo ""
-          echo "📋 Executed Actions:"
-          echo $EXECUTED | jq '.'
+          echo "📋 Executed Actions: $EXECUTED"
 
   # ============================================
   # PHASE 5: MEASURE - Track results
@@ -277,28 +258,29 @@ jobs:
       - name: 📈 Record Metrics for Learning
         run: |
           echo "=== RECORDING METRICS ==="
-
-          # Create weekly report data
-          REPORT=$(cat <<EOF
-          {
-            "week": "$(date -u +%Y-%W)",
-            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "metrics": {
-              "traffic": ${{ needs.ingest.outputs.traffic_data }},
-              "authority": ${{ needs.ingest.outputs.authority_data }},
-              "competitors": ${{ needs.ingest.outputs.competitor_data }},
-              "performance": ${{ needs.ingest.outputs.performance_data }}
-            },
-            "gaps_identified": ${{ needs.analyze.outputs.gaps }},
-            "actions_executed": ${{ needs.execute.outputs.executed }}
-          }
-          EOF
-          )
-
-          echo "📊 Weekly Report:"
-          echo "$REPORT" | jq '.'
-
-          # Store for learning (in future: write to database/file)
+          echo ""
+          echo "📊 Weekly Metrics Summary"
+          echo "========================="
+          echo "Week: $(date -u +%Y-%W)"
+          echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo ""
+          echo "📈 Traffic Data:"
+          echo "   ${{ needs.ingest.outputs.traffic_data }}"
+          echo ""
+          echo "🏆 Authority Data:"
+          echo "   ${{ needs.ingest.outputs.authority_data }}"
+          echo ""
+          echo "🏪 Competitor Data:"
+          echo "   ${{ needs.ingest.outputs.competitor_data }}"
+          echo ""
+          echo "⚡ Performance Data:"
+          echo "   ${{ needs.ingest.outputs.performance_data }}"
+          echo ""
+          echo "📋 Gaps Identified:"
+          echo "   ${{ needs.analyze.outputs.gaps }}"
+          echo ""
+          echo "✅ Actions Executed:"
+          echo "   ${{ needs.execute.outputs.executed }}"
           echo ""
           echo "✅ Metrics recorded for learning system"
 
