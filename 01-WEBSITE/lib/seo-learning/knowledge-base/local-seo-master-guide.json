@@ -1,0 +1,445 @@
+{
+  "title": "Local SEO Master Guide for Service Businesses",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-04",
+  "expertiseLevel": "Top 1% SEO Consultant",
+  "sources": [
+    "https://www.brightlocal.com/learn/google-local-algorithm-and-ranking-factors/",
+    "https://whitespark.ca/local-search-ranking-factors/",
+    "https://backlinko.com/local-seo-guide",
+    "https://searchatlas.com/blog/gbp-ranking-factors-for-local-seo-proximity-reviews-relevance/",
+    "https://moz.com/local-seo-guide",
+    "https://www.semrush.com/blog/local-seo/"
+  ],
+
+  "coreAlgorithmPillars": {
+    "proximity": {
+      "description": "Distance between searcher and business",
+      "weight": "48-68% depending on industry",
+      "optimization": "Cannot be changed - focus on service area pages and multi-location optimization",
+      "insight": "This is why having good rankings across a wide geographic area matters - test rankings from multiple grid points"
+    },
+    "relevance": {
+      "description": "How well your business matches the search query",
+      "weight": "15-25% depending on industry",
+      "optimization": "Category selection, keyword optimization, service descriptions"
+    },
+    "prominence": {
+      "description": "How well-known and authoritative your business is",
+      "weight": "20-35% depending on industry",
+      "optimization": "Reviews, backlinks, citations, brand mentions"
+    }
+  },
+
+  "rankingFactorsByChannel": {
+    "localPack": {
+      "description": "The 3-pack map results",
+      "factors": {
+        "googleBusinessProfile": { "weight": 32, "priority": 1 },
+        "reviews": { "weight": 20, "priority": 2 },
+        "onPageOptimization": { "weight": 15, "priority": 3 },
+        "behavioralSignals": { "weight": 9, "priority": 4 },
+        "links": { "weight": 8, "priority": 5 },
+        "citations": { "weight": 6, "priority": 6 },
+        "socialSignals": { "weight": 5, "priority": 7 }
+      }
+    },
+    "localOrganic": {
+      "description": "Regular organic results with local intent",
+      "factors": {
+        "onPageSignals": { "weight": 33, "priority": 1 },
+        "links": { "weight": 24, "priority": 2 },
+        "behavioral": { "weight": 10, "priority": 3 },
+        "personalization": { "weight": 8, "priority": 4 },
+        "gbpSignals": { "weight": 7, "priority": 5 },
+        "citations": { "weight": 7, "priority": 6 },
+        "social": { "weight": 4, "priority": 7 }
+      }
+    },
+    "aiSearch": {
+      "description": "Google AI Overview and AI search results",
+      "factors": {
+        "onPage": { "weight": 24, "priority": 1 },
+        "reviews": { "weight": 16, "priority": 2 },
+        "citations": { "weight": 13, "priority": 3 },
+        "links": { "weight": 13, "priority": 4 },
+        "gbp": { "weight": 12, "priority": 5 },
+        "personalization": { "weight": 9, "priority": 6 },
+        "social": { "weight": 9, "priority": 7 }
+      }
+    }
+  },
+
+  "googleBusinessProfile": {
+    "importance": "THE single most important factor for local pack rankings (32%)",
+    "topRankingFactors": [
+      "Primary category selection (MOST CRITICAL)",
+      "Physical address in search city",
+      "Business open status at search time",
+      "High star ratings",
+      "Native Google reviews with text",
+      "Keywords in business title (if legitimate)",
+      "Additional relevant categories (up to 4)",
+      "Complete profile with all fields filled",
+      "Regular posting activity"
+    ],
+    "optimizationChecklist": {
+      "essentials": [
+        "Verify business ownership",
+        "Select most accurate primary category",
+        "Add 4 relevant additional categories",
+        "Complete NAP (Name, Address, Phone) accurately",
+        "Add business hours (including special hours)",
+        "Write 750-character business description with keywords",
+        "Add all services with descriptions",
+        "Enable messaging and booking"
+      ],
+      "photos": {
+        "minimum": 25,
+        "ideal": "100+ photos (520% more calls)",
+        "types": [
+          "Logo and cover photo",
+          "Interior photos (multiple angles)",
+          "Exterior photos (storefront, signage)",
+          "Staff photos",
+          "Product/service photos",
+          "Before/after photos",
+          "Customer photos (with permission)"
+        ],
+        "specifications": {
+          "format": "JPG or PNG",
+          "size": "10KB to 5MB",
+          "resolution": "720px minimum, 1080px+ preferred"
+        }
+      },
+      "posts": {
+        "frequency": "Weekly minimum",
+        "types": ["Updates", "Offers", "Events", "Products"],
+        "bestPractices": [
+          "Include high-quality image",
+          "Add clear CTA button",
+          "Include relevant keywords naturally",
+          "Keep text under 1500 characters"
+        ]
+      }
+    },
+    "negativeSignals": [
+      "Permanently Closed designation",
+      "Incorrect primary category",
+      "Duplicate profiles at same address",
+      "Low star ratings (<4.0)",
+      "Keyword stuffing in business name",
+      "Fake reviews",
+      "Inconsistent NAP across web"
+    ],
+    "lowImpactFactors": [
+      "Geo-tagged photo quantity",
+      "Keywords in review responses",
+      "Keywords in business description",
+      "Google Posts frequency (beyond weekly)",
+      "Q&A question volume"
+    ]
+  },
+
+  "reviews": {
+    "importance": "20% of local pack ranking factors",
+    "keyFactors": {
+      "quantity": "More reviews = higher rankings (aim for 50+, ideally 100+)",
+      "quality": "Star rating affects CTR and trust",
+      "recency": "Recent reviews weighted more heavily",
+      "velocity": "Consistent growth pattern matters",
+      "keywords": "Reviews containing service keywords help",
+      "responses": "Responding to all reviews shows engagement"
+    },
+    "acquisitionTactics": [
+      {
+        "method": "Post-Service SMS",
+        "timing": "2-3 hours after appointment",
+        "template": "Hi [Name], thank you for visiting [Salon]! If you enjoyed your experience, we'd love a Google review: [link]",
+        "effectiveness": "HIGHEST conversion rate"
+      },
+      {
+        "method": "Email Follow-up",
+        "timing": "24 hours after service",
+        "effectiveness": "Good for detailed reviews"
+      },
+      {
+        "method": "In-Location QR Codes",
+        "placement": "Reception desk, mirrors, checkout",
+        "effectiveness": "Good for capturing immediate reactions"
+      },
+      {
+        "method": "Review Request Cards",
+        "timing": "Handed at checkout",
+        "effectiveness": "Works for less tech-savvy customers"
+      }
+    ],
+    "responseStrategy": {
+      "positive": {
+        "timing": "Within 24 hours",
+        "template": "Thank you [Name]! We loved having you and can't wait to see you again for your next [service]. - [Your Name]",
+        "tips": "Personalize, mention specific service, invite return"
+      },
+      "negative": {
+        "timing": "Within 12 hours",
+        "approach": [
+          "Apologize for their experience",
+          "Don't be defensive",
+          "Offer to resolve offline",
+          "Provide contact information",
+          "Follow up privately"
+        ],
+        "template": "We're sorry to hear about your experience, [Name]. This isn't the standard we strive for. Please contact us at [phone/email] so we can make this right."
+      }
+    },
+    "targets": {
+      "minimum": 50,
+      "competitive": 100,
+      "dominant": 200,
+      "rating": "4.5+ stars minimum, 4.8+ ideal"
+    }
+  },
+
+  "citations": {
+    "importance": "6-7% of local pack ranking, but critical for NAP consistency",
+    "definition": "Online mentions of business Name, Address, Phone number",
+    "types": {
+      "structured": "Directory listings with consistent format (Yelp, YP, etc.)",
+      "unstructured": "Brand mentions in articles, blogs, news"
+    },
+    "topDirectories": {
+      "tier1": [
+        "Google Business Profile",
+        "Apple Business Connect",
+        "Bing Places",
+        "Facebook Business",
+        "Yelp"
+      ],
+      "tier2": [
+        "Yellow Pages",
+        "MapQuest",
+        "Foursquare",
+        "Better Business Bureau",
+        "Manta"
+      ],
+      "industrySpecific": {
+        "hairSalon": ["StyleSeat", "Booksy", "Vagaro", "SalonSeeker", "Treatwell"]
+      }
+    },
+    "buildingStrategy": {
+      "priority": "Quality and accuracy over quantity",
+      "napFormat": "EXACTLY consistent across all listings",
+      "auditFrequency": "Monthly verification",
+      "tools": ["Moz Local", "Whitespark", "BrightLocal", "Yext"]
+    },
+    "dataPoint": "Businesses with consistent NAP across major citations are 40% more likely to appear in local pack"
+  },
+
+  "onPageOptimization": {
+    "importance": "15% for local pack, 33% for local organic",
+    "titleTags": {
+      "format": "[Primary Keyword] in [City] | [Business Name]",
+      "maxLength": 60,
+      "examples": [
+        "Best Hair Colorist in Delray Beach | Chris David Salon",
+        "Balayage & Highlights Delray Beach | Award-Winning Colorist"
+      ]
+    },
+    "metaDescriptions": {
+      "maxLength": 155,
+      "mustInclude": ["Primary keyword", "City/Location", "USP", "CTA"],
+      "example": "Award-winning hair colorist in Delray Beach with 20+ years experience. Balayage, color correction & extensions. Book your transformation: (561) 299-0950"
+    },
+    "headerTags": {
+      "h1": "One per page, include primary keyword + location",
+      "h2": "Service categories, benefit statements",
+      "h3": "Specific services, FAQs",
+      "naturalKeywordInclusion": true
+    },
+    "contentStrategy": {
+      "servicePages": {
+        "required": true,
+        "urlFormat": "/services/[service]-[city].html",
+        "minimumWordCount": 500,
+        "mustInclude": [
+          "Detailed service description",
+          "Pricing or price range",
+          "Process/what to expect",
+          "Before/after images",
+          "FAQ section (3-5 questions)",
+          "Testimonials",
+          "CTA with booking",
+          "Schema markup"
+        ]
+      },
+      "locationPages": {
+        "required": "For each city/neighborhood served",
+        "urlFormat": "/locations/[city]-hair-salon.html",
+        "mustInclude": [
+          "City-specific content (not just city name swap)",
+          "Local landmarks and neighborhoods mentioned",
+          "Embedded Google Map",
+          "Driving directions from key areas",
+          "Local testimonials",
+          "Area-specific services if applicable"
+        ]
+      }
+    },
+    "internalLinking": {
+      "strategy": "Hub and spoke - services hub links to individual services",
+      "anchorText": "Descriptive, keyword-rich",
+      "depth": "No page more than 3 clicks from homepage"
+    },
+    "schema": {
+      "required": ["LocalBusiness", "HairSalon"],
+      "recommended": ["FAQPage", "Review", "Service", "BreadcrumbList"],
+      "implementation": "JSON-LD in head section"
+    }
+  },
+
+  "linkBuilding": {
+    "importance": "8% for local pack, 24% for local organic",
+    "qualityVsQuantity": "Quality and local relevance trump raw numbers",
+    "strategies": {
+      "localPartnerships": {
+        "description": "Cross-link with complementary local businesses",
+        "examples": ["Wedding venues", "Photographers", "Boutiques", "Spas", "Gyms"],
+        "effectiveness": "HIGH for local relevance"
+      },
+      "localDirectories": {
+        "description": "Get listed on local business directories",
+        "examples": ["Chamber of Commerce", "Local business associations", "City guides"],
+        "effectiveness": "MEDIUM for citations and links"
+      },
+      "localMedia": {
+        "description": "Get featured in local news, magazines, blogs",
+        "tactics": ["Press releases", "Expert quotes", "Event sponsorships", "Community involvement"],
+        "effectiveness": "HIGH for authority and visibility"
+      },
+      "guestPosting": {
+        "description": "Write for local lifestyle blogs and publications",
+        "topics": ["Style trends", "Hair care tips", "Local beauty scene"],
+        "effectiveness": "MEDIUM for topical authority"
+      },
+      "resourcePages": {
+        "description": "Get listed on 'Best Of' and resource pages",
+        "importance": "VERY HIGH for AI search visibility",
+        "examples": ["Best salons in [City]", "Top colorists in [Region]"]
+      },
+      "micrositeNetwork": {
+        "description": "Create supporting authority sites that link to main site",
+        "implementation": "Topically relevant content with natural linking",
+        "caution": "Must be genuinely useful content, not link farms"
+      }
+    }
+  },
+
+  "technicalSEO": {
+    "mobileFriendliness": {
+      "importance": "CRITICAL - 86% of local searches are mobile",
+      "requirements": [
+        "Responsive design",
+        "Touch-friendly buttons (44px minimum)",
+        "Click-to-call phone number",
+        "Fast mobile page speed"
+      ]
+    },
+    "pageSpeed": {
+      "target": "Under 3 seconds",
+      "impact": "53% of users abandon sites slower than 3 seconds",
+      "coreWebVitals": {
+        "LCP": "< 2.5 seconds",
+        "FID": "< 100 milliseconds",
+        "CLS": "< 0.1"
+      }
+    },
+    "security": {
+      "https": "REQUIRED for all pages",
+      "impact": "Ranking factor and trust signal"
+    },
+    "crawlability": {
+      "xmlSitemap": "Submit to Google Search Console",
+      "robotsTxt": "Properly configured",
+      "canonicalTags": "Prevent duplicate content issues"
+    }
+  },
+
+  "behavioralSignals": {
+    "importance": "9-10% of ranking factors",
+    "factors": {
+      "clickThroughRate": "Higher CTR = higher rankings",
+      "dwellTime": "Time spent on site/listing",
+      "mobileClicks": "Click-to-call, click-for-directions",
+      "brandedSearches": "Direct searches for business name"
+    },
+    "optimization": "Focus on compelling titles, descriptions, and images to increase engagement"
+  },
+
+  "industrySpecificInsights": {
+    "serviceBusinesses": {
+      "proximityWeight": "48-68% (location is dominant)",
+      "reviewWeight": "17-22% (social proof critical)",
+      "contentFocus": "Service-specific pages with detailed information"
+    },
+    "personalServices": {
+      "differentiator": "Staff expertise and credentials",
+      "reviewContent": "Reviews mentioning specific stylists/services rank better",
+      "visualContent": "Before/after photos extremely important"
+    }
+  },
+
+  "competitiveAnalysis": {
+    "trackWeekly": [
+      "Competitor review counts and ratings",
+      "Competitor GBP photo counts",
+      "Competitor keyword rankings",
+      "Competitor backlink profiles",
+      "Competitor content updates"
+    ],
+    "outperformingTactics": [
+      "More reviews than top competitor",
+      "Higher quality photos",
+      "More comprehensive service pages",
+      "More local content",
+      "Better mobile experience",
+      "Faster website",
+      "More backlinks from local sources"
+    ]
+  },
+
+  "timeline": {
+    "gbpOptimization": "4-8 weeks for initial improvements",
+    "websiteRankingChanges": "3-4 months",
+    "significantResults": "3-6 months",
+    "marketDominance": "12-18 months with consistent effort"
+  },
+
+  "weeklyMaintenanceChecklist": [
+    "Check GBP insights (views, clicks, calls, direction requests)",
+    "Respond to all new reviews within 24 hours",
+    "Post weekly GBP update",
+    "Monitor keyword ranking changes",
+    "Check competitor review counts",
+    "Verify all directory listings are accurate",
+    "Check PageSpeed and Core Web Vitals",
+    "Monitor backlink profile for new/lost links",
+    "Analyze traffic trends in GA4"
+  ],
+
+  "kpis": {
+    "primary": [
+      "Local pack rankings for target keywords",
+      "Organic traffic from local searches",
+      "GBP views and actions (calls, directions, website clicks)",
+      "Review count and average rating",
+      "Conversion rate (visits to bookings)"
+    ],
+    "secondary": [
+      "Domain authority/PageRank",
+      "Citation accuracy score",
+      "Page speed scores",
+      "Keyword ranking positions",
+      "Backlink count and quality"
+    ]
+  }
+}

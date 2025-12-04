@@ -1,0 +1,308 @@
+{
+  "title": "Local SEO Domination Strategy for Hair Salons",
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-04",
+  "sources": [
+    "https://www.ronkot.com/seo-for-hair-salon/",
+    "https://www.bookeo.com/news/2024/08/complete-guide-hair-salon-seo-attract-clients-boost-bookings/",
+    "https://www.ronkot.com/curl-up-your-rankings-with-local-seo-for-hair-salons/",
+    "https://thesalonbusiness.com/seo-for-salons/"
+  ],
+
+  "keyMetrics": {
+    "localSearchGrowth": "150% in recent years",
+    "mobileTrafficShare": "59% of global traffic",
+    "salonMobileSearches": "86% occur on mobile",
+    "localPackClickShare": "44% of clicks go to local pack",
+    "visitWithin24Hours": "76% of local searchers",
+    "purchaseSameDay": "28% of those searches",
+    "seoVsSocialTraffic": "1000x more traffic from SEO vs organic social",
+    "averageROI": "200% return on SEO investment",
+    "reviewImpact": "98% of consumers read reviews before choosing",
+    "photoImpact": "520% more calls with 100+ photos on GBP"
+  },
+
+  "rankingFactors": {
+    "googleBusinessProfile": {
+      "weight": "HIGH",
+      "priority": 1,
+      "actions": [
+        "Claim and verify listing",
+        "Complete EVERY field (hours, services, description)",
+        "Add 100+ high-quality photos",
+        "Select accurate primary category (Hair Salon, not just Beauty)",
+        "Add all services with pricing",
+        "Enable messaging and booking",
+        "Post weekly updates (offers, before/after, tips)",
+        "Respond to ALL reviews within 24 hours"
+      ]
+    },
+    "napConsistency": {
+      "weight": "HIGH",
+      "priority": 2,
+      "directories": [
+        "Google Business Profile",
+        "Apple Business Connect",
+        "Bing Places",
+        "Yelp",
+        "Facebook Business",
+        "Yellow Pages",
+        "Manta",
+        "MapQuest",
+        "Foursquare",
+        "Better Business Bureau",
+        "Local Chamber of Commerce",
+        "StyleSeat",
+        "Booksy",
+        "Vagaro",
+        "SalonSeeker"
+      ],
+      "requirement": "IDENTICAL Name, Address, Phone across ALL listings"
+    },
+    "reviews": {
+      "weight": "HIGH",
+      "priority": 3,
+      "tactics": [
+        "Send text follow-up 2-3 hours post-appointment with direct review link",
+        "Place QR codes in salon for easy review submission",
+        "Respond to every review (positive and negative)",
+        "Thank positive reviewers personally",
+        "Address negative reviews professionally with solution offers",
+        "Never incentivize reviews with discounts (violates Google TOS)"
+      ],
+      "targets": {
+        "minimumReviews": 50,
+        "idealReviews": 100,
+        "minimumRating": 4.5,
+        "idealRating": 4.8
+      }
+    },
+    "websiteOptimization": {
+      "weight": "MEDIUM-HIGH",
+      "priority": 4,
+      "technical": {
+        "mobileResponsive": "REQUIRED - 86% of searches are mobile",
+        "pageSpeed": "Under 3 seconds (53% abandon slower sites)",
+        "https": "REQUIRED for security and ranking",
+        "coreWebVitals": {
+          "LCP": "< 2.5 seconds",
+          "FID": "< 100 milliseconds",
+          "CLS": "< 0.1"
+        }
+      },
+      "onPage": {
+        "titleTags": {
+          "format": "[Salon Name] - [Service] in [City] | [USP]",
+          "maxLength": 60,
+          "example": "Chris David Salon - Master Colorist Delray Beach | 20+ Years Experience"
+        },
+        "metaDescriptions": {
+          "maxLength": 155,
+          "mustInclude": ["primary keyword", "city", "CTA", "USP"],
+          "example": "Award-winning hair colorist in Delray Beach. 20 years experience, Davines certified. Book your transformation today. (561) 299-0950"
+        },
+        "headers": {
+          "h1": "One per page, include primary keyword",
+          "h2": "Service categories with city modifier",
+          "h3": "Specific services"
+        },
+        "schema": {
+          "types": ["LocalBusiness", "HairSalon", "FAQPage", "Review", "Service"],
+          "format": "JSON-LD in head",
+          "required": ["name", "address", "telephone", "openingHours", "priceRange", "geo"]
+        }
+      }
+    },
+    "localKeywords": {
+      "weight": "MEDIUM-HIGH",
+      "priority": 5,
+      "patterns": {
+        "geoModified": "[service] + [city]",
+        "nearMe": "[service] near me",
+        "best": "best [service] in [city]",
+        "questions": "where can I get [service] in [city]"
+      },
+      "targetKeywords": {
+        "primary": [
+          "hair salon [city]",
+          "best colorist [city]",
+          "balayage [city]",
+          "hair color [city]"
+        ],
+        "secondary": [
+          "highlights [city]",
+          "keratin treatment [city]",
+          "hair extensions [city]",
+          "color correction [city]",
+          "wedding hair [city]"
+        ],
+        "longtail": [
+          "best blonde colorist [city]",
+          "affordable hair salon [city]",
+          "luxury hair salon [city]",
+          "curly hair specialist [city]"
+        ]
+      }
+    },
+    "linkBuilding": {
+      "weight": "MEDIUM",
+      "priority": 6,
+      "strategies": [
+        {
+          "type": "Local Business Partnerships",
+          "action": "Partner with wedding venues, photographers, boutiques for cross-linking"
+        },
+        {
+          "type": "Local Directories",
+          "action": "Submit to all local business directories with NAP"
+        },
+        {
+          "type": "Guest Posting",
+          "action": "Write for local lifestyle blogs, magazines, newspapers"
+        },
+        {
+          "type": "Event Sponsorships",
+          "action": "Sponsor local events for press coverage and backlinks"
+        },
+        {
+          "type": "Microsite Network",
+          "action": "Create supporting content sites that link back with authority"
+        },
+        {
+          "type": "Influencer Collaborations",
+          "action": "Partner with local influencers for content and links"
+        }
+      ]
+    },
+    "contentStrategy": {
+      "weight": "MEDIUM",
+      "priority": 7,
+      "pageTypes": {
+        "servicePages": {
+          "required": true,
+          "format": "[service]-[city].html",
+          "mustInclude": [
+            "Detailed service description",
+            "Pricing or price range",
+            "Duration",
+            "What to expect",
+            "Before/after photos",
+            "FAQ section",
+            "CTA with booking",
+            "Schema markup"
+          ]
+        },
+        "locationPages": {
+          "required": true,
+          "format": "[city]-hair-salon.html or [neighborhood]-colorist.html",
+          "mustInclude": [
+            "City/neighborhood specific content",
+            "Local landmarks mentioned",
+            "Google Maps embed",
+            "Service highlights",
+            "Testimonials from area residents"
+          ]
+        },
+        "blogContent": {
+          "frequency": "2-4 posts per month",
+          "topics": [
+            "Hair care tips for local climate",
+            "Seasonal style trends",
+            "Product recommendations",
+            "Behind-the-scenes at salon",
+            "Stylist spotlights",
+            "Local event coverage"
+          ]
+        }
+      }
+    }
+  },
+
+  "competitorAnalysis": {
+    "whatToTrack": [
+      "Google rating and review count",
+      "Number of GBP photos",
+      "Keywords they rank for",
+      "Backlink profile",
+      "Content strategy",
+      "Social media presence",
+      "Pricing visibility"
+    ],
+    "howToOutrank": [
+      "More reviews than top competitor",
+      "Higher quality photos",
+      "More comprehensive service pages",
+      "More local content",
+      "Better mobile experience",
+      "Faster website",
+      "More backlinks from local sources"
+    ]
+  },
+
+  "actionPlan": {
+    "week1-2": [
+      "Audit Google Business Profile - complete all fields",
+      "Upload 20+ new photos to GBP",
+      "Verify NAP consistency across top 10 directories",
+      "Set up review request automation"
+    ],
+    "week3-4": [
+      "Create/optimize individual service pages",
+      "Add schema markup to all pages",
+      "Fix any Core Web Vitals issues",
+      "Submit to missing directories"
+    ],
+    "month2": [
+      "Create location-specific pages for service areas",
+      "Start blog content calendar",
+      "Reach out to local partners for backlinks",
+      "Respond to all pending reviews"
+    ],
+    "month3-6": [
+      "Build 10+ quality local backlinks",
+      "Achieve 50+ Google reviews",
+      "Publish 8-12 blog posts",
+      "Monitor rankings and adjust strategy"
+    ]
+  },
+
+  "timeline": {
+    "gbpImprovements": "4-8 weeks",
+    "websiteRankingImprovements": "3-4 months",
+    "significantResults": "3-6 months",
+    "marketDominance": "12-18 months with consistent effort"
+  },
+
+  "chrisdavidSalonCurrentState": {
+    "googleRating": 4.9,
+    "googleReviews": 143,
+    "pageRankScore": 2.88,
+    "competitors": {
+      "rove": { "rating": 5.0, "reviews": 1514 },
+      "bondStreet": { "pageRank": 3.02 }
+    },
+    "gaps": [
+      "Need more reviews (143 vs 1514 for Rove)",
+      "Need more backlinks (PageRank 2.88 vs 3.02 for Bond Street)",
+      "Need more directory listings (7 active vs 15+ recommended)"
+    ],
+    "strengths": [
+      "High rating (4.9)",
+      "Established brand (since 2012)",
+      "Strong credentials (5 brand educator)",
+      "Active microsite network (4 sites)",
+      "Working GA4 integration"
+    ]
+  },
+
+  "weeklyChecklistForRuVector": [
+    "Check GBP insights (views, clicks, calls)",
+    "Monitor new reviews and respond",
+    "Track keyword ranking changes",
+    "Check competitor review counts",
+    "Verify all directory listings active",
+    "Monitor PageSpeed scores",
+    "Check microsite traffic referrals",
+    "Generate new content ideas from search trends"
+  ]
+}
