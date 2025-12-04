@@ -1,5 +1,34 @@
 # Chris David Salon - Developer Context & Asset Inventory
 
+---
+
+## ⛔ CRITICAL: DATA INTEGRITY POLICY (NEVER VIOLATE)
+
+**ABSOLUTE RULE: NEVER, EVER, EVER USE FAKE DATA.**
+
+This is a NON-NEGOTIABLE core tenet of this application:
+
+1. **ALL data displayed in admin dashboards MUST come from verified, live API sources**
+2. **If data is not available, show "Not Available" or "Not Configured" - NEVER invent numbers**
+3. **No estimated baselines, no fabricated growth percentages, no made-up metrics**
+4. **Every number shown must have a traceable source (GA4 API, OpenPageRank API, etc.)**
+5. **Historical comparisons require REAL historical snapshots - not estimates**
+
+### Verified Data Sources:
+- **Traffic**: GA4 API (`/api/ga4-analytics`) - REAL
+- **Authority**: OpenPageRank API (`/api/authority`) - REAL
+- **Reviews**: Google Places API - NOT CONFIGURED (show as unavailable)
+- **Rankings**: Search Console API - NOT INTEGRATED (show as unavailable)
+
+### If You Don't Have Real Data:
+- Display "--" or "Not Available"
+- Show "API Not Configured" with setup instructions
+- NEVER estimate, extrapolate, or fabricate
+
+**This policy was established after a violation on Dec 4, 2024 where fake baseline metrics were displayed. This must NEVER happen again.**
+
+---
+
 ## Quick Reference
 
 **Live Site**: https://www.chrisdavidsalon.com
