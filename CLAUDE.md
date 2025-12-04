@@ -29,12 +29,44 @@ This is a NON-NEGOTIABLE core tenet of this application:
 
 ---
 
+## ⚠️ CRITICAL: VERCEL HOBBY PLAN LIMITS (ALWAYS FOLLOW)
+
+**VERCEL HOBBY PLAN ONLY ALLOWS 12 SERVERLESS FUNCTIONS**
+
+Before adding ANY new API endpoint:
+1. Count existing functions: `ls /api/*.js | wc -l`
+2. If at 12, you MUST remove one before adding a new one
+3. New APIs go in `/api/` (root), NOT in `01-WEBSITE/api/`
+
+### Current API Inventory (12/12):
+1. admin-data.js
+2. authority-score.js
+3. autonomous-seo-agent.js
+4. competitors.js
+5. ga4-analytics.js
+6. gbp-agent.js (NEW v2.20.0)
+7. microsite-analytics.js
+8. pagespeed.js
+9. proactive-seo-agent.js (NEW v2.20.0)
+10. seo-analysis-engine.js
+11. seo-learning.js
+12. weekly-seo-report.js
+
+**If you need a new API, consider:**
+- Combining with an existing API (add new action parameter)
+- Removing a rarely-used API
+- Consolidating similar functionality
+
+**This was learned the hard way on Dec 4, 2024 when new APIs didn't deploy.**
+
+---
+
 ## Quick Reference
 
 **Live Site**: https://www.chrisdavidsalon.com
 **Admin Dashboard**: https://www.chrisdavidsalon.com/admin/
 **SEO Learning Dashboard**: https://www.chrisdavidsalon.com/admin/seo-learning.html
-**Current Version**: v2.18.0
+**Current Version**: v2.20.0
 **Site Readiness Score**: 88/100
 **Deployment**: Vercel (auto-deploys from main branch)
 
