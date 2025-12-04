@@ -29,26 +29,11 @@
             background: linear-gradient(90deg, #22c55e 0%, #eab308 50%, #ef4444 100%);
         }
     </style>
+    <script src="shared-nav.js"></script>
 </head>
 <body class="min-h-screen text-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-4">
-                    <span class="text-xl font-bold text-white">🧠 SEO Learning Agent</span>
-                    <span id="versionBadge" class="px-2 py-1 bg-purple-600 text-white text-xs rounded-full">Loading...</span>
-                </div>
-                <div class="flex items-center space-x-6 text-sm">
-                    <a href="index.html" class="text-gray-400 hover:text-white">SEO Command</a>
-                    <a href="traffic.html" class="text-gray-400 hover:text-white">Traffic</a>
-                    <a href="competitors.html" class="text-gray-400 hover:text-white">Competitors</a>
-                    <a href="microsites.html" class="text-gray-400 hover:text-white">Microsites</a>
-                    <a href="seo-learning.html" class="text-purple-400 font-semibold">Learning</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared Navigation -->
+    <div id="admin-nav" data-page="seo-learning"></div>
 
     <div class="max-w-7xl mx-auto px-4 py-8">
         <!-- Status Banner -->

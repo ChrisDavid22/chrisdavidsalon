@@ -19,9 +19,8 @@ export default async function handler(req, res) {
   }
 
   const { action } = req.query;
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'https://www.chrisdavidsalon.com';
+  // Always use production URL for internal API calls to avoid preview URL issues
+  const baseUrl = 'https://www.chrisdavidsalon.com';
 
   try {
     // Fetch REAL data from live APIs

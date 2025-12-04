@@ -11,38 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="ai-config.js"></script>
+    <script src="shared-nav.js"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-4 shadow-lg">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-4">
-                <div>
-                    <h1 class="text-2xl font-bold">SEO Dashboard</h1>
-                    <p class="text-sm text-purple-200">Composite SEO Score - All 7 Ranking Factors</p>
-                </div>
-                <div class="flex items-center gap-4">
-                    <span id="versionBadge" class="bg-green-600 px-3 py-1 rounded text-sm font-bold">v2.12.0</span>
-                    <a href="../index.html" class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded text-sm font-semibold">
-                        ← Back to Main Site
-                    </a>
-                    <a href="login.html" onclick="localStorage.clear(); return true;" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm font-semibold">
-                        Logout
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Navigation Menu -->
-            <div class="flex space-x-1 pb-2 overflow-x-auto">
-                <a href="index.html" class="px-4 py-2 bg-white/20 rounded-t font-semibold">Dashboard</a>
-                <a href="progress-report.html" class="px-4 py-2 hover:bg-white/10 rounded-t text-green-300">📈 Progress</a>
-                <a href="weekly-brain.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Weekly Brain</a>
-                <a href="improvement-planner.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Improvement Plan</a>
-                <a href="traffic.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Traffic</a>
-                <a href="rankings.html" class="px-4 py-2 hover:bg-white/10 rounded-t">Rankings</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared Navigation -->
+    <div id="admin-nav" data-page="dashboard"></div>
 
     <div class="max-w-7xl mx-auto p-6">
         
