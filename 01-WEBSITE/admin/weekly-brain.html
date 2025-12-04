@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>SEO Brain - Weekly Intelligence | Chris David Salon</title>
+    <title>Weekly Intelligence | Chris David Salon</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="shared-nav.js"></script>
@@ -24,18 +24,25 @@
                         Weekly SEO Intelligence
                     </h1>
                     <p class="text-purple-100 text-lg mb-4">
-                        AI-powered analysis of your data. Concrete actions to move up the rankings.
+                        Powered by the automated SEO Flywheel. Updated every Sunday at 6 AM EST.
                     </p>
-                    <button onclick="runAnalysis()" id="analyzeBtn" class="bg-yellow-400 hover:bg-yellow-300 text-purple-900 px-8 py-4 rounded-xl font-bold text-lg shadow-lg transform hover:scale-105 transition-all">
-                        <i class="fas fa-bolt mr-2"></i>
-                        Generate This Week's Tasks
-                    </button>
+                    <div class="flex gap-4">
+                        <button onclick="loadIntelligence()" id="refreshBtn" class="bg-yellow-400 hover:bg-yellow-300 text-purple-900 px-6 py-3 rounded-xl font-bold text-lg shadow-lg transform hover:scale-105 transition-all">
+                            <i class="fas fa-sync-alt mr-2"></i>
+                            Refresh Intelligence
+                        </button>
+                        <a href="changes-log.html" class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-xl font-bold text-lg transition-all flex items-center">
+                            <i class="fas fa-clipboard-list mr-2"></i>
+                            View Changes Log
+                        </a>
+                    </div>
                 </div>
                 <div class="text-right">
-                    <div class="text-sm text-purple-200 mb-1">Analysis Status</div>
+                    <div class="text-sm text-purple-200 mb-1">Status</div>
                     <div id="statusIndicator" class="text-2xl font-bold text-green-400">
                         <i class="fas fa-circle-check mr-2"></i>Ready
                     </div>
+                    <div class="text-sm text-purple-200 mt-2" id="lastUpdate">--</div>
                 </div>
             </div>
         </div>
@@ -44,73 +51,119 @@
         <div id="loadingState" class="hidden text-center py-16">
             <div class="inline-block">
                 <i class="fas fa-brain text-6xl text-purple-500 animate-pulse mb-4"></i>
-                <div class="text-2xl font-bold text-purple-400 mb-2">Analyzing Your Data...</div>
-                <div class="text-gray-400" id="loadingStatus">Connecting to GA4 Analytics...</div>
-                <div class="w-64 bg-gray-700 rounded-full h-2 mt-4 mx-auto overflow-hidden">
-                    <div class="bg-purple-500 h-2 rounded-full animate-pulse" style="width: 60%"></div>
-                </div>
+                <div class="text-2xl font-bold text-purple-400 mb-2">Loading Intelligence...</div>
+                <div class="text-gray-400">Gathering data from SEO agents...</div>
             </div>
         </div>
 
-        <!-- Results Section -->
+        <!-- Main Content -->
         <div id="resultsSection" class="hidden">
 
-            <!-- Summary Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                <div class="bg-gray-800 rounded-xl p-6 border border-red-500/30">
-                    <div class="text-red-400 text-sm font-semibold mb-1">CRITICAL</div>
-                    <div class="text-4xl font-bold text-red-400" id="criticalCount">0</div>
-                    <div class="text-gray-500 text-sm">Immediate action needed</div>
-                </div>
-                <div class="bg-gray-800 rounded-xl p-6 border border-orange-500/30">
-                    <div class="text-orange-400 text-sm font-semibold mb-1">HIGH PRIORITY</div>
-                    <div class="text-4xl font-bold text-orange-400" id="highCount">0</div>
-                    <div class="text-gray-500 text-sm">Do this week</div>
-                </div>
-                <div class="bg-gray-800 rounded-xl p-6 border border-yellow-500/30">
-                    <div class="text-yellow-400 text-sm font-semibold mb-1">MEDIUM</div>
-                    <div class="text-4xl font-bold text-yellow-400" id="mediumCount">0</div>
-                    <div class="text-gray-500 text-sm">Schedule soon</div>
-                </div>
-                <div class="bg-gray-800 rounded-xl p-6 border border-green-500/30">
-                    <div class="text-green-400 text-sm font-semibold mb-1">DATA SOURCES</div>
-                    <div class="text-4xl font-bold text-green-400" id="dataSourceCount">0/4</div>
-                    <div class="text-gray-500 text-sm">APIs connected</div>
+            <!-- Boutique Strategy Banner -->
+            <div class="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-xl p-6 mb-8">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-trophy text-gray-900 text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-yellow-400">Boutique Advantage Strategy</h2>
+                        <p class="text-gray-300" id="strategyPhilosophy">Win on expertise, not volume. Own niches, not broad terms.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Executive Summary -->
-            <div class="bg-gray-800 rounded-xl p-6 mb-8 border border-purple-500/30">
+            <!-- Today's Focus -->
+            <div class="bg-gray-800 rounded-xl p-6 mb-8 border-2 border-purple-500">
                 <h2 class="text-xl font-bold text-purple-400 mb-4 flex items-center gap-2">
-                    <i class="fas fa-clipboard-list"></i>
-                    Executive Summary
+                    <i class="fas fa-bullseye"></i>
+                    Today's Priority
                 </h2>
-                <div id="executiveSummary" class="prose prose-invert max-w-none text-gray-300">
+                <div id="todayFocus" class="text-2xl font-semibold text-white">
+                    Loading...
+                </div>
+                <div id="todayDay" class="text-gray-400 mt-2">--</div>
+            </div>
+
+            <!-- Key Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-gray-800 rounded-xl p-6 border border-blue-500/30">
+                    <div class="text-blue-400 text-sm font-semibold mb-1">GBP SCORE</div>
+                    <div class="text-4xl font-bold text-blue-400" id="gbpScore">--</div>
+                    <div class="text-gray-500 text-sm">32% of ranking</div>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border border-green-500/30">
+                    <div class="text-green-400 text-sm font-semibold mb-1">QUICK WINS</div>
+                    <div class="text-4xl font-bold text-green-400" id="quickWinsCount">--</div>
+                    <div class="text-gray-500 text-sm">Available today</div>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border border-yellow-500/30">
+                    <div class="text-yellow-400 text-sm font-semibold mb-1">GBP ACTIONS</div>
+                    <div class="text-4xl font-bold text-yellow-400" id="gbpActionsCount">--</div>
+                    <div class="text-gray-500 text-sm">Pending this week</div>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border border-purple-500/30">
+                    <div class="text-purple-400 text-sm font-semibold mb-1">RECOMMENDATIONS</div>
+                    <div class="text-4xl font-bold text-purple-400" id="recsCount">--</div>
+                    <div class="text-gray-500 text-sm">Priority actions</div>
+                </div>
+            </div>
+
+            <!-- GBP Weekly Schedule -->
+            <div class="bg-gray-800 rounded-xl p-6 mb-8 border border-yellow-500/30">
+                <h2 class="text-xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
+                    <i class="fas fa-calendar-week"></i>
+                    GBP Weekly Schedule (32% of Local Ranking!)
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="gbpSchedule">
+                    <div class="bg-gray-900 rounded-lg p-4">
+                        <div class="font-bold text-white mb-1">Monday</div>
+                        <div class="text-gray-400 text-sm">Review responses</div>
+                    </div>
+                    <div class="bg-gray-900 rounded-lg p-4">
+                        <div class="font-bold text-white mb-1">Wednesday</div>
+                        <div class="text-gray-400 text-sm">Add 2 photos</div>
+                    </div>
+                    <div class="bg-gray-900 rounded-lg p-4">
+                        <div class="font-bold text-white mb-1">Friday</div>
+                        <div class="text-gray-400 text-sm">Create Google Post</div>
+                    </div>
+                    <div class="bg-gray-900 rounded-lg p-4">
+                        <div class="font-bold text-white mb-1">Saturday</div>
+                        <div class="text-gray-400 text-sm">Check Q&A</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Wins -->
+            <div class="bg-gray-800 rounded-xl p-6 mb-8 border border-green-500/30">
+                <h2 class="text-xl font-bold text-green-400 mb-4 flex items-center gap-2">
+                    <i class="fas fa-bolt"></i>
+                    Quick Wins (Do These Today!)
+                </h2>
+                <div id="quickWins" class="space-y-4">
+                    Loading...
+                </div>
+            </div>
+
+            <!-- Ranking Factor Breakdown -->
+            <div class="bg-gray-800 rounded-xl p-6 mb-8">
+                <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fas fa-chart-pie"></i>
+                    Where Chris David Salon Can WIN
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="rankingFactors">
                     <!-- Populated by JS -->
                 </div>
             </div>
 
-            <!-- Task List -->
-            <div class="space-y-4" id="taskList">
-                <!-- Populated by JS -->
-            </div>
-
-            <!-- Review Insights Section -->
-            <div class="mt-8 bg-gray-800 rounded-xl border border-yellow-500/30 overflow-hidden">
-                <div class="p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
-                            <i class="fas fa-star"></i>
-                            Review Keywords for SEO
-                        </h2>
-                        <button onclick="loadReviewInsights()" id="reviewBtn" class="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-4 py-2 rounded-lg font-semibold text-sm">
-                            <i class="fas fa-sync-alt mr-2"></i>Analyze Reviews
-                        </button>
-                    </div>
-                    <p class="text-gray-400 mb-4">Extract SEO-valuable keywords from your Google reviews and match them to service pages.</p>
-                    <div id="reviewInsights" class="text-gray-500">
-                        Click "Analyze Reviews" to find keyword-rich testimonials for your pages
-                    </div>
+            <!-- Proactive Recommendations -->
+            <div class="bg-gray-800 rounded-xl p-6 mb-8 border border-purple-500/30">
+                <h2 class="text-xl font-bold text-purple-400 mb-4 flex items-center gap-2">
+                    <i class="fas fa-lightbulb"></i>
+                    AI Recommendations
+                </h2>
+                <div id="recommendations" class="space-y-4">
+                    Loading...
                 </div>
             </div>
 
@@ -119,427 +172,169 @@
         <!-- Empty State -->
         <div id="emptyState" class="text-center py-16">
             <i class="fas fa-robot text-6xl text-gray-600 mb-4"></i>
-            <div class="text-xl text-gray-400 mb-2">No analysis run yet</div>
-            <div class="text-gray-500">Click the button above to generate this week's SEO tasks</div>
+            <div class="text-xl text-gray-400 mb-2">Click "Refresh Intelligence" to load data</div>
+            <div class="text-gray-500">This pulls from the automated SEO Flywheel and GBP Agent</div>
         </div>
 
     </div>
 
     <script>
-    const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'https://www.chrisdavidsalon.com'
-        : '';
+    const API_BASE = 'https://www.chrisdavidsalon.com';
 
-    let analysisData = null;
-
-    async function runAnalysis() {
-        const btn = document.getElementById('analyzeBtn');
+    async function loadIntelligence() {
+        const btn = document.getElementById('refreshBtn');
         const loading = document.getElementById('loadingState');
         const results = document.getElementById('resultsSection');
         const empty = document.getElementById('emptyState');
         const status = document.getElementById('statusIndicator');
-        const loadingStatus = document.getElementById('loadingStatus');
 
         // Show loading
         btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Analyzing...';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Loading...';
         loading.classList.remove('hidden');
         results.classList.add('hidden');
         empty.classList.add('hidden');
         status.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Working...';
         status.className = 'text-2xl font-bold text-yellow-400';
 
-        // Update loading messages
-        const messages = [
-            'Connecting to GA4 Analytics...',
-            'Fetching Search Console rankings...',
-            'Analyzing competitor data...',
-            'Checking domain authority...',
-            'Generating intelligent recommendations...',
-            'Prioritizing tasks by impact...'
-        ];
-        let msgIndex = 0;
-        const msgInterval = setInterval(() => {
-            loadingStatus.textContent = messages[msgIndex % messages.length];
-            msgIndex++;
-        }, 1500);
-
         try {
-            const response = await fetch(`${API_BASE}/api/seo-brain?action=analyze`);
-            const data = await response.json();
+            // Fetch data from all agents in parallel
+            const [proactiveRes, gbpRes, quickWinsRes, strategyRes] = await Promise.all([
+                fetch(`${API_BASE}/api/proactive-seo-agent?action=run-proactive`).then(r => r.json()).catch(() => null),
+                fetch(`${API_BASE}/api/gbp-agent?action=recommendations`).then(r => r.json()).catch(() => null),
+                fetch(`${API_BASE}/api/proactive-seo-agent?action=quick-wins`).then(r => r.json()).catch(() => null),
+                fetch(`${API_BASE}/api/proactive-seo-agent?action=boutique-strategy`).then(r => r.json()).catch(() => null)
+            ]);
 
-            clearInterval(msgInterval);
+            // Display results
+            displayIntelligence(proactiveRes, gbpRes, quickWinsRes, strategyRes);
 
-            if (data.success) {
-                analysisData = data;
-                displayResults(data);
-                status.innerHTML = '<i class="fas fa-circle-check mr-2"></i>Complete';
-                status.className = 'text-2xl font-bold text-green-400';
-            } else {
-                throw new Error(data.error || 'Analysis failed');
-            }
+            status.innerHTML = '<i class="fas fa-circle-check mr-2"></i>Complete';
+            status.className = 'text-2xl font-bold text-green-400';
+            document.getElementById('lastUpdate').textContent = `Updated: ${new Date().toLocaleString()}`;
+
         } catch (error) {
-            clearInterval(msgInterval);
-            console.error('Analysis error:', error);
+            console.error('Error loading intelligence:', error);
             status.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
             status.className = 'text-2xl font-bold text-red-400';
             empty.innerHTML = `
                 <i class="fas fa-exclamation-triangle text-6xl text-red-500 mb-4"></i>
-                <div class="text-xl text-red-400 mb-2">Analysis Failed</div>
+                <div class="text-xl text-red-400 mb-2">Failed to Load</div>
                 <div class="text-gray-500">${error.message}</div>
-                <button onclick="runAnalysis()" class="mt-4 bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded-lg">
+                <button onclick="loadIntelligence()" class="mt-4 bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded-lg">
                     Try Again
                 </button>
             `;
             empty.classList.remove('hidden');
-            loading.classList.add('hidden');
         } finally {
             btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-bolt mr-2"></i>Generate This Week\'s Tasks';
+            btn.innerHTML = '<i class="fas fa-sync-alt mr-2"></i>Refresh Intelligence';
             loading.classList.add('hidden');
         }
     }
 
-    function displayResults(data) {
+    function displayIntelligence(proactive, gbp, quickWins, strategy) {
         const results = document.getElementById('resultsSection');
         const empty = document.getElementById('emptyState');
 
         results.classList.remove('hidden');
         empty.classList.add('hidden');
 
-        // Update counts
-        const tasks = data.tasks || [];
-        document.getElementById('criticalCount').textContent = tasks.filter(t => t.priority === 'critical').length;
-        document.getElementById('highCount').textContent = tasks.filter(t => t.priority === 'high').length;
-        document.getElementById('mediumCount').textContent = tasks.filter(t => t.priority === 'medium').length;
-        document.getElementById('dataSourceCount').textContent = `${data.summary.dataSourcesAvailable}/${data.summary.dataSourcesTotal}`;
-
-        // Update last analysis time
-        document.getElementById('lastUpdate').textContent = `Last analyzed: ${new Date(data.analysisDate).toLocaleString()}`;
-
-        // Display executive summary
-        const summaryEl = document.getElementById('executiveSummary');
-        if (data.recommendations) {
-            // Convert markdown-like text to HTML
-            let html = data.recommendations
-                .replace(/## (.*)/g, '<h3 class="text-lg font-bold text-white mt-4 mb-2">$1</h3>')
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-purple-300">$1</strong>')
-                .replace(/^- (.*)/gm, '<li class="ml-4">$1</li>')
-                .replace(/\n\n/g, '<br><br>');
-            summaryEl.innerHTML = html;
+        // Today's focus
+        if (proactive?.boutiqueReminder) {
+            document.getElementById('todayFocus').textContent = proactive.boutiqueReminder.todaysFocus || 'Check dashboard';
+            document.getElementById('todayDay').textContent = proactive.dayOfWeek || '';
         }
 
-        // Display tasks
-        const taskList = document.getElementById('taskList');
-        taskList.innerHTML = '';
+        // Strategy philosophy
+        if (strategy?.strategy?.philosophy) {
+            document.getElementById('strategyPhilosophy').textContent = strategy.strategy.philosophy;
+        }
 
-        tasks.forEach((task, index) => {
-            const priorityColors = {
-                critical: { bg: 'bg-red-900/30', border: 'border-red-500', badge: 'bg-red-500', text: 'text-red-400' },
-                high: { bg: 'bg-orange-900/30', border: 'border-orange-500', badge: 'bg-orange-500', text: 'text-orange-400' },
-                medium: { bg: 'bg-yellow-900/30', border: 'border-yellow-500', badge: 'bg-yellow-500', text: 'text-yellow-400' },
-                low: { bg: 'bg-gray-800', border: 'border-gray-600', badge: 'bg-gray-600', text: 'text-gray-400' }
-            };
-            const colors = priorityColors[task.priority] || priorityColors.medium;
+        // Stats
+        document.getElementById('gbpScore').textContent = gbp?.gbpScore ? `${gbp.gbpScore}/100` : '--';
+        document.getElementById('quickWinsCount').textContent = quickWins?.quickWins?.length || '--';
+        document.getElementById('gbpActionsCount').textContent = gbp?.data?.immediateActions?.length || '--';
+        document.getElementById('recsCount').textContent = proactive?.recommendations?.length || '--';
 
-            const typeIcons = {
-                'keyword-optimization': 'fa-search',
-                'new-page-needed': 'fa-file-plus',
-                'ctr-optimization': 'fa-mouse-pointer',
-                'review-generation': 'fa-star',
-                'ux-improvement': 'fa-mobile-alt',
-                'momentum-action': 'fa-chart-line',
-                'microsite-optimization': 'fa-globe',
-                'authority-building': 'fa-link',
-                'gbp-posting': 'fa-map-marker-alt'
-            };
-            const icon = typeIcons[task.type] || 'fa-tasks';
-
-            const taskHtml = `
-                <div class="${colors.bg} rounded-xl border ${colors.border} overflow-hidden">
-                    <div class="p-6">
-                        <div class="flex items-start justify-between mb-4">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-lg ${colors.badge} flex items-center justify-center flex-shrink-0">
-                                    <i class="fas ${icon} text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <span class="${colors.badge} text-white text-xs px-2 py-1 rounded font-bold uppercase">${task.priority}</span>
-                                    <h3 class="text-xl font-bold text-white mt-2">${task.title}</h3>
-                                    <p class="text-gray-400 mt-1">${task.description}</p>
-                                </div>
-                            </div>
-                            <button onclick="toggleTaskDetails(${index})" class="text-gray-400 hover:text-white">
-                                <i class="fas fa-chevron-down" id="chevron-${index}"></i>
-                            </button>
-                        </div>
-
-                        <div class="flex gap-4 text-sm">
-                            <div class="bg-black/30 rounded px-3 py-1">
-                                <span class="text-gray-500">Impact:</span>
-                                <span class="${colors.text} font-semibold">${task.impact.split(' - ')[0]}</span>
-                            </div>
-                            <div class="bg-black/30 rounded px-3 py-1">
-                                <span class="text-gray-500">Effort:</span>
-                                <span class="text-gray-300 font-semibold">${task.effort}</span>
-                            </div>
-                            <div class="bg-black/30 rounded px-3 py-1">
-                                <span class="text-gray-500">Type:</span>
-                                <span class="text-gray-300">${task.type.replace(/-/g, ' ')}</span>
-                            </div>
+        // Quick Wins
+        if (quickWins?.quickWins) {
+            const quickWinsHtml = quickWins.quickWins.map(win => `
+                <div class="bg-gray-900 rounded-lg p-4 flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
+                        <span class="text-white font-bold">${win.priority}</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-white">${win.action}</div>
+                        <div class="text-gray-400 text-sm">${win.reason}</div>
+                        <div class="text-green-400 text-sm mt-1">
+                            <i class="fas fa-clock mr-1"></i>${win.timeToComplete}
+                            <span class="text-gray-500 mx-2">|</span>
+                            <span class="text-yellow-400">${win.impact} impact</span>
                         </div>
                     </div>
-
-                    <div id="details-${index}" class="hidden border-t border-gray-700 bg-black/20 p-6">
-                        ${task.implementation ? `
-                            <h4 class="font-bold text-white mb-3 flex items-center gap-2">
-                                <i class="fas fa-list-check ${colors.text}"></i>
-                                Implementation Steps
-                            </h4>
-                            <ol class="space-y-2 mb-6">
-                                ${task.implementation.steps.map((step, i) => `
-                                    <li class="flex items-start gap-3">
-                                        <span class="w-6 h-6 rounded-full ${colors.badge} text-white text-sm flex items-center justify-center flex-shrink-0">${i + 1}</span>
-                                        <span class="text-gray-300">${step}</span>
-                                    </li>
-                                `).join('')}
-                            </ol>
-                        ` : ''}
-
-                        ${task.implementation?.suggestedUrl ? `
-                            <div class="bg-gray-900 rounded-lg p-4 mb-4">
-                                <div class="text-sm text-gray-500 mb-1">Suggested URL:</div>
-                                <code class="text-green-400">${task.implementation.suggestedUrl}</code>
-                            </div>
-                        ` : ''}
-
-                        ${task.implementation?.metaTitle ? `
-                            <div class="bg-gray-900 rounded-lg p-4 mb-4">
-                                <div class="text-sm text-gray-500 mb-1">Optimized Title Tag:</div>
-                                <code class="text-blue-400">${task.implementation.metaTitle}</code>
-                            </div>
-                        ` : ''}
-
-                        ${task.implementation?.contentOutline ? `
-                            <div class="bg-gray-900 rounded-lg p-4 mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Content Outline:</div>
-                                <ul class="space-y-1">
-                                    ${task.implementation.contentOutline.map(item => `
-                                        <li class="text-gray-400 text-sm">${item}</li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-                        ` : ''}
-
-                        ${task.implementation?.link ? `
-                            <a href="${task.implementation.link}" target="_blank"
-                               class="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg">
-                                <i class="fas fa-external-link-alt"></i>
-                                ${task.implementation.linkText || 'Open Link'}
-                            </a>
-                        ` : ''}
-
-                        ${task.metrics ? `
-                            <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
-                                ${Object.entries(task.metrics).map(([key, value]) => `
-                                    <div class="bg-gray-900 rounded-lg p-3">
-                                        <div class="text-xs text-gray-500 uppercase">${key.replace(/([A-Z])/g, ' $1').trim()}</div>
-                                        <div class="text-lg font-bold ${colors.text}">${value}</div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        ` : ''}
-                    </div>
                 </div>
-            `;
-
-            taskList.innerHTML += taskHtml;
-        });
-    }
-
-    function toggleTaskDetails(index) {
-        const details = document.getElementById(`details-${index}`);
-        const chevron = document.getElementById(`chevron-${index}`);
-
-        if (details.classList.contains('hidden')) {
-            details.classList.remove('hidden');
-            chevron.classList.remove('fa-chevron-down');
-            chevron.classList.add('fa-chevron-up');
-        } else {
-            details.classList.add('hidden');
-            chevron.classList.remove('fa-chevron-up');
-            chevron.classList.add('fa-chevron-down');
-        }
-    }
-
-    // Load version badge
-    async function loadVersion() {
-        try {
-            const res = await fetch(`${API_BASE}/data/version.json`);
-            const data = await res.json();
-            document.getElementById('versionBadge').textContent = `v${data.version}`;
-        } catch (e) {
-            document.getElementById('versionBadge').textContent = 'v?.?.?';
-        }
-    }
-
-    // Check if we have cached analysis
-    document.addEventListener('DOMContentLoaded', () => {
-        loadVersion();
-        const cached = localStorage.getItem('seoBrainAnalysis');
-        if (cached) {
-            try {
-                const data = JSON.parse(cached);
-                // Only use if less than 24 hours old
-                const age = Date.now() - new Date(data.analysisDate).getTime();
-                if (age < 24 * 60 * 60 * 1000) {
-                    displayResults(data);
-                    document.getElementById('statusIndicator').innerHTML = '<i class="fas fa-circle-check mr-2"></i>Cached';
-                    document.getElementById('emptyState').classList.add('hidden');
-                }
-            } catch (e) {
-                console.warn('Could not load cached analysis');
-            }
-        }
-    });
-
-    // Load review insights
-    async function loadReviewInsights() {
-        const btn = document.getElementById('reviewBtn');
-        const container = document.getElementById('reviewInsights');
-
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Analyzing...';
-        container.innerHTML = '<div class="text-center py-8"><i class="fas fa-spinner fa-spin text-2xl text-yellow-400"></i><div class="mt-2">Fetching Google reviews...</div></div>';
-
-        try {
-            const response = await fetch(`${API_BASE}/api/review-keywords?action=analyze`);
-            const data = await response.json();
-
-            if (data.success) {
-                displayReviewInsights(data);
-            } else {
-                container.innerHTML = `<div class="text-red-400">Error: ${data.error || 'Could not analyze reviews'}</div>`;
-            }
-        } catch (error) {
-            console.error('Review analysis error:', error);
-            container.innerHTML = `<div class="text-red-400">Error: ${error.message}</div>`;
-        } finally {
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-sync-alt mr-2"></i>Analyze Reviews';
-        }
-    }
-
-    function displayReviewInsights(data) {
-        const container = document.getElementById('reviewInsights');
-        const analysis = data.analysis;
-
-        if (!analysis) {
-            container.innerHTML = '<div class="text-gray-500">No analysis data available</div>';
-            return;
+            `).join('');
+            document.getElementById('quickWins').innerHTML = quickWinsHtml;
         }
 
-        // Build HTML for review insights
-        let html = `
-            <div class="mb-6 p-4 bg-gray-900 rounded-lg">
-                <div class="grid grid-cols-3 gap-4 text-center">
-                    <div>
-                        <div class="text-2xl font-bold text-yellow-400">${data.totalReviews || '--'}</div>
-                        <div class="text-xs text-gray-500">Total Reviews</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-yellow-400">${data.averageRating || '--'}★</div>
-                        <div class="text-xs text-gray-500">Average Rating</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-yellow-400">${data.reviewsAnalyzed || '--'}</div>
-                        <div class="text-xs text-gray-500">Analyzed</div>
-                    </div>
-                </div>
-            </div>
-        `;
+        // Ranking Factors
+        if (strategy?.strategy?.rankingFactorBreakdown) {
+            const factors = strategy.strategy.rankingFactorBreakdown;
+            const factorsHtml = Object.entries(factors).map(([key, data]) => {
+                const statusColors = {
+                    'WINNABLE': 'text-green-400 bg-green-500/20',
+                    'COMPETE ON QUALITY': 'text-yellow-400 bg-yellow-500/20',
+                    'ADVANTAGE': 'text-blue-400 bg-blue-500/20'
+                };
+                const colorClass = statusColors[data.status] || 'text-gray-400 bg-gray-500/20';
 
-        // Top keywords found
-        if (analysis.topKeywords && analysis.topKeywords.length > 0) {
-            html += `
-                <div class="mb-6">
-                    <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <i class="fas fa-key text-yellow-400"></i>
-                        Top SEO Keywords in Reviews
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        ${analysis.topKeywords.slice(0, 15).map(k => `
-                            <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-sm">
-                                ${k.keyword} <span class="text-yellow-500">(${k.count})</span>
-                            </span>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Service page matches
-        if (analysis.servicePageMatches && Object.keys(analysis.servicePageMatches).length > 0) {
-            html += `
-                <div>
-                    <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <i class="fas fa-file-alt text-green-400"></i>
-                        Reviews to Feature on Service Pages
-                    </h3>
-                    <div class="space-y-4">
-            `;
-
-            Object.entries(analysis.servicePageMatches).forEach(([page, pageData]) => {
-                if (pageData.topReviews && pageData.topReviews.length > 0) {
-                    html += `
-                        <div class="bg-gray-900 rounded-lg p-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="font-semibold text-white">${pageData.name}</div>
-                                <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">
-                                    ${pageData.totalMatches} matching reviews
-                                </span>
-                            </div>
-                            <div class="text-xs text-gray-500 mb-2">
-                                Keywords: ${pageData.keywordsFound.slice(0, 5).join(', ')}
-                            </div>
-                            <div class="space-y-2">
-                                ${pageData.topReviews.slice(0, 2).map(r => `
-                                    <div class="bg-gray-800 rounded p-3">
-                                        <div class="flex items-center gap-2 mb-1">
-                                            <span class="text-yellow-400">${'★'.repeat(r.rating)}</span>
-                                            <span class="text-sm text-gray-400">- ${r.author}</span>
-                                        </div>
-                                        <p class="text-sm text-gray-300 line-clamp-2">"${r.text?.substring(0, 200)}${r.text?.length > 200 ? '...' : ''}"</p>
-                                        <div class="mt-2 flex flex-wrap gap-1">
-                                            ${r.relevantKeywords.map(kw => `
-                                                <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded">${kw}</span>
-                                            `).join('')}
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <div class="mt-2 text-xs text-gray-500">
-                                <code>${page}</code>
-                            </div>
+                return `
+                    <div class="bg-gray-900 rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-white capitalize">${key.replace(/([A-Z])/g, ' $1')}</span>
+                            <span class="text-xl font-bold text-purple-400">${data.weight}</span>
                         </div>
-                    `;
-                }
-            });
-
-            html += '</div></div>';
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2 py-1 rounded text-xs font-bold ${colorClass}">${data.status}</span>
+                        </div>
+                        <div class="text-gray-400 text-sm">${data.action}</div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('rankingFactors').innerHTML = factorsHtml;
         }
 
-        container.innerHTML = html;
-    }
+        // Recommendations
+        if (proactive?.recommendations) {
+            const recsHtml = proactive.recommendations.map(rec => {
+                const priorityColors = {
+                    'HIGH': 'bg-red-500',
+                    'MEDIUM': 'bg-yellow-500',
+                    'LOW': 'bg-gray-500'
+                };
+                const bgColor = priorityColors[rec.priority] || 'bg-gray-500';
 
-    // Save analysis to cache when complete
-    function cacheAnalysis(data) {
-        try {
-            localStorage.setItem('seoBrainAnalysis', JSON.stringify(data));
-        } catch (e) {
-            console.warn('Could not cache analysis');
+                return `
+                    <div class="bg-gray-900 rounded-lg p-4 flex items-start gap-4">
+                        <div class="w-3 h-3 rounded-full ${bgColor} mt-2 flex-shrink-0"></div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xs font-bold ${bgColor} text-white px-2 py-0.5 rounded">${rec.priority}</span>
+                                <span class="text-xs text-gray-500">${rec.category}</span>
+                            </div>
+                            <div class="font-semibold text-white">${rec.recommendation}</div>
+                            <div class="text-gray-400 text-sm mt-1">${rec.reason}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('recommendations').innerHTML = recsHtml;
         }
     }
+
+    // Auto-load on page load
+    document.addEventListener('DOMContentLoaded', loadIntelligence);
     </script>
 </body>
 </html>
