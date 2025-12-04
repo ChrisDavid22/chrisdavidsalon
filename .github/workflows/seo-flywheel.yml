@@ -125,13 +125,13 @@ jobs:
         run: |
           echo "Checking microsite network health..."
 
-          # Check each microsite
-          MAIN_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "${{ env.SITE_URL }}" || echo "000")
-          MS1_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "${{ env.MICROSITE_1 }}" || echo "000")
-          MS2_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "${{ env.MICROSITE_2 }}" || echo "000")
-          MS3_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "${{ env.MICROSITE_3 }}" || echo "000")
+          # Check each microsite (use -L to follow redirects like www redirects)
+          MAIN_STATUS=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 10 "${{ env.SITE_URL }}" || echo "000")
+          MS1_STATUS=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 10 "${{ env.MICROSITE_1 }}" || echo "000")
+          MS2_STATUS=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 10 "${{ env.MICROSITE_2 }}" || echo "000")
+          MS3_STATUS=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 10 "${{ env.MICROSITE_3 }}" || echo "000")
 
-          # Count healthy sites
+          # Count healthy sites (200 = OK, 307/301/302 redirects are handled by -L)
           HEALTHY=0
           [ "$MAIN_STATUS" = "200" ] && HEALTHY=$((HEALTHY + 1))
           [ "$MS1_STATUS" = "200" ] && HEALTHY=$((HEALTHY + 1))
