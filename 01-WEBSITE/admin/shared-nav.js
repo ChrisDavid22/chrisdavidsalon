@@ -7,15 +7,25 @@
 
 const ADMIN_NAV_CONFIG = {
     brandName: 'Chris David SEO',
+    // Navigation order: Input → Metrics → Strategy → Action → Advanced
     pages: [
+        // 1. Overview - Start with the big picture
         { id: 'dashboard', label: 'Dashboard', path: 'index.html', icon: 'fa-gauge-high' },
-        { id: 'progress', label: 'Progress', path: 'progress-report.html', icon: 'fa-chart-line' },
-        { id: 'weekly-brain', label: 'Weekly Brain', path: 'weekly-brain.html', icon: 'fa-brain' },
-        { id: 'improvement', label: 'Improvement Plan', path: 'improvement-planner.html', icon: 'fa-list-check' },
+        // 2. Input Metrics - Where traffic comes from
         { id: 'traffic', label: 'Traffic', path: 'traffic.html', icon: 'fa-users' },
+        // 3. Visibility - How we rank
         { id: 'rankings', label: 'Rankings', path: 'rankings.html', icon: 'fa-ranking-star' },
+        // 4. Foundation - Domain strength
         { id: 'authority', label: 'Authority', path: 'authority.html', icon: 'fa-crown' },
+        // 5. Expansion - Satellite sites
         { id: 'microsites', label: 'Microsites', path: 'microsites.html', icon: 'fa-globe' },
+        // 6. Intelligence - AI insights
+        { id: 'weekly-brain', label: 'Weekly Brain', path: 'weekly-brain.html', icon: 'fa-brain' },
+        // 7. Action - What to do
+        { id: 'improvement', label: 'Improvement', path: 'improvement-planner.html', icon: 'fa-list-check' },
+        // 8. Tracking - Progress over time
+        { id: 'progress', label: 'Progress', path: 'progress-report.html', icon: 'fa-chart-line' },
+        // 9. Advanced - Self-learning system
         { id: 'seo-learning', label: 'Learning', path: 'seo-learning.html', icon: 'fa-graduation-cap' },
     ]
 };

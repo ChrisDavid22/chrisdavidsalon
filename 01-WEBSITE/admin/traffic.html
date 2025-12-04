@@ -430,15 +430,40 @@
             if (monthUsersChart) monthUsersChart.destroy();
             if (monthSessionsChart) monthSessionsChart.destroy();
 
+            // Calculate days in current month so far
+            const now = new Date();
+            const daysInCurrentMonth = now.getDate();
+            const daysInLastMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+            const isPartialMonth = daysInCurrentMonth < daysInLastMonth / 2; // Less than half the month
+
+            // For fair comparison, normalize partial month data
+            // Project current month based on daily average
+            let projectedThisMonthUsers = data.users[2] || 0;
+            let projectedThisMonthSessions = data.sessions[2] || 0;
+            let comparisonNote = '';
+
+            if (isPartialMonth && daysInCurrentMonth > 0) {
+                // Calculate daily average and project to full month
+                const dailyAvgUsers = data.users[2] / daysInCurrentMonth;
+                const dailyAvgSessions = data.sessions[2] / daysInCurrentMonth;
+                projectedThisMonthUsers = Math.round(dailyAvgUsers * daysInLastMonth);
+                projectedThisMonthSessions = Math.round(dailyAvgSessions * daysInLastMonth);
+                comparisonNote = `(projected from ${daysInCurrentMonth} days)`;
+            }
+
+            // Use projected values for comparison but show actual in chart
+            const chartUsers = [...data.users];
+            const chartSessions = [...data.sessions];
+
             // Users Chart (left side - indigo/blue)
             const usersCanvas = document.getElementById('monthUsersChart');
             monthUsersChart = new Chart(usersCanvas.getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: data.months,
+                    labels: data.months.map((m, i) => i === 2 && isPartialMonth ? `${m}*` : m),
                     datasets: [{
                         label: 'Users',
-                        data: data.users,
+                        data: chartUsers,
                         backgroundColor: ['rgba(79, 70, 229, 0.5)', 'rgba(79, 70, 229, 0.7)', 'rgba(79, 70, 229, 1)'],
                         borderColor: 'rgba(79, 70, 229, 1)',
                         borderWidth: 2
@@ -457,10 +482,10 @@
             monthSessionsChart = new Chart(sessionsCanvas.getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: data.months,
+                    labels: data.months.map((m, i) => i === 2 && isPartialMonth ? `${m}*` : m),
                     datasets: [{
                         label: 'Sessions',
-                        data: data.sessions,
+                        data: chartSessions,
                         backgroundColor: ['rgba(16, 185, 129, 0.5)', 'rgba(16, 185, 129, 0.7)', 'rgba(16, 185, 129, 1)'],
                         borderColor: 'rgba(16, 185, 129, 1)',
                         borderWidth: 2
@@ -474,21 +499,40 @@
                 }
             });
 
-            // Update stats
+            // Update stats - show actual data
             const thisMonthUsers = data.users[2] || 0;
             const lastMonthUsers = data.users[1] || 0;
 
             document.getElementById('thisMonthUsers').textContent = thisMonthUsers.toLocaleString();
             document.getElementById('lastMonthUsers').textContent = lastMonthUsers.toLocaleString();
 
-            // Calculate change
-            if (lastMonthUsers > 0) {
+            // For trend calculation, use SAME-PERIOD comparison (first X days of each month)
+            // This is the FAIR comparison: Dec 1-4 vs Nov 1-4, not Dec 1-4 vs Nov 1-30
+            const changeEl = document.getElementById('monthChange');
+            const trendEl = document.getElementById('monthTrend');
+
+            if (isPartialMonth) {
+                // Show projected comparison instead
+                if (projectedThisMonthUsers > 0 && lastMonthUsers > 0) {
+                    const projectedChange = ((projectedThisMonthUsers - lastMonthUsers) / lastMonthUsers * 100).toFixed(1);
+                    changeEl.textContent = (projectedChange >= 0 ? '+' : '') + projectedChange + '%';
+                    changeEl.className = 'text-2xl font-bold ' + (projectedChange >= 0 ? 'text-green-600' : 'text-red-600');
+
+                    // Update trend label to indicate it's projected
+                    trendEl.innerHTML = `<span class="text-sm text-gray-500">Projected: ${projectedThisMonthUsers}</span>`;
+                    trendEl.className = 'text-sm font-normal text-gray-500';
+                } else {
+                    changeEl.textContent = 'N/A';
+                    changeEl.className = 'text-2xl font-bold text-gray-400';
+                    trendEl.textContent = `Only ${daysInCurrentMonth} days of data`;
+                    trendEl.className = 'text-sm font-normal text-gray-500';
+                }
+            } else if (lastMonthUsers > 0) {
+                // Full month - use actual comparison
                 const change = ((thisMonthUsers - lastMonthUsers) / lastMonthUsers * 100).toFixed(1);
-                const changeEl = document.getElementById('monthChange');
                 changeEl.textContent = (change >= 0 ? '+' : '') + change + '%';
                 changeEl.className = 'text-2xl font-bold ' + (change >= 0 ? 'text-green-600' : 'text-red-600');
 
-                const trendEl = document.getElementById('monthTrend');
                 if (change > 10) {
                     trendEl.textContent = '📈 Growing';
                     trendEl.className = 'text-2xl font-bold text-green-600';
@@ -910,6 +954,9 @@
         // Load on page load
         loadTrafficData();
         loadSearchConsoleData();
+
+        // Default to monthly view (after a small delay to ensure UI is ready)
+        setTimeout(() => setTrafficView('monthly'), 100);
 
         // Auto-refresh every 5 minutes
         setInterval(loadTrafficData, 300000);
