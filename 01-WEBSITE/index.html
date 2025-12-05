@@ -826,10 +826,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-4">
-                    Signature Services
+                    Hair Salon Services in Delray Beach
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Experience world-class hair artistry with our comprehensive range of luxury services
+                    Expert balayage, color correction, and precision cuts from a Master Colorist. Serving Delray Beach, Boca Raton, and Palm Beach County.
                 </p>
             </div>
 
@@ -1634,8 +1634,16 @@
     <!-- Vercel Speed Insights - Real User Monitoring for Core Web Vitals -->
     <script defer src="/_vercel/speed-insights/script.js"></script>
 
-    <!-- JavaScript -->
+    <!-- JavaScript - Deferred execution for better TBT -->
     <script>
+        // Defer non-critical JS execution to improve Time to Interactive
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            requestIdleCallback ? requestIdleCallback(initPage) : setTimeout(initPage, 1);
+        }
+
+        function initPage() {
         // =========================================
         // JOIN US DROPDOWN - Click to toggle
         // =========================================
@@ -1820,6 +1828,80 @@
                 console.error('Error loading version:', error);
                 document.getElementById('version-display').textContent = 'Version: Error';
             });
+        } // End initPage function
+
+        // Essential functions that need to be available immediately (before DOMContentLoaded)
+        // These are hoisted so they're available for onclick handlers
+        window.toggleJoinUsDropdown = function() {
+            const menu = document.getElementById('join-us-menu');
+            if (menu && menu.classList.contains('invisible')) {
+                menu.classList.remove('invisible', 'opacity-0');
+                menu.classList.add('visible', 'opacity-100');
+            } else if (menu) {
+                menu.classList.add('invisible', 'opacity-0');
+                menu.classList.remove('visible', 'opacity-100');
+            }
+        };
+
+        window.openBookingModal = function() {
+            // Track booking button click
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'booking_click', {
+                    'event_category': 'Conversion',
+                    'event_label': 'Modal Button',
+                    'value': 1
+                });
+            }
+            // Boulevard widget - lazy load on first click
+            if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
+                blvd.openBookingWidget();
+            } else {
+                window.open('https://go.boulevard.io/widget/businesses/66067441-2b07-4081-bb41-9877e9e4c25b', '_blank');
+            }
+        };
+
+        window.trackPhoneClick = function(source) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_click', { 'event_category': 'Conversion', 'event_label': source, 'value': 1 });
+            }
+        };
+
+        window.trackEmailClick = function(source) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_click', { 'event_category': 'Conversion', 'event_label': source, 'value': 1 });
+            }
+        };
+
+        window.trackDirectionsClick = function(source) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'directions_click', { 'event_category': 'Conversion', 'event_label': source, 'value': 1 });
+            }
+        };
+
+        window.openLightbox = function(element) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            if (lightbox && lightboxImage) {
+                if (typeof element === 'object' && element.src) {
+                    lightboxImage.src = element.src.replace('-mobile.webp', '-desktop.webp').replace('-tablet.webp', '-desktop.webp');
+                    lightboxImage.alt = element.alt;
+                } else {
+                    lightboxImage.src = element;
+                }
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeLightbox = function() {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox) {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+        };
     </script>
     
     <!-- Sticky Book Now Button -->
