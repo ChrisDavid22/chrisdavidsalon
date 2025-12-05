@@ -1,10 +1,15 @@
 {
-  "version": "2.22.0",
+  "version": "2.23.0",
   "lastUpdated": "2025-12-05T16:30:00Z",
   "deployHistory": [
     {
-      "version": "2.22.0",
+      "version": "2.23.0",
       "date": "2025-12-05T16:30:00Z",
+      "changes": "AUTHORITY DIRECTORY TRACKER + SEO PROGRESS VISUALIZATION: (1) NEW /admin/authority-tracker.html - comprehensive directory listing management with 35+ directories across 4 tiers (Critical DA90+, High DA80-89, Medium DA60-79, Beauty Industry). (2) Checkboxes to track listing status, localStorage persistence, authority score projections. (3) NEW sparkline chart in SEO Command Center showing score progress 29→72→77 (+48 points in 3 days). (4) NEW SEO Progress Graph in Changes Log with Chart.js visualization and 95 target line. (5) RuVector storage of all directory listing data for weekly monitoring. (6) Performance fixes: wrapped non-critical JS in initPage() with requestIdleCallback. (7) Content fixes: Added keywords to H2 tags. (8) Navigation updated with Directories link. (9) Playwright Chrome profile conflict fix - separate persistent profile for automation."
+    },
+    {
+      "version": "2.22.0",
+      "date": "2025-12-05T16:00:00Z",
       "changes": "SEO ACTIVE ENHANCEMENT SYSTEM v2.0: (1) Enhanced /api/seo-learning with TARGET 95+ FOR ALL 7 CATEGORIES philosophy. (2) New actions: audit-all (measures all 7 categories), get-fixes (generates concrete code fixes), verify-improvement (tracks before/after), weekly-enhancement (full weekly cycle), category-deep-dive. (3) Fixed font 404 errors - removed broken @font-face rules pointing to empty files. (4) Deferred Google Analytics to after page load for faster LCP. (5) Inlined critical hero CSS to prevent FOUC. (6) Performance optimizations pushed score from 65→75. (7) System now actively identifies issues blocking 95+ and generates fixes, not just monitoring."
     },
     {

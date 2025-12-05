@@ -29,6 +29,8 @@ const ADMIN_NAV_CONFIG = {
         { id: 'seo-learning', label: 'Learning', path: 'seo-learning.html', icon: 'fa-graduation-cap' },
         // 10. Changes Log - Track all SEO changes and their effectiveness
         { id: 'changes-log', label: 'Changes', path: 'changes-log.html', icon: 'fa-clipboard-list' },
+        // 11. Authority Tracker - Directory listings management
+        { id: 'authority-tracker', label: 'Directories', path: 'authority-tracker.html', icon: 'fa-building' },
     ]
 };
 

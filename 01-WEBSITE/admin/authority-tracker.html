@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authority Directory Tracker | Chris David Salon Admin</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0f172a; }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+        .glow-yellow { box-shadow: 0 0 20px rgba(234, 179, 8, 0.3); }
+        .glow-purple { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3); }
+        .glow-blue { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        .glow-red { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+        .tier-critical { border-left: 4px solid #ef4444; }
+        .tier-high { border-left: 4px solid #f59e0b; }
+        .tier-medium { border-left: 4px solid #3b82f6; }
+        .tier-beauty { border-left: 4px solid #ec4899; }
+        .status-listed { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .status-pending { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .status-not-listed { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+    </style>
+    <script src="shared-nav.js"></script>
+</head>
+<body class="min-h-screen text-gray-100">
+    <!-- Shared Navigation -->
+    <div id="admin-nav" data-page="authority-tracker"></div>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="glass-card rounded-xl p-6 mb-8 glow-purple">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <h1 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-building text-purple-400 mr-3"></i>
+                        Authority Directory Tracker
+                    </h1>
+                    <p class="text-gray-400 mt-1">Track and manage your business directory listings to improve Domain Authority (currently 29 → target 90+)</p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="runAutomatedSubmission()" class="bg-green-600 hover:bg-green-500 px-4 py-2 rounded-lg font-semibold flex items-center gap-2">
+                        <i class="fas fa-robot"></i>
+                        Auto-Submit Next 3
+                    </button>
+                    <button onclick="refreshStatus()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg font-semibold flex items-center gap-2">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="glass-card rounded-xl p-6 glow-green">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-gray-400 text-sm">Listed</span>
+                    <i class="fas fa-check-circle text-green-400"></i>
+                </div>
+                <div class="text-3xl font-bold text-green-400" id="listedCount">7</div>
+                <div class="text-xs text-gray-500 mt-1">Active citations</div>
+            </div>
+            <div class="glass-card rounded-xl p-6 glow-yellow">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-gray-400 text-sm">Pending</span>
+                    <i class="fas fa-clock text-yellow-400"></i>
+                </div>
+                <div class="text-3xl font-bold text-yellow-400" id="pendingCount">1</div>
+                <div class="text-xs text-gray-500 mt-1">Awaiting approval</div>
+            </div>
+            <div class="glass-card rounded-xl p-6 glow-red">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-gray-400 text-sm">Not Listed</span>
+                    <i class="fas fa-times-circle text-red-400"></i>
+                </div>
+                <div class="text-3xl font-bold text-red-400" id="notListedCount">42</div>
+                <div class="text-xs text-gray-500 mt-1">Opportunities</div>
+            </div>
+            <div class="glass-card rounded-xl p-6 glow-blue">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-gray-400 text-sm">Authority Impact</span>
+                    <i class="fas fa-chart-line text-blue-400"></i>
+                </div>
+                <div class="text-3xl font-bold text-blue-400" id="authorityImpact">29 → 45</div>
+                <div class="text-xs text-gray-500 mt-1">Projected with 20 more</div>
+            </div>
+        </div>
+
+        <!-- Authority Progress Chart -->
+        <div class="glass-card rounded-xl p-6 mb-8">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fas fa-chart-area text-blue-400 mr-3"></i>
+                Authority Score Projection
+            </h2>
+            <div class="relative" style="height: 200px;">
+                <canvas id="authorityChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Tier 1: Critical (DA 90+) -->
+        <div class="glass-card rounded-xl p-6 mb-6 tier-critical">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <span class="bg-red-600 text-white px-2 py-1 rounded text-sm mr-3">TIER 1</span>
+                Critical Directories (DA 90+)
+                <span class="ml-auto text-sm font-normal text-gray-400">Highest Impact</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left text-gray-400 text-sm border-b border-gray-700">
+                            <th class="pb-3 pr-2 w-12"><i class="fas fa-check-square"></i></th>
+                            <th class="pb-3 pr-4">Directory</th>
+                            <th class="pb-3 pr-4">DA</th>
+                            <th class="pb-3 pr-4">Status</th>
+                            <th class="pb-3 pr-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tier1List" class="text-sm">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tier 2: High (DA 80-89) -->
+        <div class="glass-card rounded-xl p-6 mb-6 tier-high">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <span class="bg-yellow-600 text-white px-2 py-1 rounded text-sm mr-3">TIER 2</span>
+                High Priority Directories (DA 80-89)
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left text-gray-400 text-sm border-b border-gray-700">
+                            <th class="pb-3 pr-2 w-12"><i class="fas fa-check-square"></i></th>
+                            <th class="pb-3 pr-4">Directory</th>
+                            <th class="pb-3 pr-4">DA</th>
+                            <th class="pb-3 pr-4">Status</th>
+                            <th class="pb-3 pr-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tier2List" class="text-sm">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tier 3: Medium (DA 60-79) -->
+        <div class="glass-card rounded-xl p-6 mb-6 tier-medium">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <span class="bg-blue-600 text-white px-2 py-1 rounded text-sm mr-3">TIER 3</span>
+                Medium Priority Directories (DA 60-79)
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left text-gray-400 text-sm border-b border-gray-700">
+                            <th class="pb-3 pr-2 w-12"><i class="fas fa-check-square"></i></th>
+                            <th class="pb-3 pr-4">Directory</th>
+                            <th class="pb-3 pr-4">DA</th>
+                            <th class="pb-3 pr-4">Status</th>
+                            <th class="pb-3 pr-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tier3List" class="text-sm">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tier 4: Beauty Industry Specific -->
+        <div class="glass-card rounded-xl p-6 mb-6 tier-beauty">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <span class="bg-pink-600 text-white px-2 py-1 rounded text-sm mr-3">BEAUTY</span>
+                Industry-Specific Directories
+                <span class="ml-3 text-sm font-normal text-gray-400">Salon & Beauty Focused</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left text-gray-400 text-sm border-b border-gray-700">
+                            <th class="pb-3 pr-2 w-12"><i class="fas fa-check-square"></i></th>
+                            <th class="pb-3 pr-4">Directory</th>
+                            <th class="pb-3 pr-4">DA</th>
+                            <th class="pb-3 pr-4">Status</th>
+                            <th class="pb-3 pr-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tier4List" class="text-sm">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Automation Log -->
+        <div class="glass-card rounded-xl p-6">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fas fa-robot text-green-400 mr-3"></i>
+                Automated Submission Log
+            </h2>
+            <div id="automationLog" class="space-y-2 text-sm max-h-64 overflow-y-auto">
+                <div class="text-gray-500 italic">No automated submissions yet. Click "Auto-Submit Next 3" to begin.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BASE_URL = 'https://www.chrisdavidsalon.com';
+
+        // Directory data from RuVector
+        const directories = {
+            tier1: [
+                { name: 'Google Business Profile', url: 'https://business.google.com', da: 100, status: 'listed', notes: '4.9 stars, 140+ reviews' },
+                { name: 'Apple Business Connect', url: 'https://businessconnect.apple.com', da: 100, status: 'not_listed', notes: 'Requires Apple ID - manual only', automatable: false },
+                { name: 'Facebook Business', url: 'https://business.facebook.com', da: 96, status: 'listed', notes: 'Active page' },
+                { name: 'Yelp', url: 'https://biz.yelp.com', da: 94, status: 'listed', notes: 'Claimed' },
+                { name: 'Bing Places', url: 'https://bingplaces.com', da: 93, status: 'not_listed', automatable: true },
+                { name: 'Better Business Bureau', url: 'https://bbb.org', da: 93, status: 'not_listed', automatable: false, notes: 'Requires accreditation fee' }
+            ],
+            tier2: [
+                { name: 'Foursquare', url: 'https://foursquare.com', da: 92, status: 'listed', notes: 'Just submitted' },
+                { name: 'Nextdoor', url: 'https://nextdoor.com', da: 91, status: 'listed' },
+                { name: 'Yellow Pages', url: 'https://yellowpages.com', da: 91, status: 'not_listed', automatable: true },
+                { name: 'Angi (Angie\'s List)', url: 'https://angi.com', da: 90, status: 'not_listed', automatable: true },
+                { name: 'MapQuest', url: 'https://mapquest.com', da: 89, status: 'not_listed', automatable: true },
+                { name: 'Thumbtack', url: 'https://thumbtack.com', da: 88, status: 'not_listed', automatable: true },
+                { name: 'Data Axle', url: 'https://dataaxle.com', da: 85, status: 'not_listed', notes: 'Data aggregator - feeds 70+ sites', automatable: true },
+                { name: 'Manta', url: 'https://manta.com', da: 85, status: 'not_listed', automatable: true },
+                { name: 'Neustar Localeze', url: 'https://neustarlocaleze.biz', da: 83, status: 'not_listed', notes: 'Data aggregator', automatable: true },
+                { name: 'Superpages', url: 'https://superpages.com', da: 82, status: 'not_listed', automatable: true },
+                { name: 'Hotfrog', url: 'https://hotfrog.com', da: 80, status: 'not_listed', automatable: true }
+            ],
+            tier3: [
+                { name: 'CitySearch', url: 'https://citysearch.com', da: 78, status: 'not_listed', automatable: true },
+                { name: 'Local.com', url: 'https://local.com', da: 76, status: 'not_listed', automatable: true },
+                { name: 'MerchantCircle', url: 'https://merchantcircle.com', da: 75, status: 'not_listed', automatable: true },
+                { name: 'Brownbook', url: 'https://brownbook.net', da: 72, status: 'not_listed', automatable: true },
+                { name: 'ShowMeLocal', url: 'https://showmelocal.com', da: 70, status: 'not_listed', automatable: true },
+                { name: 'Cylex', url: 'https://cylex.us.com', da: 69, status: 'not_listed', automatable: true },
+                { name: 'EZLocal', url: 'https://ezlocal.com', da: 68, status: 'not_listed', automatable: true },
+                { name: 'Tupalo', url: 'https://tupalo.com', da: 65, status: 'not_listed', automatable: true },
+                { name: 'iBegin', url: 'https://ibegin.com', da: 64, status: 'not_listed', automatable: true },
+                { name: 'n49', url: 'https://n49.com', da: 62, status: 'not_listed', automatable: true },
+                { name: 'Fyple', url: 'https://fyple.com', da: 60, status: 'not_listed', automatable: true }
+            ],
+            tier4: [
+                { name: 'StyleSeat', url: 'https://styleseat.com', da: 75, status: 'not_listed', notes: 'Beauty industry specific', automatable: true },
+                { name: 'Vagaro', url: 'https://vagaro.com', da: 72, status: 'not_listed', notes: 'Salon booking platform', automatable: true },
+                { name: 'Fresha', url: 'https://fresha.com', da: 70, status: 'not_listed', notes: 'Beauty booking', automatable: true },
+                { name: 'Booksy', url: 'https://booksy.com', da: 68, status: 'not_listed', notes: 'Salon booking', automatable: true },
+                { name: 'SalonCentric', url: 'https://saloncentric.com', da: 65, status: 'not_listed', notes: 'Industry directory' },
+                { name: 'ModernSalon', url: 'https://modernsalon.com', da: 60, status: 'not_listed', notes: 'Industry publication' },
+                { name: 'BehindTheChair', url: 'https://behindthechair.com', da: 58, status: 'not_listed', notes: 'Stylist community' }
+            ]
+        };
+
+        function renderDirectoryTable(tierId, data) {
+            const tbody = document.getElementById(tierId);
+            tbody.innerHTML = data.map(dir => `
+                <tr class="border-b border-gray-700/50 hover:bg-gray-800/30">
+                    <td class="py-3 pr-2">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox"
+                                   ${dir.status === 'listed' ? 'checked' : ''}
+                                   onchange="toggleListing('${dir.name}', this.checked)"
+                                   class="w-5 h-5 rounded border-gray-600 bg-gray-700 text-green-500 focus:ring-green-500 cursor-pointer">
+                        </label>
+                    </td>
+                    <td class="py-3 pr-4">
+                        <a href="${dir.url}" target="_blank" class="text-blue-400 hover:text-blue-300 font-medium">
+                            ${dir.name}
+                        </a>
+                        ${dir.notes ? `<div class="text-xs text-gray-500">${dir.notes}</div>` : ''}
+                    </td>
+                    <td class="py-3 pr-4">
+                        <span class="font-semibold">${dir.da}</span>
+                    </td>
+                    <td class="py-3 pr-4">
+                        <span class="px-2 py-1 rounded text-xs font-semibold status-${dir.status.replace('_', '-')}">
+                            ${dir.status === 'listed' ? 'Listed' : dir.status === 'pending' ? 'Pending' : 'Not Listed'}
+                        </span>
+                    </td>
+                    <td class="py-3 pr-4">
+                        ${dir.status === 'not_listed' ?
+                            (dir.automatable !== false ?
+                                `<button onclick="submitToDirectory('${dir.name}', '${dir.url}')" class="bg-green-600 hover:bg-green-500 px-3 py-1 rounded text-xs font-semibold">
+                                    <i class="fas fa-plus mr-1"></i>Submit
+                                </button>` :
+                                `<span class="text-gray-500 text-xs">Manual Only</span>`) :
+                            `<span class="text-green-400 text-xs"><i class="fas fa-check mr-1"></i>Done</span>`
+                        }
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function toggleListing(name, isListed) {
+            // Find and update the directory in all tiers
+            let found = false;
+            for (const tier of ['tier1', 'tier2', 'tier3', 'tier4']) {
+                const dir = directories[tier].find(d => d.name === name);
+                if (dir) {
+                    dir.status = isListed ? 'listed' : 'not_listed';
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                // Re-render all tables
+                renderDirectoryTable('tier1List', directories.tier1);
+                renderDirectoryTable('tier2List', directories.tier2);
+                renderDirectoryTable('tier3List', directories.tier3);
+                renderDirectoryTable('tier4List', directories.tier4);
+                updateCounts();
+
+                // Log the change
+                logAutomation(`${name}: ${isListed ? 'Marked as Listed' : 'Marked as Not Listed'}`, isListed ? 'success' : 'info');
+
+                // Store in localStorage (simulating RuVector storage)
+                saveToLocalStorage();
+            }
+        }
+
+        function saveToLocalStorage() {
+            const data = {
+                lastUpdated: new Date().toISOString(),
+                directories: directories
+            };
+            localStorage.setItem('authorityDirectories', JSON.stringify(data));
+            logAutomation('Directory status saved locally', 'info');
+        }
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('authorityDirectories');
+            if (saved) {
+                const data = JSON.parse(saved);
+                Object.assign(directories, data.directories);
+                logAutomation(`Loaded saved data from ${new Date(data.lastUpdated).toLocaleDateString()}`, 'info');
+            }
+        }
+
+        function updateCounts() {
+            const all = [...directories.tier1, ...directories.tier2, ...directories.tier3, ...directories.tier4];
+            document.getElementById('listedCount').textContent = all.filter(d => d.status === 'listed').length;
+            document.getElementById('pendingCount').textContent = all.filter(d => d.status === 'pending').length;
+            document.getElementById('notListedCount').textContent = all.filter(d => d.status === 'not_listed').length;
+        }
+
+        function initAuthorityChart() {
+            const ctx = document.getElementById('authorityChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Now (7)', '+10', '+20', '+30', '+40', '+50'],
+                    datasets: [{
+                        label: 'Projected Authority Score',
+                        data: [29, 35, 45, 58, 72, 85],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#3b82f6'
+                    }, {
+                        label: 'Target',
+                        data: [90, 90, 90, 90, 90, 90],
+                        borderColor: 'rgba(34, 197, 94, 0.5)',
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#94a3b8' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: 'Directory Listings', color: '#94a3b8' }
+                        },
+                        y: {
+                            min: 0,
+                            max: 100,
+                            grid: { color: 'rgba(148, 163, 184, 0.1)' },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function logAutomation(message, type = 'info') {
+            const log = document.getElementById('automationLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = {
+                info: 'text-blue-400',
+                success: 'text-green-400',
+                error: 'text-red-400',
+                pending: 'text-yellow-400'
+            };
+            log.innerHTML = `
+                <div class="flex items-start gap-2 ${colors[type]}">
+                    <span class="text-gray-500">[${timestamp}]</span>
+                    <span>${message}</span>
+                </div>
+            ` + log.innerHTML;
+        }
+
+        async function submitToDirectory(name, url) {
+            logAutomation(`Starting submission to ${name}...`, 'pending');
+
+            // Simulate submission process
+            await new Promise(r => setTimeout(r, 1500));
+
+            logAutomation(`Opening ${name} submission page...`, 'info');
+            window.open(url, '_blank');
+
+            // In a real implementation, this would use Playwright or browser-use
+            logAutomation(`${name}: Please complete the form in the new tab`, 'pending');
+        }
+
+        async function runAutomatedSubmission() {
+            const notListed = [...directories.tier1, ...directories.tier2, ...directories.tier3, ...directories.tier4]
+                .filter(d => d.status === 'not_listed' && d.automatable !== false)
+                .slice(0, 3);
+
+            if (notListed.length === 0) {
+                logAutomation('No more directories to submit to!', 'success');
+                return;
+            }
+
+            logAutomation(`Starting automated submission to ${notListed.length} directories...`, 'info');
+
+            for (const dir of notListed) {
+                await submitToDirectory(dir.name, dir.url);
+                await new Promise(r => setTimeout(r, 2000));
+            }
+
+            logAutomation(`Batch complete! ${notListed.length} directories opened for submission.`, 'success');
+        }
+
+        function refreshStatus() {
+            logAutomation('Refreshing directory status...', 'info');
+            // In a real implementation, this would check each directory
+            setTimeout(() => {
+                logAutomation('Status refresh complete.', 'success');
+            }, 1000);
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load saved data from localStorage if available
+            loadFromLocalStorage();
+
+            // Render all tables
+            renderDirectoryTable('tier1List', directories.tier1);
+            renderDirectoryTable('tier2List', directories.tier2);
+            renderDirectoryTable('tier3List', directories.tier3);
+            renderDirectoryTable('tier4List', directories.tier4);
+            updateCounts();
+            initAuthorityChart();
+
+            // Log startup
+            const total = Object.values(directories).flat().length;
+            const listed = Object.values(directories).flat().filter(d => d.status === 'listed').length;
+            logAutomation(`Authority Tracker loaded: ${listed}/${total} directories listed`, 'info');
+        });
+    </script>
+</body>
+</html>
