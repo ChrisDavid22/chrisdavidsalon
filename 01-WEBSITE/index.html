@@ -11,14 +11,23 @@
     <meta name="googlebot" content="index, follow">
     <meta name="google-site-verification" content="YOUR-VERIFICATION-CODE">
     
-    <!-- Google Analytics -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQDLWZM5NV"></script>
+    <!-- Google Analytics - deferred for better performance -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XQDLWZM5NV');
+      // Load GA after page is interactive (improves LCP/FCP)
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XQDLWZM5NV';
+          document.head.appendChild(s);
+          s.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XQDLWZM5NV');
+          };
+        }, 100);
+      });
     </script>
     
     <!-- Open Graph / Facebook -->
@@ -40,11 +49,19 @@
     <link rel="canonical" href="https://www.chrisdavidsalon.com/">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     
-    <!-- Critical CSS inline for faster loading -->
+    <!-- Critical CSS inline for faster FCP/LCP -->
     <style>
-        body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+        body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #fff; }
         .hero { min-height: 100vh; }
         [x-cloak] { display: none !important; }
+        /* Hero critical styles */
+        #home { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        #home > div:first-child { position: absolute; inset: 0; }
+        #home img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)); }
+        /* Prevent FOUT */
+        .font-script { font-family: 'Dancing Script', cursive; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
     </style>
     
     <!-- Preconnect to external domains -->
