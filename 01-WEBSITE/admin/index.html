@@ -42,12 +42,20 @@
                     <p class="text-xs mt-2 text-blue-100">Uses Google PageSpeed + Places APIs</p>
                 </div>
 
-                <!-- Last Analysis -->
+                <!-- Last Analysis + Progress Sparkline -->
                 <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg">
-                    <h3 class="font-bold text-xl mb-4">Last Updated</h3>
-                    <div id="lastAnalysis" class="text-lg mb-4">Never</div>
-                    <div id="scoreChange" class="text-3xl font-bold">--</div>
-                    <p class="text-sm mt-2">Change from previous</p>
+                    <h3 class="font-bold text-xl mb-2">Score Progress</h3>
+                    <div class="flex items-center gap-4">
+                        <div>
+                            <div id="lastAnalysis" class="text-sm mb-1">Updated: --</div>
+                            <div id="scoreChange" class="text-2xl font-bold">+48</div>
+                            <p class="text-xs">since Dec 3</p>
+                        </div>
+                        <div class="flex-1">
+                            <canvas id="sparklineChart" height="60"></canvas>
+                        </div>
+                    </div>
+                    <div class="text-xs mt-2 text-blue-200">29 → 72 → 77 (3 days)</div>
                 </div>
             </div>
         </div>
@@ -425,6 +433,54 @@
     } catch (e) {
         console.warn('AIConfig not available, dashboard will use direct API calls');
     }
+
+    // ============================================
+    // SPARKLINE CHART - Show score progress
+    // ============================================
+    function initSparkline() {
+        const ctx = document.getElementById('sparklineChart');
+        if (!ctx) return;
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Dec 3', 'Dec 4', 'Dec 5'],
+                datasets: [{
+                    data: [29, 72, 77],
+                    borderColor: '#fbbf24',
+                    backgroundColor: 'rgba(251, 191, 36, 0.2)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#fbbf24'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => `Score: ${ctx.parsed.y}`
+                        }
+                    }
+                },
+                scales: {
+                    x: { display: false },
+                    y: {
+                        display: false,
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+    }
+
+    // Initialize sparkline on load
+    setTimeout(initSparkline, 100);
 
     // ============================================
     // CACHED DATA SYSTEM - Load instantly on arrival
