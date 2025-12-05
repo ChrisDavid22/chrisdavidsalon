@@ -112,18 +112,9 @@
     <!-- Custom CSS - render-blocking for mobile stability (prevents CLS) -->
     <link rel="stylesheet" href="./css/styles.css">
 
-    <!-- Font Awesome - load AFTER page is interactive (not critical for FCP/LCP) -->
-    <script>
-        // Defer Font Awesome until after page is interactive
-        window.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                var link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css';
-                document.head.appendChild(link);
-            }, 50);
-        });
-    </script>
+    <!-- Font Awesome - async loading with preload hint for icons in LCP region -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
     
     <!-- Schema Markup -->
     <script type="application/ld+json">
