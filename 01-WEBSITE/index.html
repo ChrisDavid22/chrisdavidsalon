@@ -570,9 +570,9 @@
                     <a href="#gallery" class="text-gray-700 hover:text-gray-900 transition-colors">Gallery</a>
                     <a href="premiumbrands.html" class="text-gray-700 hover:text-gray-900 transition-colors">Premium Brands</a>
                     <a href="#testimonials" class="text-gray-700 hover:text-gray-900 transition-colors">Reviews</a>
-                    <div class="relative group">
-                        <span class="text-gray-700 hover:text-gray-900 transition-colors flex items-center cursor-pointer">Join Us <i class="fas fa-chevron-down text-xs ml-1"></i></span>
-                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+                    <div class="relative" id="join-us-dropdown">
+                        <button type="button" onclick="toggleJoinUsDropdown()" class="text-gray-700 hover:text-gray-900 transition-colors flex items-center cursor-pointer bg-transparent border-none">Join Us <i class="fas fa-chevron-down text-xs ml-1"></i></button>
+                        <div id="join-us-menu" class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 z-50 border border-gray-100">
                             <a href="careers.html" class="block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 rounded-t-lg">Careers</a>
                             <a href="chair-rental.html" class="block px-4 py-3 text-yellow-600 hover:bg-yellow-50 hover:text-yellow-700 rounded-b-lg font-semibold">Chair Rental - $400/wk</a>
                         </div>
@@ -1469,6 +1469,30 @@
 
     <!-- JavaScript -->
     <script>
+        // =========================================
+        // JOIN US DROPDOWN - Click to toggle
+        // =========================================
+        function toggleJoinUsDropdown() {
+            const menu = document.getElementById('join-us-menu');
+            if (menu.classList.contains('invisible')) {
+                menu.classList.remove('invisible', 'opacity-0');
+                menu.classList.add('visible', 'opacity-100');
+            } else {
+                menu.classList.add('invisible', 'opacity-0');
+                menu.classList.remove('visible', 'opacity-100');
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('join-us-dropdown');
+            const menu = document.getElementById('join-us-menu');
+            if (dropdown && menu && !dropdown.contains(event.target)) {
+                menu.classList.add('invisible', 'opacity-0');
+                menu.classList.remove('visible', 'opacity-100');
+            }
+        });
+
         // =========================================
         // CONVERSION TRACKING - GA4 Events
         // These events are tracked in GA4 for ROI measurement

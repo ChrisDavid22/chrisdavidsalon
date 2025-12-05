@@ -81,15 +81,15 @@ async function getGBPStatus() {
 
   const gbpData = {
     businessName: "Chris David Salon",
-    placeId: "ChIJvwz5m4LO2IgRkN7OKiE_uf8", // From Google Places
+    placeId: "ChIJxTZ8Id3f2IgR2XMxX_zRKSg", // Updated Dec 2024 - verified with Google Places API
     primaryCategory: "Hair salon",
     additionalCategories: [
       "Hair coloring service",
       "Beauty salon"
     ],
     rating: 4.9,
-    reviewCount: 143,
-    address: "403 E Atlantic Ave, Delray Beach, FL 33483",
+    reviewCount: 140,
+    address: "1878C Dr. Andres Way, Delray Beach, FL 33445",
     phone: "(561) 299-0950",
     website: "https://www.chrisdavidsalon.com",
 

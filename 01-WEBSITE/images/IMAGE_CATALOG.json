@@ -1,0 +1,304 @@
+{
+  "catalogVersion": "1.0.0",
+  "generatedAt": "2024-12-04T00:00:00Z",
+  "totalImages": 50,
+  "categories": {
+    "hair_results": 15,
+    "salon_interior": 8,
+    "stylist_action": 4,
+    "branding": 6,
+    "artistic": 2
+  },
+  "images": [
+    {
+      "filename": "gbp/chris-david-salon-001-customer.jpg",
+      "type": "salon_interior",
+      "description": "Panoramic view of salon interior showing colorful geometric wall mural, styling stations, purple LED lighting, modern black furniture",
+      "keywords": [
+        "salon interior", "modern salon", "colorful decor", "geometric mural",
+        "purple lighting", "LED accent", "styling station", "Delray Beach salon",
+        "contemporary design", "artistic salon", "vibrant atmosphere"
+      ],
+      "useCases": ["About page", "Homepage hero", "Chair rental page", "Virtual tour"],
+      "hairColor": null,
+      "showsFace": false
+    },
+    {
+      "filename": "gbp/chris-david-salon-002-customer.jpg",
+      "type": "hair_results",
+      "description": "Happy client with beautiful honey blonde balayage, soft waves, shoulder-length, colorful rainbow wall background",
+      "keywords": [
+        "honey blonde", "balayage", "blonde highlights", "soft waves",
+        "medium length hair", "dimensional color", "sun-kissed blonde",
+        "happy client", "hair transformation", "warm tones"
+      ],
+      "useCases": ["Balayage page", "Color services", "Testimonials", "Before/after gallery"],
+      "hairColor": "honey blonde with highlights",
+      "showsFace": true
+    },
+    {
+      "filename": "gbp/chris-david-salon-003-customer.jpg",
+      "type": "salon_interior",
+      "description": "Salon entrance with 'Inspired By Dreams' neon sign, floral arch, rainbow LED strip, artistic murals, welcoming atmosphere",
+      "keywords": [
+        "salon entrance", "neon sign", "floral arch", "rainbow lights",
+        "inspired by dreams", "artistic decor", "welcoming", "Instagram worthy",
+        "photo backdrop", "creative space", "Delray Beach"
+      ],
+      "useCases": ["Homepage", "Contact page", "Social media", "Google Business Profile"],
+      "hairColor": null,
+      "showsFace": false
+    },
+    {
+      "filename": "gbp/chris-david-salon-004-customer.jpg",
+      "type": "salon_interior",
+      "description": "Color mixing station with black cabinetry, organized product shelves, purple LED under-lighting, professional setup",
+      "keywords": [
+        "color bar", "mixing station", "professional setup", "organized",
+        "hair color products", "salon equipment", "purple lighting",
+        "modern design", "behind the scenes", "professional tools"
+      ],
+      "useCases": ["Chair rental page", "About us", "Premium brands", "Professional services"],
+      "hairColor": null,
+      "showsFace": false
+    },
+    {
+      "filename": "gbp/chris-david-salon-005-customer.jpg",
+      "type": "hair_results",
+      "description": "Before and after pink/rose gold color transformation, bob haircut, color correction showcase",
+      "keywords": [
+        "pink hair", "rose gold", "color correction", "before after",
+        "hair transformation", "bob haircut", "fashion color", "vivid color",
+        "pastel pink", "creative color", "color specialist"
+      ],
+      "useCases": ["Color correction page", "Before/after gallery", "Fashion colors", "Transformations"],
+      "hairColor": "pink/rose gold",
+      "showsFace": false
+    },
+    {
+      "filename": "gbp/chris-david-salon-006-customer.jpg",
+      "type": "salon_interior",
+      "description": "Exterior night shot of salon with colorful geometric mural facade, ring lights set up, 'Hair Art Inspiration' signage",
+      "keywords": [
+        "salon exterior", "night photo", "geometric mural", "colorful facade",
+        "street view", "Delray Beach", "ring lights", "photo shoot setup",
+        "artistic building", "local business", "Atlantic Avenue"
+      ],
+      "useCases": ["Contact page", "Directions", "Social media", "Local SEO"],
+      "hairColor": null,
+      "showsFace": false
+    },
+    {
+      "filename": "gbp/chris-david-salon-007-customer.jpg",
+      "type": "hair_results",
+      "description": "Long dark brunette hair with soft curls, back view against angel wings mural with Chris David Salon branding",
+      "keywords": [
+        "long brunette", "dark hair", "soft curls", "healthy hair",
+        "shiny hair", "angel wings", "branded backdrop", "Instagram photo",
+        "glossy brunette", "voluminous curls", "hair goals"
+      ],
+      "useCases": ["Homepage", "Color services", "Social media", "Brand imagery"],
+      "hairColor": "dark brunette",
+      "showsFace": false
+    },
+    {
+      "filename": "gbp/chris-david-salon-008-customer.jpg",
+      "type": "salon_interior",
+      "description": "Product display area with rainbow diagonal stripe wall, amethyst geode, beverage fridge, hair products on shelves",
+      "keywords": [
+        "product display", "rainbow wall", "amethyst crystal", "retail area",
+        "hair products", "colorful interior", "client amenities", "beverage bar",
+        "unique decor", "crystal energy", "welcoming space"
+      ],
+      "useCases": ["Premium brands page", "About us", "Client experience", "Amenities"],
+      "hairColor": null,
+      "showsFace": false
+    },
+    {
+      "filename": "gbp/chris-david-salon-009-customer.jpg",
+      "type": "hair_results",
+      "description": "Long copper/golden ombre hair with waves, back view, colorful product shelves visible",
+      "keywords": [
+        "copper hair", "golden ombre", "ombre color", "warm tones",
+        "long waves", "fall hair color", "autumn colors", "sun-kissed",
+        "caramel highlights", "dimensional color", "trending color"
+      ],
+      "useCases": ["Balayage page", "Color services", "Seasonal promotions", "Gallery"],
+      "hairColor": "copper/golden ombre",
+      "showsFace": false
+    },
+    {
+      "filename": "gbp/chris-david-salon-010-customer.jpg",
+      "type": "salon_interior",
+      "description": "Interior corner with TV, colorful closet doors, product shelving, transgender pride symbols on door, inclusive space",
+      "keywords": [
+        "inclusive salon", "LGBTQ friendly", "product shelves", "modern interior",
+        "colorful design", "welcoming space", "diverse", "safe space",
+        "pride symbols", "contemporary", "artistic elements"
+      ],
+      "useCases": ["About us", "Diversity page", "Client experience", "Social responsibility"],
+      "hairColor": null,
+      "showsFace": false
+    },
+    {
+      "filename": "hero-salon.webp",
+      "type": "artistic",
+      "description": "Artistic fantasy image of woman with long wavy blonde hair, nature elements, butterflies, ethereal style",
+      "keywords": [
+        "artistic", "fantasy", "blonde waves", "ethereal", "creative",
+        "nature inspired", "butterflies", "dreamy", "feminine",
+        "long hair goals", "inspiration", "beauty art"
+      ],
+      "useCases": ["Homepage hero", "Brand imagery", "Artistic vision"],
+      "hairColor": "blonde",
+      "showsFace": true
+    },
+    {
+      "filename": "chris-david-action.webp",
+      "type": "stylist_action",
+      "description": "Chris David styling client with copper/red hair, using product spray, professional action shot with mirror",
+      "keywords": [
+        "stylist at work", "Chris David", "hair styling", "professional",
+        "copper hair", "redhead client", "salon action", "master stylist",
+        "hair spray", "styling technique", "expert care"
+      ],
+      "useCases": ["About Chris", "Homepage", "Services", "Meet the team"],
+      "hairColor": "copper/red",
+      "showsFace": true
+    },
+    {
+      "filename": "hair-color.webp",
+      "type": "hair_results",
+      "description": "Beautiful sandy blonde balayage with beach waves, smiling client in salon, colorful artwork background",
+      "keywords": [
+        "sandy blonde", "balayage", "beach waves", "dimensional blonde",
+        "happy client", "natural highlights", "sun-kissed", "California blonde",
+        "volume", "healthy hair", "salon results"
+      ],
+      "useCases": ["Color services", "Balayage page", "Homepage", "Testimonials"],
+      "hairColor": "sandy blonde balayage",
+      "showsFace": true
+    },
+    {
+      "filename": "hair-extensions.webp",
+      "type": "hair_results",
+      "description": "Long straight dark hair with bangs and subtle purple/burgundy peek-a-boo highlights, sleek finish",
+      "keywords": [
+        "hair extensions", "long straight hair", "bangs", "brunette",
+        "burgundy highlights", "peek-a-boo color", "sleek hair",
+        "length", "volume", "straight styling"
+      ],
+      "useCases": ["Extensions page", "Length services", "Styling"],
+      "hairColor": "dark brown with burgundy",
+      "showsFace": true
+    },
+    {
+      "filename": "keratin-treatment.webp",
+      "type": "hair_results",
+      "description": "Ultra-smooth straight brunette hair, back view against angel wings mural, Chris David Salon branding visible",
+      "keywords": [
+        "keratin treatment", "smooth hair", "frizz-free", "straight hair",
+        "brunette", "glossy finish", "healthy shine", "treatment results",
+        "angel wings", "branded photo", "sleek results"
+      ],
+      "useCases": ["Keratin page", "Treatment services", "Before/after", "Smoothing"],
+      "hairColor": "brunette",
+      "showsFace": false
+    },
+    {
+      "filename": "signature-service.webp",
+      "type": "hair_results",
+      "description": "Vibrant copper/red color with soft curls, client looking in mirror, elegant result",
+      "keywords": [
+        "copper hair", "red hair", "vivid color", "signature service",
+        "soft curls", "mirror moment", "elegant", "color transformation",
+        "vibrant red", "salon reveal", "stunning results"
+      ],
+      "useCases": ["Signature services", "Color page", "Homepage", "Red hair"],
+      "hairColor": "vibrant copper/red",
+      "showsFace": true
+    },
+    {
+      "filename": "hair-cut.webp",
+      "type": "stylist_action",
+      "description": "Chris David cutting dark brunette hair with precision scissors, artistic mural background, professional technique",
+      "keywords": [
+        "hair cutting", "precision cut", "Chris David", "professional",
+        "scissors", "dark hair", "technique", "master cutter",
+        "salon service", "expert styling", "attention to detail"
+      ],
+      "useCases": ["Haircut services", "About Chris", "Precision cuts"],
+      "hairColor": "dark brunette",
+      "showsFace": false
+    },
+    {
+      "filename": "chris-david-portrait.jpg",
+      "type": "branding",
+      "description": "Professional portrait of Chris David, salon owner and master colorist",
+      "keywords": [
+        "Chris David", "owner", "master colorist", "portrait",
+        "professional", "educator", "stylist", "hair expert",
+        "Davines educator", "industry leader"
+      ],
+      "useCases": ["About page", "Meet the team", "Premium brands", "Bio"],
+      "hairColor": null,
+      "showsFace": true
+    },
+    {
+      "filename": "CDS_Logo.webp",
+      "type": "branding",
+      "description": "Chris David Salon logo",
+      "keywords": ["logo", "branding", "Chris David Salon", "identity"],
+      "useCases": ["Header", "Footer", "Favicon", "Social media"],
+      "hairColor": null,
+      "showsFace": false
+    },
+    {
+      "filename": "davines-logo.png",
+      "type": "branding",
+      "description": "Davines brand logo",
+      "keywords": ["Davines", "brand partner", "logo", "premium products"],
+      "useCases": ["Premium brands page", "Partners section"],
+      "hairColor": null,
+      "showsFace": false
+    },
+    {
+      "filename": "goldwellfixed.webp",
+      "type": "branding",
+      "description": "Goldwell brand logo",
+      "keywords": ["Goldwell", "brand partner", "logo", "professional color"],
+      "useCases": ["Premium brands page", "Partners section"],
+      "hairColor": null,
+      "showsFace": false
+    }
+  ],
+  "keywordIndex": {
+    "balayage": ["gbp/chris-david-salon-002-customer.jpg", "hair-color.webp"],
+    "blonde": ["gbp/chris-david-salon-002-customer.jpg", "hero-salon.webp", "hair-color.webp"],
+    "brunette": ["gbp/chris-david-salon-007-customer.jpg", "keratin-treatment.webp", "hair-cut.webp", "hair-extensions.webp"],
+    "copper": ["gbp/chris-david-salon-009-customer.jpg", "chris-david-action.webp", "signature-service.webp"],
+    "red": ["chris-david-action.webp", "signature-service.webp"],
+    "pink": ["gbp/chris-david-salon-005-customer.jpg"],
+    "salon_interior": ["gbp/chris-david-salon-001-customer.jpg", "gbp/chris-david-salon-003-customer.jpg", "gbp/chris-david-salon-004-customer.jpg", "gbp/chris-david-salon-006-customer.jpg", "gbp/chris-david-salon-008-customer.jpg", "gbp/chris-david-salon-010-customer.jpg"],
+    "keratin": ["keratin-treatment.webp"],
+    "extensions": ["hair-extensions.webp"],
+    "color_correction": ["gbp/chris-david-salon-005-customer.jpg"],
+    "stylist_working": ["chris-david-action.webp", "hair-cut.webp"],
+    "chris_david": ["chris-david-action.webp", "hair-cut.webp", "chris-david-portrait.jpg"],
+    "angel_wings": ["gbp/chris-david-salon-007-customer.jpg", "keratin-treatment.webp"],
+    "before_after": ["gbp/chris-david-salon-005-customer.jpg"],
+    "inclusive": ["gbp/chris-david-salon-010-customer.jpg"]
+  },
+  "recommendedUsage": {
+    "homepage_hero": ["hero-salon.webp", "gbp/chris-david-salon-003-customer.jpg"],
+    "color_services": ["hair-color.webp", "gbp/chris-david-salon-002-customer.jpg", "gbp/chris-david-salon-009-customer.jpg"],
+    "balayage_page": ["hair-color.webp", "gbp/chris-david-salon-002-customer.jpg"],
+    "keratin_page": ["keratin-treatment.webp"],
+    "extensions_page": ["hair-extensions.webp"],
+    "color_correction_page": ["gbp/chris-david-salon-005-customer.jpg"],
+    "about_chris": ["chris-david-action.webp", "hair-cut.webp", "chris-david-portrait.jpg"],
+    "chair_rental": ["gbp/chris-david-salon-001-customer.jpg", "gbp/chris-david-salon-004-customer.jpg"],
+    "social_media": ["gbp/chris-david-salon-003-customer.jpg", "gbp/chris-david-salon-007-customer.jpg"],
+    "testimonials": ["gbp/chris-david-salon-002-customer.jpg", "hair-color.webp", "signature-service.webp"]
+  }
+}
