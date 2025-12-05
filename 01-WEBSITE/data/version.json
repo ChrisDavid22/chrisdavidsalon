@@ -1,7 +1,12 @@
 {
-  "version": "2.30.0",
-  "lastUpdated": "2025-12-05T22:00:00Z",
+  "version": "2.31.0",
+  "lastUpdated": "2025-12-05T23:45:00Z",
   "deployHistory": [
+    {
+      "version": "2.31.0",
+      "date": "2025-12-05T23:45:00Z",
+      "changes": "FONT RESTORATION: Restored Inter font that was causing navigation layout issues. (1) Re-added Inter font to Google Fonts import. (2) Updated font-inter class to use Inter as primary. (3) Fixed critical CSS body font-family."
+    },
     {
       "version": "2.30.0",
       "date": "2025-12-05T22:00:00Z",

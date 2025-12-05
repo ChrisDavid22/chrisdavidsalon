@@ -52,7 +52,7 @@
     <!-- Critical CSS inline for faster FCP/LCP - comprehensive above-the-fold styles -->
     <style>
         *,*::before,*::after{box-sizing:border-box}
-        body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+        body{margin:0;font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
         img,picture,video,canvas,svg{display:block;max-width:100%}
         [x-cloak]{display:none!important}
         /* Hero critical styles */
@@ -104,10 +104,9 @@
     <!-- Preload hero image for faster LCP with high priority -->
     <link rel="preload" as="image" href="./images/hero-salon.webp" type="image/webp" fetchpriority="high">
     
-    <!-- AGGRESSIVE Font Optimization v2.28.0 - System fonts for body, only decorative fonts from Google -->
-    <!-- Saves ~200KB by eliminating Inter font - using native system fonts instead -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"></noscript>
+    <!-- Google Fonts - Inter for body, Playfair for headings, Dancing Script for decorative -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"></noscript>
 
     <!-- Custom CSS - render-blocking for mobile stability (prevents CLS) -->
     <link rel="stylesheet" href="./css/styles.css">
@@ -360,7 +359,7 @@
 
     <style>
         .font-playfair { font-family: 'Playfair Display', serif; }
-        .font-inter { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+        .font-inter { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         .font-script { font-family: 'Brush Script MT', 'Dancing Script', cursive; }
         .gradient-bg { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
         .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 100%); }
