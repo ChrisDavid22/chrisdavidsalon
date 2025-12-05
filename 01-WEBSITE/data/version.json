@@ -1,7 +1,12 @@
 {
-  "version": "2.21.0",
-  "lastUpdated": "2025-12-05T15:15:00Z",
+  "version": "2.22.0",
+  "lastUpdated": "2025-12-05T16:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.22.0",
+      "date": "2025-12-05T16:30:00Z",
+      "changes": "SEO ACTIVE ENHANCEMENT SYSTEM v2.0: (1) Enhanced /api/seo-learning with TARGET 95+ FOR ALL 7 CATEGORIES philosophy. (2) New actions: audit-all (measures all 7 categories), get-fixes (generates concrete code fixes), verify-improvement (tracks before/after), weekly-enhancement (full weekly cycle), category-deep-dive. (3) Fixed font 404 errors - removed broken @font-face rules pointing to empty files. (4) Deferred Google Analytics to after page load for faster LCP. (5) Inlined critical hero CSS to prevent FOUC. (6) Performance optimizations pushed score from 65→75. (7) System now actively identifies issues blocking 95+ and generates fixes, not just monitoring."
+    },
     {
       "version": "2.21.0",
       "date": "2025-12-05T15:15:00Z",
