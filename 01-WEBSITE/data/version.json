@@ -1,7 +1,12 @@
 {
-  "version": "2.27.0",
-  "lastUpdated": "2025-12-05T18:00:00Z",
+  "version": "2.28.0",
+  "lastUpdated": "2025-12-05T18:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.28.0",
+      "date": "2025-12-05T18:30:00Z",
+      "changes": "AGGRESSIVE PERFORMANCE OPTIMIZATION - Target 95: (1) ELIMINATED Inter font (saved ~200KB). Now using native system fonts: system-ui, -apple-system, BlinkMacSystemFont, etc. (2) Reduced Google Fonts from 6 weights to 2 (Playfair:700, Dancing:700). (3) Font Awesome now loads AFTER DOMContentLoaded instead of preload. (4) Expected savings: 300KB+ of render-blocking resources. (5) FCP target: sub-2s, LCP target: sub-2.5s."
+    },
     {
       "version": "2.27.0",
       "date": "2025-12-05T18:00:00Z",

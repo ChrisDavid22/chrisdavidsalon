@@ -52,7 +52,7 @@
     <!-- Critical CSS inline for faster FCP/LCP - comprehensive above-the-fold styles -->
     <style>
         *,*::before,*::after{box-sizing:border-box}
-        body{margin:0;font-family:'Inter',system-ui,-apple-system,sans-serif;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+        body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
         img,picture,video,canvas,svg{display:block;max-width:100%}
         [x-cloak]{display:none!important}
         /* Hero critical styles */
@@ -104,16 +104,26 @@
     <!-- Preload hero image for faster LCP with high priority -->
     <link rel="preload" as="image" href="./images/hero-salon.webp" type="image/webp" fetchpriority="high">
     
-    <!-- Optimized Google Fonts - reduced weights for faster loading -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"></noscript>
+    <!-- AGGRESSIVE Font Optimization v2.28.0 - System fonts for body, only decorative fonts from Google -->
+    <!-- Saves ~200KB by eliminating Inter font - using native system fonts instead -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet"></noscript>
 
     <!-- Custom CSS - render-blocking for mobile stability (prevents CLS) -->
     <link rel="stylesheet" href="./css/styles.css">
 
-    <!-- Font Awesome - defer loading for better performance -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
+    <!-- Font Awesome - load AFTER page is interactive (not critical for FCP/LCP) -->
+    <script>
+        // Defer Font Awesome until after page is interactive
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css';
+                document.head.appendChild(link);
+            }, 50);
+        });
+    </script>
     
     <!-- Schema Markup -->
     <script type="application/ld+json">
