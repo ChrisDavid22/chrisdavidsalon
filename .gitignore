@@ -21,3 +21,5 @@ Thumbs.db
 tmp/
 temp/
 .env.local
+.vercel
+.env*.local
