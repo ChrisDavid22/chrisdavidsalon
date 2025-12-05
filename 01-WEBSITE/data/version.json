@@ -1,7 +1,12 @@
 {
-  "version": "2.20.0",
-  "lastUpdated": "2025-12-04T09:00:00Z",
+  "version": "2.21.0",
+  "lastUpdated": "2025-12-05T15:15:00Z",
   "deployHistory": [
+    {
+      "version": "2.21.0",
+      "date": "2025-12-05T15:15:00Z",
+      "changes": "MAJOR PERFORMANCE OPTIMIZATION: (1) Custom Tailwind CSS build - 53KB vs 2.9MB CDN (98% reduction). (2) Boulevard booking widget lazy-loaded - only loads when user clicks Book Now. (3) Google Fonts with preload pattern for faster LCP. (4) Font Awesome deferred loading. (5) NEW image gallery carousel with 10 curated GBP photos using responsive srcset/sizes for mobile/tablet/desktop. (6) All gallery images use WebP format with lazy loading. (7) Lightbox enhanced to show desktop-quality images. (8) Scroll-snap carousel with swipe support. (9) 116 GBP images optimized into 580 versions (hero/desktop/tablet/mobile/thumbnail). (10) SVG icons CSS created (22KB) as Font Awesome alternative."
+    },
     {
       "version": "2.20.0",
       "date": "2025-12-04T09:00:00Z",

@@ -1,0 +1,658 @@
+{
+  "catalogVersion": "1.0.0",
+  "generatedAt": "2024-12-05",
+  "totalImages": 97,
+  "categories": {
+    "salon-interior": {
+      "description": "Interior shots of Chris David Salon showing the space, styling stations, and ambiance",
+      "suggestedUse": ["Homepage hero", "About page", "Chair rental page", "Virtual tour"],
+      "images": [
+        {
+          "filename": "gbp-001.jpg",
+          "description": "Wide panoramic view of salon interior - main floor with styling chairs, colorful art, massage chairs, rainbow accent lighting",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "landscape",
+          "highlights": ["Chris David sign visible", "Multiple styling stations", "Massage chairs", "Colorful wall art"],
+          "bestFor": ["Homepage hero", "About page", "Chair rental"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-003.jpg",
+          "description": "Inspired By Dreams entrance arch with floral greenery, colorful artwork, shampoo area",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Floral arch entrance", "Colorful neon lighting", "Tiger artwork"],
+          "bestFor": ["Services page", "Experience section"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-004.jpg",
+          "description": "Color mixing station with product shelves, black counter, purple underglow lighting",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "landscape",
+          "highlights": ["Professional color station", "Davines products visible", "Modern design"],
+          "bestFor": ["Services page", "Color services"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-008.jpg",
+          "description": "Retail and waiting area with rainbow wall, product shelves, amethyst geode, beverage fridge",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "landscape",
+          "highlights": ["Rainbow geometric wall", "Product display", "Luxury touches"],
+          "bestFor": ["Products page", "About page"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-010.jpg",
+          "description": "Product shelves corner with TV, colorful panels, transgender-inclusive symbol door",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Inclusive symbolism", "Product display", "Colorful accents"],
+          "bestFor": ["About page", "Diversity section"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-011.jpg",
+          "description": "Full salon panorama - identical to gbp-001 showing complete interior",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "landscape",
+          "highlights": ["Complete salon view", "All styling stations"],
+          "bestFor": ["Homepage hero alternate"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-022.jpg",
+          "description": "Salon interior from different angle - styling stations, art, massage chairs",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "landscape",
+          "highlights": ["Different perspective", "Art focus"],
+          "bestFor": ["Gallery", "Virtual tour"],
+          "status": "unused"
+        },
+        {
+          "filename": "Waiting & Retail-M.jpg",
+          "description": "Waiting area with clients, rainbow wall, product shelves",
+          "quality": "medium",
+          "resolution": "medium",
+          "orientation": "landscape",
+          "highlights": ["Real clients", "Welcoming atmosphere"],
+          "bestFor": ["Experience section"],
+          "status": "unused"
+        }
+      ]
+    },
+    "salon-exterior": {
+      "description": "Exterior shots of the salon building and storefront",
+      "suggestedUse": ["Contact page", "Location section", "Google Business Profile"],
+      "images": [
+        {
+          "filename": "gbp-006.jpg",
+          "description": "Night shot of colorful mosaic exterior with ring lights set up for photoshoot",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "landscape",
+          "highlights": ["Colorful geometric mural", "Professional lighting setup", "Clear signage"],
+          "bestFor": ["Contact page", "Location section"],
+          "status": "unused"
+        },
+        {
+          "filename": "PSX_20220914_111854.jpg",
+          "description": "Daytime storefront with colorful mural, plants, clear signage",
+          "quality": "high",
+          "resolution": "medium",
+          "orientation": "landscape",
+          "highlights": ["Daytime lighting", "Street view", "Address visible"],
+          "bestFor": ["Contact page", "Directions"],
+          "status": "unused"
+        }
+      ]
+    },
+    "team-staff": {
+      "description": "Photos of Chris David and salon team members",
+      "suggestedUse": ["About page", "Team section", "Meet the stylists"],
+      "images": [
+        {
+          "filename": "gbp-002.jpg",
+          "description": "Female stylist (woman with tattoo sleeve) smiling in front of rainbow wall - professional headshot style",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Professional portrait", "Colorful background", "Friendly expression"],
+          "bestFor": ["Team page", "About section"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-012.jpg",
+          "description": "Same female stylist taking selfie with ring light - shows salon personality",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Ring light visible", "Social media vibe"],
+          "bestFor": ["Social media", "About page"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-014.jpg",
+          "description": "Same stylist with rainbow backdrop - another professional portrait angle",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Clean professional shot"],
+          "bestFor": ["Team page headshot"],
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-023.jpg",
+          "description": "Same stylist selfie through ring light - casual fun shot",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Personality shot", "Behind the scenes feel"],
+          "bestFor": ["Social media", "Culture section"],
+          "status": "unused"
+        },
+        {
+          "filename": "Group shot Chris David.jpg",
+          "description": "Team photo at industry event - 5 team members including Chris David (blonde man)",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "landscape",
+          "highlights": ["Full team", "Professional event"],
+          "bestFor": ["About page", "Team section"],
+          "status": "unused"
+        },
+        {
+          "filename": "Tess and I.jpg",
+          "description": "Chris David with red-haired woman at hair color event",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Industry event", "Professional networking"],
+          "bestFor": ["About Chris section"],
+          "status": "unused"
+        },
+        {
+          "filename": "SusanPhotoshoot.JPG",
+          "description": "Chris David styling client's hair - action shot showing expertise",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "landscape",
+          "highlights": ["Action shot", "Hands-on expertise"],
+          "bestFor": ["About page", "Services"],
+          "status": "unused"
+        },
+        {
+          "filename": "JUlissa Mens Style Action Shot-M.jpg",
+          "description": "Stylist cutting men's hair with colorful hair herself - shows diversity of services",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "landscape",
+          "highlights": ["Men's haircuts", "Diverse clientele"],
+          "bestFor": ["Men's services page"],
+          "status": "unused"
+        },
+        {
+          "filename": "Chris David Color Consultaion Retail Action-M.jpg",
+          "description": "Chris David consulting with client at retail counter",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "landscape",
+          "highlights": ["Consultation process", "Client interaction"],
+          "bestFor": ["Services page", "Consultation section"],
+          "status": "unused"
+        }
+      ]
+    },
+    "hair-transformations-before-after": {
+      "description": "Before and after transformation photos showing color correction and styling work",
+      "suggestedUse": ["Color correction page", "Services page", "Gallery", "Social proof"],
+      "images": [
+        {
+          "filename": "gbp-005.jpg",
+          "description": "Pink/rose gold bob transformation - multiple angles showing before faded blonde to vibrant pink",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "square",
+          "highlights": ["Fashion color", "Bob cut", "Dramatic transformation"],
+          "bestFor": ["Fashion color page", "Gallery"],
+          "hairType": "pink-rose-gold",
+          "service": "fashion-color",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-016.jpg",
+          "description": "Blonde color correction - before/after showing grown-out roots to seamless blonde",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "square",
+          "highlights": ["Color correction", "Root touch-up", "Blonde expertise"],
+          "bestFor": ["Color correction page", "Blonde services"],
+          "hairType": "blonde",
+          "service": "color-correction",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-017.jpg",
+          "description": "Brunette color correction - before faded/brassy to rich dimensional brown",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "square",
+          "highlights": ["Brunette color", "Dimension added", "Layered cut"],
+          "bestFor": ["Color correction page", "Brunette services"],
+          "hairType": "brunette",
+          "service": "color-correction",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-018.jpg",
+          "description": "4-panel transformation - bob cut with highlights, shows process from consultation to final",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "square",
+          "highlights": ["Full process shown", "Wine glass = luxury experience", "Happy client"],
+          "bestFor": ["Services page", "Client experience"],
+          "hairType": "brunette-highlights",
+          "service": "cut-and-color",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-020.jpg",
+          "description": "4-panel blonde transformation - before/after from grown out to fresh blonde",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "square",
+          "highlights": ["Complete transformation", "Multiple angles"],
+          "bestFor": ["Gallery", "Blonde services"],
+          "hairType": "blonde",
+          "service": "full-color",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-021.jpg",
+          "description": "Frizzy to smooth transformation - dramatic before/after showing smoothing treatment",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "square",
+          "highlights": ["Keratin/smoothing treatment", "Dramatic difference"],
+          "bestFor": ["Keratin page", "Smoothing treatments"],
+          "hairType": "strawberry-blonde",
+          "service": "keratin-treatment",
+          "status": "unused"
+        },
+        {
+          "filename": "Platinum Color Correction Before After.jpg",
+          "description": "Platinum blonde transformation - yellow/brassy to cool platinum",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Platinum expertise", "Toning correction"],
+          "bestFor": ["Color correction page", "Platinum services"],
+          "hairType": "platinum",
+          "service": "color-correction",
+          "status": "unused"
+        },
+        {
+          "filename": "Red Before After Transformation.jpg",
+          "description": "Red hair transformation - shows coloring process and final vibrant red result",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Red color process", "Vivid result"],
+          "bestFor": ["Red hair services", "Color page"],
+          "hairType": "red",
+          "service": "fashion-color",
+          "status": "unused"
+        },
+        {
+          "filename": "Before After Brunette.jpg",
+          "description": "Brunette curl transformation - frizzy before to polished curls after",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Curl styling", "Frizz control"],
+          "bestFor": ["Styling services"],
+          "hairType": "brunette-curly",
+          "service": "styling",
+          "status": "unused"
+        },
+        {
+          "filename": "2022-02-22.jpg",
+          "description": "Pink candy color bob - product box shown with vibrant pink result",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "square",
+          "highlights": ["Fashion color", "Product showcase"],
+          "bestFor": ["Fashion color page"],
+          "hairType": "pink",
+          "service": "fashion-color",
+          "status": "unused"
+        }
+      ]
+    },
+    "hair-results-portfolio": {
+      "description": "Finished hair results showcasing various styles, colors, and cuts",
+      "suggestedUse": ["Services pages", "Gallery", "Portfolio", "Social media"],
+      "images": [
+        {
+          "filename": "gbp-007.jpg",
+          "description": "Long dark wavy hair with Chris David Salon wings mural backdrop - branded shot",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "square",
+          "highlights": ["Branded backdrop", "Long dark hair", "Instagrammable"],
+          "bestFor": ["Homepage", "Social media", "Gallery"],
+          "hairType": "dark-long-wavy",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-009.jpg",
+          "description": "Copper/auburn ombre long waves - rich warm tones fading to golden ends",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Ombre technique", "Warm autumn colors"],
+          "bestFor": ["Balayage page", "Color services"],
+          "hairType": "copper-ombre",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-013.jpg",
+          "description": "Platinum blonde mature client - elegant layered cut with movement",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Mature client", "Elegant styling", "Platinum expertise"],
+          "bestFor": ["Gallery", "Shows diverse clientele age"],
+          "hairType": "platinum-mature",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-015.jpg",
+          "description": "Brunette bob with highlights - young client, sleek modern cut",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Modern bob", "Face-framing highlights"],
+          "bestFor": ["Haircuts page", "Bob styles"],
+          "hairType": "brunette-bob-highlights",
+          "status": "unused"
+        },
+        {
+          "filename": "gbp-019.jpg",
+          "description": "Long straight blonde - young client with smooth blowout",
+          "quality": "high",
+          "resolution": "large",
+          "orientation": "portrait",
+          "highlights": ["Blowout result", "Healthy shine"],
+          "bestFor": ["Blowout services", "Gallery"],
+          "hairType": "blonde-straight-long",
+          "status": "unused"
+        },
+        {
+          "filename": "Balayage brunette.jpg",
+          "description": "Brunette balayage - beautiful caramel highlights, curled ends",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Classic balayage", "Natural look"],
+          "bestFor": ["Balayage page"],
+          "hairType": "brunette-balayage",
+          "status": "unused"
+        },
+        {
+          "filename": "Color Correction Brunette Dimension.jpg",
+          "description": "Dimensional brunette - rich chocolate tones with dimension",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Dimension technique", "Rich color"],
+          "bestFor": ["Color services"],
+          "hairType": "brunette-dimensional",
+          "status": "unused"
+        },
+        {
+          "filename": "Copper After Shot .jpg",
+          "description": "Vibrant copper red - bold fashion color, tropical backdrop",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "square",
+          "highlights": ["Vibrant copper", "Fashion forward"],
+          "bestFor": ["Fashion color", "Red services"],
+          "hairType": "copper-red",
+          "status": "unused"
+        },
+        {
+          "filename": "Maria Platinum Ice Color Correction.jpg",
+          "description": "Platinum ice blonde - long waves, very light cool blonde",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Ice blonde expertise", "Long hair"],
+          "bestFor": ["Platinum services", "Color correction"],
+          "hairType": "platinum-ice",
+          "status": "unused"
+        },
+        {
+          "filename": "AJ Platinum Sliver Blond .jpg",
+          "description": "Platinum silver blonde with bangs - edgy fashion look",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Silver toning", "Fashion bangs"],
+          "bestFor": ["Fashion color", "Platinum page"],
+          "hairType": "platinum-silver",
+          "status": "unused"
+        },
+        {
+          "filename": "Morgan Blond After 1.jpg",
+          "description": "Natural blonde - long straight healthy blonde",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Natural looking blonde", "Healthy shine"],
+          "bestFor": ["Blonde services"],
+          "hairType": "natural-blonde",
+          "status": "unused"
+        },
+        {
+          "filename": "Holly Edited-7.jpg",
+          "description": "Long blonde beachy waves - outdoor photoshoot, professional quality",
+          "quality": "high",
+          "resolution": "small",
+          "orientation": "landscape",
+          "highlights": ["Professional photoshoot", "Beachy waves"],
+          "bestFor": ["Homepage", "Gallery hero"],
+          "hairType": "blonde-beachy",
+          "status": "unused"
+        },
+        {
+          "filename": "Natural brown After.jpg",
+          "description": "Natural brunette - long healthy brown hair, outdoor shot",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Natural beauty", "Healthy hair"],
+          "bestFor": ["Gallery"],
+          "hairType": "natural-brown",
+          "status": "unused"
+        },
+        {
+          "filename": "Classic Medium Bob 1.jpg",
+          "description": "Classic medium bob - brunette with highlights, back view",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Classic bob", "Versatile cut"],
+          "bestFor": ["Haircuts page"],
+          "hairType": "bob-brunette",
+          "status": "unused"
+        },
+        {
+          "filename": "Rikki-1.jpg",
+          "description": "Vibrant red/burgundy - beautiful deep red, professional portrait",
+          "quality": "high",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Striking red color", "Professional shot"],
+          "bestFor": ["Red hair page", "Gallery hero"],
+          "hairType": "burgundy-red",
+          "status": "unused"
+        },
+        {
+          "filename": "H14.NEF.jpg",
+          "description": "Long blonde balayage - back view, outdoor, beautiful natural blonde",
+          "quality": "high",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Professional photoshoot quality", "Natural balayage"],
+          "bestFor": ["Balayage page hero", "Gallery"],
+          "hairType": "blonde-balayage",
+          "status": "unused"
+        },
+        {
+          "filename": "Alize After 1.jpg",
+          "description": "Sleek brunette lob - side profile, elegant straight style",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Lob cut", "Sleek styling"],
+          "bestFor": ["Haircuts page"],
+          "hairType": "brunette-lob",
+          "status": "unused"
+        },
+        {
+          "filename": "unnamed-20.jpg",
+          "description": "Rich auburn/burgundy - mature client, beautiful deep red",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Mature client", "Rich color"],
+          "bestFor": ["Gallery", "Shows age diversity"],
+          "hairType": "auburn-mature",
+          "status": "unused"
+        }
+      ]
+    },
+    "special-occasion-wedding": {
+      "description": "Wedding and special occasion hairstyles",
+      "suggestedUse": ["Wedding page", "Special occasions", "Bridal services"],
+      "images": [
+        {
+          "filename": "After Fantasy.jpg",
+          "description": "Bohemian braid with flower - romantic outdoor wedding style",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Bridal style", "Flower accessory", "Boho vibe"],
+          "bestFor": ["Wedding page", "Bridal services"],
+          "status": "unused"
+        },
+        {
+          "filename": "unnamed-10.jpg",
+          "description": "Elegant updo with curls - formal occasion style",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Updo", "Formal styling"],
+          "bestFor": ["Special occasions page"],
+          "status": "unused"
+        },
+        {
+          "filename": "Photo Sep 09, 5 17 53 PM.jpg",
+          "description": "Client posing with Chris David Salon wings mural - fun photo opp",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Branded backdrop", "Social moment"],
+          "bestFor": ["Social media", "Experience section"],
+          "status": "unused"
+        }
+      ]
+    },
+    "products-brands": {
+      "description": "Product shots and brand partnerships",
+      "suggestedUse": ["Products page", "Premium brands page", "Services"],
+      "images": [
+        {
+          "filename": "Davines Product Promo.jpg",
+          "description": "Davines sustainable haircare display - full product range",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "landscape",
+          "highlights": ["Davines partnership", "Sustainable products"],
+          "bestFor": ["Premium brands page", "Davines section"],
+          "status": "unused"
+        },
+        {
+          "filename": "Escape Davines Color Image.jpg",
+          "description": "Davines color products with mixing bowls - professional setup",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "landscape",
+          "highlights": ["Color products", "Professional tools"],
+          "bestFor": ["Color services page"],
+          "status": "unused"
+        },
+        {
+          "filename": "unnamed-24.jpg",
+          "description": "Cezanne keratin treatment products - colorful flat lay",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "landscape",
+          "highlights": ["Cezanne partnership", "Keratin products"],
+          "bestFor": ["Keratin page", "Premium brands"],
+          "status": "unused"
+        }
+      ]
+    },
+    "process-education": {
+      "description": "Behind the scenes process shots showing techniques",
+      "suggestedUse": ["Education section", "About expertise", "Process explanation"],
+      "images": [
+        {
+          "filename": "unnamed-15.jpg",
+          "description": "Chris David painting hair extensions - shows hand-painted technique",
+          "quality": "medium",
+          "resolution": "small",
+          "orientation": "portrait",
+          "highlights": ["Hand-painting technique", "Extensions expertise"],
+          "bestFor": ["Extensions page", "Education section"],
+          "status": "unused"
+        }
+      ]
+    }
+  },
+  "usageTracking": {
+    "currentlyUsed": [],
+    "unused": "all",
+    "recommendedPriority": [
+      {"filename": "gbp-001.jpg", "reason": "Best salon interior panorama for homepage hero"},
+      {"filename": "gbp-007.jpg", "reason": "Branded wings backdrop - perfect for social/homepage"},
+      {"filename": "gbp-006.jpg", "reason": "Stunning exterior for contact/location page"},
+      {"filename": "gbp-002.jpg", "reason": "Professional team headshot"},
+      {"filename": "gbp-021.jpg", "reason": "Dramatic keratin before/after"},
+      {"filename": "Rikki-1.jpg", "reason": "Striking red hair portfolio shot"},
+      {"filename": "Holly Edited-7.jpg", "reason": "Professional blonde photoshoot quality"},
+      {"filename": "gbp-018.jpg", "reason": "Shows full client experience with wine"},
+      {"filename": "Davines Product Promo.jpg", "reason": "Premium brands showcase"}
+    ]
+  },
+  "optimizedVersions": {
+    "note": "Run the optimization script to generate these versions",
+    "sizes": {
+      "hero": {"width": 1920, "height": 1080, "format": "webp", "quality": 85},
+      "desktop": {"width": 1200, "height": 800, "format": "webp", "quality": 80},
+      "tablet": {"width": 768, "height": 512, "format": "webp", "quality": 80},
+      "mobile": {"width": 480, "height": 320, "format": "webp", "quality": 75},
+      "thumbnail": {"width": 150, "height": 150, "format": "webp", "quality": 70}
+    }
+  }
+}

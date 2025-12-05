@@ -55,19 +55,16 @@
     <!-- Preload hero image for faster LCP -->
     <link rel="preload" as="image" href="./images/hero-salon.webp" type="image/webp">
     
-    <!-- Load fonts with display swap for better performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Defer non-critical CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
-    
-    <!-- Fallback for browsers without JS -->
-    <noscript>
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    </noscript>
+    <!-- Optimized Google Fonts with display swap -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Optimized Custom CSS (Tailwind purged: 53KB vs 2.9MB CDN) -->
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <!-- Font Awesome - defer loading for better performance -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"></noscript>
     
     <!-- Schema Markup -->
     <script type="application/ld+json">
@@ -284,26 +281,32 @@
     }
     </script>
 
-    <!-- Boulevard Booking Widget -->
+    <!-- Boulevard Booking Widget - Lazy Loaded for Performance -->
     <script>
-        (function (a) {
-            var b = {
-                businessId: '66067441-2b07-4081-bb41-9877e9e4c25b',
+        // Boulevard lazy loading - only loads when user clicks Book Now
+        var boulevardLoaded = false;
+        var boulevardConfig = {
+            businessId: '66067441-2b07-4081-bb41-9877e9e4c25b'
+        };
+
+        function loadBoulevard(callback) {
+            if (boulevardLoaded) {
+                if (callback) callback();
+                return;
+            }
+
+            var script = document.createElement('script');
+            script.src = 'https://static.joinboulevard.com/injector.min.js';
+            script.async = true;
+            script.onload = function() {
+                blvd.init(boulevardConfig);
+                boulevardLoaded = true;
+                if (callback) callback();
             };
-        
-            var c = a.createElement('script');
-            var d = a.querySelector('script');
-        
-            c.src = 'https://static.joinboulevard.com/injector.min.js';
-            c.async = true;
-            c.onload = function () {
-                blvd.init(b);
-            };
-        
-            d.parentNode.insertBefore(c, d);
-        })(document);
+            document.head.appendChild(script);
+        }
     </script>
-    <!-- End Boulevard Self-Booking overlay -->
+    <!-- End Boulevard Self-Booking overlay (lazy loaded) -->
 
     <style>
         .font-playfair { font-family: 'Playfair Display', serif; }
@@ -341,7 +344,22 @@
         .gallery-item:hover img {
             transform: scale(1.1);
         }
-        
+
+        /* Gallery Carousel - High Performance CSS */
+        .gallery-carousel {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+        .gallery-carousel::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+        .gallery-slide {
+            scroll-snap-align: start;
+        }
+        .scroll-snap-align-start {
+            scroll-snap-align: start;
+        }
+
         /* Booking Modal Styles */
         .booking-modal {
             display: none;
@@ -932,39 +950,177 @@
                 </p>
             </div>
 
+            <!-- Auto-scrolling Image Carousel -->
+            <div class="relative overflow-hidden mb-12">
+                <!-- Carousel Track -->
+                <div class="gallery-carousel flex gap-4 overflow-x-auto scroll-smooth pb-4" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+                    <!-- Salon Interior -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-001-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-001-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-001-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-001-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Chris David Salon interior with styling stations and colorful art"
+                             loading="eager"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Salon Interior</p>
+                    </div>
 
-            <!-- Direct Link to Google Business Profile Photos -->
-            <div class="bg-white rounded-lg shadow-lg p-12 text-center">
-                <div class="mb-8">
-                    <i class="fab fa-google text-7xl text-yellow-600 mb-6"></i>
-                    <h3 class="text-3xl font-bold mb-4">View Our Complete Portfolio</h3>
-                    <p class="text-lg text-gray-600 mb-2">
-                        Our entire gallery of 211+ photos is hosted on Google Business Profile
-                    </p>
-                    <p class="text-gray-600 mb-8">
-                        This ensures you see verified, authentic work from Chris David Salon
-                    </p>
+                    <!-- Pink/Rose Gold Transformation -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-005-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-005-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-005-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-005-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Pink rose gold bob transformation - before and after"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Rose Gold Transformation</p>
+                    </div>
+
+                    <!-- Exterior Night Shot -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-006-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-006-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-006-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-006-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Chris David Salon colorful mosaic exterior at night"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Salon Exterior</p>
+                    </div>
+
+                    <!-- Balayage Result -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-007-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-007-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-007-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-007-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Beautiful balayage hair coloring result"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Balayage</p>
+                    </div>
+
+                    <!-- Wedding Hair -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-012-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-012-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-012-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-012-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Bridal hair styling for wedding day"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Bridal Styling</p>
+                    </div>
+
+                    <!-- Vivid Color -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-013-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-013-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-013-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-013-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Vibrant fashion hair color"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Fashion Color</p>
+                    </div>
+
+                    <!-- Color Correction Transformation -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-018-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-018-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-018-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-018-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Color correction before and after transformation"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Color Correction</p>
+                    </div>
+
+                    <!-- Blonde Transformation -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-020-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-020-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-020-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-020-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Blonde hair transformation before and after"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Blonde Specialist</p>
+                    </div>
+
+                    <!-- Smoothing Treatment -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-021-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-021-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-021-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-021-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Frizzy to smooth keratin treatment transformation"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Smoothing Treatment</p>
+                    </div>
+
+                    <!-- Extensions -->
+                    <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
+                        <img src="./images/gbp/optimized/mobile/gbp-017-mobile.webp"
+                             srcset="./images/gbp/optimized/mobile/gbp-017-mobile.webp 480w,
+                                     ./images/gbp/optimized/tablet/gbp-017-tablet.webp 768w,
+                                     ./images/gbp/optimized/desktop/gbp-017-desktop.webp 1200w"
+                             sizes="(max-width: 640px) 288px, (max-width: 768px) 320px, 384px"
+                             alt="Hair extensions application result"
+                             loading="lazy"
+                             class="w-full h-56 md:h-64 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                             onclick="openLightbox(this)">
+                        <p class="mt-2 text-sm text-gray-600 text-center">Extensions</p>
+                    </div>
                 </div>
-                
-                <a href="https://www.google.com/maps/place/Chris+David+Salon/@26.4614726,-80.0743227,17z/data=!3m1!4b1!4m6!3m5!1s0x88d8dfdd217c36c5:0x2829d1fc5f3173d9!8m2!3d26.4614726!4d-80.0721478!16s%2Fg%2F11c0w5wkdp?entry=ttu" 
-                   target="_blank" 
+
+                <!-- Scroll indicators -->
+                <div class="flex justify-center gap-2 mt-4">
+                    <span class="text-sm text-gray-500"><i class="fas fa-arrow-left mr-1"></i> Swipe for more <i class="fas fa-arrow-right ml-1"></i></span>
+                </div>
+            </div>
+
+            <!-- View More on Google -->
+            <div class="text-center">
+                <a href="https://www.google.com/maps/place/Chris+David+Salon/@26.4614726,-80.0743227,17z/data=!3m1!4b1!4m6!3m5!1s0x88d8dfdd217c36c5:0x2829d1fc5f3173d9!8m2!3d26.4614726!4d-80.0721478!16s%2Fg%2F11c0w5wkdp?entry=ttu"
+                   target="_blank"
                    rel="noopener"
-                   class="inline-block bg-yellow-600 text-white px-10 py-5 rounded-lg text-xl font-bold hover:bg-yellow-700 transition-all transform hover:scale-105 shadow-lg">
-                    <i class="fas fa-images mr-3"></i>
-                    View Gallery on Google Business Profile
-                    <span class="block text-sm font-normal mt-1">211+ Photos of Actual Work</span>
+                   class="inline-flex items-center bg-yellow-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-700 transition-all transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-google mr-3"></i>
+                    View All 211+ Photos on Google
                 </a>
-                
-                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
-                    <div class="flex items-center justify-center">
+
+                <div class="mt-6 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
+                    <div class="flex items-center">
                         <i class="fas fa-check-circle text-green-500 mr-2"></i>
                         Verified by Google
                     </div>
-                    <div class="flex items-center justify-center">
+                    <div class="flex items-center">
                         <i class="fas fa-star text-yellow-500 mr-2"></i>
                         140+ Five-Star Reviews
                     </div>
-                    <div class="flex items-center justify-center">
+                    <div class="flex items-center">
                         <i class="fas fa-camera text-blue-500 mr-2"></i>
                         Real Client Transformations
                     </div>
@@ -1557,26 +1713,27 @@
             }
         }
 
-        // Booking Modal Functions - Using Boulevard
+        // Booking Modal Functions - Using Boulevard (Lazy Loaded)
         function openBookingModal() {
             // Track booking button click with new conversion tracking
             trackBookingClick('Modal Button');
 
-            // Boulevard widget - use the documented method from Boulevard support
+            // Boulevard widget - lazy load on first click for better performance
             if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
-                // This is the correct method according to Boulevard documentation
                 blvd.openBookingWidget();
             } else {
-                // Try again after a short delay if Boulevard isn't loaded yet
-                setTimeout(function() {
-                    if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
-                        blvd.openBookingWidget();
-                    } else {
-                        // Final fallback - open Boulevard customer booking URL in new window
-                        // Using the public widget URL, not the dashboard URL
-                        window.open('https://go.boulevard.io/widget/businesses/66067441-2b07-4081-bb41-9877e9e4c25b', '_blank');
-                    }
-                }, 1000);
+                // Load Boulevard script if not already loaded, then open widget
+                loadBoulevard(function() {
+                    // Wait a moment for Boulevard to fully initialize
+                    setTimeout(function() {
+                        if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
+                            blvd.openBookingWidget();
+                        } else {
+                            // Fallback - open Boulevard booking URL directly
+                            window.open('https://go.boulevard.io/widget/businesses/66067441-2b07-4081-bb41-9877e9e4c25b', '_blank');
+                        }
+                    }, 300);
+                });
             }
         }
 
@@ -1615,10 +1772,18 @@
         // Gallery now links directly to Google Business Profile
         
         // Lightbox functionality
-        function openLightbox(src) {
+        function openLightbox(element) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightboxImage');
-            lightboxImage.src = src;
+            // If passed an element, get the desktop version for full-size view
+            if (typeof element === 'object' && element.src) {
+                // Get the desktop version for better quality in lightbox
+                lightboxImage.src = element.src.replace('-mobile.webp', '-desktop.webp').replace('-tablet.webp', '-desktop.webp');
+                lightboxImage.alt = element.alt;
+            } else {
+                // Backwards compatible - if passed a string
+                lightboxImage.src = element;
+            }
             lightbox.classList.remove('hidden');
             lightbox.classList.add('flex');
             document.body.style.overflow = 'hidden';
