@@ -49,19 +49,48 @@
     <link rel="canonical" href="https://www.chrisdavidsalon.com/">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     
-    <!-- Critical CSS inline for faster FCP/LCP -->
+    <!-- Critical CSS inline for faster FCP/LCP - comprehensive above-the-fold styles -->
     <style>
-        body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #fff; }
-        .hero { min-height: 100vh; }
-        [x-cloak] { display: none !important; }
+        *,*::before,*::after{box-sizing:border-box}
+        body{margin:0;font-family:'Inter',system-ui,-apple-system,sans-serif;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+        img,picture,video,canvas,svg{display:block;max-width:100%}
+        [x-cloak]{display:none!important}
         /* Hero critical styles */
-        #home { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        #home > div:first-child { position: absolute; inset: 0; }
-        #home img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)); }
-        /* Prevent FOUT */
-        .font-script { font-family: 'Dancing Script', cursive; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
+        #home{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        #home>div:first-child{position:absolute;inset:0}
+        #home img{width:100%;height:100%;object-fit:cover}
+        .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.7))}
+        /* Navigation critical */
+        nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:1rem}
+        .nav-link{color:#fff;text-decoration:none;padding:.5rem 1rem}
+        /* Hero text critical */
+        .text-white{color:#fff}
+        .text-center{text-align:center}
+        .text-4xl{font-size:2.25rem;line-height:2.5rem}
+        .text-5xl{font-size:3rem;line-height:1}
+        .text-xl{font-size:1.25rem;line-height:1.75rem}
+        .font-bold{font-weight:700}
+        .font-semibold{font-weight:600}
+        .mb-4{margin-bottom:1rem}
+        .mb-8{margin-bottom:2rem}
+        .px-6{padding-left:1.5rem;padding-right:1.5rem}
+        .py-3{padding-top:.75rem;padding-bottom:.75rem}
+        .rounded-lg{border-radius:.5rem}
+        .bg-yellow-400{background-color:#facc15}
+        .relative{position:relative}
+        .z-10{z-index:10}
+        /* Fonts */
+        .font-script{font-family:'Dancing Script',cursive}
+        .font-playfair{font-family:'Playfair Display',serif}
+        /* CTA Button critical */
+        .cta-btn{display:inline-block;background:#facc15;color:#1a1a1a;font-weight:600;padding:.75rem 1.5rem;border-radius:.5rem;text-decoration:none;transition:transform .2s}
+        .cta-btn:hover{transform:scale(1.05)}
+        /* Flex utilities */
+        .flex{display:flex}
+        .items-center{align-items:center}
+        .justify-center{justify-content:center}
+        .flex-col{flex-direction:column}
+        .gap-4{gap:1rem}
     </style>
     
     <!-- Preconnect to external domains -->
@@ -69,15 +98,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-    <!-- Preload hero image for faster LCP -->
-    <link rel="preload" as="image" href="./images/hero-salon.webp" type="image/webp">
+    <!-- Preload hero image for faster LCP with high priority -->
+    <link rel="preload" as="image" href="./images/hero-salon.webp" type="image/webp" fetchpriority="high">
     
     <!-- Optimized Google Fonts with display swap -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"></noscript>
 
-    <!-- Optimized Custom CSS (Tailwind purged: 53KB vs 2.9MB CDN) -->
-    <link rel="stylesheet" href="./css/styles.css">
+    <!-- Optimized Custom CSS - non-blocking with preload -->
+    <link rel="preload" href="./css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./css/styles.css"></noscript>
 
     <!-- Font Awesome - defer loading for better performance -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
