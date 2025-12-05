@@ -1629,13 +1629,7 @@
         </div>
     </footer>
 
-    <!-- Sticky Booking Button (Mobile) -->
-    <div class="sticky-booking md:hidden">
-        <button type="button" onclick="openBookingModal()" class="bg-yellow-600 text-white px-6 py-3 rounded-full shadow-lg flex items-center hover:bg-yellow-700 transition-colors" aria-label="Book appointment now">
-            <i class="fas fa-calendar-alt mr-2"></i>
-            Book Now
-        </button>
-    </div>
+    <!-- Sticky Booking Button removed - using single sticky-book-btn instead to avoid touch target overlap -->
 
     <!-- Vercel Speed Insights - Real User Monitoring for Core Web Vitals -->
     <script defer src="/_vercel/speed-insights/script.js"></script>
@@ -1829,9 +1823,10 @@
     </script>
     
     <!-- Sticky Book Now Button -->
-    <button onclick="openBookingModal()" 
-       class="sticky-book-btn">
-        <i class="fas fa-calendar-check mr-2"></i>
+    <button onclick="openBookingModal()"
+       class="sticky-book-btn"
+       aria-label="Book Now">
+        <i class="fas fa-calendar-check mr-2" aria-hidden="true"></i>
         Book Now
     </button>
     
