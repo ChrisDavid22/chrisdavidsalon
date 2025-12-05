@@ -1,7 +1,12 @@
 {
-  "version": "2.29.0",
-  "lastUpdated": "2025-12-05T19:00:00Z",
+  "version": "2.30.0",
+  "lastUpdated": "2025-12-05T22:00:00Z",
   "deployHistory": [
+    {
+      "version": "2.30.0",
+      "date": "2025-12-05T22:00:00Z",
+      "changes": "NAVIGATION FIX: (1) Fixed broken onclick handlers - moved toggleJoinUsDropdown, trackPhoneClick, trackSocialClick, openBookingModal, openLightbox, closeLightbox to global scope. Functions inside initPage() were not accessible to onclick attributes. (2) Fixed font-inter class - updated to use system fonts (system-ui, -apple-system, etc.) since Inter font was removed in v2.28.0 performance optimization. (3) Removed duplicate function definitions and cleaned up redundant window.* assignments."
+    },
     {
       "version": "2.29.0",
       "date": "2025-12-05T19:00:00Z",

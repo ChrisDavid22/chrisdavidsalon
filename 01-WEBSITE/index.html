@@ -360,7 +360,7 @@
 
     <style>
         .font-playfair { font-family: 'Playfair Display', serif; }
-        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-inter { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
         .font-script { font-family: 'Brush Script MT', 'Dancing Script', cursive; }
         .gradient-bg { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
         .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 100%); }
@@ -1693,17 +1693,11 @@
 
     <!-- JavaScript - Deferred execution for better TBT -->
     <script>
-        // Defer non-critical JS execution to improve Time to Interactive
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initPage);
-        } else {
-            requestIdleCallback ? requestIdleCallback(initPage) : setTimeout(initPage, 1);
-        }
+        // =========================================
+        // GLOBAL FUNCTIONS - Available for onclick handlers
+        // =========================================
 
-        function initPage() {
-        // =========================================
-        // JOIN US DROPDOWN - Click to toggle
-        // =========================================
+        // Join Us dropdown toggle (must be global for onclick)
         function toggleJoinUsDropdown() {
             const menu = document.getElementById('join-us-menu');
             if (menu.classList.contains('invisible')) {
@@ -1715,22 +1709,7 @@
             }
         }
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            const dropdown = document.getElementById('join-us-dropdown');
-            const menu = document.getElementById('join-us-menu');
-            if (dropdown && menu && !dropdown.contains(event.target)) {
-                menu.classList.add('invisible', 'opacity-0');
-                menu.classList.remove('visible', 'opacity-100');
-            }
-        });
-
-        // =========================================
-        // CONVERSION TRACKING - GA4 Events
-        // These events are tracked in GA4 for ROI measurement
-        // =========================================
-
-        // Track booking button clicks (most important conversion)
+        // Track booking button clicks (must be global for onclick)
         function trackBookingClick(source) {
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'booking_click', {
@@ -1742,7 +1721,7 @@
             }
         }
 
-        // Track phone calls
+        // Track phone calls (must be global for onclick)
         function trackPhoneClick(source) {
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'phone_click', {
@@ -1754,31 +1733,7 @@
             }
         }
 
-        // Track directions/map clicks
-        function trackDirectionsClick(source) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'directions_click', {
-                    'event_category': 'Conversion',
-                    'event_label': source || 'Get Directions',
-                    'value': 1
-                });
-                console.log('[GA4] Tracked directions_click from:', source);
-            }
-        }
-
-        // Track email clicks
-        function trackEmailClick(source) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'email_click', {
-                    'event_category': 'Conversion',
-                    'event_label': source || 'Email Link',
-                    'value': 1
-                });
-                console.log('[GA4] Tracked email_click from:', source);
-            }
-        }
-
-        // Track social media clicks
+        // Track social media clicks (must be global for onclick)
         function trackSocialClick(platform) {
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'social_click', {
@@ -1789,29 +1744,64 @@
             }
         }
 
-        // Booking Modal Functions - Using Boulevard (Lazy Loaded)
+        // Booking Modal - open Boulevard widget (must be global for onclick)
         function openBookingModal() {
-            // Track booking button click with new conversion tracking
             trackBookingClick('Modal Button');
-
-            // Boulevard widget - lazy load on first click for better performance
             if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
                 blvd.openBookingWidget();
             } else {
-                // Load Boulevard script if not already loaded, then open widget
                 loadBoulevard(function() {
-                    // Wait a moment for Boulevard to fully initialize
                     setTimeout(function() {
                         if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
                             blvd.openBookingWidget();
                         } else {
-                            // Fallback - open Boulevard booking URL directly
                             window.open('https://go.boulevard.io/widget/businesses/66067441-2b07-4081-bb41-9877e9e4c25b', '_blank');
                         }
                     }, 300);
                 });
             }
         }
+
+        // Lightbox functionality (must be global for onclick)
+        function openLightbox(element) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            if (typeof element === 'object' && element.src) {
+                lightboxImage.src = element.src.replace('-mobile.webp', '-desktop.webp').replace('-tablet.webp', '-desktop.webp');
+                lightboxImage.alt = element.alt;
+            } else {
+                lightboxImage.src = element;
+            }
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close lightbox (must be global for onclick)
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Defer non-critical JS execution to improve Time to Interactive
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            requestIdleCallback ? requestIdleCallback(initPage) : setTimeout(initPage, 1);
+        }
+
+        function initPage() {
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('join-us-dropdown');
+            const menu = document.getElementById('join-us-menu');
+            if (dropdown && menu && !dropdown.contains(event.target)) {
+                menu.classList.add('invisible', 'opacity-0');
+                menu.classList.remove('visible', 'opacity-100');
+            }
+        });
 
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
@@ -1846,31 +1836,7 @@
         });
 
         // Gallery now links directly to Google Business Profile
-        
-        // Lightbox functionality
-        function openLightbox(element) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightboxImage');
-            // If passed an element, get the desktop version for full-size view
-            if (typeof element === 'object' && element.src) {
-                // Get the desktop version for better quality in lightbox
-                lightboxImage.src = element.src.replace('-mobile.webp', '-desktop.webp').replace('-tablet.webp', '-desktop.webp');
-                lightboxImage.alt = element.alt;
-            } else {
-                // Backwards compatible - if passed a string
-                lightboxImage.src = element;
-            }
-            lightbox.classList.remove('hidden');
-            lightbox.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.add('hidden');
-            lightbox.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
+        // Lightbox functions are now in global scope
 
         // Load version dynamically from version.json (never hardcoded)
         fetch('./data/version.json')
@@ -1917,48 +1883,7 @@
             }
         };
 
-        window.trackPhoneClick = function(source) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'phone_click', { 'event_category': 'Conversion', 'event_label': source, 'value': 1 });
-            }
-        };
-
-        window.trackEmailClick = function(source) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'email_click', { 'event_category': 'Conversion', 'event_label': source, 'value': 1 });
-            }
-        };
-
-        window.trackDirectionsClick = function(source) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'directions_click', { 'event_category': 'Conversion', 'event_label': source, 'value': 1 });
-            }
-        };
-
-        window.openLightbox = function(element) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightboxImage');
-            if (lightbox && lightboxImage) {
-                if (typeof element === 'object' && element.src) {
-                    lightboxImage.src = element.src.replace('-mobile.webp', '-desktop.webp').replace('-tablet.webp', '-desktop.webp');
-                    lightboxImage.alt = element.alt;
-                } else {
-                    lightboxImage.src = element;
-                }
-                lightbox.classList.remove('hidden');
-                lightbox.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-            }
-        };
-
-        window.closeLightbox = function() {
-            const lightbox = document.getElementById('lightbox');
-            if (lightbox) {
-                lightbox.classList.add('hidden');
-                lightbox.classList.remove('flex');
-                document.body.style.overflow = 'auto';
-            }
-        };
+        // Note: All onclick-handler functions are now in global scope at the top of this script
     </script>
     
     <!-- Sticky Book Now Button -->
