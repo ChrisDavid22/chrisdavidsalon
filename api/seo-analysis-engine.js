@@ -27,6 +27,12 @@ export default async function handler(req, res) {
         return await generateActions(req, res);
       case 'health-check':
         return await healthCheck(req, res);
+      case 'capture-snapshot':
+        return await captureSnapshot(req, res);
+      case 'capture-baseline':
+        return await captureBaseline(req, res);
+      case 'compare-to-baseline':
+        return await compareToBaseline(req, res);
       default:
         return await runFullAnalysis(req, res);
     }
@@ -673,4 +679,438 @@ function calculateHealthScore(weekComparison) {
   }
 
   return { score, status, message };
+}
+
+// Capture weekly snapshot for historical tracking
+async function captureSnapshot(req, res) {
+  const baseUrl = getBaseUrl(req);
+  const timestamp = new Date().toISOString();
+  const weekNumber = getWeekNumber(new Date());
+
+  try {
+    // Fetch all current metrics in parallel
+    const [ga4Data, authorityData, competitorData, performanceData] = await Promise.all([
+      fetchGA4Data(baseUrl, 'overview', '7daysAgo', 'today'),
+      fetchAuthorityData(baseUrl),
+      fetchCompetitorData(baseUrl),
+      fetchPerformanceData(baseUrl)
+    ]);
+
+    const snapshot = {
+      id: `snapshot-${weekNumber}-${Date.now()}`,
+      week: weekNumber,
+      date: timestamp.split('T')[0],
+      timestamp: timestamp,
+      metrics: {
+        traffic: {
+          users: ga4Data?.data?.activeUsers || null,
+          sessions: ga4Data?.data?.sessions || null,
+          pageviews: ga4Data?.data?.pageViews || null,
+          bounceRate: ga4Data?.data?.bounceRate || null,
+          avgSessionDuration: ga4Data?.data?.avgSessionDuration || null,
+          source: ga4Data?.success ? 'GA4 API - LIVE' : 'GA4 API - UNAVAILABLE'
+        },
+        authority: {
+          score: authorityData?.authority_score || null,
+          pagerank: authorityData?.pagerank || null,
+          pagerankDecimal: authorityData?.pagerank_decimal || null,
+          source: authorityData ? 'OpenPageRank API - LIVE' : 'OpenPageRank API - UNAVAILABLE'
+        },
+        competitors: {
+          ourRating: competitorData?.ourSalon?.rating || null,
+          ourReviews: competitorData?.ourSalon?.reviews || null,
+          topCompetitorReviews: competitorData?.topCompetitor?.reviews || null,
+          competitorCount: competitorData?.count || null,
+          source: competitorData ? 'Google Places API - LIVE' : 'Google Places API - UNAVAILABLE'
+        },
+        performance: {
+          score: performanceData?.performance || null,
+          seo: performanceData?.seo || null,
+          accessibility: performanceData?.accessibility || null,
+          source: performanceData ? 'PageSpeed API - LIVE' : 'PageSpeed API - UNAVAILABLE'
+        }
+      },
+      seoScore: calculateOverallSEOScore(ga4Data, authorityData, performanceData),
+      status: 'captured'
+    };
+
+    return res.status(200).json({
+      success: true,
+      action: 'capture-snapshot',
+      snapshot: snapshot,
+      instructions: {
+        usage: 'This snapshot should be appended to historical-metrics.json snapshots array',
+        automation: 'GitHub Actions workflow will commit this data weekly'
+      },
+      timestamp: timestamp
+    });
+  } catch (error) {
+    return res.status(200).json({
+      success: false,
+      action: 'capture-snapshot',
+      error: error.message,
+      timestamp: timestamp
+    });
+  }
+}
+
+// Helper functions for snapshot capture
+function getWeekNumber(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return `${d.getUTCFullYear()}-W${Math.ceil((((d - yearStart) / 86400000) + 1) / 7).toString().padStart(2, '0')}`;
+}
+
+async function fetchAuthorityData(baseUrl) {
+  try {
+    const response = await fetch(`${baseUrl}/api/authority-score`);
+    const data = await response.json();
+    return data.success ? data.data : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+async function fetchCompetitorData(baseUrl) {
+  try {
+    const response = await fetch(`${baseUrl}/api/competitors`);
+    const data = await response.json();
+    if (!data.success || !data.data?.competitors) return null;
+
+    const ourSalon = data.data.competitors.find(c => c.isOurSalon);
+    const topCompetitor = data.data.competitors
+      .filter(c => !c.isOurSalon)
+      .sort((a, b) => b.reviews - a.reviews)[0];
+
+    return {
+      ourSalon: ourSalon || null,
+      topCompetitor: topCompetitor || null,
+      count: data.data.competitors.length
+    };
+  } catch (error) {
+    return null;
+  }
+}
+
+async function fetchPerformanceData(baseUrl) {
+  try {
+    const response = await fetch(`${baseUrl}/api/pagespeed`);
+    const data = await response.json();
+    return data.success ? data.data : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function calculateOverallSEOScore(ga4Data, authorityData, performanceData) {
+  let score = 0;
+  let factors = 0;
+
+  // Performance (10% weight)
+  if (performanceData?.performance) {
+    score += performanceData.performance * 0.10;
+    factors += 0.10;
+  }
+
+  // Authority (10% weight)
+  if (authorityData?.authority_score) {
+    score += authorityData.authority_score * 0.10;
+    factors += 0.10;
+  }
+
+  // Traffic health estimate (20% weight based on bounce rate)
+  if (ga4Data?.data?.bounceRate) {
+    const bounceScore = Math.max(0, 100 - parseFloat(ga4Data.data.bounceRate));
+    score += bounceScore * 0.20;
+    factors += 0.20;
+  }
+
+  // Normalize if we don't have all factors
+  if (factors > 0) {
+    return Math.round(score / factors);
+  }
+
+  return null;
+}
+
+// ============================================
+// BASELINE CAPTURE - Initial state for new URLs
+// ============================================
+
+// Capture initial baseline metrics for a new website
+// This establishes the starting point for measuring progress
+async function captureBaseline(req, res) {
+  const baseUrl = getBaseUrl(req);
+  const { url: targetUrl } = req.query;
+
+  // If a custom URL is provided, use it; otherwise use the site URL
+  const siteUrl = targetUrl || baseUrl;
+  const timestamp = new Date().toISOString();
+  const date = timestamp.split('T')[0];
+
+  try {
+    // Fetch all current metrics in parallel
+    const [ga4Data, authorityData, competitorData, performanceData] = await Promise.all([
+      fetchGA4Data(baseUrl, 'overview', '30daysAgo', 'today'),  // Get 30 days for baseline
+      fetchAuthorityData(baseUrl),
+      fetchCompetitorData(baseUrl),
+      fetchPerformanceData(baseUrl)
+    ]);
+
+    // Build comprehensive baseline
+    const baseline = {
+      id: `baseline-${Date.now()}`,
+      type: 'baseline',
+      capturedAt: timestamp,
+      date: date,
+      siteUrl: siteUrl,
+
+      // Traffic metrics (30-day baseline)
+      traffic: {
+        users: ga4Data?.data?.activeUsers || null,
+        sessions: ga4Data?.data?.sessions || null,
+        pageviews: ga4Data?.data?.pageViews || null,
+        bounceRate: ga4Data?.data?.bounceRate || null,
+        avgSessionDuration: ga4Data?.data?.avgSessionDuration || null,
+        newUsers: ga4Data?.data?.newUsers || null,
+        period: '30 days',
+        source: ga4Data ? 'GA4 API - LIVE' : 'GA4 API - UNAVAILABLE'
+      },
+
+      // Authority metrics
+      authority: {
+        score: authorityData?.authority_score || null,
+        pagerank: authorityData?.pagerank || null,
+        pagerankDecimal: authorityData?.pagerank_decimal || null,
+        source: authorityData ? 'OpenPageRank API - LIVE' : 'OpenPageRank API - UNAVAILABLE'
+      },
+
+      // Review metrics
+      reviews: {
+        count: competitorData?.ourSalon?.reviews || null,
+        rating: competitorData?.ourSalon?.rating || null,
+        topCompetitorReviews: competitorData?.topCompetitor?.reviews || null,
+        competitorCount: competitorData?.count || null,
+        source: competitorData ? 'Google Places API - LIVE' : 'Google Places API - UNAVAILABLE'
+      },
+
+      // Performance metrics
+      performance: {
+        score: performanceData?.performance || null,
+        seo: performanceData?.seo || null,
+        accessibility: performanceData?.accessibility || null,
+        bestPractices: performanceData?.bestPractices || null,
+        source: performanceData ? 'PageSpeed API - LIVE' : 'PageSpeed API - UNAVAILABLE'
+      },
+
+      // Calculated scores
+      seoScore: calculateOverallSEOScore(ga4Data, authorityData, performanceData),
+
+      // Metadata
+      status: 'baseline-captured',
+      dataQuality: assessDataQuality(ga4Data, authorityData, competitorData, performanceData)
+    };
+
+    return res.status(200).json({
+      success: true,
+      action: 'capture-baseline',
+      message: 'Initial baseline captured successfully',
+      baseline: baseline,
+      nextSteps: {
+        1: 'Save this baseline to historical-metrics.json as the "baseline" object',
+        2: 'Run weekly snapshots to track progress',
+        3: 'Use compare-to-baseline action to measure improvement',
+        4: 'Target: 10-20% improvement per month'
+      },
+      comparison: {
+        endpoint: '/api/seo-analysis-engine?action=compare-to-baseline',
+        description: 'Compare current metrics against this baseline'
+      },
+      timestamp: timestamp
+    });
+  } catch (error) {
+    return res.status(200).json({
+      success: false,
+      action: 'capture-baseline',
+      error: error.message,
+      timestamp: timestamp
+    });
+  }
+}
+
+// Compare current metrics to stored baseline
+async function compareToBaseline(req, res) {
+  const baseUrl = getBaseUrl(req);
+  const timestamp = new Date().toISOString();
+
+  try {
+    // Fetch current metrics
+    const [ga4Data, authorityData, competitorData, performanceData] = await Promise.all([
+      fetchGA4Data(baseUrl, 'overview', '7daysAgo', 'today'),
+      fetchAuthorityData(baseUrl),
+      fetchCompetitorData(baseUrl),
+      fetchPerformanceData(baseUrl)
+    ]);
+
+    // Try to fetch stored baseline from historical-metrics.json
+    let baseline = null;
+    try {
+      const response = await fetch(`${baseUrl}/data/historical-metrics.json`);
+      const data = await response.json();
+      baseline = data.baseline || null;
+    } catch (e) {
+      console.error('Could not fetch baseline:', e);
+    }
+
+    if (!baseline) {
+      return res.status(200).json({
+        success: false,
+        action: 'compare-to-baseline',
+        error: 'No baseline found. Run capture-baseline first.',
+        instructions: {
+          captureBaseline: '/api/seo-analysis-engine?action=capture-baseline',
+          description: 'Capture initial baseline, then save to historical-metrics.json'
+        },
+        timestamp: timestamp
+      });
+    }
+
+    // Build current metrics
+    const current = {
+      traffic: {
+        users: ga4Data?.data?.activeUsers || 0,
+        sessions: ga4Data?.data?.sessions || 0,
+        pageviews: ga4Data?.data?.pageViews || 0,
+        bounceRate: parseFloat(ga4Data?.data?.bounceRate || 0)
+      },
+      authority: {
+        score: authorityData?.authority_score || 0,
+        pagerank: authorityData?.pagerank_decimal || 0
+      },
+      reviews: {
+        count: competitorData?.ourSalon?.reviews || 0,
+        rating: competitorData?.ourSalon?.rating || 0
+      },
+      performance: {
+        score: performanceData?.performance || 0
+      }
+    };
+
+    // Calculate changes from baseline
+    const changes = {
+      traffic: {
+        users: calculateChange(baseline.traffic?.users, current.traffic.users),
+        sessions: calculateChange(baseline.traffic?.sessions, current.traffic.sessions),
+        pageviews: calculateChange(baseline.traffic?.pageviews, current.traffic.pageviews),
+        bounceRate: calculateChange(baseline.traffic?.bounceRate, current.traffic.bounceRate, true) // Inverted (lower is better)
+      },
+      authority: {
+        score: calculateChange(baseline.authority?.score, current.authority.score),
+        pagerank: calculateChange(baseline.authority?.pagerankDecimal, current.authority.pagerank)
+      },
+      reviews: {
+        count: calculateChange(baseline.reviews?.count, current.reviews.count),
+        rating: calculateChange(baseline.reviews?.rating, current.reviews.rating)
+      },
+      performance: {
+        score: calculateChange(baseline.performance?.score, current.performance.score)
+      }
+    };
+
+    // Calculate days since baseline
+    const baselineDate = new Date(baseline.capturedAt);
+    const daysSinceBaseline = Math.floor((new Date() - baselineDate) / (1000 * 60 * 60 * 24));
+
+    // Generate summary
+    const improvements = [];
+    const declines = [];
+
+    if (changes.traffic.users.percentChange > 0) improvements.push(`+${changes.traffic.users.percentChange.toFixed(1)}% traffic`);
+    else if (changes.traffic.users.percentChange < 0) declines.push(`${changes.traffic.users.percentChange.toFixed(1)}% traffic`);
+
+    if (changes.authority.score.percentChange > 0) improvements.push(`+${changes.authority.score.percentChange.toFixed(1)}% authority`);
+    else if (changes.authority.score.percentChange < 0) declines.push(`${changes.authority.score.percentChange.toFixed(1)}% authority`);
+
+    if (changes.reviews.count.percentChange > 0) improvements.push(`+${changes.reviews.count.percentChange.toFixed(1)}% reviews`);
+
+    if (changes.performance.score.percentChange > 0) improvements.push(`+${changes.performance.score.percentChange.toFixed(1)}% performance`);
+    else if (changes.performance.score.percentChange < 0) declines.push(`${changes.performance.score.percentChange.toFixed(1)}% performance`);
+
+    return res.status(200).json({
+      success: true,
+      action: 'compare-to-baseline',
+      baseline: {
+        capturedAt: baseline.capturedAt,
+        daysSince: daysSinceBaseline,
+        metrics: baseline
+      },
+      current: current,
+      changes: changes,
+      summary: {
+        improvements: improvements.length > 0 ? improvements : ['No improvements yet'],
+        declines: declines.length > 0 ? declines : ['No declines'],
+        overallTrend: improvements.length > declines.length ? 'IMPROVING' :
+                     improvements.length < declines.length ? 'DECLINING' : 'STABLE'
+      },
+      timestamp: timestamp
+    });
+  } catch (error) {
+    return res.status(200).json({
+      success: false,
+      action: 'compare-to-baseline',
+      error: error.message,
+      timestamp: timestamp
+    });
+  }
+}
+
+// Helper function to assess data quality
+function assessDataQuality(ga4Data, authorityData, competitorData, performanceData) {
+  let available = 0;
+  let total = 4;
+
+  if (ga4Data?.data) available++;
+  if (authorityData) available++;
+  if (competitorData) available++;
+  if (performanceData) available++;
+
+  const percentage = (available / total) * 100;
+
+  return {
+    percentage: percentage,
+    available: available,
+    total: total,
+    rating: percentage >= 75 ? 'EXCELLENT' :
+            percentage >= 50 ? 'GOOD' :
+            percentage >= 25 ? 'PARTIAL' : 'MINIMAL',
+    sources: {
+      ga4: ga4Data?.data ? 'connected' : 'not-configured',
+      authority: authorityData ? 'connected' : 'not-configured',
+      competitors: competitorData ? 'connected' : 'not-configured',
+      performance: performanceData ? 'connected' : 'not-configured'
+    }
+  };
+}
+
+// Helper function to calculate change between baseline and current
+function calculateChange(baseline, current, inverted = false) {
+  if (baseline === null || baseline === undefined || current === null || current === undefined) {
+    return { baseline, current, absolute: null, percentChange: null };
+  }
+
+  const baselineNum = parseFloat(baseline) || 0;
+  const currentNum = parseFloat(current) || 0;
+  const absolute = currentNum - baselineNum;
+  const percentChange = baselineNum > 0 ? ((currentNum - baselineNum) / baselineNum) * 100 : 0;
+
+  return {
+    baseline: baselineNum,
+    current: currentNum,
+    absolute: absolute,
+    percentChange: inverted ? -percentChange : percentChange,
+    direction: percentChange > 0 ? (inverted ? 'worse' : 'better') :
+               percentChange < 0 ? (inverted ? 'better' : 'worse') : 'unchanged'
+  };
 }

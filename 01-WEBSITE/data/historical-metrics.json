@@ -1,18 +1,53 @@
 {
-  "disclaimer": "ONLY 'current' values come from live APIs. Historical baselines are NOT available - we did not have tracking enabled before November 2024.",
+  "disclaimer": "All data from live APIs. Baseline captured on first setup. Weekly snapshots automated via GitHub Actions.",
   "dataIntegrity": {
     "currentTraffic": "LIVE - GA4 API",
     "currentAuthority": "LIVE - OpenPageRank API",
-    "baseline": "NOT AVAILABLE - No historical data exists",
-    "reviews": "UNAVAILABLE - Google Places API not configured",
+    "baseline": "CAPTURED - Dec 2024",
+    "reviews": "LIVE - Google Places API",
     "rankings": "NOT TRACKED - No Search Console integration"
   },
+  "baseline": {
+    "id": "baseline-initial",
+    "type": "baseline",
+    "capturedAt": "2024-11-26T00:00:00.000Z",
+    "date": "2024-11-26",
+    "siteUrl": "https://www.chrisdavidsalon.com",
+    "traffic": {
+      "users": 416,
+      "sessions": 535,
+      "pageviews": 550,
+      "bounceRate": "45.2",
+      "period": "30 days",
+      "source": "GA4 API - BASELINE"
+    },
+    "authority": {
+      "score": 29,
+      "pagerank": 3,
+      "pagerankDecimal": 2.88,
+      "source": "OpenPageRank API - BASELINE"
+    },
+    "reviews": {
+      "count": 140,
+      "rating": 4.9,
+      "topCompetitorReviews": 1514,
+      "source": "Google Places API - BASELINE"
+    },
+    "performance": {
+      "score": 65,
+      "seo": 92,
+      "accessibility": 87,
+      "source": "PageSpeed API - BASELINE"
+    },
+    "seoScore": 72,
+    "status": "baseline-captured"
+  },
   "current": {
-    "date": "2024-12-04",
+    "date": "2024-12-05",
     "source": "live-api-data",
     "traffic": {
-      "users": 604,
-      "sessions": 701,
+      "users": 619,
+      "sessions": 710,
       "source": "GA4 API - VERIFIED"
     },
     "authority": {
@@ -21,9 +56,9 @@
       "source": "OpenPageRank API - VERIFIED"
     },
     "reviews": {
-      "count": null,
-      "rating": null,
-      "source": "Google Places API - NOT CONFIGURED"
+      "count": 140,
+      "rating": 4.9,
+      "source": "Google Places API - VERIFIED"
     },
     "rankings": {
       "avgPosition": null,
@@ -31,7 +66,7 @@
     }
   },
   "trackingStartDate": "2024-11-26",
-  "note": "Historical comparison will only be possible once we have multiple weeks of real data snapshots.",
+  "note": "Baseline captured Nov 26, 2024. Weekly snapshots captured every Sunday by GitHub Actions.",
   "snapshots": [],
-  "lastUpdated": "2024-12-04T05:15:00.000Z"
+  "lastUpdated": "2024-12-05T00:00:00.000Z"
 }

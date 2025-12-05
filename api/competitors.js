@@ -329,13 +329,79 @@ async function fetchPageSpeedAPI(url) {
 }
 
 async function fetchPlacesData() {
+  const GOOGLE_PLACES_API_KEY = process.env.GOOGLE_PLACES_API_KEY || '';
+
+  // Direct Google Places API call (no API-to-API calls which can fail on Vercel)
+  if (!GOOGLE_PLACES_API_KEY) {
+    console.error('GOOGLE_PLACES_API_KEY not configured');
+    return [];
+  }
+
   try {
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'https://www.chrisdavidsalon.com';
-    const response = await fetch(`${baseUrl}/api/admin-data?type=competitors`);
-    const data = await response.json();
-    return data.success ? data.data.competitors : [];
+    // Search for hair salons in Delray Beach
+    const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=hair+salon+Delray+Beach+FL&key=${GOOGLE_PLACES_API_KEY}`;
+    const searchResponse = await fetch(searchUrl);
+    const searchData = await searchResponse.json();
+
+    if (searchData.status !== 'OK' || !searchData.results) {
+      console.error('Places API error:', searchData.status);
+      return [];
+    }
+
+    let competitors = searchData.results.slice(0, 14).map(place => ({
+      name: place.name,
+      rating: place.rating || 0,
+      reviews: place.user_ratings_total || 0,
+      address: place.formatted_address || '',
+      placeId: place.place_id,
+      live: true
+    }));
+
+    // Check if Chris David Salon is in the results
+    const hasChrisDavid = competitors.some(c =>
+      c.name.toLowerCase().includes('chris david')
+    );
+
+    // If not, search specifically and add it
+    if (!hasChrisDavid) {
+      try {
+        const cdSearchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=Chris+David+Salon+Delray+Beach+FL&key=${GOOGLE_PLACES_API_KEY}`;
+        const cdResponse = await fetch(cdSearchUrl);
+        const cdData = await cdResponse.json();
+
+        if (cdData.status === 'OK' && cdData.results && cdData.results.length > 0) {
+          const cdPlace = cdData.results[0];
+          competitors.push({
+            name: cdPlace.name,
+            rating: cdPlace.rating || 4.9,
+            reviews: cdPlace.user_ratings_total || 140,
+            address: cdPlace.formatted_address || '300 E Atlantic Ave, Delray Beach, FL',
+            placeId: cdPlace.place_id,
+            live: true,
+            isOurSalon: true
+          });
+        }
+      } catch (cdError) {
+        console.error('Chris David search error:', cdError);
+        // Add known data as fallback
+        competitors.push({
+          name: 'Chris David Salon',
+          rating: 4.9,
+          reviews: 140,
+          address: '300 E Atlantic Ave, Delray Beach, FL',
+          isOurSalon: true,
+          live: false
+        });
+      }
+    } else {
+      // Mark Chris David as ours
+      competitors = competitors.map(c => ({
+        ...c,
+        isOurSalon: c.name.toLowerCase().includes('chris david')
+      }));
+    }
+
+    return competitors;
   } catch (e) {
     console.error('Places fetch error:', e);
     return [];
@@ -343,16 +409,35 @@ async function fetchPlacesData() {
 }
 
 async function fetchPageRankData() {
+  const OPENPAGERANK_API_KEY = process.env.OPENPAGERANK_API_KEY || '';
+
+  // Direct OpenPageRank API call (no API-to-API calls which can fail on Vercel)
+  if (!OPENPAGERANK_API_KEY) {
+    console.error('OPENPAGERANK_API_KEY not configured');
+    return {};
+  }
+
   try {
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'https://www.chrisdavidsalon.com';
-    const response = await fetch(`${baseUrl}/api/authority-score?competitors=true`);
-    const data = await response.json();
+    // Get domains from ALL_COMPETITORS list
+    const domains = ALL_COMPETITORS.map(c => c.domain);
+
+    // OpenPageRank API supports bulk lookups
+    const domainParams = domains.map(d => `domains[]=${encodeURIComponent(d)}`).join('&');
+    const bulkUrl = `https://openpagerank.com/api/v1.0/getPageRank?${domainParams}`;
+
+    const bulkResponse = await fetch(bulkUrl, {
+      headers: {
+        'API-OPR': OPENPAGERANK_API_KEY
+      }
+    });
+    const data = await bulkResponse.json();
+
     const map = {};
-    if (data.success && data.data?.all_results) {
-      data.data.all_results.forEach(r => {
-        map[r.domain] = r.pagerank_decimal || 0;
+    if (data.response && Array.isArray(data.response)) {
+      data.response.forEach(r => {
+        if (r.domain && r.page_rank_decimal !== undefined) {
+          map[r.domain] = r.page_rank_decimal || 0;
+        }
       });
     }
     return map;
