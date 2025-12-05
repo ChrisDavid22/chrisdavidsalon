@@ -1,7 +1,12 @@
 {
-  "version": "2.31.0",
-  "lastUpdated": "2025-12-05T23:45:00Z",
+  "version": "2.32.0",
+  "lastUpdated": "2025-12-06T00:15:00Z",
   "deployHistory": [
+    {
+      "version": "2.32.0",
+      "date": "2025-12-06T00:15:00Z",
+      "changes": "NAVIGATION LAYOUT FIX: ROOT CAUSE - Logo image (cds-logo.webp) is 1054x170 pixels but container had no width constraint. (1) Added max-width: 200px to logo container. (2) Added flex-shrink-0 to prevent container from being squeezed. (3) Added max-width: 200px to logo img itself. (4) Added whitespace-nowrap to location text. (5) Updated declared width attribute from 243 to 200."
+    },
     {
       "version": "2.31.0",
       "date": "2025-12-05T23:45:00Z",
