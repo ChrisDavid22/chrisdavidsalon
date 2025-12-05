@@ -1,11 +1,16 @@
 {
-  "version": "2.24.0",
-  "lastUpdated": "2025-12-05T17:00:00Z",
+  "version": "2.25.0",
+  "lastUpdated": "2025-12-05T17:15:00Z",
   "deployHistory": [
+    {
+      "version": "2.25.0",
+      "date": "2025-12-05T17:15:00Z",
+      "changes": "MOBILE REGRESSION FIX: (1) REVERTED non-blocking CSS - was causing 15-point mobile score drop due to CLS (layout shifts). (2) Main CSS now render-blocking again for mobile stability. (3) KEPT: expanded inline critical CSS, hero preload with fetchpriority, deferred analytics. (4) LEARNED: Non-blocking main CSS is dangerous for mobile - stored in RuVector as anti-pattern. (5) Target: Restore Mobile 81→96 while keeping Performance gains where safe."
+    },
     {
       "version": "2.24.0",
       "date": "2025-12-05T17:00:00Z",
-      "changes": "AGGRESSIVE PERFORMANCE OPTIMIZATION: (1) Made styles.css non-blocking with preload pattern - eliminates render-blocking CSS. (2) Expanded inline critical CSS from 400 bytes to 2KB covering all above-the-fold styles. (3) Added fetchpriority='high' to hero image preload for faster LCP. (4) Minified critical CSS to reduce bytes. (5) Added more Tailwind utility classes inline (flex, grid, text utilities). (6) Target: Performance 64→85+."
+      "changes": "AGGRESSIVE PERFORMANCE OPTIMIZATION (PARTIALLY REVERTED): Made styles.css non-blocking - CAUSED MOBILE REGRESSION. Expanded critical CSS, hero preload, deferred analytics."
     },
     {
       "version": "2.23.0",
