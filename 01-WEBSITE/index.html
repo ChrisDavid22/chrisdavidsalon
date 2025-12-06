@@ -606,14 +606,16 @@
     <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center py-4">
-                <!-- Logo - explicit width, always first -->
-                <a href="#home" class="flex-shrink-0 mr-6" style="min-width: 180px;">
-                    <picture>
-                        <source srcset="./images/cds-logo.webp" type="image/webp">
-                        <img src="./images/cds-logo.webp" alt="Chris David Salon" class="h-10 w-auto" loading="eager" width="180" height="32" fetchpriority="high">
-                    </picture>
-                    <span class="block text-xs text-gray-600 mt-1">Andre Design District • Delray Beach</span>
-                </a>
+                <!-- Logo - fixed width block, always first -->
+                <div class="flex-shrink-0" style="width: 220px; min-width: 220px;">
+                    <a href="#home" class="block">
+                        <picture>
+                            <source srcset="./images/cds-logo.webp" type="image/webp">
+                            <img src="./images/cds-logo.webp" alt="Chris David Salon" class="h-10 w-auto max-w-full" loading="eager" width="180" height="32" fetchpriority="high">
+                        </picture>
+                        <span class="block text-xs text-gray-600 mt-1">Andre Design District • Delray Beach</span>
+                    </a>
+                </div>
 
                 <!-- Desktop Navigation - takes remaining space -->
                 <nav class="hidden md:flex items-center space-x-6 flex-1">
