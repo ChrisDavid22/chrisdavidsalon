@@ -1,0 +1,11 @@
+{
+  "system": [
+    {
+      "key": "system/compaction-event",
+      "value": "{\"timestamp\": \"2025-12-06T01:21:14Z\", \"action\": \"hnsw_refresh_needed\"}",
+      "namespace": "system",
+      "timestamp": 1764984075480,
+      "redacted": false
+    }
+  ]
+}

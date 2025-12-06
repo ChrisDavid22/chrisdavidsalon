@@ -1,0 +1,306 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon Andre Design District - Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District - Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e14]:
+        - link " (561) 299-0950" [ref=e15] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e16]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]:
+    - img "Highlights Delray Beach" [ref=e21]
+    - generic [ref=e23]:
+      - paragraph [ref=e24]: DELRAY BEACH'S PREMIER HIGHLIGHT SPECIALIST
+      - heading "Dimensional Highlights" [level=1] [ref=e25]:
+        - text: Dimensional
+        - text: Highlights
+      - paragraph [ref=e26]: Expert foil highlights that add depth, dimension, and movement to your hair. From subtle babylights to bold, bright looks.
+      - generic [ref=e27]:
+        - button " Book Highlight Consultation" [ref=e28] [cursor=pointer]:
+          - generic [ref=e29]: 
+          - text: Book Highlight Consultation
+        - link " Call (561) 299-0950" [ref=e30] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e31]: 
+          - text: Call (561) 299-0950
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - generic [ref=e35]: 
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+            - generic [ref=e39]: 
+          - generic [ref=e40]: 4.9/5 - 140+ Reviews
+        - generic [ref=e41]:
+          - generic [ref=e42]: 
+          - generic [ref=e43]: Davines & Goldwell Certified
+        - generic [ref=e44]:
+          - generic [ref=e45]: 
+          - generic [ref=e46]: 20+ Years Master Colorist
+  - generic [ref=e49]:
+    - generic [ref=e50]:
+      - 'heading "Highlights vs. Balayage: Which Is Right for You?" [level=2] [ref=e51]'
+      - generic [ref=e52]:
+        - paragraph [ref=e53]:
+          - strong [ref=e54]: Foil highlights
+          - text: use foils to isolate strands and create precise, consistent lightening from root to tip. They offer more control over placement and can achieve lighter, brighter results than balayage.
+        - paragraph [ref=e55]:
+          - strong [ref=e56]: "Best for:"
+          - text: Those wanting maximum brightness, more defined contrast, or seamless gray coverage. Foils are also ideal for correcting uneven color or achieving platinum/silver tones.
+        - paragraph [ref=e57]: As a certified Davines educator and Goldwell Academy graduate, Chris David can help you decide which technique - or combination - will achieve your dream hair.
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - heading "Choose Highlights If:" [level=4] [ref=e60]
+          - list [ref=e61]:
+            - listitem [ref=e62]: • You want maximum brightness
+            - listitem [ref=e63]: • You need gray coverage
+            - listitem [ref=e64]: • You prefer defined contrast
+        - generic [ref=e65]:
+          - heading "Choose Balayage If:" [level=4] [ref=e66]
+          - list [ref=e67]:
+            - listitem [ref=e68]: • You want low maintenance
+            - listitem [ref=e69]: • You prefer soft, natural blend
+            - listitem [ref=e70]: • You like root-to-tip gradient
+    - generic [ref=e71]:
+      - img "Foil highlights specialist" [ref=e73]
+      - generic [ref=e74]:
+        - generic [ref=e75]: $175+
+        - generic [ref=e76]: Starting Price
+  - generic [ref=e78]:
+    - generic [ref=e79]:
+      - heading "Highlight Services & Pricing" [level=2] [ref=e80]
+      - paragraph [ref=e81]: From subtle dimension to dramatic transformation
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - heading "Partial Highlights" [level=3] [ref=e84]
+        - paragraph [ref=e85]: Face-framing & crown area
+        - paragraph [ref=e86]: Starting at $175
+        - list [ref=e87]:
+          - listitem [ref=e88]:
+            - generic [ref=e89]: 
+            - text: Top section & face frame
+          - listitem [ref=e90]:
+            - generic [ref=e91]: 
+            - text: 15-25 foils
+          - listitem [ref=e92]:
+            - generic [ref=e93]: 
+            - text: 2-2.5 hour appointment
+          - listitem [ref=e94]:
+            - generic [ref=e95]: 
+            - text: Toner included
+        - button "Book Consultation" [ref=e96] [cursor=pointer]
+      - generic [ref=e97]:
+        - generic [ref=e98]: MOST POPULAR
+        - heading "Full Highlights" [level=3] [ref=e99]
+        - paragraph [ref=e100]: All-over dimensional color
+        - paragraph [ref=e101]: Starting at $250
+        - list [ref=e102]:
+          - listitem [ref=e103]:
+            - generic [ref=e104]: 
+            - text: Root-to-tip coverage
+          - listitem [ref=e105]:
+            - generic [ref=e106]: 
+            - text: 40-60+ foils
+          - listitem [ref=e107]:
+            - generic [ref=e108]: 
+            - text: 3-4 hour appointment
+          - listitem [ref=e109]:
+            - generic [ref=e110]: 
+            - text: Toner & gloss included
+        - button "Book Consultation" [ref=e111] [cursor=pointer]
+      - generic [ref=e112]:
+        - heading "Babylights" [level=3] [ref=e113]
+        - paragraph [ref=e114]: Ultra-fine, natural dimension
+        - paragraph [ref=e115]: Starting at $300
+        - list [ref=e116]:
+          - listitem [ref=e117]:
+            - generic [ref=e118]: 
+            - text: Delicate, fine foils
+          - listitem [ref=e119]:
+            - generic [ref=e120]: 
+            - text: Mimics childhood hair
+          - listitem [ref=e121]:
+            - generic [ref=e122]: 
+            - text: 3.5-4.5 hour appointment
+          - listitem [ref=e123]:
+            - generic [ref=e124]: 
+            - text: Multi-tonal result
+        - button "Book Consultation" [ref=e125] [cursor=pointer]
+    - paragraph [ref=e126]: "*Prices vary based on hair length, thickness, and desired result. Final pricing confirmed at consultation."
+  - generic [ref=e128]:
+    - heading "Why Chris David for Highlights?" [level=2] [ref=e130]
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - generic [ref=e134]: 
+        - heading "Precision Placement" [level=3] [ref=e135]
+        - paragraph [ref=e136]: Every foil is strategically placed to enhance your features. Chris considers your face shape, skin tone, and natural growth patterns.
+      - generic [ref=e137]:
+        - generic [ref=e139]: 
+        - heading "Hair Health First" [level=3] [ref=e140]
+        - paragraph [ref=e141]: Using Davines' gentle formulas and bond-building treatments, your highlights are created while protecting hair integrity.
+      - generic [ref=e142]:
+        - generic [ref=e144]: 
+        - heading "Custom Toning" [level=3] [ref=e145]
+        - paragraph [ref=e146]: Every highlight service includes custom toning to achieve your perfect shade - warm honey, cool platinum, or anything in between.
+  - generic [ref=e148]:
+    - heading "Ready for Your Perfect Highlights?" [level=2] [ref=e149]
+    - paragraph [ref=e150]: Schedule a consultation with master colorist Chris David and discover the dimensional color that Delray Beach clients rave about.
+    - generic [ref=e151]:
+      - button " Book Consultation" [ref=e152] [cursor=pointer]:
+        - generic [ref=e153]: 
+        - text: Book Consultation
+      - link " Call (561) 299-0950" [ref=e154] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e155]: 
+        - text: Call (561) 299-0950
+  - contentinfo [ref=e156]:
+    - generic [ref=e157]:
+      - generic [ref=e158]:
+        - generic [ref=e159]:
+          - img "Chris David Salon" [ref=e161]
+          - paragraph [ref=e162]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e163]:
+          - heading "Quick Links" [level=4] [ref=e164]
+          - list [ref=e165]:
+            - listitem [ref=e166]:
+              - link "About" [ref=e167] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e168]:
+              - link "Gallery" [ref=e169] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e170]:
+              - link "Reviews" [ref=e171] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e172]:
+              - link "Blog" [ref=e173] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e174]:
+              - link "Careers" [ref=e175] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e176]:
+              - link "Chair Rental" [ref=e177] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e178]:
+              - link "Policies" [ref=e179] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e180]:
+          - heading "Areas Served" [level=4] [ref=e181]
+          - list [ref=e182]:
+            - listitem [ref=e183]:
+              - link "Delray Beach Hair Salon" [ref=e184] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e185]:
+              - link "Atlantic Avenue Colorist" [ref=e186] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e187]:
+              - link "Boca Raton Clients" [ref=e188] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e189]:
+              - link "Boynton Beach Clients" [ref=e190] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e191]:
+          - heading "Services" [level=4] [ref=e192]
+          - list [ref=e193]:
+            - listitem [ref=e194]:
+              - link "All Services" [ref=e195] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e196]:
+              - link "Hair Color" [ref=e197] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e198]:
+              - link "Women's Haircuts" [ref=e199] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e200]:
+              - link "Men's Haircuts" [ref=e201] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e202]:
+              - link "Balayage" [ref=e203] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e204]:
+              - link "Highlights" [ref=e205] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e206]:
+              - link "Color Correction" [ref=e207] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e208]:
+              - link "Extensions" [ref=e209] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e210]:
+              - link "Keratin Treatment" [ref=e211] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e212]:
+              - link "Wedding Hair" [ref=e213] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e214]:
+          - heading "Hair Care Guides" [level=4] [ref=e215]
+          - list [ref=e216]:
+            - listitem [ref=e217]:
+              - link "Best Salon Delray Guide" [ref=e218] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e219]:
+              - link "Delray Salon Reviews" [ref=e220] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e221]:
+              - link "Palm Beach Salon Guide" [ref=e222] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e223]:
+              - link "Balayage Guide" [ref=e224] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e225]:
+              - link "Color Correction Tips" [ref=e226] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e227]:
+              - link "Florida Hair Care" [ref=e228] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e229]:
+          - heading "Contact" [level=4] [ref=e230]
+          - generic [ref=e231]:
+            - paragraph [ref=e232]: 1878C Dr. Andres Way
+            - paragraph [ref=e233]: Delray Beach, FL 33445
+            - paragraph [ref=e234]:
+              - link "(561) 299-0950" [ref=e235] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e236]:
+              - link "chrisdavidsalon@gmail.com" [ref=e237] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e238]:
+            - link "" [ref=e239] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e240]: 
+            - link "" [ref=e241] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e242]: 
+            - link "" [ref=e243] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e244]: 
+      - paragraph [ref=e246]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e247]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

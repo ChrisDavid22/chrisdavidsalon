@@ -1,0 +1,306 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon Andre Design District - Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District - Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e14]:
+        - link " (561) 299-0950" [ref=e15] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e16]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]:
+    - img "Men's Haircut Delray Beach" [ref=e20]
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: DELRAY BEACH'S PREMIER MEN'S STYLIST
+      - heading "Men's Haircuts Precision & Style" [level=1] [ref=e24]:
+        - text: Men's Haircuts
+        - text: Precision & Style
+      - paragraph [ref=e25]: Expert men's grooming by a master stylist with 20+ years of experience. Classic cuts, modern fades, and everything in between.
+      - generic [ref=e26]:
+        - button " Book Men's Haircut" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Book Men's Haircut
+        - link " Call (561) 299-0950" [ref=e29] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e30]: 
+          - text: Call (561) 299-0950
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]: 
+            - generic [ref=e35]: 
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+          - generic [ref=e39]: 4.9/5 - 140+ Reviews
+        - generic [ref=e40]:
+          - generic [ref=e41]: 
+          - generic [ref=e42]: Precision Cutting Expert
+        - generic [ref=e43]:
+          - generic [ref=e44]: 
+          - generic [ref=e45]: 20+ Years Experience
+  - generic [ref=e48]:
+    - generic [ref=e49]:
+      - heading "Not Your Average Barbershop" [level=2] [ref=e50]
+      - generic [ref=e51]:
+        - paragraph [ref=e52]:
+          - text: Chris David Salon offers men's haircuts that go beyond the traditional barbershop experience. Our master stylist brings
+          - strong [ref=e53]: 20+ years of precision cutting expertise
+          - text: to every appointment.
+        - paragraph [ref=e54]:
+          - text: Using the revolutionary
+          - strong [ref=e55]: "\"cut the hair where it lives\" dry cutting technique"
+          - text: ", we create cuts that work with your natural hair texture and growth patterns - not against them."
+        - paragraph [ref=e56]: Whether you want a classic businessman cut, a modern fade, or something completely custom, you'll receive personalized attention in a sophisticated salon environment.
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: 
+          - text: Precision Cuts
+        - generic [ref=e60]:
+          - generic [ref=e61]: 
+          - text: Modern Fades
+        - generic [ref=e62]:
+          - generic [ref=e63]: 
+          - text: Classic Styles
+        - generic [ref=e64]:
+          - generic [ref=e65]: 
+          - text: Beard Trimming
+    - generic [ref=e66]:
+      - img "Men's grooming Delray Beach" [ref=e67]
+      - generic [ref=e68]:
+        - generic [ref=e69]: $45+
+        - generic [ref=e70]: Men's Precision Cut
+  - generic [ref=e72]:
+    - generic [ref=e73]:
+      - heading "Men's Services & Pricing" [level=2] [ref=e74]
+      - paragraph [ref=e75]: Professional grooming services for the modern gentleman
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - heading "Men's Precision Cut" [level=3] [ref=e78]
+        - paragraph [ref=e79]: Complete haircut service
+        - paragraph [ref=e80]: Starting at $45
+        - list [ref=e81]:
+          - listitem [ref=e82]:
+            - generic [ref=e83]: 
+            - text: Consultation included
+          - listitem [ref=e84]:
+            - generic [ref=e85]: 
+            - text: Dry cutting technique
+          - listitem [ref=e86]:
+            - generic [ref=e87]: 
+            - text: Neck cleanup
+          - listitem [ref=e88]:
+            - generic [ref=e89]: 
+            - text: Styling & product tips
+        - button "Book Now" [ref=e90] [cursor=pointer]
+      - generic [ref=e91]:
+        - heading "Cut + Beard Trim" [level=3] [ref=e92]
+        - paragraph [ref=e93]: Full grooming package
+        - paragraph [ref=e94]: Starting at $60
+        - list [ref=e95]:
+          - listitem [ref=e96]:
+            - generic [ref=e97]: 
+            - text: Precision haircut
+          - listitem [ref=e98]:
+            - generic [ref=e99]: 
+            - text: Beard shaping & trim
+          - listitem [ref=e100]:
+            - generic [ref=e101]: 
+            - text: Line-up & detailing
+          - listitem [ref=e102]:
+            - generic [ref=e103]: 
+            - text: Hot towel finish
+        - button "Book Now" [ref=e104] [cursor=pointer]
+      - generic [ref=e105]:
+        - heading "Gray Blending" [level=3] [ref=e106]
+        - paragraph [ref=e107]: Natural gray coverage
+        - paragraph [ref=e108]: Starting at $75
+        - list [ref=e109]:
+          - listitem [ref=e110]:
+            - generic [ref=e111]: 
+            - text: Natural-looking results
+          - listitem [ref=e112]:
+            - generic [ref=e113]: 
+            - text: Reduces gray by 50-70%
+          - listitem [ref=e114]:
+            - generic [ref=e115]: 
+            - text: No harsh lines
+          - listitem [ref=e116]:
+            - generic [ref=e117]: 
+            - text: Lasts 4-6 weeks
+        - button "Book Now" [ref=e118] [cursor=pointer]
+  - generic [ref=e120]:
+    - heading "Why Delray Beach Men Choose Chris David" [level=2] [ref=e122]
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - generic [ref=e126]: 
+        - heading "Professional Environment" [level=3] [ref=e127]
+        - paragraph [ref=e128]: A sophisticated salon experience - not a crowded barbershop. Relax in comfort while receiving expert service.
+      - generic [ref=e129]:
+        - generic [ref=e131]: 
+        - heading "Appointment-Based" [level=3] [ref=e132]
+        - paragraph [ref=e133]: No waiting in line. Book your appointment and arrive on time for prompt, dedicated service.
+      - generic [ref=e134]:
+        - generic [ref=e136]: 
+        - heading "Free Parking" [level=3] [ref=e137]
+        - paragraph [ref=e138]: Convenient free parking right at our Andre Design District location - a rarity in Delray Beach.
+  - generic [ref=e140]:
+    - heading "Ready for a Better Haircut Experience?" [level=2] [ref=e141]
+    - paragraph [ref=e142]: Book your appointment with Chris David Salon and discover why Delray Beach's discerning gentlemen trust us for their grooming needs.
+    - generic [ref=e143]:
+      - button " Book Appointment" [ref=e144] [cursor=pointer]:
+        - generic [ref=e145]: 
+        - text: Book Appointment
+      - link " Call (561) 299-0950" [ref=e146] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e147]: 
+        - text: Call (561) 299-0950
+  - contentinfo [ref=e148]:
+    - generic [ref=e149]:
+      - generic [ref=e150]:
+        - generic [ref=e151]:
+          - img "Chris David Salon" [ref=e153]
+          - paragraph [ref=e154]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e155]:
+          - heading "Quick Links" [level=4] [ref=e156]
+          - list [ref=e157]:
+            - listitem [ref=e158]:
+              - link "About" [ref=e159] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e160]:
+              - link "Gallery" [ref=e161] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e162]:
+              - link "Reviews" [ref=e163] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e164]:
+              - link "Blog" [ref=e165] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e166]:
+              - link "Careers" [ref=e167] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e168]:
+              - link "Chair Rental" [ref=e169] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e170]:
+              - link "Policies" [ref=e171] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e172]:
+          - heading "Areas Served" [level=4] [ref=e173]
+          - list [ref=e174]:
+            - listitem [ref=e175]:
+              - link "Delray Beach Hair Salon" [ref=e176] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e177]:
+              - link "Atlantic Avenue Colorist" [ref=e178] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e179]:
+              - link "Boca Raton Clients" [ref=e180] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e181]:
+              - link "Boynton Beach Clients" [ref=e182] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e183]:
+          - heading "Services" [level=4] [ref=e184]
+          - list [ref=e185]:
+            - listitem [ref=e186]:
+              - link "All Services" [ref=e187] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e188]:
+              - link "Hair Color" [ref=e189] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e190]:
+              - link "Women's Haircuts" [ref=e191] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e192]:
+              - link "Men's Haircuts" [ref=e193] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e194]:
+              - link "Balayage" [ref=e195] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e196]:
+              - link "Highlights" [ref=e197] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e198]:
+              - link "Color Correction" [ref=e199] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e200]:
+              - link "Extensions" [ref=e201] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e202]:
+              - link "Keratin Treatment" [ref=e203] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e204]:
+              - link "Wedding Hair" [ref=e205] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e206]:
+          - heading "Hair Care Guides" [level=4] [ref=e207]
+          - list [ref=e208]:
+            - listitem [ref=e209]:
+              - link "Best Salon Delray Guide" [ref=e210] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e211]:
+              - link "Delray Salon Reviews" [ref=e212] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e213]:
+              - link "Palm Beach Salon Guide" [ref=e214] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e215]:
+              - link "Balayage Guide" [ref=e216] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e217]:
+              - link "Color Correction Tips" [ref=e218] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e219]:
+              - link "Florida Hair Care" [ref=e220] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e221]:
+          - heading "Contact" [level=4] [ref=e222]
+          - generic [ref=e223]:
+            - paragraph [ref=e224]: 1878C Dr. Andres Way
+            - paragraph [ref=e225]: Delray Beach, FL 33445
+            - paragraph [ref=e226]:
+              - link "(561) 299-0950" [ref=e227] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e228]:
+              - link "chrisdavidsalon@gmail.com" [ref=e229] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e230]:
+            - link "" [ref=e231] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e232]: 
+            - link "" [ref=e233] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e234]: 
+            - link "" [ref=e235] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e236]: 
+      - paragraph [ref=e238]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e239]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

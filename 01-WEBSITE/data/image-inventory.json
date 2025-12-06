@@ -1,0 +1,471 @@
+{
+  "lastUpdated": "2025-12-05",
+  "summary": {
+    "totalImages": 348,
+    "usedOnWebsite": 33,
+    "availableForUse": 315,
+    "gbpOptimizedMobile": 118,
+    "gbpOptimizedDesktop": 118,
+    "gbpOptimizedHero": 66,
+    "originalGbpImages": 90
+  },
+  "mainImages": {
+    "logos": [
+      {
+        "path": "images/cds-logo.jpg",
+        "status": "USED",
+        "usedIn": ["All pages - header and footer"],
+        "description": "Main salon logo (JPG format)",
+        "bestFor": "Logo display, fallback"
+      },
+      {
+        "path": "images/cds-logo.webp",
+        "status": "USED",
+        "usedIn": ["index.html - main logo"],
+        "description": "Main salon logo (WebP format)",
+        "bestFor": "Logo display, primary format"
+      },
+      {
+        "path": "images/CDS_Logo.jpg",
+        "status": "USED",
+        "usedIn": ["color-correction.html"],
+        "description": "Alternate capitalization logo",
+        "bestFor": "Logo display"
+      },
+      {
+        "path": "images/CDS_Logo.webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Alternate capitalization logo (WebP)",
+        "bestFor": "Logo display"
+      }
+    ],
+    "brandLogos": [
+      {
+        "path": "images/davines-logo.jpg",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Davines brand logo JPG",
+        "bestFor": "Premium Brands page"
+      },
+      {
+        "path": "images/davines-logo.png",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Davines brand logo PNG",
+        "bestFor": "Premium Brands page"
+      },
+      {
+        "path": "images/davinesfix.png",
+        "status": "USED",
+        "usedIn": ["premiumbrands.html"],
+        "description": "Davines logo fixed version",
+        "bestFor": "Premium Brands page"
+      },
+      {
+        "path": "images/davinesfix.webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Davines logo WebP version",
+        "bestFor": "Premium Brands page"
+      },
+      {
+        "path": "images/Davines-Logo-s.webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Davines logo small",
+        "bestFor": "Brand mention"
+      },
+      {
+        "path": "images/goldwell-logo.png",
+        "status": "USED",
+        "usedIn": ["premiumbrands.html"],
+        "description": "Goldwell brand logo",
+        "bestFor": "Premium Brands page"
+      }
+    ],
+    "chrisDavidPhotos": [
+      {
+        "path": "images/chris-david-action.jpg",
+        "status": "USED",
+        "usedIn": ["chair-rental.html", "color-correction-delray-beach.html"],
+        "description": "Chris David working with client",
+        "bestFor": "About sections, action shots"
+      },
+      {
+        "path": "images/chris-david-action.webp",
+        "status": "USED",
+        "usedIn": ["index.html", "blog.html"],
+        "description": "Chris David working with client (WebP)",
+        "bestFor": "About sections, action shots"
+      },
+      {
+        "path": "images/chris-david-portrait.jpg",
+        "status": "USED",
+        "usedIn": ["premiumbrands.html"],
+        "description": "Chris David portrait",
+        "bestFor": "About Chris, educator sections"
+      }
+    ],
+    "serviceImages": [
+      {
+        "path": "images/hair-color.jpg",
+        "status": "USED",
+        "usedIn": ["color-correction.html", "boynton-beach-hair-salon.html", "highlights-delray-beach.html", "color-correction-delray-beach.html"],
+        "description": "Hair color service result",
+        "bestFor": "Hair color pages, before/after"
+      },
+      {
+        "path": "images/hair-color.webp",
+        "status": "USED",
+        "usedIn": ["index.html", "color-correction.html", "blog.html"],
+        "description": "Hair color service result (WebP)",
+        "bestFor": "Hair color pages"
+      },
+      {
+        "path": "images/hair-cut.jpg",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Haircut service image",
+        "bestFor": "Haircut pages"
+      },
+      {
+        "path": "images/hair-cut.webp",
+        "status": "USED",
+        "usedIn": ["index.html", "blog.html"],
+        "description": "Haircut service image (WebP)",
+        "bestFor": "Haircut pages"
+      },
+      {
+        "path": "images/hair-extensions.jpg",
+        "status": "USED",
+        "usedIn": ["color-correction-delray-beach.html"],
+        "description": "Hair extensions service",
+        "bestFor": "Extensions pages"
+      },
+      {
+        "path": "images/hair-extensions.webp",
+        "status": "USED",
+        "usedIn": ["index.html", "blog.html"],
+        "description": "Hair extensions service (WebP)",
+        "bestFor": "Extensions pages"
+      },
+      {
+        "path": "images/keratin-treatment.jpg",
+        "status": "USED",
+        "usedIn": ["color-correction-delray-beach.html"],
+        "description": "Keratin treatment result",
+        "bestFor": "Keratin pages"
+      },
+      {
+        "path": "images/keratin-treatment.webp",
+        "status": "USED",
+        "usedIn": ["index.html", "blog.html"],
+        "description": "Keratin treatment result (WebP)",
+        "bestFor": "Keratin pages"
+      },
+      {
+        "path": "images/event-styling.jpg",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Event/special occasion styling",
+        "bestFor": "Wedding, event pages"
+      },
+      {
+        "path": "images/event-styling.webp",
+        "status": "USED",
+        "usedIn": ["index.html"],
+        "description": "Event/special occasion styling (WebP)",
+        "bestFor": "Wedding, event pages"
+      },
+      {
+        "path": "images/signature-service.jpg",
+        "status": "USED",
+        "usedIn": ["color-correction.html", "chair-rental.html", "color-correction-delray-beach.html"],
+        "description": "Signature service result",
+        "bestFor": "Premium services"
+      },
+      {
+        "path": "images/signature.jpg",
+        "status": "USED",
+        "usedIn": ["index.html"],
+        "description": "Signature service alternate",
+        "bestFor": "Premium services"
+      }
+    ],
+    "salonInterior": [
+      {
+        "path": "images/chair-rental-hero.webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Chair rental hero image",
+        "bestFor": "Chair rental page"
+      },
+      {
+        "path": "images/salon-interior-chairs.png",
+        "status": "USED",
+        "usedIn": ["chair-rental.html"],
+        "description": "Salon interior with chairs",
+        "bestFor": "Chair rental, about salon"
+      },
+      {
+        "path": "images/hero-salon.webp",
+        "status": "USED",
+        "usedIn": ["index.html"],
+        "description": "Homepage hero background",
+        "bestFor": "Hero sections"
+      }
+    ],
+    "serviceThumbnails": [
+      {
+        "path": "images/11 Hair Color .webp",
+        "status": "USED",
+        "usedIn": ["color-correction.html"],
+        "description": "Hair color service thumbnail",
+        "bestFor": "Service cards, thumbnails"
+      },
+      {
+        "path": "images/11 Hair Cuts.webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Haircuts service thumbnail",
+        "bestFor": "Haircut service cards"
+      },
+      {
+        "path": "images/11 Hair Extensions.webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Extensions service thumbnail",
+        "bestFor": "Extensions service cards"
+      },
+      {
+        "path": "images/11 Hair Salon .jpg",
+        "status": "USED",
+        "usedIn": ["boynton-beach-hair-salon.html"],
+        "description": "General salon image",
+        "bestFor": "Location pages"
+      },
+      {
+        "path": "images/11 Hair Salon .webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "General salon image (WebP)",
+        "bestFor": "Location pages"
+      },
+      {
+        "path": "images/11 Kerati treatments .webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Keratin service thumbnail",
+        "bestFor": "Keratin service cards"
+      },
+      {
+        "path": "images/11 Styling.webp",
+        "status": "FREE",
+        "usedIn": [],
+        "description": "Styling service thumbnail",
+        "bestFor": "Styling service cards"
+      }
+    ]
+  },
+  "gbpGalleryImages": {
+    "usedOnHomepage": [
+      "gbp-001 (Beautiful color result)",
+      "gbp-005 (Stunning balayage)",
+      "gbp-006 (Hair transformation)",
+      "gbp-007 (Balayage blonde) - also Premium Brands",
+      "gbp-012 (Color correction)",
+      "gbp-013 (Highlights result)",
+      "gbp-017 (Hair styling)",
+      "gbp-018 (Beautiful brunette)",
+      "gbp-020 (Blonde transformation)",
+      "gbp-021 (Hair color result)"
+    ],
+    "freeToUse": {
+      "colorTransformations": [
+        "gbp-002 - Color transformation",
+        "gbp-003 - Balayage result",
+        "gbp-004 - Blonde highlights",
+        "gbp-008 - Hair color",
+        "gbp-009 - Brunette transformation",
+        "gbp-010 - Color result",
+        "gbp-011 - Highlights",
+        "gbp-014 - Color correction",
+        "gbp-015 - Hair transformation",
+        "gbp-016 - Beautiful color",
+        "gbp-019 - Stunning result",
+        "gbp-022 - Hair styling",
+        "gbp-023 - Beautiful finish"
+      ],
+      "beforeAfterPhotos": [
+        "Before After Brunette - Before/after brunette transformation",
+        "Color Correction Brunette Dimension - Color correction example",
+        "Platinum Color Correction Before After - Platinum transformation",
+        "Red Before After Transformation - Red hair transformation",
+        "Red Before Ater Jen - Client Jen red hair"
+      ],
+      "platinumBlonde": [
+        "AJ Platinum Silver Blond - Platinum silver blonde",
+        "AJ Platinum Silver Blond 1 - Platinum result",
+        "AJ-Platinum1 - Platinum transformation",
+        "Maria Platinum Ice Color Correction - Platinum ice",
+        "Maria Platinum Ice Color Correction-2 - Platinum result"
+      ],
+      "balayageHighlights": [
+        "Balayage brunette - Brunette balayage",
+        "Balayage brunette 1 - Balayage result",
+        "Morgan Blond After 1 - Blonde balayage",
+        "Morgan blond After 2 - Blonde result"
+      ],
+      "bobsAndCuts": [
+        "After Palyful Bob - Playful bob cut",
+        "Classic Medium Bob 1 - Classic medium bob",
+        "Ahley After Classic With An Edge - Edgy classic style"
+      ],
+      "copperRed": [
+        "Copper After Shot - Copper hair color",
+        "Fun Sexy After - Fun copper/red result"
+      ],
+      "naturalBrownBrunette": [
+        "Natural Brown After 1 - Natural brown",
+        "Natural brown After - Natural brown result",
+        "Alize After - Brunette result",
+        "Alize After 1 - Brunette transformation"
+      ],
+      "actionShots": [
+        "Chris David Color Consultation Retail Action-M - Consultation shot",
+        "JUlissa Mens Style Action Shot-M - Men's styling action",
+        "Waiting & Retail-M - Salon atmosphere"
+      ],
+      "productSalon": [
+        "Davines Product Promo - Davines products",
+        "Escape Davines Color Image - Davines color work",
+        "Group shot Chris David - Team photo"
+      ],
+      "susanPhotoshoot": [
+        "Susan Photoshoot1 - Professional photoshoot",
+        "SusanPhotoshoot - Photoshoot result",
+        "SusanPhotoshoot2 - Photoshoot variation",
+        "SusanPhotoshoot3 - Photoshoot result",
+        "SusanPhotoshoot4 - Photoshoot final"
+      ],
+      "hollyPhotoshoot": [
+        "Holly Edited-6 - Holly photoshoot",
+        "Holly Edited-7 - Holly result",
+        "Holly Edited-13 - Holly final"
+      ],
+      "rikkiPhotoshoot": [
+        "Rikki-1 - Rikki photoshoot",
+        "Rikki-1-2 - Rikki result",
+        "Rikki-1-16 - Rikki final"
+      ],
+      "unnamed": [
+        "unnamed-2 through unnamed-25 - Various client results (24 images)"
+      ],
+      "dated": [
+        "2021-02-16 - Client result Feb 2021",
+        "2021-02-17-2 - Client result Feb 2021",
+        "2022-01-26-3 - Client result Jan 2022",
+        "2022-02-04 series (3 images) - Client results Feb 2022",
+        "2022-02-22 series (2 images) - Client results Feb 2022",
+        "2022-03-25 - Client result Mar 2022",
+        "2022-05-31 series (2 images) - Client results May 2022",
+        "2022-09-21 series (4 images) - Client results Sep 2022"
+      ]
+    }
+  },
+  "recommendationsForServicePages": {
+    "balayage-delray-beach.html": {
+      "currentImages": "Uses Squarespace external images only",
+      "suggestedLocalImages": [
+        "gbp-003 (Balayage result)",
+        "gbp-004 (Blonde highlights)",
+        "Balayage brunette",
+        "Morgan Blond After 1",
+        "Morgan blond After 2",
+        "Susan Photoshoot series"
+      ]
+    },
+    "hair-color-delray-beach.html": {
+      "currentImages": "Uses Squarespace external images only",
+      "suggestedLocalImages": [
+        "gbp-002 (Color transformation)",
+        "gbp-008 (Hair color)",
+        "gbp-009 (Brunette transformation)",
+        "Color Correction Brunette Dimension",
+        "Natural Brown After series"
+      ]
+    },
+    "highlights-delray-beach.html": {
+      "currentImages": "images/hair-color.jpg (reused)",
+      "suggestedLocalImages": [
+        "gbp-004 (Blonde highlights)",
+        "gbp-011 (Highlights)",
+        "gbp-013 (Highlights result) - homepage uses this",
+        "gbp-015 (Hair transformation)"
+      ],
+      "note": "gbp-013 used on homepage - can still use for highlights page"
+    },
+    "keratin-treatment-delray-beach.html": {
+      "currentImages": "Uses Squarespace external images only",
+      "suggestedLocalImages": [
+        "gbp-010 (Smooth color result)",
+        "gbp-016 (Beautiful color)",
+        "11 Kerati treatments.webp (service thumbnail)"
+      ]
+    },
+    "hair-extensions-delray-beach.html": {
+      "currentImages": "Uses Squarespace external images only",
+      "suggestedLocalImages": [
+        "gbp-019 (Stunning long result)",
+        "11 Hair Extensions.webp (service thumbnail)",
+        "Holly Edited series"
+      ]
+    },
+    "wedding-hair-delray-beach.html": {
+      "currentImages": "Uses Squarespace external images only",
+      "suggestedLocalImages": [
+        "event-styling.jpg (not used elsewhere)",
+        "Susan Photoshoot series (glamorous shots)",
+        "Holly Edited series (elegant looks)"
+      ]
+    },
+    "mens-haircut-delray-beach.html": {
+      "currentImages": "Uses Squarespace external images only",
+      "suggestedLocalImages": [
+        "JUlissa Mens Style Action Shot-M"
+      ],
+      "note": "Limited men's specific images available"
+    },
+    "womens-haircut-delray-beach.html": {
+      "currentImages": "Uses Squarespace external images only",
+      "suggestedLocalImages": [
+        "After Palyful Bob",
+        "Classic Medium Bob 1",
+        "Ahley After Classic With An Edge",
+        "11 Hair Cuts.webp (service thumbnail)"
+      ]
+    },
+    "color-correction-delray-beach.html": {
+      "currentImages": "Already has local images - good!",
+      "suggestedLocalImages": [
+        "Before After Brunette",
+        "Color Correction Brunette Dimension",
+        "Platinum Color Correction Before After"
+      ]
+    },
+    "hair-salon-delray-beach.html": {
+      "currentImages": "Uses Squarespace external images only",
+      "suggestedLocalImages": [
+        "gbp-002 through gbp-023 (variety of services)",
+        "Group shot Chris David",
+        "Waiting & Retail-M"
+      ]
+    }
+  },
+  "notes": {
+    "imageFormats": "GBP images have mobile, tablet, desktop, and hero variants in optimized folder",
+    "namingConvention": "GBP optimized: [name]-[size].webp (e.g., gbp-001-mobile.webp)",
+    "usage": "When adding to service pages, use mobile variant in srcset for mobile, desktop for larger screens"
+  }
+}

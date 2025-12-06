@@ -1,0 +1,376 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon Andre Design District - Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District - Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e14]:
+        - link " (561) 299-0950" [ref=e15] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e16]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]:
+    - img "Balayage Delray Beach" [ref=e20]
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: "DELRAY BEACH'S #1 BALAYAGE SPECIALIST"
+      - heading "Balayage That Looks Naturally Beautiful" [level=1] [ref=e24]:
+        - text: Balayage That Looks
+        - text: Naturally Beautiful
+      - paragraph [ref=e25]: Sun-kissed, hand-painted highlights by a master colorist with 20+ years of experience and certifications from the world's top color brands
+      - generic [ref=e26]:
+        - button " Book Balayage Consultation" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Book Balayage Consultation
+        - link " Call (561) 299-0950" [ref=e29] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e30]: 
+          - text: Call (561) 299-0950
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]: 
+            - generic [ref=e35]: 
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+          - generic [ref=e39]: 4.9/5 - 140+ Reviews
+        - generic [ref=e40]:
+          - generic [ref=e41]: 
+          - generic [ref=e42]: Davines & Goldwell Certified
+        - generic [ref=e43]:
+          - generic [ref=e44]: 
+          - generic [ref=e45]: 20+ Years Master Colorist
+  - generic [ref=e48]:
+    - generic [ref=e49]:
+      - heading "What is Balayage?" [level=2] [ref=e50]
+      - generic [ref=e51]:
+        - paragraph [ref=e52]:
+          - strong [ref=e53]: Balayage
+          - text: (French for "sweeping") is a freehand highlighting technique where color is hand-painted onto the hair, creating a natural, sun-kissed effect that traditional foil highlights simply can't achieve.
+        - paragraph [ref=e54]:
+          - text: Unlike regular highlights, balayage creates a softer, more natural graduation of color - lighter at the ends, gradually blending into your natural color at the roots. This means
+          - strong [ref=e55]: low-maintenance grow-out
+          - text: and a look that stays beautiful for months.
+        - paragraph [ref=e56]: As a certified Davines educator and Goldwell Academy graduate, Chris David has spent over 20 years perfecting his balayage technique. His signature "air composition color mapping" creates dimension and movement that's uniquely tailored to your features.
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: 
+          - text: Low Maintenance
+        - generic [ref=e60]:
+          - generic [ref=e61]: 
+          - text: Natural Look
+        - generic [ref=e62]:
+          - generic [ref=e63]: 
+          - text: Custom Placement
+        - generic [ref=e64]:
+          - generic [ref=e65]: 
+          - text: Grows Out Beautifully
+    - generic [ref=e66]:
+      - img "Balayage specialist at work" [ref=e67]
+      - generic [ref=e68]:
+        - generic [ref=e69]: 500+
+        - generic [ref=e70]: Balayage Clients
+  - generic [ref=e72]:
+    - generic [ref=e73]:
+      - heading "Why Choose Chris David for Balayage?" [level=2] [ref=e74]
+      - paragraph [ref=e75]: Not all balayage is created equal. Here's what sets Chris David apart from other colorists.
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e79]: 
+        - heading "Certified Educator" [level=3] [ref=e80]
+        - paragraph [ref=e81]: Chris has trained hundreds of stylists for Davines, Goldwell, and other top brands. He doesn't just do balayage - he teaches it.
+      - generic [ref=e82]:
+        - generic [ref=e84]: 
+        - heading "Custom Color Mapping" [level=3] [ref=e85]
+        - paragraph [ref=e86]: Chris's signature "air composition" technique places color exactly where it needs to be for your unique face shape and skin tone.
+      - generic [ref=e87]:
+        - generic [ref=e89]: 
+        - heading "Premium Products" [level=3] [ref=e90]
+        - paragraph [ref=e91]: Exclusively using Davines sustainable luxury color products - gentle on your hair while delivering stunning, long-lasting results.
+      - generic [ref=e92]:
+        - generic [ref=e94]: 
+        - heading "Florida Climate Expert" [level=3] [ref=e95]
+        - paragraph [ref=e96]: 20+ years in South Florida means Chris understands how sun, salt, and humidity affect your color - and how to make it last.
+      - generic [ref=e97]:
+        - generic [ref=e99]: 
+        - heading "Low Maintenance Results" [level=3] [ref=e100]
+        - paragraph [ref=e101]: Chris's balayage technique means you can go 3-4 months between appointments. Your color grows out gracefully, not awkwardly.
+      - generic [ref=e102]:
+        - generic [ref=e104]: 
+        - heading "Thorough Consultation" [level=3] [ref=e105]
+        - paragraph [ref=e106]: Every balayage starts with an in-depth consultation. Chris takes time to understand your lifestyle, maintenance preferences, and vision.
+  - generic [ref=e108]:
+    - generic [ref=e109]:
+      - heading "Balayage Services & Pricing" [level=2] [ref=e110]
+      - paragraph [ref=e111]: Investment in beautiful, healthy color that lasts
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - heading "Partial Balayage" [level=3] [ref=e114]
+        - paragraph [ref=e115]: Face-framing & top layers
+        - paragraph [ref=e116]: Starting at $200
+        - list [ref=e117]:
+          - listitem [ref=e118]:
+            - generic [ref=e119]: 
+            - text: Perfect for subtle dimension
+          - listitem [ref=e120]:
+            - generic [ref=e121]: 
+            - text: Face-framing highlights
+          - listitem [ref=e122]:
+            - generic [ref=e123]: 
+            - text: 2-3 hour appointment
+          - listitem [ref=e124]:
+            - generic [ref=e125]: 
+            - text: Includes toner & gloss
+        - button "Book Consultation" [ref=e126] [cursor=pointer]
+      - generic [ref=e127]:
+        - generic [ref=e128]: MOST POPULAR
+        - heading "Full Balayage" [level=3] [ref=e129]
+        - paragraph [ref=e130]: All-over hand-painted highlights
+        - paragraph [ref=e131]: Starting at $300
+        - list [ref=e132]:
+          - listitem [ref=e133]:
+            - generic [ref=e134]: 
+            - text: Complete transformation
+          - listitem [ref=e135]:
+            - generic [ref=e136]: 
+            - text: Custom color placement
+          - listitem [ref=e137]:
+            - generic [ref=e138]: 
+            - text: 3-4 hour appointment
+          - listitem [ref=e139]:
+            - generic [ref=e140]: 
+            - text: Toner, gloss & treatment
+        - button "Book Consultation" [ref=e141] [cursor=pointer]
+      - generic [ref=e142]:
+        - heading "Balayage Refresh" [level=3] [ref=e143]
+        - paragraph [ref=e144]: For existing balayage clients
+        - paragraph [ref=e145]: Starting at $175
+        - list [ref=e146]:
+          - listitem [ref=e147]:
+            - generic [ref=e148]: 
+            - text: Brighten existing balayage
+          - listitem [ref=e149]:
+            - generic [ref=e150]: 
+            - text: Root shadow/melt
+          - listitem [ref=e151]:
+            - generic [ref=e152]: 
+            - text: 2 hour appointment
+          - listitem [ref=e153]:
+            - generic [ref=e154]: 
+            - text: Gloss & treatment
+        - button "Book Refresh" [ref=e155] [cursor=pointer]
+    - paragraph [ref=e156]: "*Prices vary based on hair length, thickness, and desired result. Final pricing confirmed at consultation."
+  - generic [ref=e158]:
+    - heading "What Balayage Clients Say" [level=2] [ref=e160]
+    - generic [ref=e161]:
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e164]: 
+          - generic [ref=e165]: 
+          - generic [ref=e166]: 
+          - generic [ref=e167]: 
+          - generic [ref=e168]: 
+        - paragraph [ref=e169]: "\"My balayage from Chris is absolutely stunning. It looks so natural - like I spent a summer at the beach. And the best part? It's been 3 months and it still looks amazing!\""
+        - generic [ref=e170]: "- Michelle R."
+        - generic [ref=e171]: Delray Beach
+      - generic [ref=e172]:
+        - generic [ref=e173]:
+          - generic [ref=e174]: 
+          - generic [ref=e175]: 
+          - generic [ref=e176]: 
+          - generic [ref=e177]: 
+          - generic [ref=e178]: 
+        - paragraph [ref=e179]: "\"I've had balayage at several salons, but Chris is on another level. The dimension and movement he creates is like art. He truly understands color.\""
+        - generic [ref=e180]: "- Lauren K."
+        - generic [ref=e181]: Boca Raton
+      - generic [ref=e182]:
+        - generic [ref=e183]:
+          - generic [ref=e184]: 
+          - generic [ref=e185]: 
+          - generic [ref=e186]: 
+          - generic [ref=e187]: 
+          - generic [ref=e188]: 
+        - paragraph [ref=e189]: "\"Chris took my brassy, damaged hair and transformed it with a beautiful, cool-toned balayage. My hair has never looked or felt healthier!\""
+        - generic [ref=e190]: "- Ashley P."
+        - generic [ref=e191]: Boynton Beach
+    - link " Read All Reviews on Google" [ref=e193] [cursor=pointer]:
+      - /url: https://www.google.com/search?q=chris+david+salon+delray+beach+reviews
+      - generic [ref=e194]: 
+      - text: Read All Reviews on Google
+  - generic [ref=e196]:
+    - heading "Balayage FAQs" [level=2] [ref=e198]
+    - generic [ref=e199]:
+      - generic [ref=e200]:
+        - heading "How long does balayage last?" [level=3] [ref=e201]
+        - paragraph [ref=e202]: Balayage typically lasts 3-4 months between appointments, though many clients go even longer. Because the color is hand-painted without harsh lines, it grows out naturally and beautifully.
+      - generic [ref=e203]:
+        - heading "Is balayage damaging to hair?" [level=3] [ref=e204]
+        - paragraph [ref=e205]: When done correctly by an experienced colorist using quality products like Davines, balayage is actually gentler than traditional highlights. Chris uses bond-building treatments to maintain hair health.
+      - generic [ref=e206]:
+        - heading "What's the difference between balayage and highlights?" [level=3] [ref=e207]
+        - paragraph [ref=e208]: Traditional highlights use foils and create uniform, consistent lightening. Balayage is hand-painted in a sweeping motion, creating softer, more natural-looking dimension with no harsh regrowth lines.
+      - generic [ref=e209]:
+        - heading "Can I get balayage on dark hair?" [level=3] [ref=e210]
+        - paragraph [ref=e211]: Absolutely! Balayage looks stunning on all hair colors. For dark hair, Chris creates rich caramel, honey, or copper tones that add beautiful dimension while maintaining your natural base.
+      - generic [ref=e212]:
+        - heading "How do I maintain my balayage?" [level=3] [ref=e213]
+        - paragraph [ref=e214]: Use color-safe, sulfate-free shampoo (Chris recommends Davines products), avoid excessive heat styling, and protect your hair from sun exposure. A gloss treatment every 6-8 weeks keeps color vibrant.
+  - generic [ref=e216]:
+    - heading "Ready for Your Perfect Balayage?" [level=2] [ref=e217]
+    - paragraph [ref=e218]: Schedule a consultation with master colorist Chris David and discover the balayage technique that Delray Beach clients rave about.
+    - generic [ref=e219]:
+      - button " Book Consultation" [ref=e220] [cursor=pointer]:
+        - generic [ref=e221]: 
+        - text: Book Consultation
+      - link " Call (561) 299-0950" [ref=e222] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e223]: 
+        - text: Call (561) 299-0950
+  - contentinfo [ref=e224]:
+    - generic [ref=e225]:
+      - generic [ref=e226]:
+        - generic [ref=e227]:
+          - img "Chris David Salon" [ref=e229]
+          - paragraph [ref=e230]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e231]:
+          - heading "Quick Links" [level=4] [ref=e232]
+          - list [ref=e233]:
+            - listitem [ref=e234]:
+              - link "About" [ref=e235] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e236]:
+              - link "Gallery" [ref=e237] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e238]:
+              - link "Reviews" [ref=e239] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e240]:
+              - link "Blog" [ref=e241] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e242]:
+              - link "Careers" [ref=e243] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e244]:
+              - link "Chair Rental" [ref=e245] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e246]:
+              - link "Policies" [ref=e247] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e248]:
+          - heading "Areas Served" [level=4] [ref=e249]
+          - list [ref=e250]:
+            - listitem [ref=e251]:
+              - link "Delray Beach Hair Salon" [ref=e252] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e253]:
+              - link "Atlantic Avenue Colorist" [ref=e254] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e255]:
+              - link "Boca Raton Clients" [ref=e256] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e257]:
+              - link "Boynton Beach Clients" [ref=e258] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e259]:
+          - heading "Services" [level=4] [ref=e260]
+          - list [ref=e261]:
+            - listitem [ref=e262]:
+              - link "All Services" [ref=e263] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e264]:
+              - link "Hair Color" [ref=e265] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e266]:
+              - link "Women's Haircuts" [ref=e267] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e268]:
+              - link "Men's Haircuts" [ref=e269] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e270]:
+              - link "Balayage" [ref=e271] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e272]:
+              - link "Highlights" [ref=e273] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e274]:
+              - link "Color Correction" [ref=e275] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e276]:
+              - link "Extensions" [ref=e277] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e278]:
+              - link "Keratin Treatment" [ref=e279] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e280]:
+              - link "Wedding Hair" [ref=e281] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e282]:
+          - heading "Hair Care Guides" [level=4] [ref=e283]
+          - list [ref=e284]:
+            - listitem [ref=e285]:
+              - link "Best Salon Delray Guide" [ref=e286] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e287]:
+              - link "Delray Salon Reviews" [ref=e288] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e289]:
+              - link "Palm Beach Salon Guide" [ref=e290] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e291]:
+              - link "Balayage Guide" [ref=e292] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e293]:
+              - link "Color Correction Tips" [ref=e294] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e295]:
+              - link "Florida Hair Care" [ref=e296] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e297]:
+          - heading "Contact" [level=4] [ref=e298]
+          - generic [ref=e299]:
+            - paragraph [ref=e300]: 1878C Dr. Andres Way
+            - paragraph [ref=e301]: Delray Beach, FL 33445
+            - paragraph [ref=e302]:
+              - link "(561) 299-0950" [ref=e303] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e304]:
+              - link "chrisdavidsalon@gmail.com" [ref=e305] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e306]:
+            - link "" [ref=e307] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e308]: 
+            - link "" [ref=e309] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e310]: 
+            - link "" [ref=e311] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e312]: 
+      - paragraph [ref=e314]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e315]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

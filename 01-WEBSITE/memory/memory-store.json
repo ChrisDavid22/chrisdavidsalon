@@ -2,9 +2,9 @@
   "system": [
     {
       "key": "system/compaction-event",
-      "value": "{\"timestamp\": \"2025-12-05T15:55:23Z\", \"action\": \"hnsw_refresh_needed\"}",
+      "value": "{\"timestamp\": \"2025-12-06T03:23:42Z\", \"action\": \"hnsw_refresh_needed\"}",
       "namespace": "system",
-      "timestamp": 1764950124751,
+      "timestamp": 1764991423862,
       "redacted": false
     }
   ]

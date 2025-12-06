@@ -1,0 +1,414 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon Andre Design District - Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District - Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e14]:
+        - link " (561) 299-0950" [ref=e15] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e16]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]:
+    - img "Keratin Treatment Delray Beach" [ref=e20]
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: SOUTH FLORIDA'S FRIZZ-FREE SOLUTION
+      - heading "Beat Florida Humidity" [level=1] [ref=e24]:
+        - text: Beat Florida
+        - text: Humidity
+      - paragraph [ref=e25]: Keratin treatments and Brazilian Blowouts by a Cezanne certified educator. Smooth, frizz-free hair that lasts through our tropical weather.
+      - generic [ref=e26]:
+        - button " Book Keratin Treatment" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Book Keratin Treatment
+        - link " Call (561) 299-0950" [ref=e29] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e30]: 
+          - text: Call (561) 299-0950
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]: 
+            - generic [ref=e35]: 
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+          - generic [ref=e39]: 4.9/5 - 140+ Reviews
+        - generic [ref=e40]:
+          - generic [ref=e41]: 
+          - generic [ref=e42]: Cezanne Certified Educator
+        - generic [ref=e43]:
+          - generic [ref=e44]: 
+          - generic [ref=e45]: 20+ Years in Florida
+  - generic [ref=e47]:
+    - generic [ref=e48]:
+      - heading "Why Keratin Treatments Are Essential in Florida" [level=2] [ref=e49]:
+        - text: Why Keratin Treatments Are
+        - text: Essential in Florida
+      - paragraph [ref=e50]: Living in South Florida means battling humidity every single day. Keratin treatments are your secret weapon.
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e54]: 
+        - heading "Eliminate Frizz" [level=3] [ref=e55]
+        - paragraph [ref=e56]: Say goodbye to the poof that happens the moment you step outside. Keratin creates a protective barrier against humidity.
+      - generic [ref=e57]:
+        - generic [ref=e59]: 
+        - heading "Cut Styling Time by 50%" [level=3] [ref=e60]
+        - paragraph [ref=e61]: What used to take 30 minutes now takes 15. Your hair dries smoother and styles faster with keratin-treated hair.
+      - generic [ref=e62]:
+        - generic [ref=e64]: 
+        - heading "Healthier Hair" [level=3] [ref=e65]
+        - paragraph [ref=e66]: Keratin treatments repair damage and add shine. Your hair will look and feel healthier than ever.
+  - generic [ref=e68]:
+    - generic [ref=e69]:
+      - heading "Keratin Treatment Options" [level=2] [ref=e70]
+      - paragraph [ref=e71]: Different treatments for different needs - we'll help you choose the right one
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]: MOST POPULAR
+        - heading "Brazilian Blowout" [level=3] [ref=e75]
+        - paragraph [ref=e76]: The original smoothing treatment
+        - paragraph [ref=e77]: Starting at $250
+        - list [ref=e78]:
+          - listitem [ref=e79]:
+            - generic [ref=e80]: 
+            - text: No formaldehyde formula
+          - listitem [ref=e81]:
+            - generic [ref=e82]: 
+            - text: Same-day wash & style
+          - listitem [ref=e83]:
+            - generic [ref=e84]: 
+            - text: Lasts 10-12 weeks
+          - listitem [ref=e85]:
+            - generic [ref=e86]: 
+            - text: Works on all hair types
+          - listitem [ref=e87]:
+            - generic [ref=e88]: 
+            - text: Color-safe
+        - button "Book Now" [ref=e89] [cursor=pointer]
+      - generic [ref=e90]:
+        - heading "Cezanne Classic" [level=3] [ref=e91]
+        - paragraph [ref=e92]: Zero-formaldehyde option
+        - paragraph [ref=e93]: Starting at $300
+        - list [ref=e94]:
+          - listitem [ref=e95]:
+            - generic [ref=e96]: 
+            - text: 100% formaldehyde-free
+          - listitem [ref=e97]:
+            - generic [ref=e98]: 
+            - text: No harsh chemicals
+          - listitem [ref=e99]:
+            - generic [ref=e100]: 
+            - text: Lasts 3-4 months
+          - listitem [ref=e101]:
+            - generic [ref=e102]: 
+            - text: Pregnancy-safe
+          - listitem [ref=e103]:
+            - generic [ref=e104]: 
+            - text: Great for fine hair
+        - button "Book Now" [ref=e105] [cursor=pointer]
+      - generic [ref=e106]:
+        - heading "Express Smoothing" [level=3] [ref=e107]
+        - paragraph [ref=e108]: Quick results, shorter time
+        - paragraph [ref=e109]: Starting at $175
+        - list [ref=e110]:
+          - listitem [ref=e111]:
+            - generic [ref=e112]: 
+            - text: 90-minute treatment
+          - listitem [ref=e113]:
+            - generic [ref=e114]: 
+            - text: Immediate results
+          - listitem [ref=e115]:
+            - generic [ref=e116]: 
+            - text: Lasts 6-8 weeks
+          - listitem [ref=e117]:
+            - generic [ref=e118]: 
+            - text: Perfect for touch-ups
+          - listitem [ref=e119]:
+            - generic [ref=e120]: 
+            - text: Great for events
+        - button "Book Now" [ref=e121] [cursor=pointer]
+    - paragraph [ref=e122]: "*Prices vary based on hair length and thickness. Final pricing confirmed at consultation."
+  - generic [ref=e125]:
+    - generic [ref=e126]:
+      - img "Keratin treatment specialist" [ref=e127]
+      - generic [ref=e128]:
+        - generic [ref=e129]: 500+
+        - generic [ref=e130]: Keratin Clients
+    - generic [ref=e131]:
+      - heading "Cezanne Certified Educator" [level=2] [ref=e132]
+      - generic [ref=e133]:
+        - paragraph [ref=e134]:
+          - text: Chris David isn't just certified in keratin treatments - he's a
+          - strong [ref=e135]: Cezanne Certified Educator
+          - text: who trains other stylists on proper technique and application.
+        - paragraph [ref=e136]: This means you get the highest level of expertise available. Chris understands the chemistry behind these treatments and knows exactly how to customize them for your specific hair type and goals.
+        - paragraph [ref=e137]: With 20+ years in South Florida, Chris has performed hundreds of keratin treatments and knows exactly how to make results last in our tropical climate.
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - generic [ref=e140]: 
+          - heading "Cezanne Certified" [level=4] [ref=e141]
+          - paragraph [ref=e142]: Educator status
+        - generic [ref=e143]:
+          - generic [ref=e144]: 
+          - heading "Florida Expert" [level=4] [ref=e145]
+          - paragraph [ref=e146]: 20+ years local
+  - generic [ref=e148]:
+    - generic [ref=e149]:
+      - heading "What to Expect" [level=2] [ref=e150]
+      - paragraph [ref=e151]: Real results that last through Florida's toughest humidity
+    - generic [ref=e152]:
+      - generic [ref=e153]:
+        - heading "1 Before Treatment" [level=3] [ref=e154]:
+          - generic [ref=e155]: "1"
+          - text: Before Treatment
+        - list [ref=e156]:
+          - listitem [ref=e157]:
+            - generic [ref=e158]: 
+            - text: Frizzy, unmanageable hair
+          - listitem [ref=e159]:
+            - generic [ref=e160]: 
+            - text: 30-45 min styling time
+          - listitem [ref=e161]:
+            - generic [ref=e162]: 
+            - text: Hair puffs up in humidity
+          - listitem [ref=e163]:
+            - generic [ref=e164]: 
+            - text: Dull, damaged appearance
+          - listitem [ref=e165]:
+            - generic [ref=e166]: 
+            - text: Constant touch-ups needed
+      - generic [ref=e167]:
+        - heading "2 After Treatment" [level=3] [ref=e168]:
+          - generic [ref=e169]: "2"
+          - text: After Treatment
+        - list [ref=e170]:
+          - listitem [ref=e171]:
+            - generic [ref=e172]: 
+            - text: Smooth, silky, manageable hair
+          - listitem [ref=e173]:
+            - generic [ref=e174]: 
+            - text: 10-15 min styling time
+          - listitem [ref=e175]:
+            - generic [ref=e176]: 
+            - text: Humidity-proof for months
+          - listitem [ref=e177]:
+            - generic [ref=e178]: 
+            - text: Healthy, shiny appearance
+          - listitem [ref=e179]:
+            - generic [ref=e180]: 
+            - text: Wake up with great hair
+  - generic [ref=e182]:
+    - heading "Keratin Treatment FAQs" [level=2] [ref=e184]
+    - generic [ref=e185]:
+      - generic [ref=e186]:
+        - heading "How long does a keratin treatment last?" [level=3] [ref=e187]
+        - paragraph [ref=e188]: Results typically last 3-4 months, though this varies based on your hair type, how often you wash, and the products you use. Brazilian Blowout usually lasts 10-12 weeks.
+      - generic [ref=e189]:
+        - heading "Will keratin make my hair completely straight?" [level=3] [ref=e190]
+        - paragraph [ref=e191]: Keratin treatments reduce frizz and make hair more manageable, but don't permanently straighten. You'll still have movement and can style your hair curly if you want - it will just be smoother and shinier.
+      - generic [ref=e192]:
+        - heading "Is keratin treatment safe for colored hair?" [level=3] [ref=e193]
+        - paragraph [ref=e194]: Yes! In fact, keratin treatments can help seal in color and add shine. Chris recommends getting color done before your keratin treatment for best results.
+      - generic [ref=e195]:
+        - heading "How long does the treatment take?" [level=3] [ref=e196]
+        - paragraph [ref=e197]: Most treatments take 2-3 hours depending on hair length and thickness. Express treatments are about 90 minutes.
+      - generic [ref=e198]:
+        - heading "Can I swim after a keratin treatment?" [level=3] [ref=e199]
+        - paragraph [ref=e200]: Yes, but wait 72 hours after treatment. After that, wet your hair with clean water before swimming and use a leave-in conditioner. Chris will give you complete aftercare instructions.
+  - generic [ref=e202]:
+    - heading "What Keratin Clients Say" [level=2] [ref=e204]
+    - generic [ref=e205]:
+      - generic [ref=e206]:
+        - generic [ref=e207]:
+          - generic [ref=e208]: 
+          - generic [ref=e209]: 
+          - generic [ref=e210]: 
+          - generic [ref=e211]: 
+          - generic [ref=e212]: 
+        - paragraph [ref=e213]: "\"Living in Florida with curly hair was a nightmare until I found Chris. My Brazilian Blowout changed my life - I actually enjoy going outside now!\""
+        - generic [ref=e214]: "- Sandra M."
+        - generic [ref=e215]: Delray Beach
+      - generic [ref=e216]:
+        - generic [ref=e217]:
+          - generic [ref=e218]: 
+          - generic [ref=e219]: 
+          - generic [ref=e220]: 
+          - generic [ref=e221]: 
+          - generic [ref=e222]: 
+        - paragraph [ref=e223]: "\"I've had keratin treatments at other salons, but Chris's results last so much longer. His technique is clearly superior - worth every penny.\""
+        - generic [ref=e224]: "- Diane K."
+        - generic [ref=e225]: Boca Raton
+      - generic [ref=e226]:
+        - generic [ref=e227]:
+          - generic [ref=e228]: 
+          - generic [ref=e229]: 
+          - generic [ref=e230]: 
+          - generic [ref=e231]: 
+          - generic [ref=e232]: 
+        - paragraph [ref=e233]: "\"My morning routine went from 45 minutes to 15. The Cezanne treatment is amazing - my hair is so healthy and manageable now.\""
+        - generic [ref=e234]: "- Rebecca T."
+        - generic [ref=e235]: Boynton Beach
+    - link " Read All Reviews on Google" [ref=e237] [cursor=pointer]:
+      - /url: https://www.google.com/search?q=chris+david+salon+delray+beach+reviews
+      - generic [ref=e238]: 
+      - text: Read All Reviews on Google
+  - generic [ref=e240]:
+    - heading "Ready to Beat the Humidity?" [level=2] [ref=e241]
+    - paragraph [ref=e242]: Book your keratin treatment consultation and discover what frizz-free Florida living feels like.
+    - generic [ref=e243]:
+      - button " Book Consultation" [ref=e244] [cursor=pointer]:
+        - generic [ref=e245]: 
+        - text: Book Consultation
+      - link " Call (561) 299-0950" [ref=e246] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e247]: 
+        - text: Call (561) 299-0950
+  - contentinfo [ref=e248]:
+    - generic [ref=e249]:
+      - generic [ref=e250]:
+        - generic [ref=e251]:
+          - img "Chris David Salon" [ref=e253]
+          - paragraph [ref=e254]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e255]:
+          - heading "Quick Links" [level=4] [ref=e256]
+          - list [ref=e257]:
+            - listitem [ref=e258]:
+              - link "About" [ref=e259] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e260]:
+              - link "Gallery" [ref=e261] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e262]:
+              - link "Reviews" [ref=e263] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e264]:
+              - link "Blog" [ref=e265] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e266]:
+              - link "Careers" [ref=e267] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e268]:
+              - link "Chair Rental" [ref=e269] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e270]:
+              - link "Policies" [ref=e271] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e272]:
+          - heading "Areas Served" [level=4] [ref=e273]
+          - list [ref=e274]:
+            - listitem [ref=e275]:
+              - link "Delray Beach Hair Salon" [ref=e276] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e277]:
+              - link "Atlantic Avenue Colorist" [ref=e278] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e279]:
+              - link "Boca Raton Clients" [ref=e280] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e281]:
+              - link "Boynton Beach Clients" [ref=e282] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e283]:
+          - heading "Services" [level=4] [ref=e284]
+          - list [ref=e285]:
+            - listitem [ref=e286]:
+              - link "All Services" [ref=e287] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e288]:
+              - link "Hair Color" [ref=e289] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e290]:
+              - link "Women's Haircuts" [ref=e291] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e292]:
+              - link "Men's Haircuts" [ref=e293] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e294]:
+              - link "Balayage" [ref=e295] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e296]:
+              - link "Highlights" [ref=e297] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e298]:
+              - link "Color Correction" [ref=e299] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e300]:
+              - link "Extensions" [ref=e301] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e302]:
+              - link "Keratin Treatment" [ref=e303] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e304]:
+              - link "Wedding Hair" [ref=e305] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e306]:
+          - heading "Hair Care Guides" [level=4] [ref=e307]
+          - list [ref=e308]:
+            - listitem [ref=e309]:
+              - link "Best Salon Delray Guide" [ref=e310] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e311]:
+              - link "Delray Salon Reviews" [ref=e312] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e313]:
+              - link "Palm Beach Salon Guide" [ref=e314] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e315]:
+              - link "Balayage Guide" [ref=e316] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e317]:
+              - link "Color Correction Tips" [ref=e318] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e319]:
+              - link "Florida Hair Care" [ref=e320] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e321]:
+          - heading "Contact" [level=4] [ref=e322]
+          - generic [ref=e323]:
+            - paragraph [ref=e324]: 1878C Dr. Andres Way
+            - paragraph [ref=e325]: Delray Beach, FL 33445
+            - paragraph [ref=e326]:
+              - link "(561) 299-0950" [ref=e327] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e328]:
+              - link "chrisdavidsalon@gmail.com" [ref=e329] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e330]:
+            - link "" [ref=e331] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e332]: 
+            - link "" [ref=e333] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e334]: 
+            - link "" [ref=e335] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e336]: 
+      - paragraph [ref=e338]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e339]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

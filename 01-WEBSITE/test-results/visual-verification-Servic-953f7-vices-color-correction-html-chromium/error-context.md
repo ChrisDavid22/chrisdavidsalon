@@ -1,0 +1,313 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon" [ref=e6] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+      - generic [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Color Correction" [ref=e11] [cursor=pointer]:
+          - /url: color-correction.html
+        - link "Balayage" [ref=e12] [cursor=pointer]:
+          - /url: balayage.html
+        - link "Keratin" [ref=e13] [cursor=pointer]:
+          - /url: keratin.html
+        - link "Contact" [ref=e14] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - link "Book Now" [ref=e15] [cursor=pointer]:
+        - /url: https://www.chrisdavidsalonbooking.com
+  - generic [ref=e16]:
+    - img "Color Correction" [ref=e17]
+    - generic [ref=e19]:
+      - heading "Color Correction Experts" [level=1] [ref=e20]
+      - paragraph [ref=e21]: Transform your hair disaster into a masterpiece. Our color correction specialists fix what others can't.
+      - generic [ref=e22]:
+        - link "Book Consultation" [ref=e23] [cursor=pointer]:
+          - /url: https://www.chrisdavidsalonbooking.com
+        - link "View Results" [ref=e24] [cursor=pointer]:
+          - /url: "#before-after"
+  - generic [ref=e26]:
+    - heading "Common Color Problems We Fix" [level=2] [ref=e27]
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]: 🟠
+        - heading "Brassy & Orange Tones" [level=3] [ref=e31]
+        - paragraph [ref=e32]: Neutralize unwanted warm tones and achieve the cool blonde you wanted.
+      - generic [ref=e33]:
+        - generic [ref=e34]: 🎨
+        - heading "Uneven Color" [level=3] [ref=e35]
+        - paragraph [ref=e36]: Fix patchy, striped, or banded color for seamless, beautiful results.
+      - generic [ref=e37]:
+        - generic [ref=e38]: ⚫
+        - heading "Box Dye Disasters" [level=3] [ref=e39]
+        - paragraph [ref=e40]: Correct at-home color attempts and restore your hair's health.
+      - generic [ref=e41]:
+        - generic [ref=e42]: 💚
+        - heading "Green Pool Hair" [level=3] [ref=e43]
+        - paragraph [ref=e44]: Remove green tints from chlorine and restore natural tones.
+      - generic [ref=e45]:
+        - generic [ref=e46]: 🔴
+        - heading "Over-Processed Damage" [level=3] [ref=e47]
+        - paragraph [ref=e48]: Repair and restore hair damaged by excessive bleaching or coloring.
+      - generic [ref=e49]:
+        - generic [ref=e50]: ⚡
+        - heading "Failed Highlights" [level=3] [ref=e51]
+        - paragraph [ref=e52]: Transform chunky or striped highlights into beautiful dimension.
+  - generic [ref=e54]:
+    - heading "Real Transformations" [level=2] [ref=e55]
+    - paragraph [ref=e56]: Slide to reveal the magic. Every correction tells a story of restored confidence.
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - img "Before" [ref=e59]
+        - img "After" [ref=e61]
+        - generic [ref=e64]: 
+        - generic [ref=e65]: BEFORE
+        - generic [ref=e66]: AFTER
+      - generic [ref=e67]:
+        - img "Before" [ref=e68]
+        - img "After" [ref=e70]
+        - generic [ref=e73]: 
+        - generic [ref=e74]: BEFORE
+        - generic [ref=e75]: AFTER
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e79]: 
+          - generic [ref=e80]: 
+          - generic [ref=e81]: 
+          - generic [ref=e82]: 
+          - generic [ref=e83]: 
+        - paragraph [ref=e84]: "\"Chris fixed my orange disaster in one session! I went from embarrassed to confident.\""
+        - paragraph [ref=e85]: "- Sarah M."
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - generic [ref=e88]: 
+          - generic [ref=e89]: 
+          - generic [ref=e90]: 
+          - generic [ref=e91]: 
+          - generic [ref=e92]: 
+        - paragraph [ref=e93]: "\"After 3 salons couldn't fix my color, Chris David Salon saved my hair!\""
+        - paragraph [ref=e94]: "- Jennifer R."
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - generic [ref=e97]: 
+          - generic [ref=e98]: 
+          - generic [ref=e99]: 
+          - generic [ref=e100]: 
+          - generic [ref=e101]: 
+        - paragraph [ref=e102]: "\"The only salon in Delray I trust with color correction. True artists!\""
+        - paragraph [ref=e103]: "- Monica T."
+  - generic [ref=e105]:
+    - heading "Our Color Correction Process" [level=2] [ref=e106]
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]: "1"
+        - heading "Consultation" [level=3] [ref=e110]
+        - paragraph [ref=e111]: Free analysis of your hair's current state and correction plan
+      - generic [ref=e112]:
+        - generic [ref=e113]: "2"
+        - heading "Color Removal" [level=3] [ref=e114]
+        - paragraph [ref=e115]: Gentle removal of unwanted pigments without damage
+      - generic [ref=e116]:
+        - generic [ref=e117]: "3"
+        - heading "Tone Correction" [level=3] [ref=e118]
+        - paragraph [ref=e119]: Precise application of corrective tones for perfect results
+      - generic [ref=e120]:
+        - generic [ref=e121]: "4"
+        - heading "Restoration" [level=3] [ref=e122]
+        - paragraph [ref=e123]: Deep conditioning treatments to restore health and shine
+  - generic [ref=e125]:
+    - heading "Investment in Your Confidence" [level=2] [ref=e126]
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - heading "Color Correction Services" [level=3] [ref=e130]
+          - list [ref=e131]:
+            - listitem [ref=e132]:
+              - generic [ref=e133]: Basic Correction (Toner/Gloss)
+              - generic [ref=e134]: $185+
+            - listitem [ref=e135]:
+              - generic [ref=e136]: Moderate Correction (Single Process)
+              - generic [ref=e137]: $285+
+            - listitem [ref=e138]:
+              - generic [ref=e139]: Major Correction (Multi-Process)
+              - generic [ref=e140]: $485+
+            - listitem [ref=e141]:
+              - generic [ref=e142]: Extreme Makeover (Full Day)
+              - generic [ref=e143]: $685+
+        - generic [ref=e144]:
+          - heading "What's Included" [level=3] [ref=e145]
+          - list [ref=e146]:
+            - listitem [ref=e147]:
+              - generic [ref=e148]: 
+              - generic [ref=e149]: Free consultation & strand test
+            - listitem [ref=e150]:
+              - generic [ref=e151]: 
+              - generic [ref=e152]: Olaplex bond protection treatment
+            - listitem [ref=e153]:
+              - generic [ref=e154]: 
+              - generic [ref=e155]: Deep conditioning restoration
+            - listitem [ref=e156]:
+              - generic [ref=e157]: 
+              - generic [ref=e158]: Take-home care instructions
+            - listitem [ref=e159]:
+              - generic [ref=e160]: 
+              - generic [ref=e161]: 30-day color guarantee
+      - generic [ref=e162]:
+        - paragraph [ref=e163]: "*Final pricing determined during consultation based on hair length, density, and correction complexity"
+        - link "Book Your Free Consultation" [ref=e164] [cursor=pointer]:
+          - /url: https://www.chrisdavidsalonbooking.com
+  - generic [ref=e166]:
+    - heading "Color Correction FAQ" [level=2] [ref=e167]
+    - generic [ref=e168]:
+      - generic [ref=e169]:
+        - heading "How long does color correction take?" [level=3] [ref=e170]
+        - paragraph [ref=e171]: Depending on the severity, corrections can take 3-8 hours. Complex cases may require multiple sessions.
+      - generic [ref=e172]:
+        - heading "Will color correction damage my hair?" [level=3] [ref=e173]
+        - paragraph [ref=e174]: We use gentle, professional products including Olaplex to protect your hair throughout the process.
+      - generic [ref=e175]:
+        - heading "Can you fix box dye?" [level=3] [ref=e176]
+        - paragraph [ref=e177]: Yes! Box dye correction is one of our specialties, though it may require multiple sessions.
+      - generic [ref=e178]:
+        - heading "How much does it cost?" [level=3] [ref=e179]
+        - paragraph [ref=e180]: Corrections start at $185 and can go up to $685+ for extensive work. We provide exact quotes during consultation.
+  - generic [ref=e182]:
+    - heading "Ready to Love Your Hair Again?" [level=2] [ref=e183]
+    - paragraph [ref=e184]: Don't live with hair you're not proud of. Our color correction experts are here to help.
+    - generic [ref=e185]:
+      - link "Book Color Correction" [ref=e186] [cursor=pointer]:
+        - /url: https://www.chrisdavidsalonbooking.com
+      - link " Call (561) 865-5215" [ref=e187] [cursor=pointer]:
+        - /url: tel:561-865-5215
+        - generic [ref=e188]: 
+        - text: Call (561) 865-5215
+  - contentinfo [ref=e189]:
+    - generic [ref=e190]:
+      - generic [ref=e191]:
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - img "Chris David Salon"
+          - paragraph [ref=e194]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e195]:
+          - heading "Quick Links" [level=4] [ref=e196]
+          - list [ref=e197]:
+            - listitem [ref=e198]:
+              - link "About" [ref=e199] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e200]:
+              - link "Gallery" [ref=e201] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e202]:
+              - link "Reviews" [ref=e203] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e204]:
+              - link "Blog" [ref=e205] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e206]:
+              - link "Careers" [ref=e207] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e208]:
+              - link "Chair Rental" [ref=e209] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e210]:
+              - link "Policies" [ref=e211] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e212]:
+          - heading "Areas Served" [level=4] [ref=e213]
+          - list [ref=e214]:
+            - listitem [ref=e215]:
+              - link "Delray Beach Hair Salon" [ref=e216] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e217]:
+              - link "Atlantic Avenue Colorist" [ref=e218] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e219]:
+              - link "Boca Raton Clients" [ref=e220] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e221]:
+              - link "Boynton Beach Clients" [ref=e222] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e223]:
+          - heading "Services" [level=4] [ref=e224]
+          - list [ref=e225]:
+            - listitem [ref=e226]:
+              - link "All Services" [ref=e227] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e228]:
+              - link "Hair Color" [ref=e229] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e230]:
+              - link "Women's Haircuts" [ref=e231] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e232]:
+              - link "Men's Haircuts" [ref=e233] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e234]:
+              - link "Balayage" [ref=e235] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e236]:
+              - link "Highlights" [ref=e237] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e238]:
+              - link "Color Correction" [ref=e239] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e240]:
+              - link "Extensions" [ref=e241] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e242]:
+              - link "Keratin Treatment" [ref=e243] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e244]:
+              - link "Wedding Hair" [ref=e245] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e246]:
+          - heading "Hair Care Guides" [level=4] [ref=e247]
+          - list [ref=e248]:
+            - listitem [ref=e249]:
+              - link "Best Salon Delray Guide" [ref=e250] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e251]:
+              - link "Delray Salon Reviews" [ref=e252] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e253]:
+              - link "Palm Beach Salon Guide" [ref=e254] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e255]:
+              - link "Balayage Guide" [ref=e256] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e257]:
+              - link "Color Correction Tips" [ref=e258] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e259]:
+              - link "Florida Hair Care" [ref=e260] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e261]:
+          - heading "Contact" [level=4] [ref=e262]
+          - generic [ref=e263]:
+            - paragraph [ref=e264]: 1878C Dr. Andres Way
+            - paragraph [ref=e265]: Delray Beach, FL 33445
+            - paragraph [ref=e266]:
+              - link "(561) 299-0950" [ref=e267] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e268]:
+              - link "chrisdavidsalon@gmail.com" [ref=e269] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e270]:
+            - link "" [ref=e271] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e272]: 
+            - link "" [ref=e273] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e274]: 
+            - link "" [ref=e275] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e276]: 
+      - paragraph [ref=e278]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+```

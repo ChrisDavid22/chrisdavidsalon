@@ -1,0 +1,450 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon Andre Design District - Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District - Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Premium Brands" [ref=e13] [cursor=pointer]:
+          - /url: ../premiumbrands.html
+        - link "Reviews" [ref=e14] [cursor=pointer]:
+          - /url: ../index.html#testimonials
+        - button "Join Us " [ref=e16] [cursor=pointer]:
+          - text: Join Us
+          - generic [ref=e17]: 
+        - link "Contact" [ref=e18] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e19]:
+        - link " (561) 299-0950" [ref=e20] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e21]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e22] [cursor=pointer]
+  - generic [ref=e23]:
+    - img "Color Correction Specialist Delray Beach" [ref=e25]
+    - generic [ref=e27]:
+      - paragraph [ref=e28]: SOUTH FLORIDA'S PREMIER COLOR CORRECTION SPECIALIST
+      - heading "Hair Color Disaster? Fixed." [level=1] [ref=e29]:
+        - text: Hair Color
+        - text: Disaster? Fixed.
+      - paragraph [ref=e30]:
+        - text: From box dye nightmares to salon mistakes - get your hair rescued by the master colorist who has
+        - strong [ref=e31]: trained hundreds of professionals
+      - paragraph [ref=e32]: Certified Educator for Davines, Goldwell, Organic Color Systems, Platinum Seamless & Cezanne
+      - generic [ref=e33]:
+        - button " Book Color Correction" [ref=e34] [cursor=pointer]:
+          - generic [ref=e35]: 
+          - text: Book Color Correction
+        - link " Emergency? Call Now" [ref=e36] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e37]: 
+          - text: Emergency? Call Now
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e41]: 
+            - generic [ref=e42]: 
+            - generic [ref=e43]: 
+            - generic [ref=e44]: 
+            - generic [ref=e45]: 
+          - generic [ref=e46]: 4.9/5 - 140+ Reviews
+        - generic [ref=e47]:
+          - generic [ref=e48]: 
+          - generic [ref=e49]: 5 Brand Certifications
+        - generic [ref=e50]:
+          - generic [ref=e51]: 
+          - generic [ref=e52]: Trained 500+ Stylists
+  - generic [ref=e54]:
+    - generic [ref=e55]:
+      - heading "Why Go to the Expert Who Teaches the Experts?" [level=2] [ref=e56]:
+        - text: Why Go to the Expert Who
+        - text: Teaches the Experts?
+      - paragraph [ref=e57]: Most colorists learn from someone. Chris David is the someone they learn from.
+    - generic [ref=e58]:
+      - generic [ref=e59]:
+        - heading "Certified Educator for 5 Major Color Brands" [level=3] [ref=e60]
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "Davines Certified Educator" [level=4] [ref=e63]
+            - paragraph [ref=e64]: 6 years training professionals nationwide on sustainable luxury color
+          - generic [ref=e65]:
+            - heading "Goldwell Academy Graduate & Master Colorist" [level=4] [ref=e66]
+            - paragraph [ref=e67]: Elite certification from the world's premier color education program
+          - generic [ref=e68]:
+            - heading "Organic Color Systems Certified Educator" [level=4] [ref=e69]
+            - paragraph [ref=e70]: Expert in natural, ammonia-free color correction techniques
+          - generic [ref=e71]:
+            - heading "Platinum Seamless Extensions Educator" [level=4] [ref=e72]
+            - paragraph [ref=e73]: Specialist in color-matching and blending for extensions
+          - generic [ref=e74]:
+            - heading "Cezanne Smoothing Certified Educator" [level=4] [ref=e75]
+            - paragraph [ref=e76]: Expert in color-safe keratin and smoothing treatments
+      - generic [ref=e77]:
+        - img "Chris David - Master Color Correction Specialist working with client" [ref=e79]
+        - generic [ref=e80]:
+          - generic [ref=e81]: 20+
+          - generic [ref=e82]: Years Mastering Color
+    - generic [ref=e83]:
+      - heading "What This Means For Your Hair" [level=3] [ref=e84]
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - generic [ref=e88]: 
+          - heading "Deepest Color Knowledge" [level=4] [ref=e89]
+          - paragraph [ref=e90]: Chris understands color theory at a level most stylists never reach. He's literally written the curriculum.
+        - generic [ref=e91]:
+          - generic [ref=e93]: 
+          - heading "Every Technique Mastered" [level=4] [ref=e94]
+          - paragraph [ref=e95]: From foil work to balayage to color removal - Chris has taught them all and knows exactly which to use.
+        - generic [ref=e96]:
+          - generic [ref=e98]: 
+          - heading "Product Expertise" [level=4] [ref=e99]
+          - paragraph [ref=e100]: Trained by the manufacturers themselves, Chris knows exactly which products will fix your specific problem.
+  - generic [ref=e102]:
+    - generic [ref=e103]:
+      - heading "Color Problems We Fix Every Day" [level=2] [ref=e104]
+      - paragraph [ref=e105]: No matter how bad it seems, we've seen worse - and fixed it.
+    - generic [ref=e106]:
+      - generic [ref=e107]:
+        - generic [ref=e109]: 
+        - heading "Brassy, Orange Hair" [level=3] [ref=e110]
+        - paragraph [ref=e111]: That orange or yellow tone after lightening? We'll neutralize it with precision toning and get you to the cool, ashy, or warm tone you actually wanted.
+      - generic [ref=e112]:
+        - generic [ref=e114]: 
+        - heading "Box Dye Disasters" [level=3] [ref=e115]
+        - paragraph [ref=e116]: Box dye creates unpredictable results and build-up. We safely remove it and restore your hair to a beautiful, even canvas.
+      - generic [ref=e117]:
+        - generic [ref=e119]: 
+        - heading "Uneven Color" [level=3] [ref=e120]
+        - paragraph [ref=e121]: Blotchy, stripey, or patchy color from DIY or another salon. We'll create seamless, uniform color throughout.
+      - generic [ref=e122]:
+        - generic [ref=e124]: 
+        - heading "Damaged, Over-Processed Hair" [level=3] [ref=e125]
+        - paragraph [ref=e126]: Hair that's been bleached too much or processed repeatedly. We'll restore health while achieving your desired color.
+      - generic [ref=e127]:
+        - generic [ref=e129]: 
+        - heading "Green/Blue Tints" [level=3] [ref=e130]
+        - paragraph [ref=e131]: Pool chlorine, well water, or color mishaps turned your hair green or blue? We know exactly how to remove unwanted tones.
+      - generic [ref=e132]:
+        - generic [ref=e134]: 
+        - heading "Going Back to Natural" [level=3] [ref=e135]
+        - paragraph [ref=e136]: Ready to return to your natural color? We'll create a seamless transition that looks natural, not awkward.
+  - generic [ref=e138]:
+    - generic [ref=e139]:
+      - heading "Beautiful Results, Every Time" [level=2] [ref=e140]
+      - paragraph [ref=e141]: From blondes to brunettes to vibrant reds - see the artistry of expert color correction
+    - generic [ref=e142]:
+      - generic [ref=e143]:
+        - img "Beautiful blonde balayage color correction result" [ref=e145]
+        - generic [ref=e147]:
+          - heading "Dimensional Blonde" [level=3] [ref=e148]
+          - paragraph [ref=e149]: Brassy highlights transformed into a seamless, multi-tonal blonde with natural-looking depth and dimension.
+      - generic [ref=e150]:
+        - img "Stunning copper red hair color correction" [ref=e152]
+        - generic [ref=e154]:
+          - heading "Vibrant Copper" [level=3] [ref=e155]
+          - paragraph [ref=e156]: A rich, luminous copper that brings warmth and life to every strand. Custom-formulated for lasting vibrancy.
+      - generic [ref=e157]:
+        - img "Glossy brunette hair color with subtle dimension" [ref=e159]
+        - generic [ref=e161]:
+          - heading "Rich Brunette" [level=3] [ref=e162]
+          - paragraph [ref=e163]: Deep, dimensional brunette with subtle warmth. Corrected from patchy, uneven color to a flawless finish.
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - img "Beautiful healthy hair after color correction treatment" [ref=e167]
+        - generic [ref=e169]:
+          - heading "Healthy & Glossy" [level=3] [ref=e170]
+          - paragraph [ref=e171]: Color correction doesn't mean damage. Our bond-building treatments leave hair healthier than before.
+      - generic [ref=e172]:
+        - heading "Every Color Tells a Story" [level=3] [ref=e173]
+        - paragraph [ref=e174]: Whether you're fixing a color disaster or looking for a complete transformation, Chris creates personalized color that enhances your natural beauty and fits your lifestyle.
+        - list [ref=e175]:
+          - listitem [ref=e176]:
+            - generic [ref=e177]: 
+            - text: Blondes - from platinum to honey to ash
+          - listitem [ref=e178]:
+            - generic [ref=e179]: 
+            - text: Brunettes - chocolate, caramel, espresso
+          - listitem [ref=e180]:
+            - generic [ref=e181]: 
+            - text: Reds - copper, auburn, strawberry
+          - listitem [ref=e182]:
+            - generic [ref=e183]: 
+            - text: Fashion colors & creative looks
+        - button " Book Your Consultation" [ref=e184] [cursor=pointer]:
+          - generic [ref=e185]: 
+          - text: Book Your Consultation
+  - generic [ref=e187]:
+    - generic [ref=e188]:
+      - heading "Our Color Correction Process" [level=2] [ref=e189]
+      - paragraph [ref=e190]: A methodical approach that prioritizes your hair's health
+    - generic [ref=e191]:
+      - generic [ref=e192]:
+        - generic [ref=e193]: "1"
+        - heading "Detailed Consultation" [level=3] [ref=e194]
+        - paragraph [ref=e195]: We discuss your hair history, previous treatments, and goals. Chris assesses the current state and creates a customized plan.
+      - generic [ref=e196]:
+        - generic [ref=e197]: "2"
+        - heading "Strand Testing" [level=3] [ref=e198]
+        - paragraph [ref=e199]: For complex corrections, we test products on a small section first. This ensures predictable, safe results.
+      - generic [ref=e200]:
+        - generic [ref=e201]: "3"
+        - heading "The Correction" [level=3] [ref=e202]
+        - paragraph [ref=e203]: Using professional-grade products and Chris's expert techniques, we carefully transform your color. Bond-building treatments protect hair.
+      - generic [ref=e204]:
+        - generic [ref=e205]: "4"
+        - heading "Aftercare Plan" [level=3] [ref=e206]
+        - paragraph [ref=e207]: You leave with a personalized maintenance plan, product recommendations, and a timeline for any follow-up appointments.
+    - paragraph [ref=e209]:
+      - strong [ref=e210]: "Important:"
+      - text: Some color corrections require multiple sessions spaced weeks apart to protect hair integrity. Chris will always be honest about what's possible and create a realistic timeline for your transformation.
+  - generic [ref=e212]:
+    - generic [ref=e213]:
+      - heading "Color Correction Pricing" [level=2] [ref=e214]
+      - paragraph [ref=e215]: Every correction is unique - pricing depends on the complexity of your situation
+    - generic [ref=e216]:
+      - generic [ref=e217]:
+        - heading "Toner Correction" [level=3] [ref=e218]
+        - paragraph [ref=e219]: Brassy tones, minor adjustments
+        - paragraph [ref=e220]: Starting at $150
+        - list [ref=e221]:
+          - listitem [ref=e222]:
+            - generic [ref=e223]: 
+            - text: Neutralize unwanted tones
+          - listitem [ref=e224]:
+            - generic [ref=e225]: 
+            - text: 1-2 hour appointment
+          - listitem [ref=e226]:
+            - generic [ref=e227]: 
+            - text: Single session
+        - button "Book Consultation" [ref=e228] [cursor=pointer]
+      - generic [ref=e229]:
+        - generic [ref=e230]: MOST COMMON
+        - heading "Full Color Correction" [level=3] [ref=e231]
+        - paragraph [ref=e232]: Box dye removal, uneven color, major fixes
+        - paragraph [ref=e233]: Starting at $300
+        - list [ref=e234]:
+          - listitem [ref=e235]:
+            - generic [ref=e236]: 
+            - text: Complete color transformation
+          - listitem [ref=e237]:
+            - generic [ref=e238]: 
+            - text: 3-5 hour appointment
+          - listitem [ref=e239]:
+            - generic [ref=e240]: 
+            - text: Bond treatment included
+          - listitem [ref=e241]:
+            - generic [ref=e242]: 
+            - text: May require 1-2 sessions
+        - button "Book Consultation" [ref=e243] [cursor=pointer]
+      - generic [ref=e244]:
+        - heading "Complex Correction" [level=3] [ref=e245]
+        - paragraph [ref=e246]: Severe damage, multiple issues
+        - paragraph [ref=e247]: Custom Quote
+        - list [ref=e248]:
+          - listitem [ref=e249]:
+            - generic [ref=e250]: 
+            - text: Multi-session treatment plan
+          - listitem [ref=e251]:
+            - generic [ref=e252]: 
+            - text: Intensive bond repair
+          - listitem [ref=e253]:
+            - generic [ref=e254]: 
+            - text: Complete hair restoration
+          - listitem [ref=e255]:
+            - generic [ref=e256]: 
+            - text: Ongoing maintenance plan
+        - link "Call for Consultation" [ref=e257] [cursor=pointer]:
+          - /url: tel:5612990950
+    - paragraph [ref=e258]: "*Final pricing confirmed after consultation. Every color situation is unique."
+  - generic [ref=e260]:
+    - heading "Color Correction Success Stories" [level=2] [ref=e262]
+    - generic [ref=e263]:
+      - generic [ref=e264]:
+        - generic [ref=e265]:
+          - generic [ref=e266]: 
+          - generic [ref=e267]: 
+          - generic [ref=e268]: 
+          - generic [ref=e269]: 
+          - generic [ref=e270]: 
+        - paragraph [ref=e271]: "\"I came in crying after a box dye disaster turned my hair orange and green. Chris fixed it in one session - I couldn't believe it. He's truly a color genius.\""
+        - generic [ref=e272]: "- Maria L."
+        - generic [ref=e273]: Box Dye Correction
+      - generic [ref=e274]:
+        - generic [ref=e275]:
+          - generic [ref=e276]: 
+          - generic [ref=e277]: 
+          - generic [ref=e278]: 
+          - generic [ref=e279]: 
+          - generic [ref=e280]: 
+        - paragraph [ref=e281]: "\"Another salon completely over-bleached my hair. Chris not only saved it but made it healthier than before. He's meticulous with color and is a true artist.\""
+        - generic [ref=e282]: "- Abigail D."
+        - generic [ref=e283]: Google Review
+      - generic [ref=e284]:
+        - generic [ref=e285]:
+          - generic [ref=e286]: 
+          - generic [ref=e287]: 
+          - generic [ref=e288]: 
+          - generic [ref=e289]: 
+          - generic [ref=e290]: 
+        - paragraph [ref=e291]: "\"Years of highlights left my hair brassy and damaged. Chris created the most beautiful, natural blonde I've ever had. Worth every penny.\""
+        - generic [ref=e292]: "- Jennifer K."
+        - generic [ref=e293]: Boca Raton
+    - link " Read All 133+ Reviews on Google" [ref=e295] [cursor=pointer]:
+      - /url: https://www.google.com/search?q=chris+david+salon+delray+beach+reviews
+      - generic [ref=e296]: 
+      - text: Read All 133+ Reviews on Google
+  - generic [ref=e298]:
+    - heading "Don't Live With Bad Color" [level=2] [ref=e299]
+    - paragraph [ref=e300]: Get your hair fixed by the master colorist who has trained hundreds of professionals. Whatever went wrong, Chris can make it right.
+    - generic [ref=e301]:
+      - button " Book Color Correction" [ref=e302] [cursor=pointer]:
+        - generic [ref=e303]: 
+        - text: Book Color Correction
+      - link " Call (561) 299-0950" [ref=e304] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e305]: 
+        - text: Call (561) 299-0950
+  - contentinfo [ref=e306]:
+    - generic [ref=e307]:
+      - generic [ref=e308]:
+        - generic [ref=e309]:
+          - img "Chris David Salon" [ref=e311]
+          - paragraph [ref=e312]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e313]:
+          - heading "Quick Links" [level=4] [ref=e314]
+          - list [ref=e315]:
+            - listitem [ref=e316]:
+              - link "About" [ref=e317] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e318]:
+              - link "Gallery" [ref=e319] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e320]:
+              - link "Reviews" [ref=e321] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e322]:
+              - link "Blog" [ref=e323] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e324]:
+              - link "Careers" [ref=e325] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e326]:
+              - link "Chair Rental" [ref=e327] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e328]:
+              - link "Policies" [ref=e329] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e330]:
+          - heading "Areas Served" [level=4] [ref=e331]
+          - list [ref=e332]:
+            - listitem [ref=e333]:
+              - link "Delray Beach Hair Salon" [ref=e334] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e335]:
+              - link "Atlantic Avenue Colorist" [ref=e336] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e337]:
+              - link "Boca Raton Clients" [ref=e338] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e339]:
+              - link "Boynton Beach Clients" [ref=e340] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e341]:
+          - heading "Services" [level=4] [ref=e342]
+          - list [ref=e343]:
+            - listitem [ref=e344]:
+              - link "All Services" [ref=e345] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e346]:
+              - link "Hair Color" [ref=e347] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e348]:
+              - link "Women's Haircuts" [ref=e349] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e350]:
+              - link "Men's Haircuts" [ref=e351] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e352]:
+              - link "Balayage" [ref=e353] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e354]:
+              - link "Highlights" [ref=e355] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e356]:
+              - link "Color Correction" [ref=e357] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e358]:
+              - link "Extensions" [ref=e359] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e360]:
+              - link "Keratin Treatment" [ref=e361] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e362]:
+              - link "Wedding Hair" [ref=e363] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e364]:
+          - heading "Hair Care Guides" [level=4] [ref=e365]
+          - list [ref=e366]:
+            - listitem [ref=e367]:
+              - link "Best Salon Delray Guide" [ref=e368] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e369]:
+              - link "Delray Salon Reviews" [ref=e370] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e371]:
+              - link "Palm Beach Salon Guide" [ref=e372] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e373]:
+              - link "Balayage Guide" [ref=e374] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e375]:
+              - link "Color Correction Tips" [ref=e376] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e377]:
+              - link "Florida Hair Care" [ref=e378] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e379]:
+          - heading "Contact" [level=4] [ref=e380]
+          - generic [ref=e381]:
+            - paragraph [ref=e382]: 1878C Dr. Andres Way
+            - paragraph [ref=e383]: Delray Beach, FL 33445
+            - paragraph [ref=e384]:
+              - link "(561) 299-0950" [ref=e385] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e386]:
+              - link "chrisdavidsalon@gmail.com" [ref=e387] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e388]:
+            - link "" [ref=e389] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e390]: 
+            - link "" [ref=e391] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e392]: 
+            - link "" [ref=e393] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e394]: 
+      - paragraph [ref=e396]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e397]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

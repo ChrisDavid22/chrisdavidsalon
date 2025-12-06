@@ -1,0 +1,268 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+      - navigation [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e10] [cursor=pointer]:
+          - /url: "#services"
+        - link "Gallery" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e13]:
+        - link " (561) 299-0950" [ref=e14] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e15]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e16] [cursor=pointer]
+  - generic [ref=e17]:
+    - img "Women's Haircut Delray Beach" [ref=e19]
+    - generic [ref=e21]:
+      - paragraph [ref=e22]: PRECISION CUTTING FOR WOMEN
+      - heading "Women's Haircuts" [level=1] [ref=e23]:
+        - text: Women's
+        - text: Haircuts
+      - paragraph [ref=e24]: Layers • Bobs • Long Styles • Pixie Cuts • Blowouts
+      - paragraph [ref=e25]:
+        - text: Master Stylist •
+        - strong [ref=e26]: 20+ years
+        - text: experience •
+        - strong [ref=e27]: 4.9 Stars
+      - generic [ref=e28]:
+        - button " Book Haircut" [ref=e29] [cursor=pointer]:
+          - generic [ref=e30]: 
+          - text: Book Haircut
+        - link " (561) 299-0950" [ref=e31] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e32]: 
+          - text: (561) 299-0950
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+            - generic [ref=e39]: 
+            - generic [ref=e40]: 
+          - generic [ref=e41]: 4.9/5 Rating
+        - generic [ref=e42]:
+          - generic [ref=e43]: 
+          - generic [ref=e44]: Master Stylist
+  - generic [ref=e46]:
+    - generic [ref=e47]:
+      - heading "Why Women Choose Chris David" [level=2] [ref=e48]:
+        - text: Why Women Choose
+        - text: Chris David
+      - paragraph [ref=e49]: A haircut isn't just a service - it's a consultation, collaboration, and transformation
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e53]: 
+        - heading "Thorough Consultation" [level=3] [ref=e54]
+        - paragraph [ref=e55]: We discuss your lifestyle, hair texture, face shape, and goals before picking up scissors.
+      - generic [ref=e56]:
+        - generic [ref=e58]: 
+        - heading "Precision Technique" [level=3] [ref=e59]
+        - paragraph [ref=e60]: 20+ years of expertise means every cut is precise, balanced, and designed to grow out beautifully.
+      - generic [ref=e61]:
+        - generic [ref=e63]: 
+        - heading "Education Included" [level=3] [ref=e64]
+        - paragraph [ref=e65]: You'll leave knowing exactly how to style your hair at home. Product recommendations tailored to you.
+  - generic [ref=e67]:
+    - generic [ref=e68]:
+      - heading "Women's Haircut Styles" [level=2] [ref=e69]
+      - paragraph [ref=e70]: From subtle trims to complete transformations
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e74]: 
+        - heading "Long Layers" [level=3] [ref=e75]
+        - paragraph [ref=e76]: Movement and dimension without sacrificing length. Face-framing layers optional.
+        - text: From $75
+      - generic [ref=e77]:
+        - generic [ref=e79]: 
+        - heading "Bob Haircut" [level=3] [ref=e80]
+        - paragraph [ref=e81]: Classic, angled, or asymmetrical. Clean lines that make a statement.
+        - text: From $75
+      - generic [ref=e82]:
+        - generic [ref=e84]: 
+        - heading "Lob (Long Bob)" [level=3] [ref=e85]
+        - paragraph [ref=e86]: The best of both worlds - short enough to be fresh, long enough for updos.
+        - text: From $75
+      - generic [ref=e87]:
+        - generic [ref=e89]: 
+        - heading "Pixie Cut" [level=3] [ref=e90]
+        - paragraph [ref=e91]: Bold, confident, and low-maintenance. Customized to your face shape.
+        - text: From $65
+      - generic [ref=e92]:
+        - generic [ref=e94]: 
+        - heading "Shag / Curtain Bangs" [level=3] [ref=e95]
+        - paragraph [ref=e96]: Textured, effortless, and on-trend. The "I woke up like this" look.
+        - text: From $75
+      - generic [ref=e97]:
+        - generic [ref=e99]: 
+        - heading "Blowout / Styling" [level=3] [ref=e100]
+        - paragraph [ref=e101]: Event-ready hair. Volume, smoothness, or waves - whatever you need.
+        - text: From $55
+    - button " Book Your Haircut" [ref=e103] [cursor=pointer]:
+      - generic [ref=e104]: 
+      - text: Book Your Haircut
+  - generic [ref=e106]:
+    - heading "Women's Haircuts in South Florida" [level=2] [ref=e108]
+    - generic [ref=e109]:
+      - generic [ref=e110]: Delray Beach
+      - generic [ref=e111]: Boca Raton
+      - generic [ref=e112]: Palm Beach
+      - generic [ref=e113]: Boynton Beach
+      - generic [ref=e114]: West Palm Beach
+      - generic [ref=e115]: Fort Lauderdale
+  - generic [ref=e117]:
+    - heading "Ready for Your Best Haircut?" [level=2] [ref=e118]
+    - paragraph [ref=e119]: Book with a master stylist who truly understands women's hair.
+    - generic [ref=e120]:
+      - button " Book Haircut" [ref=e121] [cursor=pointer]:
+        - generic [ref=e122]: 
+        - text: Book Haircut
+      - link " (561) 299-0950" [ref=e123] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e124]: 
+        - text: (561) 299-0950
+  - contentinfo [ref=e125]:
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - generic [ref=e128]:
+          - img "Chris David Salon" [ref=e130]
+          - paragraph [ref=e131]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e132]:
+          - heading "Quick Links" [level=4] [ref=e133]
+          - list [ref=e134]:
+            - listitem [ref=e135]:
+              - link "About" [ref=e136] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e137]:
+              - link "Gallery" [ref=e138] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e139]:
+              - link "Reviews" [ref=e140] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e141]:
+              - link "Blog" [ref=e142] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e143]:
+              - link "Careers" [ref=e144] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e145]:
+              - link "Chair Rental" [ref=e146] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e147]:
+              - link "Policies" [ref=e148] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e149]:
+          - heading "Areas Served" [level=4] [ref=e150]
+          - list [ref=e151]:
+            - listitem [ref=e152]:
+              - link "Delray Beach Hair Salon" [ref=e153] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e154]:
+              - link "Atlantic Avenue Colorist" [ref=e155] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e156]:
+              - link "Boca Raton Clients" [ref=e157] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e158]:
+              - link "Boynton Beach Clients" [ref=e159] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e160]:
+          - heading "Services" [level=4] [ref=e161]
+          - list [ref=e162]:
+            - listitem [ref=e163]:
+              - link "All Services" [ref=e164] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e165]:
+              - link "Hair Color" [ref=e166] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e167]:
+              - link "Women's Haircuts" [ref=e168] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e169]:
+              - link "Men's Haircuts" [ref=e170] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e171]:
+              - link "Balayage" [ref=e172] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e173]:
+              - link "Highlights" [ref=e174] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e175]:
+              - link "Color Correction" [ref=e176] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e177]:
+              - link "Extensions" [ref=e178] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e179]:
+              - link "Keratin Treatment" [ref=e180] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e181]:
+              - link "Wedding Hair" [ref=e182] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e183]:
+          - heading "Hair Care Guides" [level=4] [ref=e184]
+          - list [ref=e185]:
+            - listitem [ref=e186]:
+              - link "Best Salon Delray Guide" [ref=e187] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e188]:
+              - link "Delray Salon Reviews" [ref=e189] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e190]:
+              - link "Palm Beach Salon Guide" [ref=e191] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e192]:
+              - link "Balayage Guide" [ref=e193] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e194]:
+              - link "Color Correction Tips" [ref=e195] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e196]:
+              - link "Florida Hair Care" [ref=e197] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e198]:
+          - heading "Contact" [level=4] [ref=e199]
+          - generic [ref=e200]:
+            - paragraph [ref=e201]: 1878C Dr. Andres Way
+            - paragraph [ref=e202]: Delray Beach, FL 33445
+            - paragraph [ref=e203]:
+              - link "(561) 299-0950" [ref=e204] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e205]:
+              - link "chrisdavidsalon@gmail.com" [ref=e206] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e207]:
+            - link "" [ref=e208] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e209]: 
+            - link "" [ref=e210] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e211]: 
+            - link "" [ref=e212] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e213]: 
+      - paragraph [ref=e215]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e216]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

@@ -1,0 +1,406 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Chris David Salon" [ref=e6] [cursor=pointer]:
+          - /url: index.html
+          - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District • Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: index.html
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: index.html#about
+        - link "Services" [ref=e12] [cursor=pointer]:
+          - /url: index.html#services
+        - link "Gallery" [ref=e13] [cursor=pointer]:
+          - /url: index.html#gallery
+        - link "Premium Brands" [ref=e14] [cursor=pointer]:
+          - /url: premiumbrands.html
+        - link "Reviews" [ref=e15] [cursor=pointer]:
+          - /url: index.html#testimonials
+        - button "Join Us " [ref=e17] [cursor=pointer]:
+          - text: Join Us
+          - generic [ref=e18]: 
+        - link "Contact" [ref=e19] [cursor=pointer]:
+          - /url: index.html#contact
+      - link " (561) 299-0950" [ref=e20] [cursor=pointer]:
+        - /url: tel:561-299-0950
+        - generic [ref=e21]: 
+        - text: (561) 299-0950
+  - generic [ref=e23]:
+    - heading "Premium Partners & Master Expertise" [level=1] [ref=e24]
+    - paragraph [ref=e25]: "Chris David: The Master Educator Who Trained Professionals for 5 Major Brands"
+    - generic [ref=e26]:
+      - paragraph [ref=e27]: "Former Master Trainer & Educator For:"
+      - paragraph [ref=e28]: Davines • Goldwell • Cezanne • Platinum Seamless • Organic Color Systems
+      - paragraph [ref=e29]: 20+ Years Cutting Expertise • 15+ Years Serving Boca-Delray • World-Class Color Specialist
+  - generic [ref=e31]:
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - img "Chris David - Master Colorist and Educator" [ref=e35]
+        - generic [ref=e36]:
+          - heading "Chris David's Credentials" [level=3] [ref=e37]
+          - list [ref=e38]:
+            - listitem [ref=e39]: ✓ 20+ Years Master Cutting Experience
+            - listitem [ref=e40]: ✓ 15+ Years Premier Salon in Boca-Delray
+            - listitem [ref=e41]: ✓ Former Davines Master Color Trainer
+            - listitem [ref=e42]: ✓ Former Goldwell Education Specialist
+            - listitem [ref=e43]: ✓ Former Cezanne Keratin Expert Trainer
+            - listitem [ref=e44]: ✓ Former Platinum Seamless Educator
+            - listitem [ref=e45]: ✓ Former Organic Color Systems Master
+      - generic [ref=e46]:
+        - heading "Meet Your Master Colorist & Educator" [level=2] [ref=e47]
+        - paragraph [ref=e48]:
+          - strong [ref=e49]: Chris David is not just a stylist - he's a master educator who has trained hundreds of professionals for the industry's most prestigious brands.
+        - paragraph [ref=e50]: With over 20 years of cutting expertise and 15+ years as Boca-Delray's premier colorist, Chris has been personally selected by five major brands to train their networks of professionals. This unprecedented level of expertise means when you sit in Chris's chair, you're getting knowledge that salon owners pay thousands of dollars to access in professional seminars.
+        - generic [ref=e51]:
+          - heading "🏆 Why This Matters For Your Hair" [level=3] [ref=e52]
+          - paragraph [ref=e53]:
+            - strong [ref=e54]: "World-Class Color:"
+            - text: Chris doesn't just apply color - he understands the molecular science behind every formula. As someone who taught other professionals for Davines, Goldwell, and Organic Color Systems, he knows how to achieve results that others can only dream of.
+          - paragraph [ref=e55]:
+            - strong [ref=e56]: "Amazing Cuts:"
+            - text: With 20+ years of precision cutting experience, Chris creates shapes that grow out beautifully and complement your unique features. This is artistry backed by two decades of mastery.
+    - heading "The Premium Brands Chris Mastered as an Educator" [level=2] [ref=e57]
+  - generic [ref=e59]:
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - img "Davines Logo - Premium Italian Hair Care" [ref=e63]
+        - generic [ref=e64]:
+          - heading "Sustainable Beauty Excellence" [level=3] [ref=e65]
+          - paragraph [ref=e66]: Carbon-neutral • Ethically sourced • Made in Italy
+      - generic [ref=e67]:
+        - heading "Davines - Eco-Luxury Italian Haircare" [level=3] [ref=e68]
+        - paragraph [ref=e69]: Chris David Salon proudly partners with Davines, the Italian luxury brand that revolutionizes hair care with sustainable, high-performance formulations. Every Davines product in our Delray Beach salon is crafted in a carbon-neutral facility, combining environmental responsibility with exceptional results.
+        - generic [ref=e70]:
+          - generic [ref=e71]:
+            - generic [ref=e72]: 
+            - generic [ref=e73]:
+              - strong [ref=e74]: "Eco-Luxury Philosophy:"
+              - text: Carbon-neutral production with ethically sourced ingredients
+          - generic [ref=e75]:
+            - generic [ref=e76]: 
+            - generic [ref=e77]:
+              - strong [ref=e78]: "Color Protection:"
+              - text: Advanced formulas that preserve and enhance your color investment
+          - generic [ref=e79]:
+            - generic [ref=e80]: 
+            - generic [ref=e81]:
+              - strong [ref=e82]: "Scalp Health:"
+              - text: Nourishing treatments that promote healthy hair from root to tip
+        - generic [ref=e83]:
+          - heading "🏆 Former Davines Master Trainer & Global Educator" [level=4] [ref=e84]
+          - paragraph [ref=e85]:
+            - strong [ref=e86]: Chris David was personally selected by Davines to train salon professionals worldwide
+            - text: in advanced color techniques, sustainable practices, and Italian formulation methods. Among hundreds of colorists, Davines chose Chris to represent their brand and educate their network.
+          - paragraph [ref=e87]: "This means Chris has deep knowledge of:"
+          - list [ref=e88]:
+            - listitem [ref=e89]: • Molecular color chemistry and pH balancing
+            - listitem [ref=e90]: • Advanced ammonia-free formulations
+            - listitem [ref=e91]: • Sustainable beauty practices
+            - listitem [ref=e92]: • Italian artistry techniques
+          - paragraph [ref=e93]: When Chris formulates your color, he's applying knowledge he taught to hundreds of professionals across the country.
+    - generic [ref=e94]:
+      - paragraph [ref=e96]: 🎓 Chris served as a Goldwell Master Educator, training salons in advanced color techniques
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - heading "Goldwell - Professional Color Systems" [level=3] [ref=e99]
+          - paragraph [ref=e100]: Goldwell represents the gold standard in professional hair color technology. At Chris David Salon in Delray Beach, we utilize Goldwell's innovative color systems to create everything from subtle highlights to dramatic transformations, ensuring predictable, beautiful results every time.
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]: 
+              - generic [ref=e104]:
+                - strong [ref=e105]: "Advanced Formulation:"
+                - text: Cutting-edge color technology for superior coverage and vibrancy
+            - generic [ref=e106]:
+              - generic [ref=e107]: 
+              - generic [ref=e108]:
+                - strong [ref=e109]: "Former Goldwell Educator:"
+                - text: Chris trained professionals in Goldwell's advanced color technology and continues to use their systems with master-level expertise
+            - generic [ref=e110]:
+              - generic [ref=e111]: 
+              - generic [ref=e112]:
+                - strong [ref=e113]: "Long-lasting Results:"
+                - text: Superior fade resistance and color integrity over time
+          - paragraph [ref=e115]:
+            - strong [ref=e116]: "Master Colorist Advantage:"
+            - text: Chris leverages Goldwell's precision color matching and lightening systems to achieve flawless balayage, dimensional color, and corrective color services.
+        - generic [ref=e117]:
+          - img "Goldwell Logo - Professional Hair Color Systems" [ref=e119]
+          - img "Beautiful balayage hair color by Goldwell at Chris David Salon" [ref=e121]
+          - generic [ref=e122]:
+            - heading "Color Innovation Leader" [level=4] [ref=e123]
+            - paragraph [ref=e124]: Professional grade • Trend-setting • Predictable results
+    - generic [ref=e126]:
+      - generic [ref=e127]:
+        - generic [ref=e129]:
+          - heading "BELLAMI" [level=3] [ref=e130]
+          - paragraph [ref=e131]: Professional Hair Extensions
+        - generic [ref=e132]:
+          - heading "Extension Artistry" [level=3] [ref=e133]
+          - paragraph [ref=e134]: 100% Human Hair • Multiple Methods • Custom Color Matching
+      - generic [ref=e135]:
+        - heading "Bellami - Premium Hair Extensions" [level=3] [ref=e136]
+        - paragraph [ref=e137]: Bellami represents the pinnacle of hair extension artistry. At Chris David Salon in Delray Beach, we offer the complete Bellami experience - from clip-in extensions for special occasions to professional tape-in and hand-tied methods for long-term transformation.
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e140]: 
+            - generic [ref=e141]:
+              - strong [ref=e142]: "Premium Human Hair:"
+              - text: 100% Remy human hair for natural look and feel
+          - generic [ref=e143]:
+            - generic [ref=e144]: 
+            - generic [ref=e145]:
+              - strong [ref=e146]: "Perfect Color Matching:"
+              - text: Custom color blending to match your exact shade
+          - generic [ref=e147]:
+            - generic [ref=e148]: 
+            - generic [ref=e149]:
+              - strong [ref=e150]: "Multiple Application Methods:"
+              - text: Clip-in, tape-in, hand-tied, and professional bonding
+        - paragraph [ref=e152]:
+          - strong [ref=e153]: "Extension Expertise:"
+          - text: Chris specializes in seamless extension application and can add length, volume, or both while maintaining your hair's natural movement and health.
+    - generic [ref=e155]:
+      - generic [ref=e156]:
+        - heading "ProAddiction - Advanced Hair Straightening" [level=3] [ref=e157]
+        - paragraph [ref=e158]: ProAddiction represents the evolution of professional hair straightening and smoothing treatments. At Chris David Salon in Delray Beach, we use ProAddiction's revolutionary systems to transform unruly, damaged hair into smooth, healthy, manageable locks that last for months.
+        - generic [ref=e159]:
+          - generic [ref=e160]:
+            - generic [ref=e161]: 
+            - generic [ref=e162]:
+              - strong [ref=e163]: "Hair Transformation:"
+              - text: Repairs and strengthens while straightening for healthier hair
+          - generic [ref=e164]:
+            - generic [ref=e165]: 
+            - generic [ref=e166]:
+              - strong [ref=e167]: "Damage Protection:"
+              - text: Advanced formula that reconstructs hair fiber from within
+          - generic [ref=e168]:
+            - generic [ref=e169]: 
+            - generic [ref=e170]:
+              - strong [ref=e171]: "Long-lasting Results:"
+              - text: Smoothing effects that last 3-6 months with proper care
+        - paragraph [ref=e173]:
+          - strong [ref=e174]: "Treatment Specialist:"
+          - text: Chris is trained in ProAddiction's advanced application techniques, ensuring optimal results for all hair types, including previously damaged or chemically treated hair.
+      - generic [ref=e175]:
+        - generic [ref=e177]:
+          - heading "ProAddiction" [level=3] [ref=e178]
+          - paragraph [ref=e179]: Hair Straightening Systems
+        - generic [ref=e180]:
+          - heading "Hair Health Revolution" [level=3] [ref=e181]
+          - paragraph [ref=e182]: Strengthening • Smoothing • Long-lasting transformation
+    - generic [ref=e184]:
+      - generic [ref=e185]:
+        - heading "PULP RIOT" [level=3] [ref=e187]
+        - generic [ref=e188]:
+          - heading "Creative Color Revolution" [level=3] [ref=e189]
+          - paragraph [ref=e190]: Vibrant colors • Fashion-forward • Artistic expression
+      - generic [ref=e191]:
+        - heading "Pulp Riot - Vibrant Creative Colors" [level=3] [ref=e192]
+        - paragraph [ref=e193]: Pulp Riot brings artistic vision to life through revolutionary color technology. At Chris David Salon in Delray Beach, we use Pulp Riot to create everything from subtle fashion tones to bold, vibrant statements that express your unique personality and style.
+        - generic [ref=e194]:
+          - generic [ref=e195]:
+            - generic [ref=e196]: 
+            - generic [ref=e197]:
+              - strong [ref=e198]: "Infinite Color Possibilities:"
+              - text: From pastels to electric brights, every shade imaginable
+          - generic [ref=e199]:
+            - generic [ref=e200]: 
+            - generic [ref=e201]:
+              - strong [ref=e202]: "Artistic Application:"
+              - text: Hand-painted techniques for custom color placement
+          - generic [ref=e203]:
+            - generic [ref=e204]: 
+            - generic [ref=e205]:
+              - strong [ref=e206]: "Hair-Loving Formula:"
+              - text: Nourishing ingredients that maintain hair health during coloring
+        - paragraph [ref=e208]:
+          - strong [ref=e209]: "Color Artist:"
+          - text: Chris combines his artistic vision with Pulp Riot's innovative formulas to create one-of-a-kind color experiences, from galaxy hair to subtle rainbow accents.
+    - generic [ref=e211]:
+      - generic [ref=e212]:
+        - heading "Platinum Seamless - Hand-Tied Extension Technology" [level=3] [ref=e213]
+        - paragraph [ref=e214]: Platinum Seamless represents the pinnacle of hand-tied extension technology. At Chris David Salon in Delray Beach, we use their innovative V-Light system and premium Remy hair to create the most natural, comfortable, and long-lasting extension experience available.
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]: 
+            - generic [ref=e218]:
+              - strong [ref=e219]: "V-Light Technology:"
+              - text: Revolutionary bonding system that's gentle on natural hair
+          - generic [ref=e220]:
+            - generic [ref=e221]: 
+            - generic [ref=e222]:
+              - strong [ref=e223]: "Hand-Tied Precision:"
+              - text: Meticulously crafted wefts for maximum comfort and movement
+          - generic [ref=e224]:
+            - generic [ref=e225]: 
+            - generic [ref=e226]:
+              - strong [ref=e227]: "Custom Consultation:"
+              - text: Personalized approach for each client's unique hair type and goals
+        - paragraph [ref=e229]:
+          - strong [ref=e230]: "Certified Professional:"
+          - text: Chris is Platinum Seamless certified in all application methods and specializes in creating seamless blends that move and feel like your natural hair.
+      - generic [ref=e231]:
+        - generic [ref=e233]:
+          - heading "PLATINUM" [level=3] [ref=e234]
+          - paragraph [ref=e235]: SEAMLESS
+        - generic [ref=e236]:
+          - heading "Extension Innovation" [level=3] [ref=e237]
+          - paragraph [ref=e238]: V-Light Technology • Hand-tied craftsmanship • Premium Remy hair
+  - generic [ref=e240]:
+    - generic [ref=e241]:
+      - heading "The Chris David Salon Advantage" [level=2] [ref=e242]
+      - paragraph [ref=e243]: Access to premium brands is just the beginning. Here's why clients throughout Delray Beach trust us with their most important hair transformations.
+    - generic [ref=e244]:
+      - generic [ref=e245]:
+        - generic [ref=e247]: 
+        - heading "Master Colorist Certification" [level=3] [ref=e248]
+        - paragraph [ref=e249]: Certified professional training with each brand ensures expert application and optimal results every time.
+      - generic [ref=e250]:
+        - generic [ref=e252]: 
+        - heading "Complete Product Inventory" [level=3] [ref=e253]
+        - paragraph [ref=e254]: Full stock of all premium brands means we can provide exactly the right products for your specific needs.
+      - generic [ref=e255]:
+        - generic [ref=e257]: 
+        - heading "Andre Design District" [level=3] [ref=e258]
+        - paragraph [ref=e259]: Our prestigious Delray Beach location provides the perfect luxury environment for your premium brand experience.
+  - generic [ref=e261]:
+    - heading "Ready to Experience Premium Brand Excellence?" [level=2] [ref=e262]
+    - paragraph [ref=e263]: Book your consultation today and discover how these luxury brands can transform your hair at Chris David Salon in Delray Beach.
+    - generic [ref=e264]:
+      - link " Call (561) 299-0950" [ref=e265] [cursor=pointer]:
+        - /url: tel:561-299-0950
+        - generic [ref=e266]: 
+        - text: Call (561) 299-0950
+      - link " Text Us 24/7" [ref=e267] [cursor=pointer]:
+        - /url: sms:561-299-0950
+        - generic [ref=e268]: 
+        - text: Text Us 24/7
+  - contentinfo [ref=e269]:
+    - generic [ref=e270]:
+      - generic [ref=e271]:
+        - generic [ref=e272]:
+          - img "Chris David Salon" [ref=e274]
+          - paragraph [ref=e275]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e276]:
+          - heading "Quick Links" [level=4] [ref=e277]
+          - list [ref=e278]:
+            - listitem [ref=e279]:
+              - link "About" [ref=e280] [cursor=pointer]:
+                - /url: index.html#about
+            - listitem [ref=e281]:
+              - link "Gallery" [ref=e282] [cursor=pointer]:
+                - /url: index.html#gallery
+            - listitem [ref=e283]:
+              - link "Reviews" [ref=e284] [cursor=pointer]:
+                - /url: index.html#testimonials
+            - listitem [ref=e285]:
+              - link "Blog" [ref=e286] [cursor=pointer]:
+                - /url: blog.html
+            - listitem [ref=e287]:
+              - link "Careers" [ref=e288] [cursor=pointer]:
+                - /url: careers.html
+            - listitem [ref=e289]:
+              - link "Chair Rental" [ref=e290] [cursor=pointer]:
+                - /url: chair-rental.html
+            - listitem [ref=e291]:
+              - link "Policies" [ref=e292] [cursor=pointer]:
+                - /url: policies.html
+        - generic [ref=e293]:
+          - heading "Areas Served" [level=4] [ref=e294]
+          - list [ref=e295]:
+            - listitem [ref=e296]:
+              - link "Delray Beach Hair Salon" [ref=e297] [cursor=pointer]:
+                - /url: locations/delray-beach-hair-salon.html
+            - listitem [ref=e298]:
+              - link "Atlantic Avenue Colorist" [ref=e299] [cursor=pointer]:
+                - /url: locations/atlantic-avenue-colorist.html
+            - listitem [ref=e300]:
+              - link "Boca Raton Clients" [ref=e301] [cursor=pointer]:
+                - /url: locations/boca-raton-hair-salon.html
+            - listitem [ref=e302]:
+              - link "Boynton Beach Clients" [ref=e303] [cursor=pointer]:
+                - /url: locations/boynton-beach-hair-salon.html
+        - generic [ref=e304]:
+          - heading "Services" [level=4] [ref=e305]
+          - list [ref=e306]:
+            - listitem [ref=e307]:
+              - link "All Services" [ref=e308] [cursor=pointer]:
+                - /url: services/hair-salon-delray-beach.html
+            - listitem [ref=e309]:
+              - link "Hair Color" [ref=e310] [cursor=pointer]:
+                - /url: services/hair-color-delray-beach.html
+            - listitem [ref=e311]:
+              - link "Women's Haircuts" [ref=e312] [cursor=pointer]:
+                - /url: services/womens-haircut-delray-beach.html
+            - listitem [ref=e313]:
+              - link "Men's Haircuts" [ref=e314] [cursor=pointer]:
+                - /url: services/mens-haircut-delray-beach.html
+            - listitem [ref=e315]:
+              - link "Balayage" [ref=e316] [cursor=pointer]:
+                - /url: services/balayage-delray-beach.html
+            - listitem [ref=e317]:
+              - link "Highlights" [ref=e318] [cursor=pointer]:
+                - /url: services/highlights-delray-beach.html
+            - listitem [ref=e319]:
+              - link "Color Correction" [ref=e320] [cursor=pointer]:
+                - /url: services/color-correction-delray-beach.html
+            - listitem [ref=e321]:
+              - link "Extensions" [ref=e322] [cursor=pointer]:
+                - /url: services/hair-extensions-delray-beach.html
+            - listitem [ref=e323]:
+              - link "Keratin Treatment" [ref=e324] [cursor=pointer]:
+                - /url: services/keratin-treatment-delray-beach.html
+            - listitem [ref=e325]:
+              - link "Wedding Hair" [ref=e326] [cursor=pointer]:
+                - /url: services/wedding-hair-delray-beach.html
+        - generic [ref=e327]:
+          - heading "Hair Care Guides" [level=4] [ref=e328]
+          - list [ref=e329]:
+            - listitem [ref=e330]:
+              - link "Best Salon Delray Guide" [ref=e331] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e332]:
+              - link "Delray Salon Reviews" [ref=e333] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e334]:
+              - link "Palm Beach Salon Guide" [ref=e335] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e336]:
+              - link "Balayage Guide" [ref=e337] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e338]:
+              - link "Color Correction Tips" [ref=e339] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e340]:
+              - link "Florida Hair Care" [ref=e341] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e342]:
+          - heading "Contact" [level=4] [ref=e343]
+          - generic [ref=e344]:
+            - paragraph [ref=e345]: 1878C Dr. Andres Way
+            - paragraph [ref=e346]: Delray Beach, FL 33445
+            - paragraph [ref=e347]:
+              - link "(561) 299-0950" [ref=e348] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e349]:
+              - link "chrisdavidsalon@gmail.com" [ref=e350] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e351]:
+            - link "" [ref=e352] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e353]: 
+            - link "" [ref=e354] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e355]: 
+            - link "" [ref=e356] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e357]: 
+      - paragraph [ref=e359]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+```

@@ -1,0 +1,410 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon Andre Design District - Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District - Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e14]:
+        - link " (561) 299-0950" [ref=e15] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e16]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]:
+    - img "Wedding Hair Styling Delray Beach" [ref=e20]
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: DELRAY BEACH'S PREMIER BRIDAL HAIR SPECIALIST
+      - heading "Wedding Hair That Takes Your Breath Away" [level=1] [ref=e24]:
+        - text: Wedding Hair That
+        - text: Takes Your Breath Away
+      - paragraph [ref=e25]: Make your special day unforgettable with expert bridal styling from a master stylist with 20+ years of experience
+      - generic [ref=e26]:
+        - button " Book Bridal Consultation" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Book Bridal Consultation
+        - link " Call (561) 299-0950" [ref=e29] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e30]: 
+          - text: Call (561) 299-0950
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]: 
+            - generic [ref=e35]: 
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+          - generic [ref=e39]: 4.9/5 - 140+ Reviews
+        - generic [ref=e40]:
+          - generic [ref=e41]: 
+          - generic [ref=e42]: 20+ Years Experience
+        - generic [ref=e43]:
+          - generic [ref=e44]: 
+          - generic [ref=e45]: 500+ Happy Brides
+  - generic [ref=e47]:
+    - generic [ref=e48]:
+      - heading "Why Brides Choose Chris David Salon" [level=2] [ref=e49]
+      - paragraph [ref=e50]: Your wedding day deserves a stylist who understands that every detail matters
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e54]: 
+        - heading "Master Stylist Expertise" [level=3] [ref=e55]
+        - paragraph [ref=e56]: 20+ years of experience and certified educator for 5 major brands. Chris has styled hundreds of brides in South Florida.
+      - generic [ref=e57]:
+        - generic [ref=e59]: 
+        - heading "Personalized Consultation" [level=3] [ref=e60]
+        - paragraph [ref=e61]: Every bride gets a dedicated trial session to perfect your look. We work with your dress, venue, and vision.
+      - generic [ref=e62]:
+        - generic [ref=e64]: 
+        - heading "Full Bridal Party" [level=3] [ref=e65]
+        - paragraph [ref=e66]: We style the entire bridal party - bridesmaids, mother of the bride, flower girls. Everyone looks amazing.
+      - generic [ref=e67]:
+        - generic [ref=e69]: 
+        - heading "On-Location Available" [level=3] [ref=e70]
+        - paragraph [ref=e71]: Getting married at The Seagate, Delray Beach Club, or a private venue? We come to you for stress-free styling.
+      - generic [ref=e72]:
+        - generic [ref=e74]: 
+        - heading "Florida Weather Expert" [level=3] [ref=e75]
+        - paragraph [ref=e76]: We know South Florida humidity. Your style will last through beach ceremonies and outdoor receptions.
+      - generic [ref=e77]:
+        - generic [ref=e79]: 
+        - heading "5-Star Reviews" [level=3] [ref=e80]
+        - paragraph [ref=e81]: 140+ verified Google reviews with a 4.9/5 rating. Read what other brides say about their experience.
+  - generic [ref=e83]:
+    - generic [ref=e84]:
+      - heading "Wedding Hair Services" [level=2] [ref=e85]
+      - paragraph [ref=e86]: Comprehensive bridal styling packages for your entire wedding party
+    - generic [ref=e87]:
+      - generic [ref=e88]:
+        - generic [ref=e89]:
+          - heading "Bridal Hair Package" [level=3] [ref=e90]
+          - generic [ref=e91]: POPULAR
+        - paragraph [ref=e92]: Starting at $250
+        - list [ref=e93]:
+          - listitem [ref=e94]:
+            - generic [ref=e95]: 
+            - text: In-depth bridal consultation
+          - listitem [ref=e96]:
+            - generic [ref=e97]: 
+            - text: Trial session (recommended 2-4 weeks before)
+          - listitem [ref=e98]:
+            - generic [ref=e99]: 
+            - text: Wedding day styling
+          - listitem [ref=e100]:
+            - generic [ref=e101]: 
+            - text: Touch-up kit for the day
+          - listitem [ref=e102]:
+            - generic [ref=e103]: 
+            - text: Style guaranteed to last 12+ hours
+        - button "Book Bridal Consultation" [ref=e104] [cursor=pointer]
+      - generic [ref=e105]:
+        - heading "Bridesmaids Styling" [level=3] [ref=e106]
+        - paragraph [ref=e107]: Starting at $95/person
+        - list [ref=e108]:
+          - listitem [ref=e109]:
+            - generic [ref=e110]: 
+            - text: Coordinated styles that complement the bride
+          - listitem [ref=e111]:
+            - generic [ref=e112]: 
+            - text: Updos, half-up, or flowing styles
+          - listitem [ref=e113]:
+            - generic [ref=e114]: 
+            - text: Group discounts for 4+ bridesmaids
+          - listitem [ref=e115]:
+            - generic [ref=e116]: 
+            - text: Hair accessories integration
+        - button "Get Group Quote" [ref=e117] [cursor=pointer]
+      - generic [ref=e118]:
+        - heading "Mother of the Bride/Groom" [level=3] [ref=e119]
+        - paragraph [ref=e120]: Starting at $125
+        - list [ref=e121]:
+          - listitem [ref=e122]:
+            - generic [ref=e123]: 
+            - text: Elegant, sophisticated styling
+          - listitem [ref=e124]:
+            - generic [ref=e125]: 
+            - text: Age-appropriate glamour
+          - listitem [ref=e126]:
+            - generic [ref=e127]: 
+            - text: Photo-ready finish
+          - listitem [ref=e128]:
+            - generic [ref=e129]: 
+            - text: Consultation included
+        - button "Book Appointment" [ref=e130] [cursor=pointer]
+      - generic [ref=e131]:
+        - heading "On-Location Services" [level=3] [ref=e132]
+        - paragraph [ref=e133]: Custom Quote
+        - list [ref=e134]:
+          - listitem [ref=e135]:
+            - generic [ref=e136]: 
+            - text: We come to your venue or hotel
+          - listitem [ref=e137]:
+            - generic [ref=e138]: 
+            - text: Available throughout Palm Beach County
+          - listitem [ref=e139]:
+            - generic [ref=e140]: 
+            - text: All equipment provided
+          - listitem [ref=e141]:
+            - generic [ref=e142]: 
+            - text: Stress-free morning-of experience
+        - link "Call for Quote" [ref=e143] [cursor=pointer]:
+          - /url: tel:5612990950
+  - generic [ref=e145]:
+    - generic [ref=e146]:
+      - heading "Preferred Stylist for Local Venues" [level=2] [ref=e147]
+      - paragraph [ref=e148]: We've styled brides at the most beautiful wedding venues in Delray Beach and Palm Beach County
+    - generic [ref=e149]:
+      - generic [ref=e150]:
+        - generic [ref=e151]: 
+        - heading "The Seagate Hotel" [level=4] [ref=e152]
+        - paragraph [ref=e153]: Delray Beach
+      - generic [ref=e154]:
+        - generic [ref=e155]: 
+        - heading "Delray Beach Club" [level=4] [ref=e156]
+        - paragraph [ref=e157]: Oceanfront
+      - generic [ref=e158]:
+        - generic [ref=e159]: 
+        - heading "Seagate Country Club" [level=4] [ref=e160]
+        - paragraph [ref=e161]: Delray Beach
+      - generic [ref=e162]:
+        - generic [ref=e163]: 
+        - heading "Sundy House" [level=4] [ref=e164]
+        - paragraph [ref=e165]: Historic Delray
+      - generic [ref=e166]:
+        - generic [ref=e167]: 
+        - heading "Boca Beach Club" [level=4] [ref=e168]
+        - paragraph [ref=e169]: Boca Raton
+      - generic [ref=e170]:
+        - generic [ref=e171]: 
+        - heading "Morikami Gardens" [level=4] [ref=e172]
+        - paragraph [ref=e173]: Delray Beach
+      - generic [ref=e174]:
+        - generic [ref=e175]: 
+        - heading "The Addison" [level=4] [ref=e176]
+        - paragraph [ref=e177]: Boca Raton
+      - generic [ref=e178]:
+        - generic [ref=e179]: 
+        - heading "Private Estates" [level=4] [ref=e180]
+        - paragraph [ref=e181]: Palm Beach County
+  - generic [ref=e183]:
+    - generic [ref=e184]:
+      - heading "What Brides Say" [level=2] [ref=e185]
+      - generic [ref=e186]:
+        - generic [ref=e187]:
+          - generic [ref=e188]: 
+          - generic [ref=e189]: 
+          - generic [ref=e190]: 
+          - generic [ref=e191]: 
+          - generic [ref=e192]: 
+        - generic [ref=e193]: 4.9/5.0 Rating
+    - generic [ref=e194]:
+      - generic [ref=e195]:
+        - generic [ref=e196]:
+          - generic [ref=e197]: 
+          - generic [ref=e198]: 
+          - generic [ref=e199]: 
+          - generic [ref=e200]: 
+          - generic [ref=e201]: 
+        - paragraph [ref=e202]: "\"Chris made me feel like a princess on my wedding day. My hair stayed perfect through the ceremony, photos, and dancing all night. Absolutely amazing!\""
+        - generic [ref=e203]: "- Jennifer M."
+        - generic [ref=e204]: Wedding at The Seagate
+      - generic [ref=e205]:
+        - generic [ref=e206]:
+          - generic [ref=e207]: 
+          - generic [ref=e208]: 
+          - generic [ref=e209]: 
+          - generic [ref=e210]: 
+          - generic [ref=e211]: 
+        - paragraph [ref=e212]: "\"He styled my entire bridal party - 6 bridesmaids plus me. Everyone looked gorgeous and the styles perfectly matched our beach wedding theme.\""
+        - generic [ref=e213]: "- Amanda K."
+        - generic [ref=e214]: Beach Wedding Delray
+      - generic [ref=e215]:
+        - generic [ref=e216]:
+          - generic [ref=e217]: 
+          - generic [ref=e218]: 
+          - generic [ref=e219]: 
+          - generic [ref=e220]: 
+          - generic [ref=e221]: 
+        - paragraph [ref=e222]: "\"The trial run was so helpful - we perfected everything before the big day. Chris is a true artist and understood exactly what I wanted.\""
+        - generic [ref=e223]: "- Rachel S."
+        - generic [ref=e224]: Wedding at Sundy House
+    - link " Read All 140+ Reviews on Google" [ref=e226] [cursor=pointer]:
+      - /url: https://www.google.com/search?q=chris+david+salon+delray+beach+reviews
+      - generic [ref=e227]: 
+      - text: Read All 140+ Reviews on Google
+  - generic [ref=e229]:
+    - heading "Wedding Hair FAQs" [level=2] [ref=e231]
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - heading "How far in advance should I book my wedding hair?" [level=3] [ref=e234]
+        - paragraph [ref=e235]: We recommend booking 3-6 months before your wedding date, especially for peak season (October-May in Florida). Schedule your trial 2-4 weeks before the wedding.
+      - generic [ref=e236]:
+        - heading "Do you offer trial sessions for brides?" [level=3] [ref=e237]
+        - paragraph [ref=e238]: Yes! We strongly recommend a trial session where we can perfect your look, try different styles, and ensure everything is exactly how you envision. This is included in our bridal package.
+      - generic [ref=e239]:
+        - heading "Can you come to my venue on the wedding day?" [level=3] [ref=e240]
+        - paragraph [ref=e241]: Absolutely! We offer on-location services throughout Delray Beach, Boca Raton, and Palm Beach County. We bring all equipment and create a relaxed, stress-free experience.
+      - generic [ref=e242]:
+        - heading "How do you handle Florida's humidity?" [level=3] [ref=e243]
+        - paragraph [ref=e244]: With 20+ years in South Florida, we're experts at creating styles that last through humidity, beach ceremonies, and outdoor receptions. We use professional-grade products and techniques specifically designed for our climate.
+      - generic [ref=e245]:
+        - heading "What should I bring to my trial session?" [level=3] [ref=e246]
+        - paragraph [ref=e247]: Bring photos of styles you like, your veil or headpiece if you have one, and wear a top that's similar to your dress neckline. We'll work together to create your perfect wedding day look.
+  - generic [ref=e249]:
+    - heading "Ready to Book Your Bridal Consultation?" [level=2] [ref=e250]
+    - paragraph [ref=e251]: Let's create the perfect wedding day look together. Schedule your consultation today and start planning your dream hair.
+    - generic [ref=e252]:
+      - button " Book Consultation Online" [ref=e253] [cursor=pointer]:
+        - generic [ref=e254]: 
+        - text: Book Consultation Online
+      - link " Call (561) 299-0950" [ref=e255] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e256]: 
+        - text: Call (561) 299-0950
+  - contentinfo [ref=e257]:
+    - generic [ref=e258]:
+      - generic [ref=e259]:
+        - generic [ref=e260]:
+          - img "Chris David Salon" [ref=e262]
+          - paragraph [ref=e263]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e264]:
+          - heading "Quick Links" [level=4] [ref=e265]
+          - list [ref=e266]:
+            - listitem [ref=e267]:
+              - link "About" [ref=e268] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e269]:
+              - link "Gallery" [ref=e270] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e271]:
+              - link "Reviews" [ref=e272] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e273]:
+              - link "Blog" [ref=e274] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e275]:
+              - link "Careers" [ref=e276] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e277]:
+              - link "Chair Rental" [ref=e278] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e279]:
+              - link "Policies" [ref=e280] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e281]:
+          - heading "Areas Served" [level=4] [ref=e282]
+          - list [ref=e283]:
+            - listitem [ref=e284]:
+              - link "Delray Beach Hair Salon" [ref=e285] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e286]:
+              - link "Atlantic Avenue Colorist" [ref=e287] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e288]:
+              - link "Boca Raton Clients" [ref=e289] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e290]:
+              - link "Boynton Beach Clients" [ref=e291] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e292]:
+          - heading "Services" [level=4] [ref=e293]
+          - list [ref=e294]:
+            - listitem [ref=e295]:
+              - link "All Services" [ref=e296] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e297]:
+              - link "Hair Color" [ref=e298] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e299]:
+              - link "Women's Haircuts" [ref=e300] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e301]:
+              - link "Men's Haircuts" [ref=e302] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e303]:
+              - link "Balayage" [ref=e304] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e305]:
+              - link "Highlights" [ref=e306] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e307]:
+              - link "Color Correction" [ref=e308] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e309]:
+              - link "Extensions" [ref=e310] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e311]:
+              - link "Keratin Treatment" [ref=e312] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e313]:
+              - link "Wedding Hair" [ref=e314] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e315]:
+          - heading "Hair Care Guides" [level=4] [ref=e316]
+          - list [ref=e317]:
+            - listitem [ref=e318]:
+              - link "Best Salon Delray Guide" [ref=e319] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e320]:
+              - link "Delray Salon Reviews" [ref=e321] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e322]:
+              - link "Palm Beach Salon Guide" [ref=e323] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e324]:
+              - link "Balayage Guide" [ref=e325] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e326]:
+              - link "Color Correction Tips" [ref=e327] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e328]:
+              - link "Florida Hair Care" [ref=e329] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e330]:
+          - heading "Contact" [level=4] [ref=e331]
+          - generic [ref=e332]:
+            - paragraph [ref=e333]: 1878C Dr. Andres Way
+            - paragraph [ref=e334]: Delray Beach, FL 33445
+            - paragraph [ref=e335]:
+              - link "(561) 299-0950" [ref=e336] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e337]:
+              - link "chrisdavidsalon@gmail.com" [ref=e338] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e339]:
+            - link "" [ref=e340] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e341]: 
+            - link "" [ref=e342] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e343]: 
+            - link "" [ref=e344] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e345]: 
+      - paragraph [ref=e347]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e348]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

@@ -1,0 +1,358 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon Andre Design District - Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+        - generic [ref=e8]: Andre Design District - Delray Beach
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e14]:
+        - link " (561) 299-0950" [ref=e15] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e16]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e17] [cursor=pointer]
+  - generic [ref=e18]:
+    - img "Hair Extensions Delray Beach" [ref=e20]
+    - generic [ref=e22]:
+      - paragraph [ref=e23]: DELRAY BEACH'S PREMIER EXTENSION SPECIALIST
+      - heading "Luxurious Hair Extensions" [level=1] [ref=e24]:
+        - text: Luxurious Hair
+        - text: Extensions
+      - paragraph [ref=e25]: Add length, volume, and thickness with premium extensions expertly installed by a certified Platinum Seamless educator
+      - generic [ref=e26]:
+        - button " Book Extension Consultation" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: 
+          - text: Book Extension Consultation
+        - link " Call (561) 299-0950" [ref=e29] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e30]: 
+          - text: Call (561) 299-0950
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]: 
+            - generic [ref=e35]: 
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+          - generic [ref=e39]: 4.9/5 - 140+ Reviews
+        - generic [ref=e40]:
+          - generic [ref=e41]: 
+          - generic [ref=e42]: Platinum Seamless Certified
+        - generic [ref=e43]:
+          - generic [ref=e44]: 
+          - generic [ref=e45]: Bellami Pro Partner
+  - generic [ref=e47]:
+    - generic [ref=e48]:
+      - heading "Extension Methods We Offer" [level=2] [ref=e49]
+      - paragraph [ref=e50]: Multiple options to suit your lifestyle, hair type, and goals
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e55]: 
+          - generic [ref=e56]:
+            - heading "Tape-In Extensions" [level=3] [ref=e57]
+            - text: MOST POPULAR
+        - paragraph [ref=e58]: Pre-taped wefts sandwiched between sections of your natural hair. Lightweight, comfortable, and virtually undetectable.
+        - list [ref=e59]:
+          - listitem [ref=e60]:
+            - generic [ref=e61]: 
+            - text: Lays flat against the scalp
+          - listitem [ref=e62]:
+            - generic [ref=e63]: 
+            - text: Quick 1-2 hour installation
+          - listitem [ref=e64]:
+            - generic [ref=e65]: 
+            - text: Lasts 6-8 weeks between moves
+          - listitem [ref=e66]:
+            - generic [ref=e67]: 
+            - text: Reusable 2-3 times
+        - paragraph [ref=e68]: Starting at $300
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e72]: 
+          - generic [ref=e73]:
+            - heading "Beaded Weft / Hand-Tied" [level=3] [ref=e74]
+            - text: LONGEST LASTING
+        - paragraph [ref=e75]: Hand-tied wefts attached with tiny beads - no heat, no glue. The gentlest method for your natural hair.
+        - list [ref=e76]:
+          - listitem [ref=e77]:
+            - generic [ref=e78]: 
+            - text: No adhesives or chemicals
+          - listitem [ref=e79]:
+            - generic [ref=e80]: 
+            - text: Moves naturally with hair
+          - listitem [ref=e81]:
+            - generic [ref=e82]: 
+            - text: 8-12 weeks between moves
+          - listitem [ref=e83]:
+            - generic [ref=e84]: 
+            - text: Gentlest on natural hair
+        - paragraph [ref=e85]: Starting at $500
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - generic [ref=e89]: 
+          - generic [ref=e90]:
+            - heading "Clip-In Extensions" [level=3] [ref=e91]
+            - text: TEMPORARY
+        - paragraph [ref=e92]: Perfect for special occasions or trying extensions before committing. Apply yourself in minutes, remove at night.
+        - list [ref=e93]:
+          - listitem [ref=e94]:
+            - generic [ref=e95]: 
+            - text: Apply and remove yourself
+          - listitem [ref=e96]:
+            - generic [ref=e97]: 
+            - text: No commitment required
+          - listitem [ref=e98]:
+            - generic [ref=e99]: 
+            - text: Perfect for events
+          - listitem [ref=e100]:
+            - generic [ref=e101]: 
+            - text: Custom color-matched
+        - paragraph [ref=e102]: Starting at $250
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - generic [ref=e106]: 
+          - generic [ref=e107]:
+            - heading "Fusion / K-Tip Extensions" [level=3] [ref=e108]
+            - text: MOST VERSATILE
+        - paragraph [ref=e109]: Individual strand-by-strand application for the most natural movement and styling versatility.
+        - list [ref=e110]:
+          - listitem [ref=e111]:
+            - generic [ref=e112]: 
+            - text: Individual strand placement
+          - listitem [ref=e113]:
+            - generic [ref=e114]: 
+            - text: Most natural movement
+          - listitem [ref=e115]:
+            - generic [ref=e116]: 
+            - text: Lasts 3-4 months
+          - listitem [ref=e117]:
+            - generic [ref=e118]: 
+            - text: Style any way you want
+        - paragraph [ref=e119]: Starting at $800
+  - generic [ref=e122]:
+    - generic [ref=e123]:
+      - heading "Why Choose Chris David for Extensions?" [level=2] [ref=e124]:
+        - text: Why Choose Chris David
+        - text: for Extensions?
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - generic [ref=e128]: 
+          - generic [ref=e129]:
+            - heading "Certified Platinum Seamless Educator" [level=3] [ref=e130]
+            - paragraph [ref=e131]: Chris doesn't just install extensions - he teaches other stylists how to do it. That expertise shows in every application.
+        - generic [ref=e132]:
+          - generic [ref=e134]: 
+          - generic [ref=e135]:
+            - heading "Master Colorist Color-Matching" [level=3] [ref=e136]
+            - paragraph [ref=e137]: As a master colorist, Chris ensures your extensions blend perfectly with your natural hair - even custom coloring extensions if needed.
+        - generic [ref=e138]:
+          - generic [ref=e140]: 
+          - generic [ref=e141]:
+            - heading "Hair Health First" [level=3] [ref=e142]
+            - paragraph [ref=e143]: Chris prioritizes the health of your natural hair. He'll recommend the right method and weight to avoid damage.
+        - generic [ref=e144]:
+          - generic [ref=e146]: 
+          - generic [ref=e147]:
+            - heading "Florida Climate Expert" [level=3] [ref=e148]
+            - paragraph [ref=e149]: With 20+ years in South Florida, Chris knows which methods and products hold up best in our humidity, ocean, and pool water.
+    - generic [ref=e150]:
+      - img "Hair extension specialist at work" [ref=e151]
+      - generic [ref=e152]:
+        - generic [ref=e153]: 300+
+        - generic [ref=e154]: Extension Clients
+  - generic [ref=e156]:
+    - generic [ref=e157]:
+      - heading "Premium Extension Brands" [level=2] [ref=e158]
+      - paragraph [ref=e159]: We only use the highest quality, ethically-sourced human hair
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - heading "Platinum Seamless" [level=3] [ref=e162]
+        - paragraph [ref=e163]: Premium hand-tied and tape-in extensions. Chris is a certified Platinum Seamless educator, ensuring expert installation and beautiful results.
+        - generic [ref=e164]:
+          - generic [ref=e165]: Hand-Tied
+          - generic [ref=e166]: Tape-In
+          - generic [ref=e167]: 100% Human Hair
+      - generic [ref=e168]:
+        - heading "Bellami Hair" [level=3] [ref=e169]
+        - paragraph [ref=e170]: Celebrity-favorite extensions known for quality and variety. Full range of colors, lengths, and methods available.
+        - generic [ref=e171]:
+          - generic [ref=e172]: Clip-In
+          - generic [ref=e173]: Tape-In
+          - generic [ref=e174]: K-Tip
+  - generic [ref=e176]:
+    - heading "Hair Extensions FAQs" [level=2] [ref=e178]
+    - generic [ref=e179]:
+      - generic [ref=e180]:
+        - heading "Will extensions damage my natural hair?" [level=3] [ref=e181]
+        - paragraph [ref=e182]: When properly installed and maintained by a certified professional like Chris, extensions should not damage your hair. The key is correct placement, appropriate weight, and regular maintenance appointments.
+      - generic [ref=e183]:
+        - heading "How long do extensions last?" [level=3] [ref=e184]
+        - paragraph [ref=e185]: "Depends on the method: Tape-ins last 6-8 weeks between moves, beaded weft 8-12 weeks, fusion 3-4 months. With proper care, the hair itself can be reused for 6-12 months."
+      - generic [ref=e186]:
+        - heading "Can I swim with extensions?" [level=3] [ref=e187]
+        - paragraph [ref=e188]: Yes! We recommend wetting your hair before entering pools or ocean, and washing with clarifying shampoo after. Chris will teach you proper care for Florida's beach lifestyle.
+      - generic [ref=e189]:
+        - heading "Which method is best for me?" [level=3] [ref=e190]
+        - paragraph [ref=e191]: It depends on your hair type, lifestyle, and goals. During your consultation, Chris will examine your hair and recommend the best method for your unique situation.
+      - generic [ref=e192]:
+        - heading "How do I care for my extensions?" [level=3] [ref=e193]
+        - paragraph [ref=e194]: Use sulfate-free products, brush gently from ends to roots, sleep with hair braided or in a silk bonnet, and keep up with maintenance appointments. Chris provides a full care guide at installation.
+  - generic [ref=e196]:
+    - heading "Ready for Your Dream Hair?" [level=2] [ref=e197]
+    - paragraph [ref=e198]: Book a consultation to find out which extension method is right for you. We'll create a custom plan for your perfect look.
+    - generic [ref=e199]:
+      - button " Book Consultation" [ref=e200] [cursor=pointer]:
+        - generic [ref=e201]: 
+        - text: Book Consultation
+      - link " Call (561) 299-0950" [ref=e202] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e203]: 
+        - text: Call (561) 299-0950
+  - contentinfo [ref=e204]:
+    - generic [ref=e205]:
+      - generic [ref=e206]:
+        - generic [ref=e207]:
+          - img "Chris David Salon" [ref=e209]
+          - paragraph [ref=e210]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e211]:
+          - heading "Quick Links" [level=4] [ref=e212]
+          - list [ref=e213]:
+            - listitem [ref=e214]:
+              - link "About" [ref=e215] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e216]:
+              - link "Gallery" [ref=e217] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e218]:
+              - link "Reviews" [ref=e219] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e220]:
+              - link "Blog" [ref=e221] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e222]:
+              - link "Careers" [ref=e223] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e224]:
+              - link "Chair Rental" [ref=e225] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e226]:
+              - link "Policies" [ref=e227] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e228]:
+          - heading "Areas Served" [level=4] [ref=e229]
+          - list [ref=e230]:
+            - listitem [ref=e231]:
+              - link "Delray Beach Hair Salon" [ref=e232] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e233]:
+              - link "Atlantic Avenue Colorist" [ref=e234] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e235]:
+              - link "Boca Raton Clients" [ref=e236] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e237]:
+              - link "Boynton Beach Clients" [ref=e238] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e239]:
+          - heading "Services" [level=4] [ref=e240]
+          - list [ref=e241]:
+            - listitem [ref=e242]:
+              - link "All Services" [ref=e243] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e244]:
+              - link "Hair Color" [ref=e245] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e246]:
+              - link "Women's Haircuts" [ref=e247] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e248]:
+              - link "Men's Haircuts" [ref=e249] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e250]:
+              - link "Balayage" [ref=e251] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e252]:
+              - link "Highlights" [ref=e253] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e254]:
+              - link "Color Correction" [ref=e255] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e256]:
+              - link "Extensions" [ref=e257] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e258]:
+              - link "Keratin Treatment" [ref=e259] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e260]:
+              - link "Wedding Hair" [ref=e261] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e262]:
+          - heading "Hair Care Guides" [level=4] [ref=e263]
+          - list [ref=e264]:
+            - listitem [ref=e265]:
+              - link "Best Salon Delray Guide" [ref=e266] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e267]:
+              - link "Delray Salon Reviews" [ref=e268] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e269]:
+              - link "Palm Beach Salon Guide" [ref=e270] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e271]:
+              - link "Balayage Guide" [ref=e272] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e273]:
+              - link "Color Correction Tips" [ref=e274] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e275]:
+              - link "Florida Hair Care" [ref=e276] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e277]:
+          - heading "Contact" [level=4] [ref=e278]
+          - generic [ref=e279]:
+            - paragraph [ref=e280]: 1878C Dr. Andres Way
+            - paragraph [ref=e281]: Delray Beach, FL 33445
+            - paragraph [ref=e282]:
+              - link "(561) 299-0950" [ref=e283] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e284]:
+              - link "chrisdavidsalon@gmail.com" [ref=e285] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e286]:
+            - link "" [ref=e287] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e288]: 
+            - link "" [ref=e289] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e290]: 
+            - link "" [ref=e291] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e292]: 
+      - paragraph [ref=e294]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e295]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

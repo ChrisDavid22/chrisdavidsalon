@@ -1,0 +1,502 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon" [ref=e7]
+      - navigation [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e10] [cursor=pointer]:
+          - /url: ../index.html#services
+        - link "Gallery" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e13]:
+        - link " (561) 299-0950" [ref=e14] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e15]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e16] [cursor=pointer]
+  - generic [ref=e17]:
+    - img "Hair Color Expert Delray Beach - Balayage Highlights Color Correction" [ref=e19]
+    - generic [ref=e21]:
+      - paragraph [ref=e22]: SOUTH FLORIDA'S PREMIER HAIR COLOR SPECIALIST
+      - heading "Hair Color Mastery" [level=1] [ref=e23]:
+        - text: Hair Color
+        - text: Mastery
+      - paragraph [ref=e24]: Balayage • Highlights • Color Correction • Blonde Specialist • Ombre
+      - paragraph [ref=e25]:
+        - text: Master Colorist with
+        - strong [ref=e26]: 20+ years
+        - text: experience • Certified Educator for
+        - strong [ref=e27]: 5 major brands
+      - generic [ref=e28]:
+        - button " Book Hair Color" [ref=e29] [cursor=pointer]:
+          - generic [ref=e30]: 
+          - text: Book Hair Color
+        - link " (561) 299-0950" [ref=e31] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e32]: 
+          - text: (561) 299-0950
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36]: 
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+            - generic [ref=e39]: 
+            - generic [ref=e40]: 
+          - generic [ref=e41]: 4.9/5 - 140+ Reviews
+        - generic [ref=e42]:
+          - generic [ref=e43]: 
+          - generic [ref=e44]: 5 Brand Certifications
+        - generic [ref=e45]:
+          - generic [ref=e46]: 
+          - generic [ref=e47]: Trained 500+ Stylists
+  - generic [ref=e49]:
+    - generic [ref=e50]:
+      - heading "Why Chris David is South Florida's Top Hair Colorist" [level=2] [ref=e51]:
+        - text: Why Chris David is South Florida's
+        - text: Top Hair Colorist
+      - paragraph [ref=e52]: The colorist other colorists learn from. Certified educator who has trained hundreds of professionals worldwide.
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e56]: 
+        - heading "Davines Educator" [level=3] [ref=e57]
+        - paragraph [ref=e58]: 6 years training professionals on sustainable luxury color
+      - generic [ref=e59]:
+        - generic [ref=e61]: 
+        - heading "Goldwell Master" [level=3] [ref=e62]
+        - paragraph [ref=e63]: Elite certification from world's premier color program
+      - generic [ref=e64]:
+        - generic [ref=e66]: 
+        - heading "Organic Color" [level=3] [ref=e67]
+        - paragraph [ref=e68]: Certified in natural, ammonia-free color systems
+      - generic [ref=e69]:
+        - generic [ref=e71]: 
+        - heading "Platinum Seamless" [level=3] [ref=e72]
+        - paragraph [ref=e73]: Extension color-matching specialist
+      - generic [ref=e74]:
+        - generic [ref=e76]: 
+        - heading "Cezanne Certified" [level=3] [ref=e77]
+        - paragraph [ref=e78]: Color-safe keratin & smoothing expert
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]: 20+
+        - generic [ref=e82]: Years Experience
+      - generic [ref=e83]:
+        - generic [ref=e84]: 500+
+        - generic [ref=e85]: Stylists Trained
+      - generic [ref=e86]:
+        - generic [ref=e87]: "5"
+        - generic [ref=e88]: Brand Certifications
+      - generic [ref=e89]:
+        - generic [ref=e90]: "4.9"
+        - generic [ref=e91]: Star Rating
+  - generic [ref=e93]:
+    - generic [ref=e94]:
+      - heading "Hair Color Services in Delray Beach" [level=2] [ref=e95]
+      - paragraph [ref=e96]: From subtle highlights to dramatic transformations, every service delivered with master-level expertise
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - generic [ref=e100]: 
+        - generic [ref=e101]:
+          - heading "Balayage" [level=3] [ref=e102]
+          - paragraph [ref=e103]: Hand-painted highlights for the most natural, sun-kissed look. Low maintenance with beautiful grow-out.
+          - list [ref=e104]:
+            - listitem [ref=e105]:
+              - generic [ref=e106]: 
+              - text: Natural, seamless blending
+            - listitem [ref=e107]:
+              - generic [ref=e108]: 
+              - text: Customized placement
+            - listitem [ref=e109]:
+              - generic [ref=e110]: 
+              - text: Low maintenance
+          - generic [ref=e111]:
+            - generic [ref=e112]: Starting at $200
+            - button "Book " [ref=e113] [cursor=pointer]:
+              - text: Book
+              - generic [ref=e114]: 
+      - generic [ref=e115]:
+        - generic [ref=e117]: 
+        - generic [ref=e118]:
+          - heading "Highlights" [level=3] [ref=e119]
+          - paragraph [ref=e120]: Classic foil highlights for maximum brightness and dimension. From subtle to bold.
+          - list [ref=e121]:
+            - listitem [ref=e122]:
+              - generic [ref=e123]: 
+              - text: Partial or full head
+            - listitem [ref=e124]:
+              - generic [ref=e125]: 
+              - text: Precision placement
+            - listitem [ref=e126]:
+              - generic [ref=e127]: 
+              - text: Any color level
+          - generic [ref=e128]:
+            - generic [ref=e129]: Starting at $150
+            - button "Book " [ref=e130] [cursor=pointer]:
+              - text: Book
+              - generic [ref=e131]: 
+      - generic [ref=e132]:
+        - generic [ref=e134]: 
+        - generic [ref=e135]:
+          - heading "Blonde Specialist" [level=3] [ref=e136]
+          - paragraph [ref=e137]: Expert blonde services - platinum, icy, creamy, and everything in between. No brassiness.
+          - list [ref=e138]:
+            - listitem [ref=e139]:
+              - generic [ref=e140]: 
+              - text: Platinum & icy blondes
+            - listitem [ref=e141]:
+              - generic [ref=e142]: 
+              - text: Tone perfection
+            - listitem [ref=e143]:
+              - generic [ref=e144]: 
+              - text: Hair health priority
+          - generic [ref=e145]:
+            - generic [ref=e146]: Starting at $250
+            - button "Book " [ref=e147] [cursor=pointer]:
+              - text: Book
+              - generic [ref=e148]: 
+      - generic [ref=e149]:
+        - generic [ref=e151]: 
+        - generic [ref=e152]:
+          - text: CHRIS'S SPECIALTY
+          - heading "Color Correction" [level=3] [ref=e153]
+          - paragraph [ref=e154]: Fix box dye disasters, brassy hair, uneven color. The expert other salons refer to.
+          - list [ref=e155]:
+            - listitem [ref=e156]:
+              - generic [ref=e157]: 
+              - text: Box dye removal
+            - listitem [ref=e158]:
+              - generic [ref=e159]: 
+              - text: Brassy/orange fix
+            - listitem [ref=e160]:
+              - generic [ref=e161]: 
+              - text: Uneven color repair
+          - generic [ref=e162]:
+            - generic [ref=e163]: Starting at $300
+            - link "Learn More " [ref=e164] [cursor=pointer]:
+              - /url: color-correction-delray-beach.html
+              - text: Learn More
+              - generic [ref=e165]: 
+      - generic [ref=e166]:
+        - generic [ref=e168]: 
+        - generic [ref=e169]:
+          - heading "Ombre" [level=3] [ref=e170]
+          - paragraph [ref=e171]: Beautiful gradient from darker roots to lighter ends. Dramatic yet elegant.
+          - list [ref=e172]:
+            - listitem [ref=e173]:
+              - generic [ref=e174]: 
+              - text: Seamless gradient
+            - listitem [ref=e175]:
+              - generic [ref=e176]: 
+              - text: Customized blend point
+            - listitem [ref=e177]:
+              - generic [ref=e178]: 
+              - text: Any color combination
+          - generic [ref=e179]:
+            - generic [ref=e180]: Starting at $200
+            - button "Book " [ref=e181] [cursor=pointer]:
+              - text: Book
+              - generic [ref=e182]: 
+      - generic [ref=e183]:
+        - generic [ref=e185]: 
+        - generic [ref=e186]:
+          - heading "Grey Blending" [level=3] [ref=e187]
+          - paragraph [ref=e188]: Natural grey coverage and blending. Look natural, not "colored."
+          - list [ref=e189]:
+            - listitem [ref=e190]:
+              - generic [ref=e191]: 
+              - text: Natural-looking coverage
+            - listitem [ref=e192]:
+              - generic [ref=e193]: 
+              - text: Low-maintenance options
+            - listitem [ref=e194]:
+              - generic [ref=e195]: 
+              - text: Embrace or cover
+          - generic [ref=e196]:
+            - generic [ref=e197]: Starting at $120
+            - button "Book " [ref=e198] [cursor=pointer]:
+              - text: Book
+              - generic [ref=e199]: 
+  - generic [ref=e201]:
+    - generic [ref=e202]:
+      - heading "Serving South Florida's Hair Color Needs" [level=2] [ref=e203]
+      - paragraph [ref=e204]: Clients travel from across South Florida for Chris's color expertise
+    - generic [ref=e205]:
+      - generic [ref=e206]: Delray Beach
+      - generic [ref=e207]: Boca Raton
+      - generic [ref=e208]: Palm Beach
+      - generic [ref=e209]: Boynton Beach
+      - generic [ref=e210]: West Palm Beach
+      - generic [ref=e211]: Fort Lauderdale
+      - generic [ref=e212]: Lake Worth
+      - generic [ref=e213]: Wellington
+  - generic [ref=e215]:
+    - heading "What Clients Say About Chris's Color" [level=2] [ref=e217]
+    - generic [ref=e218]:
+      - generic [ref=e219]:
+        - generic [ref=e220]:
+          - generic [ref=e221]: 
+          - generic [ref=e222]: 
+          - generic [ref=e223]: 
+          - generic [ref=e224]: 
+          - generic [ref=e225]: 
+        - paragraph [ref=e226]: "\"Best balayage I've ever had! Chris understood exactly what I wanted and the color is absolutely perfect. Low maintenance and looks natural.\""
+        - generic [ref=e227]: "- Sarah M."
+        - generic [ref=e228]: Balayage Client, Boca Raton
+      - generic [ref=e229]:
+        - generic [ref=e230]:
+          - generic [ref=e231]: 
+          - generic [ref=e232]: 
+          - generic [ref=e233]: 
+          - generic [ref=e234]: 
+          - generic [ref=e235]: 
+        - paragraph [ref=e236]: "\"Chris fixed a color disaster from another salon. He's truly a master colorist - patient, knowledgeable, and the results speak for themselves.\""
+        - generic [ref=e237]: "- Jennifer K."
+        - generic [ref=e238]: Color Correction, Palm Beach
+      - generic [ref=e239]:
+        - generic [ref=e240]:
+          - generic [ref=e241]: 
+          - generic [ref=e242]: 
+          - generic [ref=e243]: 
+          - generic [ref=e244]: 
+          - generic [ref=e245]: 
+        - paragraph [ref=e246]: "\"Finally found a blonde specialist who gets it! No brassiness, beautiful platinum tones. Worth every penny and the drive from Fort Lauderdale.\""
+        - generic [ref=e247]: "- Amanda R."
+        - generic [ref=e248]: Blonde Specialist Client
+    - link " Read All 140+ Reviews on Google" [ref=e250] [cursor=pointer]:
+      - /url: https://www.google.com/search?q=chris+david+salon+delray+beach+reviews
+      - generic [ref=e251]: 
+      - text: Read All 140+ Reviews on Google
+  - generic [ref=e253]:
+    - generic [ref=e254]:
+      - 'heading "Balayage vs Highlights: Which is Right for You?" [level=2] [ref=e255]'
+      - paragraph [ref=e256]: Understanding the difference helps you choose the perfect color technique
+    - generic [ref=e257]:
+      - generic [ref=e258]:
+        - heading " Balayage" [level=3] [ref=e259]:
+          - generic [ref=e260]: 
+          - text: Balayage
+        - list [ref=e261]:
+          - listitem [ref=e262]:
+            - generic [ref=e263]: 
+            - strong [ref=e264]: Hand-painted
+            - text: for natural, sun-kissed results
+          - listitem [ref=e265]:
+            - generic [ref=e266]: 
+            - strong [ref=e267]: Soft grow-out
+            - text: "- less maintenance needed"
+          - listitem [ref=e268]:
+            - generic [ref=e269]: 
+            - strong [ref=e270]: Customized
+            - text: to your face shape and features
+          - listitem [ref=e271]:
+            - generic [ref=e272]: 
+            - strong [ref=e273]: "Best for:"
+            - text: Natural-looking dimension, lived-in color
+          - listitem [ref=e274]:
+            - generic [ref=e275]: 
+            - strong [ref=e276]: "Maintenance:"
+            - text: Every 12-16 weeks
+        - paragraph [ref=e277]: "Popular searches: balayage delray beach, balayage boca raton, balayage near me"
+      - generic [ref=e278]:
+        - heading " Traditional Highlights" [level=3] [ref=e279]:
+          - generic [ref=e280]: 
+          - text: Traditional Highlights
+        - list [ref=e281]:
+          - listitem [ref=e282]:
+            - generic [ref=e283]: 
+            - strong [ref=e284]: Foil technique
+            - text: for precise, consistent color
+          - listitem [ref=e285]:
+            - generic [ref=e286]: 
+            - strong [ref=e287]: Maximum brightness
+            - text: from root to tip
+          - listitem [ref=e288]:
+            - generic [ref=e289]: 
+            - strong [ref=e290]: Uniform results
+            - text: throughout the hair
+          - listitem [ref=e291]:
+            - generic [ref=e292]: 
+            - strong [ref=e293]: "Best for:"
+            - text: Bold contrast, dramatic lightening
+          - listitem [ref=e294]:
+            - generic [ref=e295]: 
+            - strong [ref=e296]: "Maintenance:"
+            - text: Every 6-8 weeks
+        - paragraph [ref=e297]: "Popular searches: highlights delray beach, highlights boca raton, highlights near me"
+    - generic [ref=e298]:
+      - paragraph [ref=e299]: Not sure which is right for you? Chris offers complimentary color consultations.
+      - button "Book Free Consultation" [ref=e300] [cursor=pointer]
+  - generic [ref=e302]:
+    - generic [ref=e303]:
+      - heading "Hair Color FAQs" [level=2] [ref=e304]
+      - paragraph [ref=e305]: Answers to common questions about hair color services in Delray Beach
+    - generic [ref=e306]:
+      - generic [ref=e307]:
+        - heading "How much does balayage cost in Delray Beach?" [level=3] [ref=e308]
+        - paragraph [ref=e309]: At Chris David Salon, balayage starts at $200 and varies based on hair length, desired lightness, and complexity. Chris uses premium Davines and Goldwell products for superior results. A consultation helps determine exact pricing for your hair goals.
+      - generic [ref=e310]:
+        - heading "Who is the best hair colorist in Delray Beach?" [level=3] [ref=e311]
+        - paragraph [ref=e312]: "Chris David is a master colorist with 20+ years of experience and certifications from 5 major brands: Davines (6 years as educator), Goldwell, Organic Color Systems, Platinum Seamless, and Cezanne. He has trained hundreds of colorists worldwide and is the go-to expert for color correction and transformations."
+      - generic [ref=e313]:
+        - heading "How long does balayage last?" [level=3] [ref=e314]
+        - paragraph [ref=e315]: Balayage typically lasts 12-16 weeks before needing a touch-up, making it a low-maintenance option. The hand-painted technique creates soft, natural grow-out lines. For blonde balayage clients, Chris recommends a toner refresh every 6-8 weeks to maintain brightness.
+      - generic [ref=e316]:
+        - heading "Can you fix bad hair color from another salon?" [level=3] [ref=e317]
+        - paragraph [ref=e318]: Yes! Color correction is one of Chris's specialties. Whether it's brassy orange, uneven color, box dye disasters, or over-processed hair, Chris has the expertise to restore your hair to beautiful, healthy color. Color correction services start at $300.
+      - generic [ref=e319]:
+        - heading "Do you serve clients from Boca Raton and Palm Beach?" [level=3] [ref=e320]
+        - paragraph [ref=e321]: Absolutely! Chris David Salon is conveniently located in Delray Beach, just 15 minutes from Boca Raton and 20 minutes from Palm Beach. Clients travel from throughout South Florida - Boynton Beach, West Palm Beach, Fort Lauderdale, and beyond - for Chris's expertise.
+  - generic [ref=e323]:
+    - heading "Ready for Color That Turns Heads?" [level=2] [ref=e324]
+    - paragraph [ref=e325]: Book with South Florida's premier hair colorist. Balayage, highlights, color correction - whatever your color dreams, Chris can make them reality.
+    - generic [ref=e326]:
+      - button " Book Hair Color" [ref=e327] [cursor=pointer]:
+        - generic [ref=e328]: 
+        - text: Book Hair Color
+      - link " (561) 299-0950" [ref=e329] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e330]: 
+        - text: (561) 299-0950
+  - contentinfo [ref=e331]:
+    - generic [ref=e332]:
+      - generic [ref=e333]:
+        - generic [ref=e334]:
+          - img "Chris David Salon" [ref=e336]
+          - paragraph [ref=e337]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e338]:
+          - heading "Quick Links" [level=4] [ref=e339]
+          - list [ref=e340]:
+            - listitem [ref=e341]:
+              - link "About" [ref=e342] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e343]:
+              - link "Gallery" [ref=e344] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e345]:
+              - link "Reviews" [ref=e346] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e347]:
+              - link "Blog" [ref=e348] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e349]:
+              - link "Careers" [ref=e350] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e351]:
+              - link "Chair Rental" [ref=e352] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e353]:
+              - link "Policies" [ref=e354] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e355]:
+          - heading "Areas Served" [level=4] [ref=e356]
+          - list [ref=e357]:
+            - listitem [ref=e358]:
+              - link "Delray Beach Hair Salon" [ref=e359] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e360]:
+              - link "Atlantic Avenue Colorist" [ref=e361] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e362]:
+              - link "Boca Raton Clients" [ref=e363] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e364]:
+              - link "Boynton Beach Clients" [ref=e365] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e366]:
+          - heading "Services" [level=4] [ref=e367]
+          - list [ref=e368]:
+            - listitem [ref=e369]:
+              - link "All Services" [ref=e370] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e371]:
+              - link "Hair Color" [ref=e372] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e373]:
+              - link "Women's Haircuts" [ref=e374] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e375]:
+              - link "Men's Haircuts" [ref=e376] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e377]:
+              - link "Balayage" [ref=e378] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e379]:
+              - link "Highlights" [ref=e380] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e381]:
+              - link "Color Correction" [ref=e382] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e383]:
+              - link "Extensions" [ref=e384] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e385]:
+              - link "Keratin Treatment" [ref=e386] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e387]:
+              - link "Wedding Hair" [ref=e388] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e389]:
+          - heading "Hair Care Guides" [level=4] [ref=e390]
+          - list [ref=e391]:
+            - listitem [ref=e392]:
+              - link "Best Salon Delray Guide" [ref=e393] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e394]:
+              - link "Delray Salon Reviews" [ref=e395] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e396]:
+              - link "Palm Beach Salon Guide" [ref=e397] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e398]:
+              - link "Balayage Guide" [ref=e399] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e400]:
+              - link "Color Correction Tips" [ref=e401] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e402]:
+              - link "Florida Hair Care" [ref=e403] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e404]:
+          - heading "Contact" [level=4] [ref=e405]
+          - generic [ref=e406]:
+            - paragraph [ref=e407]: 1878C Dr. Andres Way
+            - paragraph [ref=e408]: Delray Beach, FL 33445
+            - paragraph [ref=e409]:
+              - link "(561) 299-0950" [ref=e410] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e411]:
+              - link "chrisdavidsalon@gmail.com" [ref=e412] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e413]:
+            - link "" [ref=e414] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e415]: 
+            - link "" [ref=e416] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e417]: 
+            - link "" [ref=e418] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e419]: 
+      - paragraph [ref=e421]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e422]:
+    - generic [ref=f1e2]:
+      - link "Your appointments" [ref=f1e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f1e8]:
+          - generic [ref=f1e9]: Your appointments
+          - img [ref=f1e10]
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: Powered by
+        - link [ref=f1e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f1e27]
+```

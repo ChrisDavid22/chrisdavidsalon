@@ -1,0 +1,416 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Chris David Salon - Best Hair Salon Delray Beach" [ref=e5] [cursor=pointer]:
+        - /url: ../index.html
+        - img "Chris David Salon - Best Hair Salon Delray Beach" [ref=e7]
+      - navigation [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: ../index.html
+        - link "Services" [ref=e10] [cursor=pointer]:
+          - /url: "#services"
+        - link "Gallery" [ref=e11] [cursor=pointer]:
+          - /url: ../index.html#gallery
+        - link "Contact" [ref=e12] [cursor=pointer]:
+          - /url: ../index.html#contact
+      - generic [ref=e13]:
+        - link " (561) 299-0950" [ref=e14] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e15]: 
+          - text: (561) 299-0950
+        - button "Book Now" [ref=e16] [cursor=pointer]
+  - generic [ref=e17]:
+    - img "Best Hair Salon Delray Beach - Hair Stylist Near Me" [ref=e19]
+    - generic [ref=e21]:
+      - paragraph [ref=e22]: DELRAY BEACH'S PREMIER HAIR SALON
+      - heading "Hair Salon Delray Beach" [level=1] [ref=e23]:
+        - text: Hair Salon
+        - text: Delray Beach
+      - paragraph [ref=e24]: Haircuts • Hair Color • Balayage • Extensions • Keratin • Wedding Hair
+      - paragraph [ref=e25]:
+        - text: Master Stylist with
+        - strong [ref=e26]: 20+ years
+        - text: experience •
+        - strong [ref=e27]: 4.9 Stars
+        - text: •
+        - strong [ref=e28]: 140+ Reviews
+      - generic [ref=e29]:
+        - button " Book Appointment" [ref=e30] [cursor=pointer]:
+          - generic [ref=e31]: 
+          - text: Book Appointment
+        - link " (561) 299-0950" [ref=e32] [cursor=pointer]:
+          - /url: tel:5612990950
+          - generic [ref=e33]: 
+          - text: (561) 299-0950
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]: 
+            - generic [ref=e38]: 
+            - generic [ref=e39]: 
+            - generic [ref=e40]: 
+            - generic [ref=e41]: 
+          - generic [ref=e42]: 4.9/5 - 140+ Reviews
+        - generic [ref=e43]:
+          - generic [ref=e44]: 
+          - generic [ref=e45]: Atlantic Ave, Delray Beach
+        - generic [ref=e46]:
+          - generic [ref=e47]: 
+          - generic [ref=e48]: 20+ Years Experience
+  - generic [ref=e50]:
+    - generic [ref=e51]:
+      - heading "Why We're Delray Beach's Best Hair Salon" [level=2] [ref=e52]:
+        - text: Why We're Delray Beach's
+        - text: Best Hair Salon
+      - paragraph [ref=e53]: More than just a hair salon - we're where artistry meets expertise
+    - generic [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e57]: 
+        - heading "4.9 Star Rating" [level=3] [ref=e58]
+        - paragraph [ref=e59]: 140+ five-star reviews on Google. See why clients rave about us.
+      - generic [ref=e60]:
+        - generic [ref=e62]: 
+        - heading "5 Brand Certifications" [level=3] [ref=e63]
+        - paragraph [ref=e64]: Davines, Goldwell, Organic Color, Platinum Seamless, Cezanne
+      - generic [ref=e65]:
+        - generic [ref=e67]: 
+        - heading "Educator Level" [level=3] [ref=e68]
+        - paragraph [ref=e69]: Chris has trained 500+ stylists worldwide. Learn from the best.
+      - generic [ref=e70]:
+        - generic [ref=e72]: 
+        - heading "Prime Location" [level=3] [ref=e73]
+        - paragraph [ref=e74]: Right on Atlantic Ave in the heart of downtown Delray Beach
+    - generic [ref=e75]:
+      - generic [ref=e76]:
+        - generic [ref=e77]: 20+
+        - generic [ref=e78]: Years Experience
+      - generic [ref=e79]:
+        - generic [ref=e80]: 500+
+        - generic [ref=e81]: Stylists Trained
+      - generic [ref=e82]:
+        - generic [ref=e83]: "5"
+        - generic [ref=e84]: Brand Certifications
+      - generic [ref=e85]:
+        - generic [ref=e86]: "4.9"
+        - generic [ref=e87]: Star Rating
+  - generic [ref=e89]:
+    - generic [ref=e90]:
+      - heading "Hair Salon Services" [level=2] [ref=e91]
+      - paragraph [ref=e92]: Full-service hair salon offering everything from precision haircuts to complete transformations
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - generic [ref=e96]: 
+        - generic [ref=e97]:
+          - heading "Haircuts" [level=3] [ref=e98]
+          - paragraph [ref=e99]: Precision cuts for women and men. From classic to modern styles.
+          - generic [ref=e100]:
+            - generic [ref=e101]: From $65
+            - button "Book " [ref=e102] [cursor=pointer]:
+              - text: Book
+              - generic [ref=e103]: 
+      - generic [ref=e104]:
+        - generic [ref=e106]: 
+        - generic [ref=e107]:
+          - heading "Hair Color" [level=3] [ref=e108]
+          - paragraph [ref=e109]: Full-spectrum color services by a certified color educator.
+          - generic [ref=e110]:
+            - generic [ref=e111]: From $120
+            - link "Learn More " [ref=e112] [cursor=pointer]:
+              - /url: hair-color-delray-beach.html
+              - text: Learn More
+              - generic [ref=e113]: 
+      - generic [ref=e114]:
+        - generic [ref=e116]: 
+        - generic [ref=e117]:
+          - heading "Balayage" [level=3] [ref=e118]
+          - paragraph [ref=e119]: Hand-painted highlights for natural, sun-kissed color.
+          - generic [ref=e120]:
+            - generic [ref=e121]: From $200
+            - link "Learn More " [ref=e122] [cursor=pointer]:
+              - /url: balayage-delray-beach.html
+              - text: Learn More
+              - generic [ref=e123]: 
+      - generic [ref=e124]:
+        - generic [ref=e126]: 
+        - generic [ref=e127]:
+          - heading "Highlights" [level=3] [ref=e128]
+          - paragraph [ref=e129]: Traditional foil highlights for dimension and brightness.
+          - generic [ref=e130]:
+            - generic [ref=e131]: From $150
+            - button "Book " [ref=e132] [cursor=pointer]:
+              - text: Book
+              - generic [ref=e133]: 
+      - generic [ref=e134]:
+        - generic [ref=e136]: 
+        - generic [ref=e137]:
+          - heading "Hair Extensions" [level=3] [ref=e138]
+          - paragraph [ref=e139]: Platinum Seamless certified. Natural-looking length and volume.
+          - generic [ref=e140]:
+            - generic [ref=e141]: From $500
+            - link "Learn More " [ref=e142] [cursor=pointer]:
+              - /url: hair-extensions-delray-beach.html
+              - text: Learn More
+              - generic [ref=e143]: 
+      - generic [ref=e144]:
+        - generic [ref=e146]: 
+        - generic [ref=e147]:
+          - heading "Keratin Treatment" [level=3] [ref=e148]
+          - paragraph [ref=e149]: Cezanne certified. Smoothing without harsh chemicals.
+          - generic [ref=e150]:
+            - generic [ref=e151]: From $300
+            - link "Learn More " [ref=e152] [cursor=pointer]:
+              - /url: keratin-treatment-delray-beach.html
+              - text: Learn More
+              - generic [ref=e153]: 
+      - generic [ref=e154]:
+        - generic [ref=e156]: 
+        - generic [ref=e157]:
+          - heading "Color Correction" [level=3] [ref=e158]
+          - paragraph [ref=e159]: Fix box dye disasters and brassy tones. Expert repair.
+          - generic [ref=e160]:
+            - generic [ref=e161]: From $300
+            - link "Learn More " [ref=e162] [cursor=pointer]:
+              - /url: color-correction-delray-beach.html
+              - text: Learn More
+              - generic [ref=e163]: 
+      - generic [ref=e164]:
+        - generic [ref=e166]: 
+        - generic [ref=e167]:
+          - heading "Wedding Hair" [level=3] [ref=e168]
+          - paragraph [ref=e169]: Bridal styling for your perfect day. Updos and styling.
+          - generic [ref=e170]:
+            - generic [ref=e171]: From $150
+            - link "Learn More " [ref=e172] [cursor=pointer]:
+              - /url: wedding-hair-delray-beach.html
+              - text: Learn More
+              - generic [ref=e173]: 
+  - generic [ref=e175]:
+    - generic [ref=e176]:
+      - heading "Serving South Florida" [level=2] [ref=e177]
+      - paragraph [ref=e178]: Conveniently located on Atlantic Ave. Clients come from across South Florida.
+    - generic [ref=e179]:
+      - generic [ref=e180]: Delray Beach
+      - generic [ref=e181]: Boca Raton
+      - generic [ref=e182]: Palm Beach
+      - generic [ref=e183]: Boynton Beach
+      - generic [ref=e184]: West Palm Beach
+      - generic [ref=e185]: Fort Lauderdale
+      - generic [ref=e186]: Lake Worth
+      - generic [ref=e187]: Wellington
+  - generic [ref=e189]:
+    - generic [ref=e190]:
+      - heading "What Our Clients Say" [level=2] [ref=e191]
+      - paragraph [ref=e192]: 4.9 stars from 140+ Google reviews
+    - generic [ref=e193]:
+      - generic [ref=e194]:
+        - generic [ref=e195]:
+          - generic [ref=e196]: 
+          - generic [ref=e197]: 
+          - generic [ref=e198]: 
+          - generic [ref=e199]: 
+          - generic [ref=e200]: 
+        - paragraph [ref=e201]: "\"Best hair salon I've ever been to! Chris is incredibly talented and truly listens to what you want. The results always exceed my expectations.\""
+        - generic [ref=e202]: "- Michelle T."
+        - generic [ref=e203]: Delray Beach
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - generic [ref=e206]: 
+          - generic [ref=e207]: 
+          - generic [ref=e208]: 
+          - generic [ref=e209]: 
+          - generic [ref=e210]: 
+        - paragraph [ref=e211]: "\"Finally found my forever hair stylist! I've been searching for years for someone who understands my hair. Chris is amazing!\""
+        - generic [ref=e212]: "- Jessica R."
+        - generic [ref=e213]: Boca Raton
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - generic [ref=e216]: 
+          - generic [ref=e217]: 
+          - generic [ref=e218]: 
+          - generic [ref=e219]: 
+          - generic [ref=e220]: 
+        - paragraph [ref=e221]: "\"Worth the drive from Fort Lauderdale! The attention to detail and quality of work is unmatched. Truly a master of his craft.\""
+        - generic [ref=e222]: "- Lauren K."
+        - generic [ref=e223]: Fort Lauderdale
+    - link " Read All 140+ Reviews on Google" [ref=e225] [cursor=pointer]:
+      - /url: https://www.google.com/search?q=chris+david+salon+delray+beach+reviews
+      - generic [ref=e226]: 
+      - text: Read All 140+ Reviews on Google
+  - generic [ref=e229]:
+    - generic [ref=e230]:
+      - heading "Visit Our Hair Salon" [level=2] [ref=e231]
+      - generic [ref=e232]:
+        - generic [ref=e233]:
+          - generic [ref=e234]: 
+          - generic [ref=e235]:
+            - heading "Address" [level=3] [ref=e236]
+            - paragraph [ref=e237]:
+              - text: 403 E Atlantic Ave
+              - text: Delray Beach, FL 33483
+        - generic [ref=e238]:
+          - generic [ref=e239]: 
+          - generic [ref=e240]:
+            - heading "Phone" [level=3] [ref=e241]
+            - link "(561) 299-0950" [ref=e242] [cursor=pointer]:
+              - /url: tel:5612990950
+        - generic [ref=e243]:
+          - generic [ref=e244]: 
+          - generic [ref=e245]:
+            - heading "Hours" [level=3] [ref=e246]
+            - paragraph [ref=e247]:
+              - text: "Tue-Fri: 10am - 6pm"
+              - text: "Saturday: 9am - 5pm"
+              - text: "Sun-Mon: Closed"
+      - button " Book Your Appointment" [ref=e248] [cursor=pointer]:
+        - generic [ref=e249]: 
+        - text: Book Your Appointment
+    - iframe [ref=e251]:
+      
+  - generic [ref=e253]:
+    - heading "Ready for Your Best Hair Ever?" [level=2] [ref=e254]
+    - paragraph [ref=e255]: Book with Delray Beach's top-rated hair salon. Expert cuts, stunning color, and transformations that turn heads.
+    - generic [ref=e256]:
+      - button " Book Now" [ref=e257] [cursor=pointer]:
+        - generic [ref=e258]: 
+        - text: Book Now
+      - link " (561) 299-0950" [ref=e259] [cursor=pointer]:
+        - /url: tel:5612990950
+        - generic [ref=e260]: 
+        - text: (561) 299-0950
+  - contentinfo [ref=e261]:
+    - generic [ref=e262]:
+      - generic [ref=e263]:
+        - generic [ref=e264]:
+          - img "Chris David Salon" [ref=e266]
+          - paragraph [ref=e267]: Master colorist creating unique, artistically inspired hair transformations in Delray Beach's Andre Design District.
+        - generic [ref=e268]:
+          - heading "Quick Links" [level=4] [ref=e269]
+          - list [ref=e270]:
+            - listitem [ref=e271]:
+              - link "About" [ref=e272] [cursor=pointer]:
+                - /url: ../index.html#about
+            - listitem [ref=e273]:
+              - link "Gallery" [ref=e274] [cursor=pointer]:
+                - /url: ../index.html#gallery
+            - listitem [ref=e275]:
+              - link "Reviews" [ref=e276] [cursor=pointer]:
+                - /url: ../index.html#testimonials
+            - listitem [ref=e277]:
+              - link "Blog" [ref=e278] [cursor=pointer]:
+                - /url: ../blog.html
+            - listitem [ref=e279]:
+              - link "Careers" [ref=e280] [cursor=pointer]:
+                - /url: ../careers.html
+            - listitem [ref=e281]:
+              - link "Chair Rental" [ref=e282] [cursor=pointer]:
+                - /url: ../chair-rental.html
+            - listitem [ref=e283]:
+              - link "Policies" [ref=e284] [cursor=pointer]:
+                - /url: ../policies.html
+        - generic [ref=e285]:
+          - heading "Areas Served" [level=4] [ref=e286]
+          - list [ref=e287]:
+            - listitem [ref=e288]:
+              - link "Delray Beach Hair Salon" [ref=e289] [cursor=pointer]:
+                - /url: ../locations/delray-beach-hair-salon.html
+            - listitem [ref=e290]:
+              - link "Atlantic Avenue Colorist" [ref=e291] [cursor=pointer]:
+                - /url: ../locations/atlantic-avenue-colorist.html
+            - listitem [ref=e292]:
+              - link "Boca Raton Clients" [ref=e293] [cursor=pointer]:
+                - /url: ../locations/boca-raton-hair-salon.html
+            - listitem [ref=e294]:
+              - link "Boynton Beach Clients" [ref=e295] [cursor=pointer]:
+                - /url: ../locations/boynton-beach-hair-salon.html
+        - generic [ref=e296]:
+          - heading "Services" [level=4] [ref=e297]
+          - list [ref=e298]:
+            - listitem [ref=e299]:
+              - link "All Services" [ref=e300] [cursor=pointer]:
+                - /url: hair-salon-delray-beach.html
+            - listitem [ref=e301]:
+              - link "Hair Color" [ref=e302] [cursor=pointer]:
+                - /url: hair-color-delray-beach.html
+            - listitem [ref=e303]:
+              - link "Women's Haircuts" [ref=e304] [cursor=pointer]:
+                - /url: womens-haircut-delray-beach.html
+            - listitem [ref=e305]:
+              - link "Men's Haircuts" [ref=e306] [cursor=pointer]:
+                - /url: mens-haircut-delray-beach.html
+            - listitem [ref=e307]:
+              - link "Balayage" [ref=e308] [cursor=pointer]:
+                - /url: balayage-delray-beach.html
+            - listitem [ref=e309]:
+              - link "Highlights" [ref=e310] [cursor=pointer]:
+                - /url: highlights-delray-beach.html
+            - listitem [ref=e311]:
+              - link "Color Correction" [ref=e312] [cursor=pointer]:
+                - /url: color-correction-delray-beach.html
+            - listitem [ref=e313]:
+              - link "Extensions" [ref=e314] [cursor=pointer]:
+                - /url: hair-extensions-delray-beach.html
+            - listitem [ref=e315]:
+              - link "Keratin Treatment" [ref=e316] [cursor=pointer]:
+                - /url: keratin-treatment-delray-beach.html
+            - listitem [ref=e317]:
+              - link "Wedding Hair" [ref=e318] [cursor=pointer]:
+                - /url: wedding-hair-delray-beach.html
+        - generic [ref=e319]:
+          - heading "Hair Care Guides" [level=4] [ref=e320]
+          - list [ref=e321]:
+            - listitem [ref=e322]:
+              - link "Best Salon Delray Guide" [ref=e323] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/
+            - listitem [ref=e324]:
+              - link "Delray Salon Reviews" [ref=e325] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/
+            - listitem [ref=e326]:
+              - link "Palm Beach Salon Guide" [ref=e327] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/
+            - listitem [ref=e328]:
+              - link "Balayage Guide" [ref=e329] [cursor=pointer]:
+                - /url: https://bestsalondelray.com/balayage-guide.html
+            - listitem [ref=e330]:
+              - link "Color Correction Tips" [ref=e331] [cursor=pointer]:
+                - /url: https://bestdelraysalon.com/color-correction-guide.html
+            - listitem [ref=e332]:
+              - link "Florida Hair Care" [ref=e333] [cursor=pointer]:
+                - /url: https://bestsalonpalmbeach.com/florida-humidity-hair-care.html
+        - generic [ref=e334]:
+          - heading "Contact" [level=4] [ref=e335]
+          - generic [ref=e336]:
+            - paragraph [ref=e337]: 1878C Dr. Andres Way
+            - paragraph [ref=e338]: Delray Beach, FL 33445
+            - paragraph [ref=e339]:
+              - link "(561) 299-0950" [ref=e340] [cursor=pointer]:
+                - /url: tel:5612990950
+            - paragraph [ref=e341]:
+              - link "chrisdavidsalon@gmail.com" [ref=e342] [cursor=pointer]:
+                - /url: mailto:chrisdavidsalon@gmail.com
+          - generic [ref=e343]:
+            - link "" [ref=e344] [cursor=pointer]:
+              - /url: https://www.instagram.com/chrisdavidsalon/
+              - generic [ref=e345]: 
+            - link "" [ref=e346] [cursor=pointer]:
+              - /url: https://www.facebook.com/ChrisDavidSalon/
+              - generic [ref=e347]: 
+            - link "" [ref=e348] [cursor=pointer]:
+              - /url: https://www.google.com/search?q=chris+david+salon+delray+beach
+              - generic [ref=e349]: 
+      - paragraph [ref=e351]: © 2024 Chris David Salon. All rights reserved. | Website by ISO Vision LLC
+  - iframe [ref=e352]:
+    - generic [ref=f2e2]:
+      - link "Your appointments" [ref=f2e7] [cursor=pointer]:
+        - /url: https://blvd.app/@chris-david-salon/login
+        - generic [ref=f2e8]:
+          - generic [ref=f2e9]: Your appointments
+          - img [ref=f2e10]
+      - generic [ref=f2e24]:
+        - generic [ref=f2e25]: Powered by
+        - link [ref=f2e26] [cursor=pointer]:
+          - /url: https://joinblvd.com
+          - img [ref=f2e27]
+```
