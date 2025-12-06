@@ -1,7 +1,12 @@
 {
-  "version": "2.32.0",
-  "lastUpdated": "2025-12-06T00:15:00Z",
+  "version": "2.33.0",
+  "lastUpdated": "2025-12-06T00:30:00Z",
   "deployHistory": [
+    {
+      "version": "2.33.0",
+      "date": "2025-12-06T00:30:00Z",
+      "changes": "HEADER LAYOUT RESTRUCTURE: Complete rebuild of header flex layout. (1) Changed from justify-between to explicit flex structure. (2) Logo now wrapped in anchor with min-width: 180px and mr-6 margin. (3) Nav now has flex-1 to take remaining space. (4) CTA now has ml-auto to push to right side. (5) Removed nested flex-col from logo container. (6) Layout: [Logo 180px] [Nav flex-1] [CTA ml-auto]."
+    },
     {
       "version": "2.32.0",
       "date": "2025-12-06T00:15:00Z",

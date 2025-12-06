@@ -605,18 +605,18 @@
     <!-- Fixed Header with Navigation -->
     <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm shadow-sm z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex flex-col flex-shrink-0" style="max-width: 200px;">
-                    <!-- NOTE: All images are located in ./images/ directory relative to this index.html -->
+            <div class="flex items-center py-4">
+                <!-- Logo - explicit width, always first -->
+                <a href="#home" class="flex-shrink-0 mr-6" style="min-width: 180px;">
                     <picture>
                         <source srcset="./images/cds-logo.webp" type="image/webp">
-                        <img src="./images/cds-logo.webp" alt="Chris David Salon" class="h-12 md:h-14 w-auto object-contain" loading="eager" width="200" height="48" fetchpriority="high" style="max-width: 200px;">
+                        <img src="./images/cds-logo.webp" alt="Chris David Salon" class="h-10 w-auto" loading="eager" width="180" height="32" fetchpriority="high">
                     </picture>
-                    <a href="https://www.google.com/maps/place/Chris+David+Salon/@26.4615028,-80.0723543,17z/" target="_blank" rel="noopener" class="text-xs text-gray-600 mt-1 hover:text-yellow-600 transition-colors whitespace-nowrap">Andre Design District • Delray Beach</a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
+                    <span class="block text-xs text-gray-600 mt-1">Andre Design District • Delray Beach</span>
+                </a>
+
+                <!-- Desktop Navigation - takes remaining space -->
+                <nav class="hidden md:flex items-center space-x-6 flex-1">
                     <a href="#home" class="text-gray-700 hover:text-gray-900 transition-colors">Home</a>
                     <a href="#about" class="text-gray-700 hover:text-gray-900 transition-colors">About</a>
                     <div class="relative group">
@@ -647,7 +647,8 @@
                     <a href="#contact" class="text-gray-700 hover:text-gray-900 transition-colors">Contact</a>
                 </nav>
                 
-                <div class="flex items-center space-x-4 ml-8">
+                <!-- CTA Section - right side -->
+                <div class="flex items-center space-x-4 flex-shrink-0 ml-auto">
                     <!-- Phone Number CTA -->
                     <a href="tel:5612990950" onclick="trackPhoneClick('Header')" class="hidden lg:flex items-center text-yellow-600 hover:text-yellow-700 font-semibold transition-colors">
                         <i class="fas fa-phone mr-2"></i>
