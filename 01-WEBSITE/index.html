@@ -1027,8 +1027,15 @@
 
             <!-- Auto-scrolling Image Carousel -->
             <div class="relative overflow-hidden mb-12">
+                <!-- Navigation Arrows for Desktop -->
+                <button onclick="scrollGallery(-1)" class="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full w-12 h-12 items-center justify-center text-gray-800 hover:text-yellow-600 transition-all" aria-label="Previous images">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button onclick="scrollGallery(1)" class="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full w-12 h-12 items-center justify-center text-gray-800 hover:text-yellow-600 transition-all" aria-label="Next images">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
                 <!-- Carousel Track -->
-                <div class="gallery-carousel flex gap-4 overflow-x-auto scroll-smooth pb-4" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+                <div id="gallery-carousel" class="gallery-carousel flex gap-4 overflow-x-auto scroll-smooth pb-4 px-2 md:px-14" style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
                     <!-- Salon Interior -->
                     <div class="gallery-slide flex-shrink-0 w-72 md:w-80 lg:w-96 scroll-snap-align-start">
                         <img src="./images/gbp/optimized/mobile/gbp-001-mobile.webp"
@@ -1784,6 +1791,18 @@
             lightbox.classList.add('hidden');
             lightbox.classList.remove('flex');
             document.body.style.overflow = 'auto';
+        }
+
+        // Gallery scroll function for desktop navigation arrows
+        function scrollGallery(direction) {
+            const carousel = document.getElementById('gallery-carousel');
+            if (carousel) {
+                const scrollAmount = 400; // Scroll by 400px
+                carousel.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
         }
 
         // Defer non-critical JS execution to improve Time to Interactive
