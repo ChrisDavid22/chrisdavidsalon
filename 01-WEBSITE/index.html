@@ -1775,7 +1775,13 @@
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightboxImage');
             if (typeof element === 'object' && element.src) {
-                lightboxImage.src = element.src.replace('-mobile.webp', '-desktop.webp').replace('-tablet.webp', '-desktop.webp');
+                // Replace both filename AND folder path for high-res version
+                let desktopSrc = element.src
+                    .replace('/mobile/', '/desktop/')
+                    .replace('/tablet/', '/desktop/')
+                    .replace('-mobile.webp', '-desktop.webp')
+                    .replace('-tablet.webp', '-desktop.webp');
+                lightboxImage.src = desktopSrc;
                 lightboxImage.alt = element.alt;
             } else {
                 lightboxImage.src = element;
