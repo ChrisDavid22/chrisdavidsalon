@@ -796,9 +796,20 @@ async function fetchCompetitorData(baseUrl) {
 
 async function fetchPerformanceData(baseUrl) {
   try {
-    const response = await fetch(`${baseUrl}/api/pagespeed`);
+    // Use RuvLLM Intelligence API for PageSpeed (replaces old /api/pagespeed)
+    const response = await fetch(`${baseUrl}/api/ruvllm-intelligence?action=pagespeed`);
     const data = await response.json();
-    return data.success ? data.data : null;
+
+    // Parse the raw PageSpeed response
+    if (data?.lighthouseResult?.categories) {
+      return {
+        performance: Math.round((data.lighthouseResult.categories.performance?.score || 0) * 100),
+        seo: Math.round((data.lighthouseResult.categories.seo?.score || 0) * 100),
+        accessibility: Math.round((data.lighthouseResult.categories.accessibility?.score || 0) * 100),
+        bestPractices: Math.round((data.lighthouseResult.categories['best-practices']?.score || 0) * 100)
+      };
+    }
+    return null;
   } catch (error) {
     return null;
   }

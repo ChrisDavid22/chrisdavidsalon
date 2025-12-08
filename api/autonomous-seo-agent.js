@@ -163,7 +163,7 @@ async function analyzeAllSitesInternal(baseUrl) {
     fetchData(`${baseUrl}/api/seo-analysis-engine?action=analyze`),
     fetchData(`${baseUrl}/api/authority-score?competitors=true`),
     fetchData(`${baseUrl}/api/admin-data?type=competitors`),
-    fetchData(`${baseUrl}/api/pagespeed?url=https://www.chrisdavidsalon.com`)
+    fetchData(`${baseUrl}/api/ruvllm-intelligence?action=pagespeed&url=https://www.chrisdavidsalon.com`)
   ]);
 
   // Compile analysis

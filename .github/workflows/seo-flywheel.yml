@@ -232,19 +232,28 @@ jobs:
     steps:
       - name: 🧠 Comprehensive SEO Gap Analysis
         id: analyze
+        env:
+          TRAFFIC_DATA: ${{ needs.ingest.outputs.traffic_data }}
+          AUTHORITY_DATA: ${{ needs.ingest.outputs.authority_data }}
+          COMPETITOR_DATA: ${{ needs.ingest.outputs.competitor_data }}
+          PERFORMANCE_DATA: ${{ needs.ingest.outputs.performance_data }}
+          SEO_SCORES_DATA: ${{ needs.ingest.outputs.seo_scores }}
+          MICROSITES_DATA: ${{ needs.ingest.outputs.microsite_health }}
+          GBP_DATA: ${{ needs.ingest.outputs.gbp_status }}
+          KEYWORDS_DATA: ${{ needs.ingest.outputs.keyword_rankings }}
         run: |
           echo "╔══════════════════════════════════════════════════════════╗"
           echo "║           COMPREHENSIVE SEO GAP ANALYSIS                  ║"
           echo "╚══════════════════════════════════════════════════════════╝"
           echo ""
 
-          # Parse all ingested data
-          TRAFFIC='${{ needs.ingest.outputs.traffic_data }}'
-          AUTHORITY='${{ needs.ingest.outputs.authority_data }}'
-          COMPETITORS='${{ needs.ingest.outputs.competitor_data }}'
-          PERFORMANCE='${{ needs.ingest.outputs.performance_data }}'
-          SEO_SCORES='${{ needs.ingest.outputs.seo_scores }}'
-          MICROSITES='${{ needs.ingest.outputs.microsite_health }}'
+          # Parse all ingested data from environment variables (safer than inline substitution)
+          TRAFFIC="$TRAFFIC_DATA"
+          AUTHORITY="$AUTHORITY_DATA"
+          COMPETITORS="$COMPETITOR_DATA"
+          PERFORMANCE="$PERFORMANCE_DATA"
+          SEO_SCORES="$SEO_SCORES_DATA"
+          MICROSITES="$MICROSITES_DATA"
 
           echo "📊 CURRENT STATE"
           echo "════════════════"
@@ -340,9 +349,9 @@ jobs:
           # 1b. GBP OPTIMIZATION (32% of ranking - BIGGEST FACTOR!)
           # This is where boutique salons can WIN
           # ─────────────────────────────────────────────────────────
-          GBP='${{ needs.ingest.outputs.gbp_status }}'
+          GBP="$GBP_DATA"
           GBP_SCORE=$(echo "$GBP" | jq -r '.score // 0' 2>/dev/null || echo "0")
-          GBP_TODAY=$(echo "$GBP" | jq -r '.today_task // "Check GBP"' 2>/dev/null || echo "Check GBP")
+          GBP_TODAY=$(echo "$GBP" | jq -r '.today_task // "Check GBP"' 2>/dev/null | tr -d '()' || echo "Check GBP")
 
           echo ""
           echo "📍 GBP OPTIMIZATION (32% of ranking - BIGGEST FACTOR!)"
@@ -500,7 +509,7 @@ jobs:
           # 6. KEYWORD RANKING ANALYSIS (CRITICAL FOR LOCAL SEO)
           # BOUTIQUE STRATEGY: Own niches that big salons ignore
           # ─────────────────────────────────────────────────────────
-          KEYWORDS='${{ needs.ingest.outputs.keyword_rankings }}'
+          KEYWORDS="$KEYWORDS_DATA"
 
           HAIR_SALON_POS=$(echo "$KEYWORDS" | jq -r '.hair_salon_delray // 100' 2>/dev/null || echo "100")
           BALAYAGE_POS=$(echo "$KEYWORDS" | jq -r '.balayage_delray // 100' 2>/dev/null || echo "100")

@@ -8,5 +8,15 @@
     "api/*.js": {
       "maxDuration": 30
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/ruvllm-intelligence?action=analyze",
+      "schedule": "0 11 * * 0"
+    },
+    {
+      "path": "/api/autonomous-seo-agent?action=run-weekly",
+      "schedule": "0 12 * * 0"
+    }
+  ]
 }
