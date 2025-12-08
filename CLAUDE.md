@@ -1,7 +1,7 @@
 # Chris David Salon - Developer Context & Complete Asset Inventory
 
-**Current Version**: v2.29.0
-**Last Comprehensive Audit**: December 5, 2025
+**Current Version**: v2.38.0
+**Last Comprehensive Audit**: December 8, 2025
 **Live Site**: https://www.chrisdavidsalon.com
 **Admin Dashboard**: https://www.chrisdavidsalon.com/admin/
 
@@ -66,7 +66,7 @@ Location: `/api/` (root directory)
 | 1 | `ga4-analytics.js` | WORKING | `overview`, `traffic-sources`, `traffic-over-time`, `top-pages`, `devices`, `events` | GA4 traffic data |
 | 2 | `authority-score.js` | WORKING | (base) | OpenPageRank domain authority |
 | 3 | `competitors.js` | WORKING | `rankings`, `pagespeed`, `daily-update`, `update-scores` | Google Places competitor data |
-| 4 | `pagespeed.js` | WORKING | (base) | Google PageSpeed Insights |
+| 4 | `ruvllm-intelligence.js` | WORKING | `status`, `pagespeed`, `analyze`, `learn`, `recommend`, `predict`, `memory-store`, `memory-search`, `trajectory`, `export` | RuvLLM AI-powered SEO intelligence |
 | 5 | `seo-analysis-engine.js` | WORKING | `analyze`, `compare-weeks`, `microsite-impact`, `trend-detection`, `generate-actions`, `health-check` | SEO analysis brain |
 | 6 | `autonomous-seo-agent.js` | WORKING | `status`, `run-weekly`, `analyze-all-sites`, `generate-tasks`, `track-change`, `get-changes`, `measure-effectiveness`, `get-recommendations`, `microsite-sync` | Master orchestrator |
 | 7 | `admin-data.js` | WORKING | `dashboard`, `seo-analysis`, `competitors`, `authority`, `traffic` | Admin dashboard aggregator |
@@ -116,7 +116,7 @@ Location: `/01-WEBSITE/lib/seo-learning/`
 
 ---
 
-### 4. ADMIN DASHBOARD PAGES (14 Pages)
+### 4. ADMIN DASHBOARD PAGES (12 Pages)
 
 Location: `/01-WEBSITE/admin/`
 
@@ -124,14 +124,12 @@ Location: `/01-WEBSITE/admin/`
 |------|------|-------------|--------|
 | SEO Command Center | `index.html` | All APIs | WORKING |
 | Traffic Analytics | `traffic.html` | GA4 API | WORKING |
-| Competitors | `competitors.html` | Google Places API | WORKING |
 | Rankings | `rankings.html` | Manual + Search Console | WORKING |
 | Authority Tracker | `authority-tracker.html` | localStorage + API | WORKING |
 | Authority Scores | `authority.html` | OpenPageRank API | WORKING |
 | Microsites | `microsites.html` | GA4 + PageRank | WORKING |
 | Changes Log | `changes-log.html` | version.json | WORKING |
-| Agent Log | `agent-log.html` | Memory store | WORKING |
-| SEO Learning | `seo-learning.html` | RuVector | WORKING |
+| SEO Learning | `seo-learning.html` | RuvLLM Intelligence | WORKING |
 | Improvement Planner | `improvement-planner.html` | AI generated | WORKING |
 | Weekly Brain | `weekly-brain.html` | Claude AI | WORKING |
 | Progress Report | `progress-report.html` | version.json + APIs | WORKING |
@@ -330,5 +328,5 @@ curl "https://www.chrisdavidsalon.com/api/proactive-seo-agent?action=status"
 
 ---
 
-*Last Comprehensive Audit: December 5, 2025 - v2.29.0*
+*Last Comprehensive Audit: December 8, 2025 - v2.38.0*
 *All assets verified by file system inspection*
