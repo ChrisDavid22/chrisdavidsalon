@@ -108,7 +108,44 @@
       },
       "seoScore": 38,
       "status": "captured"
+    },
+    {
+      "id": "snapshot-2025-W50-1765258257589",
+      "week": "2025-W50",
+      "date": "2025-12-09",
+      "timestamp": "2025-12-09T05:30:40.254Z",
+      "metrics": {
+        "traffic": {
+          "users": 133,
+          "sessions": 165,
+          "pageviews": 228,
+          "bounceRate": "69.7",
+          "avgSessionDuration": "110.1",
+          "source": "GA4 API - LIVE"
+        },
+        "authority": {
+          "score": 29,
+          "pagerank": 3,
+          "pagerankDecimal": 2.88,
+          "source": "OpenPageRank API - LIVE"
+        },
+        "competitors": {
+          "ourRating": null,
+          "ourReviews": null,
+          "topCompetitorReviews": null,
+          "competitorCount": null,
+          "source": "Google Places API - UNAVAILABLE"
+        },
+        "performance": {
+          "score": 64,
+          "seo": 100,
+          "accessibility": 86,
+          "source": "PageSpeed API - LIVE"
+        }
+      },
+      "seoScore": 38,
+      "status": "captured"
     }
   ],
-  "lastUpdated": "2025-12-09T05:28:32Z"
+  "lastUpdated": "2025-12-09T05:30:57Z"
 }
