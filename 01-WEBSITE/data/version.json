@@ -1,7 +1,12 @@
 {
-  "version": "2.38.0",
-  "lastUpdated": "2025-12-09T05:52:00Z",
+  "version": "2.39.0",
+  "lastUpdated": "2025-12-09T06:10:00Z",
   "deployHistory": [
+    {
+      "version": "2.39.0",
+      "date": "2025-12-09T06:10:00Z",
+      "changes": "DESKTOP PERFORMANCE OPTIMIZATION: (1) Responsive hero images - 5 sizes (1920, 1400, 1200, 800, 600px) for all viewports. (2) Desktop hero: 49KB vs 120KB (59% smaller). (3) Mobile hero: 22KB (81% smaller). (4) Picture element with media queries for optimal loading. (5) Responsive preload links. (6) Service images optimized: signature.webp 91% smaller, keratin 56% smaller, hair-cut 49% smaller. TARGET: 96+ desktop performance score."
+    },
     {
       "version": "2.38.0",
       "date": "2025-12-09T05:52:00Z",
