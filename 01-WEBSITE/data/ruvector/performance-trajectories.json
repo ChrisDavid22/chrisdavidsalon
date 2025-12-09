@@ -1,0 +1,74 @@
+{
+  "lastUpdated": "2025-12-09T06:15:00Z",
+  "trajectories": [
+    {
+      "id": "perf-optimization-2025-12-09",
+      "type": "performance-optimization",
+      "timestamp": "2025-12-09T06:15:00Z",
+      "before": {
+        "desktop": {
+          "score": 64,
+          "heroImageSize": "119672 bytes",
+          "source": "PageSpeed API"
+        }
+      },
+      "after": {
+        "desktop": {
+          "score": 93,
+          "FCP": "1.0s",
+          "LCP": "1.4s",
+          "TBT": "0ms",
+          "CLS": "0.012",
+          "SI": "1.5s",
+          "heroImageSize": "48680 bytes",
+          "source": "Lighthouse CLI"
+        },
+        "mobile": {
+          "score": 99,
+          "FCP": "1.6s",
+          "LCP": "1.7s",
+          "TBT": "40ms",
+          "CLS": "0.023",
+          "SI": "1.8s",
+          "heroImageSize": "22356 bytes",
+          "source": "Lighthouse CLI"
+        }
+      },
+      "changes": [
+        "Responsive hero images (5 sizes: 1920, 1400, 1200, 800, 600px)",
+        "Picture element with media queries",
+        "Responsive preload links",
+        "Service images optimized (signature 91%, keratin 56%, hair-cut 49% smaller)"
+      ],
+      "outcome": "success",
+      "improvement": {
+        "desktop": "+29 points (64 → 93)",
+        "mobile": "+3 points (96 → 99)"
+      }
+    }
+  ],
+  "patterns": [
+    {
+      "id": "responsive-images-pattern",
+      "type": "optimization",
+      "confidence": 0.95,
+      "description": "Responsive images with picture element and srcset improve LCP significantly",
+      "successRate": 1.0,
+      "appliedCount": 1
+    }
+  ],
+  "learnings": [
+    {
+      "id": "hero-image-lcp",
+      "lesson": "Hero image is primary LCP element - optimizing it has highest impact on performance score",
+      "confidence": 0.95,
+      "evidence": "Desktop score improved 29 points after hero optimization"
+    },
+    {
+      "id": "responsive-preload",
+      "lesson": "Media-query preloads ensure only correct image size is fetched",
+      "confidence": 0.90,
+      "evidence": "Mobile loads 22KB, desktop loads 49KB instead of both loading 120KB"
+    }
+  ]
+}

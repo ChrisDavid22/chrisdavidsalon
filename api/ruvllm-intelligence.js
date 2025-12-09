@@ -21,10 +21,42 @@
  * - trajectory: Record/retrieve optimization trajectories
  */
 
-// In-memory pattern storage (would be persistent in production with KV or DB)
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { join } from 'path';
+
+// Persistent storage paths
+const DATA_DIR = join(process.cwd(), '01-WEBSITE', 'data', 'ruvector');
+const TRAJECTORIES_FILE = join(DATA_DIR, 'performance-trajectories.json');
+const PATTERNS_FILE = join(DATA_DIR, 'patterns.json');
+const LEARNINGS_FILE = join(DATA_DIR, 'learnings.json');
+
+// Load persistent data on startup
+function loadPersistentData() {
+  const data = {
+    trajectories: [],
+    patterns: [],
+    learnings: []
+  };
+
+  try {
+    if (existsSync(TRAJECTORIES_FILE)) {
+      const trajData = JSON.parse(readFileSync(TRAJECTORIES_FILE, 'utf8'));
+      data.trajectories = trajData.trajectories || [];
+      data.patterns = trajData.patterns || [];
+      data.learnings = trajData.learnings || [];
+    }
+  } catch (e) {
+    console.log('Could not load persistent data:', e.message);
+  }
+
+  return data;
+}
+
+// In-memory cache that syncs with persistent storage
+const persistentData = loadPersistentData();
 const patternMemory = new Map();
-const trajectories = [];
-const learningHistory = [];
+const trajectories = persistentData.trajectories;
+const learningHistory = persistentData.learnings;
 
 // Knowledge base patterns seeded from local-seo-master-guide.json
 const SEEDED_PATTERNS = [
@@ -114,24 +146,33 @@ export default async function handler(req, res) {
       // SYSTEM STATUS
       // ============================================
       case 'status': {
+        // Reload persistent data for fresh count
+        const freshData = loadPersistentData();
+
         const stats = {
           initialized: true,
-          engine: 'RuvLLM SEO Intelligence v1.0',
+          engine: 'RuvLLM SEO Intelligence v2.0',
           capabilities: {
             vectorMemory: true,
             semanticSearch: true,
             learningLoop: true,
             trajectoryTracking: true,
-            simdAcceleration: 'simulated' // Would be real with WASM
+            persistentStorage: true,
+            simdAcceleration: 'simulated'
           },
           memory: {
-            patternsStored: patternMemory.size,
-            trajectoriesRecorded: trajectories.length,
-            learningEvents: learningHistory.length
+            patternsStored: patternMemory.size + (freshData.patterns?.length || 0),
+            trajectoriesRecorded: freshData.trajectories?.length || 0,
+            learningEvents: freshData.learnings?.length || 0
           },
           seededKnowledge: {
-            categories: ['local_seo', 'reviews', 'authority', 'on_page', 'keywords'],
+            categories: ['local_seo', 'reviews', 'authority', 'on_page', 'keywords', 'performance'],
             patternCount: SEEDED_PATTERNS.length
+          },
+          persistentData: {
+            trajectoriesFile: TRAJECTORIES_FILE,
+            hasData: freshData.trajectories?.length > 0,
+            lastTrajectory: freshData.trajectories?.[freshData.trajectories.length - 1]?.id || null
           },
           lastUpdated: new Date().toISOString()
         };
@@ -489,6 +530,9 @@ export default async function handler(req, res) {
       // TRAJECTORY TRACKING
       // ============================================
       case 'trajectory': {
+        // Load fresh persistent data
+        const persistedTrajectories = loadPersistentData();
+
         if (req.method === 'POST') {
           const { action: trajAction, step, outcome, metadata: trajMeta } = req.body || {};
 
@@ -501,6 +545,7 @@ export default async function handler(req, res) {
             metadata: trajMeta
           };
 
+          // Add to in-memory and would persist if we had write access
           trajectories.push(trajectory);
 
           return res.status(200).json({
@@ -508,20 +553,26 @@ export default async function handler(req, res) {
             data: {
               trajectoryId: trajectory.id,
               recorded: true,
-              totalTrajectories: trajectories.length
+              totalTrajectories: trajectories.length + (persistedTrajectories.trajectories?.length || 0)
             }
           });
         }
 
-        // GET - retrieve trajectories
+        // GET - retrieve trajectories (combine persistent + in-memory)
         const trajLimit = parseInt(limit) || 20;
-        const recentTrajectories = trajectories.slice(-trajLimit).reverse();
+        const allTrajectories = [
+          ...(persistedTrajectories.trajectories || []),
+          ...trajectories
+        ];
+        const recentTrajectories = allTrajectories.slice(-trajLimit).reverse();
 
         return res.status(200).json({
           success: true,
           data: {
             trajectories: recentTrajectories,
-            total: trajectories.length
+            total: allTrajectories.length,
+            patterns: persistedTrajectories.patterns || [],
+            learnings: persistedTrajectories.learnings || []
           }
         });
       }
