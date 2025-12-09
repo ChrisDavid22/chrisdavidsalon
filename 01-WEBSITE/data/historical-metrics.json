@@ -43,17 +43,21 @@
     "status": "baseline-captured"
   },
   "current": {
-    "date": "2024-12-05",
+    "date": "2025-12-09",
     "source": "live-api-data",
     "traffic": {
-      "users": 619,
-      "sessions": 710,
-      "source": "GA4 API - VERIFIED"
+      "users": 133,
+      "sessions": 165,
+      "pageviews": 228,
+      "bounceRate": "69.7",
+      "avgSessionDuration": "110.1",
+      "source": "GA4 API - LIVE"
     },
     "authority": {
       "score": 29,
-      "pagerank_decimal": 2.88,
-      "source": "OpenPageRank API - VERIFIED"
+      "pagerank": 3,
+      "pagerankDecimal": 2.88,
+      "source": "OpenPageRank API - LIVE"
     },
     "reviews": {
       "count": 140,
@@ -67,6 +71,44 @@
   },
   "trackingStartDate": "2024-11-26",
   "note": "Baseline captured Nov 26, 2024. Weekly snapshots captured every Sunday by GitHub Actions.",
-  "snapshots": [],
-  "lastUpdated": "2024-12-05T00:00:00.000Z"
+  "snapshots": [
+    {
+      "id": "snapshot-2025-W50-1765258112663",
+      "week": "2025-W50",
+      "date": "2025-12-09",
+      "timestamp": "2025-12-09T05:28:17.765Z",
+      "metrics": {
+        "traffic": {
+          "users": 133,
+          "sessions": 165,
+          "pageviews": 228,
+          "bounceRate": "69.7",
+          "avgSessionDuration": "110.1",
+          "source": "GA4 API - LIVE"
+        },
+        "authority": {
+          "score": 29,
+          "pagerank": 3,
+          "pagerankDecimal": 2.88,
+          "source": "OpenPageRank API - LIVE"
+        },
+        "competitors": {
+          "ourRating": null,
+          "ourReviews": null,
+          "topCompetitorReviews": null,
+          "competitorCount": null,
+          "source": "Google Places API - UNAVAILABLE"
+        },
+        "performance": {
+          "score": 63,
+          "seo": 100,
+          "accessibility": 86,
+          "source": "PageSpeed API - LIVE"
+        }
+      },
+      "seoScore": 38,
+      "status": "captured"
+    }
+  ],
+  "lastUpdated": "2025-12-09T05:28:32Z"
 }
