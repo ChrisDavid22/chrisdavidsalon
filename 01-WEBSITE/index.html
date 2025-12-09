@@ -100,8 +100,11 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-    <!-- Preload hero image for faster LCP with high priority -->
-    <link rel="preload" as="image" href="./images/hero-salon.webp" type="image/webp" fetchpriority="high">
+    <!-- Preload hero image for faster LCP - responsive preloading -->
+    <link rel="preload" as="image" href="./images/hero-mobile.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high">
+    <link rel="preload" as="image" href="./images/hero-tablet.webp" type="image/webp" media="(min-width: 641px) and (max-width: 1024px)" fetchpriority="high">
+    <link rel="preload" as="image" href="./images/hero-desktop.webp" type="image/webp" media="(min-width: 1025px) and (max-width: 1440px)" fetchpriority="high">
+    <link rel="preload" as="image" href="./images/hero-desktop-lg.webp" type="image/webp" media="(min-width: 1441px)" fetchpriority="high">
     
     <!-- Google Fonts - Inter for body, Playfair for headings, Dancing Script for decorative -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -741,14 +744,32 @@
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
-            <!-- Preload hero image with explicit dimensions to prevent CLS -->
-            <img src="./images/hero-salon.webp"
-                 alt="Chris David Salon Interior"
-                 class="w-full h-full object-cover"
-                 width="1920"
-                 height="1080"
-                 fetchpriority="high"
-                 decoding="async">
+            <!-- Responsive hero image - optimized for each viewport -->
+            <picture>
+                <source media="(max-width: 640px)"
+                        srcset="./images/hero-mobile.webp"
+                        type="image/webp"
+                        width="600" height="537">
+                <source media="(max-width: 1024px)"
+                        srcset="./images/hero-tablet.webp"
+                        type="image/webp"
+                        width="800" height="715">
+                <source media="(max-width: 1440px)"
+                        srcset="./images/hero-desktop.webp"
+                        type="image/webp"
+                        width="1200" height="1073">
+                <source media="(min-width: 1441px)"
+                        srcset="./images/hero-desktop-lg.webp"
+                        type="image/webp"
+                        width="1400" height="1252">
+                <img src="./images/hero-desktop.webp"
+                     alt="Chris David Salon - Premier Hair Color Specialist in Delray Beach"
+                     class="w-full h-full object-cover"
+                     width="1200"
+                     height="1073"
+                     fetchpriority="high"
+                     decoding="async">
+            </picture>
             <div class="hero-overlay absolute inset-0"></div>
         </div>
         <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
