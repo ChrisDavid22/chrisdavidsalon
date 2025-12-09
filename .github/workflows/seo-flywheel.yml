@@ -988,8 +988,8 @@ jobs:
           SNAPSHOT=$(curl -s --max-time 60 "${{ env.SITE_URL }}/api/seo-analysis-engine?action=capture-snapshot")
 
           if [ "$(echo "$SNAPSHOT" | jq -r '.success')" = "true" ]; then
-            # Extract just the snapshot object
-            SNAPSHOT_DATA=$(echo "$SNAPSHOT" | jq '.snapshot')
+            # Extract just the snapshot object (compact JSON for single line output)
+            SNAPSHOT_DATA=$(echo "$SNAPSHOT" | jq -c '.snapshot')
             echo "snapshot_data=$SNAPSHOT_DATA" >> $GITHUB_OUTPUT
             echo "✓ Snapshot captured successfully"
             echo "$SNAPSHOT_DATA" | jq '.'
@@ -1000,6 +1000,8 @@ jobs:
 
       - name: 💾 Persist Snapshot to Repository
         if: steps.snapshot.outputs.snapshot_data != 'null'
+        env:
+          SNAPSHOT_DATA: ${{ steps.snapshot.outputs.snapshot_data }}
         run: |
           echo "Persisting snapshot to historical-metrics.json..."
 
@@ -1007,11 +1009,8 @@ jobs:
           METRICS_FILE="01-WEBSITE/data/historical-metrics.json"
 
           if [ -f "$METRICS_FILE" ]; then
-            # Add new snapshot to snapshots array
-            SNAPSHOT='${{ steps.snapshot.outputs.snapshot_data }}'
-
             # Update the current section with latest data
-            UPDATED=$(cat "$METRICS_FILE" | jq --argjson snap "$SNAPSHOT" '
+            UPDATED=$(cat "$METRICS_FILE" | jq --argjson snap "$SNAPSHOT_DATA" '
               .current.date = $snap.date |
               .current.traffic = $snap.metrics.traffic |
               .current.authority = $snap.metrics.authority |
