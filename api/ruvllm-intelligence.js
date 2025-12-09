@@ -543,12 +543,104 @@ export default async function handler(req, res) {
         });
       }
 
+      // ============================================
+      // WORKFLOW HEALTH CHECK - Monitor GitHub Actions
+      // ============================================
+      case 'workflow-health': {
+        try {
+          // Fetch recent workflow runs from GitHub API
+          const githubResponse = await fetch(
+            'https://api.github.com/repos/ChrisDavid22/chrisdavidsalon/actions/runs?per_page=10',
+            {
+              headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'User-Agent': 'RuvLLM-SEO-Agent'
+              }
+            }
+          );
+
+          if (!githubResponse.ok) {
+            return res.status(200).json({
+              success: true,
+              data: {
+                status: 'unknown',
+                message: 'Cannot access GitHub API - rate limited or private repo',
+                recommendation: 'Check workflow manually at github.com/ChrisDavid22/chrisdavidsalon/actions'
+              }
+            });
+          }
+
+          const workflowData = await githubResponse.json();
+          const runs = workflowData.workflow_runs || [];
+
+          // Find SEO Flywheel runs
+          const flywheelRuns = runs.filter(r => r.name === 'SEO Learning Flywheel');
+          const latestRun = flywheelRuns[0];
+          const recentFailures = flywheelRuns.filter(r => r.conclusion === 'failure').slice(0, 5);
+          const successStreak = flywheelRuns.findIndex(r => r.conclusion !== 'success');
+
+          const healthStatus = {
+            overallHealth: latestRun?.conclusion === 'success' ? 'healthy' : 'degraded',
+            lastRun: latestRun ? {
+              id: latestRun.id,
+              status: latestRun.status,
+              conclusion: latestRun.conclusion,
+              createdAt: latestRun.created_at,
+              duration: latestRun.run_started_at ?
+                Math.round((new Date(latestRun.updated_at) - new Date(latestRun.run_started_at)) / 1000) + 's' :
+                'unknown',
+              url: latestRun.html_url
+            } : null,
+            successStreak: successStreak === -1 ? flywheelRuns.length : successStreak,
+            recentFailures: recentFailures.length,
+            failureDetails: recentFailures.map(f => ({
+              id: f.id,
+              date: f.created_at,
+              url: f.html_url
+            })),
+            nextScheduledRun: 'Sunday 6:00 AM EST',
+            recommendation: latestRun?.conclusion === 'success'
+              ? 'System is healthy - no action needed'
+              : 'Recent failure detected - check workflow logs at ' + (latestRun?.html_url || 'GitHub Actions')
+          };
+
+          // If there was a recent failure, add diagnostic info
+          if (recentFailures.length > 0 && latestRun?.conclusion !== 'success') {
+            healthStatus.diagnostics = {
+              possibleCauses: [
+                'Bash syntax error in inline JSON substitution',
+                'Multi-line JSON in GITHUB_OUTPUT',
+                'API timeout or rate limiting',
+                'Git push permission denied'
+              ],
+              selfHealingStatus: 'Manual intervention may be required',
+              troubleshootingUrl: 'https://github.com/ChrisDavid22/chrisdavidsalon/actions'
+            };
+          }
+
+          return res.status(200).json({
+            success: true,
+            data: healthStatus
+          });
+        } catch (error) {
+          return res.status(200).json({
+            success: true,
+            data: {
+              status: 'error',
+              message: 'Could not fetch workflow status: ' + error.message,
+              recommendation: 'Check GitHub Actions manually'
+            }
+          });
+        }
+      }
+
       default:
         return res.status(400).json({
           error: 'Unknown action',
           availableActions: [
             'status', 'pagespeed', 'analyze', 'learn', 'recommend',
-            'predict', 'memory-store', 'memory-search', 'trajectory', 'export'
+            'predict', 'memory-store', 'memory-search', 'trajectory', 'export',
+            'workflow-health'
           ]
         });
     }
