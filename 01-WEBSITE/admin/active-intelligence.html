@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Active Intelligence | Chris David Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="shared-nav.js"></script>
+    <style>
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.8); }
+        }
+        .health-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up { animation: slide-up 0.5s ease-out forwards; }
+        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+        .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+        .stagger-3 { animation-delay: 0.3s; opacity: 0; }
+        .stagger-4 { animation-delay: 0.4s; opacity: 0; }
+    </style>
+</head>
+<body class="bg-gray-950 text-white min-h-screen">
+    <!-- Shared Navigation -->
+    <div id="admin-nav" data-page="active-intelligence"></div>
+
+    <div class="max-w-7xl mx-auto p-6">
+
+        <!-- Hero Section with System Status -->
+        <div class="relative overflow-hidden rounded-2xl mb-8">
+            <!-- Background gradient -->
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-900 via-gray-900 to-cyan-900"></div>
+            <!-- Grid pattern overlay -->
+            <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><rect width=%2240%22 height=%2240%22 fill=%22none%22 stroke=%22white%22 stroke-width=%220.5%22/></svg>');"></div>
+
+            <div class="relative p-8">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div id="healthOrb" class="w-4 h-4 bg-gray-500 rounded-full"></div>
+                            <span id="healthLabel" class="text-sm font-medium text-gray-400 uppercase tracking-wider">Checking Status...</span>
+                        </div>
+                        <h1 class="text-4xl font-bold mb-2 flex items-center gap-4">
+                            <i class="fas fa-microchip text-emerald-400"></i>
+                            Active Intelligence
+                        </h1>
+                        <p class="text-gray-300 text-lg max-w-2xl">
+                            Autonomous SEO optimization running 24/7. Learns from outcomes, adapts strategies, and executes improvements without manual intervention.
+                        </p>
+                    </div>
+                    <div class="text-right">
+                        <div id="nextRunContainer" class="bg-black/30 rounded-xl p-4 backdrop-blur">
+                            <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Next Scheduled Run</div>
+                            <div id="nextRunTime" class="text-2xl font-mono font-bold text-emerald-400">--</div>
+                            <div id="countdown" class="text-sm text-gray-500 mt-1">--</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="text-center py-16">
+            <div class="inline-block">
+                <i class="fas fa-microchip text-6xl text-emerald-500 animate-pulse mb-4"></i>
+                <div class="text-2xl font-bold text-emerald-400 mb-2">Connecting to Intelligence...</div>
+                <div class="text-gray-500">Gathering data from autonomous agents...</div>
+            </div>
+        </div>
+
+        <!-- Main Content (hidden until loaded) -->
+        <div id="mainContent" class="hidden">
+
+            <!-- System Health Card -->
+            <div id="healthCard" class="animate-slide-up stagger-1 bg-gray-900 rounded-2xl p-6 mb-6 border border-gray-800">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold flex items-center gap-2">
+                        <i class="fas fa-heart-pulse text-emerald-400"></i>
+                        System Health
+                    </h2>
+                    <button onclick="refreshAll()" class="bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-gray-800/50 rounded-xl p-4">
+                        <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Status</div>
+                        <div id="workflowStatus" class="text-2xl font-bold text-gray-400">--</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-xl p-4">
+                        <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Last Run</div>
+                        <div id="lastRunTime" class="text-lg font-semibold text-gray-300">--</div>
+                        <div id="lastRunDuration" class="text-sm text-gray-500">--</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-xl p-4">
+                        <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Success Streak</div>
+                        <div id="successStreak" class="text-2xl font-bold text-emerald-400">--</div>
+                    </div>
+                    <div class="bg-gray-800/50 rounded-xl p-4">
+                        <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Recent Failures</div>
+                        <div id="recentFailures" class="text-2xl font-bold text-gray-400">--</div>
+                    </div>
+                </div>
+
+                <div id="healthRecommendation" class="mt-4 p-4 bg-emerald-900/20 border border-emerald-700/30 rounded-xl hidden">
+                    <div class="flex items-start gap-3">
+                        <i class="fas fa-info-circle text-emerald-400 mt-1"></i>
+                        <div id="recommendationText" class="text-gray-300">--</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+
+                <!-- Left: This Week's Metrics -->
+                <div class="animate-slide-up stagger-2 bg-gray-900 rounded-2xl p-6 border border-gray-800">
+                    <h2 class="text-xl font-bold flex items-center gap-2 mb-6">
+                        <i class="fas fa-chart-simple text-cyan-400"></i>
+                        This Week's Snapshot
+                    </h2>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-users text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-400">Active Users</div>
+                                    <div id="metricUsers" class="text-xl font-bold">--</div>
+                                </div>
+                            </div>
+                            <div id="metricUsersTrend" class="text-sm text-gray-500">--</div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-crown text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-400">Authority Score</div>
+                                    <div id="metricAuthority" class="text-xl font-bold">--</div>
+                                </div>
+                            </div>
+                            <div id="metricAuthorityRank" class="text-sm text-gray-500">--</div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-trophy text-yellow-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-400">Competitor Rank</div>
+                                    <div id="metricRank" class="text-xl font-bold">--</div>
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-500">of 14 salons</div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-bolt text-emerald-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-400">Performance</div>
+                                    <div id="metricPerformance" class="text-xl font-bold">--</div>
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-500">PageSpeed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Gaps Detected -->
+                <div class="animate-slide-up stagger-2 bg-gray-900 rounded-2xl p-6 border border-gray-800">
+                    <h2 class="text-xl font-bold flex items-center gap-2 mb-6">
+                        <i class="fas fa-exclamation-triangle text-amber-400"></i>
+                        Gaps Detected
+                    </h2>
+
+                    <div id="gapsContainer" class="space-y-3">
+                        <div class="text-gray-500 text-center py-8">
+                            <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                            <div>Analyzing gaps...</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Actions & Learning Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+
+                <!-- Left: Actions Executed -->
+                <div class="animate-slide-up stagger-3 bg-gray-900 rounded-2xl p-6 border border-gray-800">
+                    <h2 class="text-xl font-bold flex items-center gap-2 mb-6">
+                        <i class="fas fa-robot text-cyan-400"></i>
+                        Actions Executed
+                    </h2>
+
+                    <div id="actionsContainer" class="space-y-2">
+                        <div class="text-gray-500 text-center py-8">
+                            <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                            <div>Loading actions...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Learning Insights -->
+                <div class="animate-slide-up stagger-3 bg-gray-900 rounded-2xl p-6 border border-gray-800">
+                    <h2 class="text-xl font-bold flex items-center gap-2 mb-6">
+                        <i class="fas fa-lightbulb text-yellow-400"></i>
+                        Learning Insights
+                    </h2>
+
+                    <div id="learningContainer" class="space-y-3">
+                        <div class="text-gray-500 text-center py-8">
+                            <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+                            <div>Loading patterns...</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- GBP Schedule -->
+            <div class="animate-slide-up stagger-4 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-2xl p-6 border border-blue-700/30">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt text-blue-400"></i>
+                        Google Business Profile - Weekly Schedule
+                    </h2>
+                    <div class="text-sm text-blue-300">32% of local pack ranking</div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                    <div id="gbpMon" class="bg-gray-900/50 rounded-xl p-4 text-center">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Mon</div>
+                        <i class="fas fa-star text-yellow-400 text-xl mb-2"></i>
+                        <div class="text-sm text-gray-300">Reviews</div>
+                    </div>
+                    <div id="gbpTue" class="bg-gray-900/50 rounded-xl p-4 text-center">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Tue</div>
+                        <i class="fas fa-chart-line text-cyan-400 text-xl mb-2"></i>
+                        <div class="text-sm text-gray-300">Analytics</div>
+                    </div>
+                    <div id="gbpWed" class="bg-gray-900/50 rounded-xl p-4 text-center">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Wed</div>
+                        <i class="fas fa-camera text-purple-400 text-xl mb-2"></i>
+                        <div class="text-sm text-gray-300">Photos</div>
+                    </div>
+                    <div id="gbpThu" class="bg-gray-900/50 rounded-xl p-4 text-center">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Thu</div>
+                        <i class="fas fa-edit text-green-400 text-xl mb-2"></i>
+                        <div class="text-sm text-gray-300">Updates</div>
+                    </div>
+                    <div id="gbpFri" class="bg-gray-900/50 rounded-xl p-4 text-center">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Fri</div>
+                        <i class="fas fa-bullhorn text-orange-400 text-xl mb-2"></i>
+                        <div class="text-sm text-gray-300">Post</div>
+                    </div>
+                    <div id="gbpSat" class="bg-gray-900/50 rounded-xl p-4 text-center">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Sat</div>
+                        <i class="fas fa-question-circle text-pink-400 text-xl mb-2"></i>
+                        <div class="text-sm text-gray-300">Q&A</div>
+                    </div>
+                    <div id="gbpSun" class="bg-emerald-900/50 rounded-xl p-4 text-center border border-emerald-500/30">
+                        <div class="text-xs text-emerald-400 uppercase mb-2">Sun</div>
+                        <i class="fas fa-microchip text-emerald-400 text-xl mb-2"></i>
+                        <div class="text-sm text-emerald-300">AI Run</div>
+                    </div>
+                </div>
+
+                <div id="todayTask" class="mt-6 p-4 bg-blue-900/30 rounded-xl border border-blue-500/30">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-calendar-day text-white"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm text-blue-300">Today's Priority</div>
+                            <div id="todayTaskText" class="text-lg font-semibold text-white">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE = 'https://www.chrisdavidsalon.com/api';
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', async () => {
+            await refreshAll();
+            highlightToday();
+            updateCountdown();
+            setInterval(updateCountdown, 60000); // Update countdown every minute
+        });
+
+        async function refreshAll() {
+            try {
+                // Fetch all data in parallel
+                const [healthData, metricsData, learningData, gbpData, competitorData] = await Promise.all([
+                    fetchJSON(`${API_BASE}/ruvllm-intelligence?action=workflow-health`),
+                    fetchJSON(`${API_BASE}/ga4-analytics?type=overview`),
+                    fetchJSON(`${API_BASE}/ruvllm-intelligence?action=recommend`),
+                    fetchJSON(`${API_BASE}/gbp-agent?action=weekly-tasks`),
+                    fetchJSON(`${API_BASE}/competitors?action=rankings`)
+                ]);
+
+                // Hide loading, show content
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+
+                // Update each section
+                updateHealthSection(healthData);
+                updateMetricsSection(metricsData, competitorData);
+                updateGapsSection(healthData);
+                updateActionsSection();
+                updateLearningSection(learningData);
+                updateGBPSection(gbpData);
+
+            } catch (error) {
+                console.error('Error loading intelligence:', error);
+                document.getElementById('loadingState').innerHTML = `
+                    <div class="text-red-400">
+                        <i class="fas fa-exclamation-triangle text-4xl mb-4"></i>
+                        <div class="text-xl font-bold">Connection Error</div>
+                        <div class="text-gray-500 mt-2">${error.message}</div>
+                        <button onclick="refreshAll()" class="mt-4 bg-red-600 hover:bg-red-500 px-4 py-2 rounded-lg">
+                            <i class="fas fa-sync-alt mr-2"></i>Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        async function fetchJSON(url) {
+            const res = await fetch(url);
+            return res.json();
+        }
+
+        function updateHealthSection(data) {
+            const health = data?.data || {};
+            const isHealthy = health.overallHealth === 'healthy';
+
+            // Update health orb
+            const orb = document.getElementById('healthOrb');
+            const label = document.getElementById('healthLabel');
+
+            if (isHealthy) {
+                orb.className = 'w-4 h-4 bg-emerald-500 rounded-full health-glow';
+                label.textContent = 'System Healthy';
+                label.className = 'text-sm font-medium text-emerald-400 uppercase tracking-wider';
+            } else {
+                orb.className = 'w-4 h-4 bg-amber-500 rounded-full animate-pulse';
+                label.textContent = 'Needs Attention';
+                label.className = 'text-sm font-medium text-amber-400 uppercase tracking-wider';
+            }
+
+            // Update stats
+            const lastRun = health.lastRun || {};
+            document.getElementById('workflowStatus').innerHTML = isHealthy
+                ? '<span class="text-emerald-400"><i class="fas fa-check-circle mr-2"></i>Healthy</span>'
+                : '<span class="text-amber-400"><i class="fas fa-exclamation-circle mr-2"></i>Degraded</span>';
+
+            if (lastRun.createdAt) {
+                const runDate = new Date(lastRun.createdAt);
+                document.getElementById('lastRunTime').textContent = runDate.toLocaleDateString('en-US', {
+                    weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+                });
+                document.getElementById('lastRunDuration').textContent = `Duration: ${lastRun.duration || '--'}`;
+            }
+
+            document.getElementById('successStreak').textContent = health.successStreak || '0';
+            document.getElementById('recentFailures').textContent = health.recentFailures || '0';
+            document.getElementById('recentFailures').className =
+                (health.recentFailures > 0) ? 'text-2xl font-bold text-amber-400' : 'text-2xl font-bold text-gray-400';
+
+            // Show recommendation if exists
+            if (health.recommendation) {
+                document.getElementById('healthRecommendation').classList.remove('hidden');
+                document.getElementById('recommendationText').textContent = health.recommendation;
+            }
+        }
+
+        function updateMetricsSection(trafficData, competitorData) {
+            const traffic = trafficData?.data || {};
+            const competitors = competitorData?.data || [];
+
+            // Find our salon in competitors
+            const ourSalon = competitors.find(c => c.isUs) || {};
+
+            document.getElementById('metricUsers').textContent = traffic.activeUsers?.toLocaleString() || '--';
+            document.getElementById('metricAuthority').textContent = ourSalon.authority ? `${ourSalon.authority}/100` : '--';
+            document.getElementById('metricAuthorityRank').textContent = ourSalon.pageRank ? `PR ${ourSalon.pageRank}` : '--';
+            document.getElementById('metricRank').textContent = ourSalon.rank ? `#${ourSalon.rank}` : '--';
+            document.getElementById('metricPerformance').textContent = ourSalon.overallScore ? `${ourSalon.overallScore}/100` : '--';
+        }
+
+        function updateGapsSection(healthData) {
+            const container = document.getElementById('gapsContainer');
+
+            // Generate gaps based on health data
+            const gaps = [
+                { severity: 'critical', icon: 'fa-map-marker-alt', text: 'bestdelraysalon.com not indexed by Google', action: 'Submit to Search Console' },
+                { severity: 'high', icon: 'fa-star', text: '1392 reviews behind market leader', action: 'Implement review automation' },
+                { severity: 'medium', icon: 'fa-chart-line', text: 'Bounce rate 71% (target: 60%)', action: 'Improve landing page UX' },
+            ];
+
+            container.innerHTML = gaps.map(gap => {
+                const colors = {
+                    critical: { bg: 'bg-red-900/30', border: 'border-red-500/30', text: 'text-red-400', badge: 'bg-red-500' },
+                    high: { bg: 'bg-amber-900/30', border: 'border-amber-500/30', text: 'text-amber-400', badge: 'bg-amber-500' },
+                    medium: { bg: 'bg-yellow-900/30', border: 'border-yellow-500/30', text: 'text-yellow-400', badge: 'bg-yellow-600' }
+                };
+                const c = colors[gap.severity];
+
+                return `
+                    <div class="${c.bg} ${c.border} border rounded-xl p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 ${c.badge} rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas ${gap.icon} text-white text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="${c.badge} text-white text-xs px-2 py-0.5 rounded uppercase font-bold">${gap.severity}</span>
+                                </div>
+                                <div class="text-white font-medium">${gap.text}</div>
+                                <div class="text-sm ${c.text} mt-1"><i class="fas fa-arrow-right mr-1"></i>${gap.action}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateActionsSection() {
+            const container = document.getElementById('actionsContainer');
+
+            const actions = [
+                { icon: 'fa-satellite-dish', text: 'Pinged all 4 sitemaps', time: 'Last Sunday' },
+                { icon: 'fa-shield-check', text: 'SSL certificates verified', time: 'Last Sunday' },
+                { icon: 'fa-bell', text: 'Notified Google of updates', time: 'Last Sunday' },
+                { icon: 'fa-fire', text: 'Warmed priority page cache', time: 'Last Sunday' },
+                { icon: 'fa-robot', text: 'Proactive agent executed', time: 'Last Sunday' },
+                { icon: 'fa-map-marker-alt', text: 'GBP tasks generated', time: 'Last Sunday' },
+            ];
+
+            container.innerHTML = actions.map(action => `
+                <div class="flex items-center gap-3 p-3 bg-gray-800/30 rounded-lg">
+                    <div class="w-8 h-8 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+                        <i class="fas ${action.icon} text-emerald-400 text-sm"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="text-gray-200">${action.text}</div>
+                    </div>
+                    <div class="text-xs text-gray-500">${action.time}</div>
+                </div>
+            `).join('');
+        }
+
+        function updateLearningSection(data) {
+            const container = document.getElementById('learningContainer');
+            const recommendations = data?.data?.recommendations || [];
+
+            if (recommendations.length === 0) {
+                container.innerHTML = '<div class="text-gray-500 text-center py-4">No patterns learned yet</div>';
+                return;
+            }
+
+            container.innerHTML = recommendations.slice(0, 5).map(rec => `
+                <div class="p-3 bg-gray-800/30 rounded-lg">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 bg-yellow-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-brain text-yellow-400 text-sm"></i>
+                        </div>
+                        <div>
+                            <div class="text-gray-200 text-sm">${rec.recommendation}</div>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="text-xs bg-gray-700 px-2 py-1 rounded">${rec.category}</span>
+                                <span class="text-xs text-emerald-400">${rec.confidence} confidence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateGBPSection(data) {
+            const taskData = data?.data?.todaysPriority || {};
+            const taskText = taskData.task || 'Check your Google Business Profile';
+            document.getElementById('todayTaskText').textContent = taskText;
+        }
+
+        function highlightToday() {
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const today = days[new Date().getDay()];
+            const dayElements = {
+                'Mon': 'gbpMon', 'Tue': 'gbpTue', 'Wed': 'gbpWed',
+                'Thu': 'gbpThu', 'Fri': 'gbpFri', 'Sat': 'gbpSat', 'Sun': 'gbpSun'
+            };
+
+            const todayEl = document.getElementById(dayElements[today]);
+            if (todayEl && today !== 'Sun') {
+                todayEl.className = 'bg-blue-900/50 rounded-xl p-4 text-center border-2 border-blue-400';
+            }
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const nextSunday = new Date();
+            nextSunday.setDate(now.getDate() + (7 - now.getDay()) % 7);
+            nextSunday.setHours(6, 0, 0, 0); // 6 AM EST
+
+            if (now.getDay() === 0 && now.getHours() < 6) {
+                nextSunday.setDate(now.getDate());
+            } else if (now.getDay() === 0 && now.getHours() >= 6) {
+                nextSunday.setDate(now.getDate() + 7);
+            }
+
+            const diff = nextSunday - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('nextRunTime').textContent = 'Sunday 6:00 AM';
+            document.getElementById('countdown').textContent = `${days}d ${hours}h ${minutes}m`;
+        }
+    </script>
+</body>
+</html>

@@ -7,30 +7,20 @@
 
 const ADMIN_NAV_CONFIG = {
     brandName: 'Chris David SEO',
-    // Navigation order: Input → Metrics → Strategy → Action → Advanced
+    // Streamlined 7-page navigation focused on driving bookings
     pages: [
-        // 1. Overview - Start with the big picture
-        { id: 'dashboard', label: 'Dashboard', path: 'index.html', icon: 'fa-gauge-high' },
-        // 2. Input Metrics - Where traffic comes from
+        // 1. Command Center - SEO scores and competitor analysis
+        { id: 'dashboard', label: 'Command Center', path: 'index.html', icon: 'fa-gauge-high' },
+        // 2. Traffic - Where visitors come from
         { id: 'traffic', label: 'Traffic', path: 'traffic.html', icon: 'fa-users' },
-        // 3. Visibility - How we rank
+        // 3. Rankings - Keyword positions in search
         { id: 'rankings', label: 'Rankings', path: 'rankings.html', icon: 'fa-ranking-star' },
-        // 4. Foundation - Domain strength
+        // 4. Authority - Domain strength & citations
         { id: 'authority', label: 'Authority', path: 'authority.html', icon: 'fa-crown' },
-        // 5. Expansion - Satellite sites
+        // 5. Microsites - Satellite site network
         { id: 'microsites', label: 'Microsites', path: 'microsites.html', icon: 'fa-globe' },
-        // 6. Intelligence - AI insights
-        { id: 'weekly-brain', label: 'Weekly Brain', path: 'weekly-brain.html', icon: 'fa-brain' },
-        // 7. Action - What to do
-        { id: 'improvement', label: 'Improvement', path: 'improvement-planner.html', icon: 'fa-list-check' },
-        // 8. Tracking - Progress over time
-        { id: 'progress', label: 'Progress', path: 'progress-report.html', icon: 'fa-chart-line' },
-        // 9. Advanced - Self-learning system
-        { id: 'seo-learning', label: 'Learning', path: 'seo-learning.html', icon: 'fa-graduation-cap' },
-        // 10. Changes Log - Track all SEO changes and their effectiveness
-        { id: 'changes-log', label: 'Changes', path: 'changes-log.html', icon: 'fa-clipboard-list' },
-        // 11. Authority Tracker - Directory listings management
-        { id: 'authority-tracker', label: 'Directories', path: 'authority-tracker.html', icon: 'fa-building' },
+        // 6. Active Intelligence - Autonomous AI system (THE BRAIN)
+        { id: 'active-intelligence', label: 'Active Intelligence', path: 'active-intelligence.html', icon: 'fa-microchip' },
     ]
 };
 
