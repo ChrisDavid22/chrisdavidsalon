@@ -848,6 +848,16 @@ jobs:
     needs: [ingest, analyze, execute]
     steps:
       - name: 📈 Record Weekly Metrics
+        env:
+          TRAFFIC: ${{ needs.ingest.outputs.traffic_data }}
+          AUTHORITY: ${{ needs.ingest.outputs.authority_data }}
+          COMPETITORS: ${{ needs.ingest.outputs.competitor_data }}
+          PERFORMANCE: ${{ needs.ingest.outputs.performance_data }}
+          SEO_SCORES: ${{ needs.ingest.outputs.seo_scores }}
+          MICROSITES: ${{ needs.ingest.outputs.microsite_health }}
+          KEYWORDS: ${{ needs.ingest.outputs.keyword_rankings }}
+          GAPS: ${{ needs.analyze.outputs.gaps }}
+          EXECUTED: ${{ needs.execute.outputs.executed }}
         run: |
           echo "╔══════════════════════════════════════════════════════════╗"
           echo "║              WEEKLY METRICS RECORDED                      ║"
@@ -858,25 +868,25 @@ jobs:
           echo ""
           echo "📊 METRICS SNAPSHOT"
           echo "═══════════════════"
-          echo "Traffic: ${{ needs.ingest.outputs.traffic_data }}"
-          echo "Authority: ${{ needs.ingest.outputs.authority_data }}"
-          echo "Competitors: ${{ needs.ingest.outputs.competitor_data }}"
-          echo "Performance: ${{ needs.ingest.outputs.performance_data }}"
-          echo "SEO Scores: ${{ needs.ingest.outputs.seo_scores }}"
-          echo "Microsites: ${{ needs.ingest.outputs.microsite_health }}"
-          echo "Keywords: ${{ needs.ingest.outputs.keyword_rankings }}"
+          echo "Traffic: $TRAFFIC"
+          echo "Authority: $AUTHORITY"
+          echo "Competitors: $COMPETITORS"
+          echo "Performance: $PERFORMANCE"
+          echo "SEO Scores: $SEO_SCORES"
+          echo "Microsites: $MICROSITES"
+          echo "Keywords: $KEYWORDS"
           echo ""
           echo "🔑 KEYWORD TRACKING (Money Keywords)"
           echo "═══════════════════════════════════"
-          echo "${{ needs.ingest.outputs.keyword_rankings }}" | jq -r 'to_entries[] | "   \(.key): \(.value)"' 2>/dev/null || echo "   (keyword data unavailable)"
+          echo "$KEYWORDS" | jq -r 'to_entries[] | "   \(.key): \(.value)"' 2>/dev/null || echo "   (keyword data unavailable)"
           echo ""
           echo "📋 GAPS IDENTIFIED"
           echo "══════════════════"
-          echo "${{ needs.analyze.outputs.gaps }}" | tr ',' '\n'
+          echo "$GAPS" | tr ',' '\n'
           echo ""
           echo "✅ ACTIONS EXECUTED"
           echo "═══════════════════"
-          echo "${{ needs.execute.outputs.executed }}" | tr ',' '\n'
+          echo "$EXECUTED" | tr ',' '\n'
           echo ""
           echo "✓ Metrics recorded for learning system"
 
@@ -904,6 +914,15 @@ jobs:
           echo "📅 Next cycle: Sunday $(date -d 'next sunday' '+%Y-%m-%d' 2>/dev/null || echo 'next week') at 6:00 AM EST"
 
       - name: 📋 Generate Change Log Entry
+        env:
+          TRAFFIC_DATA: ${{ needs.ingest.outputs.traffic_data }}
+          KEYWORDS_DATA: ${{ needs.ingest.outputs.keyword_rankings }}
+          GBP_DATA: ${{ needs.ingest.outputs.gbp_status }}
+          AUTHORITY_DATA: ${{ needs.ingest.outputs.authority_data }}
+          SEVERITY: ${{ needs.analyze.outputs.severity }}
+          GAP_COUNT: ${{ needs.analyze.outputs.gap_count }}
+          GAPS: ${{ needs.analyze.outputs.gaps }}
+          EXECUTED: ${{ needs.execute.outputs.executed }}
         run: |
           echo ""
           echo "╔══════════════════════════════════════════════════════════╗"
@@ -918,26 +937,26 @@ jobs:
           echo "═══════════════════════════════════"
           echo ""
           echo "Traffic Data:"
-          echo '${{ needs.ingest.outputs.traffic_data }}' | jq '.' 2>/dev/null || echo "  (parse error)"
+          echo "$TRAFFIC_DATA" | jq '.' 2>/dev/null || echo "  (parse error)"
           echo ""
           echo "Keyword Rankings:"
-          echo '${{ needs.ingest.outputs.keyword_rankings }}' | jq '.' 2>/dev/null || echo "  (parse error)"
+          echo "$KEYWORDS_DATA" | jq '.' 2>/dev/null || echo "  (parse error)"
           echo ""
           echo "GBP Status:"
-          echo '${{ needs.ingest.outputs.gbp_status }}' | jq '.' 2>/dev/null || echo "  (parse error)"
+          echo "$GBP_DATA" | jq '.' 2>/dev/null || echo "  (parse error)"
           echo ""
           echo "Authority:"
-          echo '${{ needs.ingest.outputs.authority_data }}' | jq '.' 2>/dev/null || echo "  (parse error)"
+          echo "$AUTHORITY_DATA" | jq '.' 2>/dev/null || echo "  (parse error)"
           echo ""
           echo "📋 GAPS IDENTIFIED THIS WEEK"
           echo "════════════════════════════"
-          echo "Severity: ${{ needs.analyze.outputs.severity }}"
-          echo "Gap Count: ${{ needs.analyze.outputs.gap_count }}"
-          echo "Gaps: ${{ needs.analyze.outputs.gaps }}"
+          echo "Severity: $SEVERITY"
+          echo "Gap Count: $GAP_COUNT"
+          echo "Gaps: $GAPS"
           echo ""
           echo "✅ ACTIONS EXECUTED THIS WEEK"
           echo "═════════════════════════════"
-          echo "${{ needs.execute.outputs.executed }}" | tr ',' '\n' | while read action; do
+          echo "$EXECUTED" | tr ',' '\n' | while read action; do
             [ -n "$action" ] && echo "  ✓ $action"
           done
           echo ""
@@ -1039,6 +1058,18 @@ jobs:
     if: always()
     steps:
       - name: 📋 Generate Weekly Report
+        env:
+          TRAFFIC: ${{ needs.ingest.outputs.traffic_data }}
+          AUTHORITY: ${{ needs.ingest.outputs.authority_data }}
+          COMPETITORS: ${{ needs.ingest.outputs.competitor_data }}
+          PERFORMANCE: ${{ needs.ingest.outputs.performance_data }}
+          MICROSITES: ${{ needs.ingest.outputs.microsite_health }}
+          SEVERITY: ${{ needs.analyze.outputs.severity }}
+          GAP_COUNT: ${{ needs.analyze.outputs.gap_count }}
+          GAPS: ${{ needs.analyze.outputs.gaps }}
+          AUTO_EXECUTE: ${{ needs.decide.outputs.auto_execute }}
+          PRIORITY_ACTIONS: ${{ needs.analyze.outputs.priority_actions }}
+          EXECUTED: ${{ needs.execute.outputs.executed }}
         run: |
           echo ""
           echo "╔══════════════════════════════════════════════════════════════════╗"
@@ -1051,26 +1082,26 @@ jobs:
           echo "║                                                                  ║"
           echo "║  📊 PHASE 1: DATA INGESTION                                      ║"
           echo "║  ─────────────────────────────────────────────────────────────   ║"
-          echo "║  Traffic:     ${{ needs.ingest.outputs.traffic_data }}"
-          echo "║  Authority:   ${{ needs.ingest.outputs.authority_data }}"
-          echo "║  Competitors: ${{ needs.ingest.outputs.competitor_data }}"
-          echo "║  Performance: ${{ needs.ingest.outputs.performance_data }}"
-          echo "║  Microsites:  ${{ needs.ingest.outputs.microsite_health }}"
+          echo "║  Traffic:     $TRAFFIC"
+          echo "║  Authority:   $AUTHORITY"
+          echo "║  Competitors: $COMPETITORS"
+          echo "║  Performance: $PERFORMANCE"
+          echo "║  Microsites:  $MICROSITES"
           echo "║                                                                  ║"
           echo "║  🧠 PHASE 2: GAP ANALYSIS                                        ║"
           echo "║  ─────────────────────────────────────────────────────────────   ║"
-          echo "║  Overall Severity: ${{ needs.analyze.outputs.severity }}"
-          echo "║  Gaps Found: ${{ needs.analyze.outputs.gap_count }}"
-          echo "║  Details: ${{ needs.analyze.outputs.gaps }}"
+          echo "║  Overall Severity: $SEVERITY"
+          echo "║  Gaps Found: $GAP_COUNT"
+          echo "║  Details: $GAPS"
           echo "║                                                                  ║"
           echo "║  🎯 PHASE 3: ACTION PLAN                                         ║"
           echo "║  ─────────────────────────────────────────────────────────────   ║"
-          echo "║  Auto-Executed: ${{ needs.decide.outputs.auto_execute }}"
-          echo "║  Recommended:   ${{ needs.analyze.outputs.priority_actions }}"
+          echo "║  Auto-Executed: $AUTO_EXECUTE"
+          echo "║  Recommended:   $PRIORITY_ACTIONS"
           echo "║                                                                  ║"
           echo "║  ⚡ PHASE 4: EXECUTION                                           ║"
           echo "║  ─────────────────────────────────────────────────────────────   ║"
-          echo "║  Completed: ${{ needs.execute.outputs.executed }}"
+          echo "║  Completed: $EXECUTED"
           echo "║                                                                  ║"
           echo "║  📈 PHASE 5 & 6: MEASURE & LEARN                                 ║"
           echo "║  ─────────────────────────────────────────────────────────────   ║"
