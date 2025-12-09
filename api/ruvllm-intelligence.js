@@ -21,17 +21,11 @@
  * - trajectory: Record/retrieve optimization trajectories
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
+// Persistent storage URL - fetch from static JSON
+const TRAJECTORIES_URL = 'https://www.chrisdavidsalon.com/data/ruvector/performance-trajectories.json';
 
-// Persistent storage paths
-const DATA_DIR = join(process.cwd(), '01-WEBSITE', 'data', 'ruvector');
-const TRAJECTORIES_FILE = join(DATA_DIR, 'performance-trajectories.json');
-const PATTERNS_FILE = join(DATA_DIR, 'patterns.json');
-const LEARNINGS_FILE = join(DATA_DIR, 'learnings.json');
-
-// Load persistent data on startup
-function loadPersistentData() {
+// Load persistent data via HTTP (works in serverless)
+async function loadPersistentData() {
   const data = {
     trajectories: [],
     patterns: [],
@@ -39,8 +33,13 @@ function loadPersistentData() {
   };
 
   try {
-    if (existsSync(TRAJECTORIES_FILE)) {
-      const trajData = JSON.parse(readFileSync(TRAJECTORIES_FILE, 'utf8'));
+    const response = await fetch(TRAJECTORIES_URL, {
+      cache: 'no-store',
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      const trajData = await response.json();
       data.trajectories = trajData.trajectories || [];
       data.patterns = trajData.patterns || [];
       data.learnings = trajData.learnings || [];
@@ -52,11 +51,10 @@ function loadPersistentData() {
   return data;
 }
 
-// In-memory cache that syncs with persistent storage
-const persistentData = loadPersistentData();
+// In-memory caches (persistent data loaded on demand)
 const patternMemory = new Map();
-const trajectories = persistentData.trajectories;
-const learningHistory = persistentData.learnings;
+const trajectories = [];
+const learningHistory = [];
 
 // Knowledge base patterns seeded from local-seo-master-guide.json
 const SEEDED_PATTERNS = [
@@ -147,7 +145,7 @@ export default async function handler(req, res) {
       // ============================================
       case 'status': {
         // Reload persistent data for fresh count
-        const freshData = loadPersistentData();
+        const freshData = await loadPersistentData();
 
         const stats = {
           initialized: true,
@@ -531,7 +529,7 @@ export default async function handler(req, res) {
       // ============================================
       case 'trajectory': {
         // Load fresh persistent data
-        const persistedTrajectories = loadPersistentData();
+        const persistedTrajectories = await loadPersistentData();
 
         if (req.method === 'POST') {
           const { action: trajAction, step, outcome, metadata: trajMeta } = req.body || {};
