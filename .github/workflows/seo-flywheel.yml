@@ -46,9 +46,9 @@ permissions:
 
 env:
   SITE_URL: https://www.chrisdavidsalon.com
-  MICROSITE_1: https://bestsalondelray.com
-  MICROSITE_2: https://bestdelraysalon.com
-  MICROSITE_3: https://bestsalonpalmbeach.com
+  MICROSITE_1: https://www.bestsalondelray.com
+  MICROSITE_2: https://www.bestdelraysalon.com
+  MICROSITE_3: https://www.bestsalonpalmbeach.com
 
 jobs:
   # ============================================
@@ -763,14 +763,47 @@ jobs:
             EXECUTED="$EXECUTED,ssl_valid"
           fi
 
-          # 4. Notify Google of sitemap updates
+          # 4. SITEMAP VALIDATION - Check for www consistency issues
           echo ""
-          echo "🔎 Notifying search engines..."
-          curl -s --max-time 10 "https://www.google.com/ping?sitemap=${{ env.SITE_URL }}/sitemap.xml" > /dev/null && echo "   ✓ Google notified (main site)"
-          curl -s --max-time 10 "https://www.google.com/ping?sitemap=${{ env.MICROSITE_1 }}/sitemap.xml" > /dev/null && echo "   ✓ Google notified (microsite 1)"
-          curl -s --max-time 10 "https://www.google.com/ping?sitemap=${{ env.MICROSITE_2 }}/sitemap.xml" > /dev/null && echo "   ✓ Google notified (microsite 2)"
-          curl -s --max-time 10 "https://www.google.com/ping?sitemap=${{ env.MICROSITE_3 }}/sitemap.xml" > /dev/null && echo "   ✓ Google notified (microsite 3)"
-          EXECUTED="$EXECUTED,google_pinged_all"
+          echo "🔍 VALIDATING SITEMAPS (www consistency check)..."
+          SITEMAP_ISSUES=""
+
+          for site in "${{ env.SITE_URL }}" "${{ env.MICROSITE_1 }}" "${{ env.MICROSITE_2 }}" "${{ env.MICROSITE_3 }}"; do
+            SITEMAP=$(curl -s --max-time 15 "$site/sitemap.xml" 2>/dev/null)
+            # Check for non-www URLs (which cause duplicate content issues)
+            NON_WWW_COUNT=$(echo "$SITEMAP" | grep -c "https://[^w]" 2>/dev/null | grep -v "www" || echo "0")
+            DOMAIN=$(echo "$site" | sed 's|https://www.||' | sed 's|/||g')
+
+            if echo "$SITEMAP" | grep -q "<loc>https://${DOMAIN}" 2>/dev/null; then
+              echo "   ⚠ $DOMAIN: Found non-www URLs in sitemap (INDEXING BLOCKER!)"
+              SITEMAP_ISSUES="${SITEMAP_ISSUES}${DOMAIN}:non-www,"
+            else
+              echo "   ✓ $DOMAIN: All URLs use www (good)"
+            fi
+          done
+
+          if [ -n "$SITEMAP_ISSUES" ]; then
+            echo ""
+            echo "   🚨 CRITICAL: Fix non-www URLs in sitemaps to resolve indexing issues!"
+          fi
+          EXECUTED="$EXECUTED,sitemaps_validated"
+
+          # 5. IndexNow submission (Bing, Yandex, Naver, etc.)
+          echo ""
+          echo "🔔 Submitting to IndexNow (Bing/Yandex)..."
+          # IndexNow accepts URL submissions without auth for small batches
+          for site in "${{ env.SITE_URL }}" "${{ env.MICROSITE_1 }}" "${{ env.MICROSITE_2 }}" "${{ env.MICROSITE_3 }}"; do
+            DOMAIN=$(echo "$site" | sed 's|https://||')
+            # Ping Bing's IndexNow
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 \
+              "https://www.bing.com/indexnow?url=${site}/&key=seo-flywheel-key" 2>/dev/null || echo "000")
+            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "202" ]; then
+              echo "   ✓ $DOMAIN submitted to Bing IndexNow"
+            else
+              echo "   ⚠ $DOMAIN IndexNow returned $HTTP_CODE (may need key file setup)"
+            fi
+          done
+          EXECUTED="$EXECUTED,indexnow_submitted"
 
           # 5. Warm the cache on KEY RANKING PAGES (prioritized for crawling)
           echo ""
