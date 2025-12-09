@@ -1,7 +1,12 @@
 {
-  "version": "2.37.0",
-  "lastUpdated": "2025-12-06T01:45:00Z",
+  "version": "2.38.0",
+  "lastUpdated": "2025-12-09T05:52:00Z",
   "deployHistory": [
+    {
+      "version": "2.38.0",
+      "date": "2025-12-09T05:52:00Z",
+      "changes": "ACTIVE INTELLIGENCE DASHBOARD: (1) NEW /admin/active-intelligence.html - comprehensive autonomous AI dashboard showing system health, metrics snapshot, gaps detection, actions executed, learning insights, and GBP weekly schedule. (2) STREAMLINED NAVIGATION - 6-page admin nav focused on driving bookings: Command Center, Traffic, Rankings, Authority, Microsites, Active Intelligence. (3) Self-monitoring via workflow-health API to detect GitHub Actions failures. (4) All legacy admin pages preserved for reference."
+    },
     {
       "version": "2.33.0",
       "date": "2025-12-06T00:30:00Z",
