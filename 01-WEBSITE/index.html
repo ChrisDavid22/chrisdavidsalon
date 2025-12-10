@@ -1949,7 +1949,17 @@
             if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
                 blvd.openBookingWidget();
             } else {
-                window.open('https://go.boulevard.io/widget/businesses/66067441-2b07-4081-bb41-9877e9e4c25b', '_blank');
+                // Load Boulevard script first, then open widget
+                loadBoulevard(function() {
+                    setTimeout(function() {
+                        if (typeof blvd !== 'undefined' && typeof blvd.openBookingWidget === 'function') {
+                            blvd.openBookingWidget();
+                        } else {
+                            // Final fallback if script fails to load
+                            window.open('https://go.boulevard.io/widget/businesses/66067441-2b07-4081-bb41-9877e9e4c25b', '_blank');
+                        }
+                    }, 300);
+                });
             }
         };
 
