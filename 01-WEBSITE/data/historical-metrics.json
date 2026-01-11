@@ -43,14 +43,14 @@
     "status": "baseline-captured"
   },
   "current": {
-    "date": "2026-01-04",
+    "date": "2026-01-11",
     "source": "live-api-data",
     "traffic": {
-      "users": 125,
-      "sessions": 146,
-      "pageviews": 210,
-      "bounceRate": "52.7",
-      "avgSessionDuration": "44.8",
+      "users": 151,
+      "sessions": 183,
+      "pageviews": 251,
+      "bounceRate": "52.5",
+      "avgSessionDuration": "115.1",
       "source": "GA4 API - LIVE"
     },
     "authority": {
@@ -293,7 +293,44 @@
       },
       "seoScore": 57,
       "status": "captured"
+    },
+    {
+      "id": "snapshot-2026-W02-1768130428802",
+      "week": "2026-W02",
+      "date": "2026-01-11",
+      "timestamp": "2026-01-11T11:20:13.765Z",
+      "metrics": {
+        "traffic": {
+          "users": 151,
+          "sessions": 183,
+          "pageviews": 251,
+          "bounceRate": "52.5",
+          "avgSessionDuration": "115.1",
+          "source": "GA4 API - LIVE"
+        },
+        "authority": {
+          "score": null,
+          "pagerank": null,
+          "pagerankDecimal": null,
+          "source": "OpenPageRank API - LIVE"
+        },
+        "competitors": {
+          "ourRating": null,
+          "ourReviews": null,
+          "topCompetitorReviews": null,
+          "competitorCount": null,
+          "source": "Google Places API - UNAVAILABLE"
+        },
+        "performance": {
+          "score": 78,
+          "seo": 100,
+          "accessibility": 86,
+          "source": "PageSpeed API - LIVE"
+        }
+      },
+      "seoScore": 58,
+      "status": "captured"
     }
   ],
-  "lastUpdated": "2026-01-04T11:20:02Z"
+  "lastUpdated": "2026-01-11T11:20:28Z"
 }
