@@ -1,5 +1,7 @@
 # Robots.txt for Chris David Salon
 # https://www.chrisdavidsalon.com/
+# Version: 1.1.0
+# Last Updated: 2026-03-21
 
 # Standard Crawler Directives
 User-agent: *
@@ -17,12 +19,14 @@ Crawl-delay: 1
 # Allow major search engines
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 Disallow: /admin/
 Disallow: /api/
 Disallow: /data/
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 Disallow: /admin/
 Disallow: /api/
 Disallow: /data/
@@ -36,6 +40,19 @@ User-agent: DuckDuckBot
 Allow: /
 Disallow: /admin/
 Disallow: /api/
+
+# Social Media Link Preview Bots
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
 
 # AI Agent Directives
 User-agent: Claude
