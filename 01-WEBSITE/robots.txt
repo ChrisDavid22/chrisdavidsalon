@@ -1,11 +1,15 @@
 # Robots.txt for Chris David Salon
-# https://chrisdavidsalon.com/
+# https://www.chrisdavidsalon.com/
 
+# Standard Crawler Directives
 User-agent: *
 Allow: /
-
-# Sitemap location
-Sitemap: https://www.chrisdavidsalon.com/sitemap.xml
+Allow: /services/
+Allow: /locations/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
+Disallow: /lib/
 
 # Crawl-delay for responsible crawling
 Crawl-delay: 1
@@ -13,17 +17,54 @@ Crawl-delay: 1
 # Allow major search engines
 User-agent: Googlebot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
 
 User-agent: Slurp
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: DuckDuckBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
-# Block spam bots
+# AI Agent Directives
+User-agent: Claude
+Allow: /
+Allow: /services/
+Allow: /locations/
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: GPTBot
+Allow: /
+Allow: /services/
+Allow: /locations/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Anthropic
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Block spam/scraper bots
 User-agent: AhrefsBot
 Disallow: /
 
@@ -35,3 +76,12 @@ Disallow: /
 
 User-agent: MJ12bot
 Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://www.chrisdavidsalon.com/sitemap.xml
